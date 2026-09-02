@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('TESTPARM')}"></head>
+<body>
+<div class="screen">
+    <header class="screen-header">TESTPARM</header>
+    <main class="screen-body">
+        <form method="get">
+            <label>LAUNCH <input name="first" maxlength="20" th:value="${first}"></label>
+            <label>LAUNCH2 <input name="second" maxlength="20" th:value="${second}"></label>
+            <button>Enter</button>
+        </form>
+        <p>Passed Parameter:</p>
+        <pre th:text="${first}"></pre>
+        <pre th:text="${second}"></pre>
+    </main>
+    <footer class="function-keys">F3=Exit</footer>
+</div>
+</body>
+</html>

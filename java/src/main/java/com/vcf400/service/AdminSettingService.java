@@ -35,9 +35,19 @@ public class AdminSettingService {
                 });
         settings.findById("ALWVOTE")
                 .ifPresent(setting -> {
-                    setting.setValue(allowVote);
+                    setting.setValue(normalizeAllowVote(allowVote));
                     settings.save(setting);
                 });
         return load();
+    }
+
+    private String normalizeAllowVote(String allowVote) {
+        if ("1".equals(allowVote)) {
+            return "Y";
+        }
+        if ("0".equals(allowVote)) {
+            return "N";
+        }
+        return allowVote;
     }
 }

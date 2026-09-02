@@ -438,7 +438,7 @@ public class Vcf400UiController {
 
     @GetMapping("/admin/settings")
     public String adminSettings(Model model) {
-        model.addAttribute("settings", settingService.load());
+        addSettings(model, settingService.load());
         return "admin-settings";
     }
 
@@ -447,10 +447,15 @@ public class Vcf400UiController {
             @RequestParam String password,
             @RequestParam String allowVote,
             Model model) {
-        model.addAttribute(
-                "settings",
-                settingService.save(password, allowVote));
+        addSettings(model, settingService.save(password, allowVote));
         return "admin-settings";
+    }
+
+    private void addSettings(Model model, java.util.Map<String, String> settings) {
+        model.addAttribute("settings", settings);
+        model.addAttribute(
+                "allowVoteDisplay",
+                "Y".equalsIgnoreCase(settings.get("ALWVOTE")) ? "1" : "0");
     }
 
     @GetMapping("/admin/beemovie")
@@ -463,6 +468,15 @@ public class Vcf400UiController {
     public String credits(Model model) {
         model.addAllAttributes(screens.credits());
         return "static";
+    }
+
+    @GetMapping("/parameter")
+    public String parameter(
+            @RequestParam(defaultValue = "") String first,
+            @RequestParam(defaultValue = "") String second,
+            Model model) {
+        model.addAllAttributes(screens.parameters(first, second));
+        return "parameter";
     }
 
     @GetMapping("/admin/spool")

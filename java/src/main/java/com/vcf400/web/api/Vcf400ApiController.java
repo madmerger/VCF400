@@ -287,4 +287,11 @@ public class Vcf400ApiController {
     public Map<String, String> help() {
         return screens.help();
     }
+
+    @GetMapping("/static/parameters")
+    public Map<String, String> parameters(
+            @RequestParam(defaultValue = "") String first,
+            @RequestParam(defaultValue = "") String second) {
+        return screens.parameters(first, second);
+    }
 }

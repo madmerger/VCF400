@@ -28,7 +28,7 @@ public final class RpgMessages {
     public static final String USER_BLANK = "USRPRF cannot be blank     ";
     public static final String USER_NOT_FOUND = "USRPRF was not found       ";
     public static final String USER_EXISTS = "Error - USRPRF exists";
-    public static final String USER_CREATED = "USRPRF not found, creating new record";
+    public static final String USER_CREATED = "USRPRF not found, creating new";
     public static final String NOT_DELETED = "Not found - not deleted";
     public static final String DELETED = "USRPRF was deleted from DB";
     public static final String END = "SORRY!";

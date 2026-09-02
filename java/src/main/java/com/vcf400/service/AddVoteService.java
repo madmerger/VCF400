@@ -56,14 +56,14 @@ public class AddVoteService {
         return profile;
     }
 
-    /** RPG: BEGSR CHKALWVOTE; BR-ADDVOTE-03. */
+    /** RPG: BEGSR CHKALWVOTE; BR-ADDVOTE-04. */
     private boolean chkAlwVote() {
         return settings.findById("ALWVOTE")
                 .map(setting -> !"N".equalsIgnoreCase(setting.getValue()))
                 .orElse(true);
     }
 
-    /** RPG: input validation; BR-ADDVOTE-04, BR-ADDVOTE-05, BR-ADDVOTE-06. */
+    /** RPG: input validation; BR-ADDVOTE-01, BR-ADDVOTE-02, BR-ADDVOTE-03, BR-ADDVOTE-09. */
     private Validation validate(Input input) {
         String error = null;
         if (input.badge() == 0) {
@@ -84,7 +84,7 @@ public class AddVoteService {
         return new Validation(null, null);
     }
 
-    /** RPG: BEGSR ADDTODB; BR-ADDVOTE-07, BR-ADDVOTE-08, BR-ADDVOTE-09. */
+    /** RPG: BEGSR ADDTODB; BR-ADDVOTE-05, BR-ADDVOTE-06, BR-ADDVOTE-07, BR-ADDVOTE-08. */
     private VoteResult addToDb(Input input) {
         if (votes.existsById(input.badge())) {
             return new VoteResult(false, RpgMessages.EXISTS, "VOTE1");

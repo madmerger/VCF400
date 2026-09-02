@@ -40,12 +40,11 @@ public class AdminVoteReportService {
 
         long award1 = 0;
         long award2 = 0;
-        long total = 0;
+        long total = votes.count();
         for (Vote vote : votes.findAll()) {
             if (!profile.equals(vote.getExhNbr())) {
                 continue;
             }
-            total++;
             if (vote.getAwardNbr() == 1) {
                 award1++;
             }

@@ -49,7 +49,7 @@ public class ExhibitMenuService {
     public String select(String profile, int option) {
         MenuView view = load(profile);
         return switch (option) {
-            case 1 -> view.showVote() ? "VOTESTUB" : "MENU";
+            case 1 -> view.showVote() && chkAlwVote() ? "VOTESTUB" : "MENU";
             case 2 -> view.showLrn400() ? "LRN400STUB" : "MENU";
             case 3 -> "ADDGBSTUB";
             case 4 -> "READGBSTUB";
@@ -58,7 +58,14 @@ public class ExhibitMenuService {
         };
     }
 
-    /** RPG: BEGSR GETPSWRD; BR-EXHBMENU-05. */
+    /** RPG: BEGSR CHKALWVOTE; BR-EXHBMENU-04. */
+    private boolean chkAlwVote() {
+        return settings.findById("ALWVOTE")
+                .map(setting -> !"N".equalsIgnoreCase(setting.getValue()))
+                .orElse(true);
+    }
+
+    /** RPG: BEGSR GETPSWRD; BR-EXHBMENU-07. */
     public boolean exitKiosk(String password) {
         return settings.findById("PASSWORD")
                 .map(setting -> setting.getValue().equals(password))

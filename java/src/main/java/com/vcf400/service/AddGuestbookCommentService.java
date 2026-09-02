@@ -1,6 +1,5 @@
 package com.vcf400.service;
 
-import com.vcf400.domain.ExhibitRepository;
 import com.vcf400.domain.GuestbookComment;
 import com.vcf400.domain.GuestbookCommentRepository;
 import com.vcf400.print.PrintSpoolService;
@@ -11,15 +10,12 @@ import org.springframework.stereotype.Service;
 public class AddGuestbookCommentService {
 
     private final GuestbookCommentRepository comments;
-    private final ExhibitRepository exhibits;
     private final PrintSpoolService printer;
 
     public AddGuestbookCommentService(
             GuestbookCommentRepository comments,
-            ExhibitRepository exhibits,
             PrintSpoolService printer) {
         this.comments = comments;
-        this.exhibits = exhibits;
         this.printer = printer;
     }
 
@@ -49,10 +45,6 @@ public class AddGuestbookCommentService {
         }
         if (err != null) {
             return new CommentResult(false, err, null, "ADDCMT");
-        }
-
-        if (!exhibits.existsById(exhibit)) {
-            return new CommentResult(false, RpgMessages.EXHIBIT_NOT_FOUND, null, "ADDCMT");
         }
 
         int id = comments.findAll().stream()

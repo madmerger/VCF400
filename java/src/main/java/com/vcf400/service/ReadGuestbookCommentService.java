@@ -34,12 +34,16 @@ public class ReadGuestbookCommentService {
         return profile == null ? "" : profile;
     }
 
-    /** RPG: BEGSR GETTLCMT; BR-READGBCMT-02. */
+    /** RPG: BEGSR GETTLCMT; BR-READGBCMT-05. */
     private long getTotalComments() {
-        return comments.count();
+        return comments.findAll()
+                .stream()
+                .mapToInt(GuestbookComment::getCmtId)
+                .max()
+                .orElse(0);
     }
 
-    /** RPG: BEGSR READDB; BR-READGBCMT-03, BR-READGBCMT-04, BR-READGBCMT-05. */
+    /** RPG: BEGSR READDB; BR-READGBCMT-02, BR-READGBCMT-03, BR-READGBCMT-04. */
     public CommentView read(String profile, int id) {
         String userProfile = chkParm(profile);
         long totalComments = getTotalComments();
