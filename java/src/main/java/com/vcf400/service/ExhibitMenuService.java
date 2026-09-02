@@ -31,6 +31,7 @@ public class ExhibitMenuService {
 
     /** RPG: BEGSR GETEXHB; BR-EXHBMENU-01, BR-EXHBMENU-02. */
     public MenuView load(String profile) {
+        profile = DdsField.truncate(profile, 9);
         Exhibit exhibit = exhibits.findById(profile).orElse(null);
         if (exhibit == null) {
             return new MenuView(null, null, null, null, null, false, false);
@@ -47,6 +48,7 @@ public class ExhibitMenuService {
 
     /** RPG: BEGSR DOVOTE/DOLRN400/ADMKIOSK; BR-EXHBMENU-03, BR-EXHBMENU-04, BR-EXHBMENU-06, BR-EXHBMENU-07. */
     public String select(String profile, int option) {
+        profile = DdsField.truncate(profile, 9);
         MenuView view = load(profile);
         return switch (option) {
             case 1 -> view.showVote() && chkAlwVote() ? "VOTESTUB" : "MENU";
@@ -67,8 +69,9 @@ public class ExhibitMenuService {
 
     /** RPG: BEGSR GETPSWRD; BR-EXHBMENU-07. */
     public boolean exitKiosk(String password) {
+        String truncatedPassword = DdsField.truncate(password, 9);
         return settings.findById("PASSWORD")
-                .map(setting -> setting.getValue().equals(password))
+                .map(setting -> setting.getValue().equals(truncatedPassword))
                 .orElse(false);
     }
 }

@@ -32,6 +32,10 @@ public class AddGuestbookCommentService {
             String exhibitId,
             String name,
             String comment) {
+        profile = DdsField.truncate(profile, 20);
+        exhibitId = DdsField.truncate(exhibitId, 9);
+        name = DdsField.truncate(name, 16);
+        comment = DdsField.truncate(comment, 200);
         String exhibit = "MM2024".equals(profile) ? exhibitId : profile;
         String err = null;
         if (exhibit == null || exhibit.isBlank()) {

@@ -411,8 +411,8 @@
 - `PRTLSTVOTE`／`PRTLSTCMT`／`PRINTER`: 仕様書9節の前提に従い、物理プリンタ制御をログとメモリ上の`PrintSpoolService`へ置換した。
 - `READGBCMT` の `ERRLINE=USERPRF`: 仕様書9節の前提に従い、結果レコードの`errLine`へユーザプロファイルを返す。
 
-## 6.判断依頼
+## 6.決定
 
-- 管理系プログラムの `SECOFRS` 認可: RPG側の `CHKOFRS`／`CHKUSRPRF` は空で、仕様書9節はJavaでの認可追加を予定しているが、現在のREST/UIには認証コンテキストがない。認可導入方式（固定`MM2024`、セッション、または別途認証機構）の決定が必要。
-- `ADMCRTEXHB` の画面桁（`INTITLE=60A`／`INCITY=15A`）とDB桁、`ADDGBCMT`の`INNAME=16A`とDB桁: 画面入力上限をAPIにも強制するか、APIはDB桁まで許容するかの判断が必要。
-- `ADMLRN400` の `LAUNCH`／`EXHIBIT` コメントアウト入口引数を、管理画面の認証・出展者スコープにどう結び付けるかの判断が必要。
+- `SECOFRS` 認可: RPG側の `CHKOFRS`／`CHKUSRPRF` はTODOのまま認可チェックを実行していないため、Javaでも認可処理は実装しない。`SECOFRS` は管理者の登録・一覧のみ提供する。
+- 桁数制限: REST APIにもDDSの桁数を適用する。各サービス入口で共通ヘルパー `DdsField.truncate(String, int)` を使い、RPGの `MOVEL` と同じく超過分を拒否せず切り捨てる。UIの `maxlength` と同じ制約にする。
+- `ADMLRN400` の `LAUNCH`／`EXHIBIT`: RPGソースでコメントアウトされ未使用のため、Javaでも使用しない。`owner` は画面入力値を使用し、未指定時は `LRN400STR` とする。

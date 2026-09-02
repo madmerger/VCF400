@@ -29,7 +29,7 @@ public class StaticScreenService {
     /** RPG: PARAMETER TESTPARM; BR-PARAMETER-01. */
     public Map<String, String> parameters(String first, String second) {
         return Map.of(
-                "first", first == null ? "" : first,
-                "second", second == null ? "" : second);
+                "first", first == null ? "" : DdsField.truncate(first, 20),
+                "second", second == null ? "" : DdsField.truncate(second, 20));
     }
 }

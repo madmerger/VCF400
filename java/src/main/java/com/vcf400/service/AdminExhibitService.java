@@ -127,6 +127,7 @@ public class AdminExhibitService {
 
     /** RPG: BEGSR LOADEXHB; BR-ADMCRTEXHB-01, BR-ADMCRTEXHB-02. */
     public ExhibitEditorSession loadSession(String exhibit) {
+        exhibit = DdsField.truncate(exhibit, 9);
         ExhibitEditorSession session = new ExhibitEditorSession();
         session.edtExhb = exhibit;
         if ("NONE".equals(exhibit)) {
@@ -149,6 +150,7 @@ public class AdminExhibitService {
 
     /** RPG: BEGSR LOADEXHB; BR-ADMCRTEXHB-01, BR-ADMCRTEXHB-02. */
     public Exhibit load(String profile) {
+        profile = DdsField.truncate(profile, 9);
         return exhibits.findById(profile).orElse(null);
     }
 
@@ -234,12 +236,12 @@ public class AdminExhibitService {
     }
 
     private void copyForm(ExhibitEditorSession session, ExhibitForm form) {
-        session.profile = form.profile();
-        session.owner = form.owner();
-        session.city = form.city();
-        session.state = form.state();
-        session.title = form.title();
-        session.description = form.description();
+        session.profile = DdsField.truncate(form.profile(), 9);
+        session.owner = DdsField.truncate(form.owner(), 20);
+        session.city = DdsField.truncate(form.city(), 15);
+        session.state = DdsField.truncate(form.state(), 2);
+        session.title = DdsField.truncate(form.title(), 50);
+        session.description = DdsField.truncate(form.description(), 1000);
         session.eligible = form.eligible();
         session.learn400 = form.learn400();
     }

@@ -116,6 +116,8 @@ public class AddVoteService {
      * @return RPG-compatible result screen and ERRLINE
      */
     public VoteResult submit(String launchProfile, int badge, String exhibitId, int award) {
+        launchProfile = DdsField.truncate(launchProfile, 9);
+        exhibitId = DdsField.truncate(exhibitId, 9);
         if (!chkAlwVote()) {
             return new VoteResult(false, null, "ENDOFCON");
         }

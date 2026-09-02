@@ -18,6 +18,7 @@ public class AdminSecurityOfficerService {
 
     /** RPG: BEGSR ADDTODB; BR-ADMADDSOFR-01. */
     public String add(String profile) {
+        profile = DdsField.truncate(profile, 9);
         if (profile == null || profile.isBlank()) {
             return RpgMessages.USER_BLANK;
         }

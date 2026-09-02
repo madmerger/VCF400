@@ -73,7 +73,10 @@ public class AdminLearn400Service {
 
     /** RPG: initial display; BR-ADMLRN400-01. */
     public AdminLearnSession start(String owner) {
-        AdminLearnSession session = new AdminLearnSession(owner);
+        String actualOwner = owner == null || owner.isBlank()
+                ? "LRN400STR"
+                : DdsField.truncate(owner, 9);
+        AdminLearnSession session = new AdminLearnSession(actualOwner);
         session.alwFwd = 1;
         session.newOrUpd = 0;
         session.in60 = true;
@@ -117,6 +120,8 @@ public class AdminLearn400Service {
 
     /** RPG: BEGSR WRITERCD/UPDRCD/CRTRCD; BR-ADMLRN400-04, BR-ADMLRN400-05. */
     public AdminLearnSession save(AdminLearnSession session) {
+        session.inContent = DdsField.truncate(session.inContent, 1500);
+        session.inExtra = DdsField.truncate(session.inExtra, 9);
         Lrn400Page page = chain(session.owner, session.curPageNbr);
         if (session.newOrUpd == 0 && page != null) {
             page.update(session.inContent, session.inExtra);

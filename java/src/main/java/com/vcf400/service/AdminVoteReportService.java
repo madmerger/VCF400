@@ -30,6 +30,7 @@ public class AdminVoteReportService {
 
     /** RPG: BEGSR READVOTE; BR-ADMVOTERPT-01, BR-ADMVOTERPT-02, BR-ADMVOTERPT-03, BR-ADMVOTERPT-04. */
     public VoteReport readVote(String profile) {
+        profile = DdsField.truncate(profile, 9);
         if (profile == null || profile.isBlank()) {
             return new VoteReport(0, 0, 0, null, RpgMessages.USER_BLANK);
         }

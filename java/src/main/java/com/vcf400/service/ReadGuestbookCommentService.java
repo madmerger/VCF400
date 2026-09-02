@@ -45,6 +45,7 @@ public class ReadGuestbookCommentService {
 
     /** RPG: BEGSR READDB; BR-READGBCMT-02, BR-READGBCMT-03, BR-READGBCMT-04. */
     public CommentView read(String profile, int id) {
+        profile = DdsField.truncate(profile, 20);
         String userProfile = chkParm(profile);
         long totalComments = getTotalComments();
         if (id == 0) {

@@ -28,14 +28,16 @@ public class AdminSettingService {
 
     /** RPG: SETUPMAIN/UPDATE; BR-ADMSETTING-02, BR-ADMSETTING-03. */
     public Map<String, String> save(String password, String allowVote) {
+        String truncatedPassword = DdsField.truncate(password, 9);
+        String truncatedAllowVote = DdsField.truncate(allowVote, 1);
         settings.findById("PASSWORD")
                 .ifPresent(setting -> {
-                    setting.setValue(password);
+                    setting.setValue(truncatedPassword);
                     settings.save(setting);
                 });
         settings.findById("ALWVOTE")
                 .ifPresent(setting -> {
-                    setting.setValue(normalizeAllowVote(allowVote));
+                    setting.setValue(normalizeAllowVote(truncatedAllowVote));
                     settings.save(setting);
                 });
         return load();

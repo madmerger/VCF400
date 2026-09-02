@@ -104,7 +104,9 @@ public class Learn400Service {
 
     /** RPG: initial READ and CHKPARM; BR-LRN400-01. */
     public Learn400Session start(String owner) {
-        String actualOwner = owner == null || owner.isBlank() ? "LRN400STR" : owner;
+        String actualOwner = owner == null || owner.isBlank()
+                ? "LRN400STR"
+                : DdsField.truncate(owner, 9);
         Learn400Session session = new Learn400Session(actualOwner);
         session.alwFwd = 1;
         session.frmPageNbr = 0;
@@ -163,6 +165,7 @@ public class Learn400Service {
         int target = session.frmPageNbr == 0
                 ? session.curPageNbr
                 : session.frmPageNbr;
+        session.curPageNbr = target;
         Lrn400Page page = chain(session.owner, target);
         if (page != null) {
             setOutput(session, page);

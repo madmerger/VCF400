@@ -17,7 +17,9 @@ public class Learn400AutoService {
 
     /** RPG: initial READ and WAITRCD loop; BR-LRN400AUT-01. */
     public Learn400Service.Learn400Session start(String owner) {
-        String actualOwner = owner == null || owner.isBlank() ? "LRN400STR" : owner;
+        String actualOwner = owner == null || owner.isBlank()
+                ? "LRN400STR"
+                : DdsField.truncate(owner, 9);
         Learn400Service.Learn400Session session =
                 new Learn400Service.Learn400Session(actualOwner);
         session.setAlwFwd(1);
@@ -29,6 +31,7 @@ public class Learn400AutoService {
             session.setAlwFwd(0);
             return session;
         }
+        session.setCurPageNbr(first.getPageNbr());
         setOutput(session, first);
         return session;
     }
@@ -36,7 +39,15 @@ public class Learn400AutoService {
     /** RPG: BEGSR PAGEFWD; BR-LRN400AUT-01, BR-LRN400AUT-02, BR-LRN400AUT-03. */
     public Learn400Service.Learn400Session pageFwd(Learn400Service.Learn400Session s) {
         if (s.isEnded()) {
-            return start(s.getOwner());
+            Learn400Service.Learn400Session first = start(s.getOwner());
+            s.setCurPageNbr(first.getCurPageNbr());
+            s.setFrmPageNbr(first.getFrmPageNbr());
+            s.setPageAction(first.getPageAction());
+            s.setAlwFwd(first.getAlwFwd());
+            s.setOutPageNbr(first.getOutPageNbr());
+            s.setOutContent(first.getOutContent());
+            s.setEnded(false);
+            return s;
         }
         if (s.getAlwFwd() == 1) {
             s.setCurPageNbr(s.getCurPageNbr() + 1);
