@@ -51,12 +51,12 @@ class AdminApiTest extends AbstractWebIntegrationTest {
     class Error {
 
         @Test
-        @DisplayName("BR-ADMCRTEXHB-04/API: GERTIEの新規登録は重複エラー")
+        @DisplayName("BR-ADMCRTEXHB-04/API: ASHIBATAの新規登録は重複エラー")
         void rejectsDuplicateExhibit() {
             ResponseEntity<Map> response = rest.postForEntity(
                     "/api/admin/exhibits",
                     Map.of(
-                            "profile", "GERTIE",
+                            "profile", "ASHIBATA",
                             "owner", "Duplicate",
                             "city", "Boston",
                             "state", "MA",
@@ -78,7 +78,7 @@ class AdminApiTest extends AbstractWebIntegrationTest {
         @DisplayName("BR-ADMVOTERPT-01/API: 投票集計APIを取得できる")
         void readsVoteReport() {
             ResponseEntity<Map> response =
-                    rest.getForEntity("/api/admin/votes/GERTIE", Map.class);
+                    rest.getForEntity("/api/admin/votes/ASHIBATA", Map.class);
 
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
             assertThat(response.getBody()).containsKey("totalVotes");

@@ -22,9 +22,9 @@ class VoteApiTest extends AbstractWebIntegrationTest {
                     "/api/vote",
                     Map.of(
                             "badge", 1001,
-                            "exhibitId", "GERTIE",
+                            "exhibitId", "ASHIBATA",
                             "award", 1,
-                            "profile", "GERTIE"),
+                            "profile", "ASHIBATA"),
                     Map.class);
 
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -40,9 +40,9 @@ class VoteApiTest extends AbstractWebIntegrationTest {
         void rejectsDuplicateVote() {
             Map<String, Object> body = Map.of(
                     "badge", 1002,
-                    "exhibitId", "GERTIE",
+                    "exhibitId", "ASHIBATA",
                     "award", 1,
-                    "profile", "GERTIE");
+                    "profile", "ASHIBATA");
             rest.postForEntity("/api/vote", body, Map.class);
 
             ResponseEntity<Map> response =

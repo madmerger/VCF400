@@ -35,11 +35,11 @@ class UiPagesTest extends AbstractWebIntegrationTest {
     @BeforeEach
     void seedComment() {
         comments.save(new GuestbookComment(
-                9001,
+                2,
                 "Y",
-                "GERTIE",
-                "Alice",
-                "Hello Gertie"));
+                "ASHIBATA",
+                "Devin",
+                "VCF/400 is running on PUB400."));
     }
 
     private void assertOk(String path) {
@@ -54,19 +54,27 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         @Test
         @DisplayName("UI: VCFMAINホームを表示する")
         void rendersHome() {
-            assertOk("/");
+            String body = rest.getForEntity("/", String.class).getBody();
+            assertThat(body).contains(
+                    "ASHIBATA",
+                    "DEMO400",
+                    "NOVOTE",
+                    "MM2024",
+                    "1 LEARN/400",
+                    "11 Nominate",
+                    "80 Exhibit menu");
         }
 
         @Test
         @DisplayName("UI: EXHBMENUを表示する")
         void rendersMenu() throws Exception {
-            String body = mockMvc.perform(get("/menu?profile=GERTIE"))
+            String body = mockMvc.perform(get("/menu?profile=ASHIBATA"))
                     .andExpect(status().isOk())
                     .andReturn()
                     .getResponse()
                     .getContentAsString();
 
-            assertThat(body).contains("Gertie the AS/400");
+            assertThat(body).contains("IBM i on PUB400 Demo");
         }
 
         @Test
@@ -84,31 +92,38 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         @Test
         @DisplayName("UI: VOTE1画面を表示する")
         void rendersVote() {
-            assertOk("/vote?profile=GERTIE");
+            String body = rest.getForEntity("/vote?profile=ASHIBATA", String.class).getBody();
+            assertThat(body).contains(
+                    "VINTAGE COMPUTER FESTIVAL  NOMINATE EXHIBIT FOR AWARD",
+                    "readonly");
         }
 
         @Test
         @DisplayName("UI: ADDCMT画面を表示する")
         void rendersAddComment() {
-            assertOk("/guestbook/add?profile=GERTIE");
+            String body = rest.getForEntity("/guestbook/add?profile=ASHIBATA", String.class).getBody();
+            assertThat(body).contains(
+                    "VINTAGE COMPUTER FESTIVAL  GUESTBOOK/400 - ADD COMMENT",
+                    "maxlength=\"20\"",
+                    "maxlength=\"200\"");
         }
 
         @Test
         @DisplayName("UI: READCMT画面を表示する")
         void rendersReadCommentOutput() throws Exception {
             String body = mockMvc.perform(post("/guestbook/read")
-                            .param("profile", "GERTIE")
-                            .param("commentId", "9001"))
+                            .param("profile", "ASHIBATA")
+                            .param("commentId", "2"))
                     .andExpect(status().isOk())
                     .andReturn()
                     .getResponse()
                     .getContentAsString();
 
             assertThat(body).contains(
-                    "Currently hosting",
-                    "Alice",
-                    "Gertie the AS/400",
-                    "Hello Gertie");
+                    "Currently hosting 0002 comments and counting.",
+                    "Devin",
+                    "IBM i on PUB400 Demo",
+                    "VCF/400 is running on PUB400.");
         }
 
         @Test
@@ -121,19 +136,9 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     (MockHttpSession) initial.getRequest().getSession(false);
 
             assertThat(initial.getResponse().getContentAsString())
-                    .contains("Page", "1", "Welcome to LEARN/400.");
+                    .contains("Page", "0001", "Welcome to LEARN/400! This is page 1.");
 
-            mockMvc.perform(post("/learn400")
-                            .session(session)
-                            .param("owner", "LRN400STR")
-                            .param("action", "fwd"))
-                    .andExpect(status().isOk());
-            mockMvc.perform(post("/learn400")
-                            .session(session)
-                            .param("owner", "LRN400STR")
-                            .param("action", "fwd"))
-                    .andExpect(status().isOk());
-            String finalPage = mockMvc.perform(post("/learn400")
+            String firstPage = mockMvc.perform(post("/learn400")
                             .session(session)
                             .param("owner", "LRN400STR")
                             .param("action", "fwd"))
@@ -141,8 +146,24 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .andReturn()
                     .getResponse()
                     .getContentAsString();
+            assertThat(firstPage).contains("Page", "0002", "This is page 2");
 
-            assertThat(finalPage).contains("Goodbye.");
+            String secondPage = mockMvc.perform(post("/learn400")
+                            .session(session)
+                            .param("owner", "LRN400STR")
+                            .param("action", "fwd"))
+                            .andExpect(status().isOk())
+                            .andReturn()
+                            .getResponse()
+                            .getContentAsString();
+
+            assertThat(secondPage).contains("Page", "0003", "This is the last page.");
+
+            assertThat(secondPage).contains(
+                    "Page",
+                    "0003",
+                    "This is the last page.",
+                    "END");
         }
 
         @Test
@@ -171,7 +192,10 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .getResponse()
                     .getContentAsString();
 
-            assertThat(body).contains("Welcome to LEARN/400.");
+            assertThat(body).contains(
+                    "Page",
+                    "0001",
+                    "Welcome to LEARN/400! This is page 1.");
         }
 
         @Test
@@ -183,17 +207,17 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         @Test
         @DisplayName("UI: VOTERESを表示する")
         void rendersAdminVotes() throws Exception {
-            votes.save(new Vote(9202, 1, "GERTIE"));
+            votes.save(new Vote(9202, 1, "ASHIBATA"));
 
             String body = mockMvc.perform(post("/admin/votes")
-                            .param("profile", "GERTIE"))
+                            .param("profile", "ASHIBATA"))
                     .andExpect(status().isOk())
                     .andReturn()
                     .getResponse()
                     .getContentAsString();
 
             assertThat(body).contains(
-                    "Gertie the AS/400",
+                    "IBM i on PUB400 Demo",
                     "Best in Show votes",
                     "Votes in DB",
                     ">1<");
@@ -252,6 +276,27 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         void rendersSpool() {
             assertOk("/admin/spool");
         }
+
+        @Test
+        @DisplayName("UI: DB検証画面に投票とコメントの表を表示する")
+        void rendersDatabaseContents() {
+            votes.save(new Vote(28, 2, "ASHIBATA"));
+            String body = rest.getForEntity("/admin/db", String.class).getBody();
+
+            assertThat(body).contains(
+                    "VOTINGDB",
+                    "BADGENBR",
+                    "28",
+                    "GUESTBKDB",
+                    "VCF/400 is running on PUB400.");
+        }
+
+        @Test
+        @DisplayName("UI: サインオン画面でユーザーを再選択できる")
+        void rendersSignon() {
+            String body = rest.getForEntity("/signon", String.class).getBody();
+            assertThat(body).contains("VCF/400 SIGN-ON", "ASHIBATA", "MM2024");
+        }
     }
 
     @Nested
@@ -282,9 +327,9 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         @DisplayName("BR-ADDVOTE-05/UI: 成功メッセージをsuccessクラスで表示する")
         void displaysVoteSuccess() throws Exception {
             String body = mockMvc.perform(post("/vote")
-                            .param("profile", "GERTIE")
+                            .param("profile", "ASHIBATA")
                             .param("badge", "9201")
-                            .param("exhibitId", "GERTIE")
+                            .param("exhibitId", "ASHIBATA")
                             .param("award", "1"))
                     .andExpect(status().isOk())
                     .andReturn()
@@ -293,7 +338,8 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
             assertThat(body).contains(
                     "class=\"success\"",
-                    "You have voted successfully");
+                    "Your vote has been RECORDED!",
+                    "Press ENTER to return to the main menu.");
         }
     }
 
@@ -303,7 +349,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         @Test
         @DisplayName("UI: ヘルプ省略クエリ付き投票画面を表示する")
         void rendersVoteWithoutHelp() {
-            assertOk("/vote?profile=GERTIE&help=1");
+            assertOk("/vote?profile=ASHIBATA&help=1");
         }
     }
 }

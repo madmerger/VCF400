@@ -2,16 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('VOTE1')}"></head>
 <body><div class="screen">
-<header th:replace="~{fragments/screen :: header('VOTE1 - CAST YOUR VOTE')}"></header>
+<header th:replace="~{fragments/screen :: header('VINTAGE COMPUTER FESTIVAL  NOMINATE EXHIBIT FOR AWARD')}"></header>
 <main class="screen-body">
 <p th:if="${result != null and result.errLine != null}"
    th:class="${result.success ? 'success' : 'error'}"
    th:text="${result.errLine}"></p>
-<section th:if="${result != null and result.screen == 'VOTEEND'}" class="success"><pre>╔══════════════════════╗
-║      THANK YOU       ║
-╚══════════════════════╝</pre></section>
+<section th:if="${result != null and result.screen == 'VOTEEND'}" class="success">
+<h2>VOTEEND</h2>
+<p>Your vote has been RECORDED! Thank you for participating in the awards show for Vintage Computer Festival Southeast 2024! Enjoy the rest of our exhibits and the rest of the Southern Fried Gaming Expo!</p>
+<p>Press ENTER to return to the main menu.</p>
+<a class="button" href="/">Enter</a>
+</section>
 <section th:if="${result != null and result.screen == 'ENDOFCON'}" class="success"><pre>██████  SORRY!  ██████</pre></section>
 <section th:if="${result == null or (result.screen != 'VOTEEND' and result.screen != 'ENDOFCON')}">
-<p>You may only vote for ONE award.</p><form method="post" action="/vote"><input type="hidden" name="profile" th:value="${profile}"><label>Badge number <input name="badge" type="number" min="0"></label><label>Exhibit ID <input name="exhibitId" th:value="${profile}"></label><label>Award <select name="award"><option value="0">Select award</option><option value="1">001. Best in Show Award</option><option value="2">002. The Ed Fair Award</option></select></label><button type="submit">F5 Submit</button></form>
-</section></main><footer th:replace="~{fragments/screen :: footer('F5=Submit F12=Cancel')}"></footer>
+<p>You may only vote for ONE award.</p><form method="post" action="/vote"><input type="hidden" name="profile" th:value="${profile}"><label>Badge Number <input name="badge" type="number" min="0" max="9999" maxlength="4"></label><label>Exhibit ID <input name="exhibitId" th:value="${profile}" maxlength="9" th:readonly="${profile != 'MM2024'}"></label><label>Award ID <input name="award" type="number" min="0" max="999" maxlength="3"></label><p>001. Best in Show Award<br>002. The Ed Fair Award</p><button type="submit">F5 Submit Vote</button></form>
+</section></main><footer class="function-keys">F5=Submit <a href="/">F12=Cancel</a></footer>
 </div></body></html>

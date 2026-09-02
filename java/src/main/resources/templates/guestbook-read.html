@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('READCMT')}"></head>
-<body><div class="screen"><header class="screen-header">READCMT - READ GUESTBOOK</header><main class="screen-body">
-<p>Currently hosting <span th:text="${result != null ? result.totalComments : 0}">0</span> comments and counting.</p><p th:if="${result != null and !result.success}" class="error" th:text="${result.errLine}"></p><section th:if="${result != null}"><p><strong th:text="${result.outName}"></strong> says to:</p><p th:text="${result.outTitle}"></p><pre th:text="${result.outCmt}"></pre></section>
-<form method="post" action="/guestbook/read"><input type="hidden" name="profile" th:value="${profile}"><label>Comment ID <input name="commentId" type="number" min="1"></label><button type="submit">F5 Read</button></form>
-</main><footer class="function-keys">F5=Read F12=Cancel</footer></div></body></html>
+<body><div class="screen"><header class="screen-header">GUESTBOOK/400 - Read a Comment</header><main class="screen-body">
+<p th:if="${result != null}" th:text="|Currently hosting ${#numbers.formatInteger(result.totalComments, 4)} comments and counting.|">Currently hosting 0000 comments and counting.</p><p th:if="${result == null}">Currently hosting 0000 comments and counting.</p><p th:if="${result != null and !result.success}" class="error" th:text="${result.errLine}"></p><section th:if="${result != null}"><p><strong th:text="${result.outName}"></strong>  says to:  <span th:text="${result.outTitle}"></span></p><pre th:text="${result.outCmt}"></pre></section>
+<form method="post" action="/guestbook/read"><input type="hidden" name="profile" th:value="${profile}"><label>Enter a Comment ID <input name="commentId" type="number" min="1" maxlength="4"></label><button type="submit">F5 Submit</button></form>
+</main><footer class="function-keys">F5=Read <a href="/">F12=Cancel</a></footer></div></body></html>

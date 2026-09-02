@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('ADDCMT')}"></head>
-<body><div class="screen"><header class="screen-header">ADDCMT - SIGN GUESTBOOK</header><main class="screen-body">
+<body><div class="screen"><header class="screen-header">VINTAGE COMPUTER FESTIVAL  GUESTBOOK/400 - ADD COMMENT</header><main class="screen-body">
 <p th:if="${result != null and !result.success}" class="error" th:text="${result.errLine}"></p>
-<section th:if="${result != null and result.success}" class="success"><h2>ENDCMT</h2><p th:text="${result.errLine}"></p><p>Comment ID: <span th:text="${result.commentId}"></span></p><p>Press ENTER to exit.</p></section>
-<form th:if="${result == null or !result.success}" method="post" action="/guestbook/add"><input type="hidden" name="profile" th:value="${profile}"><label>Exhibit ID <input name="exhibitId" maxlength="9" th:value="${profile}"></label><label>Your name <input name="name" maxlength="16"></label><label>Comment <textarea name="comment" maxlength="200" rows="5"></textarea></label><button type="submit">F5 Submit</button></form>
-</main><footer class="function-keys">F5=Submit F12=Cancel</footer></div></body></html>
+<section th:if="${result != null and result.success}" class="success"><h2>ENDCMT</h2><p>Thank you for commenting on this exhibit! Your Comment ID Is: <span th:text="${result.commentId}"></span></p><p>Press ENTER to exit.</p><a class="button" href="/">Enter</a></section>
+<form th:if="${result == null or !result.success}" method="post" action="/guestbook/add"><input type="hidden" name="profile" th:value="${profile}"><label>Exhibit ID <input name="exhibitId" maxlength="9" th:value="${profile}" th:readonly="${profile != 'MM2024'}"></label><label>Your Name <input name="name" maxlength="20"></label><label>Comment <textarea name="comment" maxlength="200" rows="5"></textarea></label><button type="submit">F5 Submit Comment</button></form>
+</main><footer class="function-keys">F5=Submit <a href="/">F12=Cancel</a></footer></div></body></html>

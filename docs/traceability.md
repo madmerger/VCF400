@@ -67,13 +67,19 @@
 
 | DSPFフォーマット | Thymeleafテンプレート | 対応機能 |
 |---|---|---|
-| `VOTE1`/`VOTEEND`/`ENDOFCON`/`DAVE` | `vote.html` | 投票、完了、投票停止、DAVE |
-| `ADDCMT`/`ENDCMT` | `guestbook-add.html` | コメント登録 |
-| `READCMT` | `guestbook-read.html` | コメント参照 |
-| `MAIN`/`MAINADMIN` | `learn400.html` | LEARN/400 |
+| `VOTE1`/`VOTEEND`/`ENDOFCON`/`DAVE` | `vote.html` | `/vote` 投票、完了、投票停止、DAVE。導線は `/` → `/help`(NTRSTIT) → `/vote` → `/` |
+| `ADDCMT`/`ENDCMT` | `guestbook-add.html` | `/guestbook/add` コメント登録、完了後 `/` |
+| `READCMT` | `guestbook-read.html` | `/guestbook/read` コメント参照、F12で `/` |
+| `MAIN`/`MAINADMIN` | `learn400.html` | `/learn400` LEARN/400。F3で `/` |
 | `SFLCTL`/`SFLDATA` | `beemovie.html` | BEEMOVIE |
 | `INTERTEST` | `help.html` | `/help` |
 | `SCREEN1` | `static.html` | CREDITS |
 | `TESTPARM` | API/テスト用画面 | PARAMETER |
-| `MENU` | `menu.html` | EXHBMENU |
+| `MENU` | `menu.html` | `/menu?profile=ASHIBATA|DEMO400|NOVOTE|MM2024` EXHBMENU |
 | `SETUPMAIN`/`ADMSCR` | `admin.html`, `admin-settings.html` | `/admin`, `/admin/settings` |
+| `DBVERIFY` | `admin-db.html` | `/admin/db` の VOTINGDB/GUESTBKDB 表示 |
+
+VCFMAIN (`/`) はログインユーザーを選択し、1 (LEARN/400)、11 (Nominate)、
+12 (Sign Guestbook)、13 (Read Guestbook)、80 (Exhibit menu)、90 (Admin) を入力する。
+F3/F12 のサインオフは `/signon` へ戻り、そこで ASHIBATA、DEMO400、NOVOTE、
+MM2024 を再選択できる。

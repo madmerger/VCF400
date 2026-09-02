@@ -416,6 +416,7 @@
 - `SECOFRS` 認可: RPG側の `CHKOFRS`／`CHKUSRPRF` はTODOのまま認可チェックを実行していないため、Javaでも認可処理は実装しない。`SECOFRS` は管理者の登録・一覧のみ提供する。
 - 桁数制限: REST APIにもDDSの桁数を適用する。各サービス入口で共通ヘルパー `DdsField.truncate(String, int)` を使い、RPGの `MOVEL` と同じく超過分を拒否せず切り捨てる。UIの `maxlength` と同じ制約にする。
 - `ADMLRN400` の `LAUNCH`／`EXHIBIT`: RPGソースでコメントアウトされ未使用のため、Javaでも使用しない。`owner` は画面入力値を使用し、未指定時は `LRN400STR` とする。
+- シナリオの `ADMPSWRD` は、RPG/Java の `SETTINGS.PASSWORD` を指す同義表現として扱う。
 
 ## 7. E2E検証で検出した相違(修正済)
 

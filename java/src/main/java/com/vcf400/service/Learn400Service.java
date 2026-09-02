@@ -120,7 +120,7 @@ public class Learn400Service {
             return session;
         }
         session.curPageNbr = first.getPageNbr();
-        session.outPageNbr = String.valueOf(first.getPageNbr());
+        session.outPageNbr = String.format("%04d", first.getPageNbr());
         session.outContent = first.getContent();
         return session;
     }
@@ -243,7 +243,7 @@ public class Learn400Service {
     }
 
     private void setOutput(Learn400Session session, Lrn400Page page) {
-        session.outPageNbr = String.valueOf(page.getPageNbr());
+        session.outPageNbr = String.format("%04d", page.getPageNbr());
         session.outContent = page.getContent();
     }
 }

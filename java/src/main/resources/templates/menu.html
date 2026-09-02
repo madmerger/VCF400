@@ -4,7 +4,7 @@
 <body><div class="screen">
 <header class="screen-header">EXHBMENU - EXHIBIT MENU</header>
 <main class="screen-body">
-<p>Profile: <strong th:text="${profile}">GERTIE</strong></p>
+<p>Profile: <strong th:text="${profile}">ASHIBATA</strong></p>
 <dl class="details"><dt>Title</dt><dd th:text="${menu.title}"></dd><dt>Exhibitor</dt><dd th:text="${menu.name}"></dd><dt>City/State</dt><dd><span th:text="${menu.city}"></span> <span th:text="${menu.state}"></span></dd><dt>Description</dt><dd th:text="${menu.desc}"></dd></dl>
 <form method="post" action="/menu"><input type="hidden" name="profile" th:value="${profile}"><label>Selection <input name="option" type="number" min="1" max="7" value="1"></label><button type="submit">Enter</button></form>
 <p th:if="${menu.showVote}"><a th:href="@{/help(next='/vote?profile=' + ${profile})}">1 Vote</a></p>
@@ -19,5 +19,5 @@
 </form>
 <p th:if="${exitResult != null and exitResult}" class="success">Kiosk ended.</p>
 <p th:if="${exitResult != null and !exitResult}" class="error">Password incorrect.</p>
-</main><footer class="function-keys">F3=Exit</footer>
+</main><footer class="function-keys"><a href="/signon">F3/F12=Sign off</a></footer>
 </div></body></html>

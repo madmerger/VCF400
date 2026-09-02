@@ -80,7 +80,7 @@ public class Learn400AutoService {
     private void setOutput(
             Learn400Service.Learn400Session session,
             Lrn400Page page) {
-        session.setOutPageNbr(String.valueOf(page.getPageNbr()));
+        session.setOutPageNbr(String.format("%04d", page.getPageNbr()));
         session.setOutContent(page.getContent());
         session.setPageAction(0);
     }

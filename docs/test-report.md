@@ -4,26 +4,26 @@
 
 | 項目 | 内容 |
 |---|---|
-| 実行日時 | 2026-09-02T16:50:53Z 開始、16:51:01Z 終了 |
+| 実行日時 | 2026-09-02T23:45:25Z 開始、23:45:33Z 終了 |
 | 実行コマンド | `cd java && mvn verify` |
 | Surefire HTML生成 | `cd java && mvn surefire-report:report -DskipTests` |
 | Java | OpenJDK 17.0.13 |
 | Maven | Apache Maven 3.9.9 |
 | Spring Boot | 3.3.5 |
 
-`mvn verify` は、テスト実行と JaCoCo の `verify` フェーズレポート生成まで含めて成功した。Surefireレポートは、生成済みのテスト結果を使用して `mvn surefire-report:report -DskipTests` で生成した。
+`mvn verify` は、テスト実行と JaCoCo の `verify` フェーズレポート生成まで含めて成功した。Surefireレポートは、生成済みのテスト結果を使用して `mvn surefire-report:report -DskipTests` で生成した。最終実行では全テストが成功した。
 
 ## 2. テスト結果
 
 | 項目 | 件数 |
 |---|---:|
-| 総テスト件数 | 149 |
-| 成功 | 149 |
+| 総テスト件数 | 151 |
+| 成功 | 151 |
 | 失敗 | 0 |
 | エラー | 0 |
 | スキップ | 0 |
 
-今回の `mvn verify` で全149件が成功した。失敗がなかったため、原因分析および修正対象となるテスト失敗はない。今回、LEARN/400のEND表示リセットとF3 Exitのメニュー復帰を検証する2ケースを追加した。
+今回の `mvn verify` で全151件が成功した。今回、LEARN/400のページ番号・本文、ゲストブックのゼロ埋め件数、および `/admin/db` と `/signon` のシナリオ検証を追加した。
 
 ### クラス別件数
 
@@ -49,8 +49,8 @@
 | DdsFieldTest | 1 | 1 | 2 | 4 |
 | VoteApiTest | 1 | 2 | 1 | 4 |
 | AdminApiTest | 2 | 1 | 1 | 4 |
-| UiPagesTest | 20 | 2 | 1 | 23 |
-| **合計** | **78** | **42** | **29** | **149** |
+| UiPagesTest | 22 | 2 | 1 | 25 |
+| **合計** | **80** | **42** | **29** | **151** |
 
 全テストは1ケース1メソッドで作成し、サービス層はRPGプログラム別クラス、Web層はAPI/UI別クラスに分割した。サービス層のテストは `@DataJpaTest` と `@Import` によりH2実DBへ接続し、repositoryの実分岐を実行している。
 
@@ -60,15 +60,15 @@ JaCoCoの全体値は、命令数ではなくラインおよびブランチを�
 
 | 範囲 | ライン | ブランチ |
 |---|---:|---:|
-| 全体 | 826/990 (83.43%) | 194/285 (68.07%) |
+| 全体 | 836/998 (83.77%) | 196/285 (68.77%) |
 
 ### パッケージ別
 
 | パッケージ | ライン | ブランチ |
 |---|---:|---:|
-| `com.vcf400.service` | 574/611 (93.94%) | 179/216 (82.87%) |
+| `com.vcf400.service` | 577/611 (94.44%) | 181/216 (83.80%) |
 | `com.vcf400.domain` | 111/118 (94.07%) | 3/6 (50.00%) |
-| `com.vcf400.web.ui` | 94/169 (55.62%) | 12/57 (21.05%) |
+| `com.vcf400.web.ui` | 101/177 (57.06%) | 12/57 (21.05%) |
 | `com.vcf400.web.api` | 28/71 (39.44%) | 0/6 (0.00%) |
 | `com.vcf400.print` | 18/18 (100.00%) | 0/0 (対象なし) |
 | `com.vcf400` | 1/3 (33.33%) | 0/0 (対象なし) |
@@ -89,3 +89,16 @@ JaCoCoの全体値は、命令数ではなくラインおよびブランチを�
 - [JaCoCo HTMLレポート](test-reports/jacoco/index.html)
 - 保存済みSurefire XML: [`docs/test-reports/surefire/`](test-reports/surefire/)
 - 保存済みJaCoCo一式: [`docs/test-reports/jacoco/`](test-reports/jacoco/)
+
+## 5. PUB400 E2Eシナリオのcurl確認
+
+起動したSpring Bootアプリケーションに対して、シナリオ§1〜§6の代表操作をcurlで確認した。確認ログは `/home/ubuntu/vcf400-pub400-e2e-final.txt` に保存した。
+
+| 節 | 確認内容 | 結果 |
+|---|---|---|
+| §1 | VCFMAINの4プロフィール・6メニュー、およびSIGN-ON | 成功 |
+| §2 | LEARN/400 `Page 0001` → `0002` → `0003`、ページ本文、END | 成功 |
+| §3 | 投票成功、同一バッジ重複、NOVOTE拒否、VOTE1のreadonly | 成功 |
+| §4 | ゲストブック投稿ID=1、本文参照、展示名・件数表示 | 成功 |
+| §5 | EXHBMENUのASHIBATA表示、投票集計 | 成功 |
+| §6 | `/admin/db` のVOTINGDB/GUESTBKDB表と登録行 | 成功 |

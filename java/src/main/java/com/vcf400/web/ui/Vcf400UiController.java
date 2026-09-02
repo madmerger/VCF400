@@ -15,6 +15,8 @@ import com.vcf400.service.Learn400Service;
 import com.vcf400.service.ReadGuestbookCommentService;
 import com.vcf400.service.StaticScreenService;
 import com.vcf400.print.PrintSpoolService;
+import com.vcf400.domain.GuestbookCommentRepository;
+import com.vcf400.domain.VoteRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +45,8 @@ public class Vcf400UiController {
     private final Learn400AutoService autoService;
     private final StaticScreenService screens;
     private final PrintSpoolService spoolService;
+    private final VoteRepository votes;
+    private final GuestbookCommentRepository comments;
 
     public Vcf400UiController(
             AddVoteService voteService,
@@ -59,7 +63,9 @@ public class Vcf400UiController {
             Learn400Service learnService,
             Learn400AutoService autoService,
             StaticScreenService screens,
-            PrintSpoolService spoolService) {
+            PrintSpoolService spoolService,
+            VoteRepository votes,
+            GuestbookCommentRepository comments) {
         this.voteService = voteService;
         this.addCommentService = addCommentService;
         this.readCommentService = readCommentService;
@@ -75,11 +81,13 @@ public class Vcf400UiController {
         this.autoService = autoService;
         this.screens = screens;
         this.spoolService = spoolService;
+        this.votes = votes;
+        this.comments = comments;
     }
 
     @GetMapping("/")
     public String home(
-            @RequestParam(defaultValue = "GERTIE") String profile,
+            @RequestParam(defaultValue = "ASHIBATA") String profile,
             Model model) {
         model.addAttribute("profile", profile);
         return "home";
@@ -105,7 +113,7 @@ public class Vcf400UiController {
 
     @GetMapping("/menu")
     public String menu(
-            @RequestParam(defaultValue = "GERTIE") String profile,
+            @RequestParam(defaultValue = "ASHIBATA") String profile,
             @RequestParam(defaultValue = "0") int exit,
             Model model) {
         model.addAttribute("profile", profile);
@@ -163,7 +171,7 @@ public class Vcf400UiController {
 
     @GetMapping("/vote")
     public String vote(
-            @RequestParam(defaultValue = "GERTIE") String profile,
+            @RequestParam(defaultValue = "ASHIBATA") String profile,
             Model model) {
         model.addAttribute("profile", profile);
         model.addAttribute("awards", java.util.List.of(
@@ -191,7 +199,7 @@ public class Vcf400UiController {
 
     @GetMapping("/guestbook/add")
     public String addGuestbook(
-            @RequestParam(defaultValue = "GERTIE") String profile,
+            @RequestParam(defaultValue = "ASHIBATA") String profile,
             Model model) {
         model.addAttribute("profile", profile);
         return "guestbook-add";
@@ -215,7 +223,7 @@ public class Vcf400UiController {
 
     @GetMapping("/guestbook/read")
     public String readGuestbook(
-            @RequestParam(defaultValue = "GERTIE") String profile,
+            @RequestParam(defaultValue = "ASHIBATA") String profile,
             Model model) {
         model.addAttribute("profile", profile);
         return "guestbook-read";
@@ -487,5 +495,25 @@ public class Vcf400UiController {
     public String spool(Model model) {
         model.addAttribute("spool", spoolService.spool());
         return "admin-spool";
+    }
+
+    @GetMapping("/signon")
+    public String signon(
+            @RequestParam(defaultValue = "ASHIBATA") String profile,
+            Model model) {
+        model.addAttribute("profile", profile);
+        return "signon";
+    }
+
+    @PostMapping("/signon")
+    public String signonPost(@RequestParam String profile) {
+        return "redirect:/?profile=" + profile;
+    }
+
+    @GetMapping("/admin/db")
+    public String database(Model model) {
+        model.addAttribute("votes", votes.findAll());
+        model.addAttribute("comments", comments.findAll());
+        return "admin-db";
     }
 }
