@@ -1,0 +1,3 @@
+package com.vcf400.domain;
+import org.springframework.data.jpa.repository.JpaRepository;
+public interface GuestbookCommentRepository extends JpaRepository<GuestbookComment, Integer> {}

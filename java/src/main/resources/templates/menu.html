@@ -1,0 +1,5 @@
+<!doctype html><html><head><title>EXHBMENU</title><link rel="stylesheet" href="/vcf400.css"></head><body>
+<h1 th:text="${menu.title}">Exhibit</h1><p th:text="${menu.name}">Name</p><p th:text="${menu.city + ', ' + menu.state}">Location</p><pre th:text="${menu.desc}">Description</pre>
+<p><a th:href="@{/vote(profile=${profile})}">1 Vote</a> <a th:href="@{/learn400(owner=${profile})}">2 LEARN/400</a></p>
+<p><a th:href="@{/guestbook/add(profile=${profile})}">3 Guestbook</a> <a th:href="@{/guestbook/read(profile=${profile})}">4 Read comments</a></p>
+</body></html>

@@ -1,0 +1,5 @@
+<!doctype html><html><head><title>VOTE1</title><link rel="stylesheet" href="/vcf400.css"></head><body>
+<h1>VOTING/400</h1><div th:if="${help}" class="help"><h2 th:text="${help.title}">Instructions</h2><p th:text="${help.text}">Help</p></div>
+<div id="err" class="err"></div><form id="voteForm"><label>Badge: <input name="badge" type="number"></label><br><label>Exhibit ID: <input name="exhibitId" th:value="${profile}"></label><br><label>Award ID: <input name="award" type="number"></label><br><button>F5 Submit</button></form>
+<script>voteForm.onsubmit=async e=>{e.preventDefault();const f=new FormData(voteForm);const r=await fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({badge:+f.get('badge'),exhibitId:f.get('exhibitId'),award:+f.get('award'),profile:'[[${profile}]]'})});const x=await r.json();err.textContent=x.errLine||(x.success?'You have voted successfully':'')}</script>
+</body></html>
