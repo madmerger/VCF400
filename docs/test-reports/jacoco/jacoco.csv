@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-vcf400-java,com.vcf400.web.ui,Vcf400UiController,357,368,46,9,75,91,41,24,11,24
+vcf400-java,com.vcf400.web.ui,Vcf400UiController,356,377,45,12,75,94,40,26,11,24
 vcf400-java,com.vcf400.service,AdminSecurityOfficerService,0,38,1,5,0,11,1,5,0,3
 vcf400-java,com.vcf400.service,AdminExhibitService.ExhibitResult,0,15,0,0,0,1,0,1,0,1
 vcf400-java,com.vcf400.service,AddGuestbookCommentService,0,105,3,13,0,26,3,7,0,2
@@ -14,7 +14,7 @@ vcf400-java,com.vcf400.service,AdminSettingService,0,77,0,4,0,24,0,8,0,6
 vcf400-java,com.vcf400.service,ReadGuestbookCommentService,2,130,1,11,0,31,1,10,0,5
 vcf400-java,com.vcf400.service,DdsField,0,13,0,4,0,3,0,3,0,1
 vcf400-java,com.vcf400.service,AdminExhibitService,23,348,6,26,5,81,7,23,1,11
-vcf400-java,com.vcf400.service,Learn400Service,24,307,8,28,11,84,8,22,0,12
+vcf400-java,com.vcf400.service,Learn400Service,24,313,8,28,11,86,8,22,0,12
 vcf400-java,com.vcf400.service,AdminVoteReportService,9,92,2,12,1,21,2,7,0,2
 vcf400-java,com.vcf400.service,AdminVoteReportService.VoteReport,0,18,0,0,0,1,0,1,0,1
 vcf400-java,com.vcf400.service,ReadGuestbookCommentService.CommentView,0,21,0,0,0,1,0,1,0,1

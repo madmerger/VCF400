@@ -82,6 +82,22 @@ class Learn400ServiceTest extends AbstractRpgServiceTest {
             assertThat(session.getCurPageNbr()).isEqualTo(3);
             assertThat(session.getOutContent()).isEqualTo("Three");
         }
+
+        @Test
+        @DisplayName("BR-LRN400-05: ENDページからF8で戻るとended=falseになる")
+        void clearsEndedWhenBackingFromEnd() {
+            Learn400Service.Learn400Session session = learn.start("LRN400STR");
+            learn.pageFwd(session);
+            learn.pageFwd(session);
+            learn.pageFwd(session);
+
+            assertThat(session.isEnded()).isTrue();
+
+            learn.pageBack(session);
+
+            assertThat(session.isEnded()).isFalse();
+            assertThat(session.getOutContent()).isEqualTo("Three");
+        }
     }
 
     @Nested

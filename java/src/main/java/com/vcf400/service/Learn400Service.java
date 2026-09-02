@@ -137,6 +137,7 @@ public class Learn400Service {
 
     /** RPG: BEGSR PAGEFWD; BR-LRN400-02, BR-LRN400-03. */
     private Learn400Session PAGEFWD(Learn400Session session) {
+        session.ended = false;
         session.outContent = "";
         session.calledProgram = "";
         if (session.alwFwd == 1) {
@@ -158,6 +159,7 @@ public class Learn400Service {
 
     /** RPG: BEGSR PAGEBACK; BR-LRN400-04, BR-LRN400-05. */
     private Learn400Session PAGEBACK(Learn400Session session) {
+        session.ended = false;
         if (session.curPageNbr != 0) {
             session.curPageNbr--;
         }

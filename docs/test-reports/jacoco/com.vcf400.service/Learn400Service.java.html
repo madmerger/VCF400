@@ -137,112 +137,114 @@ public class Learn400Service {
 
     /** RPG: BEGSR PAGEFWD; BR-LRN400-02, BR-LRN400-03. */
     private Learn400Session PAGEFWD(Learn400Session session) {
-<span class="fc" id="L140">        session.outContent = &quot;&quot;;</span>
-<span class="fc" id="L141">        session.calledProgram = &quot;&quot;;</span>
-<span class="pc bpc" id="L142" title="1 of 2 branches missed.">        if (session.alwFwd == 1) {</span>
-<span class="fc" id="L143">            session.curPageNbr++;</span>
-<span class="fc" id="L144">            session.frmPageNbr = 0;</span>
+<span class="fc" id="L140">        session.ended = false;</span>
+<span class="fc" id="L141">        session.outContent = &quot;&quot;;</span>
+<span class="fc" id="L142">        session.calledProgram = &quot;&quot;;</span>
+<span class="pc bpc" id="L143" title="1 of 2 branches missed.">        if (session.alwFwd == 1) {</span>
+<span class="fc" id="L144">            session.curPageNbr++;</span>
+<span class="fc" id="L145">            session.frmPageNbr = 0;</span>
         }
 
-<span class="fc" id="L147">        Lrn400Page page = chain(session.owner, session.curPageNbr);</span>
-<span class="fc bfc" id="L148" title="All 2 branches covered.">        if (page == null) {</span>
-<span class="fc" id="L149">            session.alwFwd = 0;</span>
-<span class="fc" id="L150">            return session;</span>
+<span class="fc" id="L148">        Lrn400Page page = chain(session.owner, session.curPageNbr);</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">        if (page == null) {</span>
+<span class="fc" id="L150">            session.alwFwd = 0;</span>
+<span class="fc" id="L151">            return session;</span>
         }
 
-<span class="fc" id="L153">        setOutput(session, page);</span>
-<span class="fc" id="L154">        PARSESCRIPT(session, page);</span>
-<span class="fc" id="L155">        PRFRMACTN(session, page);</span>
-<span class="fc" id="L156">        return session;</span>
+<span class="fc" id="L154">        setOutput(session, page);</span>
+<span class="fc" id="L155">        PARSESCRIPT(session, page);</span>
+<span class="fc" id="L156">        PRFRMACTN(session, page);</span>
+<span class="fc" id="L157">        return session;</span>
     }
 
     /** RPG: BEGSR PAGEBACK; BR-LRN400-04, BR-LRN400-05. */
     private Learn400Session PAGEBACK(Learn400Session session) {
-<span class="pc bpc" id="L161" title="1 of 2 branches missed.">        if (session.curPageNbr != 0) {</span>
-<span class="fc" id="L162">            session.curPageNbr--;</span>
+<span class="fc" id="L162">        session.ended = false;</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">        if (session.curPageNbr != 0) {</span>
+<span class="fc" id="L164">            session.curPageNbr--;</span>
         }
-<span class="fc" id="L164">        session.outContent = &quot;&quot;;</span>
-<span class="fc bfc" id="L165" title="All 2 branches covered.">        int target = session.frmPageNbr == 0</span>
-<span class="fc" id="L166">                ? session.curPageNbr</span>
-<span class="fc" id="L167">                : session.frmPageNbr;</span>
-<span class="fc" id="L168">        session.curPageNbr = target;</span>
-<span class="fc" id="L169">        Lrn400Page page = chain(session.owner, target);</span>
-<span class="fc bfc" id="L170" title="All 2 branches covered.">        if (page != null) {</span>
-<span class="fc" id="L171">            setOutput(session, page);</span>
+<span class="fc" id="L166">        session.outContent = &quot;&quot;;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">        int target = session.frmPageNbr == 0</span>
+<span class="fc" id="L168">                ? session.curPageNbr</span>
+<span class="fc" id="L169">                : session.frmPageNbr;</span>
+<span class="fc" id="L170">        session.curPageNbr = target;</span>
+<span class="fc" id="L171">        Lrn400Page page = chain(session.owner, target);</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">        if (page != null) {</span>
+<span class="fc" id="L173">            setOutput(session, page);</span>
         }
-<span class="fc" id="L173">        session.alwFwd = 1;</span>
-<span class="fc" id="L174">        session.frmPageNbr = 0;</span>
-<span class="fc" id="L175">        return session;</span>
+<span class="fc" id="L175">        session.alwFwd = 1;</span>
+<span class="fc" id="L176">        session.frmPageNbr = 0;</span>
+<span class="fc" id="L177">        return session;</span>
     }
 
     /** RPG: BEGSR PARSESCRIPT; BR-LRN400-03. */
     private void PARSESCRIPT(Learn400Session session, Lrn400Page page) {
-<span class="fc" id="L180">        session.pageAction = 0;</span>
-<span class="pc bpc" id="L181" title="1 of 2 branches missed.">        if (&quot;END&quot;.equals(page.getExtra())) {</span>
-<span class="nc" id="L182">            session.pageAction = 1;</span>
+<span class="fc" id="L182">        session.pageAction = 0;</span>
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">        if (&quot;END&quot;.equals(page.getExtra())) {</span>
+<span class="nc" id="L184">            session.pageAction = 1;</span>
         }
-<span class="fc bfc" id="L184" title="All 2 branches covered.">        if (&quot;CALL&quot;.equals(session.outContent)) {</span>
-<span class="fc" id="L185">            session.pageAction = 2;</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        if (&quot;CALL&quot;.equals(session.outContent)) {</span>
+<span class="fc" id="L187">            session.pageAction = 2;</span>
         }
-<span class="fc bfc" id="L187" title="All 2 branches covered.">        if (&quot;JUMP&quot;.equals(session.outContent)) {</span>
-<span class="fc" id="L188">            session.pageAction = 3;</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">        if (&quot;JUMP&quot;.equals(session.outContent)) {</span>
+<span class="fc" id="L190">            session.pageAction = 3;</span>
         }
-<span class="fc" id="L190">    }</span>
+<span class="fc" id="L192">    }</span>
 
     /** RPG: BEGSR PRFRMACTN; BR-LRN400-03, BR-LRN400-04. */
     private void PRFRMACTN(Learn400Session session, Lrn400Page page) {
-<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        if (session.pageAction == 1) {</span>
-<span class="nc" id="L195">            session.ended = true;</span>
-<span class="nc" id="L196">            return;</span>
+<span class="pc bpc" id="L196" title="1 of 2 branches missed.">        if (session.pageAction == 1) {</span>
+<span class="nc" id="L197">            session.ended = true;</span>
+<span class="nc" id="L198">            return;</span>
         }
-<span class="fc bfc" id="L198" title="All 2 branches covered.">        if (session.pageAction == 2) {</span>
-<span class="fc" id="L199">            session.calledProgram = &quot;CALL:&quot; + page.getExtra();</span>
-<span class="fc" id="L200">            log.info(&quot;LRN400: {}&quot;, session.calledProgram);</span>
-<span class="fc" id="L201">            JUMPTO(session, page);</span>
-<span class="fc" id="L202">            session.pageAction = 0;</span>
+<span class="fc bfc" id="L200" title="All 2 branches covered.">        if (session.pageAction == 2) {</span>
+<span class="fc" id="L201">            session.calledProgram = &quot;CALL:&quot; + page.getExtra();</span>
+<span class="fc" id="L202">            log.info(&quot;LRN400: {}&quot;, session.calledProgram);</span>
+<span class="fc" id="L203">            JUMPTO(session, page);</span>
+<span class="fc" id="L204">            session.pageAction = 0;</span>
         }
-<span class="fc bfc" id="L204" title="All 2 branches covered.">        if (session.pageAction == 3) {</span>
-<span class="fc" id="L205">            JUMPTO(session, page);</span>
-<span class="fc" id="L206">            session.pageAction = 0;</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        if (session.pageAction == 3) {</span>
+<span class="fc" id="L207">            JUMPTO(session, page);</span>
+<span class="fc" id="L208">            session.pageAction = 0;</span>
         }
-<span class="fc" id="L208">    }</span>
+<span class="fc" id="L210">    }</span>
 
     /** RPG: BEGSR JUMPTO; BR-LRN400-03, BR-LRN400-04. */
     private void JUMPTO(Learn400Session session, Lrn400Page page) {
-<span class="fc bfc" id="L212" title="All 2 branches covered.">        if (session.pageAction == 2) {</span>
-<span class="fc" id="L213">            session.frmPageNbr = session.curPageNbr - 1;</span>
-<span class="fc" id="L214">            session.curPageNbr++;</span>
+<span class="fc bfc" id="L214" title="All 2 branches covered.">        if (session.pageAction == 2) {</span>
+<span class="fc" id="L215">            session.frmPageNbr = session.curPageNbr - 1;</span>
+<span class="fc" id="L216">            session.curPageNbr++;</span>
         }
-<span class="fc bfc" id="L216" title="All 2 branches covered.">        if (session.pageAction == 3) {</span>
-<span class="fc" id="L217">            session.frmPageNbr = session.curPageNbr - 1;</span>
+<span class="fc bfc" id="L218" title="All 2 branches covered.">        if (session.pageAction == 3) {</span>
+<span class="fc" id="L219">            session.frmPageNbr = session.curPageNbr - 1;</span>
             try {
-<span class="fc" id="L219">                session.curPageNbr = Integer.parseInt(page.getExtra());</span>
-<span class="nc" id="L220">            } catch (NumberFormatException ignored) {</span>
-<span class="nc" id="L221">                session.alwFwd = 0;</span>
-<span class="nc" id="L222">                session.outContent = &quot;&quot;;</span>
-<span class="nc" id="L223">                return;</span>
-<span class="fc" id="L224">            }</span>
+<span class="fc" id="L221">                session.curPageNbr = Integer.parseInt(page.getExtra());</span>
+<span class="nc" id="L222">            } catch (NumberFormatException ignored) {</span>
+<span class="nc" id="L223">                session.alwFwd = 0;</span>
+<span class="nc" id="L224">                session.outContent = &quot;&quot;;</span>
+<span class="nc" id="L225">                return;</span>
+<span class="fc" id="L226">            }</span>
         }
-<span class="fc" id="L226">        Lrn400Page target = chain(session.owner, session.curPageNbr);</span>
-<span class="pc bpc" id="L227" title="1 of 2 branches missed.">        if (target == null) {</span>
-<span class="nc" id="L228">            session.alwFwd = 0;</span>
-<span class="nc" id="L229">            session.outContent = &quot;&quot;;</span>
-<span class="nc" id="L230">            return;</span>
+<span class="fc" id="L228">        Lrn400Page target = chain(session.owner, session.curPageNbr);</span>
+<span class="pc bpc" id="L229" title="1 of 2 branches missed.">        if (target == null) {</span>
+<span class="nc" id="L230">            session.alwFwd = 0;</span>
+<span class="nc" id="L231">            session.outContent = &quot;&quot;;</span>
+<span class="nc" id="L232">            return;</span>
         }
-<span class="fc" id="L232">        setOutput(session, target);</span>
-<span class="fc" id="L233">        session.alwFwd = 1;</span>
-<span class="pc bpc" id="L234" title="1 of 2 branches missed.">        if (&quot;END&quot;.equals(target.getExtra())) {</span>
-<span class="fc" id="L235">            session.ended = true;</span>
+<span class="fc" id="L234">        setOutput(session, target);</span>
+<span class="fc" id="L235">        session.alwFwd = 1;</span>
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">        if (&quot;END&quot;.equals(target.getExtra())) {</span>
+<span class="fc" id="L237">            session.ended = true;</span>
         }
-<span class="fc" id="L237">    }</span>
+<span class="fc" id="L239">    }</span>
 
     private Lrn400Page chain(String owner, int pageNbr) {
-<span class="fc" id="L240">        return pages.findById(new Lrn400PageId(owner, pageNbr)).orElse(null);</span>
+<span class="fc" id="L242">        return pages.findById(new Lrn400PageId(owner, pageNbr)).orElse(null);</span>
     }
 
     private void setOutput(Learn400Session session, Lrn400Page page) {
-<span class="fc" id="L244">        session.outPageNbr = String.valueOf(page.getPageNbr());</span>
-<span class="fc" id="L245">        session.outContent = page.getContent();</span>
-<span class="fc" id="L246">    }</span>
+<span class="fc" id="L246">        session.outPageNbr = String.valueOf(page.getPageNbr());</span>
+<span class="fc" id="L247">        session.outContent = page.getContent();</span>
+<span class="fc" id="L248">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

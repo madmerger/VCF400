@@ -3,6 +3,7 @@ package com.vcf400.web;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.vcf400.domain.GuestbookComment;
@@ -142,6 +143,23 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .getContentAsString();
 
             assertThat(finalPage).contains("Goodbye.");
+        }
+
+        @Test
+        @DisplayName("BR-LRN400-06/UI: F3 Exitはメニューへリダイレクトする")
+        void exitsLearnToHome() throws Exception {
+            MvcResult initial = mockMvc.perform(get("/learn400?owner=LRN400STR"))
+                    .andExpect(status().isOk())
+                    .andReturn();
+            MockHttpSession session =
+                    (MockHttpSession) initial.getRequest().getSession(false);
+
+            mockMvc.perform(post("/learn400")
+                            .session(session)
+                            .param("owner", "LRN400STR")
+                            .param("action", "exit"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(header().string("Location", "/"));
         }
 
         @Test

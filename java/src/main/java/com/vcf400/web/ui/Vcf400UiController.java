@@ -267,6 +267,10 @@ public class Vcf400UiController {
         }
         if ("exit".equals(action)) {
             httpSession.removeAttribute(LEARN_SESSION);
+            if ("LRN400STR".equals(owner)) {
+                return "redirect:/";
+            }
+            return "redirect:/menu?profile=" + owner;
         } else {
             httpSession.setAttribute(LEARN_SESSION, learn);
         }
