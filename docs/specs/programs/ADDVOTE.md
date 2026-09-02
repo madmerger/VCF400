@@ -110,4 +110,4 @@ RPG の挙動: `SETLL+READ` により不存在 ID で別レコードの `ELIGIBL
 - 前提: Java の賞シードは `VOTE1` の表記（001=`Best in Show Award`、002=`The Ed Fair Award`）に合わせる。
 - RPG の挙動: 賞のコメント/集計側に 001/002 の説明逆転がある。Java での扱い（予定）: `AWARDDB` のタイトルを正とする。
 - RPG の挙動: `ENDVOTE` に印刷 CALL がコメントアウトされている。Java での扱い（予定）: 成功時に `PrintSpoolService` を呼ぶ。
-- 解析メモとの差異: 解析メモは `INEXHB='DAVE'` を表示して終了すると確定しているが、RPG の `DODAVE` は `DAVE` を表示するだけで終了フラグを設定せず、その後 `ADDTODB` に到達し得る。仕様書は確定メモを正として Java では登録せず終了するが、移行時に原 RPG の実行結果を追加確認する。
+- RPG の挙動: `DODAVE` は `DAVE` 画面を `EXFMT` した後に `*INLR=*ON` と `RETURN` を実行するため、DB 登録には到達せずプログラムを終了する。Java でも登録せず終了する。
