@@ -217,8 +217,8 @@ public class Vcf400UiController {
     public String readGuestbook(
             @RequestParam(defaultValue = &quot;GERTIE&quot;) String profile,
             Model model) {
-<span class="fc" id="L220">        model.addAttribute(&quot;profile&quot;, profile);</span>
-<span class="fc" id="L221">        return &quot;guestbook-read&quot;;</span>
+<span class="nc" id="L220">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="nc" id="L221">        return &quot;guestbook-read&quot;;</span>
     }
 
     @PostMapping(&quot;/guestbook/read&quot;)
@@ -226,9 +226,9 @@ public class Vcf400UiController {
             @RequestParam String profile,
             @RequestParam(defaultValue = &quot;0&quot;) int commentId,
             Model model) {
-<span class="nc" id="L229">        model.addAttribute(&quot;profile&quot;, profile);</span>
-<span class="nc" id="L230">        model.addAttribute(&quot;result&quot;, readCommentService.read(profile, commentId));</span>
-<span class="nc" id="L231">        return &quot;guestbook-read&quot;;</span>
+<span class="fc" id="L229">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L230">        model.addAttribute(&quot;result&quot;, readCommentService.read(profile, commentId));</span>
+<span class="fc" id="L231">        return &quot;guestbook-read&quot;;</span>
     }
 
     @GetMapping(&quot;/learn400&quot;)
@@ -236,14 +236,14 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = &quot;LRN400STR&quot;) String owner,
             HttpSession httpSession,
             Model model) {
-<span class="fc" id="L239">        Learn400Service.Learn400Session session =</span>
+<span class="fc" id="L239">        Learn400Service.Learn400Session learn =</span>
 <span class="fc" id="L240">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
                         LEARN_SESSION);
-<span class="pc bpc" id="L242" title="3 of 4 branches missed.">        if (session == null || !owner.equals(session.getOwner())) {</span>
-<span class="fc" id="L243">            session = learnService.start(owner);</span>
-<span class="fc" id="L244">            httpSession.setAttribute(LEARN_SESSION, session);</span>
+<span class="pc bpc" id="L242" title="3 of 4 branches missed.">        if (learn == null || !owner.equals(learn.getOwner())) {</span>
+<span class="fc" id="L243">            learn = learnService.start(owner);</span>
+<span class="fc" id="L244">            httpSession.setAttribute(LEARN_SESSION, learn);</span>
         }
-<span class="fc" id="L246">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="fc" id="L246">        model.addAttribute(&quot;learn&quot;, learn);</span>
 <span class="fc" id="L247">        return &quot;learn400&quot;;</span>
     }
 
@@ -253,25 +253,25 @@ public class Vcf400UiController {
             @RequestParam String action,
             HttpSession httpSession,
             Model model) {
-<span class="nc" id="L256">        Learn400Service.Learn400Session session =</span>
-<span class="nc" id="L257">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
+<span class="fc" id="L256">        Learn400Service.Learn400Session learn =</span>
+<span class="fc" id="L257">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
                         LEARN_SESSION);
-<span class="nc bnc" id="L259" title="All 4 branches missed.">        if (session == null || !owner.equals(session.getOwner())) {</span>
-<span class="nc" id="L260">            session = learnService.start(owner);</span>
+<span class="pc bpc" id="L259" title="2 of 4 branches missed.">        if (learn == null || !owner.equals(learn.getOwner())) {</span>
+<span class="nc" id="L260">            learn = learnService.start(owner);</span>
         }
-<span class="nc bnc" id="L262" title="All 2 branches missed.">        if (&quot;fwd&quot;.equals(action)) {</span>
-<span class="nc" id="L263">            session = learnService.pageFwd(session);</span>
+<span class="pc bpc" id="L262" title="1 of 2 branches missed.">        if (&quot;fwd&quot;.equals(action)) {</span>
+<span class="fc" id="L263">            learn = learnService.pageFwd(learn);</span>
         }
-<span class="nc bnc" id="L265" title="All 2 branches missed.">        if (&quot;back&quot;.equals(action)) {</span>
-<span class="nc" id="L266">            session = learnService.pageBack(session);</span>
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">        if (&quot;back&quot;.equals(action)) {</span>
+<span class="nc" id="L266">            learn = learnService.pageBack(learn);</span>
         }
-<span class="nc bnc" id="L268" title="All 2 branches missed.">        if (&quot;exit&quot;.equals(action)) {</span>
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">        if (&quot;exit&quot;.equals(action)) {</span>
 <span class="nc" id="L269">            httpSession.removeAttribute(LEARN_SESSION);</span>
         } else {
-<span class="nc" id="L271">            httpSession.setAttribute(LEARN_SESSION, session);</span>
+<span class="fc" id="L271">            httpSession.setAttribute(LEARN_SESSION, learn);</span>
         }
-<span class="nc" id="L273">        model.addAttribute(&quot;session&quot;, session);</span>
-<span class="nc" id="L274">        return &quot;learn400&quot;;</span>
+<span class="fc" id="L273">        model.addAttribute(&quot;learn&quot;, learn);</span>
+<span class="fc" id="L274">        return &quot;learn400&quot;;</span>
     }
 
     @GetMapping(&quot;/learn400/auto&quot;)
@@ -279,10 +279,10 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = &quot;LRN400STR&quot;) String owner,
             HttpSession httpSession,
             Model model) {
-<span class="fc" id="L282">        Learn400Service.Learn400Session session =</span>
+<span class="fc" id="L282">        Learn400Service.Learn400Session learn =</span>
 <span class="fc" id="L283">                autoService.start(owner);</span>
-<span class="fc" id="L284">        httpSession.setAttribute(AUTO_SESSION, session);</span>
-<span class="fc" id="L285">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="fc" id="L284">        httpSession.setAttribute(AUTO_SESSION, learn);</span>
+<span class="fc" id="L285">        model.addAttribute(&quot;learn&quot;, learn);</span>
 <span class="fc" id="L286">        return &quot;learn400-auto&quot;;</span>
     }
 
@@ -292,19 +292,19 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = &quot;fwd&quot;) String action,
             HttpSession httpSession,
             Model model) {
-<span class="nc" id="L295">        Learn400Service.Learn400Session session =</span>
+<span class="nc" id="L295">        Learn400Service.Learn400Session learn =</span>
 <span class="nc" id="L296">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
                         AUTO_SESSION);
-<span class="nc bnc" id="L298" title="All 2 branches missed.">        if (session == null) {</span>
-<span class="nc" id="L299">            session = autoService.start(owner);</span>
+<span class="nc bnc" id="L298" title="All 2 branches missed.">        if (learn == null) {</span>
+<span class="nc" id="L299">            learn = autoService.start(owner);</span>
         }
 <span class="nc bnc" id="L301" title="All 2 branches missed.">        if (&quot;exit&quot;.equals(action)) {</span>
 <span class="nc" id="L302">            httpSession.removeAttribute(AUTO_SESSION);</span>
         } else {
-<span class="nc" id="L304">            session = autoService.pageFwd(session);</span>
-<span class="nc" id="L305">            httpSession.setAttribute(AUTO_SESSION, session);</span>
+<span class="nc" id="L304">            learn = autoService.pageFwd(learn);</span>
+<span class="nc" id="L305">            httpSession.setAttribute(AUTO_SESSION, learn);</span>
         }
-<span class="nc" id="L307">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="nc" id="L307">        model.addAttribute(&quot;learn&quot;, learn);</span>
 <span class="nc" id="L308">        return &quot;learn400-auto&quot;;</span>
     }
 
@@ -319,7 +319,7 @@ public class Vcf400UiController {
             Model model) {
 <span class="fc" id="L320">        model.addAttribute(&quot;profile&quot;, profile);</span>
 <span class="pc bpc" id="L321" title="1 of 2 branches missed.">        if (!profile.isBlank()) {</span>
-<span class="nc" id="L322">            model.addAttribute(&quot;report&quot;, reportService.readVote(profile));</span>
+<span class="fc" id="L322">            model.addAttribute(&quot;report&quot;, reportService.readVote(profile));</span>
         }
 <span class="fc" id="L324">        return &quot;admin-votes&quot;;</span>
     }
@@ -328,7 +328,7 @@ public class Vcf400UiController {
     public String adminVotesPost(
             @RequestParam String profile,
             Model model) {
-<span class="nc" id="L331">        return adminVotes(profile, model);</span>
+<span class="fc" id="L331">        return adminVotes(profile, model);</span>
     }
 
     @GetMapping(&quot;/admin/exhibits&quot;)

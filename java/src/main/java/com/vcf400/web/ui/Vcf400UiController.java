@@ -236,14 +236,14 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = "LRN400STR") String owner,
             HttpSession httpSession,
             Model model) {
-        Learn400Service.Learn400Session session =
+        Learn400Service.Learn400Session learn =
                 (Learn400Service.Learn400Session) httpSession.getAttribute(
                         LEARN_SESSION);
-        if (session == null || !owner.equals(session.getOwner())) {
-            session = learnService.start(owner);
-            httpSession.setAttribute(LEARN_SESSION, session);
+        if (learn == null || !owner.equals(learn.getOwner())) {
+            learn = learnService.start(owner);
+            httpSession.setAttribute(LEARN_SESSION, learn);
         }
-        model.addAttribute("session", session);
+        model.addAttribute("learn", learn);
         return "learn400";
     }
 
@@ -253,24 +253,24 @@ public class Vcf400UiController {
             @RequestParam String action,
             HttpSession httpSession,
             Model model) {
-        Learn400Service.Learn400Session session =
+        Learn400Service.Learn400Session learn =
                 (Learn400Service.Learn400Session) httpSession.getAttribute(
                         LEARN_SESSION);
-        if (session == null || !owner.equals(session.getOwner())) {
-            session = learnService.start(owner);
+        if (learn == null || !owner.equals(learn.getOwner())) {
+            learn = learnService.start(owner);
         }
         if ("fwd".equals(action)) {
-            session = learnService.pageFwd(session);
+            learn = learnService.pageFwd(learn);
         }
         if ("back".equals(action)) {
-            session = learnService.pageBack(session);
+            learn = learnService.pageBack(learn);
         }
         if ("exit".equals(action)) {
             httpSession.removeAttribute(LEARN_SESSION);
         } else {
-            httpSession.setAttribute(LEARN_SESSION, session);
+            httpSession.setAttribute(LEARN_SESSION, learn);
         }
-        model.addAttribute("session", session);
+        model.addAttribute("learn", learn);
         return "learn400";
     }
 
@@ -279,10 +279,10 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = "LRN400STR") String owner,
             HttpSession httpSession,
             Model model) {
-        Learn400Service.Learn400Session session =
+        Learn400Service.Learn400Session learn =
                 autoService.start(owner);
-        httpSession.setAttribute(AUTO_SESSION, session);
-        model.addAttribute("session", session);
+        httpSession.setAttribute(AUTO_SESSION, learn);
+        model.addAttribute("learn", learn);
         return "learn400-auto";
     }
 
@@ -292,19 +292,19 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = "fwd") String action,
             HttpSession httpSession,
             Model model) {
-        Learn400Service.Learn400Session session =
+        Learn400Service.Learn400Session learn =
                 (Learn400Service.Learn400Session) httpSession.getAttribute(
                         AUTO_SESSION);
-        if (session == null) {
-            session = autoService.start(owner);
+        if (learn == null) {
+            learn = autoService.start(owner);
         }
         if ("exit".equals(action)) {
             httpSession.removeAttribute(AUTO_SESSION);
         } else {
-            session = autoService.pageFwd(session);
-            httpSession.setAttribute(AUTO_SESSION, session);
+            learn = autoService.pageFwd(learn);
+            httpSession.setAttribute(AUTO_SESSION, learn);
         }
-        model.addAttribute("session", session);
+        model.addAttribute("learn", learn);
         return "learn400-auto";
     }
 

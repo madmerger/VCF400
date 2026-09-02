@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-vcf400-java,com.vcf400.web.ui,Vcf400UiController,419,306,51,4,88,78,43,22,13,22
+vcf400-java,com.vcf400.web.ui,Vcf400UiController,357,368,46,9,75,91,41,24,11,24
 vcf400-java,com.vcf400.service,AdminSecurityOfficerService,0,38,1,5,0,11,1,5,0,3
 vcf400-java,com.vcf400.service,AdminExhibitService.ExhibitResult,0,15,0,0,0,1,0,1,0,1
 vcf400-java,com.vcf400.service,AddGuestbookCommentService,0,105,3,13,0,26,3,7,0,2

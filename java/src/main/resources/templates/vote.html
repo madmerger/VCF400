@@ -4,7 +4,9 @@
 <body><div class="screen">
 <header th:replace="~{fragments/screen :: header('VOTE1 - CAST YOUR VOTE')}"></header>
 <main class="screen-body">
-<p th:if="${result != null and result.errLine != null}" class="error" th:text="${result.errLine}"></p>
+<p th:if="${result != null and result.errLine != null}"
+   th:class="${result.success ? 'success' : 'error'}"
+   th:text="${result.errLine}"></p>
 <section th:if="${result != null and result.screen == 'VOTEEND'}" class="success"><pre>╔══════════════════════╗
 ║      THANK YOU       ║
 ╚══════════════════════╝</pre></section>

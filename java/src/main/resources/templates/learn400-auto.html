@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('LRN400AUT')}"></head>
 <body><div class="screen"><header class="screen-header">LRN400AUT - AUTOMATIC LEARN/400</header><main class="screen-body">
-<p>Page <strong id="page" th:text="${session != null ? session.outPageNbr : '1'}">1</strong></p><pre id="content" th:text="${session != null ? session.outContent : ''}"></pre><form method="post" action="/learn400/auto"><input type="hidden" name="owner" value="LRN400STR"><button name="action" value="exit">F3 Stop</button></form>
+<p>Page <strong id="page" th:text="${learn != null ? learn.outPageNbr : '1'}">1</strong></p><pre id="content" th:text="${learn != null ? learn.outContent : ''}"></pre><form method="post" action="/learn400/auto"><input type="hidden" name="owner" value="LRN400STR"><button name="action" value="exit">F3 Stop</button></form>
 </main><footer class="function-keys">AUTO=3 seconds F3=Stop</footer></div>
 <script>const timer=setInterval(()=>{fetch('/learn400/auto',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'owner=LRN400STR&action=fwd'}).then(r=>r.text()).then(html=>{const p=html.match(/id="page"[^>]*>([^<]*)</);const c=html.match(/id="content"[^>]*>([\s\S]*?)<\/pre>/);if(p)document.getElementById('page').textContent=p[1];if(c)document.getElementById('content').textContent=c[1]})},3000);</script>
 </body></html>

@@ -21,7 +21,7 @@ public class StaticScreenService {
     public Map<String, String> help() {
         return Map.of(
                 "title",
-                "Instructions",
+                "NTRSTIT",
                 "text",
                 "RIGHT CTRL(=ENTER) to continue.");
     }

@@ -1,23 +1,45 @@
 package com.vcf400.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
+import com.vcf400.domain.GuestbookComment;
+import com.vcf400.domain.Vote;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+@AutoConfigureMockMvc
 class UiPagesTest extends AbstractWebIntegrationTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    void seedComment() {
+        comments.save(new GuestbookComment(
+                9001,
+                "Y",
+                "GERTIE",
+                "Alice",
+                "Hello Gertie"));
+    }
 
     private void assertOk(String path) {
         assertThat(rest.getForEntity(path, String.class).getStatusCode())
@@ -36,14 +58,26 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
         @Test
         @DisplayName("UI: EXHBMENUを表示する")
-        void rendersMenu() {
-            assertOk("/menu?profile=GERTIE");
+        void rendersMenu() throws Exception {
+            String body = mockMvc.perform(get("/menu?profile=GERTIE"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains("Gertie the AS/400");
         }
 
         @Test
         @DisplayName("UI: NTRSTITヘルプを表示する")
-        void rendersHelp() {
-            assertOk("/help");
+        void rendersHelp() throws Exception {
+            String body = mockMvc.perform(get("/help"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains("NTRSTIT");
         }
 
         @Test
@@ -60,20 +94,66 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
         @Test
         @DisplayName("UI: READCMT画面を表示する")
-        void rendersReadComment() {
-            assertOk("/guestbook/read?profile=GERTIE");
+        void rendersReadCommentOutput() throws Exception {
+            String body = mockMvc.perform(post("/guestbook/read")
+                            .param("profile", "GERTIE")
+                            .param("commentId", "9001"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains(
+                    "Currently hosting",
+                    "Alice",
+                    "Gertie the AS/400",
+                    "Hello Gertie");
         }
 
         @Test
         @DisplayName("UI: LEARN400画面を表示する")
-        void rendersLearn() {
-            assertOk("/learn400?owner=LRN400STR");
+        void rendersLearnContent() throws Exception {
+            MvcResult initial = mockMvc.perform(get("/learn400?owner=LRN400STR"))
+                    .andExpect(status().isOk())
+                    .andReturn();
+            MockHttpSession session =
+                    (MockHttpSession) initial.getRequest().getSession(false);
+
+            assertThat(initial.getResponse().getContentAsString())
+                    .contains("Page", "1", "Welcome to LEARN/400.");
+
+            mockMvc.perform(post("/learn400")
+                            .session(session)
+                            .param("owner", "LRN400STR")
+                            .param("action", "fwd"))
+                    .andExpect(status().isOk());
+            mockMvc.perform(post("/learn400")
+                            .session(session)
+                            .param("owner", "LRN400STR")
+                            .param("action", "fwd"))
+                    .andExpect(status().isOk());
+            String finalPage = mockMvc.perform(post("/learn400")
+                            .session(session)
+                            .param("owner", "LRN400STR")
+                            .param("action", "fwd"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(finalPage).contains("Goodbye.");
         }
 
         @Test
         @DisplayName("UI: LEARN400自動画面を表示する")
-        void rendersAutoLearn() {
-            assertOk("/learn400/auto");
+        void rendersAutoLearnContent() throws Exception {
+            String body = mockMvc.perform(get("/learn400/auto?owner=LRN400STR"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains("Welcome to LEARN/400.");
         }
 
         @Test
@@ -84,8 +164,21 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
         @Test
         @DisplayName("UI: VOTERESを表示する")
-        void rendersAdminVotes() {
-            assertOk("/admin/votes");
+        void rendersAdminVotes() throws Exception {
+            votes.save(new Vote(9202, 1, "GERTIE"));
+
+            String body = mockMvc.perform(post("/admin/votes")
+                            .param("profile", "GERTIE"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains(
+                    "Gertie the AS/400",
+                    "Best in Show votes",
+                    "Votes in DB",
+                    ">1<");
         }
 
         @Test
@@ -165,6 +258,24 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
             assertThat(response.getBody()).contains("Must enter Exhibit ID");
+        }
+
+        @Test
+        @DisplayName("BR-ADDVOTE-05/UI: 成功メッセージをsuccessクラスで表示する")
+        void displaysVoteSuccess() throws Exception {
+            String body = mockMvc.perform(post("/vote")
+                            .param("profile", "GERTIE")
+                            .param("badge", "9201")
+                            .param("exhibitId", "GERTIE")
+                            .param("award", "1"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains(
+                    "class=\"success\"",
+                    "You have voted successfully");
         }
     }
 

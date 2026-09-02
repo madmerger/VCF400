@@ -416,3 +416,13 @@
 - `SECOFRS` 認可: RPG側の `CHKOFRS`／`CHKUSRPRF` はTODOのまま認可チェックを実行していないため、Javaでも認可処理は実装しない。`SECOFRS` は管理者の登録・一覧のみ提供する。
 - 桁数制限: REST APIにもDDSの桁数を適用する。各サービス入口で共通ヘルパー `DdsField.truncate(String, int)` を使い、RPGの `MOVEL` と同じく超過分を拒否せず切り捨てる。UIの `maxlength` と同じ制約にする。
 - `ADMLRN400` の `LAUNCH`／`EXHIBIT`: RPGソースでコメントアウトされ未使用のため、Javaでも使用しない。`owner` は画面入力値を使用し、未指定時は `LRN400STR` とする。
+
+## 7. E2E検証で検出した相違(修正済)
+
+フェーズ6の画面操作を想定したE2E検証で、以下の表示上の相違を検出し、Java側を修正した。仕様書は変更していない。
+
+| 対象 | 検出内容 | 修正内容 | 検証 |
+|---|---|---|---|
+| `LRN400`／`LRN400AUT` | Thymeleafの`${session}`がHttpSession予約変数と衝突し、ページ番号と本文が空表示になっていた。 | `Vcf400UiController`のモデル属性を`learn`へ変更し、`learn400.html`、`learn400-auto.html`、hidden入力、JavaScript参照を追随させた。 | `UiPagesTest`で初期ページ本文、ページ番号、F5 POST×3後の`Goodbye.`、自動画面本文を確認 |
+| `ADDVOTE` UI | 成功メッセージ`You have voted successfully`が`error`クラスで赤表示されていた。 | `vote.html`で`result.success`時のクラスを`success`へ変更した。 | `UiPagesTest`で`class="success"`と成功文言を確認 |
+| `NTRSTIT` UI | 画面ヘッダが`Instructions`になっていた。 | `StaticScreenService#help`のtitleを`NTRSTIT`へ変更した。 | `UiPagesTest`でヘッダ文字列`NTRSTIT`を確認 |
