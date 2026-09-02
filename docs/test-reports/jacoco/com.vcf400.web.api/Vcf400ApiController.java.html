@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vcf400ApiController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.web.api</a> &gt; <span class="el_source">Vcf400ApiController.java</span></div><h1>Vcf400ApiController.java</h1><pre class="source lang-java linenums">package com.vcf400.web.api;
+
+import java.util.List;
+import java.util.Map;
+
+import com.vcf400.domain.Exhibit;
+import com.vcf400.domain.GuestbookComment;
+import com.vcf400.domain.SecurityOfficer;
+import com.vcf400.print.PrintSpoolService;
+import com.vcf400.service.AddGuestbookCommentService;
+import com.vcf400.service.AddVoteService;
+import com.vcf400.service.AdminExhibitService;
+import com.vcf400.service.AdminHideCommentService;
+import com.vcf400.service.AdminLearn400Service;
+import com.vcf400.service.AdminSecurityOfficerService;
+import com.vcf400.service.AdminSettingService;
+import com.vcf400.service.AdminVoteReportService;
+import com.vcf400.service.BeeMovieService;
+import com.vcf400.service.ExhibitMenuService;
+import com.vcf400.service.Learn400AutoService;
+import com.vcf400.service.Learn400Service;
+import com.vcf400.service.ReadGuestbookCommentService;
+import com.vcf400.service.StaticScreenService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&quot;/api&quot;)
+public class Vcf400ApiController {
+
+    private final AddVoteService voteService;
+    private final AddGuestbookCommentService addCommentService;
+    private final ReadGuestbookCommentService readCommentService;
+    private final ExhibitMenuService menuService;
+    private final AdminVoteReportService reportService;
+    private final AdminExhibitService exhibitService;
+    private final AdminHideCommentService hideService;
+    private final AdminLearn400Service adminLearnService;
+    private final AdminSecurityOfficerService officerService;
+    private final AdminSettingService settingService;
+    private final BeeMovieService beeMovieService;
+    private final PrintSpoolService spoolService;
+    private final Learn400Service learnService;
+    private final Learn400AutoService autoService;
+    private final StaticScreenService screens;
+
+    public Vcf400ApiController(
+            AddVoteService voteService,
+            AddGuestbookCommentService addCommentService,
+            ReadGuestbookCommentService readCommentService,
+            ExhibitMenuService menuService,
+            AdminVoteReportService reportService,
+            AdminExhibitService exhibitService,
+            AdminHideCommentService hideService,
+            AdminLearn400Service adminLearnService,
+            AdminSecurityOfficerService officerService,
+            AdminSettingService settingService,
+            BeeMovieService beeMovieService,
+            PrintSpoolService spoolService,
+            Learn400Service learnService,
+            Learn400AutoService autoService,
+<span class="fc" id="L71">            StaticScreenService screens) {</span>
+<span class="fc" id="L72">        this.voteService = voteService;</span>
+<span class="fc" id="L73">        this.addCommentService = addCommentService;</span>
+<span class="fc" id="L74">        this.readCommentService = readCommentService;</span>
+<span class="fc" id="L75">        this.menuService = menuService;</span>
+<span class="fc" id="L76">        this.reportService = reportService;</span>
+<span class="fc" id="L77">        this.exhibitService = exhibitService;</span>
+<span class="fc" id="L78">        this.hideService = hideService;</span>
+<span class="fc" id="L79">        this.adminLearnService = adminLearnService;</span>
+<span class="fc" id="L80">        this.officerService = officerService;</span>
+<span class="fc" id="L81">        this.settingService = settingService;</span>
+<span class="fc" id="L82">        this.beeMovieService = beeMovieService;</span>
+<span class="fc" id="L83">        this.spoolService = spoolService;</span>
+<span class="fc" id="L84">        this.learnService = learnService;</span>
+<span class="fc" id="L85">        this.autoService = autoService;</span>
+<span class="fc" id="L86">        this.screens = screens;</span>
+<span class="fc" id="L87">    }</span>
+
+<span class="fc" id="L89">    public record VoteRequest(</span>
+            @Min(0) int badge,
+            @NotBlank String exhibitId,
+            @Min(0) int award,
+            String profile) {
+    }
+
+    @PostMapping(&quot;/vote&quot;)
+    public AddVoteService.VoteResult vote(
+            @Valid @RequestBody VoteRequest request) {
+<span class="fc" id="L99">        return voteService.submit(</span>
+<span class="fc" id="L100">                request.profile(),</span>
+<span class="fc" id="L101">                request.badge(),</span>
+<span class="fc" id="L102">                request.exhibitId(),</span>
+<span class="fc" id="L103">                request.award());</span>
+    }
+
+<span class="nc" id="L106">    public record CommentRequest(</span>
+            String profile,
+            String exhibitId,
+            String name,
+            String comment) {
+    }
+
+    @PostMapping(&quot;/guestbook&quot;)
+    public AddGuestbookCommentService.CommentResult comment(
+            @RequestBody CommentRequest request) {
+<span class="nc" id="L116">        return addCommentService.submit(</span>
+<span class="nc" id="L117">                request.profile(),</span>
+<span class="nc" id="L118">                request.exhibitId(),</span>
+<span class="nc" id="L119">                request.name(),</span>
+<span class="nc" id="L120">                request.comment());</span>
+    }
+
+    @GetMapping(&quot;/guestbook/{id}&quot;)
+    public ReadGuestbookCommentService.CommentView comment(
+            @PathVariable int id,
+            @RequestParam(defaultValue = &quot;&quot;) String profile) {
+<span class="nc" id="L127">        return readCommentService.read(profile, id);</span>
+    }
+
+    @GetMapping(&quot;/guestbook&quot;)
+    public List&lt;GuestbookComment&gt; comments() {
+<span class="nc" id="L132">        return hideService.list();</span>
+    }
+
+    @GetMapping(&quot;/learn400/{owner}&quot;)
+    public Learn400Service.Learn400Session learn(
+            @PathVariable String owner) {
+<span class="nc" id="L138">        return learnService.start(owner);</span>
+    }
+
+    @GetMapping(&quot;/learn400/{owner}/fwd&quot;)
+    public Learn400Service.Learn400Session learnFwd(
+            @PathVariable String owner,
+            @RequestParam(defaultValue = &quot;1&quot;) int page) {
+<span class="nc" id="L145">        return move(owner, page, true);</span>
+    }
+
+    @GetMapping(&quot;/learn400/{owner}/back&quot;)
+    public Learn400Service.Learn400Session learnBack(
+            @PathVariable String owner,
+            @RequestParam(defaultValue = &quot;1&quot;) int page) {
+<span class="nc" id="L152">        return move(owner, page, false);</span>
+    }
+
+    @GetMapping(&quot;/learn400/auto/{owner}&quot;)
+    public Learn400Service.Learn400Session learnAuto(
+            @PathVariable String owner) {
+<span class="nc" id="L158">        return autoService.start(owner);</span>
+    }
+
+    private Learn400Service.Learn400Session move(
+            String owner,
+            int page,
+            boolean forward) {
+<span class="nc" id="L165">        Learn400Service.Learn400Session session = learnService.start(owner);</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        for (int index = 1; index &lt; page; index++) {</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">            session = forward</span>
+<span class="nc" id="L168">                    ? learnService.pageFwd(session)</span>
+<span class="nc" id="L169">                    : learnService.pageBack(session);</span>
+        }
+<span class="nc" id="L171">        return session;</span>
+    }
+
+    @GetMapping(&quot;/menu/{profile}&quot;)
+    public ExhibitMenuService.MenuView menu(
+            @PathVariable String profile) {
+<span class="nc" id="L177">        return menuService.load(profile);</span>
+    }
+
+    @GetMapping(&quot;/menu/{profile}/select/{option}&quot;)
+    public String select(
+            @PathVariable String profile,
+            @PathVariable int option) {
+<span class="nc" id="L184">        return menuService.select(profile, option);</span>
+    }
+
+    @PostMapping(&quot;/menu/exit&quot;)
+    public boolean exit(@RequestBody Map&lt;String, String&gt; body) {
+<span class="nc" id="L189">        return menuService.exitKiosk(body.get(&quot;password&quot;));</span>
+    }
+
+    @GetMapping(&quot;/admin/votes/{profile}&quot;)
+    public AdminVoteReportService.VoteReport votes(
+            @PathVariable String profile) {
+<span class="fc" id="L195">        return reportService.readVote(profile);</span>
+    }
+
+    @GetMapping(&quot;/admin/exhibits/{profile}&quot;)
+    public Exhibit getExhibit(@PathVariable String profile) {
+<span class="nc" id="L200">        return exhibitService.load(profile);</span>
+    }
+
+    @GetMapping(&quot;/admin/exhibits&quot;)
+    public List&lt;Exhibit&gt; getExhibits() {
+<span class="nc" id="L205">        return exhibitService.list();</span>
+    }
+
+    @PostMapping(&quot;/admin/exhibits&quot;)
+    public AdminExhibitService.ExhibitResult saveExhibit(
+            @RequestBody AdminExhibitService.ExhibitForm form) {
+<span class="fc" id="L211">        return exhibitService.writeExhb(form);</span>
+    }
+
+    @DeleteMapping(&quot;/admin/exhibits/{profile}&quot;)
+    public AdminExhibitService.ExhibitResult deleteExhibit(
+            @PathVariable String profile,
+            @RequestParam(defaultValue = &quot;false&quot;) boolean confirmed) {
+<span class="nc" id="L218">        return exhibitService.delRcd(profile, confirmed);</span>
+    }
+
+    @PostMapping(&quot;/admin/comments/{id}/visibility&quot;)
+    public AdminHideCommentService.HideResult visibility(
+            @PathVariable int id,
+            @RequestBody Map&lt;String, String&gt; body) {
+<span class="fc" id="L225">        return hideService.update(id, body.get(&quot;visible&quot;));</span>
+    }
+
+    @GetMapping(&quot;/admin/learn400&quot;)
+    public AdminLearn400Service.AdminLearnSession adminLearn400() {
+<span class="nc" id="L230">        return adminLearnService.start(&quot;LRN400STR&quot;);</span>
+    }
+
+    @PostMapping(&quot;/admin/learn400&quot;)
+    public AdminLearn400Service.AdminLearnSession adminLearn400Save(
+            @RequestParam(defaultValue = &quot;1&quot;) int page,
+            @RequestParam(defaultValue = &quot;&quot;) String content,
+            @RequestParam(defaultValue = &quot;&quot;) String extra) {
+<span class="nc" id="L238">        AdminLearn400Service.AdminLearnSession session =</span>
+<span class="nc" id="L239">                adminLearnService.start(&quot;LRN400STR&quot;);</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        for (int index = 1; index &lt; page; index++) {</span>
+<span class="nc" id="L241">            session = adminLearnService.pageFwd(session);</span>
+        }
+<span class="nc" id="L243">        session.setInContent(content);</span>
+<span class="nc" id="L244">        session.setInExtra(extra);</span>
+<span class="nc" id="L245">        return adminLearnService.save(session);</span>
+    }
+
+    @PostMapping(&quot;/admin/officers&quot;)
+    public String addOfficer(@RequestBody Map&lt;String, String&gt; body) {
+<span class="nc" id="L250">        return officerService.add(body.get(&quot;profile&quot;));</span>
+    }
+
+    @GetMapping(&quot;/admin/officers&quot;)
+    public List&lt;SecurityOfficer&gt; officers() {
+<span class="nc" id="L255">        return officerService.list();</span>
+    }
+
+    @GetMapping(&quot;/admin/settings&quot;)
+    public Map&lt;String, String&gt; settings() {
+<span class="nc" id="L260">        return settingService.load();</span>
+    }
+
+    @PostMapping(&quot;/admin/settings&quot;)
+    public Map&lt;String, String&gt; settings(
+            @RequestBody Map&lt;String, String&gt; body) {
+<span class="nc" id="L266">        return settingService.save(</span>
+<span class="nc" id="L267">                body.get(&quot;password&quot;),</span>
+<span class="nc" id="L268">                body.get(&quot;allowVote&quot;));</span>
+    }
+
+    @GetMapping(&quot;/beemovie&quot;)
+    public Object beemovie() {
+<span class="nc" id="L273">        return beeMovieService.all();</span>
+    }
+
+    @GetMapping(&quot;/print/spool&quot;)
+    public List&lt;String&gt; printSpool() {
+<span class="nc" id="L278">        return spoolService.spool();</span>
+    }
+
+    @GetMapping(&quot;/static/credits&quot;)
+    public Map&lt;String, String&gt; credits() {
+<span class="nc" id="L283">        return screens.credits();</span>
+    }
+
+    @GetMapping(&quot;/static/help&quot;)
+    public Map&lt;String, String&gt; help() {
+<span class="nc" id="L288">        return screens.help();</span>
+    }
+
+    @GetMapping(&quot;/static/parameters&quot;)
+    public Map&lt;String, String&gt; parameters(
+            @RequestParam(defaultValue = &quot;&quot;) String first,
+            @RequestParam(defaultValue = &quot;&quot;) String second) {
+<span class="nc" id="L295">        return screens.parameters(first, second);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

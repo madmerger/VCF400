@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vcf400UiController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.web.ui</a> &gt; <span class="el_source">Vcf400UiController.java</span></div><h1>Vcf400UiController.java</h1><pre class="source lang-java linenums">package com.vcf400.web.ui;
+
+import com.vcf400.service.AddGuestbookCommentService;
+import com.vcf400.service.AddVoteService;
+import com.vcf400.service.AdminExhibitService;
+import com.vcf400.service.AdminHideCommentService;
+import com.vcf400.service.AdminLearn400Service;
+import com.vcf400.service.AdminSecurityOfficerService;
+import com.vcf400.service.AdminSettingService;
+import com.vcf400.service.AdminVoteReportService;
+import com.vcf400.service.BeeMovieService;
+import com.vcf400.service.ExhibitMenuService;
+import com.vcf400.service.Learn400AutoService;
+import com.vcf400.service.Learn400Service;
+import com.vcf400.service.ReadGuestbookCommentService;
+import com.vcf400.service.StaticScreenService;
+import com.vcf400.print.PrintSpoolService;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class Vcf400UiController {
+
+    private static final String LEARN_SESSION = &quot;learn400Session&quot;;
+    private static final String AUTO_SESSION = &quot;learn400AutoSession&quot;;
+
+    private final AddVoteService voteService;
+    private final AddGuestbookCommentService addCommentService;
+    private final ReadGuestbookCommentService readCommentService;
+    private final ExhibitMenuService menuService;
+    private final AdminVoteReportService reportService;
+    private final AdminExhibitService exhibitService;
+    private final AdminHideCommentService hideService;
+    private final AdminLearn400Service adminLearnService;
+    private final AdminSecurityOfficerService officerService;
+    private final AdminSettingService settingService;
+    private final BeeMovieService beeMovieService;
+    private final Learn400Service learnService;
+    private final Learn400AutoService autoService;
+    private final StaticScreenService screens;
+    private final PrintSpoolService spoolService;
+
+    public Vcf400UiController(
+            AddVoteService voteService,
+            AddGuestbookCommentService addCommentService,
+            ReadGuestbookCommentService readCommentService,
+            ExhibitMenuService menuService,
+            AdminVoteReportService reportService,
+            AdminExhibitService exhibitService,
+            AdminHideCommentService hideService,
+            AdminLearn400Service adminLearnService,
+            AdminSecurityOfficerService officerService,
+            AdminSettingService settingService,
+            BeeMovieService beeMovieService,
+            Learn400Service learnService,
+            Learn400AutoService autoService,
+            StaticScreenService screens,
+<span class="fc" id="L62">            PrintSpoolService spoolService) {</span>
+<span class="fc" id="L63">        this.voteService = voteService;</span>
+<span class="fc" id="L64">        this.addCommentService = addCommentService;</span>
+<span class="fc" id="L65">        this.readCommentService = readCommentService;</span>
+<span class="fc" id="L66">        this.menuService = menuService;</span>
+<span class="fc" id="L67">        this.reportService = reportService;</span>
+<span class="fc" id="L68">        this.exhibitService = exhibitService;</span>
+<span class="fc" id="L69">        this.hideService = hideService;</span>
+<span class="fc" id="L70">        this.adminLearnService = adminLearnService;</span>
+<span class="fc" id="L71">        this.officerService = officerService;</span>
+<span class="fc" id="L72">        this.settingService = settingService;</span>
+<span class="fc" id="L73">        this.beeMovieService = beeMovieService;</span>
+<span class="fc" id="L74">        this.learnService = learnService;</span>
+<span class="fc" id="L75">        this.autoService = autoService;</span>
+<span class="fc" id="L76">        this.screens = screens;</span>
+<span class="fc" id="L77">        this.spoolService = spoolService;</span>
+<span class="fc" id="L78">    }</span>
+
+    @GetMapping(&quot;/&quot;)
+    public String home(
+            @RequestParam(defaultValue = &quot;GERTIE&quot;) String profile,
+            Model model) {
+<span class="fc" id="L84">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L85">        return &quot;home&quot;;</span>
+    }
+
+    @PostMapping(&quot;/&quot;)
+    public String homePost(
+            @RequestParam String profile,
+            @RequestParam int option,
+            Model model) {
+<span class="nc" id="L93">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="nc" id="L94">        model.addAttribute(&quot;option&quot;, option);</span>
+<span class="nc bnc" id="L95" title="All 7 branches missed.">        return switch (option) {</span>
+<span class="nc" id="L96">            case 1 -&gt; &quot;redirect:/learn400?owner=&quot; + profile;</span>
+<span class="nc" id="L97">            case 11 -&gt; &quot;redirect:/help?next=/vote?profile=&quot; + profile;</span>
+<span class="nc" id="L98">            case 12 -&gt; &quot;redirect:/help?next=/guestbook/add?profile=&quot; + profile;</span>
+<span class="nc" id="L99">            case 13 -&gt; &quot;redirect:/help?next=/guestbook/read?profile=&quot; + profile;</span>
+<span class="nc" id="L100">            case 80 -&gt; &quot;redirect:/menu?profile=&quot; + profile;</span>
+<span class="nc" id="L101">            case 90 -&gt; &quot;redirect:/admin&quot;;</span>
+<span class="nc" id="L102">            default -&gt; &quot;home&quot;;</span>
+        };
+    }
+
+    @GetMapping(&quot;/menu&quot;)
+    public String menu(
+            @RequestParam(defaultValue = &quot;GERTIE&quot;) String profile,
+            @RequestParam(defaultValue = &quot;0&quot;) int exit,
+            Model model) {
+<span class="fc" id="L111">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L112">        model.addAttribute(&quot;menu&quot;, menuService.load(profile));</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        model.addAttribute(&quot;exit&quot;, exit == 1);</span>
+<span class="fc" id="L114">        return &quot;menu&quot;;</span>
+    }
+
+    @PostMapping(&quot;/menu&quot;)
+    public String menuPost(
+            @RequestParam String profile,
+            @RequestParam int option,
+            Model model) {
+<span class="nc" id="L122">        String destination = menuService.select(profile, option);</span>
+<span class="nc" id="L123">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        if (&quot;VOTESTUB&quot;.equals(destination)) {</span>
+<span class="nc" id="L125">            return &quot;redirect:/help?next=/vote?profile=&quot; + profile;</span>
+        }
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (&quot;LRN400STUB&quot;.equals(destination)) {</span>
+<span class="nc" id="L128">            return &quot;redirect:/learn400?owner=&quot; + profile;</span>
+        }
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (&quot;ADDGBSTUB&quot;.equals(destination)) {</span>
+<span class="nc" id="L131">            return &quot;redirect:/help?next=/guestbook/add?profile=&quot; + profile;</span>
+        }
+<span class="nc bnc" id="L133" title="All 2 branches missed.">        if (&quot;READGBSTUB&quot;.equals(destination)) {</span>
+<span class="nc" id="L134">            return &quot;redirect:/help?next=/guestbook/read?profile=&quot; + profile;</span>
+        }
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        if (&quot;ADMKIOSK&quot;.equals(destination)) {</span>
+<span class="nc" id="L137">            return &quot;redirect:/menu?profile=&quot; + profile + &quot;&amp;exit=1&quot;;</span>
+        }
+<span class="nc" id="L139">        model.addAttribute(&quot;menu&quot;, menuService.load(profile));</span>
+<span class="nc" id="L140">        return &quot;menu&quot;;</span>
+    }
+
+    @PostMapping(&quot;/menu/exit&quot;)
+    public String menuExit(
+            @RequestParam String profile,
+            @RequestParam String password,
+            Model model) {
+<span class="nc" id="L148">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="nc" id="L149">        model.addAttribute(&quot;menu&quot;, menuService.load(profile));</span>
+<span class="nc" id="L150">        model.addAttribute(&quot;exit&quot;, true);</span>
+<span class="nc" id="L151">        model.addAttribute(&quot;exitResult&quot;, menuService.exitKiosk(password));</span>
+<span class="nc" id="L152">        return &quot;menu&quot;;</span>
+    }
+
+    @GetMapping(&quot;/help&quot;)
+    public String help(
+            @RequestParam(defaultValue = &quot;/&quot;) String next,
+            Model model) {
+<span class="fc" id="L159">        model.addAllAttributes(screens.help());</span>
+<span class="fc" id="L160">        model.addAttribute(&quot;next&quot;, next);</span>
+<span class="fc" id="L161">        return &quot;help&quot;;</span>
+    }
+
+    @GetMapping(&quot;/vote&quot;)
+    public String vote(
+            @RequestParam(defaultValue = &quot;GERTIE&quot;) String profile,
+            Model model) {
+<span class="fc" id="L168">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L169">        model.addAttribute(&quot;awards&quot;, java.util.List.of(</span>
+                &quot;001. Best in Show Award&quot;,
+                &quot;002. The Ed Fair Award&quot;));
+<span class="fc" id="L172">        return &quot;vote&quot;;</span>
+    }
+
+    @PostMapping(&quot;/vote&quot;)
+    public String votePost(
+            @RequestParam String profile,
+            @RequestParam(defaultValue = &quot;0&quot;) int badge,
+            @RequestParam(defaultValue = &quot;&quot;) String exhibitId,
+            @RequestParam(defaultValue = &quot;0&quot;) int award,
+            Model model) {
+<span class="fc" id="L182">        AddVoteService.VoteResult result =</span>
+<span class="fc" id="L183">                voteService.submit(profile, badge, exhibitId, award);</span>
+<span class="fc" id="L184">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L185">        model.addAttribute(&quot;result&quot;, result);</span>
+<span class="fc" id="L186">        model.addAttribute(&quot;awards&quot;, java.util.List.of(</span>
+                &quot;001. Best in Show Award&quot;,
+                &quot;002. The Ed Fair Award&quot;));
+<span class="fc" id="L189">        return &quot;vote&quot;;</span>
+    }
+
+    @GetMapping(&quot;/guestbook/add&quot;)
+    public String addGuestbook(
+            @RequestParam(defaultValue = &quot;GERTIE&quot;) String profile,
+            Model model) {
+<span class="fc" id="L196">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L197">        return &quot;guestbook-add&quot;;</span>
+    }
+
+    @PostMapping(&quot;/guestbook/add&quot;)
+    public String addGuestbookPost(
+            @RequestParam String profile,
+            @RequestParam(defaultValue = &quot;&quot;) String exhibitId,
+            @RequestParam(defaultValue = &quot;&quot;) String name,
+            @RequestParam(defaultValue = &quot;&quot;) String comment,
+            Model model) {
+<span class="nc" id="L207">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="nc" id="L208">        model.addAttribute(&quot;result&quot;, addCommentService.submit(</span>
+                profile,
+                exhibitId,
+                name,
+                comment));
+<span class="nc" id="L213">        return &quot;guestbook-add&quot;;</span>
+    }
+
+    @GetMapping(&quot;/guestbook/read&quot;)
+    public String readGuestbook(
+            @RequestParam(defaultValue = &quot;GERTIE&quot;) String profile,
+            Model model) {
+<span class="fc" id="L220">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="fc" id="L221">        return &quot;guestbook-read&quot;;</span>
+    }
+
+    @PostMapping(&quot;/guestbook/read&quot;)
+    public String readGuestbookPost(
+            @RequestParam String profile,
+            @RequestParam(defaultValue = &quot;0&quot;) int commentId,
+            Model model) {
+<span class="nc" id="L229">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="nc" id="L230">        model.addAttribute(&quot;result&quot;, readCommentService.read(profile, commentId));</span>
+<span class="nc" id="L231">        return &quot;guestbook-read&quot;;</span>
+    }
+
+    @GetMapping(&quot;/learn400&quot;)
+    public String learn(
+            @RequestParam(defaultValue = &quot;LRN400STR&quot;) String owner,
+            HttpSession httpSession,
+            Model model) {
+<span class="fc" id="L239">        Learn400Service.Learn400Session session =</span>
+<span class="fc" id="L240">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
+                        LEARN_SESSION);
+<span class="pc bpc" id="L242" title="3 of 4 branches missed.">        if (session == null || !owner.equals(session.getOwner())) {</span>
+<span class="fc" id="L243">            session = learnService.start(owner);</span>
+<span class="fc" id="L244">            httpSession.setAttribute(LEARN_SESSION, session);</span>
+        }
+<span class="fc" id="L246">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="fc" id="L247">        return &quot;learn400&quot;;</span>
+    }
+
+    @PostMapping(&quot;/learn400&quot;)
+    public String learnPost(
+            @RequestParam String owner,
+            @RequestParam String action,
+            HttpSession httpSession,
+            Model model) {
+<span class="nc" id="L256">        Learn400Service.Learn400Session session =</span>
+<span class="nc" id="L257">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
+                        LEARN_SESSION);
+<span class="nc bnc" id="L259" title="All 4 branches missed.">        if (session == null || !owner.equals(session.getOwner())) {</span>
+<span class="nc" id="L260">            session = learnService.start(owner);</span>
+        }
+<span class="nc bnc" id="L262" title="All 2 branches missed.">        if (&quot;fwd&quot;.equals(action)) {</span>
+<span class="nc" id="L263">            session = learnService.pageFwd(session);</span>
+        }
+<span class="nc bnc" id="L265" title="All 2 branches missed.">        if (&quot;back&quot;.equals(action)) {</span>
+<span class="nc" id="L266">            session = learnService.pageBack(session);</span>
+        }
+<span class="nc bnc" id="L268" title="All 2 branches missed.">        if (&quot;exit&quot;.equals(action)) {</span>
+<span class="nc" id="L269">            httpSession.removeAttribute(LEARN_SESSION);</span>
+        } else {
+<span class="nc" id="L271">            httpSession.setAttribute(LEARN_SESSION, session);</span>
+        }
+<span class="nc" id="L273">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="nc" id="L274">        return &quot;learn400&quot;;</span>
+    }
+
+    @GetMapping(&quot;/learn400/auto&quot;)
+    public String learnAuto(
+            @RequestParam(defaultValue = &quot;LRN400STR&quot;) String owner,
+            HttpSession httpSession,
+            Model model) {
+<span class="fc" id="L282">        Learn400Service.Learn400Session session =</span>
+<span class="fc" id="L283">                autoService.start(owner);</span>
+<span class="fc" id="L284">        httpSession.setAttribute(AUTO_SESSION, session);</span>
+<span class="fc" id="L285">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="fc" id="L286">        return &quot;learn400-auto&quot;;</span>
+    }
+
+    @PostMapping(&quot;/learn400/auto&quot;)
+    public String learnAutoPost(
+            @RequestParam String owner,
+            @RequestParam(defaultValue = &quot;fwd&quot;) String action,
+            HttpSession httpSession,
+            Model model) {
+<span class="nc" id="L295">        Learn400Service.Learn400Session session =</span>
+<span class="nc" id="L296">                (Learn400Service.Learn400Session) httpSession.getAttribute(</span>
+                        AUTO_SESSION);
+<span class="nc bnc" id="L298" title="All 2 branches missed.">        if (session == null) {</span>
+<span class="nc" id="L299">            session = autoService.start(owner);</span>
+        }
+<span class="nc bnc" id="L301" title="All 2 branches missed.">        if (&quot;exit&quot;.equals(action)) {</span>
+<span class="nc" id="L302">            httpSession.removeAttribute(AUTO_SESSION);</span>
+        } else {
+<span class="nc" id="L304">            session = autoService.pageFwd(session);</span>
+<span class="nc" id="L305">            httpSession.setAttribute(AUTO_SESSION, session);</span>
+        }
+<span class="nc" id="L307">        model.addAttribute(&quot;session&quot;, session);</span>
+<span class="nc" id="L308">        return &quot;learn400-auto&quot;;</span>
+    }
+
+    @GetMapping(&quot;/admin&quot;)
+    public String admin() {
+<span class="fc" id="L313">        return &quot;admin&quot;;</span>
+    }
+
+    @GetMapping(&quot;/admin/votes&quot;)
+    public String adminVotes(
+            @RequestParam(defaultValue = &quot;&quot;) String profile,
+            Model model) {
+<span class="fc" id="L320">        model.addAttribute(&quot;profile&quot;, profile);</span>
+<span class="pc bpc" id="L321" title="1 of 2 branches missed.">        if (!profile.isBlank()) {</span>
+<span class="nc" id="L322">            model.addAttribute(&quot;report&quot;, reportService.readVote(profile));</span>
+        }
+<span class="fc" id="L324">        return &quot;admin-votes&quot;;</span>
+    }
+
+    @PostMapping(&quot;/admin/votes&quot;)
+    public String adminVotesPost(
+            @RequestParam String profile,
+            Model model) {
+<span class="nc" id="L331">        return adminVotes(profile, model);</span>
+    }
+
+    @GetMapping(&quot;/admin/exhibits&quot;)
+    public String adminExhibits(
+            @RequestParam(defaultValue = &quot;NONE&quot;) String profile,
+            Model model) {
+<span class="fc" id="L338">        model.addAttribute(&quot;exhibits&quot;, exhibitService.list());</span>
+<span class="fc" id="L339">        model.addAttribute(&quot;editor&quot;, exhibitService.loadSession(profile));</span>
+<span class="fc" id="L340">        return &quot;admin-exhibits&quot;;</span>
+    }
+
+    @PostMapping(&quot;/admin/exhibits&quot;)
+    public String adminExhibitsPost(
+            @RequestParam String profile,
+            @RequestParam(defaultValue = &quot;&quot;) String owner,
+            @RequestParam(defaultValue = &quot;&quot;) String city,
+            @RequestParam(defaultValue = &quot;&quot;) String state,
+            @RequestParam(defaultValue = &quot;&quot;) String title,
+            @RequestParam(defaultValue = &quot;&quot;) String description,
+            @RequestParam(defaultValue = &quot;0&quot;) int eligible,
+            @RequestParam(defaultValue = &quot;0&quot;) int learn400,
+            @RequestParam(defaultValue = &quot;save&quot;) String action,
+            @RequestParam(defaultValue = &quot;false&quot;) boolean confirmed,
+            Model model) {
+        AdminExhibitService.ExhibitResult result;
+<span class="nc bnc" id="L357" title="All 2 branches missed.">        if (&quot;delete&quot;.equals(action)) {</span>
+<span class="nc" id="L358">            result = exhibitService.delRcd(profile, confirmed);</span>
+<span class="nc bnc" id="L359" title="All 4 branches missed.">            model.addAttribute(&quot;deleteConfirm&quot;, !confirmed &amp;&amp; result.exhibit() != null);</span>
+        } else {
+<span class="nc" id="L361">            result = exhibitService.writeExhb(new AdminExhibitService.ExhibitForm(</span>
+                    profile,
+                    owner,
+                    city,
+                    state,
+                    title,
+                    description,
+                    eligible,
+                    learn400));
+        }
+<span class="nc" id="L371">        model.addAttribute(&quot;result&quot;, result);</span>
+<span class="nc" id="L372">        model.addAttribute(&quot;exhibits&quot;, exhibitService.list());</span>
+<span class="nc" id="L373">        model.addAttribute(</span>
+                &quot;editor&quot;,
+<span class="nc bnc" id="L375" title="All 2 branches missed.">                exhibitService.loadSession(result.success() ? &quot;NONE&quot; : profile));</span>
+<span class="nc" id="L376">        return &quot;admin-exhibits&quot;;</span>
+    }
+
+    @GetMapping(&quot;/admin/comments&quot;)
+    public String adminComments(Model model) {
+<span class="fc" id="L381">        model.addAttribute(&quot;comments&quot;, hideService.list());</span>
+<span class="fc" id="L382">        return &quot;admin-comments&quot;;</span>
+    }
+
+    @PostMapping(&quot;/admin/comments&quot;)
+    public String adminCommentsPost(
+            @RequestParam int commentId,
+            @RequestParam String visible,
+            Model model) {
+<span class="nc" id="L390">        model.addAttribute(&quot;result&quot;, hideService.update(commentId, visible));</span>
+<span class="nc" id="L391">        return adminComments(model);</span>
+    }
+
+    @GetMapping(&quot;/admin/learn400&quot;)
+    public String adminLearn400(Model model) {
+<span class="fc" id="L396">        model.addAttribute(&quot;editor&quot;, adminLearnService.start(&quot;LRN400STR&quot;));</span>
+<span class="fc" id="L397">        return &quot;admin-learn400&quot;;</span>
+    }
+
+    @PostMapping(&quot;/admin/learn400&quot;)
+    public String adminLearn400Post(
+            @RequestParam(defaultValue = &quot;1&quot;) int page,
+            @RequestParam(defaultValue = &quot;&quot;) String content,
+            @RequestParam(defaultValue = &quot;&quot;) String extra,
+            @RequestParam(defaultValue = &quot;save&quot;) String action,
+            Model model) {
+<span class="nc" id="L407">        AdminLearn400Service.AdminLearnSession editor =</span>
+<span class="nc" id="L408">                adminLearnService.start(&quot;LRN400STR&quot;);</span>
+<span class="nc bnc" id="L409" title="All 2 branches missed.">        for (int index = 1; index &lt; page; index++) {</span>
+<span class="nc" id="L410">            editor = adminLearnService.pageFwd(editor);</span>
+        }
+<span class="nc" id="L412">        editor.setInContent(content);</span>
+<span class="nc" id="L413">        editor.setInExtra(extra);</span>
+<span class="nc bnc" id="L414" title="All 2 branches missed.">        if (&quot;fwd&quot;.equals(action)) {</span>
+<span class="nc" id="L415">            editor = adminLearnService.pageFwd(editor);</span>
+<span class="nc bnc" id="L416" title="All 2 branches missed.">        } else if (&quot;back&quot;.equals(action)) {</span>
+<span class="nc" id="L417">            editor = adminLearnService.pageBack(editor);</span>
+        } else {
+<span class="nc" id="L419">            editor = adminLearnService.save(editor);</span>
+        }
+<span class="nc" id="L421">        model.addAttribute(&quot;editor&quot;, editor);</span>
+<span class="nc" id="L422">        return &quot;admin-learn400&quot;;</span>
+    }
+
+    @GetMapping(&quot;/admin/officers&quot;)
+    public String adminOfficers(Model model) {
+<span class="fc" id="L427">        model.addAttribute(&quot;officers&quot;, officerService.list());</span>
+<span class="fc" id="L428">        return &quot;admin-officers&quot;;</span>
+    }
+
+    @PostMapping(&quot;/admin/officers&quot;)
+    public String adminOfficersPost(
+            @RequestParam String profile,
+            Model model) {
+<span class="nc" id="L435">        model.addAttribute(&quot;result&quot;, officerService.add(profile));</span>
+<span class="nc" id="L436">        return adminOfficers(model);</span>
+    }
+
+    @GetMapping(&quot;/admin/settings&quot;)
+    public String adminSettings(Model model) {
+<span class="fc" id="L441">        addSettings(model, settingService.load());</span>
+<span class="fc" id="L442">        return &quot;admin-settings&quot;;</span>
+    }
+
+    @PostMapping(&quot;/admin/settings&quot;)
+    public String adminSettingsPost(
+            @RequestParam String password,
+            @RequestParam String allowVote,
+            Model model) {
+<span class="nc" id="L450">        addSettings(model, settingService.save(password, allowVote));</span>
+<span class="nc" id="L451">        return &quot;admin-settings&quot;;</span>
+    }
+
+    private void addSettings(Model model, java.util.Map&lt;String, String&gt; settings) {
+<span class="fc" id="L455">        model.addAttribute(&quot;settings&quot;, settings);</span>
+<span class="fc" id="L456">        model.addAttribute(</span>
+                &quot;allowVoteDisplay&quot;,
+<span class="pc bpc" id="L458" title="1 of 2 branches missed.">                &quot;Y&quot;.equalsIgnoreCase(settings.get(&quot;ALWVOTE&quot;)) ? &quot;1&quot; : &quot;0&quot;);</span>
+<span class="fc" id="L459">    }</span>
+
+    @GetMapping(&quot;/admin/beemovie&quot;)
+    public String movie(Model model) {
+<span class="fc" id="L463">        model.addAttribute(&quot;lines&quot;, beeMovieService.all());</span>
+<span class="fc" id="L464">        return &quot;beemovie&quot;;</span>
+    }
+
+    @GetMapping(&quot;/credits&quot;)
+    public String credits(Model model) {
+<span class="fc" id="L469">        model.addAllAttributes(screens.credits());</span>
+<span class="fc" id="L470">        return &quot;static&quot;;</span>
+    }
+
+    @GetMapping(&quot;/parameter&quot;)
+    public String parameter(
+            @RequestParam(defaultValue = &quot;&quot;) String first,
+            @RequestParam(defaultValue = &quot;&quot;) String second,
+            Model model) {
+<span class="fc" id="L478">        model.addAllAttributes(screens.parameters(first, second));</span>
+<span class="fc" id="L479">        return &quot;parameter&quot;;</span>
+    }
+
+    @GetMapping(&quot;/admin/spool&quot;)
+    public String spool(Model model) {
+<span class="fc" id="L484">        model.addAttribute(&quot;spool&quot;, spoolService.spool());</span>
+<span class="fc" id="L485">        return &quot;admin-spool&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

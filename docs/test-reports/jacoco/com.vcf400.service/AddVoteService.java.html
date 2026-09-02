@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddVoteService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.service</a> &gt; <span class="el_source">AddVoteService.java</span></div><h1>AddVoteService.java</h1><pre class="source lang-java linenums">package com.vcf400.service;
+
+import com.vcf400.domain.AwardRepository;
+import com.vcf400.domain.Exhibit;
+import com.vcf400.domain.ExhibitRepository;
+import com.vcf400.domain.SettingRepository;
+import com.vcf400.domain.Vote;
+import com.vcf400.domain.VoteRepository;
+import com.vcf400.print.PrintSpoolService;
+import org.springframework.stereotype.Service;
+
+@Service
+/** Java implementation of RPG program ADDVOTE. */
+public class AddVoteService {
+
+    private final VoteRepository votes;
+    private final ExhibitRepository exhibits;
+    private final AwardRepository awards;
+    private final SettingRepository settings;
+    private final PrintSpoolService printer;
+
+    public AddVoteService(
+            VoteRepository votes,
+            ExhibitRepository exhibits,
+            AwardRepository awards,
+            SettingRepository settings,
+<span class="fc" id="L27">            PrintSpoolService printer) {</span>
+<span class="fc" id="L28">        this.votes = votes;</span>
+<span class="fc" id="L29">        this.exhibits = exhibits;</span>
+<span class="fc" id="L30">        this.awards = awards;</span>
+<span class="fc" id="L31">        this.settings = settings;</span>
+<span class="fc" id="L32">        this.printer = printer;</span>
+<span class="fc" id="L33">    }</span>
+
+<span class="fc" id="L35">    public record VoteResult(</span>
+            boolean success,
+            String errLine,
+            String screen) {
+    }
+
+<span class="fc" id="L41">    private record Input(</span>
+            String profile,
+            int badge,
+            String exhibit,
+            int award) {
+    }
+
+<span class="fc" id="L48">    private record Validation(String error, String screen) {</span>
+    }
+
+    /** RPG: BEGSR CHKPARM; BR-ADDVOTE-01, BR-ADDVOTE-02. */
+    private String chkParm(String profile, String exhibit) {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (&quot;MM2024&quot;.equals(profile)) {</span>
+<span class="fc" id="L54">            return exhibit;</span>
+        }
+<span class="fc" id="L56">        return profile;</span>
+    }
+
+    /** RPG: BEGSR CHKALWVOTE; BR-ADDVOTE-04. */
+    private boolean chkAlwVote() {
+<span class="fc" id="L61">        return settings.findById(&quot;ALWVOTE&quot;)</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                .map(setting -&gt; !&quot;N&quot;.equalsIgnoreCase(setting.getValue()))</span>
+<span class="fc" id="L63">                .orElse(true);</span>
+    }
+
+    /** RPG: input validation; BR-ADDVOTE-01, BR-ADDVOTE-02, BR-ADDVOTE-03, BR-ADDVOTE-09. */
+    private Validation validate(Input input) {
+<span class="fc" id="L68">        String error = null;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (input.badge() == 0) {</span>
+<span class="fc" id="L70">            error = RpgMessages.BADGE;</span>
+        }
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (input.award() == 0) {</span>
+<span class="fc" id="L73">            error = RpgMessages.AWARD;</span>
+        }
+<span class="pc bpc" id="L75" title="1 of 4 branches missed.">        if (input.exhibit() == null || input.exhibit().isBlank()) {</span>
+<span class="fc" id="L76">            error = RpgMessages.EXHIBIT;</span>
+        }
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (error != null) {</span>
+<span class="fc" id="L79">            return new Validation(error, &quot;VOTE1&quot;);</span>
+        }
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (&quot;DAVE&quot;.equals(input.exhibit())) {</span>
+<span class="fc" id="L82">            return new Validation(null, &quot;DAVE&quot;);</span>
+        }
+<span class="fc" id="L84">        return new Validation(null, null);</span>
+    }
+
+    /** RPG: BEGSR ADDTODB; BR-ADDVOTE-05, BR-ADDVOTE-06, BR-ADDVOTE-07, BR-ADDVOTE-08. */
+    private VoteResult addToDb(Input input) {
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (votes.existsById(input.badge())) {</span>
+<span class="fc" id="L90">            return new VoteResult(false, RpgMessages.EXISTS, &quot;VOTE1&quot;);</span>
+        }
+
+<span class="fc" id="L93">        Exhibit exhibit = exhibits.findById(input.exhibit()).orElse(null);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        if (exhibit == null) {</span>
+<span class="fc" id="L95">            return new VoteResult(false, RpgMessages.NO_EXHIBIT, &quot;VOTE1&quot;);</span>
+        }
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        if (exhibit.getEligible() == 0) {</span>
+<span class="fc" id="L98">            return new VoteResult(false, RpgMessages.INELIGIBLE, &quot;VOTE1&quot;);</span>
+        }
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (!awards.existsById(input.award())) {</span>
+<span class="fc" id="L101">            return new VoteResult(false, RpgMessages.NO_AWARD, &quot;VOTE1&quot;);</span>
+        }
+
+<span class="fc" id="L104">        Vote saved = votes.save(new Vote(input.badge(), input.award(), input.exhibit()));</span>
+<span class="fc" id="L105">        printer.printVoteTicket(saved);</span>
+<span class="fc" id="L106">        return new VoteResult(true, RpgMessages.VOTED, &quot;VOTEEND&quot;);</span>
+    }
+
+    /**
+     * Executes the RPG ADDVOTE flow.
+     *
+     * @param launchProfile current exhibit or privileged profile
+     * @param badge badge number
+     * @param exhibitId exhibit identifier
+     * @param award award identifier
+     * @return RPG-compatible result screen and ERRLINE
+     */
+    public VoteResult submit(String launchProfile, int badge, String exhibitId, int award) {
+<span class="fc" id="L119">        launchProfile = DdsField.truncate(launchProfile, 9);</span>
+<span class="fc" id="L120">        exhibitId = DdsField.truncate(exhibitId, 9);</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (!chkAlwVote()) {</span>
+<span class="fc" id="L122">            return new VoteResult(false, null, &quot;ENDOFCON&quot;);</span>
+        }
+
+<span class="fc" id="L125">        Input input = new Input(</span>
+                launchProfile,
+                badge,
+<span class="fc" id="L128">                chkParm(launchProfile, exhibitId),</span>
+                award);
+<span class="fc" id="L130">        Validation validation = validate(input);</span>
+<span class="fc bfc" id="L131" title="All 4 branches covered.">        if (validation.error() != null || validation.screen() != null) {</span>
+<span class="fc" id="L132">            return new VoteResult(false, validation.error(), validation.screen());</span>
+        }
+<span class="fc" id="L134">        return addToDb(input);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
