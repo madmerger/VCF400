@@ -1,5 +1,22 @@
-<!doctype html><html><head><title>VCF/400</title><link rel="stylesheet" href="/vcf400.css"></head><body>
-<h1>VINTAGE COMPUTER FESTIVAL</h1><pre>VCF/400 MAIN MENU</pre>
-<p><a href="/learn400?owner=LRN400STR">1 LEARN/400</a></p><p><a href="/vote?profile=GERTIE">11 Vote</a></p>
-<p><a href="/guestbook/add?profile=GERTIE">12 Sign Guestbook</a></p><p><a href="/guestbook/read?profile=GERTIE">13 Read Guestbook</a></p>
-<p><a href="/admin">80 Admin tools</a> <a href="/credits">Credits</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('VCFMAIN')}"></head>
+<body><div class="screen">
+<header th:replace="~{fragments/screen :: header('VCFMAIN - VCF/400 MAIN MENU')}"></header>
+<main class="screen-body">
+<p>Select profile and function.</p>
+<form method="post" action="/">
+<label>Profile <select name="profile"><option>GERTIE</option><option>NOVOTE</option><option>BEEBOX</option><option>MM2024</option></select></label>
+<label>Option <input name="option" type="number" value="1" min="1"></label>
+<button type="submit">Enter</button>
+</form>
+<nav class="menu-grid">
+<a th:href="@{/learn400(owner=${profile})}">1 LEARN/400</a>
+<a th:href="@{/help(next='/vote?profile=' + ${profile})}">11 Nominate</a>
+<a th:href="@{/help(next='/guestbook/add?profile=' + ${profile})}">12 Sign Guestbook</a>
+<a th:href="@{/help(next='/guestbook/read?profile=' + ${profile})}">13 Read Guestbook</a>
+<a th:href="@{/menu(profile=${profile})}">80 Sign off</a>
+<a href="/admin">90 Admin</a>
+</nav>
+</main><footer th:replace="~{fragments/screen :: footer('F3=Exit')}"></footer>
+</div></body></html>

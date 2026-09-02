@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('NTRSTIT')}"></head>
+<body><div class="screen">
+<header class="screen-header" th:text="${title}">NTRSTIT - Instructions</header>
+<main class="screen-body"><p th:text="${text}"></p><a class="button" th:href="${next}">RIGHT CTRL(=ENTER) - Continue</a></main>
+<footer class="function-keys">ENTER=Continue F12=Cancel</footer>
+</div></body></html>

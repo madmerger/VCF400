@@ -1,5 +1,23 @@
-<!doctype html><html><head><title>EXHBMENU</title><link rel="stylesheet" href="/vcf400.css"></head><body>
-<h1 th:text="${menu.title}">Exhibit</h1><p th:text="${menu.name}">Name</p><p th:text="${menu.city + ', ' + menu.state}">Location</p><pre th:text="${menu.desc}">Description</pre>
-<p><a th:href="@{/vote(profile=${profile})}">1 Vote</a> <a th:href="@{/learn400(owner=${profile})}">2 LEARN/400</a></p>
-<p><a th:href="@{/guestbook/add(profile=${profile})}">3 Guestbook</a> <a th:href="@{/guestbook/read(profile=${profile})}">4 Read comments</a></p>
-</body></html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('EXHBMENU')}"></head>
+<body><div class="screen">
+<header class="screen-header">EXHBMENU - EXHIBIT MENU</header>
+<main class="screen-body">
+<p>Profile: <strong th:text="${profile}">GERTIE</strong></p>
+<dl class="details"><dt>Title</dt><dd th:text="${menu.title}"></dd><dt>Exhibitor</dt><dd th:text="${menu.name}"></dd><dt>City/State</dt><dd><span th:text="${menu.city}"></span> <span th:text="${menu.state}"></span></dd><dt>Description</dt><dd th:text="${menu.desc}"></dd></dl>
+<form method="post" action="/menu"><input type="hidden" name="profile" th:value="${profile}"><label>Selection <input name="option" type="number" min="1" max="7" value="1"></label><button type="submit">Enter</button></form>
+<p th:if="${menu.showVote}"><a th:href="@{/help(next='/vote?profile=' + ${profile})}">1 Vote</a></p>
+<p th:if="${menu.showLrn400}"><a th:href="@{/learn400(owner=${profile})}">2 LEARN/400</a></p>
+<p><a th:href="@{/help(next='/guestbook/add?profile=' + ${profile})}">3 Sign Guestbook</a></p>
+<p><a th:href="@{/help(next='/guestbook/read?profile=' + ${profile})}">4 Read Guestbook</a></p>
+<p><a th:href="@{/menu(profile=${profile}, exit=1)}">7 Exit Kiosk</a></p>
+<form th:if="${exit}" method="post" action="/menu/exit">
+<input type="hidden" name="profile" th:value="${profile}">
+<label>Password <input name="password" type="password"></label>
+<button type="submit">Enter</button>
+</form>
+<p th:if="${exitResult != null and exitResult}" class="success">Kiosk ended.</p>
+<p th:if="${exitResult != null and !exitResult}" class="error">Password incorrect.</p>
+</main><footer class="function-keys">F3=Exit</footer>
+</div></body></html>

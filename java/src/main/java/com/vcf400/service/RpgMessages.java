@@ -1,7 +1,10 @@
 package com.vcf400.service;
 
 public final class RpgMessages {
-    private RpgMessages() {}
+
+    private RpgMessages() {
+    }
+
     public static final String VOTED = "You have voted successfully";
     public static final String BADGE = "Must enter badge number";
     public static final String EXHIBIT = "Must enter Exhibit ID";

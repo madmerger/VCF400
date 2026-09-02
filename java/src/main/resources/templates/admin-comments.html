@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('HIDECMT')}"></head>
+<body><div class="screen"><header class="screen-header">HIDECMT - COMMENT VISIBILITY</header><main class="screen-body">
+<p th:if="${result != null}" th:class="${result.success ? 'success' : 'error'}" th:text="${result.message}"></p><table><tr><th>ID</th><th>Exhibit</th><th>Name</th><th>Visible</th></tr><tr th:each="comment : ${comments}"><td th:text="${comment.cmtId}"></td><td th:text="${comment.exhbId}"></td><td th:text="${comment.guestName}"></td><td th:text="${comment.visible}"></td></tr></table>
+<form method="post"><label>Comment ID <input name="commentId" type="number" min="1"></label><label>Y/N <input name="visible" maxlength="1"></label><button>F10 Update</button></form>
+</main><footer class="function-keys">F10=Save F12=Cancel</footer></div></body></html>

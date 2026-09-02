@@ -1,1 +1,7 @@
-<!doctype html><html><head><title>LEARN/400</title><link rel="stylesheet" href="/vcf400.css"></head><body><h1>LEARN/400</h1><p>Page <span th:text="${session.outPageNbr}">1</span></p><pre th:text="${session.outContent}">Content</pre><p><a th:href="@{/learn400(owner=${session.owner},page=${session.curPageNbr - 1})}">F8 Back</a> <a th:href="@{/learn400(owner=${session.owner},page=${session.curPageNbr + 1})}">F5 Forward</a> <a href="/">F3 Exit</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('MAIN')}"></head>
+<body><div class="screen"><header class="screen-header">MAIN - LEARN/400</header><main class="screen-body">
+<p>Page <strong th:text="${session.outPageNbr}">1</strong></p><pre th:text="${session.outContent}"></pre><p th:if="${session.calledProgram != ''}">Called program: <span th:text="${session.calledProgram}"></span></p><p th:if="${session.ended}" class="success">END</p>
+<form method="post" action="/learn400"><input type="hidden" name="owner" th:value="${session.owner}"><button name="action" value="fwd">F5 Fwd</button><button name="action" value="back">F8 Back</button><button name="action" value="exit">F3 Exit</button></form>
+</main><footer class="function-keys">F5=Fwd F8=Back F3=Exit</footer></div></body></html>

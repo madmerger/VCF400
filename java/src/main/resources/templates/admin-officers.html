@@ -1,0 +1,3 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('ADDADM')}"></head>
+<body><div class="screen"><header class="screen-header">ADDADM - SECURITY OFFICERS</header><main class="screen-body"><p th:if="${result != null}" th:class="${result == 'Status updated' ? 'success' : 'error'}" th:text="${result}"></p><form method="post"><label>USERPROF <input name="profile"></label><button>F10 Add</button></form><ul><li th:each="officer : ${officers}" th:text="${officer.userProf}"></li></ul></main><footer class="function-keys">F10=Save F12=Cancel</footer></div></body></html>

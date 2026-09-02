@@ -1,0 +1,3 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('PRINTER')}"></head>
+<body><div class="screen"><header class="screen-header">PRINTER - SPOOL</header><main class="screen-body"><ul><li th:each="entry : ${spool}" th:text="${entry}"></li></ul></main><footer class="function-keys">F3=Exit</footer></div></body></html>

@@ -1,1 +1,6 @@
-<!doctype html><html><head><title>ADMMAIN</title><link rel="stylesheet" href="/vcf400.css"></head><body><h1>ADMMAIN</h1><p>Administrative tools</p><p><a href="/admin/beemovie">BEEMOVIE</a> <a href="/credits">CREDITS</a></p><p><a href="/">Exit</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('ADMMAIN')}"></head>
+<body><div class="screen"><header class="screen-header">ADMMAIN - ADMINISTRATION</header><main class="screen-body">
+<p>Choose an administrative function.</p><nav class="admin-grid"><a href="/admin/votes">VOTERES - Vote report</a><a href="/admin/exhibits">ADMCREATE - Exhibits</a><a href="/admin/comments">HIDECMT - Comments</a><a href="/admin/learn400">MAINADMIN - LEARN/400 editor</a><a href="/admin/officers">ADDADM - Security officers</a><a href="/admin/settings">SETUPMAIN - Settings</a><a href="/admin/beemovie">BEEMOVIE</a><a href="/credits">CREDITS</a><a href="/admin/spool">Printer spool</a></nav>
+</main><footer class="function-keys">F3=Exit</footer></div></body></html>

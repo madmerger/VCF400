@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('VOTERES')}"></head>
+<body><div class="screen"><header class="screen-header">VOTERES - VOTE REPORT</header><main class="screen-body">
+<form method="post"><label>INUSRPRF <input name="profile" th:value="${profile}"></label><button>F5 Read</button></form>
+<p th:if="${report != null and report.errLine != null}" class="error" th:text="${report.errLine}"></p><dl th:if="${report != null}"><dt>Exhibit Name</dt><dd th:text="${report.outTitle}"></dd><dt>Ed Fair votes</dt><dd th:text="${report.award2Count}"></dd><dt>Best in Show votes</dt><dd th:text="${report.award1Count}"></dd><dt>Votes in DB</dt><dd th:text="${report.totalVotes}"></dd></dl>
+</main><footer class="function-keys">F3=Exit</footer></div></body></html>

@@ -10,17 +10,17 @@
 | `ADDGBCMT` | `CHKPARM`/`ADDTODB`/`ENDCMT` | `BR-ADDGBCMT-01`～`BR-ADDGBCMT-05` | `AddGuestbookCommentService#submit` | `POST /api/guestbook` | `/guestbook/add?profile=` |
 | `READGBCMT` | `GETTLCMT`/`READDB` | `BR-READGBCMT-01`～`BR-READGBCMT-05` | `ReadGuestbookCommentService#read` | `GET /api/guestbook/{id}` | `/guestbook/read?profile=` |
 | `LRN400` | `PARSESCRIPT`/`PRFRMACTN`/`JUMPTO`/`PAGEFWD`/`PAGEBACK`/`CHKPARM` | `BR-LRN400-01`～`BR-LRN400-05` | `Learn400Service#start/pageFwd/pageBack` | `GET /api/learn400/{owner}[/{fwd|back}]` | `/learn400?owner=` |
-| `LRN400AUT` | `PAGEFWD`/`PAGEBACK` | `BR-LRN400AUT-01`～`BR-LRN400AUT-04` | `Learn400AutoService#start/pageFwd/pageBack` | `GET /api/learn400/{owner}/fwd` | `/learn400/auto` |
-| `ADMLRN400` | `PAGEFWD`/`PAGEBACK`/`WRITERCD`/`UPDRCD`/`CRTRCD` | `BR-ADMLRN400-01`～`BR-ADMLRN400-05` | `AdminLearn400Service#pageFwd/pageBack/save` | `GET/POST /api/learn400/admin`（サービス対応） | `/admin` |
+| `LRN400AUT` | `PAGEFWD`/`PAGEBACK` | `BR-LRN400AUT-01`～`BR-LRN400AUT-04` | `Learn400AutoService#start/pageFwd/pageBack` | `GET /api/learn400/auto/{owner}` | `/learn400/auto` |
+| `ADMLRN400` | `PAGEFWD`/`PAGEBACK`/`WRITERCD`/`UPDRCD`/`CRTRCD` | `BR-ADMLRN400-01`～`BR-ADMLRN400-05` | `AdminLearn400Service#start/pageFwd/pageBack/save` | `GET/POST /api/admin/learn400` | `/admin/learn400` |
 | `EXHBMENU` | `GETEXHB`/`DOVOTE`/`DOLRN400`/`ADMKIOSK`/`GETPSWRD` | `BR-EXHBMENU-01`～`BR-EXHBMENU-07` | `ExhibitMenuService#load/select/exitKiosk` | `GET /api/menu/{profile}` | `/menu?profile=` |
-| `ADMVOTERPT` | `READVOTE`/`CHKPARM` | `BR-ADMVOTERPT-01`～`BR-ADMVOTERPT-04` | `AdminVoteReportService#readVote` | `GET /api/admin/votes/{profile}` | `/admin` |
-| `ADMCRTEXHB` | `LOADEXHB`/`WRITEEXHB`/`DELRCD`/`CHKOFRS`/`CHKPARM` | `BR-ADMCRTEXHB-01`～`BR-ADMCRTEXHB-07` | `AdminExhibitService#load/writeExhb/delRcd` | `GET/POST/DELETE /api/admin/exhibits` | `/admin` |
-| `ADMHIDECMT` | `READDB`/`HIDECMTSR`/`CHKUSRPRF`/`CHKPARM` | `BR-ADMHIDECMT-01`～`BR-ADMHIDECMT-04` | `AdminHideCommentService#read/update` | `POST /api/admin/comments/{id}/visibility` | `/admin` |
-| `ADMADDSOFR`/`ADMOFRLIST` | `ADDTODB`/一覧 | `BR-ADMADDSOFR-01`～`BR-ADMADDSOFR-02` | `AdminSecurityOfficerService#add/list` | `GET/POST /api/admin/officers` | `/admin` |
-| `ADMSETTING` | `SETUPMAIN`/`ADDTODB` | `BR-ADMSETTING-01`～`BR-ADMSETTING-03` | `AdminSettingService#load/save` | `GET/POST /api/admin/settings` | `/admin` |
+| `ADMVOTERPT` | `READVOTE`/`CHKPARM` | `BR-ADMVOTERPT-01`～`BR-ADMVOTERPT-04` | `AdminVoteReportService#readVote` | `GET /api/admin/votes/{profile}` | `/admin/votes` |
+| `ADMCRTEXHB` | `LOADEXHB`/`WRITEEXHB`/`DELRCD`/`CHKOFRS`/`CHKPARM` | `BR-ADMCRTEXHB-01`～`BR-ADMCRTEXHB-07` | `AdminExhibitService#loadSession/writeExhb/delRcd` | `GET/POST/DELETE /api/admin/exhibits` | `/admin/exhibits` |
+| `ADMHIDECMT` | `READDB`/`HIDECMTSR`/`CHKUSRPRF`/`CHKPARM` | `BR-ADMHIDECMT-01`～`BR-ADMHIDECMT-04` | `AdminHideCommentService#read/list/update` | `GET /api/guestbook`, `POST /api/admin/comments/{id}/visibility` | `/admin/comments` |
+| `ADMADDSOFR`/`ADMOFRLIST` | `ADDTODB`/一覧 | `BR-ADMADDSOFR-01`～`BR-ADMADDSOFR-02` | `AdminSecurityOfficerService#add/list` | `GET/POST /api/admin/officers` | `/admin/officers` |
+| `ADMSETTING` | `SETUPMAIN`/`ADDTODB` | `BR-ADMSETTING-01`～`BR-ADMSETTING-03` | `AdminSettingService#load/save` | `GET/POST /api/admin/settings` | `/admin/settings` |
 | `BEEMOVIE` | `CLEARSR`/`LOADSR` | `BR-BEEMOVIE-01`～`BR-BEEMOVIE-02` | `BeeMovieService#all` | `GET /api/beemovie` | `/admin/beemovie` |
 | `CREDITS` | `SCREEN1` | `BR-CREDITS-01` | `StaticScreenService#credits` | `GET /api/static/credits` | `/credits` |
-| `NTRSTIT` | `INTERTEST` | `BR-NTRSTIT-01` | `StaticScreenService#help` | `GET /api/static/help` | `/vote?help=1` |
+| `NTRSTIT` | `INTERTEST` | `BR-NTRSTIT-01` | `StaticScreenService#help` | `GET /api/static/help` | `/help` |
 | `PARAMETER` | `TESTPARM` | `BR-PARAMETER-01` | `StaticScreenService#parameters` | サービス対応 | テスト用画面 |
 | `PRTLSTVOTE`/`PRTLSTCMT`/`PRINTER` | 帳票出力 | `BR-PRTLSTVOTE-01`～`BR-PRTLSTVOTE-03` | `PrintSpoolService#printVoteTicket/printCommentTicket` | `GET /api/print/spool` | 投票・コメント成功画面 |
 | `OLDADDVOTE`/`OLDVOTE` | 旧版処理 | `BR-OLDADDVOTE-01`～`BR-OLDADDVOTE-03` | 非移行（仕様資料のみ） | なし | なし |
@@ -72,8 +72,8 @@
 | `READCMT` | `guestbook-read.html` | コメント参照 |
 | `MAIN`/`MAINADMIN` | `learn400.html` | LEARN/400 |
 | `SFLCTL`/`SFLDATA` | `beemovie.html` | BEEMOVIE |
-| `INTERTEST` | `vote.html` のヘルプ領域 | NTRSTIT |
+| `INTERTEST` | `help.html` | `/help` |
 | `SCREEN1` | `static.html` | CREDITS |
 | `TESTPARM` | API/テスト用画面 | PARAMETER |
 | `MENU` | `menu.html` | EXHBMENU |
-| `SETUPMAIN`/`ADMSCR` | `admin.html` | 管理画面 |
+| `SETUPMAIN`/`ADMSCR` | `admin.html`, `admin-settings.html` | `/admin`, `/admin/settings` |
