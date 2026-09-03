@@ -101,7 +101,7 @@ public class Vcf400UiController {
         model.addAttribute("profile", profile);
         model.addAttribute("option", option);
         return switch (option) {
-            case 1 -> "redirect:/learn400?owner=" + profile;
+            case 1 -> "redirect:/learn400?owner=LRN400STR";
             case 11 -> "redirect:/help?next=/vote?profile=" + profile;
             case 12 -> "redirect:/help?next=/guestbook/add?profile=" + profile;
             case 13 -> "redirect:/help?next=/guestbook/read?profile=" + profile;
@@ -226,6 +226,7 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = "ASHIBATA") String profile,
             Model model) {
         model.addAttribute("profile", profile);
+        model.addAttribute("totalComments", readCommentService.totalComments());
         return "guestbook-read";
     }
 
@@ -235,7 +236,10 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = "0") int commentId,
             Model model) {
         model.addAttribute("profile", profile);
-        model.addAttribute("result", readCommentService.read(profile, commentId));
+        ReadGuestbookCommentService.CommentView result =
+                readCommentService.read(profile, commentId);
+        model.addAttribute("result", result);
+        model.addAttribute("totalComments", result.totalComments());
         return "guestbook-read";
     }
 

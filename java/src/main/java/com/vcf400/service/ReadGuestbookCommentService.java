@@ -35,7 +35,7 @@ public class ReadGuestbookCommentService {
     }
 
     /** RPG: BEGSR GETTLCMT; BR-READGBCMT-05. */
-    private long getTotalComments() {
+    public long totalComments() {
         return comments.findAll()
                 .stream()
                 .mapToInt(GuestbookComment::getCmtId)
@@ -47,7 +47,7 @@ public class ReadGuestbookCommentService {
     public CommentView read(String profile, int id) {
         profile = DdsField.truncate(profile, 20);
         String userProfile = chkParm(profile);
-        long totalComments = getTotalComments();
+        long totalComments = totalComments();
         if (id == 0) {
             return new CommentView(
                     false,

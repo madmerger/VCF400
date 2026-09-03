@@ -35,7 +35,7 @@ public class ReadGuestbookCommentService {
     }
 
     /** RPG: BEGSR GETTLCMT; BR-READGBCMT-05. */
-    private long getTotalComments() {
+    public long totalComments() {
 <span class="fc" id="L39">        return comments.findAll()</span>
 <span class="fc" id="L40">                .stream()</span>
 <span class="fc" id="L41">                .mapToInt(GuestbookComment::getCmtId)</span>
@@ -47,7 +47,7 @@ public class ReadGuestbookCommentService {
     public CommentView read(String profile, int id) {
 <span class="fc" id="L48">        profile = DdsField.truncate(profile, 20);</span>
 <span class="fc" id="L49">        String userProfile = chkParm(profile);</span>
-<span class="fc" id="L50">        long totalComments = getTotalComments();</span>
+<span class="fc" id="L50">        long totalComments = totalComments();</span>
 <span class="fc bfc" id="L51" title="All 2 branches covered.">        if (id == 0) {</span>
 <span class="fc" id="L52">            return new CommentView(</span>
                     false,

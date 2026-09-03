@@ -18,7 +18,7 @@
 <button type="submit">Enter</button>
 </form>
 <nav class="menu-grid">
-<a th:href="@{/learn400(owner=${profile})}">1 LEARN/400</a>
+<a href="/learn400?owner=LRN400STR">1 LEARN/400</a>
 <a th:href="@{/help(next='/vote?profile=' + ${profile})}">11 Nominate</a>
 <a th:href="@{/help(next='/guestbook/add?profile=' + ${profile})}">12 Sign Guestbook</a>
 <a th:href="@{/help(next='/guestbook/read?profile=' + ${profile})}">13 Read Guestbook</a>

@@ -66,6 +66,18 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         }
 
         @Test
+        @DisplayName("UI: VCFMAINのLEARN/400はLRN400STRへ遷移する")
+        void redirectsLearnOptionToGenericLearn() throws Exception {
+            mockMvc.perform(post("/")
+                            .param("profile", "ASHIBATA")
+                            .param("option", "1"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(header().string(
+                            "Location",
+                            "/learn400?owner=LRN400STR"));
+        }
+
+        @Test
         @DisplayName("UI: EXHBMENUを表示する")
         void rendersMenu() throws Exception {
             String body = mockMvc.perform(get("/menu?profile=ASHIBATA"))
@@ -124,6 +136,26 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     "Devin",
                     "IBM i on PUB400 Demo",
                     "VCF/400 is running on PUB400.");
+        }
+
+        @Test
+        @DisplayName("UI: READCMT初期表示は最大コメントIDを4桁表示する")
+        void rendersInitialReadCommentCount() throws Exception {
+            comments.deleteAll();
+            comments.save(new GuestbookComment(
+                    1,
+                    "Y",
+                    "ASHIBATA",
+                    "Devin",
+                    "VCF/400 is running on PUB400."));
+
+            String body = mockMvc.perform(get("/guestbook/read?profile=ASHIBATA"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains("Currently hosting 0001 comments and counting.");
         }
 
         @Test
