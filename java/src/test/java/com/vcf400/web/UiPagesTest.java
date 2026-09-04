@@ -115,7 +115,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         void rendersAddComment() {
             String body = rest.getForEntity("/guestbook/add?profile=ASHIBATA", String.class).getBody();
             assertThat(body).contains(
-                    "VINTAGE COMPUTER FESTIVAL  GUESTBOOK/400 - コメントを追加",
+                    "ヴィンテージ・コンピュータ・フェスティバル  GUESTBOOK/400 - コメントを追加",
                     "maxlength=\"20\"",
                     "maxlength=\"200\"");
         }
