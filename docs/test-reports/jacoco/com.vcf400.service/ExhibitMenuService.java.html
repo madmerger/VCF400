@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExhibitMenuService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.service</a> &gt; <span class="el_source">ExhibitMenuService.java</span></div><h1>ExhibitMenuService.java</h1><pre class="source lang-java linenums">package com.vcf400.service;
+
+import com.vcf400.domain.Exhibit;
+import com.vcf400.domain.ExhibitRepository;
+import com.vcf400.domain.SettingRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+/** Java implementation of RPG program EXHBMENU. */
+public class ExhibitMenuService {
+
+    private final ExhibitRepository exhibits;
+    private final SettingRepository settings;
+
+    public ExhibitMenuService(
+            ExhibitRepository exhibits,
+<span class="fc" id="L17">            SettingRepository settings) {</span>
+<span class="fc" id="L18">        this.exhibits = exhibits;</span>
+<span class="fc" id="L19">        this.settings = settings;</span>
+<span class="fc" id="L20">    }</span>
+
+<span class="fc" id="L22">    public record MenuView(</span>
+            String title,
+            String name,
+            String city,
+            String state,
+            String desc,
+            boolean showVote,
+            boolean showLrn400) {
+    }
+
+    /** RPG: BEGSR GETEXHB; BR-EXHBMENU-01, BR-EXHBMENU-02. */
+    public MenuView load(String profile) {
+<span class="fc" id="L34">        profile = DdsField.truncate(profile, 9);</span>
+<span class="fc" id="L35">        Exhibit exhibit = exhibits.findById(profile).orElse(null);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (exhibit == null) {</span>
+<span class="fc" id="L37">            return new MenuView(null, null, null, null, null, false, false);</span>
+        }
+<span class="fc" id="L39">        return new MenuView(</span>
+<span class="fc" id="L40">                exhibit.getExhBtitle(),</span>
+<span class="fc" id="L41">                exhibit.getExhBitor(),</span>
+<span class="fc" id="L42">                exhibit.getExhBcity(),</span>
+<span class="fc" id="L43">                exhibit.getExhBstate(),</span>
+<span class="fc" id="L44">                exhibit.getExhBdesc(),</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">                exhibit.getEligible() == 1,</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                exhibit.getEnlRn400() == 1);</span>
+    }
+
+    /** RPG: BEGSR DOVOTE/DOLRN400/ADMKIOSK; BR-EXHBMENU-03, BR-EXHBMENU-04, BR-EXHBMENU-06, BR-EXHBMENU-07. */
+    public String select(String profile, int option) {
+<span class="fc" id="L51">        profile = DdsField.truncate(profile, 9);</span>
+<span class="fc" id="L52">        MenuView view = load(profile);</span>
+<span class="pc bpc" id="L53" title="1 of 6 branches missed.">        return switch (option) {</span>
+<span class="pc bpc" id="L54" title="1 of 4 branches missed.">            case 1 -&gt; view.showVote() &amp;&amp; chkAlwVote() ? &quot;VOTESTUB&quot; : &quot;MENU&quot;;</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            case 2 -&gt; view.showLrn400() ? &quot;LRN400STUB&quot; : &quot;MENU&quot;;</span>
+<span class="fc" id="L56">            case 3 -&gt; &quot;ADDGBSTUB&quot;;</span>
+<span class="fc" id="L57">            case 4 -&gt; &quot;READGBSTUB&quot;;</span>
+<span class="fc" id="L58">            case 7 -&gt; &quot;ADMKIOSK&quot;;</span>
+<span class="nc" id="L59">            default -&gt; &quot;MENU&quot;;</span>
+        };
+    }
+
+    /** RPG: BEGSR CHKALWVOTE; BR-EXHBMENU-04. */
+    private boolean chkAlwVote() {
+<span class="fc" id="L65">        return settings.findById(&quot;ALWVOTE&quot;)</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">                .map(setting -&gt; !&quot;N&quot;.equalsIgnoreCase(setting.getValue()))</span>
+<span class="fc" id="L67">                .orElse(true);</span>
+    }
+
+    /** RPG: BEGSR GETPSWRD; BR-EXHBMENU-07. */
+    public boolean exitKiosk(String password) {
+<span class="fc" id="L72">        String truncatedPassword = DdsField.truncate(password, 9);</span>
+<span class="fc" id="L73">        return settings.findById(&quot;PASSWORD&quot;)</span>
+<span class="fc" id="L74">                .map(setting -&gt; setting.getValue().equals(truncatedPassword))</span>
+<span class="fc" id="L75">                .orElse(false);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

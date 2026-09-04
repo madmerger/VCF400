@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('TESTPARM')}"></head>
+<body>
+<div class="screen">
+    <header class="screen-header">TESTPARM</header>
+    <main class="screen-body">
+        <form method="get">
+            <label><span th:text="#{ui.parameter.launch}">LAUNCH</span> <input name="first" maxlength="20" th:value="${first}"></label>
+            <label><span th:text="#{ui.parameter.launch2}">LAUNCH2</span> <input name="second" maxlength="20" th:value="${second}"></label>
+            <button th:text="#{ui.enter}">Enter</button>
+        </form>
+        <p th:text="#{ui.parameter.passed}">渡されたパラメータ:</p>
+        <pre th:text="${first}"></pre>
+        <pre th:text="${second}"></pre>
+    </main>
+    <footer class="function-keys" th:text="#{ui.f3.exit}">F3=終了</footer>
+</div>
+</body>
+</html>

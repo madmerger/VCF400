@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head('HIDECMT')}"></head>
+<body><div class="screen"><header class="screen-header" th:text="#{ui.admin.comments.title}">HIDECMT - コメント表示制御</header><main class="screen-body">
+<p th:if="${result != null}" th:class="${result.success ? 'success' : 'error'}" th:text="${@uiMessageTranslator.tr(result.message)}"></p><table><tr><th th:text="#{ui.admin.comments.id}">コメント ID</th><th th:text="#{ui.admin.comments.exhibit}">展示</th><th th:text="#{ui.admin.comments.name}">名前</th><th th:text="#{ui.admin.comments.visible}">表示</th></tr><tr th:each="comment : ${comments}"><td th:text="${comment.cmtId}"></td><td th:text="${comment.exhbId}"></td><td th:text="${comment.guestName}"></td><td th:text="${comment.visible}"></td></tr></table>
+<form method="post"><label><span th:text="#{ui.admin.comments.id}">コメント ID</span> <input name="commentId" type="number" min="1"></label><label><span th:text="#{ui.admin.comments.yn}">Y/N</span> <input name="visible" maxlength="1"></label><button th:text="#{ui.admin.comments.update}">F10 更新</button></form>
+</main><footer class="function-keys"><span th:text="#{ui.admin.comments.update}">F10 更新</span> <a href="/" th:text="#{ui.f12.cancel}">F12=キャンセル</a></footer></div></body></html>

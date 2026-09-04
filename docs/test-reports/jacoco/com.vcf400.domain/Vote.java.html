@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vote.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.domain</a> &gt; <span class="el_source">Vote.java</span></div><h1>Vote.java</h1><pre class="source lang-java linenums">package com.vcf400.domain;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = &quot;VOTINGDB&quot;)
+public class Vote {
+
+    @Id
+    @Column(name = &quot;BADGENBR&quot;)
+    private Integer badgeNbr;
+
+    @Column(name = &quot;AWARDNBR&quot;)
+    private Integer awardNbr;
+
+    @Column(name = &quot;EXHBNBR&quot;)
+    private String exhNbr;
+
+<span class="fc" id="L22">    protected Vote() {</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="fc" id="L25">    public Vote(Integer badgeNbr, Integer awardNbr, String exhNbr) {</span>
+<span class="fc" id="L26">        this.badgeNbr = badgeNbr;</span>
+<span class="fc" id="L27">        this.awardNbr = awardNbr;</span>
+<span class="fc" id="L28">        this.exhNbr = exhNbr;</span>
+<span class="fc" id="L29">    }</span>
+
+    public Integer getBadgeNbr() {
+<span class="fc" id="L32">        return badgeNbr;</span>
+    }
+
+    public Integer getAwardNbr() {
+<span class="fc" id="L36">        return awardNbr;</span>
+    }
+
+    public String getExhNbr() {
+<span class="fc" id="L40">        return exhNbr;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
