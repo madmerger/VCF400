@@ -4,9 +4,9 @@
 
 | 項目 | 内容 |
 |---|---|
-| 実行日時 | 2026-09-03T00:07:59Z 開始、00:08:06Z 終了 |
-| 実行コマンド | `cd java && mvn verify` |
-| Surefire HTML生成 | `cd java && mvn surefire-report:report -DskipTests` |
+| 実行日時 | 2026-09-04T03:31:25Z 開始、03:31:33Z 終了 |
+| 実行コマンド | `cd java && mvn -q verify` |
+| Surefire HTML生成 | `cd java && mvn -q surefire-report:report -DskipTests` |
 | Java | OpenJDK 17.0.13 |
 | Maven | Apache Maven 3.9.9 |
 | Spring Boot | 3.3.5 |
@@ -17,13 +17,13 @@
 
 | 項目 | 件数 |
 |---|---:|
-| 総テスト件数 | 153 |
-| 成功 | 153 |
+| 総テスト件数 | 157 |
+| 成功 | 157 |
 | 失敗 | 0 |
 | エラー | 0 |
 | スキップ | 0 |
 
-今回の `mvn verify` で全153件が成功した。今回、VCFMAINのLEARN/400遷移先固定と、ゲストブック初期表示の最大コメントID・4桁ゼロ埋めを検証する2ケースを追加した。
+今回の `mvn verify` で全157件が成功した。日本語 UI の MessageSource と RPG メッセージ変換について、UI の表示内容および重複投票メッセージを追加検証した。
 
 ### クラス別件数
 
@@ -49,8 +49,9 @@
 | DdsFieldTest | 1 | 1 | 2 | 4 |
 | VoteApiTest | 1 | 2 | 1 | 4 |
 | AdminApiTest | 2 | 1 | 1 | 4 |
-| UiPagesTest | 24 | 2 | 1 | 27 |
-| **合計** | **82** | **42** | **29** | **153** |
+| UiPagesTest | 24 | 3 | 1 | 28 |
+| UiMessageTranslatorTest | 3 | 0 | 0 | 3 |
+| **合計** | **85** | **43** | **29** | **157** |
 
 全テストは1ケース1メソッドで作成し、サービス層はRPGプログラム別クラス、Web層はAPI/UI別クラスに分割した。サービス層のテストは `@DataJpaTest` と `@Import` によりH2実DBへ接続し、repositoryの実分岐を実行している。
 
@@ -60,7 +61,7 @@ JaCoCoの全体値は、命令数ではなくラインおよびブランチを�
 
 | 範囲 | ライン | ブランチ |
 |---|---:|---:|
-| 全体 | 846/1002 (84.43%) | 197/285 (69.12%) |
+| 全体 | 887/1044 (84.96%) | 200/289 (69.20%) |
 
 ### パッケージ別
 
@@ -68,7 +69,7 @@ JaCoCoの全体値は、命令数ではなくラインおよびブランチを�
 |---|---:|---:|
 | `com.vcf400.service` | 577/611 (94.44%) | 181/216 (83.80%) |
 | `com.vcf400.domain` | 111/118 (94.07%) | 3/6 (50.00%) |
-| `com.vcf400.web.ui` | 111/181 (61.33%) | 13/57 (22.81%) |
+| `com.vcf400.web.ui` | 152/223 (68.16%) | 16/61 (26.23%) |
 | `com.vcf400.web.api` | 28/71 (39.44%) | 0/6 (0.00%) |
 | `com.vcf400.print` | 18/18 (100.00%) | 0/0 (対象なし) |
 | `com.vcf400` | 1/3 (33.33%) | 0/0 (対象なし) |
@@ -83,14 +84,32 @@ JaCoCoの全体値は、命令数ではなくラインおよびブランチを�
 
 カバレッジ未達は、未実装仕様をテストから隠した結果ではなく、旧版非移行コードおよび今回の代表シナリオ外のUI/API分岐によるものである。
 
-## 4. レポートへのリンク
+## 4. 日本語 UI スモークテスト
+
+`java -jar target/vcf400-java-0.0.1-SNAPSHOT.jar` を起動し、`Started Vcf400Application` を確認した。次の主要画面はすべて HTTP 200 で、本文の日本語表示も確認した。
+
+| パス | 確認内容 |
+|---|---|
+| `/` | `VCF/400 メインメニュー`、日本語メニュー |
+| `/learn400?owner=LRN400STR` | `ページ 0001`、LEARN/400本文 |
+| `/help?next=/vote?profile=ASHIBATA` | `NTRSTIT`、日本語続行案内 |
+| `/vote?profile=ASHIBATA` | 日本語投票見出し・入力ラベル |
+| `/guestbook/add?profile=ASHIBATA` | 日本語入力ラベル |
+| `/guestbook/read?profile=ASHIBATA` | 日本語見出し・件数表示 |
+| `/signon` | `VCF/400 サインオン` |
+| `/admin` | 管理メニュー |
+| `/admin/db` | DBVERIFY の日本語見出し |
+
+固定文言を対象に `Must enter`、`Press ENTER`、`Currently hosting`、`Submit`、`Exit`、`Cancel`、`Instructions` の残存がないことを確認した。LEARN/400本文や Bee Movie 台詞などの動的原文は対象外とした。確認ログは `/home/ubuntu/vcf400-japanese-ui-smoke.txt` に保存した。
+
+## 5. レポートへのリンク
 
 - [Surefire HTMLレポート](test-reports/surefire/surefire-report.html)
 - [JaCoCo HTMLレポート](test-reports/jacoco/index.html)
 - 保存済みSurefire XML: [`docs/test-reports/surefire/`](test-reports/surefire/)
 - 保存済みJaCoCo一式: [`docs/test-reports/jacoco/`](test-reports/jacoco/)
 
-## 5. PUB400 E2Eシナリオのcurl確認
+## 6. PUB400 E2Eシナリオのcurl確認
 
 起動したSpring Bootアプリケーションに対して、シナリオ§1〜§6の代表操作をcurlで確認した。確認ログは `/home/ubuntu/vcf400-pub400-e2e-final.txt` に保存した。
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('LRN400AUT')}"></head>
-<body><div class="screen"><header class="screen-header">LRN400AUT - AUTOMATIC LEARN/400</header><main class="screen-body">
-<p>Page <strong id="page" th:text="${learn != null ? learn.outPageNbr : '0001'}">0001</strong></p><pre id="content" th:text="${learn != null ? learn.outContent : ''}"></pre><form method="post" action="/learn400/auto"><input id="owner" type="hidden" name="owner" th:value="${learn != null ? learn.owner : 'LRN400STR'}"><button name="action" value="exit">F3 Stop</button></form>
-</main><footer class="function-keys">AUTO=3 seconds F3=Stop</footer></div>
+<body><div class="screen"><header class="screen-header"><span>LRN400AUT - </span><span th:text="#{ui.learn.auto}">自動 LEARN/400</span></header><main class="screen-body">
+<p><span th:text="#{ui.learn.page}">ページ</span> <strong id="page" th:text="${learn != null ? learn.outPageNbr : '0001'}">0001</strong></p><pre id="content" th:text="${learn != null ? learn.outContent : ''}"></pre><form method="post" action="/learn400/auto"><input id="owner" type="hidden" name="owner" th:value="${learn != null ? learn.owner : 'LRN400STR'}"><button name="action" value="exit" th:text="#{ui.learn.stop}">F3 停止</button></form>
+</main><footer class="function-keys" th:text="#{ui.learn.auto.footer}">自動送り(3秒) F3=停止</footer></div>
 <script>const timer=setInterval(()=>{const owner=document.getElementById('owner').value;fetch('/learn400/auto',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'owner='+encodeURIComponent(owner)+'&action=fwd'}).then(r=>r.text()).then(html=>{const p=html.match(/id="page"[^>]*>([^<]*)</);const c=html.match(/id="content"[^>]*>([\s\S]*?)<\/pre>/);if(p)document.getElementById('page').textContent=p[1];if(c)document.getElementById('content').textContent=c[1]})},3000);</script>
 </body></html>

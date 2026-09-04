@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('SIGNON')}"></head>
 <body><div class="screen">
-<header class="screen-header">VCF/400 SIGN-ON</header>
+<header class="screen-header" th:text="#{ui.signon.title}">VCF/400 サインオン</header>
 <main class="screen-body">
-<p>サインオフしました。ログインユーザーを選択してください。</p>
+<p th:text="#{ui.signon.signedoff}">サインオフしました。ログインユーザーを選択してください。</p>
 <form method="post" action="/signon">
-<label>ログインユーザー
+<label><span th:text="#{ui.vcfmain.login}">ログインユーザー</span>
 <select name="profile">
 <option value="ASHIBATA" th:selected="${profile == 'ASHIBATA'}">ASHIBATA</option>
 <option value="DEMO400" th:selected="${profile == 'DEMO400'}">DEMO400</option>
@@ -14,7 +14,7 @@
 <option value="MM2024" th:selected="${profile == 'MM2024'}">MM2024</option>
 </select>
 </label>
-<button type="submit">Enter</button>
+<button type="submit" th:text="#{ui.enter}">Enter</button>
 </form>
-</main><footer th:replace="~{fragments/screen :: footer('ENTER=Sign on F12=Cancel')}"></footer>
+</main><footer th:replace="~{fragments/screen :: footer('ENTER=サインオン F12=キャンセル')}"></footer>
 </div></body></html>

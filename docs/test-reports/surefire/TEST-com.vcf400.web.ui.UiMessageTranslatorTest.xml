@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.vcf400.service.StaticScreenServiceTest$Boundary" time="3.153" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.vcf400.web.ui.UiMessageTranslatorTest" time="0.003" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -7,6 +7,7 @@
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="catalina.useNaming" value="false"/>
     <property name="user.timezone" value="Etc/UTC"/>
     <property name="org.jboss.logging.provider" value="slf4j"/>
     <property name="os.name" value="Linux"/>
@@ -42,12 +43,15 @@
     <property name="localRepository" value="/home/ubuntu/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-17"/>
     <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="catalina.home" value="/tmp/tomcat.0.9891421344435965339"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
     <property name="java.version" value="17.0.13"/>
     <property name="user.dir" value="/home/ubuntu/repos/VCF400/java"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="PID" value="5069"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="catalina.base" value="/tmp/tomcat.0.5539701423477655052"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
@@ -57,75 +61,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="truncatesSecondParameter" classname="com.vcf400.service.StaticScreenServiceTest$Boundary" time="0.456">
-    <system-out><![CDATA[03:31:25.451 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.vcf400.service.StaticScreenServiceTest]: StaticScreenServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-03:31:25.567 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.vcf400.Vcf400Application for test class com.vcf400.service.StaticScreenServiceTest
-03:31:25.592 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.vcf400.service.StaticScreenServiceTest$Boundary]: Boundary does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-03:31:25.598 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.vcf400.Vcf400Application for test class com.vcf400.service.StaticScreenServiceTest$Boundary
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v3.3.5)
-
-2026-09-04T03:31:25.906Z  INFO 5069 --- [           main] c.v.service.StaticScreenServiceTest      : Starting StaticScreenServiceTest using Java 17.0.13 with PID 5069 (started by ubuntu in /home/ubuntu/repos/VCF400/java)
-2026-09-04T03:31:25.907Z  INFO 5069 --- [           main] c.v.service.StaticScreenServiceTest      : No active profile set, falling back to 1 default profile: "default"
-2026-09-04T03:31:26.190Z  INFO 5069 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-09-04T03:31:26.240Z  INFO 5069 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 8 JPA repository interfaces.
-2026-09-04T03:31:26.278Z  INFO 5069 --- [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
-2026-09-04T03:31:26.385Z  INFO 5069 --- [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:d2250d66-7150-4337-ad1c-97905a80db07;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
-2026-09-04T03:31:26.708Z  INFO 5069 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-09-04T03:31:26.765Z  INFO 5069 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-09-04T03:31:26.800Z  INFO 5069 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-09-04T03:31:27.063Z  INFO 5069 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-09-04T03:31:27.920Z  INFO 5069 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: drop table if exists "awarddb" cascade 
-Hibernate: drop table if exists "bmovdb" cascade 
-Hibernate: drop table if exists "exhbdb" cascade 
-Hibernate: drop table if exists "guestbkdb" cascade 
-Hibernate: drop table if exists "lrn400str" cascade 
-Hibernate: drop table if exists "secofrs" cascade 
-Hibernate: drop table if exists "settings" cascade 
-Hibernate: drop table if exists "votingdb" cascade 
-Hibernate: create table "awarddb" ("awardid" integer not null, "awarddesc" varchar(255), "awardtitle" varchar(255), primary key ("awardid"))
-Hibernate: create table "bmovdb" ("line" varchar(255) not null, "speaker" varchar(255), primary key ("line"))
-Hibernate: create table "exhbdb" ("eligible" integer, "enlrn400" integer, "exhbdbid" integer, "exhbcity" varchar(255), "exhbdesc" varchar(255), "exhbitor" varchar(255), "exhbstate" varchar(255), "exhbtitle" varchar(255), "exhusrprf" varchar(255) not null, primary key ("exhusrprf"))
-Hibernate: create table "guestbkdb" ("cmtid" integer not null, "exhbid" varchar(255), "guestcmt" varchar(255), "guestname" varchar(255), "visible" varchar(255), primary key ("cmtid"))
-Hibernate: create table "lrn400str" ("pagenbr" integer not null, "content" varchar(255), "extra" varchar(255), "owner" varchar(255) not null, primary key ("pagenbr", "owner"))
-Hibernate: create table "secofrs" ("userprof" varchar(255) not null, primary key ("userprof"))
-Hibernate: create table "settings" ("setting" varchar(255) not null, "value" varchar(255), primary key ("setting"))
-Hibernate: create table "votingdb" ("awardnbr" integer, "badgenbr" integer not null, "exhbnbr" varchar(255), primary key ("badgenbr"))
-2026-09-04T03:31:27.962Z  INFO 5069 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-09-04T03:31:28.258Z  INFO 5069 --- [           main] c.v.service.StaticScreenServiceTest      : Started StaticScreenServiceTest in 2.624 seconds (process running for 3.545)
-Hibernate: select a1_0."awardid",a1_0."awarddesc",a1_0."awardtitle" from "awarddb" a1_0 where a1_0."awardid"=?
-Hibernate: select a1_0."awardid",a1_0."awarddesc",a1_0."awardtitle" from "awarddb" a1_0 where a1_0."awardid"=?
-Hibernate: select e1_0."exhusrprf",e1_0."eligible",e1_0."enlrn400",e1_0."exhbcity",e1_0."exhbdesc",e1_0."exhbitor",e1_0."exhbstate",e1_0."exhbtitle",e1_0."exhbdbid" from "exhbdb" e1_0 where e1_0."exhusrprf"=?
-Hibernate: select e1_0."exhusrprf",e1_0."eligible",e1_0."enlrn400",e1_0."exhbcity",e1_0."exhbdesc",e1_0."exhbitor",e1_0."exhbstate",e1_0."exhbtitle",e1_0."exhbdbid" from "exhbdb" e1_0 where e1_0."exhusrprf"=?
-Hibernate: select s1_0."setting",s1_0."value" from "settings" s1_0 where s1_0."setting"=?
-Hibernate: select s1_0."setting",s1_0."value" from "settings" s1_0 where s1_0."setting"=?
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-]]></system-out>
-  </testcase>
-  <testcase name="truncatesFirstParameter" classname="com.vcf400.service.StaticScreenServiceTest$Boundary" time="0.013">
-    <system-out><![CDATA[Hibernate: select a1_0."awardid",a1_0."awarddesc",a1_0."awardtitle" from "awarddb" a1_0 where a1_0."awardid"=?
-Hibernate: select a1_0."awardid",a1_0."awarddesc",a1_0."awardtitle" from "awarddb" a1_0 where a1_0."awardid"=?
-Hibernate: select e1_0."exhusrprf",e1_0."eligible",e1_0."enlrn400",e1_0."exhbcity",e1_0."exhbdesc",e1_0."exhbitor",e1_0."exhbstate",e1_0."exhbtitle",e1_0."exhbdbid" from "exhbdb" e1_0 where e1_0."exhusrprf"=?
-Hibernate: select e1_0."exhusrprf",e1_0."eligible",e1_0."enlrn400",e1_0."exhbcity",e1_0."exhbdesc",e1_0."exhbitor",e1_0."exhbstate",e1_0."exhbtitle",e1_0."exhbdbid" from "exhbdb" e1_0 where e1_0."exhusrprf"=?
-Hibernate: select s1_0."setting",s1_0."value" from "settings" s1_0 where s1_0."setting"=?
-Hibernate: select s1_0."setting",s1_0."value" from "settings" s1_0 where s1_0."setting"=?
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-Hibernate: select lp1_0."owner",lp1_0."pagenbr",lp1_0."content",lp1_0."extra" from "lrn400str" lp1_0 where (lp1_0."owner",lp1_0."pagenbr") in ((?,?))
-]]></system-out>
-  </testcase>
+  <testcase name="leavesUnknownMessageUnchanged" classname="com.vcf400.web.ui.UiMessageTranslatorTest" time="0.001"/>
+  <testcase name="trimsTrailingWhitespaceBeforeTranslation" classname="com.vcf400.web.ui.UiMessageTranslatorTest" time="0.001"/>
+  <testcase name="translatesKnownRpgMessage" classname="com.vcf400.web.ui.UiMessageTranslatorTest" time="0.0"/>
 </testsuite>

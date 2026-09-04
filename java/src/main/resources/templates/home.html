@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('VCFMAIN')}"></head>
 <body><div class="screen">
-<header th:replace="~{fragments/screen :: header('VCFMAIN - VCF/400 MAIN MENU')}"></header>
+<header th:replace="~{fragments/screen :: header(#{ui.vcfmain.title})}"></header>
 <main class="screen-body">
-<p>ログインユーザーを選択してください。</p>
+<p th:text="#{ui.vcfmain.choose}">ログインユーザーを選択してください。</p>
 <form method="post" action="/">
-<label>ログインユーザー
+<label><span th:text="#{ui.vcfmain.login}">ログインユーザー</span>
 <select name="profile">
 <option value="ASHIBATA" th:selected="${profile == 'ASHIBATA'}">ASHIBATA</option>
 <option value="DEMO400" th:selected="${profile == 'DEMO400'}">DEMO400</option>
@@ -14,17 +14,17 @@
 <option value="MM2024" th:selected="${profile == 'MM2024'}">MM2024</option>
 </select>
 </label>
-<label>オプション番号 <input name="option" type="number" value="1" min="1"></label>
-<button type="submit">Enter</button>
+<label><span th:text="#{ui.vcfmain.option}">オプション番号</span> <input name="option" type="number" value="1" min="1"></label>
+<button type="submit" th:text="#{ui.enter}">Enter</button>
 </form>
 <nav class="menu-grid">
-<a href="/learn400?owner=LRN400STR">1 LEARN/400</a>
-<a th:href="@{/help(next='/vote?profile=' + ${profile})}">11 Nominate</a>
-<a th:href="@{/help(next='/guestbook/add?profile=' + ${profile})}">12 Sign Guestbook</a>
-<a th:href="@{/help(next='/guestbook/read?profile=' + ${profile})}">13 Read Guestbook</a>
-<a th:href="@{/menu(profile=${profile})}">80 Exhibit menu</a>
-<a href="/admin">90 Admin</a>
+<a href="/learn400?owner=LRN400STR" th:text="#{ui.menu.learn}">1 LEARN/400</a>
+<a th:href="@{/help(next='/vote?profile=' + ${profile})}" th:text="#{ui.menu.nominate}">11 展示を賞に推薦(投票)</a>
+<a th:href="@{/help(next='/guestbook/add?profile=' + ${profile})}" th:text="#{ui.menu.sign}">12 ゲストブックに記帳</a>
+<a th:href="@{/help(next='/guestbook/read?profile=' + ${profile})}" th:text="#{ui.menu.read}">13 ゲストブックを読む</a>
+<a th:href="@{/menu(profile=${profile})}" th:text="#{ui.menu.exhibit}">80 展示メニュー</a>
+<a href="/admin" th:text="#{ui.menu.admin}">90 管理</a>
 </nav>
 <p class="function-keys"><a href="/signon">F3/F12 サインオフ</a></p>
-</main><footer th:replace="~{fragments/screen :: footer('F3=Exit F12=Cancel')}"></footer>
+</main><footer th:replace="~{fragments/screen :: footer('F3=終了 F12=キャンセル')}"></footer>
 </div></body></html>

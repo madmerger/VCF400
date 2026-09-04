@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('READCMT')}"></head>
-<body><div class="screen"><header class="screen-header">GUESTBOOK/400 - Read a Comment</header><main class="screen-body">
-<p th:text="|Currently hosting ${#numbers.formatInteger(totalComments, 4)} comments and counting.|">Currently hosting 0000 comments and counting.</p><p th:if="${result != null and !result.success}" class="error" th:text="${result.errLine}"></p><section th:if="${result != null}"><p><strong th:text="${result.outName}"></strong>  says to:  <span th:text="${result.outTitle}"></span></p><pre th:text="${result.outCmt}"></pre></section>
-<form method="post" action="/guestbook/read"><input type="hidden" name="profile" th:value="${profile}"><label>Enter a Comment ID <input name="commentId" type="number" min="1" maxlength="4"></label><button type="submit">F5 Submit</button></form>
-</main><footer class="function-keys">F5=Read <a href="/">F12=Cancel</a></footer></div></body></html>
+<body><div class="screen"><header class="screen-header" th:text="#{ui.guest.read.title}">GUESTBOOK/400 - コメントを読む</header><main class="screen-body">
+<p th:text="#{ui.guest.read.count(${totalCommentsDisplay})}">現在 0000 件のコメントを掲載中です。</p><p th:if="${result != null and !result.success}" class="error" th:text="${@uiMessageTranslator.tr(result.errLine)}"></p><section th:if="${result != null}"><p><strong th:text="${@uiMessageTranslator.tr(result.outName)}"></strong> <span th:text="#{ui.guest.read.says}">さんから〈展示名〉へ:</span> <span th:text="${result.outTitle}"></span></p><pre th:text="${@uiMessageTranslator.tr(result.outCmt)}"></pre></section>
+<form method="post" action="/guestbook/read"><input type="hidden" name="profile" th:value="${profile}"><label><span th:text="#{ui.guest.read.id}">コメント ID を入力:</span> <input name="commentId" type="number" min="1" maxlength="4"></label><button type="submit" th:text="#{ui.f5.submit}">F5=送信</button></form>
+</main><footer class="function-keys"><span th:text="#{ui.learn.next}">F5 次へ</span> <a href="/" th:text="#{ui.f12.cancel}">F12=キャンセル</a></footer></div></body></html>

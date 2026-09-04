@@ -61,8 +61,8 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     "NOVOTE",
                     "MM2024",
                     "1 LEARN/400",
-                    "11 Nominate",
-                    "80 Exhibit menu");
+                    "11 展示を賞に推薦(投票)",
+                    "80 展示メニュー");
         }
 
         @Test
@@ -98,7 +98,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .getResponse()
                     .getContentAsString();
 
-            assertThat(body).contains("NTRSTIT");
+            assertThat(body).contains("NTRSTIT", "右Ctrl(=Enter)で続行してください。");
         }
 
         @Test
@@ -106,7 +106,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         void rendersVote() {
             String body = rest.getForEntity("/vote?profile=ASHIBATA", String.class).getBody();
             assertThat(body).contains(
-                    "VINTAGE COMPUTER FESTIVAL  NOMINATE EXHIBIT FOR AWARD",
+                    "ヴィンテージ・コンピュータ・フェスティバル  展示を賞に推薦",
                     "readonly");
         }
 
@@ -115,7 +115,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         void rendersAddComment() {
             String body = rest.getForEntity("/guestbook/add?profile=ASHIBATA", String.class).getBody();
             assertThat(body).contains(
-                    "VINTAGE COMPUTER FESTIVAL  GUESTBOOK/400 - ADD COMMENT",
+                    "VINTAGE COMPUTER FESTIVAL  GUESTBOOK/400 - コメントを追加",
                     "maxlength=\"20\"",
                     "maxlength=\"200\"");
         }
@@ -132,7 +132,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .getContentAsString();
 
             assertThat(body).contains(
-                    "Currently hosting 0002 comments and counting.",
+                    "現在 0002 件のコメントを掲載中です。",
                     "Devin",
                     "IBM i on PUB400 Demo",
                     "VCF/400 is running on PUB400.");
@@ -155,7 +155,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .getResponse()
                     .getContentAsString();
 
-            assertThat(body).contains("Currently hosting 0001 comments and counting.");
+            assertThat(body).contains("現在 0001 件のコメントを掲載中です。");
         }
 
         @Test
@@ -168,7 +168,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     (MockHttpSession) initial.getRequest().getSession(false);
 
             assertThat(initial.getResponse().getContentAsString())
-                    .contains("Page", "0001", "Welcome to LEARN/400! This is page 1.");
+                    .contains("ページ", "0001", "Welcome to LEARN/400! This is page 1.");
 
             String firstPage = mockMvc.perform(post("/learn400")
                             .session(session)
@@ -178,7 +178,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .andReturn()
                     .getResponse()
                     .getContentAsString();
-            assertThat(firstPage).contains("Page", "0002", "This is page 2");
+            assertThat(firstPage).contains("ページ", "0002", "This is page 2");
 
             String secondPage = mockMvc.perform(post("/learn400")
                             .session(session)
@@ -189,10 +189,10 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                             .getResponse()
                             .getContentAsString();
 
-            assertThat(secondPage).contains("Page", "0003", "This is the last page.");
+            assertThat(secondPage).contains("ページ", "0003", "This is the last page.");
 
             assertThat(secondPage).contains(
-                    "Page",
+                    "ページ",
                     "0003",
                     "This is the last page.",
                     "END");
@@ -225,7 +225,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     .getContentAsString();
 
             assertThat(body).contains(
-                    "Page",
+                    "ページ",
                     "0001",
                     "Welcome to LEARN/400! This is page 1.");
         }
@@ -250,8 +250,8 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
             assertThat(body).contains(
                     "IBM i on PUB400 Demo",
-                    "Best in Show votes",
-                    "Votes in DB",
+                    "ベスト・イン・ショー賞の票数",
+                    "DB内の投票数",
                     ">1<");
         }
 
@@ -327,7 +327,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
         @DisplayName("UI: サインオン画面でユーザーを再選択できる")
         void rendersSignon() {
             String body = rest.getForEntity("/signon", String.class).getBody();
-            assertThat(body).contains("VCF/400 SIGN-ON", "ASHIBATA", "MM2024");
+            assertThat(body).contains("VCF/400 サインオン", "ASHIBATA", "MM2024");
         }
     }
 
@@ -352,7 +352,7 @@ class UiPagesTest extends AbstractWebIntegrationTest {
                     String.class);
 
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-            assertThat(response.getBody()).contains("Must enter Exhibit ID");
+            assertThat(response.getBody()).contains("展示 ID を入力してください");
         }
 
         @Test
@@ -370,8 +370,31 @@ class UiPagesTest extends AbstractWebIntegrationTest {
 
             assertThat(body).contains(
                     "class=\"success\"",
-                    "Your vote has been RECORDED!",
-                    "Press ENTER to return to the main menu.");
+                    "あなたの投票は記録されました!",
+                    "Enter キーでメインメニューに戻ります。");
+        }
+
+        @Test
+        @DisplayName("BR-ADDVOTE-05/UI: 重複投票メッセージを日本語表示する")
+        void displaysDuplicateVoteMessageInJapanese() throws Exception {
+            mockMvc.perform(post("/vote")
+                            .param("profile", "ASHIBATA")
+                            .param("badge", "9203")
+                            .param("exhibitId", "ASHIBATA")
+                            .param("award", "1"))
+                    .andExpect(status().isOk());
+
+            String body = mockMvc.perform(post("/vote")
+                            .param("profile", "ASHIBATA")
+                            .param("badge", "9203")
+                            .param("exhibitId", "ASHIBATA")
+                            .param("award", "1"))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertThat(body).contains("すでに投票済みです。");
         }
     }
 

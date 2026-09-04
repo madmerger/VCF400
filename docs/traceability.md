@@ -1,6 +1,6 @@
 # フェーズ2 トレーサビリティ
 
-仕様書の BR-ID と Java の対応を以下に示す。RPG の 1 プログラムを原則 1 サービスクラスへ対応させ、画面処理は REST と Thymeleaf UI の両方から利用できるようにした。
+仕様書の BR-ID と Java の対応を以下に示す。RPG の 1 プログラムを原則 1 サービスクラスへ対応させ、画面処理は REST と Thymeleaf UI の両方から利用できるようにした。Thymeleaf UI の固定表示文言は `src/main/resources/messages.properties` の MessageSource を参照し、画面表示のみ日本語化している(RPG メッセージ定数・service・REST API は英語仕様を維持)。
 
 ## BR-ID 対応表
 

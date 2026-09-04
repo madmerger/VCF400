@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('VOTE1')}"></head>
 <body><div class="screen">
-<header th:replace="~{fragments/screen :: header('VINTAGE COMPUTER FESTIVAL  NOMINATE EXHIBIT FOR AWARD')}"></header>
+<header th:replace="~{fragments/screen :: header(#{ui.vote.title})}"></header>
 <main class="screen-body">
 <p th:if="${result != null and result.errLine != null}"
    th:class="${result.success ? 'success' : 'error'}"
-   th:text="${result.errLine}"></p>
+   th:text="${@uiMessageTranslator.tr(result.errLine)}"></p>
 <section th:if="${result != null and result.screen == 'VOTEEND'}" class="success">
-<h2>VOTEEND</h2>
-<p>Your vote has been RECORDED! Thank you for participating in the awards show for Vintage Computer Festival Southeast 2024! Enjoy the rest of our exhibits and the rest of the Southern Fried Gaming Expo!</p>
-<p>Press ENTER to return to the main menu.</p>
-<a class="button" href="/">Enter</a>
+<h2 th:text="#{ui.vote.end.title}">VOTEEND</h2>
+<p th:text="#{ui.vote.end.message}">あなたの投票は記録されました!</p>
+<p th:text="#{ui.vote.end.prompt}">Enter キーでメインメニューに戻ります。</p>
+<a class="button" href="/" th:text="#{ui.enter}">Enter</a>
 </section>
-<section th:if="${result != null and result.screen == 'ENDOFCON'}" class="success"><pre>██████  SORRY!  ██████</pre></section>
+<section th:if="${result != null and result.screen == 'ENDOFCON'}" class="success"><pre th:text="${@uiMessageTranslator.tr(result.errLine)}">██████  申し訳ありません!  ██████</pre></section>
 <section th:if="${result == null or (result.screen != 'VOTEEND' and result.screen != 'ENDOFCON')}">
-<p>You may only vote for ONE award.</p><form method="post" action="/vote"><input type="hidden" name="profile" th:value="${profile}"><label>Badge Number <input name="badge" type="number" min="0" max="9999" maxlength="4"></label><label>Exhibit ID <input name="exhibitId" th:value="${profile}" maxlength="9" th:readonly="${profile != 'MM2024'}"></label><label>Award ID <input name="award" type="number" min="0" max="999" maxlength="3"></label><p>001. Best in Show Award<br>002. The Ed Fair Award</p><button type="submit">F5 Submit Vote</button></form>
-</section></main><footer class="function-keys">F5=Submit <a href="/">F12=Cancel</a></footer>
+<p th:text="#{ui.vote.one}">投票できる賞は 1 つだけです。</p><form method="post" action="/vote"><input type="hidden" name="profile" th:value="${profile}"><label><span th:text="#{ui.vote.badge}">バッジ番号</span> <input name="badge" type="number" min="0" max="9999" maxlength="4"></label><label><span th:text="#{ui.vote.exhibit}">展示 ID</span> <input name="exhibitId" th:value="${profile}" maxlength="9" th:readonly="${profile != 'MM2024'}"></label><label><span th:text="#{ui.vote.award}">賞 ID</span> <input name="award" type="number" min="0" max="999" maxlength="3"></label><p><span th:text="#{ui.vote.award1}">001. ベスト・イン・ショー賞</span><br><span th:text="#{ui.vote.award2}">002. エド・フェア賞</span></p><button type="submit" th:text="#{ui.vote.submit}">F5 投票を送信</button></form>
+</section></main><footer class="function-keys"><span th:text="#{ui.f5.submit}">F5=送信</span> <a href="/" th:text="#{ui.f12.cancel}">F12=キャンセル</a></footer>
 </div></body></html>

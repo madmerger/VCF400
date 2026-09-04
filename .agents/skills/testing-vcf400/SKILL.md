@@ -14,7 +14,7 @@ description: How to build, run and end-to-end test the VCF/400 Java (Spring Boot
 ## UI routes and seed data (src/main/resources/data.sql)
 - `/` VCFMAIN main menu (profile select + numeric option; 80 → exhibit menu, 90 → /admin).
 - `/menu?profile=ASHIBATA` EXHBMENU; option 1 = vote (only if exhibit ELIGIBLE=1 and setting ALWVOTE != N), 2 = LEARN/400, 3/4 = guestbook, 7 = exit kiosk (password `VCF2024`).
-- `/help?next=...` NTRSTIT instruction screen, click "RIGHT CTRL(=ENTER) - Continue".
+- `/help?next=...` NTRSTIT instruction screen, click "RIGHT CTRL(=ENTER) - 続行" (画面の固定文言は日本語)。
 - `/vote?profile=X`: badge / exhibitId (prefilled with the profile, readonly unless `MM2024`) / award select. Messages come from `service/RpgMessages.java`.
 - Seed exhibits (since 8bb4ed3, PUB400 scenario): `ASHIBATA` (eligible, ENLRN400=1), `DEMO400`, `NOVOTE` (ELIGIBLE=0 → "Exhibit ineligible for award"), security officer profile `MM2024`. Exhibit ID on `/vote` and `/guestbook/add` is readonly unless profile is `MM2024`. Options: 1 LEARN/400, 11 vote, 12/13 guestbook add/read, 80 exhibit menu, 90 admin; `F3/F12 サインオフ` link → `/signon`; `/admin/db` (DBVERIFY) lists VOTINGDB and GUESTBKDB rows.
 - `/guestbook/add|read?profile=X`, `/learn400?owner=LRN400STR`, `/learn400/auto`, `/admin`, `/admin/votes`, `/admin/spool` (in-memory print spool shows vote/comment tickets).

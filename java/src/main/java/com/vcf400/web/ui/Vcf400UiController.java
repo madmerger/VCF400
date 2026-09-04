@@ -226,7 +226,7 @@ public class Vcf400UiController {
             @RequestParam(defaultValue = "ASHIBATA") String profile,
             Model model) {
         model.addAttribute("profile", profile);
-        model.addAttribute("totalComments", readCommentService.totalComments());
+        addCommentCount(model, readCommentService.totalComments());
         return "guestbook-read";
     }
 
@@ -239,8 +239,13 @@ public class Vcf400UiController {
         ReadGuestbookCommentService.CommentView result =
                 readCommentService.read(profile, commentId);
         model.addAttribute("result", result);
-        model.addAttribute("totalComments", result.totalComments());
+        addCommentCount(model, result.totalComments());
         return "guestbook-read";
+    }
+
+    private void addCommentCount(Model model, long totalComments) {
+        model.addAttribute("totalComments", totalComments);
+        model.addAttribute("totalCommentsDisplay", String.format("%04d", totalComments));
     }
 
     @GetMapping("/learn400")
