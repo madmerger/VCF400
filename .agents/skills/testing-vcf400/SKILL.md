@@ -28,7 +28,8 @@ description: How to build, run and end-to-end test the VCF/400 Java (Spring Boot
 - LEARN/400 resets `ended` before PAGEFWD/PAGEBACK; after F8 from the END page (6), the green `END` label is removed from page 3.
 - LEARN/400 F3 Exit clears the HttpSession attribute and redirects to `/` for `LRN400STR` or `/menu?profile=...` for another owner.
 - `GET /guestbook/read` computes the maximum CMTID for the initial screen, so one seeded comment shows `Currently hosting 0001 comments`; POST results use the same count.
-- The VCFMAIN option `<input type=number>` is prefilled with `1`; the browser `type` tool appends, so click the field, press Backspace, then type the option and Enter.
+- Since 6c29f00/a2de95d all fixed UI text is Japanese via `src/main/resources/messages.properties` (`ui.*` keys) and `UiMessageTranslator` maps English RPG messages (service/REST stay English) to `ui.rpg.*`. Check expected strings against that file; seed data (LEARN/400 pages, exhibit titles) and user-entered text stay English by design. Known leftover: `guestbook-read.html` footer uses `#{ui.learn.next}` ("F5 次へ") although the submit button says "F5=送信".
+- The VCFMAIN option `<input type=number>` is prefilled with `1`; the browser `type` tool may be ignored entirely on this field. Reliable way: click the field, `press_key End`, then `press_key <digit>` to append (e.g. `1` → `11`) and `press_key Enter`.
 - Sending a numeric input twice via a browser `type` action appends (e.g. "1" + "80" = "180"); clear the field first (click, Ctrl+A, Delete) before typing.
 - For a visible terminal in recordings: `konsole` is installed but there is no window manager, so `wmctrl` fails. Launch with `konsole --nofork -e /bin/bash`, size/raise via `xdotool windowsize/windowmove/windowraise` and type into it with `xdotool type --window <id> "cmd\n"` (`windowactivate` is unsupported).
 
