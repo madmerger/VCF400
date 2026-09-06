@@ -34,6 +34,8 @@ struct MainMenuView: View {
                 }
                 group("System Tasks") {
                     MenuItem(number: "80", title: "Sign Off the System") { model.selectMain(option: "80") }
+                }
+                group("Administration") {
                     MenuItem(number: "90", title: "Start Admin Menu", enabled: false) {}
                 }
                 group("Entertainment") {
