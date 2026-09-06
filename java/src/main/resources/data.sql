@@ -1,8 +1,7 @@
 -- 初期データ: PUB400 ASHIBATA2 ライブラリの検証データと同一 (仕様書 3 章 参考データ)
 MERGE INTO AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) KEY (AWARDID) VALUES
-  (1, 'Best Exhibit',   'Best overall exhibit at VCF'),
-  (2, 'Best Vintage',   'Best vintage hardware exhibit'),
-  (3, 'Peoples Choice', 'Attendee favorite');
+  (1, 'Best in Show Award', 'This award is given to the exhibit who you believe to be the best in show for 2024.'),
+  (2, 'The Ed Fair Award',  'This award is given to the exhibit that is deemed the most informative of the show.');
 
 MERGE INTO EXHBDB (EXHBDBID, EXHUSRPRF, EXHBITOR, EXHBCITY, EXHBSTATE, EXHBTITLE, EXHBDESC, ELIGIBLE, ENLRN400) KEY (EXHUSRPRF) VALUES
   (1, 'ASHIBATA', 'Akira Shibata',        'Tokyo',         'JP', 'IBM i on PUB400 Demo',                 'VCF/400 demo exhibit running on pub400.com', 1, 1),

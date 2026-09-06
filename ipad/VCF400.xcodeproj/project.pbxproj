@@ -18,6 +18,8 @@
 		CA0BADD67C19DDE013C01213 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E0A049FB20A111F650656 /* Theme.swift */; };
 		F3050E8B5F0763B65A1CA381 /* GuestbookViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9744C364B4705DF4D30CC3 /* GuestbookViews.swift */; };
 		F5063186B40F04FAB7E87D7F /* LearnKioskViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8A80AE1544AD93B0DAFE1 /* LearnKioskViews.swift */; };
+		F6EFFB0FBD6D6F628BFE42C1 /* CrossValidationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86EB8E631BD480AD0C0C26 /* CrossValidationUITests.swift */; };
+		FC253709CF7721C8BB222580 /* VCF400Kit in Frameworks */ = {isa = PBXBuildFile; productRef = D355CDA8231C4C49696E45E3 /* VCF400Kit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,7 @@
 		0A9E0A049FB20A111F650656 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0B0F80CAE69DBF12234B6C96 /* VCF400.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VCF400.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D9744C364B4705DF4D30CC3 /* GuestbookViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestbookViews.swift; sourceTree = "<group>"; };
+		2A86EB8E631BD480AD0C0C26 /* CrossValidationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossValidationUITests.swift; sourceTree = "<group>"; };
 		3D53F6F5931218468DB56AE4 /* VCF400Kit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VCF400Kit; path = VCF400Kit; sourceTree = SOURCE_ROOT; };
 		445C6D5FD3DE8F5A228794B3 /* VCF400App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCF400App.swift; sourceTree = "<group>"; };
 		4F56A67686A07C6AD20AAE39 /* SmokeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeUITests.swift; sourceTree = "<group>"; };
@@ -53,6 +56,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D0EF07D9B305B1414C83283 /* VCF400Kit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E0EEABFBB1E0238C8F3EAA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC253709CF7721C8BB222580 /* VCF400Kit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +94,7 @@
 		5D3FCB9B3EA294E2D11A581F /* VCF400UITests */ = {
 			isa = PBXGroup;
 			children = (
+				2A86EB8E631BD480AD0C0C26 /* CrossValidationUITests.swift */,
 				5023880480DFC00990E22334 /* ScreenshotUITests.swift */,
 				4F56A67686A07C6AD20AAE39 /* SmokeUITests.swift */,
 			);
@@ -127,6 +139,7 @@
 			buildConfigurationList = 334565F7290E843FC14FBCE5 /* Build configuration list for PBXNativeTarget "VCF400UITests" */;
 			buildPhases = (
 				ECAFE75E6133D132285379B6 /* Sources */,
+				7E0EEABFBB1E0238C8F3EAA6 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +148,7 @@
 			);
 			name = VCF400UITests;
 			packageProductDependencies = (
+				D355CDA8231C4C49696E45E3 /* VCF400Kit */,
 			);
 			productName = VCF400UITests;
 			productReference = 071C17189567980084DD14EA /* VCF400UITests.xctest */;
@@ -216,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6EFFB0FBD6D6F628BFE42C1 /* CrossValidationUITests.swift in Sources */,
 				BB298E518F47357613824721 /* ScreenshotUITests.swift in Sources */,
 				89E0A3CF3DD1F73912E7FF50 /* SmokeUITests.swift in Sources */,
 			);
@@ -463,6 +478,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D355CDA8231C4C49696E45E3 /* VCF400Kit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VCF400Kit;
+		};
 		D836D57BC397C681719196C3 /* VCF400Kit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = VCF400Kit;

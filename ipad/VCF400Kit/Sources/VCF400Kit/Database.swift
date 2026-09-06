@@ -111,7 +111,7 @@ public final class Database {
 
     /// data.sql と同一の参照データ (PUB400 ASHIBATA2 の観測値)。
     private func seed() throws {
-        try execute("INSERT OR REPLACE INTO AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (1,'Best Exhibit','Best overall exhibit at VCF'),(2,'Best Vintage','Best vintage hardware exhibit'),(3,'Peoples Choice','Chosen by the attendees')")
+        try execute("INSERT OR REPLACE INTO AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (1,'Best in Show Award','This award is given to the exhibit who you believe to be the best in show for 2024.'),(2,'The Ed Fair Award','This award is given to the exhibit that is deemed the most informative of the show.')")
         try execute("""
             INSERT OR REPLACE INTO EXHBDB (EXHBDBID, EXHUSRPRF, EXHBITOR, EXHBCITY, EXHBSTATE, EXHBTITLE, EXHBDESC, ELIGIBLE, ENLRN400) VALUES
             (1,'ASHIBATA','Akira Shibata','Tokyo','JP','IBM i on PUB400 Demo','VCF/400 demo exhibit running on pub400.com',1,1),
@@ -121,11 +121,11 @@ public final class Database {
         try execute("INSERT OR IGNORE INTO SETTINGS (SETTING, VALUE) VALUES ('ADMPSWRD','VCF2024'),('ALWVOTE','Y')")
         try execute("""
             INSERT OR REPLACE INTO LRN400STR (PAGENBR, CONTENT, EXTRA) VALUES
-            (1,'Welcome to LEARN/400! This short course shows you how the AS/400 (IBM i) works. Press F5 to go forwards, F8 to go backwards and F3 to exit.',''),
-            (2,'The AS/400 was announced by IBM in June 1988 as a successor to the System/36 and System/38. Its integrated DB2 database, single-level store and object-based OS live on today as IBM i.',''),
-            (3,'','END')
+            (1,'Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit.',''),
+            (2,'The AS/400 was introduced by IBM in June 1988 ... page 2',''),
+            (3,'This is the last page. Thank you for visiting VCF/400.','END')
             """)
-        try execute("INSERT OR IGNORE INTO VOTINGDB (BADGENBR, AWARDNBR, EXHBNBR) VALUES (4992,1,'ASHIBATA'),(4993,2,'ASHIBATA')")
+        try execute("INSERT OR IGNORE INTO VOTINGDB (BADGENBR, AWARDNBR, EXHBNBR) VALUES (1,1,'ASHIBATA'),(28,2,'ASHIBATA')")
         try execute("INSERT OR IGNORE INTO GUESTBKDB (CMTID, VISIBLE, EXHBID, GUESTNAME, GUESTCMT) VALUES (1,'Y','ASHIBATA','Great exhibit','VCF/400 running on PUB400.'),(2,'Y','ASHIBATA','Devin','VCF/400 is running on PUB400.')")
     }
 

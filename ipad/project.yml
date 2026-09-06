@@ -38,6 +38,7 @@ targets:
     sources: [VCF400UITests]
     dependencies:
       - target: VCF400
+      - package: VCF400Kit
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.vcf400.ipad.uitests

@@ -1,0 +1,234 @@
+baseline: {"comments":[{"comment":"VCF/400 running on PUB400.","exhibit":"ASHIBATA","id":1,"name":"Great exhibit","visible":"Y"},{"comment":"VCF/400 is running on PUB400.","exhibit":"ASHIBATA","id":2,"name":"Devin","visible":"Y"}],"settings":{"ADMPSWRD":"VCF2024","ALWVOTE":"Y"},"votes":[{"award":1,"badge":1,"exhibit":"ASHIBATA"},{"award":2,"badge":28,"exhibit":"ASHIBATA"}]}
+CV-01 ADDVOTE: 全項目未入力 (展示 ID は保護・事前入力)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-01 全項目未入力 (展示 ID は保護・事前入力)
+    -> {"errline":"Must enter Award ID","screen":"VOTE1","vote":null}
+CV-02 ADDVOTE: アワード未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-02 アワード未入力
+    -> {"errline":"Must enter Award ID","screen":"VOTE1","vote":null}
+CV-03 ADDVOTE: バッジ未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-03 バッジ未入力
+    -> {"errline":"Must enter badge number","screen":"VOTE1","vote":null}
+CV-04 ADDVOTE: 正常投票 (新規バッジ 7001, アワード 1)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTEEND]
+[ipad] CV-04 正常投票 (新規バッジ 7001, アワード 1)
+    -> {"screen":"VOTEEND","vote":{"award":1,"badge":7001,"exhibit":"ASHIBATA"}}
+CV-05 ADDVOTE: 重複バッジ (7001 で再投票)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-05 重複バッジ (7001 で再投票)
+    -> {"errline":"You have already voted.","screen":"VOTE1","vote":{"award":1,"badge":7001,"exhibit":"ASHIBATA"}}
+CV-06 ADDVOTE: 存在しないアワード (9)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-06 存在しないアワード (9)
+    -> {"errline":"Award does not exist.","screen":"VOTE1","vote":null}
+CV-07 ADDVOTE: 境界値: アワード 0 (数値 0 = 未入力扱い)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-07 境界値: アワード 0 (数値 0 = 未入力扱い)
+    -> {"errline":"Must enter Award ID","screen":"VOTE1","vote":null}
+CV-08 ADDVOTE: 共用端末: 展示 ID 未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-08 共用端末: 展示 ID 未入力
+    -> {"errline":"Must enter Exhibit ID","screen":"VOTE1","vote":null}
+CV-09 ADDVOTE: 共用端末: 存在しない展示 NOSUCH
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-09 共用端末: 存在しない展示 NOSUCH
+    -> {"errline":"Exhibit does not exist","screen":"VOTE1","vote":null}
+CV-10 ADDVOTE: 共用端末: 資格外展示 NOVOTE (ELIGIBLE=0)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-10 共用端末: 資格外展示 NOVOTE (ELIGIBLE=0)
+    -> {"errline":"Exhibit ineligible for award","screen":"VOTE1","vote":null}
+CV-11 ADDVOTE: 共用端末: 正常投票 (7002, DEMO400, アワード 2)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTEEND]
+[ipad] CV-11 共用端末: 正常投票 (7002, DEMO400, アワード 2)
+    -> {"screen":"VOTEEND","vote":{"award":2,"badge":7002,"exhibit":"DEMO400"}}
+CV-12 ADDVOTE: 複合エラー (重複バッジ+存在しない展示+存在しないアワード) → 最後の検査が勝つ
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-12 複合エラー (重複バッジ+存在しない展示+存在しないアワード) → 最後の検査が勝つ
+    -> {"errline":"Award does not exist.","screen":"VOTE1","vote":{"award":1,"badge":7001,"exhibit":"ASHIBATA"}}
+CV-13 ADDVOTE: 投票停止 ALWVOTE='N' → ENDOFCON
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [ENDOFCON]
+[ipad] CV-13 投票停止 ALWVOTE='N' → ENDOFCON
+    -> {"screen":"ENDOFCON","vote":null}
+CV-14 ADDGBCMT: 全項目未入力 (展示 ID は保護・事前入力)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-14 全項目未入力 (展示 ID は保護・事前入力)
+    -> {"comment":{"id":3,"row":null},"errline":"Must enter a comment","screen":"ADDCMT"}
+CV-15 ADDGBCMT: コメント未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-15 コメント未入力
+    -> {"comment":{"id":3,"row":null},"errline":"Must enter a comment","screen":"ADDCMT"}
+CV-16 ADDGBCMT: 名前未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-16 名前未入力
+    -> {"comment":{"id":3,"row":null},"errline":"Must enter your name","screen":"ADDCMT"}
+CV-17 ADDGBCMT: 正常記入 → ENDCMT, CMTID=3 (最終+1), VISIBLE=Y
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ENDCMT]
+[ipad] CV-17 正常記入 → ENDCMT, CMTID=3 (最終+1), VISIBLE=Y
+    -> {"comment":{"id":3,"row":{"comment":"Cross validation run","exhibit":"ASHIBATA","id":3,"name":"Devin Tester","visible":"Y"}},"screen":"ENDCMT","shownId":3}
+CV-18 ADDGBCMT: 共用端末: 展示 ID 未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-18 共用端末: 展示 ID 未入力
+    -> {"comment":{"id":4,"row":null},"errline":"Must enter Exhibit ID","screen":"ADDCMT"}
+CV-19 ADDGBCMT: 共用端末: 存在しない展示 NOSUCH でも記入できる (存在チェックなし)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ENDCMT]
+[ipad] CV-19 共用端末: 存在しない展示 NOSUCH でも記入できる (存在チェックなし)
+    -> {"comment":{"id":4,"row":{"comment":"Unchecked exhibit","exhibit":"NOSUCH","id":4,"name":"Guest","visible":"Y"}},"screen":"ENDCMT","shownId":4}
+CV-20 READGBCMT: コメント ID 未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-20 コメント ID 未入力
+    -> {"errline":"Must enter CommentID","screen":"READCMT","total":4}
+CV-21 READGBCMT: ID 1 → 名前 11 桁 / 展示タイトル / コメント
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-21 ID 1 → 名前 11 桁 / 展示タイトル / コメント
+    -> {"errline":"","out":{"cmt":"VCF/400 running on PUB400.","name":"Great exhib","title":"IBM i on PUB400 Demo"},"screen":"READCMT","total":4}
+CV-22 READGBCMT: ID 3 (この実行で追加したコメント)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-22 ID 3 (この実行で追加したコメント)
+    -> {"errline":"","out":{"cmt":"Cross validation run","name":"Devin Teste","title":"IBM i on PUB400 Demo"},"screen":"READCMT","total":4}
+CV-23 READGBCMT: 存在しない ID 9999 → 最終レコード (4, 他展示) → 帰属外メッセージ
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-23 存在しない ID 9999 → 最終レコード (4, 他展示) → 帰属外メッセージ
+    -> {"errline":"","out":{"cmt":"This comment is not part of this guestbook.","name":"","title":""},"screen":"READCMT","total":4}
+CV-24 READGBCMT: 非表示コメント (ID 2 を VISIBLE=N)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-24 非表示コメント (ID 2 を VISIBLE=N)
+    -> {"errline":"","out":{"cmt":"This comment hidden by an admin - offensive content.","name":"Name Hidden","title":""},"screen":"READCMT","total":4}
+CV-25 READGBCMT: 他展示 (DEMO400) から ASHIBATA のコメント 1 を読む → 帰属外
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-25 他展示 (DEMO400) から ASHIBATA のコメント 1 を読む → 帰属外
+    -> {"errline":"","out":{"cmt":"This comment is not part of this guestbook.","name":"","title":""},"screen":"READCMT","total":4}
+CV-26 READGBCMT: 共用端末は全展示を閲覧可 / 展示タイトルは SETLL+READ (NOSUCH → NOVOTE)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-26 共用端末は全展示を閲覧可 / 展示タイトルは SETLL+READ (NOSUCH → NOVOTE)
+    -> {"errline":"","out":{"cmt":"Unchecked exhibit","name":"Guest","title":"Ineligible test exhibit (ELIGIBLE=0)"},"screen":"READCMT","total":4}
+CV-27 LRN400: F5 → 2 ページ目
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F5 [LRN400]
+[ipad] CV-27 F5 → 2 ページ目
+    -> {"content":"The AS/400 was introduced by IBM in June 1988 ... page 2","page":2,"screen":"LRN400"}
+CV-28 LRN400: F5, F8 → 1 ページ目に戻る
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F5 [LRN400]
+----- ipad: LRN400 after F8 [LRN400]
+[ipad] CV-28 F5, F8 → 1 ページ目に戻る
+    -> {"content":"Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit.","page":1,"screen":"LRN400"}
+CV-29 LRN400: F5, F5 → 3 ページ目 (EXTRA='END') で終了 → VCFMAIN
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F5 [LRN400]
+----- ipad: LRN400 after F5 [VCFMAIN]
+[ipad] CV-29 F5, F5 → 3 ページ目 (EXTRA='END') で終了 → VCFMAIN
+    -> {"screen":"VCFMAIN"}
+CV-30 LRN400: F3 → 終了 → VCFMAIN
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F3 [VCFMAIN]
+[ipad] CV-30 F3 → 終了 → VCFMAIN
+    -> {"screen":"VCFMAIN"}
+CV-31 EXHBMENU: ASHIBATA (ELIGIBLE=1, ENLRN400=1) → 1,2,3,4
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+[ipad] CV-31 ASHIBATA (ELIGIBLE=1, ENLRN400=1) → 1,2,3,4
+    -> {"options":["1","2","3","4"],"screen":"KIOSK"}
+CV-32 EXHBMENU: NOVOTE (ELIGIBLE=0, ENLRN400=0) → 3,4 のみ
+----- ipad: EXHBMENU kiosk for NOVOTE [KIOSK]
+[ipad] CV-32 NOVOTE (ELIGIBLE=0, ENLRN400=0) → 3,4 のみ
+    -> {"options":["3","4"],"screen":"KIOSK"}
+CV-33 EXHBMENU: DEMO400 (ELIGIBLE=1, ENLRN400=0) → 1,3,4
+----- ipad: EXHBMENU kiosk for DEMO400 [KIOSK]
+[ipad] CV-33 DEMO400 (ELIGIBLE=1, ENLRN400=0) → 1,3,4
+    -> {"options":["1","3","4"],"screen":"KIOSK"}
+CV-34 EXHBMENU: 隠しオプション 7 + 誤パスワード → キオスクメニューに戻る
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+----- ipad: after option 7 [ADMPSWRD]
+----- ipad: after password [KIOSK]
+[ipad] CV-34 隠しオプション 7 + 誤パスワード → キオスクメニューに戻る
+    -> {"options":["1","2","3","4"],"path":["ADMPSWRD","KIOSK"],"screen":"KIOSK"}
+CV-35 EXHBMENU: 隠しオプション 7 + 正パスワード (SETTINGS.ADMPSWRD) → キオスク終了 → VCFMAIN
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+----- ipad: after option 7 [ADMPSWRD]
+----- ipad: after password [VCFMAIN]
+[ipad] CV-35 隠しオプション 7 + 正パスワード (SETTINGS.ADMPSWRD) → キオスク終了 → VCFMAIN
+    -> {"options":["1","2","3","4"],"path":["ADMPSWRD","VCFMAIN"],"screen":"VCFMAIN"}
+CV-36 EXHBMENU: オプション 1 → NTRSTIT → VOTE1 (展示 ASHIBATA 固定) → F12 でキオスクへ戻る
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+----- ipad: after option 1 [NTRSTIT]
+----- ipad: after NTRSTIT [VOTE1]
+----- ipad: after F12 [KIOSK]
+[ipad] CV-36 オプション 1 → NTRSTIT → VOTE1 (展示 ASHIBATA 固定) → F12 でキオスクへ戻る
+    -> {"exhibit":"ASHIBATA","options":["1","2","3","4"],"path":["NTRSTIT","VOTE1","KIOSK"],"screen":"KIOSK"}
+CV-37 EXHBMENU: 資格外展示でオプション 1 を入力 → 無視 (キオスクメニューのまま)
+----- ipad: EXHBMENU kiosk for NOVOTE [KIOSK]
+----- ipad: after option 1 [KIOSK]
+[ipad] CV-37 資格外展示でオプション 1 を入力 → 無視 (キオスクメニューのまま)
+    -> {"options":["3","4"],"path":["KIOSK"],"screen":"KIOSK"}
+final DB: {"comments":[{"comment":"VCF/400 running on PUB400.","exhibit":"ASHIBATA","id":1,"name":"Great exhibit","visible":"Y"},{"comment":"VCF/400 is running on PUB400.","exhibit":"ASHIBATA","id":2,"name":"Devin","visible":"Y"},{"comment":"Cross validation run","exhibit":"ASHIBATA","id":3,"name":"Devin Tester","visible":"Y"},{"comment":"Unchecked exhibit","exhibit":"NOSUCH","id":4,"name":"Guest","visible":"Y"}],"settings":{"ADMPSWRD":"VCF2024","ALWVOTE":"Y"},"votes":[{"award":1,"badge":1,"exhibit":"ASHIBATA"},{"award":2,"badge":28,"exhibit":"ASHIBATA"},{"award":1,"badge":7001,"exhibit":"ASHIBATA"},{"award":2,"badge":7002,"exhibit":"DEMO400"}]}
+** TEST SUCCEEDED **

@@ -11,6 +11,7 @@ tn5250 curses key mapping: ESC+n = Fn (ESC = for F12), Ctrl-K = Field Exit,
 Ctrl-R = Reset, CR = Enter.
 """
 import os
+import shutil
 import sys
 import time
 
@@ -24,7 +25,9 @@ ENTER, FIELD_EXIT, RESET, TAB = "\r", "\x0b", "\x12", "\t"
 
 
 class Session:
-    def __init__(self, log_path, host="pub400.com", tn5250="tn5250"):
+    def __init__(self, log_path, host="pub400.com", tn5250=None):
+        tn5250 = tn5250 or os.environ.get("TN5250") or (
+            "tn5250" if shutil.which("tn5250") else os.path.expanduser("~/.local/bin/tn5250"))
         self.log = open(log_path, "a", encoding="utf-8")
         self.screen = pyte.Screen(COLS, ROWS)
         self.stream = pyte.ByteStream(self.screen)
