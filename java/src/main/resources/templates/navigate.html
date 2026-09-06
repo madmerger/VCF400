@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('VCF/400 - How to Navigate')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('VCFMAIN → NTRSTIT')}"></header>
+<main>
+  <h1 class="screen-title">VCF/400 - How to Navigate</h1>
+  <p class="screen-subtitle">Before you start, here is how to navigate:</p>
+  <div class="card">
+    <ol style="margin:0;padding-left:1.2em;display:grid;gap:10px">
+      <li>Use <b>ARROW KEYS</b> or <b>TAB KEY</b> to move between fields.</li>
+      <li>Use <b>F5</b> or <b>ENTER</b> to perform your action.</li>
+      <li>Use <b>F12</b> to quit at any time.</li>
+      <li>Keyboard not responding? If you see <b>X II</b> in the left corner, press <b>RIGHT CTRL</b> to continue.</li>
+    </ol>
+    <p class="info" style="margin-top:14px">On this modern UI the same keys work on a physical keyboard, and every action button also shows its key.</p>
+  </div>
+  <form method="post" th:action="@{/navigate}">
+    <input type="hidden" name="next" th:value="${next}">
+    <div class="fkeys">
+      <span class="legend">Got all that?</span>
+      <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>続行 <kbd>ENTER</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

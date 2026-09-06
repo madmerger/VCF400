@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('AS/400 DEMO MENU')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('GO VCFMAIN')}"></header>
+<main>
+  <!-- L-01-01 見出し -->
+  <h1 class="screen-title">AS/400 DEMO MENU</h1>
+  <p class="screen-subtitle">Welcome to... Vintage Computer Festival 2024</p>
+  <div class="msgbar" th:if="${msg}" th:text="${msg}"></div>
+
+  <form method="post" th:action="@{/menu}" id="menuForm">
+    <div class="menu-grid">
+      <div class="card menu-group"><h3>Start Here</h3>
+        <ul class="menu-list">
+          <li><button type="button" class="menu-item" data-option="1"><span class="num">1</span>Learn AS/400 Navigation</button></li>
+          <li><button type="button" class="menu-item" disabled title="Not part of the VCF/400 library"><span class="num">2</span>IBM Midrange History</button></li>
+          <li><button type="button" class="menu-item" disabled title="Not part of the VCF/400 library"><span class="num">3</span>About This System</button></li>
+          <li><button type="button" class="menu-item" disabled title="Not part of the VCF/400 library"><span class="num">4</span>About Gertie the System/34</button></li>
+        </ul>
+      </div>
+      <div class="card menu-group"><h3>Exhibit Tasks</h3>
+        <ul class="menu-list">
+          <li><button type="button" class="menu-item" data-option="11"><span class="num">11</span>Nominate Exhibit for Award</button></li>
+          <li><button type="button" class="menu-item" data-option="12"><span class="num">12</span>Sign Exhibit Guestbook</button></li>
+          <li><button type="button" class="menu-item" data-option="13"><span class="num">13</span>Read a Guestbook Comment</button></li>
+        </ul>
+      </div>
+      <div class="card menu-group"><h3>Office Tasks</h3>
+        <ul class="menu-list">
+          <li><button type="button" class="menu-item" disabled><span class="num">5</span>Start OfficeVision/400</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">6</span>Start a Calendar</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">7</span>Start the Clock</button></li>
+        </ul>
+      </div>
+      <div class="card menu-group"><h3>System Tasks</h3>
+        <ul class="menu-list">
+          <li><button type="button" class="menu-item" data-option="80"><span class="num">80</span>Sign Off the System</button></li>
+        </ul>
+        <h3 style="margin-top:14px">Administration</h3>
+        <ul class="menu-list">
+          <li><button type="button" class="menu-item" disabled title="Admin menu is out of migration scope"><span class="num">90</span>Start Admin Menu</button></li>
+        </ul>
+      </div>
+      <div class="card menu-group"><h3>Entertainment</h3>
+        <ul class="menu-list">
+          <li><button type="button" class="menu-item" disabled><span class="num">8</span>Play Snake</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">9</span>Play Yahtzee</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">10</span>Play PacMan</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- L-01-09 番号入力 + ENTER -->
+    <div class="card">
+      <p class="info">Type the menu number you want and then press the ENTER key. Or select the option by clicking / tapping it.</p>
+      <div class="optline">
+        <label for="option">Type Number, then press ENTER</label>
+        <input id="option" name="option" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" autofocus autocomplete="off">
+        <button type="submit" class="btn primary" data-fkey="ENTER">選択 <kbd>ENTER</kbd></button>
+      </div>
+    </div>
+  </form>
+
+  <details class="card">
+    <summary class="info">Sign on as a different user profile (kiosk exhibit / MM2024 shared terminal)</summary>
+    <form method="post" th:action="@{/signon}" class="optline" style="margin-top:10px">
+      <label for="profile">User profile</label>
+      <input id="profile" name="profile" type="text" maxlength="9" class="mono" th:value="${launch.profile}" style="width:160px;text-align:left">
+      <button type="submit" class="btn">Sign on</button>
+      <span class="info">Kiosk: <a th:href="@{/kiosk/ASHIBATA}">/kiosk/ASHIBATA</a> · <a th:href="@{/kiosk/DEMO400}">/kiosk/DEMO400</a> · <a th:href="@{/kiosk/NOVOTE}">/kiosk/NOVOTE</a></span>
+    </form>
+  </details>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>
