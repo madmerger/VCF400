@@ -1,0 +1,396 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   ADMLRN400
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   ADMLRN400
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-06  17:02:13
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FSECOFRS   IF   E           K DISK                                                                        000000     000100
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  SECOFRS          ASHIBATA2/SECOFRS                           *
+        * Record format(s) . . . . . :  USRPROFR         USRPROFR                                    *
+        *--------------------------------------------------------------------------------------------*
+     2 FLRN400STR UF A E           K DISK                                                                        000000     000200
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  LRN400STR        ASHIBATA2/LRN400STR                         *
+        * Record format(s) . . . . . :  LRN400RCD        LRN400RCD                                   *
+        *--------------------------------------------------------------------------------------------*
+     3 FLRN400SCR CF   E             WORKSTN                                                                     000000     000300
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  LRN400SCR        ASHIBATA2/LRN400SCR                         *
+        * Record format(s) . . . . . :  MAIN             MAIN                                        *
+        *                               MAINADMIN        MAINADMIN                                   *
+        *--------------------------------------------------------------------------------------------*
+     4 DCURPAGENBR       S              4P 0                                                                     000000     000400
+     5 DALWFWD           S              1P 0                                                                     000000     000500
+     6 DNEWORUPD         S              1P 0                                                                     000000     000600
+     7 C*---------------------------------------------------------------------                                   000000     000700
+     8 C*    *ENTRY        PLIST                                                                                 000000     000800
+     9 C*                  PARM                    LAUNCH            9                                           000000     000900
+    10 C*                  PARM                    EXHIBIT           9                                           000000     001000
+    11 C*-----------------------------------------------------------------------                                 000000     001100
+    12=IUSRPROFR                                                                                                           1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  USRPROFR                                                     *                     1
+        * External format  . . . . . :  USRPROFR : ASHIBATA2/SECOFRS                                 *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+    13=I                             A    1    9  USERPROF                                                                 1000002
+    14=ILRN400RCD                                                                                                          2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  LRN400RCD                                                    *                     2
+        * External format  . . . . . :  LRN400RCD : ASHIBATA2/LRN400STR                              *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+    15=I                             B    1    2 0PAGENBR                                                                  2000002
+    16=I                             A    3 1502  CONTENT                                                                  2000003
+    17=I                             A 1503 1511  EXTRA                                                                    2000004
+    18=IMAIN                                                                                                               3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * RPG record format  . . . . :  MAIN                                                         *                     3
+        * External format  . . . . . :  MAIN : ASHIBATA2/LRN400SCR                                   *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    19=I                             N    1    1  *IN03                           Exit                                     3000002
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      3
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    20=I                             N    2    2  *IN05                           Fwd                                      3000003
+    21=I                             N    3    3  *IN08                           Back                                     3000004
+    22=IMAINADMIN                                                                                                          4000001
+        *--------------------------------------------------------------------------------------------*                     4
+        * RPG record format  . . . . :  MAINADMIN                                                    *                     4
+        * External format  . . . . . :  MAINADMIN : ASHIBATA2/LRN400SCR                              *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    23=I                             N    3    3  *IN03                           Exit                                     4000002
+    24=I                             N    1    1  *IN05                           Fwd                                      4000003
+    25=I                             N    2    2  *IN08                           Back                                     4000004
+    26=I                             N    4    4  *IN10                           Save                                     4000005
+    27=I                             A    5 1504  INCONTENT                                                                4000006
+    28=I                             A 1505 1513  INEXTRA                                                                  4000007
+    29 C                   MOVEL     1             ALWFWD                                                        000000     001200
+    30 C                   MOVEL     0             NEWORUPD                                                      000000     001300
+    31 C                   EVAL      *IN60 = *ON                                                                 000000     001400
+    32 C                                                                                                         000000     001500
+    33 C*    *LOVAL        SETLL     LRN400RCD                                                                   000000     001600
+    34 C                                                                                                         000000     001700
+    35 C                   READ      LRN400STR                                                                   000000     001800
+    36 C                   MOVEL     PAGENBR       CURPAGENBR                                                    000000     001900
+    37 C                   MOVEL     CONTENT       INCONTENT                                                     000000     002000
+    38 C                   MOVEL     EXTRA         INEXTRA                                                       000000     002100
+    39 C                   MOVEL     PAGENBR       OUTPAGENBR                                                    000000     002200
+    40 C                                                                                                         000000     002300
+    41 C                   DOW       *IN03 = *OFF                                                      B01       000000     002400
+    42 C                                                                                               B01       000000     002500
+    43 C                   IF        *IN05 = *ON                                                       B02       000000     002600
+    44 C                   EXSR      PAGEFWD                                                            02       000000     002700
+    45 C                   EVAL      *IN05 = *OFF                                                       02       000000     002800
+    46 C                   ENDIF                                                                       E02       000000     002900
+    47 C                                                                                               E02       000000     003000
+    48 C                   IF        *IN08 = *ON                                                       B02       000000     003100
+    49 C                   EXSR      PAGEBACK                                                           02       000000     003200
+    50 C                   EVAL      *IN08 = *OFF                                                       02       000000     003300
+    51 C                   ENDIF                                                                       E02       000000     003400
+    52 C                                                                                               E02       000000     003500
+    53 C                   IF        *IN10 = *ON                                                       B02       000000     003600
+    54 C                   EXSR      WRITERCD                                                           02       000000     003700
+    55 C                   EVAL      *IN10 = *OFF                                                       02       000000     003800
+    56 C                   ENDIF                                                                       E02       000000     003900
+    57 C                                                                                               E02       000000     004000
+    58 C                   EXFMT     MAINADMIN                                                          01       000000     004100
+    59 C                   ENDDO                                                                       E01       000000     004200
+    60 C                                                                                               E01       000000     004300
+    61 C                   MOVEL     *ON           *INLR                                                         000000     004400
+    62 C                   RETURN                                                                                000000     004500
+    63 C*---------------------------------------------------------------------                                   000000     004600
+    64 C     WRITERCD      BEGSR                                                                                 000000     004700
+    65 C                   IF        NEWORUPD = 0                                                      B01       000000     004800
+    66 C                   EXSR      UPDRCD                                                             01       000000     004900
+    67 C                   ELSE                                                                        X01       000000     005000
+    68 C                   EXSR      CRTRCD                                                             01       000000     005100
+    69 C                   ENDIF                                                                       E01       000000     005200
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      4
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    70 C                   ENDSR                                                                                 000000     005300
+    71 C*---------------------------------------------------------------------                                   000000     005400
+    72 C     UPDRCD        BEGSR                                                                                 000000     005500
+    73 C     CURPAGENBR    SETLL     LRN400RCD                                                                   000000     005600
+    74 C                   READ      LRN400STR                                                                   000000     005700
+    75 C                   MOVEL     CURPAGENBR    PAGENBR                                                       000000     005800
+    76 C                   MOVEL     INCONTENT     CONTENT                                                       000000     005900
+    77 C                   MOVEL     INEXTRA       EXTRA                                                         000000     006000
+    78 C                   UPDATE    LRN400RCD                                                                   000000     006100
+    79 C                                                                                                         000000     006200
+    80 C                   MOVEL     1             ALWFWD                                                        000000     006300
+    81 C                   EVAL      *IN60 = *ON                                                                 000000     006400
+    82 C                   ENDSR                                                                                 000000     006500
+    83 C*---------------------------------------------------------------------                                   000000     006600
+    84 C     CRTRCD        BEGSR                                                                                 000000     006700
+    85 C     CURPAGENBR    SETLL     LRN400RCD                                                                   000000     006800
+    86 C                   READ      LRN400STR                                                                   000000     006900
+    87 C                   MOVEL     CURPAGENBR    PAGENBR                                                       000000     007000
+    88 C                   MOVEL     INCONTENT     CONTENT                                                       000000     007100
+    89 C                   MOVEL     INEXTRA       EXTRA                                                         000000     007200
+    90 C                   WRITE     LRN400RCD                                                                   000000     007300
+    91 C                                                                                                         000000     007400
+    92 C                   MOVEL     1             ALWFWD                                                        000000     007500
+    93 C                   MOVEL     0             NEWORUPD                                                      000000     007600
+    94 C                   EVAL      *IN60 = *ON                                                                 000000     007700
+    95 C                   ENDSR                                                                                 000000     007800
+    96 C*---------------------------------------------------------------------                                   000000     007900
+    97 C     PAGEFWD       BEGSR                                                                                 000000     008000
+    98 C                   CLEAR                   INCONTENT                                                     000000     008100
+    99 C                   CLEAR                   INEXTRA                                                       000000     008200
+   100 C                   IF        ALWFWD = 1                                                        B01       000000     008300
+   101 C                   ADD       1             CURPAGENBR                                           01       000000     008400
+   102 C                   ENDIF                                                                       E01       000000     008500
+   103 C                                                                                               E01       000000     008600
+   104 C     CURPAGENBR    CHAIN     LRN400RCD                          95----                                   000000     008700
+   105 C                   IF        *IN95 = *OFF                                                      B01       000000     008800
+   106 C                   READE     LRN400STR                                                          01       000000     008900
+   107 C                   MOVEL     PAGENBR       OUTPAGENBR                                           01       000000     009000
+   108 C                   MOVEL     CONTENT       INCONTENT                                            01       000000     009100
+   109 C                   MOVEL     EXTRA         INEXTRA                                              01       000000     009200
+   110 C                   ELSE                                                                        X01       000000     009300
+   111 C                   MOVEL     0             ALWFWD                                               01       000000     009400
+   112 C                   MOVEL     1             NEWORUPD                                             01       000000     009500
+   113 C                   MOVEL     CURPAGENBR    OUTPAGENBR                                           01       000000     009600
+   114 C                   EVAL      *IN60 = *OFF                                                       01       000000     009700
+   115 C                   ENDIF                                                                       E01       000000     009800
+   116 C                   ENDSR                                                                                 000000     009900
+   117 C*------------------------------------------------------------------------                                000000     010000
+   118 C     PAGEBACK      BEGSR                                                                                 000000     010100
+   119 C                   IF        CURPAGENBR = 0                                                    B01       000000     010200
+   120 C                                                                                               B01       000000     010300
+   121 C                   ELSE                                                                        X01       000000     010400
+   122 C                   SUB       1             CURPAGENBR                                           01       000000     010500
+   123 C                   ENDIF                                                                       E01       000000     010600
+   124 C                                                                                               E01       000000     010700
+   125 C                   CLEAR                   INCONTENT                                                     000000     010800
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      5
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   126 C                   CLEAR                   INEXTRA                                                       000000     010900
+   127 C     CURPAGENBR    CHAIN     LRN400RCD                          96----                                   000000     011000
+   128 C                   READE     LRN400STR                                                                   000000     011100
+   129 C                   MOVEL     PAGENBR       OUTPAGENBR                                                    000000     011200
+   130 C                   MOVEL     CONTENT       INCONTENT                                                     000000     011300
+   131 C                   MOVEL     EXTRA         INEXTRA                                                       000000     011400
+   132 C                   MOVEL     1             ALWFWD                                                        000000     011500
+   133 C                   MOVEL     0             NEWORUPD                                                      000000     011600
+   134 C                   EVAL      *IN60 = *ON                                                                 000000     011700
+   135 C                   ENDSR                                                                                 000000     011800
+   136 C*---------------------------------------------------------------------                                   000000     011900
+   137 C     CHKOFRS       BEGSR                                                                                 000000     012000
+   138 C                   ENDSR                                                                                 000000     012100
+   139 C*------------------------------------------------------------------------                                000000     012200
+   140 C     CHKPARM       BEGSR                                                                                 000000     012300
+   141 C*                  MOVEL     LAUNCH        USERPROF                                                      000000     012400
+   142 C*                  MOVEL     EXHIBIT       EDTEXHB                                                       000000     012500
+   143 C*TODO HERE: Logic to do the stuff to validate user is                                                    000000     012600
+   144 C*a SECOFR in the SECOFRS file                                                                            000000     012700
+   145 C                   ENDSR                                                                                 000000     012800
+   146=OLRN400RCD                                                                                                          5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * RPG record format  . . . . :  LRN400RCD                                                    *                     5
+        * External format  . . . . . :  LRN400RCD : ASHIBATA2/LRN400STR                              *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+   147=O                       PAGENBR              2B BIN2      4,0                                                       5000002
+   148=O                       CONTENT           1502A CHAR     1500                                                       5000003
+   149=O                       EXTRA             1511A CHAR        9                                                       5000004
+   150=OMAINADMIN                                                                                                          6000001
+        *--------------------------------------------------------------------------------------------*                     6
+        * RPG record format  . . . . :  MAINADMIN                                                    *                     6
+        * External format  . . . . . :  MAINADMIN : ASHIBATA2/LRN400SCR                              *                     6
+        *--------------------------------------------------------------------------------------------*                     6
+   151=O                       *IN60                1N CHAR        1                                                       6000002
+   152=O                       OUTPAGENBR           5A CHAR        4                                                       6000003
+   153=O                       INCONTENT         1505A CHAR     1500                                                       6000004
+   154=O                       INEXTRA           1514A CHAR        9                                                       6000005
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      6
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+*RNF7066 00      3 000300  Record-Format MAIN not used for input or output.
+*RNF7066 00      1 000100  Record-Format USRPROFR not used for input or output.
+*RNF7086 00      1 000100  RPG handles blocking for file SECOFRS. INFDS is updated
+                           only when blocks of data are transferred.
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                 O u t p u t   B u f f e r   P o s i t i o n s
+Line   Start End   Field or Constant
+Number Pos   Pos
+   147     1     2 PAGENBR
+   148     3  1502 CONTENT
+   149  1503  1511 EXTRA
+   147     1     2 PAGENBR
+   148     3  1502 CONTENT
+   149  1503  1511 EXTRA
+   151     1     1 *IN60
+   152     2     5 OUTPAGENBR
+   153     6  1505 INCONTENT
+   154  1506  1514 INEXTRA
+ * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      7
+                    K e y   F i e l d   I n f o r m a t i o n
+         File           Internal    External
+           Record       field name  field name  Attributes
+      2  LRN400STR
+           LRN400RCD
+                        PAGENBR                 BIN2      4,0 SIGNED
+      1  SECOFRS
+           USRPROFR
+                        USERPROF                CHAR        9
+ * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      8
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         LRN400SCR         WORKSTN                 3D
+           MAIN                                    3D     18
+           MAINADMIN                               3D     22      58     150
+         LRN400STR         DISK                    2D     35      74      86
+                                                 106     128
+           LRN400RCD                               2D     14      73      78
+                                                  85      90     104     127
+                                                 146
+         SECOFRS           DISK                    1D
+           USRPROFR                                1D     12
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *INLR             N(1)                   61M
+         *IN03             N(1)                   19D     23M     41
+         *IN05             N(1)                   20M     24M     43      45M
+         *IN08             N(1)                   21M     25M     48      50M
+         *IN10             N(1)                   26M     53      55M
+         *IN60             N(1)                   31M     81M     94M    114M
+                                                 134M    151
+         *IN95             N(1)                  105
+         ALWFWD            P(1,0)                  5D     29M     80M     92M
+                                                 100     111M    132M
+*RNF7031 CHKOFRS           BEGSR                 137D
+*RNF7031 CHKPARM           BEGSR                 140D
+         CONTENT           A(1500)                16M     37      76M     88M
+                                                 108     130     148
+         CRTRCD            BEGSR                  68      84D
+         CURPAGENBR        P(4,0)                  4D     36M     73      75
+                                                  85      87     101M    104
+                                                 113     119     122M    127
+         EXTRA             A(9)                   17M     38      77M     89M
+                                                 109     131     149
+         INCONTENT         A(1500)                27M     37M     76      88
+                                                  98M    108M    125M    130M
+                                                 153
+         INEXTRA           A(9)                   28M     38M     77      89
+                                                  99M    109M    126M    131M
+                                                 154
+         NEWORUPD          P(1,0)                  6D     30M     65      93M
+                                                 112M    133M
+         OUTPAGENBR        A(4)                   39M    107M    113M    129M
+                                                 152
+         PAGEBACK          BEGSR                  49     118D
+         PAGEFWD           BEGSR                  44      97D
+         PAGENBR           P(4,0)                 15M     36      39      75M
+                                                  87M    107     129     147
+         UPDRCD            BEGSR                  66      72D
+*RNF7031 USERPROF          A(9)                   13D
+         WRITERCD          BEGSR                  54      64D
+      Indicator References:
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page      9
+         Indicator                            References (D=Defined M=Modified)
+         03                                       19M     23M     41
+         05                                       20M     24M     43      45M
+         08                                       21M     25M     48      50M
+         10                                       26M     53      55M
+         60                                       31M     81M     94M    114M
+                                                 134M    151
+         95                                      104D    105
+*RNF7031 96                                      127D
+         LR                                       61M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page     10
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page     11
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+*RNF7031 00      4 The name or indicator is not referenced.
+*RNF7066 00      2 Record-Format name of Externally-Described file is not used.
+*RNF7086 00      1 RPG handles blocking for the file. INFDS is updated only when
+                   blocks of data are transferred.
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMLRN400      PUB400     26-09-06 17:03:36        Page     12
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :        7
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :        7
+  Source Totals:
+    Records . . . . . . . . . . . . :      154
+    Specifications  . . . . . . . . :      137
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :       17
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program ADMLRN400 placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:36.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

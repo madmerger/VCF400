@@ -1,0 +1,1092 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   VCFMAIN
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QMNUSRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   VCFMAIN
+ Source member last changed  . . . . . . . . . . . . :   26-09-06  17:01:41
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A* Free Form Menu: VCFMAIN
+    200       A*%%TS  SD  20231119  151635  QSECOFR     REL-V4R4M0  5769-PW1
+    300       A*%%EC
+    400       A                                      DSPSIZ(24 80 *DS3                  -
+    500       A                                             27 132 *DS4)
+    600       A                                      CHGINPDFT
+    700       A                                      INDARA
+    800       A                                      PRINT(*LIBL/QSYSPRT)
+    900       A          R VCFMAIN
+*                  CPD5235-.*********
+*                  CPD8111-**********
+   1000       A*%%TS  SD  20230810  175349  QSECOFR     REL-V4R4M0  5769-PW1
+   1100       A                                      DSPMOD(*DS3)
+   1200       A                                      LOCK
+   1300       A                                      SLNO(01)
+   1400       A                                      CLRL(*ALL)
+*                                            CPD8018-*
+   1500       A                                      ALWROL
+*                                            CPD8018-*
+   1600       A                                      CF03
+   1700       A                                      HELP
+   1800       A                                      HOME
+   1900       A                                      HLPRTN
+   2000       A                                  1 33'AS/400 DEMO MENU'
+   2100       A                                      DSPATR(HI)
+   2200       A                                      COLOR(WHT)
+   2300       A                                  2  2'WELCOME TO...'
+   2400       A                                      COLOR(RED)
+   2500       A                                      DSPATR(HI)
+   2600       A* CMDPROMPT  Do not delete this DDS spec.
+   2700       A                                019  2'Type Number, then press ENTER     -
+   2800       A                                          '
+   2900       A                                  3 10'V I N T A G E  C O M P U T E R  F -
+   3000       A                                      E S T I V A L'
+   3100       A                                  3 59'2 0 2 4'
+   3200       A                                      DSPATR(HI)
+   3300       A                                  4  2'Start Here'
+   3400       A                                      DSPATR(HI)
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3500       A                                  5  7'1. Learn AS/400 Navigation'
+   3600       A                                  6  7'2. IBM Midrange History'
+   3700       A                                  7  7'3. About This System'
+   3800       A                                  8  7'4. About Gertie the System/34'
+   3900       A                                  9  2'Office Tasks'
+   4000       A                                      DSPATR(HI)
+   4100       A                                 10  7'5. Start OfficeVision/400'
+   4200       A                                 11  7'6. Start a Calendar'
+   4300       A                                 12  7'7. Start the Clock'
+   4400       A                                 13  2'Entertainment'
+   4500       A                                      DSPATR(HI)
+   4600       A                                 14  7'8. Play Snake'
+   4700       A                                 15  7'9. Play Yahtzee'
+   4800       A                                 16  6'10. Play PacMan'
+   4900       A                                  8 42'System Tasks'
+   5000       A                                      DSPATR(HI)
+   5100       A                                  9 47'80. Sign Off the System'
+   5200       A                                 10 42'Administration'
+   5300       A                                      DSPATR(HI)
+   5400       A                                 11 47'90. Start Admin Menu'
+   5500       A                                 13 34'Type the menu number you want and -
+   5600       A                                      then'
+   5700       A                                      DSPATR(HI)
+   5800       A                                 14 34'press the ENTER key which is locat-
+   5900       A                                      ed where'
+   6000       A                                      DSPATR(HI)
+   6100       A                                 15 34'the right CTRL key normally is on -
+   6200       A                                      a PC'
+   6300       A                                      DSPATR(HI)
+   6400       A                                 16 34'keyboard. Or type the menu option -
+   6500       A                                      you are'
+   6600       A                                      DSPATR(HI)
+   6700       A                                  4 42'Exhibit Tasks   '
+   6800       A                                      DSPATR(HI)
+   6900       A                                  5 47'11. Nominate Exhibit for Award'
+   7000       A                                  6 47'12. Sign Exhibit Guestbook'
+   7100       A                                 17 34'curious about and press the HELP k-
+   7200       A                                      ey.'
+   7300       A                                      DSPATR(HI)
+   7400       A                                  7 47'13. Read a Guestbook Comment'
+   7500       A          R #H0101
+   7600       A*%%TS  SD  20230808  000454  QSECOFR     REL-V4R4M0  5769-PW1
+   7700       A                                      TEXT('Help for Menu Option 01')
+   7800       A                                      CLRL(*ALL)
+   7900       A                                  1  2'HELP'
+   8000       A                                      COLOR(BLU)
+   8100       A                                  1  8'Learning'
+   8200       A                                      DSPATR(HI)
+   8300       A                                  1 17'about'
+   8400       A                                      DSPATR(HI)
+   8500       A                                  1 23'AS/400'
+   8600       A                                      DSPATR(HI)
+   8700       A                                  1 30'Navigation'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    3
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   8800       A                                      DSPATR(HI)
+   8900       A                                  3  2'This'
+   9000       A                                  3  7'menu'
+   9100       A                                  3 12'option'
+   9200       A                                  3 19'allows'
+   9300       A                                  3 26'you'
+   9400       A                                  3 30'to'
+   9500       A                                  3 33'learn'
+   9600       A                                  3 39'how'
+   9700       A                                  3 43'to'
+   9800       A                                  3 46'navigate'
+   9900       A                                  3 55'using'
+  10000       A                                  3 61'the'
+  10100       A                                  3 65'122'
+  10200       A                                  3 73'IBM'
+  10300       A                                  4  2'terminal'
+  10400       A                                  4 11'layout,'
+  10500       A                                  4 19'as'
+  10600       A                                  4 22'well'
+  10700       A                                  4 27'as'
+  10800       A                                  4 30'the'
+  10900       A                                  4 34'quirks'
+  11000       A                                  4 41'of'
+  11100       A                                  4 44'keyboard'
+  11200       A                                  4 53'navigation'
+  11300       A                                  4 64'on'
+  11400       A                                  4 67'the'
+  11500       A                                  4 71'AS/400,'
+  11600       A                                  5  2'System/36,'
+  11700       A                                  5 13'and'
+  11800       A                                  5 17'System/34.'
+  11900       A                                  3 69'key'
+  12000       A          R #H0202
+  12100       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
+  12200       A                                      TEXT('Help for Menu Option 02')
+  12300       A                                      CLRL(*ALL)
+  12400       A                                  1  2'HELP'
+  12500       A                                      COLOR(BLU)
+  12600       A                                  1  8'About'
+  12700       A                                      DSPATR(HI)
+  12800       A                                  1 14'IBM'
+  12900       A                                      DSPATR(HI)
+  13000       A                                  1 18'Midrange'
+  13100       A                                      DSPATR(HI)
+  13200       A                                  1 27'History'
+  13300       A                                      DSPATR(HI)
+  13400       A                                  3  2'This'
+  13500       A                                  3  7'option'
+  13600       A                                  3 14'takes'
+  13700       A                                  3 20'you'
+  13800       A                                  3 24'through'
+  13900       A                                  3 32'a'
+  14000       A                                  3 34'tour'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    4
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  14100       A                                  3 39'of'
+  14200       A                                  3 42'IBM'
+  14300       A                                  3 46's'
+  14400       A                                  3 48'history'
+  14500       A                                  3 56'of'
+  14600       A                                  3 59'Midrange'
+  14700       A                                  3 68'computers,'
+  14800       A                                  4  2'known'
+  14900       A                                  4  8'to'
+  15000       A                                  4 11'the'
+  15100       A                                  4 15'rest'
+  15200       A                                  4 20'of'
+  15300       A                                  4 23'the'
+  15400       A                                  4 27'computer'
+  15500       A                                  4 36'as'
+  15600       A                                  4 39'minicomputers.'
+  15700       A                                  6  2'This'
+  15800       A                                  6  7'tour'
+  15900       A                                  6 12'will'
+  16000       A                                  6 17'take'
+  16100       A                                  6 22'you'
+  16200       A                                  6 26'through'
+  16300       A                                  6 34'the'
+  16400       A                                  6 38'following'
+  16500       A                                  6 48'virtual'
+  16600       A                                  6 56'exhibits:'
+  16700       A                                  8 10'The'
+  16800       A                                  8 14'IBM'
+  16900       A                                  8 18'System/3'
+  17000       A                                  9 10'The'
+  17100       A                                  9 14'IBM'
+  17200       A                                  9 18'System/32'
+  17300       A                                 10 10'The'
+  17400       A                                 10 14'IBM'
+  17500       A                                 10 18'System/34'
+  17600       A                                 11 10'The'
+  17700       A                                 11 14'IBM'
+  17800       A                                 11 18'System/38'
+  17900       A                                 12 10'The'
+  18000       A                                 12 14'IBM'
+  18100       A                                 12 18'System/36'
+  18200       A                                 13 10'The'
+  18300       A                                 13 14'History'
+  18400       A                                 13 22'of'
+  18500       A                                 13 25'Silverlake'
+  18600       A                                 14 10'The'
+  18700       A                                 14 14'IBM'
+  18800       A                                 14 18'AS/400'
+  18900       A                                 15 10'A'
+  19000       A                                 15 12'Rebranding'
+  19100       A                                 15 23'to'
+  19200       A                                 15 26'iSeries'
+  19300       A                                 16 10'The'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    5
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  19400       A                                 16 14'RS/6000'
+  19500       A                                 16 22'Merge'
+  19600       A                                 17 10'IBM'
+  19700       A                                 17 14'i'
+  19800       A                                 17 16'and'
+  19900       A                                 17 20'POWER'
+  20000       A                                 17 26'Series'
+  20100       A                                 17 33'Today'
+  20200       A          R #H0303
+  20300       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
+  20400       A                                      TEXT('Help for Menu Option 03')
+  20500       A                                      CLRL(*ALL)
+  20600       A                                  1  2'HELP'
+  20700       A                                      COLOR(BLU)
+  20800       A                                  1  8'About'
+  20900       A                                      DSPATR(HI)
+  21000       A                                  1 14'This'
+  21100       A                                      DSPATR(HI)
+  21200       A                                  1 19'System'
+  21300       A                                      DSPATR(HI)
+  21400       A                                  3  2'This'
+  21500       A                                  3  7'menu'
+  21600       A                                  3 12'option'
+  21700       A                                  3 19'brings'
+  21800       A                                  3 26'you'
+  21900       A                                  3 30'to'
+  22000       A                                  3 33'a'
+  22100       A                                  3 35'specs'
+  22200       A                                  3 41'screen'
+  22300       A                                  3 48'and'
+  22400       A                                  3 52'brief'
+  22500       A                                  3 58'history'
+  22600       A                                  3 66'if'
+  22700       A                                  3 69'known'
+  22800       A                                  3 75'of'
+  22900       A                                  3 78'the'
+  23000       A                                  4  2'system'
+  23100       A                                  4  9'that'
+  23200       A                                  4 14'this'
+  23300       A                                  4 19'demo'
+  23400       A                                  4 24'is'
+  23500       A                                  4 27'running'
+  23600       A                                  4 35'on.'
+  23700       A          R #H0404
+  23800       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
+  23900       A                                      TEXT('Help for Menu Option 04')
+  24000       A                                      CLRL(*ALL)
+  24100       A                                  1  2'HELP'
+  24200       A                                      COLOR(BLU)
+  24300       A                                  1  8'Learn'
+  24400       A                                      DSPATR(HI)
+  24500       A                                  1 14'about'
+  24600       A                                      DSPATR(HI)
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    6
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  24700       A                                  1 20'Gertie'
+  24800       A                                      DSPATR(HI)
+  24900       A                                  3  2'Come'
+  25000       A                                  3  7'learn'
+  25100       A                                  3 13'about'
+  25200       A                                  3 19'Gertie,'
+  25300       A                                  3 27'our'
+  25400       A                                  3 31'other'
+  25500       A                                  3 37'system'
+  25600       A                                  3 44'at'
+  25700       A                                  3 47'Midrange'
+  25800       A                                  3 56'Madness'
+  25900       A                                  3 64'2024,'
+  26000       A                                  3 70'a'
+  26100       A                                  3 72'1970s'
+  26200       A                                  4  2'IBM'
+  26300       A                                  4  6'System/34'
+  26400       A                                  4 16'midrange'
+  26500       A                                  4 25'computer.'
+  26600       A                                  4 35'You'
+  26700       A                                  4 39'will'
+  26800       A                                  4 44'learn'
+  26900       A                                  4 50'about'
+  27000       A                                  4 56'our'
+  27100       A                                  4 60'restoration'
+  27200       A                                  4 72'efforts,'
+  27300       A                                  5  2'and'
+  27400       A                                  5  6'its'
+  27500       A                                  5 10'history'
+  27600       A                                  5 18'prior'
+  27700       A                                  5 24'to'
+  27800       A                                  5 27'our'
+  27900       A                                  5 31'obtaining'
+  28000       A                                  5 41'the'
+  28100       A                                  5 45'machine.'
+  28200       A          R #H0505
+  28300       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
+  28400       A                                      TEXT('Help for Menu Option 05')
+  28500       A                                      CLRL(*ALL)
+  28600       A                                  1  2'HELP'
+  28700       A                                      COLOR(BLU)
+  28800       A                                  1  8'What'
+  28900       A                                      DSPATR(HI)
+  29000       A                                  1 13'is'
+  29100       A                                      DSPATR(HI)
+  29200       A                                  1 16'OfficeVision/400?'
+  29300       A                                      DSPATR(HI)
+  29400       A                                  3  2'OfficeVision/400'
+  29500       A                                  3 19'was'
+  29600       A                                  3 23'the'
+  29700       A                                  3 37'package'
+  29800       A                                  3 45'offered'
+  29900       A                                  3 53'by'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    7
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  30000       A                                  3 56'IBM'
+  30100       A                                  3 60'from'
+  30200       A                                  3 65'1988'
+  30300       A                                  3 70'to'
+  30400       A                                  3 73'approx.'
+  30500       A                                  4  2'1998'
+  30600       A                                  4  7'on'
+  30700       A                                  4 10'the'
+  30800       A                                  4 14'AS/400'
+  30900       A                                  4 21'platform.'
+  31000       A                                  4 31'It'
+  31100       A                                  4 34'offered'
+  31200       A                                  4 42'word'
+  31300       A                                  4 47'processing,'
+  31400       A                                  4 59'calendaring,'
+  31500       A                                  5  2'document'
+  31600       A                                  5 11'sharing,'
+  31700       A                                  5 20'and'
+  31800       A                                  5 24'many'
+  31900       A                                  5 29'more'
+  32000       A                                  5 34'options'
+  32100       A                                  5 42'for'
+  32200       A                                  5 46'getting'
+  32300       A                                  5 54'your'
+  32400       A                                  5 59'office'
+  32500       A                                  5 66'productivity'
+  32600       A                                  6  2'completed.'
+  32700       A                                  3 27'groupware'
+  32800       A          R #H1111
+  32900       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
+  33000       A                                      TEXT('Help for Menu Option 11')
+  33100       A                                      CLRL(*ALL)
+  33200       A                                  1  2'HELP'
+  33300       A                                      COLOR(BLU)
+  33400       A                                  1  8'Nominating'
+  33500       A                                      DSPATR(HI)
+  33600       A                                  1 19'Exhibits'
+  33700       A                                      DSPATR(HI)
+  33800       A                                  1 28'for'
+  33900       A                                      DSPATR(HI)
+  34000       A                                  1 32'Awards'
+  34100       A                                      DSPATR(HI)
+  34200       A                                  3  2'Have'
+  34300       A                                  3  7'you'
+  34400       A                                  3 11'found'
+  34500       A                                  3 17'an'
+  34600       A                                  3 20'exhibit'
+  34700       A                                  3 28'at'
+  34800       A                                  3 31'Vintage'
+  34900       A                                  3 39'Computer'
+  35000       A                                  3 48'Festival'
+  35100       A                                  3 57'that'
+  35200       A                                  3 62'you'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    8
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  35300       A                                  3 66'think'
+  35400       A                                  3 72'deserves'
+  35500       A                                  4  2'an'
+  35600       A                                  4  5'award?'
+  35700       A                                  4 12'By'
+  35800       A                                  4 15'taking'
+  35900       A                                  4 22'advantage'
+  36000       A                                  4 32'of'
+  36100       A                                  4 35'the'
+  36200       A                                  4 39'AS/400'
+  36300       A                                  4 46'database'
+  36400       A                                  4 55'capabilities,'
+  36500       A                                  4 69'you'
+  36600       A                                  4 73'too'
+  36700       A                                  5  2'can'
+  36800       A                                  5  6'nominate'
+  36900       A                                  5 15'an'
+  37000       A                                  5 18'exhibit'
+  37100       A                                  5 26'for'
+  37200       A                                  5 30'an'
+  37300       A                                  5 33'award.'
+  37400       A                                  5 40'Just'
+  37500       A                                  5 45'look'
+  37600       A                                  5 50'for'
+  37700       A                                  5 54'the'
+  37800       A                                  5 58'Exhibit'
+  37900       A                                  5 66'ID'
+  38000       A                                  5 69'number'
+  38100       A                                  5 76'on'
+  38200       A                                  6  2'each'
+  38300       A                                  6  7'of'
+  38400       A                                  6 10'the'
+  38500       A                                  6 14'exhibit'
+  38600       A                                  6 22'cards,'
+  38700       A                                  6 29'and'
+  38800       A                                  6 33'then'
+  38900       A                                  6 38'just'
+  39000       A                                  6 43'follow'
+  39100       A                                  8  8'Type'
+  39200       A                                  6 50'these'
+  39300       A                                  6 56'easy'
+  39400       A                                  6 61'steps:'
+  39500       A                                  8 13'your'
+  39600       A                                  8 18'SFGE'
+  39700       A                                  8 23'badge'
+  39800       A                                  8 29'number'
+  39900       A                                  8 36'into'
+  40000       A                                  8 41'the'
+  40100       A                                  8 45'Badge'
+  40200       A                                  8 51'Number'
+  40300       A                                  8 58'field'
+  40400       A                                  9  8'Type'
+  40500       A                                  9 13'the'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    9
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  40600       A                                  9 17'Exhibit'
+  40700       A                                  9 25'ID'
+  40800       A                                  9 28'into'
+  40900       A                                  9 33'the'
+  41000       A                                  9 37'Exhibit'
+  41100       A                                  9 45'ID'
+  41200       A                                  9 48'field'
+  41300       A                                 10  8'Type'
+  41400       A                                 10 13'the'
+  41500       A                                 10 17'award'
+  41600       A                                 10 23'you'
+  41700       A                                 10 27'are'
+  41800       A                                 10 31'nominating'
+  41900       A                                 10 42'for'
+  42000       A                                 10 46'into'
+  42100       A                                 10 51'the'
+  42200       A                                 10 55'Award'
+  42300       A                                 10 61'field'
+  42400       A                                 11  8'Press'
+  42500       A                                 11 14'ENTER'
+  42600       A                                 13  2'Your'
+  42700       A                                 13  7'vote'
+  42800       A                                 13 12'will'
+  42900       A                                 13 17'be'
+  43000       A                                 13 20'saved.'
+  43100       A                                 13 27'You'
+  43200       A                                 13 31'may'
+  43300       A                                 13 35'only'
+  43400       A                                 13 40'nominate'
+  43500       A                                 13 49'an'
+  43600       A                                 13 52'exhibit'
+  43700       A                                 13 60'once'
+  43800       A                                 13 65'for'
+  43900       A                                 13 69'a'
+  44000       A                                 13 71'single'
+  44100       A                                 14  2'award,'
+  44200       A                                 14  9'so'
+  44300       A                                 14 12'choose'
+  44400       A                                 14 19'carefully.'
+  44500       A                                 16  2'Results'
+  44600       A                                 16 10'will'
+  44700       A                                 16 15'be'
+  44800       A                                 16 18'tallied'
+  44900       A                                 16 26'and'
+  45000       A                                 16 30'presented'
+  45100       A                                 16 40'at'
+  45200       A                                 16 43'the'
+  45300       A                                 16 47'first'
+  45400       A                                 16 53'AHCS'
+  45500       A                                 16 58'meeting'
+  45600       A                                 16 66'following'
+  45700       A                                 16 76'VCF.'
+  45800       A          R #H1212
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   10
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  45900       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
+  46000       A                                      TEXT('Help for Menu Option 12')
+  46100       A                                      CLRL(*ALL)
+  46200       A                                  1  2'HELP'
+  46300       A                                      COLOR(BLU)
+  46400       A                                  1  8'Using'
+  46500       A                                      DSPATR(HI)
+  46600       A                                  1 14'the'
+  46700       A                                      DSPATR(HI)
+  46800       A                                  1 18'Guestbook'
+  46900       A                                      DSPATR(HI)
+  47000       A                                  3  2'If'
+  47100       A                                  3  5'you'
+  47200       A                                  3  9'have'
+  47300       A                                  3 14'found'
+  47400       A                                  3 20'an'
+  47500       A                                  3 23'exhibit'
+  47600       A                                  3 31'that'
+  47700       A                                  3 36'you'
+  47800       A                                  3 40'think'
+  47900       A                                  3 46'is'
+  48000       A                                  3 49'awesome,'
+  48100       A                                  3 58'you'
+  48200       A                                  3 62'can'
+  48300       A                                  3 66'sign'
+  48400       A                                  3 71'the'
+  48500       A                                  4  2'exhibitor'
+  48600       A                                  4 12'guestbook.'
+  48700       A                                  4 23'Just'
+  48800       A                                  4 28'look'
+  48900       A                                  4 33'for'
+  49000       A                                  4 37'the'
+  49100       A                                  4 41'Exhibit'
+  49200       A                                  4 49'ID'
+  49300       A                                  4 52'on'
+  49400       A                                  4 55'the'
+  49500       A                                  4 59'exhibit'
+  49600       A                                  4 67'placard,'
+  49700       A                                  5  2'type'
+  49800       A                                  5  7'it'
+  49900       A                                  5 10'into'
+  50000       A                                  5 15'the'
+  50100       A                                  5 19'Exhibit'
+  50200       A                                  5 27'ID'
+  50300       A                                  5 30'field,'
+  50400       A                                  5 37'and'
+  50500       A                                  5 41'leave'
+  50600       A                                  5 47'your'
+  50700       A                                  5 52'comment.'
+  50800       A                                  7  2'Guestbook'
+  50900       A                                  7 12'comments'
+  51000       A                                  7 21'will'
+  51100       A                                  7 26'be'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   11
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+  51200       A                                  7 29'shared'
+  51300       A                                  7 36'with'
+  51400       A                                  7 41'the'
+  51500       A                                  7 45'exhibitor'
+  51600       A                                  7 55'at'
+  51700       A                                  7 58'the'
+  51800       A                                  7 62'end'
+  51900       A                                  7 66'of'
+  52000       A                                  7 69'the'
+  52100       A                                  7 73'show.'
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   12
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    400                                              DSPSIZ(24 80 *DS3                  -
+    400                                                     27 132 *DS4) CHGINPDFT +
+    700                                              INDARA PRINT(*LIBL/QSYSPRT)
+    900                  R VCFMAIN                   DSPMOD(*DS3) LOCK SLNO(01) +
+   1400                                              CLRL(*ALL) ALWROL CF03 HELP HOME +
+   1900                                              HLPRTN
+   2000                                          1 33'AS/400 DEMO MENU' DSPATR(HI) +         16
+   2200                                              COLOR(WHT)
+   2300                                          2  2'WELCOME TO...' COLOR(RED) +            13
+   2500                                              DSPATR(HI)
+   2700                                         19  2'Type Number, then press ENTER     -    38
+   2700                                                  '
+   2900                                          3 10'V I N T A G E  C O M P U T E R  F -    47
+   2900                                              E S T I V A L'
+   3100                                          3 59'2 0 2 4' DSPATR(HI)                     7
+   3300                                          4  2'Start Here' DSPATR(HI)                 10
+   3500                                          5  7'1. Learn AS/400 Navigation'            26
+   3600                                          6  7'2. IBM Midrange History'               23
+   3700                                          7  7'3. About This System'                  20
+   3800                                          8  7'4. About Gertie the System/34'         29
+   3900                                          9  2'Office Tasks' DSPATR(HI)               12
+   4100                                         10  7'5. Start OfficeVision/400'             25
+   4200                                         11  7'6. Start a Calendar'                   19
+   4300                                         12  7'7. Start the Clock'                    18
+   4400                                         13  2'Entertainment' DSPATR(HI)              13
+   4600                                         14  7'8. Play Snake'                         13
+   4700                                         15  7'9. Play Yahtzee'                       15
+   4800                                         16  6'10. Play PacMan'                       15
+   4900                                          8 42'System Tasks' DSPATR(HI)               12
+   5100                                          9 47'80. Sign Off the System'               23
+   5200                                         10 42'Administration' DSPATR(HI)             14
+   5400                                         11 47'90. Start Admin Menu'                  20
+   5500                                         13 34'Type the menu number you want and -    38
+   5500                                              then' DSPATR(HI)
+   5800                                         14 34'press the ENTER key which is locat-    42
+   5800                                              ed where' DSPATR(HI)
+   6100                                         15 34'the right CTRL key normally is on -    38
+   6100                                              a PC' DSPATR(HI)
+   6400                                         16 34'keyboard. Or type the menu option -    41
+   6400                                              you are' DSPATR(HI)
+   6700                                          4 42'Exhibit Tasks   ' DSPATR(HI)           16
+   6900                                          5 47'11. Nominate Exhibit for Award'        30
+   7000                                          6 47'12. Sign Exhibit Guestbook'            26
+   7100                                         17 34'curious about and press the HELP k-    37
+   7100                                              ey.' DSPATR(HI)
+   7400                                          7 47'13. Read a Guestbook Comment'          28
+   7500                  R #H0101                    TEXT('Help for Menu Option 01') +
+   7800                                              CLRL(*ALL)
+   7900                                          1  2'HELP' COLOR(BLU)                        4
+   8100                                          1  8'Learning' DSPATR(HI)                    8
+   8300                                          1 17'about' DSPATR(HI)                       5
+   8500                                          1 23'AS/400' DSPATR(HI)                      6
+   8700                                          1 30'Navigation' DSPATR(HI)                 10
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   13
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+   8900                                          3  2'This'                                   4
+   9000                                          3  7'menu'                                   4
+   9100                                          3 12'option'                                 6
+   9200                                          3 19'allows'                                 6
+   9300                                          3 26'you'                                    3
+   9400                                          3 30'to'                                     2
+   9500                                          3 33'learn'                                  5
+   9600                                          3 39'how'                                    3
+   9700                                          3 43'to'                                     2
+   9800                                          3 46'navigate'                               8
+   9900                                          3 55'using'                                  5
+  10000                                          3 61'the'                                    3
+  10100                                          3 65'122'                                    3
+  10200                                          3 73'IBM'                                    3
+  10300                                          4  2'terminal'                               8
+  10400                                          4 11'layout,'                                7
+  10500                                          4 19'as'                                     2
+  10600                                          4 22'well'                                   4
+  10700                                          4 27'as'                                     2
+  10800                                          4 30'the'                                    3
+  10900                                          4 34'quirks'                                 6
+  11000                                          4 41'of'                                     2
+  11100                                          4 44'keyboard'                               8
+  11200                                          4 53'navigation'                            10
+  11300                                          4 64'on'                                     2
+  11400                                          4 67'the'                                    3
+  11500                                          4 71'AS/400,'                                7
+  11600                                          5  2'System/36,'                            10
+  11700                                          5 13'and'                                    3
+  11800                                          5 17'System/34.'                            10
+  11900                                          3 69'key'                                    3
+  12000                  R #H0202                    TEXT('Help for Menu Option 02') +
+  12300                                              CLRL(*ALL)
+  12400                                          1  2'HELP' COLOR(BLU)                        4
+  12600                                          1  8'About' DSPATR(HI)                       5
+  12800                                          1 14'IBM' DSPATR(HI)                         3
+  13000                                          1 18'Midrange' DSPATR(HI)                    8
+  13200                                          1 27'History' DSPATR(HI)                     7
+  13400                                          3  2'This'                                   4
+  13500                                          3  7'option'                                 6
+  13600                                          3 14'takes'                                  5
+  13700                                          3 20'you'                                    3
+  13800                                          3 24'through'                                7
+  13900                                          3 32'a'                                      1
+  14000                                          3 34'tour'                                   4
+  14100                                          3 39'of'                                     2
+  14200                                          3 42'IBM'                                    3
+  14300                                          3 46's'                                      1
+  14400                                          3 48'history'                                7
+  14500                                          3 56'of'                                     2
+  14600                                          3 59'Midrange'                               8
+  14700                                          3 68'computers,'                            10
+  14800                                          4  2'known'                                  5
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   14
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  14900                                          4  8'to'                                     2
+  15000                                          4 11'the'                                    3
+  15100                                          4 15'rest'                                   4
+  15200                                          4 20'of'                                     2
+  15300                                          4 23'the'                                    3
+  15400                                          4 27'computer'                               8
+  15500                                          4 36'as'                                     2
+  15600                                          4 39'minicomputers.'                        14
+  15700                                          6  2'This'                                   4
+  15800                                          6  7'tour'                                   4
+  15900                                          6 12'will'                                   4
+  16000                                          6 17'take'                                   4
+  16100                                          6 22'you'                                    3
+  16200                                          6 26'through'                                7
+  16300                                          6 34'the'                                    3
+  16400                                          6 38'following'                              9
+  16500                                          6 48'virtual'                                7
+  16600                                          6 56'exhibits:'                              9
+  16700                                          8 10'The'                                    3
+  16800                                          8 14'IBM'                                    3
+  16900                                          8 18'System/3'                               8
+  17000                                          9 10'The'                                    3
+  17100                                          9 14'IBM'                                    3
+  17200                                          9 18'System/32'                              9
+  17300                                         10 10'The'                                    3
+  17400                                         10 14'IBM'                                    3
+  17500                                         10 18'System/34'                              9
+  17600                                         11 10'The'                                    3
+  17700                                         11 14'IBM'                                    3
+  17800                                         11 18'System/38'                              9
+  17900                                         12 10'The'                                    3
+  18000                                         12 14'IBM'                                    3
+  18100                                         12 18'System/36'                              9
+  18200                                         13 10'The'                                    3
+  18300                                         13 14'History'                                7
+  18400                                         13 22'of'                                     2
+  18500                                         13 25'Silverlake'                            10
+  18600                                         14 10'The'                                    3
+  18700                                         14 14'IBM'                                    3
+  18800                                         14 18'AS/400'                                 6
+  18900                                         15 10'A'                                      1
+  19000                                         15 12'Rebranding'                            10
+  19100                                         15 23'to'                                     2
+  19200                                         15 26'iSeries'                                7
+  19300                                         16 10'The'                                    3
+  19400                                         16 14'RS/6000'                                7
+  19500                                         16 22'Merge'                                  5
+  19600                                         17 10'IBM'                                    3
+  19700                                         17 14'i'                                      1
+  19800                                         17 16'and'                                    3
+  19900                                         17 20'POWER'                                  5
+  20000                                         17 26'Series'                                 6
+  20100                                         17 33'Today'                                  5
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   15
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  20200                  R #H0303                    TEXT('Help for Menu Option 03') +
+  20500                                              CLRL(*ALL)
+  20600                                          1  2'HELP' COLOR(BLU)                        4
+  20800                                          1  8'About' DSPATR(HI)                       5
+  21000                                          1 14'This' DSPATR(HI)                        4
+  21200                                          1 19'System' DSPATR(HI)                      6
+  21400                                          3  2'This'                                   4
+  21500                                          3  7'menu'                                   4
+  21600                                          3 12'option'                                 6
+  21700                                          3 19'brings'                                 6
+  21800                                          3 26'you'                                    3
+  21900                                          3 30'to'                                     2
+  22000                                          3 33'a'                                      1
+  22100                                          3 35'specs'                                  5
+  22200                                          3 41'screen'                                 6
+  22300                                          3 48'and'                                    3
+  22400                                          3 52'brief'                                  5
+  22500                                          3 58'history'                                7
+  22600                                          3 66'if'                                     2
+  22700                                          3 69'known'                                  5
+  22800                                          3 75'of'                                     2
+  22900                                          3 78'the'                                    3
+  23000                                          4  2'system'                                 6
+  23100                                          4  9'that'                                   4
+  23200                                          4 14'this'                                   4
+  23300                                          4 19'demo'                                   4
+  23400                                          4 24'is'                                     2
+  23500                                          4 27'running'                                7
+  23600                                          4 35'on.'                                    3
+  23700                  R #H0404                    TEXT('Help for Menu Option 04') +
+  24000                                              CLRL(*ALL)
+  24100                                          1  2'HELP' COLOR(BLU)                        4
+  24300                                          1  8'Learn' DSPATR(HI)                       5
+  24500                                          1 14'about' DSPATR(HI)                       5
+  24700                                          1 20'Gertie' DSPATR(HI)                      6
+  24900                                          3  2'Come'                                   4
+  25000                                          3  7'learn'                                  5
+  25100                                          3 13'about'                                  5
+  25200                                          3 19'Gertie,'                                7
+  25300                                          3 27'our'                                    3
+  25400                                          3 31'other'                                  5
+  25500                                          3 37'system'                                 6
+  25600                                          3 44'at'                                     2
+  25700                                          3 47'Midrange'                               8
+  25800                                          3 56'Madness'                                7
+  25900                                          3 64'2024,'                                  5
+  26000                                          3 70'a'                                      1
+  26100                                          3 72'1970s'                                  5
+  26200                                          4  2'IBM'                                    3
+  26300                                          4  6'System/34'                              9
+  26400                                          4 16'midrange'                               8
+  26500                                          4 25'computer.'                              9
+  26600                                          4 35'You'                                    3
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   16
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  26700                                          4 39'will'                                   4
+  26800                                          4 44'learn'                                  5
+  26900                                          4 50'about'                                  5
+  27000                                          4 56'our'                                    3
+  27100                                          4 60'restoration'                           11
+  27200                                          4 72'efforts,'                               8
+  27300                                          5  2'and'                                    3
+  27400                                          5  6'its'                                    3
+  27500                                          5 10'history'                                7
+  27600                                          5 18'prior'                                  5
+  27700                                          5 24'to'                                     2
+  27800                                          5 27'our'                                    3
+  27900                                          5 31'obtaining'                              9
+  28000                                          5 41'the'                                    3
+  28100                                          5 45'machine.'                               8
+  28200                  R #H0505                    TEXT('Help for Menu Option 05') +
+  28500                                              CLRL(*ALL)
+  28600                                          1  2'HELP' COLOR(BLU)                        4
+  28800                                          1  8'What' DSPATR(HI)                        4
+  29000                                          1 13'is' DSPATR(HI)                          2
+  29200                                          1 16'OfficeVision/400?' DSPATR(HI)          17
+  29400                                          3  2'OfficeVision/400'                      16
+  29500                                          3 19'was'                                    3
+  29600                                          3 23'the'                                    3
+  29700                                          3 37'package'                                7
+  29800                                          3 45'offered'                                7
+  29900                                          3 53'by'                                     2
+  30000                                          3 56'IBM'                                    3
+  30100                                          3 60'from'                                   4
+  30200                                          3 65'1988'                                   4
+  30300                                          3 70'to'                                     2
+  30400                                          3 73'approx.'                                7
+  30500                                          4  2'1998'                                   4
+  30600                                          4  7'on'                                     2
+  30700                                          4 10'the'                                    3
+  30800                                          4 14'AS/400'                                 6
+  30900                                          4 21'platform.'                              9
+  31000                                          4 31'It'                                     2
+  31100                                          4 34'offered'                                7
+  31200                                          4 42'word'                                   4
+  31300                                          4 47'processing,'                           11
+  31400                                          4 59'calendaring,'                          12
+  31500                                          5  2'document'                               8
+  31600                                          5 11'sharing,'                               8
+  31700                                          5 20'and'                                    3
+  31800                                          5 24'many'                                   4
+  31900                                          5 29'more'                                   4
+  32000                                          5 34'options'                                7
+  32100                                          5 42'for'                                    3
+  32200                                          5 46'getting'                                7
+  32300                                          5 54'your'                                   4
+  32400                                          5 59'office'                                 6
+  32500                                          5 66'productivity'                          12
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   17
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  32600                                          6  2'completed.'                            10
+  32700                                          3 27'groupware'                              9
+  32800                  R #H1111                    TEXT('Help for Menu Option 11') +
+  33100                                              CLRL(*ALL)
+  33200                                          1  2'HELP' COLOR(BLU)                        4
+  33400                                          1  8'Nominating' DSPATR(HI)                 10
+  33600                                          1 19'Exhibits' DSPATR(HI)                    8
+  33800                                          1 28'for' DSPATR(HI)                         3
+  34000                                          1 32'Awards' DSPATR(HI)                      6
+  34200                                          3  2'Have'                                   4
+  34300                                          3  7'you'                                    3
+  34400                                          3 11'found'                                  5
+  34500                                          3 17'an'                                     2
+  34600                                          3 20'exhibit'                                7
+  34700                                          3 28'at'                                     2
+  34800                                          3 31'Vintage'                                7
+  34900                                          3 39'Computer'                               8
+  35000                                          3 48'Festival'                               8
+  35100                                          3 57'that'                                   4
+  35200                                          3 62'you'                                    3
+  35300                                          3 66'think'                                  5
+  35400                                          3 72'deserves'                               8
+  35500                                          4  2'an'                                     2
+  35600                                          4  5'award?'                                 6
+  35700                                          4 12'By'                                     2
+  35800                                          4 15'taking'                                 6
+  35900                                          4 22'advantage'                              9
+  36000                                          4 32'of'                                     2
+  36100                                          4 35'the'                                    3
+  36200                                          4 39'AS/400'                                 6
+  36300                                          4 46'database'                               8
+  36400                                          4 55'capabilities,'                         13
+  36500                                          4 69'you'                                    3
+  36600                                          4 73'too'                                    3
+  36700                                          5  2'can'                                    3
+  36800                                          5  6'nominate'                               8
+  36900                                          5 15'an'                                     2
+  37000                                          5 18'exhibit'                                7
+  37100                                          5 26'for'                                    3
+  37200                                          5 30'an'                                     2
+  37300                                          5 33'award.'                                 6
+  37400                                          5 40'Just'                                   4
+  37500                                          5 45'look'                                   4
+  37600                                          5 50'for'                                    3
+  37700                                          5 54'the'                                    3
+  37800                                          5 58'Exhibit'                                7
+  37900                                          5 66'ID'                                     2
+  38000                                          5 69'number'                                 6
+  38100                                          5 76'on'                                     2
+  38200                                          6  2'each'                                   4
+  38300                                          6  7'of'                                     2
+  38400                                          6 10'the'                                    3
+  38500                                          6 14'exhibit'                                7
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   18
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  38600                                          6 22'cards,'                                 6
+  38700                                          6 29'and'                                    3
+  38800                                          6 33'then'                                   4
+  38900                                          6 38'just'                                   4
+  39000                                          6 43'follow'                                 6
+  39100                                          8  8'Type'                                   4
+  39200                                          6 50'these'                                  5
+  39300                                          6 56'easy'                                   4
+  39400                                          6 61'steps:'                                 6
+  39500                                          8 13'your'                                   4
+  39600                                          8 18'SFGE'                                   4
+  39700                                          8 23'badge'                                  5
+  39800                                          8 29'number'                                 6
+  39900                                          8 36'into'                                   4
+  40000                                          8 41'the'                                    3
+  40100                                          8 45'Badge'                                  5
+  40200                                          8 51'Number'                                 6
+  40300                                          8 58'field'                                  5
+  40400                                          9  8'Type'                                   4
+  40500                                          9 13'the'                                    3
+  40600                                          9 17'Exhibit'                                7
+  40700                                          9 25'ID'                                     2
+  40800                                          9 28'into'                                   4
+  40900                                          9 33'the'                                    3
+  41000                                          9 37'Exhibit'                                7
+  41100                                          9 45'ID'                                     2
+  41200                                          9 48'field'                                  5
+  41300                                         10  8'Type'                                   4
+  41400                                         10 13'the'                                    3
+  41500                                         10 17'award'                                  5
+  41600                                         10 23'you'                                    3
+  41700                                         10 27'are'                                    3
+  41800                                         10 31'nominating'                            10
+  41900                                         10 42'for'                                    3
+  42000                                         10 46'into'                                   4
+  42100                                         10 51'the'                                    3
+  42200                                         10 55'Award'                                  5
+  42300                                         10 61'field'                                  5
+  42400                                         11  8'Press'                                  5
+  42500                                         11 14'ENTER'                                  5
+  42600                                         13  2'Your'                                   4
+  42700                                         13  7'vote'                                   4
+  42800                                         13 12'will'                                   4
+  42900                                         13 17'be'                                     2
+  43000                                         13 20'saved.'                                 6
+  43100                                         13 27'You'                                    3
+  43200                                         13 31'may'                                    3
+  43300                                         13 35'only'                                   4
+  43400                                         13 40'nominate'                               8
+  43500                                         13 49'an'                                     2
+  43600                                         13 52'exhibit'                                7
+  43700                                         13 60'once'                                   4
+  43800                                         13 65'for'                                    3
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   19
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  43900                                         13 69'a'                                      1
+  44000                                         13 71'single'                                 6
+  44100                                         14  2'award,'                                 6
+  44200                                         14  9'so'                                     2
+  44300                                         14 12'choose'                                 6
+  44400                                         14 19'carefully.'                            10
+  44500                                         16  2'Results'                                7
+  44600                                         16 10'will'                                   4
+  44700                                         16 15'be'                                     2
+  44800                                         16 18'tallied'                                7
+  44900                                         16 26'and'                                    3
+  45000                                         16 30'presented'                              9
+  45100                                         16 40'at'                                     2
+  45200                                         16 43'the'                                    3
+  45300                                         16 47'first'                                  5
+  45400                                         16 53'AHCS'                                   4
+  45500                                         16 58'meeting'                                7
+  45600                                         16 66'following'                              9
+  45700                                         16 76'VCF.'                                   4
+  45800                  R #H1212                    TEXT('Help for Menu Option 12') +
+  46100                                              CLRL(*ALL)
+  46200                                          1  2'HELP' COLOR(BLU)                        4
+  46400                                          1  8'Using' DSPATR(HI)                       5
+  46600                                          1 14'the' DSPATR(HI)                         3
+  46800                                          1 18'Guestbook' DSPATR(HI)                   9
+  47000                                          3  2'If'                                     2
+  47100                                          3  5'you'                                    3
+  47200                                          3  9'have'                                   4
+  47300                                          3 14'found'                                  5
+  47400                                          3 20'an'                                     2
+  47500                                          3 23'exhibit'                                7
+  47600                                          3 31'that'                                   4
+  47700                                          3 36'you'                                    3
+  47800                                          3 40'think'                                  5
+  47900                                          3 46'is'                                     2
+  48000                                          3 49'awesome,'                               8
+  48100                                          3 58'you'                                    3
+  48200                                          3 62'can'                                    3
+  48300                                          3 66'sign'                                   4
+  48400                                          3 71'the'                                    3
+  48500                                          4  2'exhibitor'                              9
+  48600                                          4 12'guestbook.'                            10
+  48700                                          4 23'Just'                                   4
+  48800                                          4 28'look'                                   4
+  48900                                          4 33'for'                                    3
+  49000                                          4 37'the'                                    3
+  49100                                          4 41'Exhibit'                                7
+  49200                                          4 49'ID'                                     2
+  49300                                          4 52'on'                                     2
+  49400                                          4 55'the'                                    3
+  49500                                          4 59'exhibit'                                7
+  49600                                          4 67'placard,'                               8
+  49700                                          5  2'type'                                   4
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   20
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  49800                                          5  7'it'                                     2
+  49900                                          5 10'into'                                   4
+  50000                                          5 15'the'                                    3
+  50100                                          5 19'Exhibit'                                7
+  50200                                          5 27'ID'                                     2
+  50300                                          5 30'field,'                                 6
+  50400                                          5 37'and'                                    3
+  50500                                          5 41'leave'                                  5
+  50600                                          5 47'your'                                   4
+  50700                                          5 52'comment.'                               8
+  50800                                          7  2'Guestbook'                              9
+  50900                                          7 12'comments'                               8
+  51000                                          7 21'will'                                   4
+  51100                                          7 26'be'                                     2
+  51200                                          7 29'shared'                                 6
+  51300                                          7 36'with'                                   4
+  51400                                          7 41'the'                                    3
+  51500                                          7 45'exhibitor'                              9
+  51600                                          7 55'at'                                     2
+  51700                                          7 58'the'                                    3
+  51800                                          7 62'end'                                    3
+  51900                                          7 66'of'                                     2
+  52000                                          7 69'the'                                    3
+  52100                                          7 73'show.'                                  5
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   21
+                                             Messages
+    ID      Severity  Number
+* CPD5235      10        1      Message . . . . :   Record name same as name of file being created.
+* CPD8018      10        2      Message . . . . :   Keyword may not function as expected with DSPMOD.
+* CPD8111      10        1      Message . . . . :   Record may not function as expected.
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   22
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        4                 0                    4             0            0
+* CPC7301      00               Message . . . . :   File VCFMAIN created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

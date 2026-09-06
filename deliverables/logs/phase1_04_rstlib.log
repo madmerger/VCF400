@@ -1,0 +1,9 @@
+ASHIBATA@pub400.com's password: 
+CPD0032: Not authorized to command RSTLIB in library *LIBL.
+CPF0006: Errors occurred in command.
+rc=255
+   1 CPF1124    Information             00   26-09-06  16:41:37,951884  QWTPIIPP     QSYS        04DC     *EXT                    *N
+ASHIBATA@pub400.com's password: 
+CPD0032: Not authorized to command RSTOBJ in library *LIBL.
+CPF0006: Errors occurred in command.
+rc=255

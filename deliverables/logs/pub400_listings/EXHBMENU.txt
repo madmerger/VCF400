@@ -1,0 +1,379 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   EXHBMENU
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   EXHBMENU
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-06  17:02:29
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FEXHBDB    IF   E           K DISK                                                                        000000     000100
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBDB           ASHIBATA2/EXHBDB                            *
+        * Record format(s) . . . . . :  EXHBREC          EXHBREC                                     *
+        *--------------------------------------------------------------------------------------------*
+     2 FSETTINGS  IF   E             DISK                                                                        000000     000200
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  SETTINGS         ASHIBATA2/SETTINGS                          *
+        * Record format(s) . . . . . :  SETTINGSR        SETTINGSR                                   *
+        *--------------------------------------------------------------------------------------------*
+     3 FEXHBMENUSCCF   E             WORKSTN                                                                     000000     000300
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBMENUSC       ASHIBATA2/EXHBMENUSC                        *
+        * Record format(s) . . . . . :  MENU             MENU                                        *
+        *                               ADMCREATE        ADMCREATE                                   *
+        *                               ADMPSWRD         ADMPSWRD                                    *
+        *                               ADMDELETE        ADMDELETE                                   *
+        *                               ADMDELETE2       ADMDELETE2                                  *
+        *--------------------------------------------------------------------------------------------*
+     4 DUSERPROF         S              9A                                                                       000000     000400
+     5 DEXITPSWRD        S              9A                                                                       000000     000500
+     6 DCHKALWVOTE       S              1P 0                                                                     000000     000600
+     7 DCHKLRN400        S              1P 0                                                                     000000     000700
+     8=IEXHBREC                                                                                                            1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  EXHBREC                                                      *                     1
+        * External format  . . . . . :  EXHBREC : ASHIBATA2/EXHBDB                                   *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+     9=I                             B    1    2 0EXHBDBID                                                                 1000002
+    10=I                             A    3   11  EXHUSRPRF                                                                1000003
+    11=I                             A   12   31  EXHBITOR                                                                 1000004
+    12=I                             A   32   51  EXHBCITY                                                                 1000005
+    13=I                             A   52   53  EXHBSTATE                                                                1000006
+    14=I                             A   54  103  EXHBTITLE                                                                1000007
+    15=I                             A  104 1103  EXHBDESC                                                                 1000008
+    16=I                             B 1104 1105 0ELIGIBLE                                                                 1000009
+    17=I                             B 1106 1107 0ENLRN400                                                                 1000010
+    18=ISETTINGSR                                                                                                          2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  SETTINGSR                                                    *                     2
+        * External format  . . . . . :  SETTINGSR : ASHIBATA2/SETTINGS                               *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+    19=I                             A    1    9  SETTING                                                                  2000002
+    20=I                             A   10   18  VALUE                                                                    2000003
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      3
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    21=IMENU                                                                                                               3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * RPG record format  . . . . :  MENU                                                         *                     3
+        * External format  . . . . . :  MENU : ASHIBATA2/EXHBMENUSC                                  *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    22=I                             S    1    1 0INOPT                                                                    3000002
+    23=IADMCREATE                                                                                                          4000001
+        *--------------------------------------------------------------------------------------------*                     4
+        * RPG record format  . . . . :  ADMCREATE                                                    *                     4
+        * External format  . . . . . :  ADMCREATE : ASHIBATA2/EXHBMENUSC                             *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    24=I                             N    1    1  *IN05                           Delete                                   4000002
+    25=I                             N    2    2  *IN12                           Cancel                                   4000003
+    26=I                             A    3   11  INUSRPRF                                                                 4000004
+    27=I                             A   12   71  INTITLE                                                                  4000005
+    28=I                             A   72   91  INNAME                                                                   4000006
+    29=I                             A   92  106  INCITY                                                                   4000007
+    30=I                             A  107  108  INSTATE                                                                  4000008
+    31=I                             A  109  109  INELIGIBLE                                                               4000009
+    32=I                             A  110 1109  INDESC                                                                   4000010
+    33=I                             A 1110 1110  INLRN400EN                                                               4000011
+    34=IADMPSWRD                                                                                                           5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * RPG record format  . . . . :  ADMPSWRD                                                     *                     5
+        * External format  . . . . . :  ADMPSWRD : ASHIBATA2/EXHBMENUSC                              *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+    35=I                             A    1    9  INPWD                                                                    5000002
+    36=IADMDELETE                                                                                                          6000001
+        *--------------------------------------------------------------------------------------------*                     6
+        * RPG record format  . . . . :  ADMDELETE                                                    *                     6
+        * External format  . . . . . :  ADMDELETE : ASHIBATA2/EXHBMENUSC                             *                     6
+        *--------------------------------------------------------------------------------------------*                     6
+    37=I                             N    1    1  *IN12                           Cancel                                   6000002
+    38=IADMDELETE2                                                                                                         7000001
+        *--------------------------------------------------------------------------------------------*                     7
+        * RPG record format  . . . . :  ADMDELETE2                                                   *                     7
+        * External format  . . . . . :  ADMDELETE2 : ASHIBATA2/EXHBMENUSC                            *                     7
+        *--------------------------------------------------------------------------------------------*                     7
+    39=I                             N    1    1  *IN12                           Cancel                                   7000002
+    40 C     *ENTRY        PLIST                                                                                 000000     000800
+    41 C                   PARM                    LAUNCH            9                                           000000     000900
+    42 C*-----------------------------------------------------------------------                                 000000     001000
+    43 C*                  MOVEL     LAUNCH        PARMOUT                                                       000000     001100
+    44 C                   EXSR      CHKPARM                                                                     000000     001200
+    45 C                   EXSR      GETPSWRD                                                                    000000     001300
+    46 C                   EXFMT     MENU                                                                        000000     001400
+    47 C                                                                                                         000000     001500
+    48 C                   IF        INOPT = 1                                                         B01       000000     001600
+    49 C                   EXSR      DOVOTE                                                             01       000000     001700
+    50 C                   ENDIF                                                                       E01       000000     001800
+    51 C                                                                                               E01       000000     001900
+    52 C                   IF        INOPT = 2                                                         B01       000000     002000
+    53 C                   EXSR      DOLRN400                                                           01       000000     002100
+    54 C                   ENDIF                                                                       E01       000000     002200
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      4
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    55 C                                                                                               E01       000000     002300
+    56 C                   IF        INOPT = 3                                                         B01       000000     002400
+    57 C                   CALL      'ADDGBSTUB'                                                        01       000000     002500
+    58 C                   ENDIF                                                                       E01       000000     002600
+    59 C                                                                                               E01       000000     002700
+    60 C                   IF        INOPT = 4                                                         B01       000000     002800
+    61 C                   CALL      'READGBSTUB'                                                       01       000000     002900
+    62 C                   ENDIF                                                                       E01       000000     003000
+    63 C                                                                                               E01       000000     003100
+    64 C                   IF        INOPT = 7                                                         B01       000000     003200
+    65 C                   EXSR      ADMKIOSK                                                           01       000000     003300
+    66 C                   ENDIF                                                                       E01       000000     003400
+    67 C*------------------------------------------------------------------------                                000000     003500
+    68 C     DOVOTE        BEGSR                                                                                 000000     003600
+    69 C                   IF        CHKALWVOTE = 1                                                    B01       000000     003700
+    70 C                   CALL      'VOTESTUB'                                                         01       000000     003800
+    71 C                   ENDIF                                                                       E01       000000     003900
+    72 C                   ENDSR                                                                                 000000     004000
+    73 C*------------------------------------------------------------------------                                000000     004100
+    74 C     DOLRN400      BEGSR                                                                                 000000     004200
+    75 C                   IF        CHKLRN400 = 1                                                     B01       000000     004300
+    76 C                   CALL      'LRN400STUB'                                                       01       000000     004400
+    77 C                   ENDIF                                                                       E01       000000     004500
+    78 C                   ENDSR                                                                                 000000     004600
+    79 C*------------------------------------------------------------------------                                000000     004700
+    80 C     ADMKIOSK      BEGSR                                                                                 000000     004800
+    81 C                   EXFMT     ADMPSWRD                                                                    000000     004900
+    82 C                   IF        INPWD = EXITPSWRD                                                 B01       000000     005000
+    83 C                   MOVEL     *ON           *INLR                                                01       000000     005100
+    84 C                   RETURN                                                                       01       000000     005200
+    85 C                   ENDIF                                                                       E01       000000     005300
+    86 C                   ENDSR                                                                                 000000     005400
+    87 C*-------------------------------------------------------------------------                               000000     005500
+    88 C     GETPSWRD      BEGSR                                                                                 000000     005600
+    89 C     *START        SETLL     SETTINGS                                                                    000000     005700
+    90 C                   READ      SETTINGS                                                                    000000     005800
+    91 C                   MOVEL     VALUE         EXITPSWRD                                                     000000     005900
+    92 C                   ENDSR                                                                                 000000     006000
+    93 C*-------------------------------------------------------------------------                               000000     006100
+    94 C     CHKPARM       BEGSR                                                                                 000000     006200
+    95 C                   MOVEL     LAUNCH        USERPROF                                                      000000     006300
+    96 C     USERPROF      SETLL     EXHBREC                                                                     000000     006400
+    97 C                   READ      EXHBDB                                                                      000000     006500
+    98 C                   MOVEL     EXHBTITLE     OUTTITLE                                                      000000     006600
+    99 C                   MOVEL     EXHBITOR      OUTNAME                                                       000000     006700
+   100 C                   MOVEL     EXHBCITY      OUTCITY                                                       000000     006800
+   101 C                   MOVEL     EXHBSTATE     OUTSTATE                                                      000000     006900
+   102 C                   MOVEL     EXHBDESC      OUTDESC                                                       000000     007000
+   103 C                   MOVEL     ELIGIBLE      CHKALWVOTE                                                    000000     007100
+   104 C                   MOVEL     ENLRN400      CHKLRN400                                                     000000     007200
+   105 C                                                                                                         000000     007300
+   106 C                   IF        CHKALWVOTE = 1                                                    B01       000000     007400
+   107 C                   EVAL      *IN41 = *OFF                                                       01       000000     007500
+   108 C                   ELSE                                                                        X01       000000     007600
+   109 C                   EVAL      *IN41 = *ON                                                        01       000000     007700
+   110 C                   ENDIF                                                                       E01       000000     007800
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      5
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   111 C                                                                                               E01       000000     007900
+   112 C                   IF        CHKLRN400 = 1                                                     B01       000000     008000
+   113 C                   EVAL      *IN40 = *OFF                                                       01       000000     008100
+   114 C                   ELSE                                                                        X01       000000     008200
+   115 C                   EVAL      *IN40 = *ON                                                        01       000000     008300
+   116 C                   ENDIF                                                                       E01       000000     008400
+   117 C                                                                                               E01       000000     008500
+   118 C                   ENDSR                                                                                 000000     008600
+   119=OMENU                                                                                                               8000001
+        *--------------------------------------------------------------------------------------------*                     8
+        * RPG record format  . . . . :  MENU                                                         *                     8
+        * External format  . . . . . :  MENU : ASHIBATA2/EXHBMENUSC                                  *                     8
+        *--------------------------------------------------------------------------------------------*                     8
+   120=O                       *IN40                2N CHAR        1                                                       8000002
+   121=O                       *IN41                1N CHAR        1                                                       8000003
+   122=O                       OUTTITLE            77A CHAR       75                                                       8000004
+   123=O                       OUTNAME            102A CHAR       25                                                       8000005
+   124=O                       OUTCITY            117A CHAR       15                                                       8000006
+   125=O                       OUTSTATE           119A CHAR        2                                                       8000007
+   126=O                       OUTDESC           1119A CHAR     1000                                                       8000008
+   127=OADMPSWRD                                                                                                           9000001
+        *--------------------------------------------------------------------------------------------*                     9
+        * RPG record format  . . . . :  ADMPSWRD                                                     *                     9
+        * External format  . . . . . :  ADMPSWRD : ASHIBATA2/EXHBMENUSC                              *                     9
+        *--------------------------------------------------------------------------------------------*                     9
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      6
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+*RNF7066 00      3 000300  Record-Format ADMCREATE not used for input or output.
+*RNF7066 00      3 000300  Record-Format ADMDELETE not used for input or output.
+*RNF7066 00      3 000300  Record-Format ADMDELETE2 not used for input or output.
+*RNF7066 00      2 000200  Record-Format SETTINGSR not used for input or output.
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                 O u t p u t   B u f f e r   P o s i t i o n s
+Line   Start End   Field or Constant
+Number Pos   Pos
+   120     2     2 *IN40
+   121     1     1 *IN41
+   122     3    77 OUTTITLE
+   123    78   102 OUTNAME
+   124   103   117 OUTCITY
+   125   118   119 OUTSTATE
+   126   120  1119 OUTDESC
+ * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      7
+                    K e y   F i e l d   I n f o r m a t i o n
+         File           Internal    External
+           Record       field name  field name  Attributes
+      1  EXHBDB
+           EXHBREC
+                        EXHUSRPRF               CHAR        9
+ * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      8
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         EXHBDB            DISK                    1D     97
+           EXHBREC                                 1D      8      96
+         EXHBMENUSC        WORKSTN                 3D
+           MENU                                    3D     21      46     119
+           ADMCREATE                               3D     23
+           ADMPSWRD                                3D     34      81     127
+           ADMDELETE                               3D     36
+           ADMDELETE2                              3D     38
+         SETTINGS          DISK                    2D     89      90
+           SETTINGSR                               2D     18
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *ENTRY            PLIST                  40D
+         *INLR             N(1)                   83M
+*RNF7031 *IN05             N(1)                   24D
+*RNF7031 *IN12             N(1)                   25D     37M     39M
+         *IN40             N(1)                  113M    115M    120
+         *IN41             N(1)                  107M    109M    121
+         ADMKIOSK          BEGSR                  65      80D
+         CHKALWVOTE        P(1,0)                  6D     69     103M    106
+         CHKLRN400         P(1,0)                  7D     75     104M    112
+         CHKPARM           BEGSR                  44      94D
+         DOLRN400          BEGSR                  53      74D
+         DOVOTE            BEGSR                  49      68D
+         ELIGIBLE          P(1,0)                 16D    103
+         ENLRN400          P(1,0)                 17D    104
+         EXHBCITY          A(20)                  12D    100
+*RNF7031 EXHBDBID          P(3,0)                  9D
+         EXHBDESC          A(1000)                15D    102
+         EXHBITOR          A(20)                  11D     99
+         EXHBSTATE         A(2)                   13D    101
+         EXHBTITLE         A(50)                  14D     98
+*RNF7031 EXHUSRPRF         A(9)                   10D
+         EXITPSWRD         A(9)                    5D     82      91M
+         GETPSWRD          BEGSR                  45      88D
+*RNF7031 INCITY            A(15)                  29D
+*RNF7031 INDESC            A(1000)                32D
+*RNF7031 INELIGIBLE        A(1)                   31D
+*RNF7031 INLRN400EN        A(1)                   33D
+*RNF7031 INNAME            A(20)                  28D
+         INOPT             P(1,0)                 22D     48      52      56
+                                                  60      64
+         INPWD             A(9)                   35D     82
+*RNF7031 INSTATE           A(2)                   30D
+*RNF7031 INTITLE           A(60)                  27D
+*RNF7031 INUSRPRF          A(9)                   26D
+         LAUNCH            A(9)                   41D     95
+                           BASED(_QRNL_PRM+)
+         OUTCITY           A(15)                 100M    124
+         OUTDESC           A(1000)               102M    126
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page      9
+         OUTNAME           A(25)                  99M    123
+         OUTSTATE          A(2)                  101M    125
+         OUTTITLE          A(75)                  98M    122
+*RNF7031 SETTING           A(9)                   19D
+         USERPROF          A(9)                    4D     95M     96
+         VALUE             A(9)                   20D     91
+      Indicator References:
+         Indicator                            References (D=Defined M=Modified)
+*RNF7031 05                                       24M
+*RNF7031 12                                       25M     37M     39M
+         40                                      113M    115M    120
+         41                                      107M    109M    121
+         LR                                       83M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page     10
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page     11
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+*RNF7031 00     13 The name or indicator is not referenced.
+*RNF7066 00      4 Record-Format name of Externally-Described file is not used.
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/EXHBMENU       PUB400     26-09-06 17:03:36        Page     12
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :       17
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :       17
+  Source Totals:
+    Records . . . . . . . . . . . . :      127
+    Specifications  . . . . . . . . :      120
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :        7
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program EXHBMENU placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:36.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

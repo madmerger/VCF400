@@ -1,0 +1,43 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/PASSSCR       26-09-06 17:03:33        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   PASSSCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   PASSSCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-06  17:03:21
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20231205  183421  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R PASSMAIN
+    500       A*%%TS  SD  20231205  183421  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                  3  6'Enter Access Code:'
+    700       A            INPSWRD        9   I  4  6
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/PASSSCR       26-09-06 17:03:33        Page    2
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+    400                  R PASSMAIN
+    600                                          3  6'Enter Access Code:'                    18
+    700                    INPSWRD        9A  I  4  6                                         9                    1
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/PASSSCR       26-09-06 17:03:33        Page    3
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File PASSSCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *
