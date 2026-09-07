@@ -25,12 +25,14 @@ struct Card<Content: View>: View {
 struct ScreenHeader: View {
     let title: String
     var subtitle: String? = nil
+    var jaTitle: String? = nil
     var path: String
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            if let s = subtitle { Text(s).font(.caption).tracking(2).foregroundStyle(.secondary).textCase(.uppercase) }
+            if let s = subtitle { Text(s).font(.caption).tracking(2).foregroundStyle(.secondary) }
             Text(title).font(.system(size: 30, weight: .heavy)).foregroundStyle(Theme.brand)
                 .accessibilityIdentifier("screenTitle")
+            if let j = jaTitle { Text(j).font(.title3).foregroundStyle(.secondary) }
             Text(path).font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -67,15 +69,17 @@ struct ErrorLine: View {
     let text: String?
     var body: some View {
         if let t = text, !t.isEmpty {
-            HStack(spacing: 10) {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 10) {
                 Image(systemName: "exclamationmark.circle.fill")
-                Text(t).fontWeight(.semibold)
+                    Text(L10n.ja(t)).fontWeight(.semibold).accessibilityIdentifier("errline_ja")
+                }
+                Text(t).font(.caption).foregroundStyle(Theme.danger.opacity(0.8)).accessibilityIdentifier("errline")
             }
             .foregroundStyle(Theme.danger)
             .padding(12)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Theme.dangerBg, in: RoundedRectangle(cornerRadius: 10))
-            .accessibilityIdentifier("errline")
         }
     }
 }

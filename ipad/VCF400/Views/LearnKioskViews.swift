@@ -7,19 +7,21 @@ struct LearnView: View {
     @State private var state: LearnService.State?
 
     var body: some View {
-        Screen(legacyPath: "VCFMAIN → 1 → LRN400 (LRN400SCR/MAIN)") {
+        Screen(screen: "LRN400", legacyPath: "VCFMAIN → 1 → LRN400 (LRN400SCR/MAIN)") {
             HStack(alignment: .firstTextBaseline) {
-                ScreenHeader(title: "LEARN/400", path: "LRN400 / MAIN")
+                ScreenHeader(title: "LEARN/400", jaTitle: "LEARN/400 学習", path: "LRN400 / MAIN")
                 Spacer()
-                Text("Page ").foregroundStyle(.secondary) + Text(state?.outPageNbr ?? "").bold()
+                HStack(spacing: 4) {
+                    Text(L10n.learnPage).foregroundStyle(.secondary)
+                    Text(state?.outPageNbr ?? "").bold().accessibilityIdentifier("out.page")
+                }
             }
             .accessibilityElement(children: .contain)
-            Text(state?.outPageNbr ?? "").hidden().frame(height: 0).accessibilityIdentifier("out.page")
             Card {
                 Text(state?.outContent ?? "").font(.title3).lineSpacing(6).frame(minHeight: 180, alignment: .topLeading)
                     .accessibilityIdentifier("out.content")
             }
-            FKeyBar(legend: "Cmd3/F3 = Exit · Cmd5/F5 = Forwards · Cmd8/F8 = Backwards") {
+            FKeyBar(legend: L10n.learnLegend) {
                 FKeyButton(title: "戻る", key: "F3") { model.returnToCaller() }
                 FKeyButton(title: "前へ", key: "F8") { if let s = state { state = model.learn.back(s) } }
                 FKeyButton(title: "進む", key: "F5", primary: true) {
@@ -40,26 +42,27 @@ struct KioskView: View {
     @State private var option = ""
 
     var body: some View {
-        Screen(legacyPath: "STREXHB EXHBNAME(\(exhibitId)) → EXHBMENU (EXHBMENUSC/MENU)") {
+        Screen(screen: "KIOSK", legacyPath: "STREXHB EXHBNAME(\(exhibitId)) → EXHBMENU (EXHBMENUSC/MENU)") {
             if let e = model.kiosk.exhibit(for: exhibitId) {
-                ScreenHeader(title: e.exhbtitle, subtitle: "WELCOME TO...", path: "EXHBMENU / MENU")
-                Text("HOSTED BY ").foregroundStyle(.secondary) + Text(e.exhbitor).bold() + Text(" OF \(e.exhbcity) \(e.exhbstate)").foregroundStyle(.secondary)
+                ScreenHeader(title: "WELCOME TO...", subtitle: L10n.kioskSubtitle, jaTitle: "\(e.exhbtitle) へようこそ", path: "EXHBMENU / MENU")
+                Text(L10n.hostedBy).foregroundStyle(.secondary) + Text(e.exhbitor).bold() + Text(" (\(e.exhbcity) \(e.exhbstate))").foregroundStyle(.secondary)
+                Text(e.exhbtitle).font(.title2.bold())
                 if let m = model.message {
                     Text(m).padding(12).frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.orange.opacity(0.15), in: RoundedRectangle(cornerRadius: 10)).accessibilityIdentifier("msgbar")
                 }
                 Card { Text(e.exhbdesc) }
                 Card {
-                    if e.isEligible { MenuItem(number: "1", title: "Nominate This Exhibit for Award") { model.selectKiosk(e, option: "1") } }
-                    if e.isLearnEnabled { MenuItem(number: "2", title: "Learn More About This Exhibit") { model.selectKiosk(e, option: "2") } }
-                    MenuItem(number: "3", title: "Sign Exhibit Guestbook") { model.selectKiosk(e, option: "3") }
-                    MenuItem(number: "4", title: "Read Exhibit Guestbook") { model.selectKiosk(e, option: "4") }
-                    OptionLine(label: "Select Menu Option, Press ENTER:", option: $option, maxLength: 1) {
+                    if e.isEligible { MenuItem(number: "1", title: L10n.kioskMenu1) { model.selectKiosk(e, option: "1") } }
+                    if e.isLearnEnabled { MenuItem(number: "2", title: L10n.kioskMenu2) { model.selectKiosk(e, option: "2") } }
+                    MenuItem(number: "3", title: L10n.kioskMenu3) { model.selectKiosk(e, option: "3") }
+                    MenuItem(number: "4", title: L10n.kioskMenu4) { model.selectKiosk(e, option: "4") }
+                    OptionLine(label: L10n.kioskOption, option: $option, maxLength: 1) {
                         model.selectKiosk(e, option: option); option = ""
                     }
                 }
             } else {
-                Text("Exhibit \(exhibitId) not found.")
+                Text("\(L10n.notFound) \(exhibitId) が見つかりません。")
             }
         }
     }
@@ -71,10 +74,10 @@ struct AdmPswrdView: View {
     let exhibitId: String
     @State private var inPwd = ""
     var body: some View {
-        Screen(legacyPath: "EXHBMENU (EXHBMENUSC/ADMPSWRD)") {
-            ScreenHeader(title: "Are you sure you want to exit the kiosk?", subtitle: "Type the Administrator password, press ENTER to sign off", path: "EXHBMENU / ADMPSWRD")
+        Screen(screen: "ADMPSWRD", legacyPath: "EXHBMENU (EXHBMENUSC/ADMPSWRD)") {
+            ScreenHeader(title: L10n.adminTitle, subtitle: L10n.adminSubtitle, jaTitle: L10n.adminOriginal, path: "EXHBMENU / ADMPSWRD")
             Card {
-                FieldRow(step: 1, label: "Administrator password") {
+                FieldRow(step: 1, label: L10n.adminPassword) {
                     SecureField("", text: $inPwd).font(.system(.body, design: .monospaced)).accessibilityIdentifier("inPwd")
                         .onSubmit { model.exitKiosk(exhibitId, password: inPwd) }
                 }

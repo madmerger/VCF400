@@ -11,6 +11,7 @@
 		3789EF2C41180503693171A3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AFB74B2189C4B5B99CA8C4 /* RootView.swift */; };
 		4D0EF07D9B305B1414C83283 /* VCF400Kit in Frameworks */ = {isa = PBXBuildFile; productRef = D836D57BC397C681719196C3 /* VCF400Kit */; };
 		5B627F83D35E1F59835196E3 /* VoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B2CC0A55D72337941CC12 /* VoteView.swift */; };
+		615843C716A75B6AF07E20E7 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E704858A561896908AF923C5 /* Strings.swift */; };
 		626F9219EE4F6C01280E3CE8 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9F2F5CACBF9D0ADC0C7726 /* AppModel.swift */; };
 		89E0A3CF3DD1F73912E7FF50 /* SmokeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F56A67686A07C6AD20AAE39 /* SmokeUITests.swift */; };
 		B5C07ECACAC9544808BFB8C2 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2415CEC1DB27612E245127F /* MainMenuView.swift */; };
@@ -48,6 +49,7 @@
 		AC0B2CC0A55D72337941CC12 /* VoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteView.swift; sourceTree = "<group>"; };
 		C4AFB74B2189C4B5B99CA8C4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E06C5EDAAD3A15F4134B1E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E704858A561896908AF923C5 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			children = (
 				9C9F2F5CACBF9D0ADC0C7726 /* AppModel.swift */,
 				E06C5EDAAD3A15F4134B1E66 /* Info.plist */,
+				E704858A561896908AF923C5 /* Strings.swift */,
 				0A9E0A049FB20A111F650656 /* Theme.swift */,
 				445C6D5FD3DE8F5A228794B3 /* VCF400App.swift */,
 				F10F7D2B4B250EC1A62548B2 /* Views */,
@@ -220,6 +223,7 @@
 				F5063186B40F04FAB7E87D7F /* LearnKioskViews.swift in Sources */,
 				B5C07ECACAC9544808BFB8C2 /* MainMenuView.swift in Sources */,
 				3789EF2C41180503693171A3 /* RootView.swift in Sources */,
+				615843C716A75B6AF07E20E7 /* Strings.swift in Sources */,
 				CA0BADD67C19DDE013C01213 /* Theme.swift in Sources */,
 				31B9808577AD27A6B7D6C2C6 /* VCF400App.swift in Sources */,
 				5B627F83D35E1F59835196E3 /* VoteView.swift in Sources */,

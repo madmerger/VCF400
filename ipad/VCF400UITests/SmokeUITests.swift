@@ -33,7 +33,7 @@ final class SmokeUITests: XCTestCase {
         XCTAssertTrue(app.buttons["menu.3"].exists)
         let opt = app.textFields["option"]
         opt.tap(); opt.typeText("7"); app.buttons["ENTER"].tap()
-        XCTAssertTrue(app.staticTexts["Are you sure you want to exit the kiosk?"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.secureTextFields["inPwd"].waitForExistence(timeout: 3))
         app.secureTextFields["inPwd"].tap(); app.secureTextFields["inPwd"].typeText("wrong")
         app.buttons["ENTER"].tap()
         XCTAssertTrue(app.staticTexts["WELCOME TO..."].waitForExistence(timeout: 3))

@@ -53,16 +53,19 @@ final class AppModel: ObservableObject {
         case "": break
         default:
             if let n = Int(opt), n <= 10 || n == 90 {
-                message = "Menu option \(opt) is not part of the VCF/400 library."
+                message = String(format: L10n.menuOptionMissing, String(opt))
             } else {
-                message = "Option not valid. Type a menu number and press ENTER."
+                message = L10n.invalidOption
             }
         }
     }
 
     /// STREXHB EXHBNAME(x): キオスク端末は展示者プロファイルでサインオン
     func startKiosk(_ exhibit: String) {
-        guard let e = kiosk.exhibit(for: exhibit) else { message = "Exhibit \(exhibit.uppercased()) not found."; return }
+        guard let e = kiosk.exhibit(for: exhibit) else {
+            message = String(format: L10n.exhibitMissing, exhibit.uppercased())
+            return
+        }
         launch = Launch(e.exhusrprf)
         path = [.kiosk(exhibit: e.exhusrprf)]
     }
@@ -76,7 +79,7 @@ final class AppModel: ObservableObject {
         case "3": path.append(.navigate(next: .addComment))
         case "4": path.append(.navigate(next: .readComment))
         case "7": path.append(.admPswrd(exhibit: e.exhusrprf))
-        case "": message = "Select Menu Option, Press ENTER."
+        case "": message = L10n.selectOption
         default: break
         }
     }
@@ -100,7 +103,7 @@ final class AppModel: ObservableObject {
         if kiosk.exitAllowed(password) {
             launch = Launch(defaultProfile)
             path = []
-            message = "Kiosk \(exhibit) ended."
+            message = String(format: L10n.kioskEnded, exhibit)
         } else {
             returnToCaller()
         }

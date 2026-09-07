@@ -79,16 +79,12 @@ final class CrossValidationUITests: XCTestCase {
     }
 
     // MARK: screen helpers
-    private let titles: [(String, String)] = [
-        ("AS/400 DEMO MENU", "VCFMAIN"), ("NOMINATE EXHIBIT FOR AWARD", "VOTE1"), ("THANK YOU FOR VOTING!", "VOTEEND"),
-        ("SORRY!", "ENDOFCON"), ("GUESTBOOK/400 - ADD COMMENT", "ADDCMT"), ("THANKS FOR COMMENTING!", "ENDCMT"),
-        ("GUESTBOOK/400 - Read a Comment", "READCMT"), ("LEARN/400", "LRN400"),
-        ("Are you sure you want to exit the kiosk?", "ADMPSWRD"), ("VCF/400 - How to Navigate", "NTRSTIT"), ("WELCOME TO...", "KIOSK")
-    ]
     private func classify() -> String {
+        let known = Set(["VCFMAIN", "NTRSTIT", "VOTE1", "VOTEEND", "ENDOFCON", "ADDCMT", "ENDCMT", "READCMT", "LRN400", "KIOSK", "ADMPSWRD", "SIGNOFF"])
         let deadline = Date().addingTimeInterval(4)
         repeat {
-            for (text, screen) in titles where app.staticTexts[text].exists { return screen }
+            let screen = app.staticTexts["screen"]
+            if screen.exists, known.contains(screen.label) { return screen.label }
             usleep(150_000)
         } while Date() < deadline
         return "UNKNOWN"
@@ -121,7 +117,14 @@ final class CrossValidationUITests: XCTestCase {
     /// VCFMAIN: sign on as the case's LAUNCH profile through the sign-on disclosure (kiosk exhibit / MM2024)
     private func signon(_ profile: String) {
         let field = app.textFields["profile"]
-        if !field.exists { app.staticTexts["Sign on as a different user profile (kiosk exhibit / MM2024 shared terminal)"].tap() }
+        if !field.exists {
+            let label = app.staticTexts["signon.toggle"]
+            if label.exists {
+                label.tap()
+            } else {
+                app.descendants(matching: .any).matching(identifier: "signon.toggle").firstMatch.tap()
+            }
+        }
         XCTAssertTrue(field.waitForExistence(timeout: 3))
         type(field, profile)
         app.buttons["signon"].tap()
@@ -185,7 +188,7 @@ final class CrossValidationUITests: XCTestCase {
         type(app.textFields["inCmtId"], c.in?.cmtid ?? "")
         fkey("F5")
         let k = show("READCMT after F5")
-        var obs: [String: J] = ["screen": .s(k), "total": .i(firstInt(labelStarting("Currently hosting"))), "errline": .s(label("errline"))]
+        var obs: [String: J] = ["screen": .s(k), "total": .i(firstInt(label("out.total"))), "errline": .s(label("errline"))]
         if app.staticTexts["out.cmt"].waitForExistence(timeout: 1) {
             obs["out"] = .o(["name": .s(label("out.name")), "title": .s(label("out.title")), "cmt": .s(label("out.cmt"))])
         }
@@ -199,7 +202,7 @@ final class CrossValidationUITests: XCTestCase {
         let k = classify()
         var obs: [String: J] = ["screen": .s(k)]
         if k == "LRN400" {
-            obs["page"] = .i(firstInt(labelStarting("Page ")))
+            obs["page"] = .i(firstInt(label("out.page")))
             obs["content"] = .s(label("out.content"))
         }
         return obs
@@ -207,7 +210,12 @@ final class CrossValidationUITests: XCTestCase {
     private func flowKiosk(_ c: Case) -> [String: J] {
         let exhibit = c.exhibit ?? "ASHIBATA"
         if !app.buttons["kiosk.\(exhibit)"].exists {
-            app.staticTexts["Sign on as a different user profile (kiosk exhibit / MM2024 shared terminal)"].tap()
+            let label = app.staticTexts["signon.toggle"]
+            if label.exists {
+                label.tap()
+            } else {
+                app.descendants(matching: .any).matching(identifier: "signon.toggle").firstMatch.tap()
+            }
         }
         app.buttons["kiosk.\(exhibit)"].tap()                                  // STREXHB EXHBNAME(exhibit)
         _ = show("EXHBMENU kiosk for \(exhibit)")

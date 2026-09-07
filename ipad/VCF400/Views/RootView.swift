@@ -34,6 +34,7 @@ struct RootView: View {
 /// 全画面共通の背景・上部バー (サインオンユーザー表示)
 struct Screen<Content: View>: View {
     @EnvironmentObject var model: AppModel
+    let screen: String
     let legacyPath: String
     @ViewBuilder var content: Content
     var body: some View {
@@ -41,11 +42,13 @@ struct Screen<Content: View>: View {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     Text("VCF/400").font(.headline.bold()).foregroundStyle(Theme.brand)
+                    Text(screen).font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
+                        .accessibilityIdentifier("screen")
                     Text(legacyPath).font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
                     Spacer()
-                    Text("Signed on as ").font(.caption).foregroundStyle(.secondary) +
+                    Text(L10n.signedOnAs + " ").font(.caption).foregroundStyle(.secondary) +
                     Text(model.launch.profile).font(.system(.caption, design: .monospaced).bold()) +
-                    Text(model.launch.isShared ? "  (shared terminal)" : "").font(.caption).foregroundStyle(.secondary)
+                    Text(model.launch.isShared ? L10n.sharedTerminal : "").font(.caption).foregroundStyle(.secondary)
                 }
                 content
             }

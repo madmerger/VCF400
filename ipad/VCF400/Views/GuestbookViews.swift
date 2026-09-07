@@ -10,22 +10,22 @@ struct AddCommentView: View {
     @State private var result: GuestbookService.AddResult?
 
     var body: some View {
-        Screen(legacyPath: "VCFMAIN → 12 → ADDGBSTUB → ADDGBCMT (GUESTBKSCR/ADDCMT)") {
-            ScreenHeader(title: "GUESTBOOK/400 - ADD COMMENT", subtitle: "Vintage Computer Festival", path: "ADDGBCMT / ADDCMT")
+        Screen(screen: "ADDCMT", legacyPath: "VCFMAIN → 12 → ADDGBSTUB → ADDGBCMT (GUESTBKSCR/ADDCMT)") {
+            ScreenHeader(title: "GUESTBOOK/400 - ADD COMMENT", subtitle: L10n.voteSubtitle, jaTitle: "ゲストブックにコメントを追加", path: "ADDGBCMT / ADDCMT")
             Card {
-                FieldRow(step: 1, label: "Your Name", hint: "up to 16 characters", error: result?.nameErr ?? false) {
+                FieldRow(step: 1, label: L10n.name, hint: L10n.upTo16, error: result?.nameErr ?? false) {
                     TextField("", text: $inName).autocorrectionDisabled().accessibilityIdentifier("inName")
                         .onChange(of: inName) { _, v in if v.count > 16 { inName = String(v.prefix(16)) } }
                 }
-                FieldRow(step: 2, label: "Exhibit ID",
-                         hint: model.exhibitProtected ? "Fixed to this exhibit (signed-on profile)." : "Shared terminal (MM2024): type the exhibit's user profile",
+                FieldRow(step: 2, label: L10n.exhibitID,
+                         hint: model.exhibitProtected ? L10n.fixedToExhibit : L10n.sharedTypeExhibit,
                          error: result?.exhibitErr ?? false) {
                     TextField("", text: $inId).textInputAutocapitalization(.characters).autocorrectionDisabled()
                         .font(.system(.body, design: .monospaced)).disabled(model.exhibitProtected)
                         .foregroundStyle(model.exhibitProtected ? .secondary : .primary).accessibilityIdentifier("inId")
                         .onChange(of: inId) { _, v in if v.count > 9 { inId = String(v.prefix(9)) } }
                 }
-                FieldRow(step: 3, label: "Comment", hint: "up to 200 characters", error: result?.commentErr ?? false) {
+                FieldRow(step: 3, label: L10n.comment, hint: L10n.upTo200, error: result?.commentErr ?? false) {
                     TextField("", text: $inCmt, axis: .vertical).lineLimit(3...6).accessibilityIdentifier("inCmt")
                         .onChange(of: inCmt) { _, v in if v.count > 200 { inCmt = String(v.prefix(200)) } }
                 }
@@ -48,15 +48,16 @@ struct EndCommentView: View {
     @EnvironmentObject var model: AppModel
     let id: Int
     var body: some View {
-        Screen(legacyPath: "ADDGBCMT (GUESTBKSCR/ENDCMT)") {
+        Screen(screen: "ENDCMT", legacyPath: "ADDGBCMT (GUESTBKSCR/ENDCMT)") {
             Card {
                 Text("THANKS FOR COMMENTING!").font(.system(size: 34, weight: .black)).foregroundStyle(Theme.brand).accessibilityIdentifier("screenTitle")
+                Text(L10n.commentEndJa).font(.title3).foregroundStyle(.secondary)
                 HStack(spacing: 6) {
-                    Text("Thank you for commenting on this exhibit! Your Comment ID Is:")
+                    Text(L10n.commentThanks)
                     Text("\(id)").monospaced().bold().accessibilityIdentifier("out.cmtid")
                 }
             }
-            FKeyBar(legend: "Press ENTER to exit.") {
+            FKeyBar(legend: "ENTER を押して終了します。") {
                 FKeyButton(title: "終了", key: "ENTER", primary: true) { model.returnToCaller() }
             }
         }
@@ -71,29 +72,33 @@ struct ReadCommentView: View {
     @State private var out: GuestbookService.ReadResult?
 
     var body: some View {
-        Screen(legacyPath: "VCFMAIN → 13 → READGBSTUB → READGBCMT (GUESTBKSCR/READCMT)") {
-            ScreenHeader(title: "GUESTBOOK/400 - Read a Comment", subtitle: "Vintage Computer Festival", path: "READGBCMT / READCMT")
+        Screen(screen: "READCMT", legacyPath: "VCFMAIN → 13 → READGBSTUB → READGBCMT (GUESTBKSCR/READCMT)") {
+            ScreenHeader(title: "GUESTBOOK/400 - Read a Comment", subtitle: L10n.voteSubtitle, jaTitle: "ゲストブックのコメントを読む", path: "READGBCMT / READCMT")
             Card {
-                FieldRow(step: 1, label: "Enter a Comment ID:",
-                         hint: "Currently hosting \(model.guestbook.totalComments) comments and counting.", error: errLine != nil) {
+                FieldRow(step: 1, label: L10n.enterCommentID,
+                         hint: nil, error: errLine != nil) {
                     TextField("", text: $inCmtId).keyboardType(.numberPad).font(.system(.body, design: .monospaced))
                         .onSubmit(submit).accessibilityIdentifier("inCmtId")
                         .onChange(of: inCmtId) { _, v in if v.count > 4 { inCmtId = String(v.prefix(4)) } }
                 }
+                HStack(spacing: 0) {
+                    Text(L10n.currentComments)
+                    Text("\(model.guestbook.totalComments)").accessibilityIdentifier("out.total")
+                }.font(.caption).foregroundStyle(.secondary)
                 ErrorLine(text: errLine)
             }
             if let o = out {
                 Card {
                     HStack(spacing: 6) {
                         Text(o.outName).bold().accessibilityIdentifier("out.name")
-                        Text("says to:").foregroundStyle(.secondary)
+                        Text(L10n.saysTo).foregroundStyle(.secondary)
                         Text(o.outTitle).bold().accessibilityIdentifier("out.title")
                     }
                     Text(o.outCmt).accessibilityIdentifier("out.cmt")
-                    Text("Comment ID \(o.record.cmtid)").font(.caption).foregroundStyle(.secondary).monospaced().accessibilityIdentifier("out.cmtid")
+                    Text("\(L10n.commentID) \(o.record.cmtid)").font(.caption).foregroundStyle(.secondary).monospaced().accessibilityIdentifier("out.cmtid")
                 }
             }
-            Text("Is this comment inappropriate? Please report the Comment ID to the folks at the Midrange Madness table and we will address the comment.")
+            Text(L10n.reportComment)
                 .font(.footnote).foregroundStyle(.secondary)
             FKeyBar {
                 FKeyButton(title: "キャンセル", key: "F12", destructive: true) { model.returnToCaller() }
