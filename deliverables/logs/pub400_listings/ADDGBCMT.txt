@@ -1,0 +1,402 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   ADDGBCMT
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   ADDGBCMT
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-07  11:48:31
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FGUESTBKDB UF A E           K DISK                                                                        000000     000100
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  GUESTBKDB        ASHIBATA2/GUESTBKDB                         *
+        * Record format(s) . . . . . :  GUESTBKRCD       GUESTBKRCD                                  *
+        *--------------------------------------------------------------------------------------------*
+     2 FEXHBDB    IF   E           K DISK                                                                        000000     000200
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBDB           ASHIBATA2/EXHBDB                            *
+        * Record format(s) . . . . . :  EXHBREC          EXHBREC                                     *
+        *--------------------------------------------------------------------------------------------*
+     3 FGUESTBKSCRCF   E             WORKSTN                                                                     000000     000300
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  GUESTBKSCR       ASHIBATA2/GUESTBKSCR                        *
+        * Record format(s) . . . . . :  ADDCMT           ADDCMT                                      *
+        *                               ENDCMT           ENDCMT                                      *
+        *                               READCMT          READCMT                                     *
+        *                               HIDECMT          HIDECMT                                     *
+        *--------------------------------------------------------------------------------------------*
+     4 DID               S              4P 0                                                                     000000     000400
+     5 DALWEXIT          S              1P 0                                                                     000000     000500
+     6 DVALIDATE         S              1P 0                                                                     000000     000600
+     7 DUSERPRF          S              9A                                                                       000000     000700
+     8 DSUCCESS          C                   CONST('Thanks for commenting')                                      000000     000800
+     9 DVISYES           C                   CONST('Y')                                                          000000     000900
+    10 DERREXID          C                   CONST('Must enter Exhibit ID')                                      000000     001000
+    11 DERRNOCMT         C                   CONST('Must enter a comment')                                       000000     001100
+    12 DERREXIST         C                   CONST('Exhibit not found')                                          000000     001200
+    13 DERRNONAME        C                   CONST('Must enter your name    ')                                   000000     001300
+    14 C*-----------------------------------------------                                                         000000     001400
+    15=IGUESTBKRCD                                                                                                         1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  GUESTBKRCD                                                   *                     1
+        * External format  . . . . . :  GUESTBKRCD : ASHIBATA2/GUESTBKDB                             *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+    16=I                             B    1    2 0CMTID                                                                    1000002
+    17=I                             A    3    3  VISIBLE                                                                  1000003
+    18=I                             A    4   12  EXHBID                                                                   1000004
+    19=I                             A   13   32  GUESTNAME                                                                1000005
+    20=I                             A   33  232  GUESTCMT                                                                 1000006
+    21=IEXHBREC                                                                                                            2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  EXHBREC                                                      *                     2
+        * External format  . . . . . :  EXHBREC : ASHIBATA2/EXHBDB                                   *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      3
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    22=I                             B    1    2 0EXHBDBID                                                                 2000002
+    23=I                             A    3   11  EXHUSRPRF                                                                2000003
+    24=I                             A   12   31  EXHBITOR                                                                 2000004
+    25=I                             A   32   51  EXHBCITY                                                                 2000005
+    26=I                             A   52   53  EXHBSTATE                                                                2000006
+    27=I                             A   54  103  EXHBTITLE                                                                2000007
+    28=I                             A  104 1103  EXHBDESC                                                                 2000008
+    29=I                             B 1104 1105 0ELIGIBLE                                                                 2000009
+    30=I                             B 1106 1107 0ENLRN400                                                                 2000010
+    31=IADDCMT                                                                                                             3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * RPG record format  . . . . :  ADDCMT                                                       *                     3
+        * External format  . . . . . :  ADDCMT : ASHIBATA2/GUESTBKSCR                                *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    32=I                             N    1    1  *IN05                           Submit                                   3000002
+    33=I                             N    2    2  *IN12                           Cancel                                   3000003
+    34=I                             A    3   18  INNAME                                                                   3000004
+    35=I                             A   19  218  INCMT                                                                    3000005
+    36=I                             A  219  227  INID                                                                     3000006
+    37=IENDCMT                                                                                                             4000001
+        *--------------------------------------------------------------------------------------------*                     4
+        * RPG record format  . . . . :  ENDCMT                                                       *                     4
+        * External format  . . . . . :  ENDCMT : ASHIBATA2/GUESTBKSCR                                *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    38=IREADCMT                                                                                                            5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * RPG record format  . . . . :  READCMT                                                      *                     5
+        * External format  . . . . . :  READCMT : ASHIBATA2/GUESTBKSCR                               *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+    39=I                             N    1    1  *IN05                           Submit                                   5000002
+    40=I                             N    2    2  *IN12                           Cancel                                   5000003
+    41=I                             S    3    6 0INCMTID                                                                  5000004
+    42=IHIDECMT                                                                                                            6000001
+        *--------------------------------------------------------------------------------------------*                     6
+        * RPG record format  . . . . :  HIDECMT                                                      *                     6
+        * External format  . . . . . :  HIDECMT : ASHIBATA2/GUESTBKSCR                               *                     6
+        *--------------------------------------------------------------------------------------------*                     6
+    43=I                             N    1    1  *IN05                           Submit                                   6000002
+    44=I                             N    2    2  *IN12                           Cancel                                   6000003
+    45=I                             A    3    3  INHIDEYN                                                                 6000004
+    46 C     *ENTRY        PLIST                                                                                 000000     001500
+    47 C                   PARM                    LAUNCH           20                                           000000     001600
+    48 C*-----------------------------------------------                                                         000000     001700
+    49 C                   MOVEL     0             ALWEXIT                                                       000000     001800
+    50 C                                                                                                         000000     001900
+    51 C                   DOW       ALWEXIT = *ZERO                                                   B01       000000     002000
+    52 C                   MOVEL     0             VALIDATE                                             01       000000     002100
+    53 C                                                                                                01       000000     002200
+    54 C                   EXSR      CHKPARM                                                            01       000000     002300
+    55 C                   EXFMT     ADDCMT                                                             01       000000     002400
+    56 C*                                                                                                        000000     002500
+    57 C                   IF        INID     = *BLANK                                                 B02       000000     002600
+    58 C                   EVAL      ERRLINE = ERREXID                                                  02       000000     002700
+    59 C                   EVAL      *IN40 = *ON                                                        02       000000     002800
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      4
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    60 C                   ELSE                                                                        X02       000000     002900
+    61 C                   ADD       1             VALIDATE                                             02       000000     003000
+    62 C                   ENDIF                                                                       E02       000000     003100
+    63 C*                                                                                                        000000     003200
+    64 C                   IF        INNAME = *BLANK                                                   B02       000000     003300
+    65 C                   EVAL      ERRLINE = ERRNONAME                                                02       000000     003400
+    66 C                   EVAL      *IN41 = *ON                                                        02       000000     003500
+    67 C                   ELSE                                                                        X02       000000     003600
+    68 C                   ADD       1             VALIDATE                                             02       000000     003700
+    69 C                   ENDIF                                                                       E02       000000     003800
+    70 C                                                                                               E02       000000     003900
+    71 C                   IF        INCMT = *BLANK                                                    B02       000000     004000
+    72 C                   EVAL      ERRLINE = ERRNOCMT                                                 02       000000     004100
+    73 C                   EVAL      *IN42 = *ON                                                        02       000000     004200
+    74 C                   ELSE                                                                        X02       000000     004300
+    75 C                   ADD       1             VALIDATE                                             02       000000     004400
+    76 C                   ENDIF                                                                       E02       000000     004500
+    77 C                                                                                               E02       000000     004600
+    78 C                   EVAL      *IN05 = *OFF                                                       01       000000     004700
+    79 C                                                                                                01       000000     004800
+    80 C                   IF        VALIDATE = 3                                                      B02       000000     004900
+    81 C                   MOVEL     1             ALWEXIT                                              02       000000     005000
+    82 C                   ENDIF                                                                       E02       000000     005100
+    83 C*                                                                                                        000000     005200
+    84 C                   IF        *IN12 = *ON                                                       B02       000000     005300
+    85 C                   MOVEL     *ON           *INLR                                                02       000000     005400
+    86 C                   RETURN                                                                       02       000000     005500
+    87 C                   ENDIF                                                                       E02       000000     005600
+    88 C*                                                                                                        000000     005700
+    89 C                   ENDDO                                                                       E01       000000     005800
+    90 C                   EXSR      ADDTODB                                                                     000000     005900
+    91 C*----------------------------------------------------                                                    000000     006000
+    92 C     ADDTODB       BEGSR                                                                                 000000     006100
+    93 C                   MOVEL     0             ID                                                            000000     006200
+    94 C                   EVAL      *IN05 = *OFF                                                                000000     006300
+    95 C                   READ      GUESTBKDB                          ----90                                   000000     006400
+    96 C     *IN90         DOWEQ     *OFF                                                              B01       000000     006500
+    97 C                   READ      GUESTBKDB                          ----90                          01       000000     006600
+    98 C                   ENDDO                                                                       E01       000000     006700
+    99 C                   MOVEL     CMTID         ID                                                            000000     006800
+   100 C                   ADD       1             ID                                                            000000     006900
+   101 C                   MOVEL     ID            CMTID                                                         000000     007000
+   102 C                   MOVEL     INNAME        GUESTNAME                                                     000000     007100
+   103 C                   MOVEL     INID          EXHBID                                                        000000     007200
+   104 C                   MOVEL     INCMT         GUESTCMT                                                      000000     007300
+   105 C                   MOVEL     VISYES        VISIBLE                                                       000000     007400
+   106 C                   WRITE     GUESTBKRCD                                                                  000000     007500
+   107 C                   CALL      'PRTLSTCMT'                                                                 000000     007600
+   108 C                   EXFMT     ENDCMT                                                                      000000     007700
+   109 C                   EXSR      ENDADDGB                                                                    000000     007800
+   110 C                   ENDSR                                                                                 000000     007900
+   111 C*-------------------------------------------------------                                                 000000     008000
+   112 C     CHKPARM       BEGSR                                                                                 000000     008100
+   113 C                   MOVEL     LAUNCH        USERPRF                                                       000000     008200
+   114 C                   IF        USERPRF = 'MM2024'                                                B01       000000     008300
+   115 C                                                                                               B01       000000     008400
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      5
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   116 C                   ELSE                                                                        X01       000000     008500
+   117 C                   MOVEL     USERPRF       INID                                                 01       000000     008600
+   118 C                   MOVEL     *ON           *IN70                                                01       000000     008700
+   119 C                   ENDIF                                                                       E01       000000     008800
+   120 C                   ENDSR                                                                                 000000     008900
+   121 C*-------------------------------------------------------                                                 000000     009000
+   122 C     ENDADDGB      BEGSR                                                                                 000000     009100
+   123 C*                  EXFMT     VOTEEND                                                                     000000     009200
+   124 C                   MOVEL     *ON           *INLR                                                         000000     009300
+   125 C                   RETURN                                                                                000000     009400
+   126 C                   ENDSR                                                                                 000000     009500
+   127=OGUESTBKRCD                                                                                                         7000001
+        *--------------------------------------------------------------------------------------------*                     7
+        * RPG record format  . . . . :  GUESTBKRCD                                                   *                     7
+        * External format  . . . . . :  GUESTBKRCD : ASHIBATA2/GUESTBKDB                             *                     7
+        *--------------------------------------------------------------------------------------------*                     7
+   128=O                       CMTID                2B BIN2      4,0                                                       7000002
+   129=O                       VISIBLE              3A CHAR        1                                                       7000003
+   130=O                       EXHBID              12A CHAR        9                                                       7000004
+   131=O                       GUESTNAME           32A CHAR       20                                                       7000005
+   132=O                       GUESTCMT           232A CHAR      200                                                       7000006
+   133=OADDCMT                                                                                                             8000001
+        *--------------------------------------------------------------------------------------------*                     8
+        * RPG record format  . . . . :  ADDCMT                                                       *                     8
+        * External format  . . . . . :  ADDCMT : ASHIBATA2/GUESTBKSCR                                *                     8
+        *--------------------------------------------------------------------------------------------*                     8
+   134=O                       *IN70                1N CHAR        1                                                       8000002
+   135=O                       ERRLINE             22A CHAR       21                                                       8000003
+   136=O                       INID                31A CHAR        9                                                       8000004
+   137=OENDCMT                                                                                                             9000001
+        *--------------------------------------------------------------------------------------------*                     9
+        * RPG record format  . . . . :  ENDCMT                                                       *                     9
+        * External format  . . . . . :  ENDCMT : ASHIBATA2/GUESTBKSCR                                *                     9
+        *--------------------------------------------------------------------------------------------*                     9
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      6
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+*RNF7066 00      2 000200  Record-Format EXHBREC not used for input or output.
+*RNF7066 00      3 000300  Record-Format HIDECMT not used for input or output.
+*RNF7066 00      3 000300  Record-Format READCMT not used for input or output.
+*RNF7086 00      2 000200  RPG handles blocking for file EXHBDB. INFDS is updated only
+                           when blocks of data are transferred.
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                 O u t p u t   B u f f e r   P o s i t i o n s
+Line   Start End   Field or Constant
+Number Pos   Pos
+   128     1     2 CMTID
+   129     3     3 VISIBLE
+   130     4    12 EXHBID
+   131    13    32 GUESTNAME
+   132    33   232 GUESTCMT
+   134     1     1 *IN70
+   135     2    22 ERRLINE
+   136    23    31 INID
+ * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      7
+                    K e y   F i e l d   I n f o r m a t i o n
+         File           Internal    External
+           Record       field name  field name  Attributes
+      2  EXHBDB
+           EXHBREC
+                        EXHUSRPRF               CHAR        9
+      1  GUESTBKDB
+           GUESTBKRCD
+                        CMTID                   BIN2      4,0 SIGNED
+ * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      8
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         EXHBDB            DISK                    2D
+           EXHBREC                                 2D     21
+         GUESTBKDB         DISK                    1D     95      97
+           GUESTBKRCD                              1D     15     106     127
+         GUESTBKSCR        WORKSTN                 3D
+           ADDCMT                                  3D     31      55     133
+           ENDCMT                                  3D     37     108     137
+           READCMT                                 3D     38
+           HIDECMT                                 3D     42
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *ENTRY            PLIST                  46D
+         *INLR             N(1)                   85M    124M
+         *IN05             N(1)                   32M     39M     43M     78M
+                                                  94M
+         *IN12             N(1)                   33D     40M     44M     84
+         *IN40             N(1)                   59M
+         *IN41             N(1)                   66M
+         *IN42             N(1)                   73M
+         *IN70             N(1)                  118M    134
+         *IN90             N(1)                   96
+         ADDTODB           BEGSR                  90      92D
+         ALWEXIT           P(1,0)                  5D     49M     51      81M
+         CHKPARM           BEGSR                  54     112D
+         CMTID             P(4,0)                 16M     99     101M    128
+*RNF7031 ELIGIBLE          P(1,0)                 29D
+         ENDADDGB          BEGSR                 109     122D
+*RNF7031 ENLRN400          P(1,0)                 30D
+         ERREXID           CONST                  10D     58
+*RNF7031 ERREXIST          CONST                  12D
+         ERRLINE           A(21)                  58M     65M     72M    135
+         ERRNOCMT          CONST                  11D     72
+         ERRNONAME         CONST                  13D     65
+*RNF7031 EXHBCITY          A(20)                  25D
+*RNF7031 EXHBDBID          P(3,0)                 22D
+*RNF7031 EXHBDESC          A(1000)                28D
+         EXHBID            A(9)                   18M    103M    130
+*RNF7031 EXHBITOR          A(20)                  24D
+*RNF7031 EXHBSTATE         A(2)                   26D
+*RNF7031 EXHBTITLE         A(50)                  27D
+*RNF7031 EXHUSRPRF         A(9)                   23D
+         GUESTCMT          A(200)                 20M    104M    132
+         GUESTNAME         A(20)                  19M    102M    131
+         ID                P(4,0)                  4D     93M     99M    100M
+                                                 101
+         INCMT             A(200)                 35D     71     104
+*RNF7031 INCMTID           P(4,0)                 41D
+*RNF7031 INHIDEYN          A(1)                   45D
+         INID              A(9)                   36M     57     103     117M
+                                                 136
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page      9
+         INNAME            A(16)                  34D     64     102
+         LAUNCH            A(20)                  47D    113
+                           BASED(_QRNL_PRM+)
+*RNF7031 SUCCESS           CONST                   8D
+         USERPRF           A(9)                    7D    113M    114     117
+         VALIDATE          P(1,0)                  6D     52M     61M     68M
+                                                  75M     80
+         VISIBLE           A(1)                   17M    105M    129
+         VISYES            CONST                   9D    105
+      Indicator References:
+         Indicator                            References (D=Defined M=Modified)
+         05                                       32M     39M     43M     78M
+                                                  94M
+         12                                       33M     40M     44M     84
+         40                                       59M
+         41                                       66M
+         42                                       73M
+         70                                      118M    134
+         90                                       95D     96      97D
+         LR                                       85M    124M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page     10
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page     11
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+*RNF7031 00     13 The name or indicator is not referenced.
+*RNF7066 00      3 Record-Format name of Externally-Described file is not used.
+*RNF7086 00      1 RPG handles blocking for the file. INFDS is updated only when
+                   blocks of data are transferred.
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDGBCMT       PUB400     26-09-07 11:50:06        Page     12
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :       17
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :       17
+  Source Totals:
+    Records . . . . . . . . . . . . :      137
+    Specifications  . . . . . . . . :      127
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :       10
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program ADDGBCMT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:06.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

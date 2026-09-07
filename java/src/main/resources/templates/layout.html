@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${title} + ' - VCF/400'">VCF/400</title>
+  <link rel="stylesheet" th:href="@{/vcf.css}">
+</head>
+<body>
+<!-- 上部バー: レガシーの呼出パス (VCFMAIN → プログラム名) を併記 -->
+<header class="topbar" th:fragment="topbar(path)">
+  <div class="brand">VCF/400 <small>Vintage Computer Festival</small></div>
+  <div class="path" th:text="${path}">VCFMAIN</div>
+  <div class="spacer"></div>
+  <div class="user" th:if="${launch != null}">Signed on as <b th:text="${launch.profile}">ASHIBATA</b>
+    <span th:if="${launch.shared}">(shared terminal)</span></div>
+</header>
+<script th:fragment="scripts" th:src="@{/vcf.js}"></script>
+</body>
+</html>

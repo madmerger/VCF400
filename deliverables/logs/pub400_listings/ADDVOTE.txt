@@ -1,0 +1,540 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   ADDVOTE
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   ADDVOTE
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-07  11:48:34
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FVOTINGDB  UF A E           K DISK                                                                        000000     000100
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  VOTINGDB         ASHIBATA2/VOTINGDB                          *
+        * Record format(s) . . . . . :  VOTINGREC        VOTINGREC                                   *
+        *--------------------------------------------------------------------------------------------*
+     2 FEXHBDB    IF   E           K DISK                                                                        000000     000200
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBDB           ASHIBATA2/EXHBDB                            *
+        * Record format(s) . . . . . :  EXHBREC          EXHBREC                                     *
+        *--------------------------------------------------------------------------------------------*
+     3 FAWARDDB   IF   E           K DISK                                                                        000000     000300
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  AWARDDB          ASHIBATA2/AWARDDB                           *
+        * Record format(s) . . . . . :  AWARDRCD         AWARDRCD                                    *
+        *--------------------------------------------------------------------------------------------*
+     4 FSETTINGS  IF   E           K DISK                                                                        000000     000400
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  SETTINGS         ASHIBATA2/SETTINGS                          *
+        * Record format(s) . . . . . :  SETTINGSR        SETTINGSR                                   *
+        *--------------------------------------------------------------------------------------------*
+     5 FVOTESCR   CF   E             WORKSTN                                                                     000000     000500
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  VOTESCR          ASHIBATA2/VOTESCR                           *
+        * Record format(s) . . . . . :  VOTE1            VOTE1                                       *
+        *                               VOTEEND          VOTEEND                                     *
+        *                               DAVE             DAVE                                        *
+        *                               NOVOTEALWD       NOVOTEALWD                                  *
+        *                               ENDOFCON         ENDOFCON                                    *
+        *--------------------------------------------------------------------------------------------*
+     6 DSTN              S              9A                                                                       000000     000600
+     7 DSTNVAL           S              9A                                                                       000000     000700
+     8 DUSERPRF          S              9A                                                                       000000     000800
+     9 DCHECKOK          S              1P 0                                                                     000000     000900
+    10 DALWEXIT          S              1P 0                                                                     000000     001000
+    11 DRPTBADGE         S              4P 0                                                                     000000     001100
+    12 DRPTAWD           S              3P 0                                                                     000000     001200
+    13 DRPTEXHB          S              9A                                                                       000000     001300
+    14 DVALIDATE         S              1P 0                                                                     000000     001400
+    15 DSUCCESS          C                   CONST('You have voted successfully')                                000000     001500
+    16 DERRBLKBG         C                   CONST('Must enter badge number')                                    000000     001600
+    17 DERRBLKEX         C                   CONST('Must enter Exhibit ID')                                      000000     001700
+    18 DERRBLKAW         C                   CONST('Must enter Award ID')                                        000000     001800
+    19 DERREXIST         C                   CONST('You have already voted.')                                    000000     001900
+    20 DERRENTER         C                   CONST('Use F5 key to submit')                                       000000     002000
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      3
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    21 DERRPROHB         C                   CONST('Exhibit ineligible for award')                               000000     002100
+    22 DERRNOEXB         C                   CONST('Exhibit does not exist')                                     000000     002200
+    23 DERRNOAWD         C                   CONST('Award does not exist.')                                      000000     002300
+    24 DERRDBG1          C                   CONST('DBG: MM2024 parm')                                           000000     002400
+    25 DERRDBG2          C                   CONST('DBG: other parm')                                            000000     002500
+    26 C*-----------------------------------------------                                                         000000     002600
+    27=IVOTINGREC                                                                                                          1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  VOTINGREC                                                    *                     1
+        * External format  . . . . . :  VOTINGREC : ASHIBATA2/VOTINGDB                               *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+    28=I                             B    1    2 0BADGENBR                                                                 1000002
+    29=I                             B    3    4 0AWARDNBR                                                                 1000003
+    30=I                             A    5   13  EXHBNBR                                                                  1000004
+    31=IEXHBREC                                                                                                            2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  EXHBREC                                                      *                     2
+        * External format  . . . . . :  EXHBREC : ASHIBATA2/EXHBDB                                   *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+    32=I                             B    1    2 0EXHBDBID                                                                 2000002
+    33=I                             A    3   11  EXHUSRPRF                                                                2000003
+    34=I                             A   12   31  EXHBITOR                                                                 2000004
+    35=I                             A   32   51  EXHBCITY                                                                 2000005
+    36=I                             A   52   53  EXHBSTATE                                                                2000006
+    37=I                             A   54  103  EXHBTITLE                                                                2000007
+    38=I                             A  104 1103  EXHBDESC                                                                 2000008
+    39=I                             B 1104 1105 0ELIGIBLE                                                                 2000009
+    40=I                             B 1106 1107 0ENLRN400                                                                 2000010
+    41=IAWARDRCD                                                                                                           3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * RPG record format  . . . . :  AWARDRCD                                                     *                     3
+        * External format  . . . . . :  AWARDRCD : ASHIBATA2/AWARDDB                                 *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    42=I                             B    1    2 0AWARDID                                                                  3000002
+    43=I                             A    3  102  AWARDTITLE                                                               3000003
+    44=I                             A  103 1102  AWARDDESC                                                                3000004
+    45=ISETTINGSR                                                                                                          4000001
+        *--------------------------------------------------------------------------------------------*                     4
+        * RPG record format  . . . . :  SETTINGSR                                                    *                     4
+        * External format  . . . . . :  SETTINGSR : ASHIBATA2/SETTINGS                               *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    46=I                             A    1    9  SETTING                                                                  4000002
+    47=I                             A   10   18  VALUE                                                                    4000003
+    48=IVOTE1                                                                                                              5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * RPG record format  . . . . :  VOTE1                                                        *                     5
+        * External format  . . . . . :  VOTE1 : ASHIBATA2/VOTESCR                                    *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+    49=I                             N    1    1  *IN05                           Submit                                   5000002
+    50=I                             N    2    2  *IN12                           Cancel                                   5000003
+    51=I                             S    3    6 0INPUTBADGE                                                               5000004
+    52=I                             S    7    9 0INPUTAWARD                                                               5000005
+    53=I                             A   10   18  INEXHB                                                                   5000006
+    54=IVOTEEND                                                                                                            6000001
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      4
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+        *--------------------------------------------------------------------------------------------*                     6
+        * RPG record format  . . . . :  VOTEEND                                                      *                     6
+        * External format  . . . . . :  VOTEEND : ASHIBATA2/VOTESCR                                  *                     6
+        *--------------------------------------------------------------------------------------------*                     6
+    55=IDAVE                                                                                                               7000001
+        *--------------------------------------------------------------------------------------------*                     7
+        * RPG record format  . . . . :  DAVE                                                         *                     7
+        * External format  . . . . . :  DAVE : ASHIBATA2/VOTESCR                                     *                     7
+        *--------------------------------------------------------------------------------------------*                     7
+    56=INOVOTEALWD                                                                                                         8000001
+        *--------------------------------------------------------------------------------------------*                     8
+        * RPG record format  . . . . :  NOVOTEALWD                                                   *                     8
+        * External format  . . . . . :  NOVOTEALWD : ASHIBATA2/VOTESCR                               *                     8
+        *--------------------------------------------------------------------------------------------*                     8
+    57=IENDOFCON                                                                                                           9000001
+        *--------------------------------------------------------------------------------------------*                     9
+        * RPG record format  . . . . :  ENDOFCON                                                     *                     9
+        * External format  . . . . . :  ENDOFCON : ASHIBATA2/VOTESCR                                 *                     9
+        *--------------------------------------------------------------------------------------------*                     9
+    58 C     *ENTRY        PLIST                                                                                 000000     002700
+    59 C                   PARM                    LAUNCH            9                                           000000     002800
+    60 C*-----------------------------------------------                                                         000000     002900
+    61 C                   EXSR      CHKPARM                                                                     000000     003000
+    62 C                   EXSR      CHKALWVOTE                                                                  000000     003100
+    63 C                                                                                                         000000     003200
+    64 C                   MOVEL     0             ALWEXIT                                                       000000     003300
+    65 C                                                                                                         000000     003400
+    66 C                   DOW       ALWEXIT = *ZERO                                                   B01       000000     003500
+    67 C                   MOVEL     0             VALIDATE                                             01       000000     003600
+    68 C*                  EVAL      *IN40 = *OFF                                                                000000     003700
+    69 C*                  EVAL      *IN41 = *OFF                                                                000000     003800
+    70 C*                  EVAL      *IN42 = *OFF                                                                000000     003900
+    71 C                   EXFMT     VOTE1                                                              01       000000     004000
+    72 C*                                                                                                        000000     004100
+    73 C                   IF        INPUTBADGE = *ZERO                                                B02       000000     004200
+    74 C                   EVAL      ERRLINE = ERRBLKBG                                                 02       000000     004300
+    75 C                   EVAL      *IN40 = *ON                                                        02       000000     004400
+    76 C                   ELSE                                                                        X02       000000     004500
+    77 C                   ADD       1             VALIDATE                                             02       000000     004600
+    78 C                   ENDIF                                                                       E02       000000     004700
+    79 C*                                                                                                        000000     004800
+    80 C                   IF        INPUTAWARD = *ZERO                                                B02       000000     004900
+    81 C                   EVAL      ERRLINE = ERRBLKAW                                                 02       000000     005000
+    82 C                   EVAL      *IN42 = *ON                                                        02       000000     005100
+    83 C                   ELSE                                                                        X02       000000     005200
+    84 C                   ADD       1             VALIDATE                                             02       000000     005300
+    85 C                   ENDIF                                                                       E02       000000     005400
+    86 C*                                                                                                        000000     005500
+    87 C                   IF        INEXHB = *BLANK                                                   B02       000000     005600
+    88 C                   EVAL      ERRLINE = ERRBLKEX                                                 02       000000     005700
+    89 C                   EVAL      *IN41 = *ON                                                        02       000000     005800
+    90 C                   ELSE                                                                        X02       000000     005900
+    91 C                   ADD       1             VALIDATE                                             02       000000     006000
+    92 C                   ENDIF                                                                       E02       000000     006100
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      5
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    93 C                                                                                               E02       000000     006200
+    94 C                   IF        INEXHB    = 'DAVE'                                                B02       000000     006300
+    95 C                   EXSR      DODAVE                                                             02       000000     006400
+    96 C                   ENDIF                                                                       E02       000000     006500
+    97 C                                                                                               E02       000000     006600
+    98 C                   EVAL      *IN05 = *OFF                                                       01       000000     006700
+    99 C                                                                                                01       000000     006800
+   100 C                   IF        VALIDATE = 3                                                      B02       000000     006900
+   101 C                   MOVEL     1             ALWEXIT                                              02       000000     007000
+   102 C                   ENDIF                                                                       E02       000000     007100
+   103 C*                                                                                                        000000     007200
+   104 C                   IF        *IN12 = *ON                                                       B02       000000     007300
+   105 C                   MOVEL     *ON           *INLR                                                02       000000     007400
+   106 C                   RETURN                                                                       02       000000     007500
+   107 C                   ENDIF                                                                       E02       000000     007600
+   108 C*                                                                                                        000000     007700
+   109 C                   ENDDO                                                                       E01       000000     007800
+   110 C                   EXSR      ADDTODB                                                                     000000     007900
+   111 C*----------------------------------------------------                                                    000000     008000
+   112 C     ADDTODB       BEGSR                                                                                 000000     008100
+   113 C                   MOVEL     0             CHECKOK                                                       000000     008200
+   114 C                   EVAL      *IN05 = *OFF                                                                000000     008300
+   115 C     INPUTBADGE    CHAIN     VOTINGREC                          95----                                   000000     008400
+   116 C                   IF        *IN95 = *OFF                                                      B01       000000     008500
+   117 C                   EVAL      ERRLINE = ERREXIST                                                 01       000000     008600
+   118 C                   ELSE                                                                        X01       000000     008700
+   119 C                   ADD       1             CHECKOK                                              01       000000     008800
+   120 C                   ENDIF                                                                       E01       000000     008900
+   121 C                   READ      VOTINGDB                           ----90                                   000000     009000
+   122 C     INEXHB        SETLL     EXHBREC                                                                     000000     009100
+   123 C                   READ      EXHBDB                                                                      000000     009200
+   124 C*                                                                                                        000000     009300
+   125 C                   IF        ELIGIBLE = 0                                                      B01       000000     009400
+   126 C                   EVAL      ERRLINE = ERRPROHB                                                 01       000000     009500
+   127 C                   ELSE                                                                        X01       000000     009600
+   128 C                   ADD       1             CHECKOK                                              01       000000     009700
+   129 C                   ENDIF                                                                       E01       000000     009800
+   130 C*                                                                                                        000000     009900
+   131 C     INEXHB        CHAIN     EXHBREC                            93----                                   000000     010000
+   132 C                   IF        *IN93 = *OFF                                                      B01       000000     010100
+   133 C                   ADD       1             CHECKOK                                              01       000000     010200
+   134 C                   ELSE                                                                        X01       000000     010300
+   135 C                   EVAL      ERRLINE = ERRNOEXB                                                 01       000000     010400
+   136 C                   ENDIF                                                                       E01       000000     010500
+   137 C*                                                                                                        000000     010600
+   138 C     INPUTAWARD    CHAIN     AWARDRCD                           94----                                   000000     010700
+   139 C                   IF        *IN94 = *OFF                                                      B01       000000     010800
+   140 C                   ADD       1             CHECKOK                                              01       000000     010900
+   141 C                   ELSE                                                                        X01       000000     011000
+   142 C                   EVAL      ERRLINE = ERRNOAWD                                                 01       000000     011100
+   143 C                   ENDIF                                                                       E01       000000     011200
+   144 C*                                                                                                        000000     011300
+   145 C                   IF        CHECKOK = 4                                                       B01       000000     011400
+   146 C                   MOVEL     INPUTBADGE    BADGENBR                                             01       000000     011500
+   147 C                   MOVEL     INPUTAWARD    AWARDNBR                                             01       000000     011600
+   148 C                   MOVEL     INEXHB        EXHBNBR                                              01       000000     011700
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      6
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   149 C                   WRITE     VOTINGREC                                                          01       000000     011800
+   150 C                   CALL      'PRTLSTVOTE'                                                       01       000000     011900
+   151 C                   EXSR      ENDVOTE                                                            01       000000     012000
+   152 C                   ENDIF                                                                       E01       000000     012100
+   153 C                   ENDSR                                                                                 000000     012200
+   154 C*-------------------------------------------------------                                                 000000     012300
+   155 C     CHKPARM       BEGSR                                                                                 000000     012400
+   156 C                   MOVEL     LAUNCH        USERPRF                                                       000000     012500
+   157 C                   IF        USERPRF = 'MM2024'                                                B01       000000     012600
+   158 C                   MOVEL     *BLANK        INEXHB                                               01       000000     012700
+   159 C*TODO: Don't make this IF block hardcoded                                                                000000     012800
+   160 C*This line left blank. If SECOFR profile passed,                                                         000000     012900
+   161 C*allow any Exhibit ID to be entered.                                                                     000000     013000
+   162 C                   ELSE                                                                        X01       000000     013100
+   163 C                   MOVEL     USERPRF       INEXHB                                               01       000000     013200
+   164 C                   MOVEL     *ON           *IN70                                                01       000000     013300
+   165 C                   ENDIF                                                                       E01       000000     013400
+   166 C                   ENDSR                                                                                 000000     013500
+   167 C*-------------------------------------------------------                                                 000000     013600
+   168 C     CHKALWVOTE    BEGSR                                                                                 000000     013700
+   169 C     *LOVAL        SETLL     SETTINGS                                                                    000000     013800
+   170 C                   DOU       %EOF(SETTINGS)                                                    B01       000000     013900
+   171 C                   READ      SETTINGS                                                           01       000000     014000
+   172 C                   MOVEL     SETTING       STN                                                  01       000000     014100
+   173 C                   IF        STN = 'ALWVOTE'                                                   B02       000000     014200
+   174 C                   MOVEL     VALUE         STNVAL                                               02       000000     014300
+   175 C                   ENDIF                                                                       E02       000000     014400
+   176 C                   ENDDO                                                                       E01       000000     014500
+   177 C                                                                                               E01       000000     014600
+   178 C                   IF        STNVAL = 'N'                                                      B01       000000     014700
+   179 C                   EXFMT     ENDOFCON                                                           01       000000     014800
+   180 C                   MOVEL     *ON           *INLR                                                01       000000     014900
+   181 C                   RETURN                                                                       01       000000     015000
+   182 C                   ENDIF                                                                       E01       000000     015100
+   183 C                   ENDSR                                                                                 000000     015200
+   184 C*-------------------------------------------------------                                                 000000     015300
+   185 C     DODAVE        BEGSR                                                                                 000000     015400
+   186 C                   EXFMT     DAVE                                                                        000000     015500
+   187 C                   MOVEL     *ON           *INLR                                                         000000     015600
+   188 C                   RETURN                                                                                000000     015700
+   189 C                   ENDSR                                                                                 000000     015800
+   190 C*-------------------------------------------------------                                                 000000     015900
+   191 C     ENDVOTE       BEGSR                                                                                 000000     016000
+   192 C                   EXFMT     VOTEEND                                                                     000000     016100
+   193 C*                  CALL      'PRTLSTVOTE'                                                                000000     016200
+   194 C                   MOVEL     *ON           *INLR                                                         000000     016300
+   195 C                   RETURN                                                                                000000     016400
+   196 C                   ENDSR                                                                                 000000     016500
+   197=OVOTINGREC                                                                                                         10000001
+        *--------------------------------------------------------------------------------------------*                    10
+        * RPG record format  . . . . :  VOTINGREC                                                    *                    10
+        * External format  . . . . . :  VOTINGREC : ASHIBATA2/VOTINGDB                               *                    10
+        *--------------------------------------------------------------------------------------------*                    10
+   198=O                       BADGENBR             2B BIN2      4,0                                                      10000002
+   199=O                       AWARDNBR             4B BIN2      3,0                                                      10000003
+   200=O                       EXHBNBR             13A CHAR        9                                                      10000004
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      7
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   201=OVOTE1                                                                                                             11000001
+        *--------------------------------------------------------------------------------------------*                    11
+        * RPG record format  . . . . :  VOTE1                                                        *                    11
+        * External format  . . . . . :  VOTE1 : ASHIBATA2/VOTESCR                                    *                    11
+        *--------------------------------------------------------------------------------------------*                    11
+   202=O                       *IN40                1N CHAR        1                                                      11000002
+   203=O                       *IN41                4N CHAR        1                                                      11000003
+   204=O                       *IN42                2N CHAR        1                                                      11000004
+   205=O                       *IN70                3N CHAR        1                                                      11000005
+   206=O                       ERRLINE             49A CHAR       45                                                      11000006
+   207=O                       INEXHB              58A CHAR        9                                                      11000007
+   208=OVOTEEND                                                                                                           12000001
+        *--------------------------------------------------------------------------------------------*                    12
+        * RPG record format  . . . . :  VOTEEND                                                      *                    12
+        * External format  . . . . . :  VOTEEND : ASHIBATA2/VOTESCR                                  *                    12
+        *--------------------------------------------------------------------------------------------*                    12
+   209=ODAVE                                                                                                              13000001
+        *--------------------------------------------------------------------------------------------*                    13
+        * RPG record format  . . . . :  DAVE                                                         *                    13
+        * External format  . . . . . :  DAVE : ASHIBATA2/VOTESCR                                     *                    13
+        *--------------------------------------------------------------------------------------------*                    13
+   210=OENDOFCON                                                                                                          14000001
+        *--------------------------------------------------------------------------------------------*                    14
+        * RPG record format  . . . . :  ENDOFCON                                                     *                    14
+        * External format  . . . . . :  ENDOFCON : ASHIBATA2/VOTESCR                                 *                    14
+        *--------------------------------------------------------------------------------------------*                    14
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      8
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+*RNF7066 00      5 000500  Record-Format NOVOTEALWD not used for input or output.
+*RNF7066 00      4 000400  Record-Format SETTINGSR not used for input or output.
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                 O u t p u t   B u f f e r   P o s i t i o n s
+Line   Start End   Field or Constant
+Number Pos   Pos
+   198     1     2 BADGENBR
+   199     3     4 AWARDNBR
+   200     5    13 EXHBNBR
+   202     1     1 *IN40
+   203     4     4 *IN41
+   204     2     2 *IN42
+   205     3     3 *IN70
+   206     5    49 ERRLINE
+   207    50    58 INEXHB
+ * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      9
+                    K e y   F i e l d   I n f o r m a t i o n
+         File           Internal    External
+           Record       field name  field name  Attributes
+      3  AWARDDB
+           AWARDRCD
+                        AWARDID                 BIN2      3,0 SIGNED
+      2  EXHBDB
+           EXHBREC
+                        EXHUSRPRF               CHAR        9
+      4  SETTINGS
+           SETTINGSR
+                        SETTING                 CHAR        9
+      1  VOTINGDB
+           VOTINGREC
+                        BADGENBR                BIN2      4,0 SIGNED
+ * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     10
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         AWARDDB           DISK                    3D
+           AWARDRCD                                3D     41     138
+         EXHBDB            DISK                    2D    123
+           EXHBREC                                 2D     31     122     131
+         SETTINGS          DISK                    4D    169     170     171
+           SETTINGSR                               4D     45
+         VOTESCR           WORKSTN                 5D
+           VOTE1                                   5D     48      71     201
+           VOTEEND                                 5D     54     192     208
+           DAVE                                    5D     55     186     209
+           NOVOTEALWD                              5D     56
+           ENDOFCON                                5D     57     179     210
+         VOTINGDB          DISK                    1D    121
+           VOTINGREC                               1D     27     115     149
+                                                 197
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *ENTRY            PLIST                  58D
+         *INLR             N(1)                  105M    180M    187M    194M
+         *IN05             N(1)                   49M     98M    114M
+         *IN12             N(1)                   50D    104
+         *IN40             N(1)                   75M    202
+         *IN41             N(1)                   89M    203
+         *IN42             N(1)                   82M    204
+         *IN70             N(1)                  164M    205
+         *IN93             N(1)                  132
+         *IN94             N(1)                  139
+         *IN95             N(1)                  116
+         ADDTODB           BEGSR                 110     112D
+         ALWEXIT           P(1,0)                 10D     64M     66     101M
+*RNF7031 AWARDDESC         A(1000)                44D
+*RNF7031 AWARDID           P(3,0)                 42D
+         AWARDNBR          P(3,0)                 29M    147M    199
+*RNF7031 AWARDTITLE        A(100)                 43D
+         BADGENBR          P(4,0)                 28M    146M    198
+         CHECKOK           P(1,0)                  9D    113M    119M    128M
+                                                 133M    140M    145
+         CHKALWVOTE        BEGSR                  62     168D
+         CHKPARM           BEGSR                  61     155D
+         DODAVE            BEGSR                  95     185D
+         ELIGIBLE          P(1,0)                 39D    125
+         ENDVOTE           BEGSR                 151     191D
+*RNF7031 ENLRN400          P(1,0)                 40D
+         ERRBLKAW          CONST                  18D     81
+         ERRBLKBG          CONST                  16D     74
+         ERRBLKEX          CONST                  17D     88
+*RNF7031 ERRDBG1           CONST                  24D
+*RNF7031 ERRDBG2           CONST                  25D
+*RNF7031 ERRENTER          CONST                  20D
+         ERREXIST          CONST                  19D    117
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     11
+         ERRLINE           A(45)                  74M     81M     88M    117M
+                                                 126M    135M    142M    206
+         ERRNOAWD          CONST                  23D    142
+         ERRNOEXB          CONST                  22D    135
+         ERRPROHB          CONST                  21D    126
+*RNF7031 EXHBCITY          A(20)                  35D
+*RNF7031 EXHBDBID          P(3,0)                 32D
+*RNF7031 EXHBDESC          A(1000)                38D
+*RNF7031 EXHBITOR          A(20)                  34D
+         EXHBNBR           A(9)                   30M    148M    200
+*RNF7031 EXHBSTATE         A(2)                   36D
+*RNF7031 EXHBTITLE         A(50)                  37D
+*RNF7031 EXHUSRPRF         A(9)                   33D
+         INEXHB            A(9)                   53M     87      94     122
+                                                 131     148     158M    163M
+                                                 207
+         INPUTAWARD        P(3,0)                 52D     80     138     147
+         INPUTBADGE        P(4,0)                 51D     73     115     146
+         LAUNCH            A(9)                   59D    156
+                           BASED(_QRNL_PRM+)
+*RNF7031 RPTAWD            P(3,0)                 12D
+*RNF7031 RPTBADGE          P(4,0)                 11D
+*RNF7031 RPTEXHB           A(9)                   13D
+         SETTING           A(9)                   46D    172
+         STN               A(9)                    6D    172M    173
+         STNVAL            A(9)                    7D    174M    178
+*RNF7031 SUCCESS           CONST                  15D
+         USERPRF           A(9)                    8D    156M    157     163
+         VALIDATE          P(1,0)                 14D     67M     77M     84M
+                                                  91M    100
+         VALUE             A(9)                   47D    174
+      Indicator References:
+         Indicator                            References (D=Defined M=Modified)
+         05                                       49M     98M    114M
+         12                                       50M    104
+         40                                       75M    202
+         41                                       89M    203
+         42                                       82M    204
+         70                                      164M    205
+*RNF7031 90                                      121D
+         93                                      131D    132
+         94                                      138D    139
+         95                                      115D    116
+         LR                                      105M    180M    187M    194M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     12
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     13
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+*RNF7031 00     19 The name or indicator is not referenced.
+*RNF7066 00      2 Record-Format name of Externally-Described file is not used.
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     14
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :       21
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :       21
+  Source Totals:
+    Records . . . . . . . . . . . . :      210
+    Specifications  . . . . . . . . :      187
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :       23
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program ADDVOTE placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:06.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

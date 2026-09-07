@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('NOMINATE EXHIBIT FOR AWARD')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('VCFMAIN → 11 → VOTESTUB → ADDVOTE (VOTESCR/VOTE1)')}"></header>
+<main>
+  <!-- L-03-01 -->
+  <p class="screen-subtitle" style="margin-bottom:2px">Vintage Computer Festival</p>
+  <h1 class="screen-title">NOMINATE EXHIBIT FOR AWARD</h1>
+
+  <form method="post" th:action="@{/vote}" id="voteForm" autocomplete="off">
+    <div class="card">
+      <!-- L-03-02..04 入力順: バッジ → 展示 ID → アワード ID -->
+      <div class="field">
+        <label for="inputBadge"><span class="step">1</span>First, type your SFGE Badge Number</label>
+        <input id="inputBadge" name="inputBadge" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4"
+               class="mono" th:classappend="${result != null && result.badgeErr} ? 'err'" th:value="${inputBadge}" autofocus>
+        <div class="hint">4 digits</div>
+      </div>
+      <div class="field">
+        <label for="inExhb"><span class="step">2</span>Second, type the Exhibit ID you are nominating</label>
+        <input id="inExhb" name="inExhb" type="text" maxlength="9" class="mono" style="text-transform:uppercase"
+               th:classappend="${result != null && result.exhibitErr} ? 'err'" th:value="${inExhb}"
+               th:readonly="${exhibitProtected}" th:tabindex="${exhibitProtected} ? -1 : 0">
+        <div class="hint" th:if="${exhibitProtected}">Fixed to this exhibit (signed-on profile). Sign on as MM2024 to enter any exhibit.</div>
+        <div class="hint" th:unless="${exhibitProtected}">Shared terminal (MM2024): type the exhibit's user profile, e.g. ASHIBATA</div>
+      </div>
+      <div class="field">
+        <label for="inputAward"><span class="step">3</span>Third, type the Award ID you are selecting</label>
+        <input id="inputAward" name="inputAward" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"
+               class="mono" th:classappend="${result != null && result.awardErr} ? 'err'" th:value="${inputAward}">
+        <div class="hint">3 digits (see the award list below)</div>
+      </div>
+      <!-- L-03-05 エラー行 -->
+      <div class="errline" id="errline" th:text="${result != null ? result.errLine : ''}"></div>
+    </div>
+
+    <!-- L-03-06 アワード一覧 -->
+    <div class="card">
+      <h2>Available Awards for This Year:</h2>
+      <div class="awards">
+        <div class="award" th:each="a : ${awards}">
+          <div class="id" th:text="${a.number()} + '.'">001.</div>
+          <div><div class="t" th:text="${a.awardtitle}">Best in Show Award</div>
+               <div class="d" th:text="'- ' + ${a.awarddesc}">- description</div></div>
+        </div>
+      </div>
+      <!-- L-03-07 -->
+      <p class="note" style="margin:14px 0 0">You may only vote for ONE award. Choose your nomination carefully!</p>
+    </div>
+
+    <!-- L-03-09 ファンクションキー -->
+    <div class="fkeys">
+      <span class="legend">TAB = Switch Fields · ENTER = Submit</span>
+      <button type="submit" class="btn danger" name="action" value="cancel" data-fkey="F12" formnovalidate>キャンセル <kbd>F12</kbd></button>
+      <button type="submit" class="btn primary" name="action" value="submit" data-fkey="F5">送信 <kbd>F5</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+<script>
+  // ENTER inside a field = Submit Vote (same as F5), like the 5250 screen
+  document.getElementById('voteForm').addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter') { ev.preventDefault(); document.querySelector('[data-fkey="F5"]').click(); }
+  });
+</script>
+</body>
+</html>

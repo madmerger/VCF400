@@ -1,0 +1,88 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CREDITSSCR    26-09-07 11:50:04        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   CREDITSSCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   CREDITSSCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  11:49:36
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20231214  205023  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R SCREEN1
+    500       A*%%TS  SD  20231214  205023  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                  1  3'VCF/400 - Credits and Copyright'
+    700       A                                      COLOR(WHT)
+    800       A                                  3  3'VCF/400 V1R0 - Copyright (c) 2023--
+    900       A                                      2024 The Little Beige Box'
+   1000       A                                  4  3'https://github.com/LBBNetwork'
+   1100       A                                  6  3'With special thanks to:'
+   1200       A                                  7  3' - The Atlanta Historical Computin-
+   1300       A                                      g Society'
+   1400       A                                      COLOR(BLU)
+   1500       A                                  8  3' - The Southern-Fried Gaming Expo'
+   1600       A                                      COLOR(BLU)
+   1700       A                                  9  4'- The IBM i Hobbyists Community'
+   1800       A                                      COLOR(BLU)
+   1900       A                                 10  4'- Joe G.'
+   2000       A                                      COLOR(BLU)
+   2100       A                                 11  4'- James M.'
+   2200       A                                      COLOR(BLU)
+   2300       A                                 12  4'- Ben S.'
+   2400       A                                      COLOR(BLU)
+   2500       A                                 13  4'- Mainframes with Matthew / racing-
+   2600       A                                      mars'
+   2700       A                                      COLOR(BLU)
+   2800       A                                 19 32'Dedicated to A.,'
+   2900       A                                      COLOR(RED)
+   3000       A                                 20 34'my Dear One'
+   3100       A                                      COLOR(RED)
+   3200       A                                 22 17'Press ENTER to return to the VCF/4-
+   3300       A                                      00 main menu.'
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CREDITSSCR    26-09-07 11:50:04        Page    2
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+    400                  R SCREEN1
+    600                                          1  3'VCF/400 - Credits and Copyright' +     31
+    700                                              COLOR(WHT)
+    800                                          3  3'VCF/400 V1R0 - Copyright (c) 2023--    59
+    800                                              2024 The Little Beige Box'
+   1000                                          4  3'https://github.com/LBBNetwork'         29
+   1100                                          6  3'With special thanks to:'               23
+   1200                                          7  3' - The Atlanta Historical Computin-    43
+   1200                                              g Society' COLOR(BLU)
+   1500                                          8  3' - The Southern-Fried Gaming Expo' +   33
+   1600                                              COLOR(BLU)
+   1700                                          9  4'- The IBM i Hobbyists Community' +     31
+   1800                                              COLOR(BLU)
+   1900                                         10  4'- Joe G.' COLOR(BLU)                    8
+   2100                                         11  4'- James M.' COLOR(BLU)                 10
+   2300                                         12  4'- Ben S.' COLOR(BLU)                    8
+   2500                                         13  4'- Mainframes with Matthew / racing-    38
+   2500                                              mars' COLOR(BLU)
+   2800                                         19 32'Dedicated to A.,' COLOR(RED)           16
+   3000                                         20 34'my Dear One' COLOR(RED)                11
+   3200                                         22 17'Press ENTER to return to the VCF/4-    47
+   3200                                              00 main menu.'
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CREDITSSCR    26-09-07 11:50:04        Page    3
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File CREDITSSCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

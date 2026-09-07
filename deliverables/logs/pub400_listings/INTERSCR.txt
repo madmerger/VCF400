@@ -1,0 +1,112 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/INTERSCR      26-09-07 11:50:04        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   INTERSCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   INTERSCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  11:49:44
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20240310  142358  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R INTERTEST
+    500       A*%%TS  SD  20240310  142358  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                  1  3'VCF/400 - How to Navigate'
+    700       A                                  3  3'Before you start, here is how to n-
+    800       A                                      avigate:'
+    900       A                                  4  3'-----------------------------------
+   1000       A                                      ------------------------------------
+   1100       A                                      --------'
+   1200       A                                      COLOR(WHT)
+   1300       A                                  5  3'Use'
+   1400       A                                  5  7'ARROW KEYS'
+   1500       A                                      COLOR(BLU)
+   1600       A                                  5 18'or'
+   1700       A                                  5 21'TAB KEY'
+   1800       A                                      COLOR(BLU)
+   1900       A                                  5 29'to move between fields.'
+   2000       A                                  7  3'Use'
+   2100       A                                  7  7'F5'
+   2200       A                                      COLOR(BLU)
+   2300       A                                  7 10'or'
+   2400       A                                  7 13'ENTER'
+   2500       A                                      COLOR(BLU)
+   2600       A                                  7 19'to perform your action.  '
+   2700       A                                  9  3'Use'
+   2800       A                                  9  7'F12'
+   2900       A                                      COLOR(BLU)
+   3000       A                                  9 11'to quit at any time.'
+   3100       A                                 12  3'Keyboard not responding? If you se-
+   3200       A                                      e'
+   3300       A                                 12 39'X II'
+   3400       A                                      COLOR(RED)
+   3500       A                                 12 44'in the left corner, press'
+   3600       A                                 12 70'RIGHT CTRL'
+   3700       A                                      COLOR(BLU)
+   3800       A                                 13  3'to continue.'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/INTERSCR      26-09-07 11:50:04        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3900       A                                 14  3'-----------------------------------
+   4000       A                                      ------------------------------------
+   4100       A                                      --------'
+   4200       A                                      COLOR(WHT)
+   4300       A                                 16 33'Got all that?'
+   4400       A                                 17 28'Press ENTER to continue.'
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/INTERSCR      26-09-07 11:50:04        Page    3
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+    400                  R INTERTEST
+    600                                          1  3'VCF/400 - How to Navigate'             25
+    700                                          3  3'Before you start, here is how to n-    42
+    700                                              avigate:'
+    900                                          4  3'-----------------------------------    77
+    900                                              ------------------------------------
+    900                                              --------' COLOR(WHT)
+   1300                                          5  3'Use'                                    3
+   1400                                          5  7'ARROW KEYS' COLOR(BLU)                 10
+   1600                                          5 18'or'                                     2
+   1700                                          5 21'TAB KEY' COLOR(BLU)                     7
+   1900                                          5 29'to move between fields.'               23
+   2000                                          7  3'Use'                                    3
+   2100                                          7  7'F5' COLOR(BLU)                          2
+   2300                                          7 10'or'                                     2
+   2400                                          7 13'ENTER' COLOR(BLU)                       5
+   2600                                          7 19'to perform your action.  '             25
+   2700                                          9  3'Use'                                    3
+   2800                                          9  7'F12' COLOR(BLU)                         3
+   3000                                          9 11'to quit at any time.'                  20
+   3100                                         12  3'Keyboard not responding? If you se-    35
+   3100                                              e'
+   3300                                         12 39'X II' COLOR(RED)                        4
+   3500                                         12 44'in the left corner, press'             25
+   3600                                         12 70'RIGHT CTRL' COLOR(BLU)                 10
+   3800                                         13  3'to continue.'                          12
+   3900                                         14  3'-----------------------------------    77
+   3900                                              ------------------------------------
+   3900                                              --------' COLOR(WHT)
+   4300                                         16 33'Got all that?'                         13
+   4400                                         17 28'Press ENTER to continue.'              24
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/INTERSCR      26-09-07 11:50:04        Page    4
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File INTERSCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

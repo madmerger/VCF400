@@ -1,0 +1,124 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   LRN400SCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   LRN400SCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  11:49:47
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20231118  135705  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R MAIN
+    500       A*%%TS  SD  20231116  225034  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                      CF03(03 'Exit')
+    700       A                                      CF05(05 'Fwd')
+    800       A                                      CF08(08 'Back')
+    900       A                                  1  3'LEARN/400'
+   1000       A            OUTPAGENBR     4A  O  1 76
+   1100       A                                  1 70'Page'
+   1200       A                                  2  3'__________________________________-
+   1300       A                                      ___________________________________-
+   1400       A                                      ________'
+   1500       A                                 23  3'Cmd3/F3 = Exit  Cmd5/F5 = Forwards-
+   1600       A                                        Cmd8 / F8 = Backwards'
+   1700       A                                      COLOR(BLU)
+   1800       A                                 22  3'__________________________________-
+   1900       A                                      ___________________________________-
+   2000       A                                      ________'
+   2100       A                                      COLOR(BLU)
+   2200       A            OUTCONTENT  1500A  O  3  1COLOR(WHT)
+   2300       A          R MAINADMIN
+   2400       A*%%TS  SD  20231118  135705  QSECOFR     REL-V4R4M0  5769-PW1
+   2500       A                                      CF05(05 'Fwd')
+   2600       A                                      CF08(08 'Back')
+   2700       A                                      CF03(03 'Exit')
+   2800       A                                      CF10(10 'Save')
+   2900       A                                  1  3'LEARN/400'
+   3000       A            OUTPAGENBR     4A  O  1 76
+   3100       A                                  1 70'Page'
+   3200       A                                  2  3'__________________________________-
+   3300       A                                      ___________________________________-
+   3400       A                                      ________'
+   3500       A                                 23  3'F3 = Exit F5 = Fwd F8 = Back F10 =-
+   3600       A                                       Save'
+   3700       A                                      COLOR(BLU)
+   3800       A                                 22  3'__________________________________-
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3900       A                                      ___________________________________-
+   4000       A                                      ________'
+   4100       A            INCONTENT   1500A  B  3  1CHECK(LC)
+   4200       A                                      COLOR(WHT)
+   4300       A                                 23 63'EXTRA:'
+   4400       A                                      COLOR(BLU)
+   4500       A                                  1 65'NEW'
+   4600       A                                      DSPATR(RI)
+   4700       A  60                                  DSPATR(ND)
+   4800       A            INEXTRA        9   B 23 70COLOR(BLU)
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    3
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+               * Response indicator input buffer positions:
+               *  *IN03 0001   *IN05 0002   *IN08 0003
+    400                  R MAIN                      CF03(03 'Exit') CF05(05 'Fwd') +
+    800                                              CF08(08 'Back')
+    900                                          1  3'LEARN/400'                              9
+   1000                    OUTPAGENBR     4A  O  1 76                                         4            1
+   1100                                          1 70'Page'                                   4
+   1200                                          2  3'__________________________________-    77
+   1200                                              ___________________________________-
+   1200                                              ________'
+   1500                                         23  3'Cmd3/F3 = Exit  Cmd5/F5 = Forwards-    57
+   1500                                                Cmd8 / F8 = Backwards' +
+   1700                                              COLOR(BLU)
+   1800                                         22  3'__________________________________-    77
+   1800                                              ___________________________________-
+   1800                                              ________' COLOR(BLU)
+   2200                    OUTCONTENT  1500A  O  3  1COLOR(WHT)                            1500            5
+               * Option indicator output buffer positions:
+               *  *IN60 0001
+               * Response indicator input buffer positions:
+               *  *IN03 0003   *IN05 0001   *IN08 0002   *IN10 0004
+   2300                  R MAINADMIN                 CF05(05 'Fwd') CF08(08 'Back') +
+   2700                                              CF03(03 'Exit') CF10(10 'Save')
+   2900                                          1  3'LEARN/400'                              9
+   3000                    OUTPAGENBR     4A  O  1 76                                         4            2
+   3100                                          1 70'Page'                                   4
+   3200                                          2  3'__________________________________-    77
+   3200                                              ___________________________________-
+   3200                                              ________'
+   3500                                         23  3'F3 = Exit F5 = Fwd F8 = Back F10 =-    39
+   3500                                               Save' COLOR(BLU)
+   3800                                         22  3'__________________________________-    77
+   3800                                              ___________________________________-
+   3800                                              ________'
+   4100                    INCONTENT   1500A  B  3  1CHECK(LC) COLOR(WHT)                  1500            6       5
+   4300                                         23 63'EXTRA:' COLOR(BLU)                      6
+   4500                                          1 65'NEW' DSPATR(RI)                         3
+   4700          60                                  DSPATR(ND)
+   4800                    INEXTRA        9A  B 23 70COLOR(BLU)                               9         1506    1505
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    4
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File LRN400SCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *
