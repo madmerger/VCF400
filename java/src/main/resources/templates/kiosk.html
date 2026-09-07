@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('WELCOME TO... ' + ${exhibit.exhbtitle} + ' - ようこそ')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('STREXHB EXHBNAME(' + ${exhibit.exhusrprf} + ') → EXHBMENU (EXHBMENUSC/MENU)')}"></header>
+<main>
+  <!-- L-05-01..03 -->
+  <p class="screen-subtitle" style="margin-bottom:2px">WELCOME TO...</p>
+  <h1 class="screen-title" th:text="${exhibit.exhbtitle}">Exhibit title</h1>
+  <p class="screen-subtitle ja">ようこそ — 展示キオスクメニュー</p>
+  <p class="info" style="margin-top:-10px">出展者: <b th:text="${exhibit.exhbitor}">name</b> (<span th:text="${exhibit.exhbcity}">city</span> <span th:text="${exhibit.exhbstate}">ST</span>)</p>
+  <div class="msgbar" th:if="${msg}" th:text="${msg}"></div>
+  <div class="card"><div class="page-content" style="min-height:0" th:text="${exhibit.exhbdesc}">desc</div></div>
+
+  <form method="post" th:action="@{/kiosk/{id}(id=${exhibit.exhusrprf})}">
+    <div class="card">
+      <!-- L-05-04 メニュー (1, 2 は資格/設定により非表示) -->
+      <ul class="menu-list">
+        <li th:if="${exhibit.isEligible()}"><button type="button" class="menu-item" data-option="1"><span class="num">1</span>この展示をアワードに推薦する</button></li>
+        <li th:if="${exhibit.isLearnEnabled()}"><button type="button" class="menu-item" data-option="2"><span class="num">2</span>この展示についてもっと知る</button></li>
+        <li><button type="button" class="menu-item" data-option="3"><span class="num">3</span>展示ゲストブックに記入する</button></li>
+        <li><button type="button" class="menu-item" data-option="4"><span class="num">4</span>展示ゲストブックを読む</button></li>
+      </ul>
+      <!-- L-05-05 -->
+      <div class="optline" style="margin-top:16px">
+        <label for="option">メニュー番号を選択して ENTER:</label>
+        <input id="option" name="option" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autofocus autocomplete="off">
+        <button type="submit" class="btn primary" data-fkey="ENTER">選択 <kbd>ENTER</kbd></button>
+      </div>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

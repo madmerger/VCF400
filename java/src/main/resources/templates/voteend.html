@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('投票完了')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('ADDVOTE (VOTESCR/VOTEEND)')}"></header>
+<main>
+  <div class="card hero">
+    <h2 class="big-ja">投票ありがとうございました!</h2>
+    <p class="big">THANK YOU FOR VOTING!</p>
+    <div class="okbox" style="display:inline-block">あなたの投票を記録しました!</div>
+    <p>Vintage Computer Festival Southeast 2024 のアワードショーへのご参加ありがとうございます! 残りの展示と Southern Fried Gaming Expo もお楽しみください!</p>
+    <dl class="kv" style="display:inline-grid;text-align:left;margin-top:10px" th:if="${vote}">
+      <dt>バッジ</dt><dd class="mono" th:text="${vote.badgenbr}">4992</dd>
+      <dt>展示</dt><dd class="mono" th:text="${vote.exhbnbr}">ASHIBATA</dd>
+      <dt>アワード</dt><dd class="mono" th:text="${#strings.length(vote.awardnbr + '') < 3 ? #strings.repeat('0', 3 - #strings.length(vote.awardnbr + '')) + vote.awardnbr : vote.awardnbr}">001</dd>
+    </dl>
+  </div>
+  <form method="get" th:action="@{${returnTo}}">
+    <div class="fkeys">
+      <span class="legend">ENTER でメインメニューへ戻ります。</span>
+      <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>メニューへ戻る <kbd>ENTER</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

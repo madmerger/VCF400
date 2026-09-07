@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('GUESTBOOK/400 - Read a Comment - ゲストブックのコメントを読む')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('VCFMAIN → 13 → READGBSTUB → READGBCMT (GUESTBKSCR/READCMT)')}"></header>
+<main>
+  <h1 class="screen-title">GUESTBOOK/400 - Read a Comment</h1>
+  <p class="screen-subtitle ja">ゲストブックのコメントを読む</p>
+
+  <form method="post" th:action="@{/guestbook/read}" id="readForm" autocomplete="off">
+    <div class="card">
+      <div class="field">
+        <label for="inCmtId"><span class="step">1</span>コメント ID を入力:</label>
+        <input id="inCmtId" name="inCmtId" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" class="mono"
+               th:value="${inCmtId}" th:classappend="${errLine != null} ? 'err'" autofocus>
+        <div class="hint">現在 <b th:text="${total}">2</b> 件のコメントを掲載中です。</div>
+      </div>
+      <div class="errbox" th:if="${errLine != null}">
+        <div class="errline-ja" th:text="${T(com.vcf400.service.Messages).ja(errLine)}"></div>
+        <div class="errline" id="errline" th:text="${errLine}"></div>
+      </div>
+    </div>
+
+    <!-- L-09-05 出力: 名前 says to: 展示タイトル / コメント -->
+    <div class="card" th:if="${out != null}">
+      <div class="result">
+        <div class="who"><span th:text="${out.outName}">Name</span> <span>さんから、宛先:</span> <span th:text="${out.outTitle}">Title</span></div>
+        <div class="info ja-note" th:if="${out.outCmt == T(com.vcf400.service.Messages).ERRHCMT or out.outCmt == T(com.vcf400.service.Messages).ERRPRIV or out.outName == T(com.vcf400.service.Messages).ERRHNAME}">
+          <span th:if="${out.outName == T(com.vcf400.service.Messages).ERRHNAME}" th:text="${T(com.vcf400.service.Messages).ja(out.outName)}"></span>
+          <span th:if="${out.outCmt == T(com.vcf400.service.Messages).ERRHCMT or out.outCmt == T(com.vcf400.service.Messages).ERRPRIV}" th:text="${T(com.vcf400.service.Messages).ja(out.outCmt)}"></span>
+        </div>
+        <div class="text"
+             th:classappend="${out.outCmt == T(com.vcf400.service.Messages).ERRHCMT or out.outCmt == T(com.vcf400.service.Messages).ERRPRIV or out.outName == T(com.vcf400.service.Messages).ERRHNAME} ? 'legacy'"
+             th:text="${out.outCmt}">comment</div>
+        <div class="info">コメント ID <span class="mono" th:text="${out.record.cmtid}">1</span></div>
+      </div>
+    </div>
+    <p class="info">このコメントが不適切だと思われる場合は、Midrange Madness テーブルの担当者にコメント ID をお知らせください。対応いたします。</p>
+
+    <div class="fkeys">
+      <button type="submit" class="btn danger" name="action" value="cancel" data-fkey="F12" formnovalidate>キャンセル <kbd>F12</kbd></button>
+      <button type="submit" class="btn primary" name="action" value="submit" data-fkey="F5">送信 <kbd>F5</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

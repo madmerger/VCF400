@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('GUESTBOOK/400 - ADD COMMENT - ゲストブックに記入')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('VCFMAIN → 12 → ADDGBSTUB → ADDGBCMT (GUESTBKSCR/ADDCMT)')}"></header>
+<main>
+  <h1 class="screen-title">GUESTBOOK/400 - ADD COMMENT</h1>
+  <p class="screen-subtitle ja">ゲストブックに記入</p>
+
+  <form method="post" th:action="@{/guestbook/add}" id="cmtForm" autocomplete="off">
+    <div class="card">
+      <!-- L-07-02..04 入力順: 名前 → 展示 ID → コメント -->
+      <div class="field">
+        <label for="inName"><span class="step">1</span>お名前</label>
+        <input id="inName" name="inName" type="text" maxlength="16" th:value="${inName}"
+               th:classappend="${result != null && result.nameErr} ? 'err'" autofocus>
+        <div class="hint">16 文字まで</div>
+      </div>
+      <div class="field">
+        <label for="inId"><span class="step">2</span>展示 ID</label>
+        <input id="inId" name="inId" type="text" maxlength="9" class="mono" style="text-transform:uppercase" th:value="${inId}"
+               th:classappend="${result != null && result.exhibitErr} ? 'err'" th:readonly="${exhibitProtected}" th:tabindex="${exhibitProtected} ? -1 : 0">
+        <div class="hint" th:if="${exhibitProtected}">この展示に固定されています (サインオン中のプロファイル)。</div>
+        <div class="hint" th:unless="${exhibitProtected}">共用端末 (MM2024): 展示のユーザープロファイルを入力</div>
+      </div>
+      <div class="field">
+        <label for="inCmt"><span class="step">3</span>コメント</label>
+        <textarea id="inCmt" name="inCmt" maxlength="200" th:text="${inCmt}"
+                  th:classappend="${result != null && result.commentErr} ? 'err'"></textarea>
+        <div class="hint">200 文字まで</div>
+      </div>
+      <!-- L-07-05 -->
+      <div class="errbox" th:if="${result != null && result.errLine != null && !result.errLine.isEmpty()}">
+        <div class="errline-ja" th:text="${T(com.vcf400.service.Messages).ja(result.errLine)}"></div>
+        <div class="errline" id="errline" th:text="${result.errLine}"></div>
+      </div>
+    </div>
+    <!-- L-07-06 -->
+    <div class="fkeys">
+      <button type="submit" class="btn danger" name="action" value="cancel" data-fkey="F12" formnovalidate>キャンセル <kbd>F12</kbd></button>
+      <button type="submit" class="btn primary" name="action" value="submit" data-fkey="F5">送信 <kbd>F5</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>
