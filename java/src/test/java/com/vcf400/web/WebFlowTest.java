@@ -1,5 +1,6 @@
 package com.vcf400.web;
 
+import com.vcf400.service.Messages;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -46,7 +47,7 @@ class WebFlowTest {
         int badge = html.indexOf("name=\"inputBadge\"");
         int exhb = html.indexOf("name=\"inExhb\"");
         int award = html.indexOf("name=\"inputAward\"");
-        org.assertj.core.api.Assertions.assertThat(html).contains("NOMINATE EXHIBIT FOR AWARD", "F5", "F12", "Available Awards for This Year:");
+        org.assertj.core.api.Assertions.assertThat(html).contains("NOMINATE EXHIBIT FOR AWARD", "F5", "F12", "今年のアワード一覧:");
         org.assertj.core.api.Assertions.assertThat(badge).isLessThan(exhb);
         org.assertj.core.api.Assertions.assertThat(exhb).isLessThan(award);
     }
@@ -55,7 +56,7 @@ class WebFlowTest {
     void voteValidationErrorIsShownOnSameScreen() throws Exception {
         mvc.perform(post("/vote").param("inputBadge", "").param("inExhb", "ASHIBATA").param("inputAward", "1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Must enter badge number")));
+            .andExpect(content().string(containsString(Messages.ERRBLKBG)));
     }
 
     @Test
@@ -77,7 +78,9 @@ class WebFlowTest {
         org.assertj.core.api.Assertions.assertThat(ashibata).doesNotContain("data-option=\"7\"");   // 隠しオプション
         mvc.perform(post("/kiosk/ASHIBATA").param("option", "7")).andExpect(redirectedUrl("/kiosk/ASHIBATA/exit"));
         mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "wrong")).andExpect(redirectedUrl("/kiosk/ASHIBATA"));
-        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "VCF2024")).andExpect(redirectedUrl("/menu?msg=Kiosk+ASHIBATA+ended."));
+        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "VCF2024"))
+            .andExpect(redirectedUrl("/menu?msg=" + java.net.URLEncoder.encode(
+                    Messages.MSG_KIOSK_ENDED.formatted("ASHIBATA"), java.nio.charset.StandardCharsets.UTF_8)));
     }
 
     @Test
@@ -97,9 +100,9 @@ class WebFlowTest {
     void guestbookReadRequiresId() throws Exception {
         mvc.perform(post("/guestbook/read").param("inCmtId", ""))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Must enter CommentID")));
+            .andExpect(content().string(containsString(Messages.ERRCMTID)));
         mvc.perform(post("/guestbook/read").param("inCmtId", "1"))
             .andExpect(content().string(containsString("GUESTBOOK/400 - Read a Comment")))
-            .andExpect(content().string(containsString("says to:")));
+            .andExpect(content().string(containsString("さんから、宛先:")));
     }
 }

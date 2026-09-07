@@ -1,43 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('NOMINATE EXHIBIT FOR AWARD')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('NOMINATE EXHIBIT FOR AWARD - 展示をアワードに推薦する (投票)')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('VCFMAIN → 11 → VOTESTUB → ADDVOTE (VOTESCR/VOTE1)')}"></header>
 <main>
   <!-- L-03-01 -->
-  <p class="screen-subtitle" style="margin-bottom:2px">Vintage Computer Festival</p>
   <h1 class="screen-title">NOMINATE EXHIBIT FOR AWARD</h1>
+  <p class="screen-subtitle ja">展示をアワードに推薦する (投票)</p>
 
   <form method="post" th:action="@{/vote}" id="voteForm" autocomplete="off">
     <div class="card">
       <!-- L-03-02..04 入力順: バッジ → 展示 ID → アワード ID -->
       <div class="field">
-        <label for="inputBadge"><span class="step">1</span>First, type your SFGE Badge Number</label>
+        <label for="inputBadge"><span class="step">1</span>まず、SFGE バッジ番号を入力</label>
         <input id="inputBadge" name="inputBadge" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4"
                class="mono" th:classappend="${result != null && result.badgeErr} ? 'err'" th:value="${inputBadge}" autofocus>
-        <div class="hint">4 digits</div>
+        <div class="hint">数字 4 桁</div>
       </div>
       <div class="field">
-        <label for="inExhb"><span class="step">2</span>Second, type the Exhibit ID you are nominating</label>
+        <label for="inExhb"><span class="step">2</span>次に、推薦する展示 ID を入力</label>
         <input id="inExhb" name="inExhb" type="text" maxlength="9" class="mono" style="text-transform:uppercase"
                th:classappend="${result != null && result.exhibitErr} ? 'err'" th:value="${inExhb}"
                th:readonly="${exhibitProtected}" th:tabindex="${exhibitProtected} ? -1 : 0">
-        <div class="hint" th:if="${exhibitProtected}">Fixed to this exhibit (signed-on profile). Sign on as MM2024 to enter any exhibit.</div>
-        <div class="hint" th:unless="${exhibitProtected}">Shared terminal (MM2024): type the exhibit's user profile, e.g. ASHIBATA</div>
+        <div class="hint" th:if="${exhibitProtected}">この展示に固定されています (サインオン中のプロファイル)。</div>
+        <div class="hint" th:unless="${exhibitProtected}">共用端末 (MM2024): 展示のユーザープロファイルを入力 (例: ASHIBATA)</div>
       </div>
       <div class="field">
-        <label for="inputAward"><span class="step">3</span>Third, type the Award ID you are selecting</label>
+        <label for="inputAward"><span class="step">3</span>最後に、選択するアワード ID を入力</label>
         <input id="inputAward" name="inputAward" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"
                class="mono" th:classappend="${result != null && result.awardErr} ? 'err'" th:value="${inputAward}">
-        <div class="hint">3 digits (see the award list below)</div>
+        <div class="hint">数字 3 桁 (下のアワード一覧を参照)</div>
       </div>
       <!-- L-03-05 エラー行 -->
-      <div class="errline" id="errline" th:text="${result != null ? result.errLine : ''}"></div>
+      <div class="errbox" th:if="${result != null && result.errLine != null && !result.errLine.isEmpty()}">
+        <div class="errline-ja" th:text="${T(com.vcf400.service.Messages).ja(result.errLine)}"></div>
+        <div class="errline" id="errline" th:text="${result.errLine}"></div>
+      </div>
     </div>
 
     <!-- L-03-06 アワード一覧 -->
     <div class="card">
-      <h2>Available Awards for This Year:</h2>
+      <h2>今年のアワード一覧:</h2>
       <div class="awards">
         <div class="award" th:each="a : ${awards}">
           <div class="id" th:text="${a.number()} + '.'">001.</div>
@@ -46,12 +49,12 @@
         </div>
       </div>
       <!-- L-03-07 -->
-      <p class="note" style="margin:14px 0 0">You may only vote for ONE award. Choose your nomination carefully!</p>
+      <p class="note" style="margin:14px 0 0">投票できるアワードは 1 つだけです。慎重に選んでください!</p>
     </div>
 
     <!-- L-03-09 ファンクションキー -->
     <div class="fkeys">
-      <span class="legend">TAB = Switch Fields · ENTER = Submit</span>
+      <span class="legend">TAB = 項目移動 · ENTER = 送信</span>
       <button type="submit" class="btn danger" name="action" value="cancel" data-fkey="F12" formnovalidate>キャンセル <kbd>F12</kbd></button>
       <button type="submit" class="btn primary" name="action" value="submit" data-fkey="F5">送信 <kbd>F5</kbd></button>
     </div>

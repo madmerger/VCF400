@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('SORRY - voting has ended')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('投票期間終了')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('ADDVOTE (VOTESCR/ENDOFCON)')}"></header>
 <main>
   <div class="card hero">
-    <p class="big" style="color:var(--danger)">SORRY!</p>
-    <p><b>The voting period has ended and you can no longer vote.</b></p>
-    <p>However, you may sign this exhibit guestbook if you would like.</p>
+    <h2 class="big-ja">申し訳ありません</h2>
+    <p class="big">SORRY!</p>
+    <p><b>投票期間は終了したため、投票できません。</b></p>
+    <p>ご希望であれば、この展示のゲストブックに記入いただけます。</p>
   </div>
   <form method="get" th:action="@{${returnTo}}">
     <div class="fkeys">
-      <span class="legend">Press ENTER to exit.</span>
+      <span class="legend">ENTER で終了します。</span>
       <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>終了 <kbd>ENTER</kbd></button>
     </div>
   </form>

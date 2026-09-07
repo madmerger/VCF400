@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('Signed off')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('サインオフ')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('SIGNOFF')}"></header>
 <main>
   <div class="card hero">
-    <p class="big">Signed off</p>
-    <p>Your session has ended. Thank you for visiting VCF/400.</p>
-    <a class="btn primary" th:href="@{/menu}">Sign on again</a>
+    <p class="big-ja">サインオフしました</p>
+    <p>セッションを終了しました。VCF/400 をご利用いただきありがとうございました。</p>
+    <a class="btn primary" th:href="@{/menu}">再度サインオン</a>
   </div>
 </main>
 </body>

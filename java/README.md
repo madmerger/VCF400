@@ -30,3 +30,26 @@ mvn test                                             # 業務ルール / 画面�
 | クロス検証用 DB 状態 API | `/api/db/votes`, `/api/db/comments`, `/api/db/settings` |
 
 ファンクションキーは物理キー (F3/F5/F8/F12/ENTER) とボタン (「送信 (F5)」等) の両方で操作できる。
+
+## UI 日本語化と英語原文の対応
+
+画面の主表示は日本語とし、台帳上の画面タイトルは英語原文を保持して日本語副題を併記する。エラー行 `#errline` はクロス検証用に英語原文のみを表示し、日本語訳は `errline-ja` に表示する。ボタンには対応する F キーを併記し、DB 由来の値は翻訳しない。サインオンボタンの `aria-label="Sign on"` はクロス検証ランナー互換のため保持する。
+
+| ID | 英語原文 | 日本語 |
+|---|---|---|
+| M-02 | Must enter badge number | バッジ番号を入力してください |
+| M-03 | Must enter Exhibit ID | 展示 ID を入力してください |
+| M-04 | Must enter Award ID | アワード ID を入力してください |
+| M-05 | You have already voted. | すでに投票済みです。 |
+| M-07 | Exhibit ineligible for award | この展示はアワードの対象外です |
+| M-08 | Exhibit does not exist | 展示が存在しません |
+| M-09 | Award does not exist. | アワードが存在しません。 |
+| M-10 | Must enter Exhibit ID | 展示 ID を入力してください |
+| M-11 | Must enter your name | お名前を入力してください |
+| M-12 | Must enter a comment | コメントを入力してください |
+| M-13 | Must enter CommentID | コメント ID を入力してください |
+| M-14 | Name Hidden | 名前は非表示 |
+| M-14 | This comment hidden by an admin - offensive content. | このコメントは管理者により非表示にされています (不適切な内容)。 |
+| M-15 | This comment is not part of this guestbook. | このコメントはこのゲストブックのものではありません。 |
+
+分類依存の表示は、`THANK YOU FOR VOTING!` → 「投票ありがとうございました!」、`THANKS FOR COMMENTING!` → 「コメントありがとうございました!」、`SORRY!` → 「申し訳ありません」。画面タイトルの英語原文も台帳どおり保持し、日本語副題を別要素に表示する。

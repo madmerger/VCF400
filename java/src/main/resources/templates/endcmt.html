@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('THANKS FOR COMMENTING!')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('コメント記入完了')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('ADDGBCMT (GUESTBKSCR/ENDCMT)')}"></header>
 <main>
   <div class="card hero">
+    <h2 class="big-ja">コメントありがとうございました!</h2>
     <p class="big">THANKS FOR COMMENTING!</p>
-    <p>Thank you for commenting on this exhibit! Your Comment ID Is:
+    <p>この展示へのコメントをありがとうございます! あなたのコメント ID は:
       <b class="mono" th:text="${added != null ? added.cmtid : ''}">7</b></p>
   </div>
   <form method="get" th:action="@{${returnTo}}">
     <div class="fkeys">
-      <span class="legend">Press ENTER to exit.</span>
+      <span class="legend">ENTER で終了します。</span>
       <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>終了 <kbd>ENTER</kbd></button>
     </div>
   </form>

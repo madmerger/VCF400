@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('Exit the kiosk')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('キオスク終了')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('EXHBMENU (EXHBMENUSC/ADMPSWRD)')}"></header>
 <main>
-  <h1 class="screen-title">Are you sure you want to exit the kiosk?</h1>
-  <p class="screen-subtitle">Type the Administrator password, press ENTER to sign off</p>
+  <h2 class="title-ja">キオスクを終了しますか?</h2>
+  <h1 class="screen-title sub">Are you sure you want to exit the kiosk?</h1>
+  <p class="screen-subtitle ja">管理者パスワードを入力して ENTER を押すとサインオフします</p>
   <form method="post" th:action="@{/kiosk/{id}/exit(id=${exhibitId})}" autocomplete="off">
     <div class="card">
       <div class="field">
-        <label for="inPwd">Administrator password</label>
+        <label for="inPwd">管理者パスワード</label>
         <input id="inPwd" name="inPwd" type="password" maxlength="9" class="mono" autofocus>
       </div>
     </div>

@@ -2,6 +2,7 @@ package com.vcf400.web;
 
 import com.vcf400.domain.Exhibit;
 import com.vcf400.service.KioskService;
+import com.vcf400.service.Messages;
 import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class KioskController {
         String id = exhibit.trim().toUpperCase();
         Optional<Exhibit> e = kiosk.exhibitFor(id);
         if (e.isEmpty()) {
-            ra.addAttribute("msg", "Exhibit " + id + " not found.");
+            ra.addAttribute("msg", Messages.MSG_KIOSK_NOT_FOUND.formatted(id));
             return "redirect:/menu";
         }
         // キオスク端末は展示者プロファイルでサインオンしている: LAUNCH = 展示 ID、終了後はこのメニューに戻る
@@ -54,7 +55,7 @@ public class KioskController {
             case "3" -> "redirect:/navigate?next=/guestbook/add";
             case "4" -> "redirect:/navigate?next=/guestbook/read";
             case "7" -> base + "/exit";                                                             // B-11
-            case "" -> { ra.addAttribute("msg", "Select Menu Option, Press ENTER."); yield base; }
+            case "" -> { ra.addAttribute("msg", Messages.MSG_KIOSK_SELECT); yield base; }
             default -> base;                                                                        // 未定義番号: 再表示
         };
     }
@@ -72,7 +73,7 @@ public class KioskController {
         if (kiosk.exitAllowed(inPwd)) {
             session.removeAttribute(Nav.LAUNCH);
             Nav.setReturnTo(session, Nav.MENU);
-            ra.addAttribute("msg", "Kiosk " + id + " ended.");
+            ra.addAttribute("msg", Messages.MSG_KIOSK_ENDED.formatted(id));
             return "redirect:/menu";
         }
         return "redirect:/kiosk/" + id;     // 不一致: キオスクメニュー再表示

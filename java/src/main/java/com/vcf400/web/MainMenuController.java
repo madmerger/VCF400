@@ -1,5 +1,6 @@
 package com.vcf400.web;
 
+import com.vcf400.service.Messages;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -48,8 +49,8 @@ public class MainMenuController {
             case "": return "redirect:/menu";
             default:
                 ra.addAttribute("msg", isMenuNumber(opt)
-                        ? "Menu option " + opt + " is not part of the VCF/400 library."
-                        : "Option not valid. Type a menu number and press ENTER.");
+                        ? Messages.MSG_MENU_NOT_IN_LIB.formatted(opt)
+                        : Messages.MSG_MENU_INVALID);
                 return "redirect:/menu";
         }
     }

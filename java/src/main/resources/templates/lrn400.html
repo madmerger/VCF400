@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head('LEARN/400')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('VCFMAIN → 1 → LRN400 (LRN400SCR/MAIN)')}"></header>
 <main>
   <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
     <h1 class="screen-title">LEARN/400</h1>
-    <div class="page-nbr">Page <b th:text="${state.outPageNbr}">1</b></div>
+    <div class="page-nbr">ページ <b th:text="${state.outPageNbr}">1</b></div>
   </div>
   <div class="card">
     <div class="page-content" th:text="${state.outContent}">content</div>
   </div>
   <form method="post" th:action="@{/learn}">
     <div class="fkeys">
-      <span class="legend">Cmd3/F3 = Exit · Cmd5/F5 = Forwards · Cmd8/F8 = Backwards</span>
-      <button type="submit" class="btn" name="action" value="exit" data-fkey="F3">戻る <kbd>F3</kbd></button>
+      <span class="legend">F3 = 終了 · F5 = 次へ · F8 = 前へ</span>
+      <button type="submit" class="btn" name="action" value="exit" data-fkey="F3">終了 <kbd>F3</kbd></button>
       <button type="submit" class="btn" name="action" value="back" data-fkey="F8">前へ <kbd>F8</kbd></button>
-      <button type="submit" class="btn primary" name="action" value="fwd" data-fkey="F5">進む <kbd>F5</kbd></button>
+      <button type="submit" class="btn primary" name="action" value="fwd" data-fkey="F5">次へ <kbd>F5</kbd></button>
     </div>
   </form>
 </main>

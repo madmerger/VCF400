@@ -1,61 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('AS/400 DEMO MENU')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('AS/400 DEMO MENU - メインメニュー')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('GO VCFMAIN')}"></header>
 <main>
   <!-- L-01-01 見出し -->
   <h1 class="screen-title">AS/400 DEMO MENU</h1>
-  <p class="screen-subtitle">Welcome to... Vintage Computer Festival 2024</p>
+  <p class="screen-subtitle ja">メインメニュー — ようこそ Vintage Computer Festival 2024 へ</p>
   <div class="msgbar" th:if="${msg}" th:text="${msg}"></div>
 
   <form method="post" th:action="@{/menu}" id="menuForm">
     <div class="menu-grid">
-      <div class="card menu-group"><h3>Start Here</h3>
+      <div class="card menu-group"><h3>はじめに</h3>
         <ul class="menu-list">
-          <li><button type="button" class="menu-item" data-option="1"><span class="num">1</span>Learn AS/400 Navigation</button></li>
-          <li><button type="button" class="menu-item" disabled title="Not part of the VCF/400 library"><span class="num">2</span>IBM Midrange History</button></li>
-          <li><button type="button" class="menu-item" disabled title="Not part of the VCF/400 library"><span class="num">3</span>About This System</button></li>
-          <li><button type="button" class="menu-item" disabled title="Not part of the VCF/400 library"><span class="num">4</span>About Gertie the System/34</button></li>
+          <li><button type="button" class="menu-item" data-option="1"><span class="num">1</span>AS/400 の操作を学ぶ</button></li>
+          <li><button type="button" class="menu-item" disabled title="VCF/400 ライブラリに含まれていません"><span class="num">2</span>IBM ミッドレンジの歴史</button></li>
+          <li><button type="button" class="menu-item" disabled title="VCF/400 ライブラリに含まれていません"><span class="num">3</span>このシステムについて</button></li>
+          <li><button type="button" class="menu-item" disabled title="VCF/400 ライブラリに含まれていません"><span class="num">4</span>System/34 "Gertie" について</button></li>
         </ul>
       </div>
-      <div class="card menu-group"><h3>Exhibit Tasks</h3>
+      <div class="card menu-group"><h3>展示関連</h3>
         <ul class="menu-list">
-          <li><button type="button" class="menu-item" data-option="11"><span class="num">11</span>Nominate Exhibit for Award</button></li>
-          <li><button type="button" class="menu-item" data-option="12"><span class="num">12</span>Sign Exhibit Guestbook</button></li>
-          <li><button type="button" class="menu-item" data-option="13"><span class="num">13</span>Read a Guestbook Comment</button></li>
+          <li><button type="button" class="menu-item" data-option="11"><span class="num">11</span>展示をアワードに推薦する (投票)</button></li>
+          <li><button type="button" class="menu-item" data-option="12"><span class="num">12</span>展示ゲストブックに記入する</button></li>
+          <li><button type="button" class="menu-item" data-option="13"><span class="num">13</span>ゲストブックのコメントを読む</button></li>
         </ul>
       </div>
-      <div class="card menu-group"><h3>Office Tasks</h3>
+      <div class="card menu-group"><h3>オフィス</h3>
         <ul class="menu-list">
-          <li><button type="button" class="menu-item" disabled><span class="num">5</span>Start OfficeVision/400</button></li>
-          <li><button type="button" class="menu-item" disabled><span class="num">6</span>Start a Calendar</button></li>
-          <li><button type="button" class="menu-item" disabled><span class="num">7</span>Start the Clock</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">5</span>OfficeVision/400 を起動</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">6</span>カレンダーを起動</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">7</span>時計を起動</button></li>
         </ul>
       </div>
-      <div class="card menu-group"><h3>System Tasks</h3>
+      <div class="card menu-group"><h3>システム</h3>
         <ul class="menu-list">
-          <li><button type="button" class="menu-item" data-option="80"><span class="num">80</span>Sign Off the System</button></li>
+          <li><button type="button" class="menu-item" data-option="80"><span class="num">80</span>システムからサインオフ</button></li>
         </ul>
-        <h3 style="margin-top:14px">Administration</h3>
+        <h3 style="margin-top:14px">管理</h3>
         <ul class="menu-list">
-          <li><button type="button" class="menu-item" disabled title="Admin menu is out of migration scope"><span class="num">90</span>Start Admin Menu</button></li>
+          <li><button type="button" class="menu-item" disabled title="管理メニューは移行対象外です"><span class="num">90</span>管理メニューを起動</button></li>
         </ul>
       </div>
-      <div class="card menu-group"><h3>Entertainment</h3>
+      <div class="card menu-group"><h3>エンターテインメント</h3>
         <ul class="menu-list">
-          <li><button type="button" class="menu-item" disabled><span class="num">8</span>Play Snake</button></li>
-          <li><button type="button" class="menu-item" disabled><span class="num">9</span>Play Yahtzee</button></li>
-          <li><button type="button" class="menu-item" disabled><span class="num">10</span>Play PacMan</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">8</span>Snake で遊ぶ</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">9</span>Yahtzee で遊ぶ</button></li>
+          <li><button type="button" class="menu-item" disabled><span class="num">10</span>PacMan で遊ぶ</button></li>
         </ul>
       </div>
     </div>
 
     <!-- L-01-09 番号入力 + ENTER -->
     <div class="card">
-      <p class="info">Type the menu number you want and then press the ENTER key. Or select the option by clicking / tapping it.</p>
+      <p class="info">メニュー番号を入力して ENTER キーを押してください。項目をクリック / タップして選ぶこともできます。</p>
       <div class="optline">
-        <label for="option">Type Number, then press ENTER</label>
+        <label for="option">番号を入力して ENTER</label>
         <input id="option" name="option" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" autofocus autocomplete="off">
         <button type="submit" class="btn primary" data-fkey="ENTER">選択 <kbd>ENTER</kbd></button>
       </div>
@@ -63,12 +63,12 @@
   </form>
 
   <details class="card">
-    <summary class="info">Sign on as a different user profile (kiosk exhibit / MM2024 shared terminal)</summary>
+    <summary class="info">別のユーザープロファイルでサインオン (キオスク展示 / MM2024 共用端末)</summary>
     <form method="post" th:action="@{/signon}" class="optline" style="margin-top:10px">
-      <label for="profile">User profile</label>
+      <label for="profile">ユーザープロファイル</label>
       <input id="profile" name="profile" type="text" maxlength="9" class="mono" th:value="${launch.profile}" style="width:160px;text-align:left">
-      <button type="submit" class="btn">Sign on</button>
-      <span class="info">Kiosk: <a th:href="@{/kiosk/ASHIBATA}">/kiosk/ASHIBATA</a> · <a th:href="@{/kiosk/DEMO400}">/kiosk/DEMO400</a> · <a th:href="@{/kiosk/NOVOTE}">/kiosk/NOVOTE</a></span>
+      <button type="submit" class="btn" aria-label="Sign on">サインオン</button>
+      <span class="info">キオスク: <a th:href="@{/kiosk/ASHIBATA}">/kiosk/ASHIBATA</a> · <a th:href="@{/kiosk/DEMO400}">/kiosk/DEMO400</a> · <a th:href="@{/kiosk/NOVOTE}">/kiosk/NOVOTE</a></span>
     </form>
   </details>
 </main>

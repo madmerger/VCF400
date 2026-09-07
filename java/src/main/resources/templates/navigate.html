@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head('VCF/400 - How to Navigate')}"></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('VCF/400 - How to Navigate - 操作方法のご案内')}"></head>
 <body>
 <header th:replace="~{layout :: topbar('VCFMAIN → NTRSTIT')}"></header>
 <main>
   <h1 class="screen-title">VCF/400 - How to Navigate</h1>
-  <p class="screen-subtitle">Before you start, here is how to navigate:</p>
+  <p class="screen-subtitle ja">操作方法のご案内 — はじめる前にお読みください</p>
   <div class="card">
     <ol style="margin:0;padding-left:1.2em;display:grid;gap:10px">
-      <li>Use <b>ARROW KEYS</b> or <b>TAB KEY</b> to move between fields.</li>
-      <li>Use <b>F5</b> or <b>ENTER</b> to perform your action.</li>
-      <li>Use <b>F12</b> to quit at any time.</li>
-      <li>Keyboard not responding? If you see <b>X II</b> in the left corner, press <b>RIGHT CTRL</b> to continue.</li>
+      <li><b>矢印キー</b> または <b>TAB キー</b> で項目間を移動します。</li>
+      <li><b>F5</b> または <b>ENTER</b> で操作を実行します。</li>
+      <li><b>F12</b> でいつでも中止できます。</li>
+      <li>キーボードが反応しない場合: 左隅に <b>X II</b> が表示されていたら <b>右 CTRL</b> を押して続行します。</li>
     </ol>
-    <p class="info" style="margin-top:14px">On this modern UI the same keys work on a physical keyboard, and every action button also shows its key.</p>
+    <p class="info" style="margin-top:14px">このモダン UI でも物理キーボードの同じキーが使え、各操作ボタンにキー番号を併記しています。</p>
   </div>
   <form method="post" th:action="@{/navigate}">
     <input type="hidden" name="next" th:value="${next}">
     <div class="fkeys">
-      <span class="legend">Got all that?</span>
+      <span class="legend">よろしいですか?</span>
       <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>続行 <kbd>ENTER</kbd></button>
     </div>
   </form>
