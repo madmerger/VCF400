@@ -1,0 +1,10 @@
+=== FTP SAVF 2026-09-07T15:19:20Z ===
+--- save-file preflight ---
+
+--- clear existing save-file contents (object retained) ---
+
+CPC3725: Save file VCFV1R3 in library ASHIBATA1 cleared.
+--- binary transfer ---
+
+transfer exit status: 0
+local bytes transferred: 5892480

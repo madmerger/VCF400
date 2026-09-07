@@ -1,0 +1,228 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/EXHBMENUSC    26-09-07 17:22:53        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   EXHBMENUSC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   EXHBMENUSC
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:22:28
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20240310  144605  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R MENU
+    500       A*%%TS  SD  20240310  144605  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                 19  3'-----------------------------------
+    700       A                                      ------------------------------------
+    800       A                                      -------'
+    900       A                                 20  4'1. Nominate This Exhibit for Award'
+   1000       A                                      COLOR(BLU)
+   1100       A  41                                  DSPATR(ND)
+   1200       A                                 21  4'2. Learn More About This Exhibit'
+   1300       A                                      COLOR(BLU)
+   1400       A  40                                  DSPATR(ND)
+   1500       A                                 22  4'3. Sign Exhibit Guestbook'
+   1600       A                                      COLOR(BLU)
+   1700       A                                 23 44'Select Menu Option, Press ENTER:'
+   1800       A                                      COLOR(BLU)
+   1900       A                                  1  3'WELCOME TO...'
+   2000       A            OUTTITLE      75A  O  2  6COLOR(WHT)
+   2100       A                                  3  3'HOSTED'
+   2200       A                                  3 10'BY'
+   2300       A            OUTNAME       25A  O  3 13COLOR(WHT)
+   2400       A                                  3 39'OF'
+   2500       A            OUTCITY       15A  O  3 42COLOR(WHT)
+   2600       A            OUTSTATE       2A  O  3 58COLOR(WHT)
+   2700       A                                  4  3'-----------------------------------
+   2800       A                                      ------------------------------------
+   2900       A                                      -------'
+   3000       A            OUTDESC     1000A  O  5  2COLOR(WHT)
+   3100       A            INOPT          1Y 0I 23 78CHECK(ME)
+   3200       A                                      CHECK(MF)
+   3300       A                                      COLOR(BLU)
+   3400       A                                 23  4'4. Read Exhibit Guestbook'
+   3500       A                                      COLOR(BLU)
+   3600       A          R ADMCREATE
+   3700       A*%%TS  SD  20231205  185250  QSECOFR     REL-V4R4M0  5769-PW1
+   3800       A                                      CF05(05 'Delete')
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/EXHBMENUSC    26-09-07 17:22:53        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3900       A                                      CF12(12 'Cancel')
+   4000       A                                 19  3'-----------------------------------
+   4100       A                                      ------------------------------------
+   4200       A                                      -------'
+   4300       A                                 20  4'1. Nominate This Exhibit for Award'
+   4400       A                                 21  4'2. Sign Exhibit Guestbook'
+   4500       A                                 22  4'3. Read Exhibit Guestbook'
+   4600       A                                 23 33'LRN400? (0 No / 1 Yes)'
+   4700       A                                  1  3'WELCOME TO...'
+   4800       A                                  3  3'HOSTED'
+   4900       A                                  3 10'BY'
+   5000       A                                  3 39'OF'
+   5100       A                                  4  3'-----------------------------------
+   5200       A                                      ------------------------------------
+   5300       A                                      -------'
+   5400       A                                 22 33'Type Associated USRPRF:'
+   5500       A            INUSRPRF       9A  B 22 66
+   5600       A            INTITLE       60A  B  2  7CHECK(LC)
+   5700       A            INNAME        20A  B  3 13CHECK(LC)
+   5800       A            INCITY        15A  B  3 42CHECK(LC)
+   5900       A            INSTATE        2A  B  3 58
+   6000       A                                 21 33'Award Eligible? (0 No / 1 Yes)'
+   6100       A            INELIGIBLE     1A  B 21 66
+   6200       A            INDESC      1000A  B  5  1CHECK(LC)
+   6300       A            ERRLINE       30A  O 18  3
+   6400       A                                 24  5'ENTER = Save  F5 = Delete  F12 = C-
+   6500       A                                      ancel'
+   6600       A            INLRN400EN     1   B 23 66
+   6700       A          R ADMPSWRD
+   6800       A*%%TS  SD  20231219  203507  QSECOFR     REL-V4R4M0  5769-PW1
+   6900       A                                  4  5'Are you sure you want to exit the -
+   7000       A                                      kiosk?'
+   7100       A                                  5  5'Type the Administrator password, p-
+   7200       A                                      ress ENTER to sign off'
+   7300       A            INPWD          9A  I  7  5
+   7400       A          R ADMDELETE
+   7500       A*%%TS  SD  20231028  213249  QSECOFR     REL-V4R4M0  5769-PW1
+   7600       A                                      CF12(12 'Cancel')
+   7700       A                                  4  5'Are you sure you want to delete th-
+   7800       A                                      is exhibit?'
+   7900       A                                  5  5'This change is PERMANENT and CANNO-
+   8000       A                                      T BE UNDONE.'
+   8100       A                                 10  5'Press ENTER to delete.'
+   8200       A                                 12  5'Press F12 to cancel.'
+   8300       A            DLTEXHNAM      9A  O  7  5
+   8400       A          R ADMDELETE2
+   8500       A*%%TS  SD  20231028  213518  QSECOFR     REL-V4R4M0  5769-PW1
+   8600       A                                      CF12(12 'Cancel')
+   8700       A                                  4  5'Are you sure you want to delete th-
+   8800       A                                      is exhibit?'
+   8900       A                                  5  5'This change is PERMANENT and CANNO-
+   9000       A                                      T BE UNDONE.'
+   9100       A                                 10  5'Press ENTER to delete.'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/EXHBMENUSC    26-09-07 17:22:53        Page    3
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   9200       A                                 12  5'Press F12 to cancel.'
+   9300       A            DLTEXHNAM      9A  O  7  5
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/EXHBMENUSC    26-09-07 17:22:53        Page    4
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+               * Option indicator output buffer positions:
+               *  *IN40 0002   *IN41 0001
+    400                  R MENU
+    600                                         19  3'-----------------------------------    76
+    600                                              ------------------------------------
+    600                                              -------'
+    900                                         20  4'1. Nominate This Exhibit for Award-    34
+    900                                              ' COLOR(BLU)
+   1100          41                                  DSPATR(ND)
+   1200                                         21  4'2. Learn More About This Exhibit' +    32
+   1300                                              COLOR(BLU)
+   1400          40                                  DSPATR(ND)
+   1500                                         22  4'3. Sign Exhibit Guestbook' +           25
+   1600                                              COLOR(BLU)
+   1700                                         23 44'Select Menu Option, Press ENTER:' +    32
+   1800                                              COLOR(BLU)
+   1900                                          1  3'WELCOME TO...'                         13
+   2000                    OUTTITLE      75A  O  2  6COLOR(WHT)                              75            3
+   2100                                          3  3'HOSTED'                                 6
+   2200                                          3 10'BY'                                     2
+   2300                    OUTNAME       25A  O  3 13COLOR(WHT)                              25           78
+   2400                                          3 39'OF'                                     2
+   2500                    OUTCITY       15A  O  3 42COLOR(WHT)                              15          103
+   2600                    OUTSTATE       2A  O  3 58COLOR(WHT)                               2          118
+   2700                                          4  3'-----------------------------------    76
+   2700                                              ------------------------------------
+   2700                                              -------'
+   3000                    OUTDESC     1000A  O  5  2COLOR(WHT)                            1000          120
+   3100                    INOPT          1Y 0I 23 78CHECK(ME) CHECK(MF) COLOR(BLU)           1                    1
+   3400                                         23  4'4. Read Exhibit Guestbook' +           25
+   3500                                              COLOR(BLU)
+               * Response indicator input buffer positions:
+               *  *IN05 0001   *IN12 0002
+   3600                  R ADMCREATE                 CF05(05 'Delete') +
+   3900                                              CF12(12 'Cancel')
+   4000                                         19  3'-----------------------------------    76
+   4000                                              ------------------------------------
+   4000                                              -------'
+   4300                                         20  4'1. Nominate This Exhibit for Award-    34
+   4300                                              '
+   4400                                         21  4'2. Sign Exhibit Guestbook'             25
+   4500                                         22  4'3. Read Exhibit Guestbook'             25
+   4600                                         23 33'LRN400? (0 No / 1 Yes)'                22
+   4700                                          1  3'WELCOME TO...'                         13
+   4800                                          3  3'HOSTED'                                 6
+   4900                                          3 10'BY'                                     2
+   5000                                          3 39'OF'                                     2
+   5100                                          4  3'-----------------------------------    76
+   5100                                              ------------------------------------
+   5100                                              -------'
+   5400                                         22 33'Type Associated USRPRF:'               23
+   5500                    INUSRPRF       9A  B 22 66                                         9            1       3
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/EXHBMENUSC    26-09-07 17:22:53        Page    5
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+   5600                    INTITLE       60A  B  2  7CHECK(LC)                               60           10      12
+   5700                    INNAME        20A  B  3 13CHECK(LC)                               20           70      72
+   5800                    INCITY        15A  B  3 42CHECK(LC)                               15           90      92
+   5900                    INSTATE        2A  B  3 58                                         2          105     107
+   6000                                         21 33'Award Eligible? (0 No / 1 Yes)'        30
+   6100                    INELIGIBLE     1A  B 21 66                                         1          107     109
+   6200                    INDESC      1000A  B  5  1CHECK(LC)                             1000          108     110
+   6300                    ERRLINE       30A  O 18  3                                        30         1108
+   6400                                         24  5'ENTER = Save  F5 = Delete  F12 = C-    39
+   6400                                              ancel'
+   6600                    INLRN400EN     1A  B 23 66                                         1         1138    1110
+   6700                  R ADMPSWRD
+   6900                                          4  5'Are you sure you want to exit the -    40
+   6900                                              kiosk?'
+   7100                                          5  5'Type the Administrator password, p-    56
+   7100                                              ress ENTER to sign off'
+   7300                    INPWD          9A  I  7  5                                         9                    1
+               * Response indicator input buffer positions:
+               *  *IN12 0001
+   7400                  R ADMDELETE                 CF12(12 'Cancel')
+   7700                                          4  5'Are you sure you want to delete th-    45
+   7700                                              is exhibit?'
+   7900                                          5  5'This change is PERMANENT and CANNO-    46
+   7900                                              T BE UNDONE.'
+   8100                                         10  5'Press ENTER to delete.'                22
+   8200                                         12  5'Press F12 to cancel.'                  20
+   8300                    DLTEXHNAM      9A  O  7  5                                         9            1
+               * Response indicator input buffer positions:
+               *  *IN12 0001
+   8400                  R ADMDELETE2                CF12(12 'Cancel')
+   8700                                          4  5'Are you sure you want to delete th-    45
+   8700                                              is exhibit?'
+   8900                                          5  5'This change is PERMANENT and CANNO-    46
+   8900                                              T BE UNDONE.'
+   9100                                         10  5'Press ENTER to delete.'                22
+   9200                                         12  5'Press F12 to cancel.'                  20
+   9300                    DLTEXHNAM      9A  O  7  5                                         9            1
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/EXHBMENUSC    26-09-07 17:22:53        Page    6
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File EXHBMENUSC created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

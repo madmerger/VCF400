@@ -1,0 +1,614 @@
+Monitoring boot status for iPad Pro 13-inch (M5) (997FAD4D-649B-4EA5-BBAC-80BAB4CBB7F7).
+[2026-09-07 17:07:11 +0000] Status=1, isTerminal=NO, Elapsed=00:01.
+	Waiting on BackBoard
+
+[2026-09-07 17:07:56 +0000] Status=2, isTerminal=NO, Elapsed=00:47.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:00:02 seconds
+
+[2026-09-07 17:07:58 +0000] Status=2, isTerminal=NO, Elapsed=00:48.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:00:04 seconds
+
+[2026-09-07 17:07:58 +0000] Status=2, isTerminal=NO, Elapsed=00:49.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:00:05 seconds
+
+[2026-09-07 17:07:59 +0000] Status=2, isTerminal=NO, Elapsed=00:49.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:00:06 seconds
+
+[2026-09-07 17:07:59 +0000] Status=2, isTerminal=NO, Elapsed=00:50.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.addressbook.migrator (AddressBookLegacy.migrator)
+		Migration Elapsed:00:06 seconds
+
+[2026-09-07 17:08:00 +0000] Status=2, isTerminal=NO, Elapsed=00:51.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)
+		Migration Elapsed:00:07 seconds
+
+[2026-09-07 17:08:01 +0000] Status=2, isTerminal=NO, Elapsed=00:52.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.accounts.migrator (Accounts.migrator)
+		Migration Elapsed:00:08 seconds
+
+[2026-09-07 17:08:03 +0000] Status=2, isTerminal=NO, Elapsed=00:53.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.mdm.migrator (MCMDM.migrator)
+		Migration Elapsed:00:09 seconds
+
+[2026-09-07 17:08:04 +0000] Status=2, isTerminal=NO, Elapsed=00:54.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.PassbookDataMigrator (PassbookDataMigrator.migrator)
+		Migration Elapsed:00:10 seconds
+
+[2026-09-07 17:08:05 +0000] Status=2, isTerminal=NO, Elapsed=00:56.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.PreferencesMigrator (PreferencesMigrator.migrator)
+		Migration Elapsed:00:11 seconds
+
+[2026-09-07 17:08:06 +0000] Status=2, isTerminal=NO, Elapsed=00:56.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.tone.migrator (Tones.migrator)
+		Migration Elapsed:00:12 seconds
+
+[2026-09-07 17:08:06 +0000] Status=2, isTerminal=NO, Elapsed=00:57.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.VideosMigrator (TVMigrator.migrator)
+		Migration Elapsed:00:13 seconds
+
+[2026-09-07 17:08:07 +0000] Status=2, isTerminal=NO, Elapsed=00:58.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.accounts.obsolescencemigrator (AccountsObsolescence.migrator)
+		Migration Elapsed:00:14 seconds
+
+[2026-09-07 17:08:08 +0000] Status=2, isTerminal=NO, Elapsed=00:59.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.cleanup.migrator (MCCleanup.migrator)
+		Migration Elapsed:00:15 seconds
+
+[2026-09-07 17:08:10 +0000] Status=2, isTerminal=NO, Elapsed=01:00.
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.coreaudio.HAENDataMigrator (HAENDataMigrator.migrator)
+		Migration Elapsed:00:16 seconds
+
+[2026-09-07 17:08:10 +0000] Status=4, isTerminal=NO, Elapsed=01:01.
+	Waiting on System App
+
+[2026-09-07 17:08:11 +0000] Status=4, isTerminal=NO, Elapsed=01:02.
+	Waiting on System App
+
+[2026-09-07 17:08:12 +0000] Status=4, isTerminal=NO, Elapsed=01:03.
+	Waiting on System App
+
+[2026-09-07 17:08:13 +0000] Status=4, isTerminal=NO, Elapsed=01:04.
+	Waiting on System App
+
+[2026-09-07 17:08:14 +0000] Status=4, isTerminal=NO, Elapsed=01:05.
+	Waiting on System App
+
+[2026-09-07 17:08:15 +0000] Status=4, isTerminal=NO, Elapsed=01:06.
+	Waiting on System App
+
+[2026-09-07 17:08:16 +0000] Status=4, isTerminal=NO, Elapsed=01:07.
+	Waiting on System App
+
+[2026-09-07 17:08:17 +0000] Status=4, isTerminal=NO, Elapsed=01:08.
+	Waiting on System App
+
+[2026-09-07 17:08:18 +0000] Status=4, isTerminal=NO, Elapsed=01:09.
+	Waiting on System App
+
+[2026-09-07 17:08:20 +0000] Status=4, isTerminal=NO, Elapsed=01:11.
+	Waiting on System App
+
+[2026-09-07 17:08:20 +0000] Status=4, isTerminal=NO, Elapsed=01:11.
+	Waiting on System App
+
+[2026-09-07 17:08:21 +0000] Status=4, isTerminal=NO, Elapsed=01:12.
+	Waiting on System App
+
+[2026-09-07 17:08:22 +0000] Status=4, isTerminal=NO, Elapsed=01:13.
+	Waiting on System App
+
+[2026-09-07 17:08:23 +0000] Status=4, isTerminal=NO, Elapsed=01:14.
+	Waiting on System App
+
+[2026-09-07 17:08:25 +0000] Status=4, isTerminal=NO, Elapsed=01:16.
+	Waiting on System App
+
+[2026-09-07 17:08:25 +0000] Status=4, isTerminal=NO, Elapsed=01:16.
+	Waiting on System App
+
+[2026-09-07 17:08:26 +0000] Status=4, isTerminal=NO, Elapsed=01:17.
+	Waiting on System App
+
+[2026-09-07 17:08:28 +0000] Status=4, isTerminal=NO, Elapsed=01:18.
+	Waiting on System App
+
+[2026-09-07 17:08:28 +0000] Status=4, isTerminal=NO, Elapsed=01:19.
+	Waiting on System App
+
+[2026-09-07 17:08:30 +0000] Status=4, isTerminal=NO, Elapsed=01:21.
+	Waiting on System App
+
+[2026-09-07 17:08:30 +0000] Status=4, isTerminal=NO, Elapsed=01:21.
+	Waiting on System App
+
+[2026-09-07 17:08:31 +0000] Status=4, isTerminal=NO, Elapsed=01:22.
+	Waiting on System App
+
+[2026-09-07 17:08:32 +0000] Status=4, isTerminal=NO, Elapsed=01:23.
+	Waiting on System App
+
+[2026-09-07 17:08:34 +0000] Status=4, isTerminal=NO, Elapsed=01:25.
+	Waiting on System App
+
+[2026-09-07 17:08:35 +0000] Status=4, isTerminal=NO, Elapsed=01:25.
+	Waiting on System App
+
+[2026-09-07 17:08:35 +0000] Status=4, isTerminal=NO, Elapsed=01:26.
+	Waiting on System App
+
+[2026-09-07 17:08:37 +0000] Status=4, isTerminal=NO, Elapsed=01:27.
+	Waiting on System App
+
+[2026-09-07 17:08:38 +0000] Status=4294967295, isTerminal=YES, Elapsed=01:29.
+	Finished
+
+Note: No display specified. Defaulting to display: 6ACE34F7-F4AC-47D5-9B0A-B87980CCC507 (screenID: 1, name: LCD)
+Recording started
+baseline: {"comments":[{"comment":"VCF/400 running on PUB400.","exhibit":"ASHIBATA","id":1,"name":"Great exhibit","visible":"Y"},{"comment":"VCF/400 is running on PUB400.","exhibit":"ASHIBATA","id":2,"name":"Devin","visible":"Y"}],"settings":{"ADMPSWRD":"VCF2024","ALWVOTE":"Y"},"votes":[{"award":1,"badge":1,"exhibit":"ASHIBATA"},{"award":2,"badge":28,"exhibit":"ASHIBATA"}]}
+CV-01 ADDVOTE: 全項目未入力 (展示 ID は保護・事前入力)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-01 全項目未入力 (展示 ID は保護・事前入力)
+    -> {"errline":"Must enter Award ID","screen":"VOTE1","vote":null}
+CV-02 ADDVOTE: アワード未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-02 アワード未入力
+    -> {"errline":"Must enter Award ID","screen":"VOTE1","vote":null}
+CV-03 ADDVOTE: バッジ未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-03 バッジ未入力
+    -> {"errline":"Must enter badge number","screen":"VOTE1","vote":null}
+CV-04 ADDVOTE: 正常投票 (新規バッジ 7001, アワード 1)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTEEND]
+[ipad] CV-04 正常投票 (新規バッジ 7001, アワード 1)
+    -> {"screen":"VOTEEND","vote":{"award":1,"badge":7001,"exhibit":"ASHIBATA"}}
+CV-05 ADDVOTE: 重複バッジ (7001 で再投票)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-05 重複バッジ (7001 で再投票)
+    -> {"errline":"You have already voted.","screen":"VOTE1","vote":{"award":1,"badge":7001,"exhibit":"ASHIBATA"}}
+CV-06 ADDVOTE: 存在しないアワード (9)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-06 存在しないアワード (9)
+    -> {"errline":"Award does not exist.","screen":"VOTE1","vote":null}
+CV-07 ADDVOTE: 境界値: アワード 0 (数値 0 = 未入力扱い)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-07 境界値: アワード 0 (数値 0 = 未入力扱い)
+    -> {"errline":"Must enter Award ID","screen":"VOTE1","vote":null}
+CV-08 ADDVOTE: 共用端末: 展示 ID 未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-08 共用端末: 展示 ID 未入力
+    -> {"errline":"Must enter Exhibit ID","screen":"VOTE1","vote":null}
+CV-09 ADDVOTE: 共用端末: 存在しない展示 NOSUCH
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-09 共用端末: 存在しない展示 NOSUCH
+    -> {"errline":"Exhibit does not exist","screen":"VOTE1","vote":null}
+CV-10 ADDVOTE: 共用端末: 資格外展示 NOVOTE (ELIGIBLE=0)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-10 共用端末: 資格外展示 NOVOTE (ELIGIBLE=0)
+    -> {"errline":"Exhibit ineligible for award","screen":"VOTE1","vote":null}
+CV-11 ADDVOTE: 共用端末: 正常投票 (7002, DEMO400, アワード 2)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTEEND]
+[ipad] CV-11 共用端末: 正常投票 (7002, DEMO400, アワード 2)
+    -> {"screen":"VOTEEND","vote":{"award":2,"badge":7002,"exhibit":"DEMO400"}}
+CV-12 ADDVOTE: 複合エラー (重複バッジ+存在しない展示+存在しないアワード) → 最後の検査が勝つ
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [VOTE1]
+----- ipad: VOTE1 filled [VOTE1]
+----- ipad: VOTE1 after F5 [VOTE1]
+[ipad] CV-12 複合エラー (重複バッジ+存在しない展示+存在しないアワード) → 最後の検査が勝つ
+    -> {"errline":"Award does not exist.","screen":"VOTE1","vote":{"award":1,"badge":7001,"exhibit":"ASHIBATA"}}
+CV-13 ADDVOTE: 投票停止 ALWVOTE='N' → ENDOFCON
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: VOTE1 initial [ENDOFCON]
+[ipad] CV-13 投票停止 ALWVOTE='N' → ENDOFCON
+    -> {"screen":"ENDOFCON","vote":null}
+CV-14 ADDGBCMT: 全項目未入力 (展示 ID は保護・事前入力)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-14 全項目未入力 (展示 ID は保護・事前入力)
+    -> {"comment":{"id":3,"row":null},"errline":"Must enter a comment","screen":"ADDCMT"}
+CV-15 ADDGBCMT: コメント未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-15 コメント未入力
+    -> {"comment":{"id":3,"row":null},"errline":"Must enter a comment","screen":"ADDCMT"}
+CV-16 ADDGBCMT: 名前未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-16 名前未入力
+    -> {"comment":{"id":3,"row":null},"errline":"Must enter your name","screen":"ADDCMT"}
+CV-17 ADDGBCMT: 正常記入 → ENDCMT, CMTID=3 (最終+1), VISIBLE=Y
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ENDCMT]
+[ipad] CV-17 正常記入 → ENDCMT, CMTID=3 (最終+1), VISIBLE=Y
+    -> {"comment":{"id":3,"row":{"comment":"Cross validation run","exhibit":"ASHIBATA","id":3,"name":"Devin Tester","visible":"Y"}},"screen":"ENDCMT","shownId":3}
+CV-18 ADDGBCMT: 共用端末: 展示 ID 未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ADDCMT]
+[ipad] CV-18 共用端末: 展示 ID 未入力
+    -> {"comment":{"id":4,"row":null},"errline":"Must enter Exhibit ID","screen":"ADDCMT"}
+CV-19 ADDGBCMT: 共用端末: 存在しない展示 NOSUCH でも記入できる (存在チェックなし)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: ADDCMT initial [ADDCMT]
+----- ipad: ADDCMT filled [ADDCMT]
+----- ipad: ADDCMT after F5 [ENDCMT]
+[ipad] CV-19 共用端末: 存在しない展示 NOSUCH でも記入できる (存在チェックなし)
+    -> {"comment":{"id":4,"row":{"comment":"Unchecked exhibit","exhibit":"NOSUCH","id":4,"name":"Guest","visible":"Y"}},"screen":"ENDCMT","shownId":4}
+CV-20 READGBCMT: コメント ID 未入力
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-20 コメント ID 未入力
+    -> {"errline":"Must enter CommentID","screen":"READCMT","total":4}
+CV-21 READGBCMT: ID 1 → 名前 11 桁 / 展示タイトル / コメント
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-21 ID 1 → 名前 11 桁 / 展示タイトル / コメント
+    -> {"errline":"","out":{"cmt":"VCF/400 running on PUB400.","name":"Great exhib","title":"IBM i on PUB400 Demo"},"screen":"READCMT","total":4}
+CV-22 READGBCMT: ID 3 (この実行で追加したコメント)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-22 ID 3 (この実行で追加したコメント)
+    -> {"errline":"","out":{"cmt":"Cross validation run","name":"Devin Teste","title":"IBM i on PUB400 Demo"},"screen":"READCMT","total":4}
+CV-23 READGBCMT: 存在しない ID 9999 → 最終レコード (4, 他展示) → 帰属外メッセージ
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-23 存在しない ID 9999 → 最終レコード (4, 他展示) → 帰属外メッセージ
+    -> {"errline":"","out":{"cmt":"This comment is not part of this guestbook.","name":"","title":""},"screen":"READCMT","total":4}
+CV-24 READGBCMT: 非表示コメント (ID 2 を VISIBLE=N)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-24 非表示コメント (ID 2 を VISIBLE=N)
+    -> {"errline":"","out":{"cmt":"This comment hidden by an admin - offensive content.","name":"Name Hidden","title":""},"screen":"READCMT","total":4}
+CV-25 READGBCMT: 他展示 (DEMO400) から ASHIBATA のコメント 1 を読む → 帰属外
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-25 他展示 (DEMO400) から ASHIBATA のコメント 1 を読む → 帰属外
+    -> {"errline":"","out":{"cmt":"This comment is not part of this guestbook.","name":"","title":""},"screen":"READCMT","total":4}
+CV-26 READGBCMT: 共用端末は全展示を閲覧可 / 展示タイトルは SETLL+READ (NOSUCH → NOVOTE)
+----- ipad: NTRSTIT [NTRSTIT]
+----- ipad: READCMT initial [READCMT]
+----- ipad: READCMT after F5 [READCMT]
+[ipad] CV-26 共用端末は全展示を閲覧可 / 展示タイトルは SETLL+READ (NOSUCH → NOVOTE)
+    -> {"errline":"","out":{"cmt":"Unchecked exhibit","name":"Guest","title":"Ineligible test exhibit (ELIGIBLE=0)"},"screen":"READCMT","total":4}
+CV-27 LRN400: F5 → 2 ページ目
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F5 [LRN400]
+[ipad] CV-27 F5 → 2 ページ目
+    -> {"content":"The AS/400 was introduced by IBM in June 1988 ... page 2","page":2,"screen":"LRN400"}
+CV-28 LRN400: F5, F8 → 1 ページ目に戻る
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F5 [LRN400]
+----- ipad: LRN400 after F8 [LRN400]
+[ipad] CV-28 F5, F8 → 1 ページ目に戻る
+    -> {"content":"Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit.","page":1,"screen":"LRN400"}
+CV-29 LRN400: F5, F5 → 3 ページ目 (EXTRA='END') で終了 → VCFMAIN
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F5 [LRN400]
+----- ipad: LRN400 after F5 [VCFMAIN]
+[ipad] CV-29 F5, F5 → 3 ページ目 (EXTRA='END') で終了 → VCFMAIN
+    -> {"screen":"VCFMAIN"}
+CV-30 LRN400: F3 → 終了 → VCFMAIN
+----- ipad: LRN400 page 1 [LRN400]
+----- ipad: LRN400 after F3 [VCFMAIN]
+[ipad] CV-30 F3 → 終了 → VCFMAIN
+    -> {"screen":"VCFMAIN"}
+CV-31 EXHBMENU: ASHIBATA (ELIGIBLE=1, ENLRN400=1) → 1,2,3,4
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+[ipad] CV-31 ASHIBATA (ELIGIBLE=1, ENLRN400=1) → 1,2,3,4
+    -> {"options":["1","2","3","4"],"screen":"KIOSK"}
+CV-32 EXHBMENU: NOVOTE (ELIGIBLE=0, ENLRN400=0) → 3,4 のみ
+----- ipad: EXHBMENU kiosk for NOVOTE [KIOSK]
+[ipad] CV-32 NOVOTE (ELIGIBLE=0, ENLRN400=0) → 3,4 のみ
+    -> {"options":["3","4"],"screen":"KIOSK"}
+CV-33 EXHBMENU: DEMO400 (ELIGIBLE=1, ENLRN400=0) → 1,3,4
+----- ipad: EXHBMENU kiosk for DEMO400 [KIOSK]
+[ipad] CV-33 DEMO400 (ELIGIBLE=1, ENLRN400=0) → 1,3,4
+    -> {"options":["1","3","4"],"screen":"KIOSK"}
+CV-34 EXHBMENU: 隠しオプション 7 + 誤パスワード → キオスクメニューに戻る
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+----- ipad: after option 7 [ADMPSWRD]
+----- ipad: after password [KIOSK]
+[ipad] CV-34 隠しオプション 7 + 誤パスワード → キオスクメニューに戻る
+    -> {"options":["1","2","3","4"],"path":["ADMPSWRD","KIOSK"],"screen":"KIOSK"}
+CV-35 EXHBMENU: 隠しオプション 7 + 正パスワード (SETTINGS.ADMPSWRD) → キオスク終了 → VCFMAIN
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+----- ipad: after option 7 [ADMPSWRD]
+----- ipad: after password [VCFMAIN]
+[ipad] CV-35 隠しオプション 7 + 正パスワード (SETTINGS.ADMPSWRD) → キオスク終了 → VCFMAIN
+    -> {"options":["1","2","3","4"],"path":["ADMPSWRD","VCFMAIN"],"screen":"VCFMAIN"}
+CV-36 EXHBMENU: オプション 1 → NTRSTIT → VOTE1 (展示 ASHIBATA 固定) → F12 でキオスクへ戻る
+----- ipad: EXHBMENU kiosk for ASHIBATA [KIOSK]
+----- ipad: after option 1 [NTRSTIT]
+----- ipad: after NTRSTIT [VOTE1]
+----- ipad: after F12 [KIOSK]
+[ipad] CV-36 オプション 1 → NTRSTIT → VOTE1 (展示 ASHIBATA 固定) → F12 でキオスクへ戻る
+    -> {"exhibit":"ASHIBATA","options":["1","2","3","4"],"path":["NTRSTIT","VOTE1","KIOSK"],"screen":"KIOSK"}
+CV-37 EXHBMENU: 資格外展示でオプション 1 を入力 → 無視 (キオスクメニューのまま)
+----- ipad: EXHBMENU kiosk for NOVOTE [KIOSK]
+----- ipad: after option 1 [KIOSK]
+[ipad] CV-37 資格外展示でオプション 1 を入力 → 無視 (キオスクメニューのまま)
+    -> {"options":["3","4"],"path":["KIOSK"],"screen":"KIOSK"}
+final DB: {"comments":[{"comment":"VCF/400 running on PUB400.","exhibit":"ASHIBATA","id":1,"name":"Great exhibit","visible":"Y"},{"comment":"VCF/400 is running on PUB400.","exhibit":"ASHIBATA","id":2,"name":"Devin","visible":"Y"},{"comment":"Cross validation run","exhibit":"ASHIBATA","id":3,"name":"Devin Tester","visible":"Y"},{"comment":"Unchecked exhibit","exhibit":"NOSUCH","id":4,"name":"Guest","visible":"Y"}],"settings":{"ADMPSWRD":"VCF2024","ALWVOTE":"Y"},"votes":[{"award":1,"badge":1,"exhibit":"ASHIBATA"},{"award":2,"badge":28,"exhibit":"ASHIBATA"},{"award":1,"badge":7001,"exhibit":"ASHIBATA"},{"award":2,"badge":7002,"exhibit":"DEMO400"}]}
+** TEST EXECUTE SUCCEEDED **
+Recording completed. Writing to disk.
+
+Wrote video to: /Users/devin/vcf_rec/3_iPad.raw.mp4
+ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers
+  built with Apple clang version 21.0.0 (clang-2100.1.1.101)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/9.0.1_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gpl --enable-libsvtav1 --enable-libopus --enable-libx264 --enable-libmp3lame --enable-libdav1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.101 / 61.  1.101
+  libavcodec     63.  1.101 / 63.  1.101
+  libavformat    63.  1.101 / 63.  1.101
+  libavdevice    63.  1.101 / 63.  1.101
+  libavfilter    12.  1.101 / 12.  1.101
+  libswscale     10.  1.101 / 10.  1.101
+  libswresample   7.  1.101 /  7.  1.101
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/devin/vcf_rec/3_iPad.raw.mp4':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    creation_time   : 2026-09-07T17:08:43.000000Z
+  Duration: 00:07:07.63, start: 0.000000, bitrate: 6318 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/bt709/iec61966-2-1, progressive), 2064x2752, 6314 kb/s, 24.64 fps, 600 tbr, 600 tbn (default)
+    Metadata:
+      creation_time   : 2026-09-07T17:08:43.000000Z
+      handler_name    : Core Media Video
+      vendor_id       : [0][0][0][0]
+      encoder         : H.264
+Input #1, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-000.png':
+  Duration: N/A, bitrate: N/A
+  Stream #1:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #2, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-001.png':
+  Duration: N/A, bitrate: N/A
+  Stream #2:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #3, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-002.png':
+  Duration: N/A, bitrate: N/A
+  Stream #3:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #4, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-003.png':
+  Duration: N/A, bitrate: N/A
+  Stream #4:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #5, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-004.png':
+  Duration: N/A, bitrate: N/A
+  Stream #5:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #6, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-005.png':
+  Duration: N/A, bitrate: N/A
+  Stream #6:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #7, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-006.png':
+  Duration: N/A, bitrate: N/A
+  Stream #7:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #8, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-007.png':
+  Duration: N/A, bitrate: N/A
+  Stream #8:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #9, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-008.png':
+  Duration: N/A, bitrate: N/A
+  Stream #9:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #10, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-009.png':
+  Duration: N/A, bitrate: N/A
+  Stream #10:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #11, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-010.png':
+  Duration: N/A, bitrate: N/A
+  Stream #11:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #12, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-011.png':
+  Duration: N/A, bitrate: N/A
+  Stream #12:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #13, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-012.png':
+  Duration: N/A, bitrate: N/A
+  Stream #13:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #14, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-013.png':
+  Duration: N/A, bitrate: N/A
+  Stream #14:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #15, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-014.png':
+  Duration: N/A, bitrate: N/A
+  Stream #15:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #16, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-015.png':
+  Duration: N/A, bitrate: N/A
+  Stream #16:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #17, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-016.png':
+  Duration: N/A, bitrate: N/A
+  Stream #17:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #18, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-017.png':
+  Duration: N/A, bitrate: N/A
+  Stream #18:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #19, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-018.png':
+  Duration: N/A, bitrate: N/A
+  Stream #19:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #20, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-019.png':
+  Duration: N/A, bitrate: N/A
+  Stream #20:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #21, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-020.png':
+  Duration: N/A, bitrate: N/A
+  Stream #21:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #22, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-021.png':
+  Duration: N/A, bitrate: N/A
+  Stream #22:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #23, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-022.png':
+  Duration: N/A, bitrate: N/A
+  Stream #23:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #24, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-023.png':
+  Duration: N/A, bitrate: N/A
+  Stream #24:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #25, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-024.png':
+  Duration: N/A, bitrate: N/A
+  Stream #25:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #26, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-025.png':
+  Duration: N/A, bitrate: N/A
+  Stream #26:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #27, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-026.png':
+  Duration: N/A, bitrate: N/A
+  Stream #27:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #28, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-027.png':
+  Duration: N/A, bitrate: N/A
+  Stream #28:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #29, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-028.png':
+  Duration: N/A, bitrate: N/A
+  Stream #29:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #30, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-029.png':
+  Duration: N/A, bitrate: N/A
+  Stream #30:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #31, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-030.png':
+  Duration: N/A, bitrate: N/A
+  Stream #31:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #32, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-031.png':
+  Duration: N/A, bitrate: N/A
+  Stream #32:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #33, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-032.png':
+  Duration: N/A, bitrate: N/A
+  Stream #33:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #34, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-033.png':
+  Duration: N/A, bitrate: N/A
+  Stream #34:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #35, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-034.png':
+  Duration: N/A, bitrate: N/A
+  Stream #35:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #36, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-035.png':
+  Duration: N/A, bitrate: N/A
+  Stream #36:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Input #37, png_pipe, from '/var/folders/ql/n6j16tt14fz40s9fdkvnqbhm0000gn/T/vcf400-ipad-overlay-UzIQL7/band-036.png':
+  Duration: N/A, bitrate: N/A
+  Stream #37:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x64, 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (h264) -> scale:default
+  Stream #1:0 (png) -> overlay
+  Stream #2:0 (png) -> overlay
+  Stream #3:0 (png) -> overlay
+  Stream #4:0 (png) -> overlay
+  Stream #5:0 (png) -> overlay
+  Stream #6:0 (png) -> overlay
+  Stream #7:0 (png) -> overlay
+  Stream #8:0 (png) -> overlay
+  Stream #9:0 (png) -> overlay
+  Stream #10:0 (png) -> overlay
+  Stream #11:0 (png) -> overlay
+  Stream #12:0 (png) -> overlay
+  Stream #13:0 (png) -> overlay
+  Stream #14:0 (png) -> overlay
+  Stream #15:0 (png) -> overlay
+  Stream #16:0 (png) -> overlay
+  Stream #17:0 (png) -> overlay
+  Stream #18:0 (png) -> overlay
+  Stream #19:0 (png) -> overlay
+  Stream #20:0 (png) -> overlay
+  Stream #21:0 (png) -> overlay
+  Stream #22:0 (png) -> overlay
+  Stream #23:0 (png) -> overlay
+  Stream #24:0 (png) -> overlay
+  Stream #25:0 (png) -> overlay
+  Stream #26:0 (png) -> overlay
+  Stream #27:0 (png) -> overlay
+  Stream #28:0 (png) -> overlay
+  Stream #29:0 (png) -> overlay
+  Stream #30:0 (png) -> overlay
+  Stream #31:0 (png) -> overlay
+  Stream #32:0 (png) -> overlay
+  Stream #33:0 (png) -> overlay
+  Stream #34:0 (png) -> overlay
+  Stream #35:0 (png) -> overlay
+  Stream #36:0 (png) -> overlay
+  Stream #37:0 (png) -> overlay
+  overlay:default -> Stream #0:0 (libx264)
+Press [q] to stop, [?] for help
+[libx264 @ 0x70ce29500] using cpu capabilities: ARMv8 NEON DotProd I8MM
+[libx264 @ 0x70ce29500] profile High, level 3.1, 4:2:0, 8-bit
+[libx264 @ 0x70ce29500] 264 - core 165 r3222 b35605a - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=18 lookahead_threads=3 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'deliverables/video/3_iPad.mp4':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    encoder         : Lavf63.1.101
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt709/bt709/iec61966-2-1, progressive), 1280x720, q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc63.1.101 libx264
+    Side data:
+      CPB properties: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A dup=40 drop=97 speed=N/A elapsed=0:00:00.51    frame=  442 fps=437 q=29.0 size=       0KiB time=00:00:14.66 bitrate=   0.0kbits/s dup=538 drop=115 speed=14.5x elapsed=0:00:01.01    frame=  578 fps=380 q=29.0 size=       0KiB time=00:00:19.20 bitrate=   0.0kbits/s dup=798 drop=246 speed=12.6x elapsed=0:00:01.52    frame= 1037 fps=510 q=29.0 size=     256KiB time=00:00:34.50 bitrate=  60.8kbits/s dup=1076 drop=263 speed=  17x elapsed=0:00:02.03    [fc#0 @ 0x70cc1c000] [vo0->#0:0 @ 0x70cc50c00] More than 1000 frames duplicated
+frame= 1250 fps=492 q=29.0 size=     256KiB time=00:00:41.60 bitrate=  50.4kbits/s dup=1222 drop=450 speed=16.4x elapsed=0:00:02.54    frame= 1632 fps=535 q=29.0 size=     512KiB time=00:00:54.33 bitrate=  77.2kbits/s dup=1523 drop=540 speed=17.8x elapsed=0:00:03.05    frame= 1988 fps=558 q=29.0 size=     512KiB time=00:01:06.23 bitrate=  63.3kbits/s dup=1793 drop=657 speed=18.6x elapsed=0:00:03.56    frame= 2271 fps=557 q=29.0 size=     768KiB time=00:01:15.63 bitrate=  83.2kbits/s dup=1967 drop=788 speed=18.6x elapsed=0:00:04.07    frame= 2538 fps=553 q=29.0 size=    1024KiB time=00:01:24.53 bitrate=  99.2kbits/s dup=2122 drop=951 speed=18.4x elapsed=0:00:04.58    frame= 2828 fps=555 q=29.0 size=    1024KiB time=00:01:34.20 bitrate=  89.1kbits/s dup=2353 drop=1079 speed=18.5x elapsed=0:00:05.09    frame= 3110 fps=554 q=29.0 size=    1280KiB time=00:01:43.60 bitrate= 101.2kbits/s dup=2514 drop=1255 speed=18.4x elapsed=0:00:05.61    frame= 3383 fps=553 q=29.0 size=    1536KiB time=00:01:52.70 bitrate= 111.7kbits/s dup=2707 drop=1354 speed=18.4x elapsed=0:00:06.12    frame= 3731 fps=563 q=29.0 size=    1536KiB time=00:02:04.30 bitrate= 101.2kbits/s dup=2953 drop=1478 speed=18.7x elapsed=0:00:06.63    frame= 4032 fps=565 q=29.0 size=    1792KiB time=00:02:14.33 bitrate= 109.3kbits/s dup=3160 drop=1636 speed=18.8x elapsed=0:00:07.14    frame= 4291 fps=561 q=29.0 size=    2048KiB time=00:02:22.96 bitrate= 117.4kbits/s dup=3328 drop=1807 speed=18.7x elapsed=0:00:07.64    frame= 4556 fps=559 q=29.0 size=    2048KiB time=00:02:31.80 bitrate= 110.5kbits/s dup=3498 drop=1969 speed=18.6x elapsed=0:00:08.15    frame= 4841 fps=559 q=29.0 size=    2304KiB time=00:02:41.30 bitrate= 117.0kbits/s dup=3688 drop=2110 speed=18.6x elapsed=0:00:08.66    frame= 5171 fps=564 q=29.0 size=    2560KiB time=00:02:52.30 bitrate= 121.7kbits/s dup=3909 drop=2259 speed=18.8x elapsed=0:00:09.17    frame= 5467 fps=565 q=29.0 size=    2560KiB time=00:03:02.16 bitrate= 115.1kbits/s dup=4119 drop=2406 speed=18.8x elapsed=0:00:09.68    frame= 5755 fps=565 q=29.0 size=    2816KiB time=00:03:11.76 bitrate= 120.3kbits/s dup=4314 drop=2557 speed=18.8x elapsed=0:00:10.19    frame= 6034 fps=564 q=29.0 size=    3072KiB time=00:03:21.06 bitrate= 125.2kbits/s dup=4479 drop=2686 speed=18.8x elapsed=0:00:10.70    frame= 6344 fps=566 q=29.0 size=    3072KiB time=00:03:31.40 bitrate= 119.0kbits/s dup=4657 drop=2822 speed=18.9x elapsed=0:00:11.21    frame= 6637 fps=566 q=29.0 size=    3328KiB time=00:03:41.16 bitrate= 123.3kbits/s dup=4801 drop=2954 speed=18.9x elapsed=0:00:11.71    frame= 6894 fps=564 q=29.0 size=    3328KiB time=00:03:49.73 bitrate= 118.7kbits/s dup=4936 drop=3147 speed=18.8x elapsed=0:00:12.22    frame= 7196 fps=565 q=29.0 size=    3584KiB time=00:03:59.80 bitrate= 122.4kbits/s dup=5133 drop=3335 speed=18.8x elapsed=0:00:12.73    frame= 7450 fps=562 q=29.0 size=    3840KiB time=00:04:08.26 bitrate= 126.7kbits/s dup=5278 drop=3459 speed=18.7x elapsed=0:00:13.24    frame= 7756 fps=564 q=29.0 size=    3840KiB time=00:04:18.46 bitrate= 121.7kbits/s dup=5459 drop=3662 speed=18.8x elapsed=0:00:13.75    frame= 8059 fps=565 q=29.0 size=    4096KiB time=00:04:28.56 bitrate= 124.9kbits/s dup=5646 drop=3791 speed=18.8x elapsed=0:00:14.26    frame= 8412 fps=569 q=29.0 size=    4096KiB time=00:04:40.33 bitrate= 119.7kbits/s dup=5912 drop=3928 speed=  19x elapsed=0:00:14.77    frame= 8760 fps=573 q=29.0 size=    4352KiB time=00:04:51.93 bitrate= 122.1kbits/s dup=6167 drop=4083 speed=19.1x elapsed=0:00:15.29    frame= 9118 fps=577 q=29.0 size=    4608KiB time=00:05:03.86 bitrate= 124.2kbits/s dup=6425 drop=4261 speed=19.2x elapsed=0:00:15.80    frame= 9466 fps=580 q=29.0 size=    4608KiB time=00:05:15.46 bitrate= 119.7kbits/s dup=6678 drop=4455 speed=19.3x elapsed=0:00:16.31    frame= 9809 fps=583 q=29.0 size=    4864KiB time=00:05:26.90 bitrate= 121.9kbits/s dup=6931 drop=4639 speed=19.4x elapsed=0:00:16.82    frame=10154 fps=586 q=29.0 size=    5120KiB time=00:05:38.40 bitrate= 123.9kbits/s dup=7181 drop=4828 speed=19.5x elapsed=0:00:17.33    frame=10454 fps=586 q=29.0 size=    5120KiB time=00:05:48.40 bitrate= 120.4kbits/s dup=7389 drop=4998 speed=19.5x elapsed=0:00:17.84    frame=10707 fps=583 q=29.0 size=    5376KiB time=00:05:56.83 bitrate= 123.4kbits/s dup=7538 drop=5174 speed=19.4x elapsed=0:00:18.35    frame=11003 fps=583 q=29.0 size=    5632KiB time=00:06:06.70 bitrate= 125.8kbits/s dup=7708 drop=5303 speed=19.4x elapsed=0:00:18.86    frame=11257 fps=581 q=29.0 size=    5632KiB time=00:06:15.16 bitrate= 123.0kbits/s dup=7827 drop=5508 speed=19.4x elapsed=0:00:19.37    frame=11566 fps=582 q=29.0 size=    5888KiB time=00:06:25.46 bitrate= 125.1kbits/s dup=7997 drop=5689 speed=19.4x elapsed=0:00:19.88    frame=11812 fps=579 q=29.0 size=    6144KiB time=00:06:33.66 bitrate= 127.9kbits/s dup=8104 drop=5893 speed=19.3x elapsed=0:00:20.38    frame=12041 fps=576 q=29.0 size=    6400KiB time=00:06:41.30 bitrate= 130.6kbits/s dup=8215 drop=6046 speed=19.2x elapsed=0:00:20.89    frame=12307 fps=575 q=29.0 size=    6400KiB time=00:06:50.16 bitrate= 127.8kbits/s dup=8331 drop=6251 speed=19.2x elapsed=0:00:21.40    frame=12618 fps=576 q=29.0 size=    6656KiB time=00:07:00.53 bitrate= 129.7kbits/s dup=8697 drop=6404 speed=19.2x elapsed=0:00:21.91    [out#0/mp4 @ 0x70ce01680] video:6818KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.205822%
+frame=12831 fps=580 q=-1.0 Lsize=    6968KiB time=00:07:07.63 bitrate= 133.5kbits/s dup=8697 drop=6404 speed=19.3x elapsed=0:00:22.11    
+[libx264 @ 0x70ce29500] frame I:55    Avg QP:13.23  size: 26798
+[libx264 @ 0x70ce29500] frame P:3369  Avg QP:15.82  size:  1362
+[libx264 @ 0x70ce29500] frame B:9407  Avg QP:14.60  size:    97
+[libx264 @ 0x70ce29500] consecutive B-frames:  1.4%  1.9%  2.3% 94.5%
+[libx264 @ 0x70ce29500] mb I  I16..4: 55.8% 29.9% 14.3%
+[libx264 @ 0x70ce29500] mb P  I16..4:  0.9%  0.7%  0.7%  P16..4:  1.1%  0.2%  0.1%  0.0%  0.0%    skip:96.2%
+[libx264 @ 0x70ce29500] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  1.2%  0.0%  0.0%  direct: 0.0%  skip:98.7%  L0:50.2% L1:48.9% BI: 0.9%
+[libx264 @ 0x70ce29500] 8x8 transform intra:30.7% inter:41.2%
+[libx264 @ 0x70ce29500] coded y,uvDC,uvAC intra: 16.3% 12.1% 7.4% inter: 0.1% 0.1% 0.0%
+[libx264 @ 0x70ce29500] i16 v,h,dc,p: 57% 42%  1%  1%
+[libx264 @ 0x70ce29500] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 36% 19% 43%  0%  0%  0%  0%  0%  1%
+[libx264 @ 0x70ce29500] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 37% 13%  2%  3%  3%  3%  3%  4%
+[libx264 @ 0x70ce29500] i8c dc,h,v,p: 72% 20%  7%  1%
+[libx264 @ 0x70ce29500] Weighted P-Frames: Y:0.1% UV:0.0%
+[libx264 @ 0x70ce29500] ref P L0: 79.4%  4.9% 10.4%  5.3%  0.0%
+[libx264 @ 0x70ce29500] ref B L0: 58.3% 40.0%  1.7%
+[libx264 @ 0x70ce29500] ref B L1: 95.3%  4.7%
+[libx264 @ 0x70ce29500] kb/s:130.57
+overlay duration: 427.632 seconds
+recording: deliverables/video/3_iPad.mp4

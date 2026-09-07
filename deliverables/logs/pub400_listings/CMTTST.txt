@@ -1,0 +1,127 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CMTTST        26-09-07 17:22:53        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   CMTTST
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Printer
+ Source file containing DDS  . . . . . . . . . . . . :   QRLUSRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   CMTTST
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:21:13
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A          R INITP
+    200       A            PRTCMD        40         1TEXT('PRTCMD1')
+    300       A                                      TRNSPY
+    400       A                                      SPACEA(0)
+    500       A          R RCD001
+    600       A                                     1
+    700       A                                      'VCF/400 - Comment Ticket'
+    800       A          R RCD002
+    900       A                                      SPACEB(002)
+   1000       A                                     1
+   1100       A                                      'Name:'
+   1200       A            GUESTNAME R        O    +1
+   1300       A                                      REFFLD(GUESTBKRCD/GUESTNAME GUE-
+   1400       A                                      STBKDB)
+   1500       A*%%***********************************************************************
+   1600       A*%%SS
+   1700       A*%%***********************************************************************
+   1800       A          R RCD003
+   1900       A*%%***********************************************************************
+   2000       A*%%RI 00000
+   2100       A*%%***********************************************************************
+   2200       A                                      SPACEB(001)
+   2300       A                                     1
+   2400       A                                      'Exhibit:'
+   2500       A            EXHBID    R        O    +1
+   2600       A                                      REFFLD(GUESTBKRCD/EXHBID GUESTB-
+   2700       A                                      KDB)
+   2800       A*%%***********************************************************************
+   2900       A*%%SS
+   3000       A*%%***********************************************************************
+   3100       A          R CMTNBR
+   3200       A*%%***********************************************************************
+   3300       A*%%RU 00000
+   3400       A*%%***********************************************************************
+   3500       A                                      SPACEB(001)
+   3600       A                                     1
+   3700       A                                      'CID:'
+   3800       A            CMTID     R        O    +1
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CMTTST        26-09-07 17:22:53        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3900       A                                      REFFLD(GUESTBKRCD/CMTID GUESTBK-
+   4000       A                                      DB)
+   4100       A*%%***********************************************************************
+   4200       A*%%SS
+   4300       A*%%***********************************************************************
+   4400       A          R CMTDETAIL
+   4500       A*%%***********************************************************************
+   4600       A*%%RI 00000
+   4700       A*%%***********************************************************************
+   4800       A                                      SPACEB(001)
+   4900       A                                     1
+   5000       A                                      'COMMENT:'
+   5100       A            GUESTCMT  R        O    +1
+   5200       A                                      REFFLD(GUESTBKRCD/GUESTCMT GUES-
+   5300       A                                      TBKDB)
+   5400       A*%%***********************************************************************
+   5500       A*%%SS
+   5600       A*%%CP+    FILE(VCF/TESTPRT2)
+   5700       A*%%CP+    DEVTYPE(*SCS)
+   5800       A*%%CP     PAGESIZE(*N       132      *N     )
+   5900       A*%%***********************************************************************
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CMTTST        26-09-07 17:22:53        Page    3
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    100                  R INITP
+    200                    PRTCMD        40A  O     1TEXT('PRTCMD1') TRNSPY SPACEA(0)        40            1
+    500                  R RCD001
+    600                                             1'VCF/400 - Comment Ticket'              24
+    800                  R RCD002                    SPACEB(002)
+   1000                                             1'Name:'                                  5
+   1200                    GUESTNAME     20A  O     7                                        20            1
+ * Referenced Field  . . . . . . . . . . . :   GUESTNAME
+ *   Format  . . . . . . . . . . . . . . . :   GUESTBKRCD
+ *   File  . . . . . . . . . . . . . . . . :   GUESTBKDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+   1800                  R RCD003                    SPACEB(001)
+   2300                                             1'Exhibit:'                               8
+   2500                    EXHBID         9A  O    10                                         9            1
+ * Referenced Field  . . . . . . . . . . . :   EXHBID
+ *   Format  . . . . . . . . . . . . . . . :   GUESTBKRCD
+ *   File  . . . . . . . . . . . . . . . . :   GUESTBKDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+   3100                  R CMTNBR                    SPACEB(001)
+   3600                                             1'CID:'                                   4
+   3800                    CMTID          4S 0O     6                                         4            1
+ * Referenced Field  . . . . . . . . . . . :   CMTID
+ *   Format  . . . . . . . . . . . . . . . :   GUESTBKRCD
+ *   File  . . . . . . . . . . . . . . . . :   GUESTBKDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+   4400                  R CMTDETAIL                 SPACEB(001)
+   4900                                             1'COMMENT:'                               8
+   5100                    GUESTCMT     200A  O    10                                       200            1
+ * Referenced Field  . . . . . . . . . . . :   GUESTCMT
+ *   Format  . . . . . . . . . . . . . . . :   GUESTBKRCD
+ *   File  . . . . . . . . . . . . . . . . :   GUESTBKDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/CMTTST        26-09-07 17:22:53        Page    4
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File CMTTST created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

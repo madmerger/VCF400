@@ -1,0 +1,91 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/BMOVSCR       26-09-07 17:22:53        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   BMOVSCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   BMOVSCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:22:23
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20231219  212526  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R SFLDATA                   SFL
+    500       A*%%TS  SD  20231219  212526  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A            SPEAKER   R        O  7  2REFFLD(BMOVREC/SPEAKER BMOVDB)
+    700       A                                      COLOR(BLU)
+    800       A            LINE      R        O  7 13REFFLD(BMOVREC/LINE BMOVDB)
+    900       A                                      COLOR(BLU)
+   1000       A          R SFLCTL                    SFLCTL(SFLDATA)
+   1100       A*%%TS  SD  20231219  212526  QSECOFR     REL-V4R4M0  5769-PW1
+   1200       A  50                                  SFLDSP
+   1300       A  50                                  SFLDSPCTL
+   1400       A N50                                  SFLCLR
+   1500       A  50                                  SFLEND(*MORE)
+   1600       A                                      SFLSIZ(0100)
+   1700       A                                      SFLPAG(0010)
+   1800       A                                  1  2DATE
+   1900       A                                      EDTCDE(Y)
+   2000       A                                  1 11TIME
+   2100       A                                  1 24'SCREENPLAY DATABASE PROGRAM'
+   2200       A                                      COLOR(WHT)
+   2300       A                                  3  3'Roll Up / Down = Scroll  F3 = Exit'
+   2400       A                                      COLOR(BLU)
+   2500       A                                  5  2'Character'
+   2600       A                                      COLOR(WHT)
+   2700       A                                  5 13'Spoken Line'
+   2800       A                                      COLOR(WHT)
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/BMOVSCR       26-09-07 17:22:53        Page    2
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+    400                  R SFLDATA                   SFL
+    600                    SPEAKER        9A  O  7  2                                         9            1       1
+ * Referenced Field  . . . . . . . . . . . :   SPEAKER
+ *   Format  . . . . . . . . . . . . . . . :   BMOVREC
+ *   File  . . . . . . . . . . . . . . . . :   BMOVDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+    700                                              COLOR(BLU)
+    800                    LINE          50A  O  7 13                                        50           10      10
+ * Referenced Field  . . . . . . . . . . . :   LINE
+ *   Format  . . . . . . . . . . . . . . . :   BMOVREC
+ *   File  . . . . . . . . . . . . . . . . :   BMOVDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+    900                                              COLOR(BLU)
+               * Option indicator output buffer positions:
+               *  *IN50 0001
+   1000                  R SFLCTL
+                 *DS3                                SFLSIZ(0100) SFLPAG(010)
+   1000                                              SFLCTL(SFLDATA)
+   1200          50                                  SFLDSP
+   1300          50                                  SFLDSPCTL
+   1400         N50                                  SFLCLR
+   1500          50                                  SFLEND(*MORE)
+   1800                                          1  2DATE EDTCDE(Y)                           8
+   2000                                          1 11TIME                                     8
+   2100                                          1 24'SCREENPLAY DATABASE PROGRAM' +         27
+   2200                                              COLOR(WHT)
+   2300                                          3  3'Roll Up / Down = Scroll  F3 = Exit-    34
+   2300                                              ' COLOR(BLU)
+   2500                                          5  2'Character' COLOR(WHT)                   9
+   2700                                          5 13'Spoken Line' COLOR(WHT)                11
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/BMOVSCR       26-09-07 17:22:53        Page    3
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File BMOVSCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

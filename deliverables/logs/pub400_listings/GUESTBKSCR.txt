@@ -1,0 +1,315 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   GUESTBKSCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   GUESTBKSCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:22:31
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20231106  193901  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R ADDCMT
+    500       A*%%TS  SD  20231106  193901  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                      CF05(05 'Submit')
+    700       A                                      CF12(12 'Cancel')
+    800       A                                  1  3'VINTAGE COMPUTER FESTIVAL'
+    900       A                                  1 32'GUESTBOOK/400 - ADD COMMENT'
+   1000       A                                  3  3'Your Name................:'
+   1100       A                                  4  3'Exhibit'
+   1200       A                                  4 11'ID...............:'
+   1300       A            INNAME        16A  I  3 32CHECK(LC)
+   1400       A                                      CHECK(ME)
+   1500       A                                      COLOR(WHT)
+   1600       A                                  5  3'Comment..................:'
+   1700       A            INCMT        200A  I  6  3CHECK(LC)
+   1800       A                                      CHECK(ME)
+   1900       A                                      COLOR(WHT)
+   2000       A            ERRLINE       21A  O 10  5COLOR(RED)
+   2100       A                                 24  3'Cmd5 / F5 = Submit Comment'
+   2200       A                                      COLOR(BLU)
+   2300       A                                 24 34'Cmd12 / F12 = Cancel'
+   2400       A                                      COLOR(BLU)
+   2500       A            INID           9A  B  4 32CHECK(ME)
+   2600       A  70                                  DSPATR(PR)
+   2700       A                                      COLOR(WHT)
+   2800       A          R ENDCMT
+   2900       A*%%TS  SD  20230904  092204  QSECOFR     REL-V4R4M0  5769-PW1
+   3000       A                                  2  5' _______ _    _          _   _ _  -
+   3100       A                                      __ _____          '
+   3200       A                                  3  5'|__   __| |  | |   /\   | \ | | |/-
+   3300       A                                       // ____|         '
+   3400       A                                  4  5'   | |  | |__| |  /  \  |  \| |   -
+   3500       A                                      /| (___           '
+   3600       A                                  4 58'                          '
+   3700       A                                  5  5'   | |  |  __  | / /\ \ | . ` |  /-
+   3800       A                                        \___ \          '
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3900       A                                  5 58'                          '
+   4000       A                                  6  5'   | |  | |  | |/ ____ \| |\  | . -
+   4100       A                                      \ ____) |         '
+   4200       A                                  6 58'                          '
+   4300       A                                  7  5' __|_|_ |_|_ |_/_/_   \_\_|_\_|_|\-
+   4400       A                                      _\_____/__        '
+   4500       A                                  7 58'                          '
+   4600       A                                  8  5'|  ____/ __ \|  __ \  |__   __| | -
+   4700       A                                       | |  ____|       '
+   4800       A                                  8 58'                          '
+   4900       A                                  9  5'| |__ | |  | | |__) |    | |  | |_-
+   5000       A                                      _| | |__          '
+   5100       A                                  9 58'                          '
+   5200       A                                 10  5'|  __|| |  | |  _  /     | |  |  _-
+   5300       A                                      _  |  __|         '
+   5400       A                                 10 58'                          '
+   5500       A                                 11  5'| |   | |__| | | \ \     | |  | | -
+   5600       A                                       | | |____        '
+   5700       A                                 11 58'                          '
+   5800       A                                 12  5'|_|____\____/|_|  \_\__  |_|__|_|_-
+   5900       A                                       |_|______|___ _  '
+   6000       A                                 12 58'                          '
+   6100       A                                 13  5' / ____/ __ \|  \/  |  \/  |  ____-
+   6200       A                                      | \ | |__   __| | '
+   6300       A                                 13 58'                          '
+   6400       A                                 14  5'| |   | |  | | \  / | \  / | |__  -
+   6500       A                                      |  \| |  | |  | | '
+   6600       A                                 14 58'                          '
+   6700       A                                 15  5'| |   | |  | | |\/| | |\/| |  __| -
+   6800       A                                      | . ` |  | |  | | '
+   6900       A                                 15 58'                          '
+   7000       A                                 16  5'| |___| |__| | |  | | |  | | |____-
+   7100       A                                      | |\  |  | |  |_| '
+   7200       A                                 16 58'                          '
+   7300       A                                 17  5' \_____\____/|_|  |_|_|  |_|______-
+   7400       A                                      |_| \_|  |_|  (_) '
+   7500       A                                 19  4'Thank you for commenting on this e-
+   7600       A                                      xhibit! Your Comment ID Is:'
+   7700       A                                 21  4'Press ENTER to exit.'
+   7800       A          R READCMT
+   7900       A*%%TS  SD  20231106  193901  QSECOFR     REL-V4R4M0  5769-PW1
+   8000       A                                      CF05(05 'Submit')
+   8100       A                                      CF12(12 'Cancel')
+   8200       A                                  1  4'VINTAGE COMPUTER FESTIVAL'
+   8300       A                                  1 33'GUESTBOOK/400 - Read a Comment'
+   8400       A                                  3  4'Enter a Comment ID:'
+   8500       A                                  5  4'-----------------------------------
+   8600       A                                      ------------------------------------
+   8700       A                                      -----'
+   8800       A            OUTNAME       11   O  6  4COLOR(WHT)
+   8900       A                                  6 18'says to:  '
+   9000       A            OUTCMT       200   O  8  4COLOR(WHT)
+   9100       A                                 21  5'Is this comment inappropriate? Ple-
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    3
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   9200       A                                      ase report the Comment ID to the'
+   9300       A                                 22  5'folks at the Midrange Madness tabl-
+   9400       A                                      e and we will address the comment.'
+   9500       A                                 24  5'Cmd5 / F5 = Submit  Cmd12 / F12 = -
+   9600       A                                      Cancel'
+   9700       A                                      COLOR(BLU)
+   9800       A            ERRLINE       20A  O  4  4COLOR(RED)
+   9900       A            INCMTID        4Y 0I  3 25CHECK(ME)
+  10000       A                                      CHECK(RZ)
+  10100       A                                      COLOR(WHT)
+  10200       A                                 11  4'-----------------------------------
+  10300       A                                      ------------------------------------
+  10400       A                                      -----'
+  10500       A                                  3 49'Currently hosting'
+  10600       A            WTFCMTNUM      4   O  3 67COLOR(TRQ)
+  10700       A                                  4 49'comments and counting.'
+  10800       A            OUTTITLE      50   O  6 29COLOR(WHT)
+  10900       A                                 23  4'-----------------------------------
+  11000       A                                      ------------------------------------
+  11100       A                                      -----'
+  11200       A          R HIDECMT
+  11300       A*%%TS  SD  20230826  153521  QSECOFR     REL-V4R4M0  5769-PW1
+  11400       A                                      CF05(05 'Submit')
+  11500       A                                      CF12(12 'Cancel')
+  11600       A                                  1  4'VINTAGE COMPUTER FESTIVAL'
+  11700       A                                  1 33'GUESTBOOK/400 - Comment Administra-
+  11800       A                                      tor'
+  11900       A                                  3  4'Comment ID:'
+  12000       A                                  4  4'-----------------------------------
+  12100       A                                      ------------------------------------
+  12200       A                                      -----'
+  12300       A            OUTNAME       11A  O  5  4
+  12400       A                                  5 18'says...'
+  12500       A            OUTCMT       200A  O  7  5
+  12600       A                                 24  5'Cmd5 / F5 = Submit  Cmd12 / F12 = -
+  12700       A                                      Cancel'
+  12800       A            ERRLINE       20A  O  3 39COLOR(RED)
+  12900       A            HIDECMTID      4A  O  3 18
+  13000       A                                 14  5'Change Status? (Y/N)    '
+  13100       A            INHIDEYN       1A  I 14 32
+  13200       A                                 11  5'Currently Visible?'
+  13300       A            CURRHIDE       1A  O 11 32
+  13400       A                                 16  5'Y = Comment is visible to all atte-
+  13500       A                                      ndees and exhibitors'
+  13600       A                                 17  5'N = Comment is only visible to SEC-
+  13700       A                                      OFR'
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    4
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+               * Option indicator output buffer positions:
+               *  *IN70 0001
+               * Response indicator input buffer positions:
+               *  *IN05 0001   *IN12 0002
+    400                  R ADDCMT                    CF05(05 'Submit') +
+    700                                              CF12(12 'Cancel')
+    800                                          1  3'VINTAGE COMPUTER FESTIVAL'             25
+    900                                          1 32'GUESTBOOK/400 - ADD COMMENT'           27
+   1000                                          3  3'Your Name................:'            26
+   1100                                          4  3'Exhibit'                                7
+   1200                                          4 11'ID...............:'                    18
+   1300                    INNAME        16A  I  3 32CHECK(LC) CHECK(ME) COLOR(WHT)          16                    3
+   1600                                          5  3'Comment..................:'            26
+   1700                    INCMT        200A  I  6  3CHECK(LC) CHECK(ME) COLOR(WHT)         200                   19
+   2000                    ERRLINE       21A  O 10  5COLOR(RED)                              21            2
+   2100                                         24  3'Cmd5 / F5 = Submit Comment' +          26
+   2200                                              COLOR(BLU)
+   2300                                         24 34'Cmd12 / F12 = Cancel' COLOR(BLU)       20
+   2500                    INID           9A  B  4 32CHECK(ME)                                9           23     219
+   2600          70                                  DSPATR(PR)
+   2700                                              COLOR(WHT)
+   2800                  R ENDCMT
+   3000                                          2  5' _______ _    _          _   _ _  -    52
+   3000                                              __ _____          '
+   3200                                          3  5'|__   __| |  | |   /\   | \ | | |/-    52
+   3200                                               // ____|         '
+   3400                                          4  5'   | |  | |__| |  /  \  |  \| |   -    52
+   3400                                              /| (___           '
+   3600                                          4 58'                          '            26
+   3700                                          5  5'   | |  |  __  | / /\ \ | . ` |  /-    52
+   3700                                                \___ \          '
+   3900                                          5 58'                          '            26
+   4000                                          6  5'   | |  | |  | |/ ____ \| |\  | . -    52
+   4000                                              \ ____) |         '
+   4200                                          6 58'                          '            26
+   4300                                          7  5' __|_|_ |_|_ |_/_/_   \_\_|_\_|_|\-    52
+   4300                                              _\_____/__        '
+   4500                                          7 58'                          '            26
+   4600                                          8  5'|  ____/ __ \|  __ \  |__   __| | -    52
+   4600                                               | |  ____|       '
+   4800                                          8 58'                          '            26
+   4900                                          9  5'| |__ | |  | | |__) |    | |  | |_-    52
+   4900                                              _| | |__          '
+   5100                                          9 58'                          '            26
+   5200                                         10  5'|  __|| |  | |  _  /     | |  |  _-    52
+   5200                                              _  |  __|         '
+   5400                                         10 58'                          '            26
+   5500                                         11  5'| |   | |__| | | \ \     | |  | | -    52
+   5500                                               | | |____        '
+   5700                                         11 58'                          '            26
+   5800                                         12  5'|_|____\____/|_|  \_\__  |_|__|_|_-    52
+   5800                                               |_|______|___ _  '
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    5
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+   6000                                         12 58'                          '            26
+   6100                                         13  5' / ____/ __ \|  \/  |  \/  |  ____-    52
+   6100                                              | \ | |__   __| | '
+   6300                                         13 58'                          '            26
+   6400                                         14  5'| |   | |  | | \  / | \  / | |__  -    52
+   6400                                              |  \| |  | |  | | '
+   6600                                         14 58'                          '            26
+   6700                                         15  5'| |   | |  | | |\/| | |\/| |  __| -    52
+   6700                                              | . ` |  | |  | | '
+   6900                                         15 58'                          '            26
+   7000                                         16  5'| |___| |__| | |  | | |  | | |____-    52
+   7000                                              | |\  |  | |  |_| '
+   7200                                         16 58'                          '            26
+   7300                                         17  5' \_____\____/|_|  |_|_|  |_|______-    52
+   7300                                              |_| \_|  |_|  (_) '
+   7500                                         19  4'Thank you for commenting on this e-    61
+   7500                                              xhibit! Your Comment ID Is:'
+   7700                                         21  4'Press ENTER to exit.'                  20
+               * Response indicator input buffer positions:
+               *  *IN05 0001   *IN12 0002
+   7800                  R READCMT                   CF05(05 'Submit') +
+   8100                                              CF12(12 'Cancel')
+   8200                                          1  4'VINTAGE COMPUTER FESTIVAL'             25
+   8300                                          1 33'GUESTBOOK/400 - Read a Comment'        30
+   8400                                          3  4'Enter a Comment ID:'                   19
+   8500                                          5  4'-----------------------------------    74
+   8500                                              ------------------------------------
+   8500                                              -----'
+   8800                    OUTNAME       11A  O  6  4COLOR(WHT)                              11            1
+   8900                                          6 18'says to:  '                            10
+   9000                    OUTCMT       200A  O  8  4COLOR(WHT)                             200           12
+   9100                                         21  5'Is this comment inappropriate? Ple-    66
+   9100                                              ase report the Comment ID to the'
+   9300                                         22  5'folks at the Midrange Madness tabl-    68
+   9300                                              e and we will address the comment.'
+   9500                                         24  5'Cmd5 / F5 = Submit  Cmd12 / F12 = -    40
+   9500                                              Cancel' COLOR(BLU)
+   9800                    ERRLINE       20A  O  4  4COLOR(RED)                              20          212
+   9900                    INCMTID        4Y 0I  3 25CHECK(ME) CHECK(RZ) COLOR(WHT)           4                    3
+  10200                                         11  4'-----------------------------------    74
+  10200                                              ------------------------------------
+  10200                                              -----'
+  10500                                          3 49'Currently hosting'                     17
+  10600                    WTFCMTNUM      4A  O  3 67COLOR(TRQ)                               4          232
+  10700                                          4 49'comments and counting.'                22
+  10800                    OUTTITLE      50A  O  6 29COLOR(WHT)                              50          236
+  10900                                         23  4'-----------------------------------    74
+  10900                                              ------------------------------------
+  10900                                              -----'
+               * Response indicator input buffer positions:
+               *  *IN05 0001   *IN12 0002
+  11200                  R HIDECMT                   CF05(05 'Submit') +
+  11500                                              CF12(12 'Cancel')
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    6
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+  11600                                          1  4'VINTAGE COMPUTER FESTIVAL'             25
+  11700                                          1 33'GUESTBOOK/400 - Comment Administra-    37
+  11700                                              tor'
+  11900                                          3  4'Comment ID:'                           11
+  12000                                          4  4'-----------------------------------    74
+  12000                                              ------------------------------------
+  12000                                              -----'
+  12300                    OUTNAME       11A  O  5  4                                        11            1
+  12400                                          5 18'says...'                                7
+  12500                    OUTCMT       200A  O  7  5                                       200           12
+  12600                                         24  5'Cmd5 / F5 = Submit  Cmd12 / F12 = -    40
+  12600                                              Cancel'
+  12800                    ERRLINE       20A  O  3 39COLOR(RED)                              20          212
+  12900                    HIDECMTID      4A  O  3 18                                         4          232
+  13000                                         14  5'Change Status? (Y/N)    '              24
+  13100                    INHIDEYN       1A  I 14 32                                         1                    3
+  13200                                         11  5'Currently Visible?'                    18
+  13300                    CURRHIDE       1A  O 11 32                                         1          236
+  13400                                         16  5'Y = Comment is visible to all atte-    54
+  13400                                              ndees and exhibitors'
+  13600                                         17  5'N = Comment is only visible to SEC-    37
+  13600                                              OFR'
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 17:22:53        Page    7
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File GUESTBKSCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

@@ -1,0 +1,117 @@
+=== PHASE 1 BASELINE SEED 2026-09-07T15:24:16Z ===
+--- preflight baseline rows ---
+
+
+AWARDID  AWARDTITLE                                                                                          
+-------- ----------------------------------------------------------------------------------------------------
+       1 Best in Show Award                                                                                  
+       2 The Ed Fair Award                                                                                   
+
+  2 RECORD(S) SELECTED.
+
+
+
+
+EXHBDBID  EXHUSRPRF  ELIGIBLE 
+--------- ---------- ---------
+        1 ASHIBATA           1
+        2 DEMO400            1
+        3 NOVOTE             0
+
+  3 RECORD(S) SELECTED.
+
+
+{
+  "votes": [
+    {
+      "badge": 1,
+      "award": 1,
+      "exhibit": "ASHIBATA"
+    },
+    {
+      "badge": 28,
+      "award": 2,
+      "exhibit": "ASHIBATA"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Great exhibit",
+      "comment": "VCF/400 running on PUB400."
+    },
+    {
+      "id": 2,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Devin",
+      "comment": "VCF/400 is running on PUB400."
+    }
+  ],
+  "settings": {
+    "ADMPSWRD": "VCF2024",
+    "ALWVOTE": "Y"
+  }
+}
+--- reset ---
+
+
+ **** CLI ERROR *****
+         SQLSTATE: 02000
+NATIVE ERROR CODE: 100
+Row not found for DELETE. 
+
+ **** CLI ERROR *****
+         SQLSTATE: 02000
+NATIVE ERROR CODE: 100
+Row not found for DELETE. 
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+
+ **** CLI ERROR *****
+         SQLSTATE: 02000
+NATIVE ERROR CODE: 100
+Row not found for DELETE. 
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+
+--- pub400_seed.sql ---
+not applied: all required baseline rows were present; reset completed
+--- final dump ---
+{
+  "votes": [
+    {
+      "badge": 1,
+      "award": 1,
+      "exhibit": "ASHIBATA"
+    },
+    {
+      "badge": 28,
+      "award": 2,
+      "exhibit": "ASHIBATA"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Great exhibit",
+      "comment": "VCF/400 running on PUB400."
+    },
+    {
+      "id": 2,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Devin",
+      "comment": "VCF/400 is running on PUB400."
+    }
+  ],
+  "settings": {
+    "ADMPSWRD": "VCF2024",
+    "ALWVOTE": "Y"
+  }
+}
