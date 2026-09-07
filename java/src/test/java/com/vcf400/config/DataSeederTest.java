@@ -1,6 +1,7 @@
 package com.vcf400.config;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.sql.Connection;
 import javax.sql.DataSource;
@@ -30,17 +31,36 @@ class DataSeederTest {
     }
 
     @Test
-    void rollsBackPartialSeedWhenAnotherInstanceAlreadyInsertedAward() throws Exception {
+    void failsWhenDatabaseIsPartiallyInitialized() throws Exception {
         String url = "jdbc:h2:mem:seedpartial;MODE=DB2;NON_KEYWORDS=VALUE;DB_CLOSE_DELAY=-1";
         DataSource dataSource = dataSource(url);
         applySchema(dataSource);
         JdbcTemplate jdbc = new JdbcTemplate(dataSource);
         jdbc.update("INSERT INTO AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (1, 'existing', 'existing')");
 
-        new DataSeeder(dataSource, url, "TESTPW").run(new DefaultApplicationArguments());
+        assertThatThrownBy(() -> new DataSeeder(dataSource, url, "TESTPW")
+                .run(new DefaultApplicationArguments()))
+            .isInstanceOf(IllegalStateException.class)
+            .hasMessage("seed failed: database is partially initialized (SETTINGS empty)");
 
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM AWARDDB", Integer.class)).isEqualTo(1);
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM SETTINGS", Integer.class)).isZero();
+    }
+
+    @Test
+    void skipsWhenAnotherInstanceAlreadySeededSettings() throws Exception {
+        String url = "jdbc:h2:mem:seedconcurrent;MODE=DB2;NON_KEYWORDS=VALUE;DB_CLOSE_DELAY=-1";
+        DataSource dataSource = dataSource(url);
+        applySchema(dataSource);
+        JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+        jdbc.update("INSERT INTO SETTINGS (SETTING, VALUE) VALUES ('ADMPSWRD', 'OTHERPW'), ('ALWVOTE', 'Y')");
+
+        new DataSeeder(dataSource, url, "TESTPW").run(new DefaultApplicationArguments());
+
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM SETTINGS", Integer.class)).isEqualTo(2);
+        assertThat(jdbc.queryForObject(
+                "SELECT VALUE FROM SETTINGS WHERE SETTING='ADMPSWRD'", String.class).trim())
+            .isEqualTo("OTHERPW");
     }
 
     private static DataSource dataSource(String url) {

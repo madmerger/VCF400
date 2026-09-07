@@ -12,8 +12,8 @@ mvn test                                             # 業務ルール / 画面�
 ```
 
 - `VCF_PORT` … ポート (既定 8080)
-- `VCF_DB_URL` … JDBC URL。既定は `./data/vcf400` の H2 ファイル DB (DB2 モード)。DB2 for i へ向ける場合は
-  `jdbc:as400://host/ASHIBATA2` 等を指定し、jt400 ドライバを依存に追加する (スキーマは DDS と同一列名)。
+- `VCF_DB_URL` … JDBC URL。既定は `./data/vcf400` の H2 ファイル DB (DB2 モード)。本 PR の対応 DB は H2 (DB2 モード) のみ。
+  DB2 for i へ向けるには jt400 ドライバの依存追加と接続確認が別途必要 (未対応)。
 - `VCF_PROFILE` … 既定のサインオンユーザー (LAUNCH)。`MM2024` で共用端末モード。
 - `VCF_DB_API` … クロス検証用 DB API の有効化 (既定 `false`)。クロス検証時は `VCF_DB_API=true mvn spring-boot:run` のように起動する。それ以外では無効のままにする。
 - `VCF_H2_CONSOLE` … H2 コンソール `/h2` の有効化 (既定 `false`)。開発時だけ必要に応じて `true` にする。
@@ -24,6 +24,7 @@ mvn test                                             # 業務ルール / 画面�
 
 - `schema.sql` は H2 (`jdbc:h2:`) のときだけ Spring の embedded 初期化で実行される。
 - H2 では `SETTINGS` が空の場合に限り、起動時の `DataSeeder` が `seed.sql` を 1 回実行する。既存のファイル DB を再起動してもデータを再投入しない。
+- シード後の管理者パスワード `ADMPSWRD` は SETTINGS のキーで参照して更新する (先頭レコードには依存しない)。
 - DB2 for i (`jdbc:as400:`) ではスキーマ・シード初期化を行わず、既存の DDS テーブルを使用する。
 - DB API はクロス検証専用で、ループバック接続からのみ利用できる。
 

@@ -23,9 +23,9 @@ public class KioskService {
         return exhibits.findById(launch.trim().toUpperCase());
     }
 
-    /** GETPSWRD: SETTINGS 先頭レコード (キー順 = ADMPSWRD) の VALUE。 */
+    /** GETPSWRD: SETTINGS.ADMPSWRD の VALUE。 */
     public String exitPassword() {
-        return settings.findAll().stream().findFirst().map(Setting::value).orElse("");
+        return settings.find(Setting.ADMPSWRD).map(Setting::value).orElse("");
     }
 
     /** ADMKIOSK: INPWD = EXITPSWRD で終了。 */

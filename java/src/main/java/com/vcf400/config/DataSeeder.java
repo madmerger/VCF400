@@ -55,8 +55,12 @@ public class DataSeeder implements ApplicationRunner {
                 } catch (Exception e) {
                     rollback(connection, e);
                     if (isIntegrityViolation(e)) {
-                        log.info("seed skipped: already seeded by another instance");
-                        return;
+                        if (!settingsEmpty(connection)) {
+                            log.info("seed skipped: already seeded by another instance");
+                            return;
+                        }
+                        throw new IllegalStateException(
+                                "seed failed: database is partially initialized (SETTINGS empty)", e);
                     }
                     throw e;
                 }
