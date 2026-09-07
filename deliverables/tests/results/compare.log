@@ -1,0 +1,39 @@
+ID     PUB400  Java    iPad    3環境一致  title
+CV-01  PASS    PASS    PASS    OK         全項目未入力 (展示 ID は保護・事前入力)
+CV-02  PASS    PASS    PASS    OK         アワード未入力
+CV-03  PASS    PASS    PASS    OK         バッジ未入力
+CV-04  PASS    PASS    PASS    OK         正常投票 (新規バッジ 7001, アワード 1)
+CV-05  PASS    PASS    PASS    OK         重複バッジ (7001 で再投票)
+CV-06  PASS    PASS    PASS    OK         存在しないアワード (9)
+CV-07  PASS    PASS    PASS    OK         境界値: アワード 0 (数値 0 = 未入力扱い)
+CV-08  PASS    PASS    PASS    OK         共用端末: 展示 ID 未入力
+CV-09  PASS    PASS    PASS    OK         共用端末: 存在しない展示 NOSUCH
+CV-10  PASS    PASS    PASS    OK         共用端末: 資格外展示 NOVOTE (ELIGIBLE=0)
+CV-11  PASS    PASS    PASS    OK         共用端末: 正常投票 (7002, DEMO400, アワード 2)
+CV-12  PASS    PASS    PASS    OK         複合エラー (重複バッジ+存在しない展示+存在しないアワード) → 最後の検査が勝つ
+CV-13  PASS    PASS    PASS    OK         投票停止 ALWVOTE='N' → ENDOFCON
+CV-14  PASS    PASS    PASS    OK         全項目未入力 (展示 ID は保護・事前入力)
+CV-15  PASS    PASS    PASS    OK         コメント未入力
+CV-16  PASS    PASS    PASS    OK         名前未入力
+CV-17  PASS    PASS    PASS    OK         正常記入 → ENDCMT, CMTID=3 (最終+1), VISIBLE=Y
+CV-18  PASS    PASS    PASS    OK         共用端末: 展示 ID 未入力
+CV-19  PASS    PASS    PASS    OK         共用端末: 存在しない展示 NOSUCH でも記入できる (存在チェックなし)
+CV-20  PASS    PASS    PASS    OK         コメント ID 未入力
+CV-21  PASS    PASS    PASS    OK         ID 1 → 名前 11 桁 / 展示タイトル / コメント
+CV-22  PASS    PASS    PASS    OK         ID 3 (この実行で追加したコメント)
+CV-23  PASS    PASS    PASS    OK         存在しない ID 9999 → 最終レコード (4, 他展示) → 帰属外メッセージ
+CV-24  PASS    PASS    PASS    OK         非表示コメント (ID 2 を VISIBLE=N)
+CV-25  PASS    PASS    PASS    OK         他展示 (DEMO400) から ASHIBATA のコメント 1 を読む → 帰属外
+CV-26  PASS    PASS    PASS    OK         共用端末は全展示を閲覧可 / 展示タイトルは SETLL+READ (NOSUCH → NOVOTE)
+CV-27  PASS    PASS    PASS    OK         F5 → 2 ページ目
+CV-28  PASS    PASS    PASS    OK         F5, F8 → 1 ページ目に戻る
+CV-29  PASS    PASS    PASS    OK         F5, F5 → 3 ページ目 (EXTRA='END') で終了 → VCFMAIN
+CV-30  PASS    PASS    PASS    OK         F3 → 終了 → VCFMAIN
+CV-31  PASS    PASS    PASS    OK         ASHIBATA (ELIGIBLE=1, ENLRN400=1) → 1,2,3,4
+CV-32  PASS    PASS    PASS    OK         NOVOTE (ELIGIBLE=0, ENLRN400=0) → 3,4 のみ
+CV-33  PASS    PASS    PASS    OK         DEMO400 (ELIGIBLE=1, ENLRN400=0) → 1,3,4
+CV-34  PASS    PASS    PASS    OK         隠しオプション 7 + 誤パスワード → キオスクメニューに戻る
+CV-35  PASS    PASS    PASS    OK         隠しオプション 7 + 正パスワード (SETTINGS.ADMPSWRD) → キオスク終了 → VCFMAIN
+CV-36  PASS    PASS    PASS    OK         オプション 1 → NTRSTIT → VOTE1 (展示 ASHIBATA 固定) → F12 でキオスクへ戻る
+CV-37  PASS    PASS    PASS    OK         資格外展示でオプション 1 を入力 → 無視 (キオスクメニューのまま)
+{"total": 37, "all_match": 37, "pub400": 37, "java": 37, "ipad": 37}

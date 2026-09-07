@@ -1,6 +1,6 @@
 {
-  "env": "pub400",
-  "started": "2026-09-07T15:56:49Z",
+  "env": "java",
+  "started": "2026-09-07T17:03:47.294Z",
   "cases": {
     "CV-01": {
       "observed": {
@@ -139,6 +139,7 @@
     "CV-17": {
       "observed": {
         "screen": "ENDCMT",
+        "shownId": 3,
         "comment": {
           "id": 3,
           "row": {
@@ -164,6 +165,7 @@
     "CV-19": {
       "observed": {
         "screen": "ENDCMT",
+        "shownId": 4,
         "comment": {
           "id": 4,
           "row": {
@@ -180,19 +182,14 @@
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "Must enter CommentID",
-        "out": {
-          "name": "",
-          "title": "",
-          "cmt": ""
-        }
+        "errline": "Must enter CommentID"
       }
     },
     "CV-21": {
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "ASHIBATA",
+        "errline": "",
         "out": {
           "name": "Great exhib",
           "title": "IBM i on PUB400 Demo",
@@ -204,7 +201,7 @@
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "ASHIBATA",
+        "errline": "",
         "out": {
           "name": "Devin Teste",
           "title": "IBM i on PUB400 Demo",
@@ -216,7 +213,7 @@
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "ASHIBATA",
+        "errline": "",
         "out": {
           "name": "",
           "title": "",
@@ -228,7 +225,7 @@
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "ASHIBATA",
+        "errline": "",
         "out": {
           "name": "Name Hidden",
           "title": "",
@@ -240,7 +237,7 @@
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "DEMO400",
+        "errline": "",
         "out": {
           "name": "",
           "title": "",
@@ -252,7 +249,7 @@
       "observed": {
         "screen": "READCMT",
         "total": 4,
-        "errline": "MM2024",
+        "errline": "",
         "out": {
           "name": "Guest",
           "title": "Ineligible test exhibit (ELIGIBLE=0)",
@@ -374,5 +371,5 @@
       }
     }
   },
-  "finished": "2026-09-07T16:11:34Z"
+  "finished": "2026-09-07T17:06:35.047Z"
 }

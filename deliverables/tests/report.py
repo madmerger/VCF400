@@ -31,12 +31,7 @@ def compact(value):
 
 
 def duration_text(seconds):
-    seconds = float(seconds)
-    minutes = int(seconds // 60)
-    remainder = seconds - minutes * 60
-    if abs(remainder - round(remainder)) < 0.01:
-        return f"{minutes} 分 {round(remainder)} 秒"
-    return f"{minutes} 分 {remainder:.3f} 秒"
+    return f"{float(seconds):.2f} 秒"
 
 
 def video_info(filename):
@@ -159,12 +154,15 @@ def main():
             "",
             "## 2. 不一致と対処",
             "",
-            "本 run は、記録対象として **37/37 を first pass で達成**した。`compare.py` "
-            "の最終結果も PUB400 37/37、Java 37/37、iPad 37/37 で、不一致はない。",
+            "本 run は、Java を PR #7 の localized 実装 "
+            "(`devin/1788796612-java-web-ja`, HEAD `1dabea7`)、iPad を PR #8 の "
+            "localized 実装 (`devin/1788796762-ipad-ja`, HEAD `06d639a`) として実行した。"
+            "`compare.py` の最終結果は PUB400 37/37、Java 37/37、iPad 37/37、"
+            "3 環境一致 37/37 で、不一致は 0 件である。",
             "",
-            "録画開始前に `record_ipad.sh` の iPad Pro 13-inch (M5) UUID 正規表現を "
-            "現在の `simctl list devices` 出力に合わせて修正した。この runner 修正後に "
-            "iPad の全件録画を実行しており、アプリ実装の不一致ではない。",
+            "実行上の workaround は、fresh H2 データベースの起動時に "
+            "`SPRING_SQL_INIT_MODE=always` と `VCF_DB_API=true` を指定したことだけである。"
+            "これは実行環境の初期化であり、アプリケーションおよび runner の変更はない。",
             "",
             "前セッションの履歴 `run1` では CV-23 の 5250 入力処理が原因で 36/37 "
             "となった。これは `INCMTID` の桁数一杯入力時に余分な Field Exit を送っていた "
@@ -189,6 +187,13 @@ def main():
 
     md.extend(
         [
+            "",
+            "### UI 日本語化とクロス検証契約",
+            "",
+            "比較で参照する `#errline` / `errline` 識別子は英語原文 M-xx を返し、"
+            "画面上の日本語は `.errline-ja` / `errline_ja` に表示する。画面検出の"
+            "アンカーとして、台帳で保持対象とした legacy title の英語文字列は残す。",
+            "",
             "",
             "## 3. ケース一覧",
             "",
