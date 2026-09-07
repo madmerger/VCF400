@@ -109,9 +109,9 @@ date: "2026-09-07"
 
 | 環境 | 動画パス | 長さ | 解像度 | サイズ | 収録内容 | 速度 |
 |---|---|---|---|---|---|---|
-| PUB400 | `deliverables/video/1_PUB400_RPG.mp4` | 492.50 秒 | 1280x720 (h264) | 8.25 MB | 実 5250 画面フレーム連続表示 | 等速 |
-| Java Web | `deliverables/video/2_Java_Web.mp4` | 153.47 秒 | 1280x720 (h264) | 5.54 MB | Chromium 実画面 | 等速 |
-| iPad | `deliverables/video/3_iPad.mp4` | 427.70 秒 | 1280x720 (h264) | 6.80 MB | シミュレータ実画面 | 等速 |
+| PUB400 | `deliverables/video/1_PUB400_RPG.mp4` | 492.50 秒 | 1280x720 (h264) | 8.65 MB | 実 5250 画面フレーム連続表示 | 等速 |
+| Java Web | `deliverables/video/2_Java_Web.mp4` | 153.47 秒 | 1280x720 (h264) | 5.81 MB | Chromium 実画面 | 等速 |
+| iPad | `deliverables/video/3_iPad.mp4` | 427.70 秒 | 1280x720 (h264) | 7.14 MB | シミュレータ実画面 | 等速 |
 
 3 本とも実時間の等速録画であり、追加の速度変更は行っていない。PUB400 は `self.s.screen.display` から取得した 5250 画面フレームを連続表示し、Java は Chromium の実画面、iPad はシミュレータの実画面を収録した。iPad のケース帯 オーバーレイは ffmpeg に `drawtext` がないため Playwright で PNG を生成し、`overlay` / `scale` / `pad` で合成した。
 

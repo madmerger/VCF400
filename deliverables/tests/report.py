@@ -61,7 +61,7 @@ def video_info(filename):
             "path": f"deliverables/video/{filename}",
             "duration": duration_text(data["format"]["duration"]),
             "resolution": f"{stream['width']}x{stream['height']}",
-            "size": f"{size / (1024 * 1024):.2f} MB",
+            "size": f"{size / 1_000_000:.2f} MB",
             "codec": stream.get("codec_name", "?"),
         }
     except (subprocess.CalledProcessError, KeyError, ValueError, FileNotFoundError):
@@ -69,7 +69,7 @@ def video_info(filename):
             "path": f"deliverables/video/{filename}",
             "duration": "?",
             "resolution": "?",
-            "size": f"{os.path.getsize(path) / (1024 * 1024):.2f} MB",
+            "size": f"{os.path.getsize(path) / 1_000_000:.2f} MB",
             "codec": "?",
         }
 

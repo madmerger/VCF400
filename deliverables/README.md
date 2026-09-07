@@ -13,8 +13,8 @@
 | テスト | テスト結果レポート Markdown | `deliverables/tests/VCF400_test_report.md` |
 | テスト | テスト結果レポート PDF | `deliverables/tests/VCF400_test_report.pdf` |
 | 録画 | PUB400 RPG 画面フレーム連続表示、等速 | `deliverables/video/1_PUB400_RPG.mp4`（492.500 秒 / 8.65 MB） |
-| 録画 | Java Web Chromium 実画面、等速 | `deliverables/video/2_Java_Web.mp4`（153.47 秒 / 5.54 MB） |
-| 録画 | iPad シミュレータ実画面、等速 | `deliverables/video/3_iPad.mp4`（427.70 秒 / 6.81 MB） |
+| 録画 | Java Web Chromium 実画面、等速 | `deliverables/video/2_Java_Web.mp4`（153.47 秒 / 5.81 MB） |
+| 録画 | iPad シミュレータ実画面、等速 | `deliverables/video/3_iPad.mp4`（427.70 秒 / 7.14 MB） |
 | 成果物一覧 | 本 README | `deliverables/README.md` |
 | 実装 | Java Web 版 | `java/`（PR #7: https://github.com/madmerger/VCF400/pull/7、仕様 §8-5 に従う全面日本語 UI） |
 | 実装 | iPad 版 | `ipad/`（PR #8: https://github.com/madmerger/VCF400/pull/8、仕様 §8-5 に従う全面日本語 UI） |

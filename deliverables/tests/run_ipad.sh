@@ -9,6 +9,11 @@ RESULTS="$HERE/results"
 mkdir -p "$RESULTS"
 rm -f "$RESULTS/ipad.sqlite" "$RESULTS/ipad.sqlite-wal" "$RESULTS/ipad.sqlite-shm"
 VCF_XCODEBUILD_ACTION="${VCF_XCODEBUILD_ACTION:-test}"
+if [ -n "${VCF_SIM_UDID:-}" ]; then
+  DESTINATION="platform=iOS Simulator,id=$VCF_SIM_UDID"
+else
+  DESTINATION="platform=iOS Simulator,name=${VCF_SIM:-iPad Pro 13-inch (M5)}"
+fi
 
 cd "$IPAD"
 [ -d VCF400.xcodeproj ] || xcodegen generate
@@ -28,12 +33,12 @@ if [ "$VCF_XCODEBUILD_ACTION" = "test-without-building" ]; then
   set_env VCF_DB "$RESULTS/ipad.sqlite"
   set_env VCF_ONLY "${1:-}"
   xcodebuild test-without-building -xctestrun "$RUNFILE" \
-    -destination "platform=iOS Simulator,name=${VCF_SIM:-iPad Pro 13-inch (M5)}" \
+    -destination "$DESTINATION" \
     -only-testing:VCF400UITests/CrossValidationUITests 2>&1
 else
   VCF_CASES="$HERE/cases.json" VCF_RESULTS="$RESULTS/ipad.json" VCF_DB="$RESULTS/ipad.sqlite" VCF_ONLY="${1:-}" \
   xcodebuild -project VCF400.xcodeproj -scheme VCF400 \
-    -destination "platform=iOS Simulator,name=${VCF_SIM:-iPad Pro 13-inch (M5)}" \
+    -destination "$DESTINATION" \
     -derivedDataPath build \
     -only-testing:VCF400UITests/CrossValidationUITests \
     test 2>&1
