@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('EXHBMENU')}"></head>
+<body><div class="screen">
+<header class="screen-header" th:text="#{ui.menu.title}">EXHBMENU - 展示メニュー</header>
+<main class="screen-body">
+<p><span th:text="#{ui.menu.profile}">プロフィール</span>: <strong th:text="${profile}">ASHIBATA</strong></p>
+<dl class="details"><dt th:text="#{ui.menu.title.label}">タイトル</dt><dd th:text="${menu.title}"></dd><dt th:text="#{ui.menu.exhibitor}">出展者</dt><dd th:text="${menu.name}"></dd><dt th:text="#{ui.menu.citystate}">市区町村/州</dt><dd><span th:text="${menu.city}"></span> <span th:text="${menu.state}"></span></dd><dt th:text="#{ui.menu.description}">説明</dt><dd th:text="${menu.desc}"></dd></dl>
+<form method="post" action="/menu"><input type="hidden" name="profile" th:value="${profile}"><label><span th:text="#{ui.menu.selection}">選択</span> <input name="option" type="number" min="1" max="7" value="1"></label><button type="submit" th:text="#{ui.enter}">Enter</button></form>
+<p th:if="${menu.showVote}"><a th:href="@{/help(next='/vote?profile=' + ${profile})}" th:text="#{ui.menu.vote}">1 投票</a></p>
+<p th:if="${menu.showLrn400}"><a th:href="@{/learn400(owner=${profile})}" th:text="#{ui.menu.learn2}">2 LEARN/400</a></p>
+<p><a th:href="@{/help(next='/guestbook/add?profile=' + ${profile})}" th:text="#{ui.menu.sign3}">3 ゲストブックに記帳</a></p>
+<p><a th:href="@{/help(next='/guestbook/read?profile=' + ${profile})}" th:text="#{ui.menu.read4}">4 ゲストブックを読む</a></p>
+<p><a th:href="@{/menu(profile=${profile}, exit=1)}" th:text="#{ui.menu.kiosk}">7 キオスクを終了</a></p>
+<form th:if="${exit}" method="post" action="/menu/exit">
+<input type="hidden" name="profile" th:value="${profile}">
+<label><span th:text="#{ui.menu.password}">パスワード</span> <input name="password" type="password"></label>
+<button type="submit" th:text="#{ui.enter}">Enter</button>
+</form>
+<p th:if="${exitResult != null and exitResult}" class="success" th:text="#{ui.menu.kiosk.ended}">キオスクを終了しました。</p>
+<p th:if="${exitResult != null and !exitResult}" class="error" th:text="#{ui.menu.password.incorrect}">パスワードが正しくありません。</p>
+</main><footer class="function-keys"><a href="/signon" th:text="#{ui.f3f12.signoff}">F3/F12 サインオフ</a></footer>
+</div></body></html>

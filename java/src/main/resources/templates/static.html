@@ -1,0 +1,3 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments/layout :: head(${title})}"></head>
+<body><div class="screen"><header class="screen-header" th:text="${@uiMessageTranslator.tr(title)}"></header><main class="screen-body"><pre th:text="${@uiMessageTranslator.tr(text)}"></pre></main><footer class="function-keys" th:text="#{ui.f3.exit}">F3=終了</footer></div></body></html>

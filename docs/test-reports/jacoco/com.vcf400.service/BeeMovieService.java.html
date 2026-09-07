@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BeeMovieService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.service</a> &gt; <span class="el_source">BeeMovieService.java</span></div><h1>BeeMovieService.java</h1><pre class="source lang-java linenums">package com.vcf400.service;
+
+import java.util.List;
+
+import com.vcf400.domain.BeeMovieLine;
+import com.vcf400.domain.BeeMovieLineRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+/** Java implementation of RPG program BEEMOVIE. */
+public class BeeMovieService {
+
+    private final BeeMovieLineRepository lines;
+
+<span class="fc" id="L15">    public BeeMovieService(BeeMovieLineRepository lines) {</span>
+<span class="fc" id="L16">        this.lines = lines;</span>
+<span class="fc" id="L17">    }</span>
+
+    /** RPG: BEGSR LOADSR; BR-BEEMOVIE-01, BR-BEEMOVIE-02. */
+    public List&lt;BeeMovieLine&gt; all() {
+<span class="fc" id="L21">        return lines.findAllByOrderByLine();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

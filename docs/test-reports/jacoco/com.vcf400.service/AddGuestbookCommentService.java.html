@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddGuestbookCommentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">vcf400-java</a> &gt; <a href="index.source.html" class="el_package">com.vcf400.service</a> &gt; <span class="el_source">AddGuestbookCommentService.java</span></div><h1>AddGuestbookCommentService.java</h1><pre class="source lang-java linenums">package com.vcf400.service;
+
+import com.vcf400.domain.GuestbookComment;
+import com.vcf400.domain.GuestbookCommentRepository;
+import com.vcf400.print.PrintSpoolService;
+import org.springframework.stereotype.Service;
+
+@Service
+/** Java implementation of RPG program ADDGBCMT. */
+public class AddGuestbookCommentService {
+
+    private final GuestbookCommentRepository comments;
+    private final PrintSpoolService printer;
+
+    public AddGuestbookCommentService(
+            GuestbookCommentRepository comments,
+<span class="fc" id="L17">            PrintSpoolService printer) {</span>
+<span class="fc" id="L18">        this.comments = comments;</span>
+<span class="fc" id="L19">        this.printer = printer;</span>
+<span class="fc" id="L20">    }</span>
+
+<span class="fc" id="L22">    public record CommentResult(</span>
+            boolean success,
+            String errLine,
+            Integer commentId,
+            String screen) {
+    }
+
+    /** RPG: BEGSR CHKPARM; BR-ADDGBCMT-01, BR-ADDGBCMT-02, BR-ADDGBCMT-03, BR-ADDGBCMT-04, BR-ADDGBCMT-05. */
+    public CommentResult submit(
+            String profile,
+            String exhibitId,
+            String name,
+            String comment) {
+<span class="fc" id="L35">        profile = DdsField.truncate(profile, 20);</span>
+<span class="fc" id="L36">        exhibitId = DdsField.truncate(exhibitId, 9);</span>
+<span class="fc" id="L37">        name = DdsField.truncate(name, 16);</span>
+<span class="fc" id="L38">        comment = DdsField.truncate(comment, 200);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        String exhibit = &quot;MM2024&quot;.equals(profile) ? exhibitId : profile;</span>
+<span class="fc" id="L40">        String err = null;</span>
+<span class="pc bpc" id="L41" title="1 of 4 branches missed.">        if (exhibit == null || exhibit.isBlank()) {</span>
+<span class="fc" id="L42">            err = RpgMessages.COMMENT_EXHIBIT;</span>
+        }
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">        if (name == null || name.isBlank()) {</span>
+<span class="fc" id="L45">            err = RpgMessages.NO_NAME;</span>
+        }
+<span class="pc bpc" id="L47" title="1 of 4 branches missed.">        if (comment == null || comment.isBlank()) {</span>
+<span class="fc" id="L48">            err = RpgMessages.NO_COMMENT;</span>
+        }
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (err != null) {</span>
+<span class="fc" id="L51">            return new CommentResult(false, err, null, &quot;ADDCMT&quot;);</span>
+        }
+
+<span class="fc" id="L54">        int id = comments.findAll().stream()</span>
+<span class="fc" id="L55">                .mapToInt(GuestbookComment::getCmtId)</span>
+<span class="fc" id="L56">                .max()</span>
+<span class="fc" id="L57">                .orElse(0) + 1;</span>
+<span class="fc" id="L58">        GuestbookComment saved = comments.save(</span>
+<span class="fc" id="L59">                new GuestbookComment(id, &quot;Y&quot;, exhibit, name, comment));</span>
+<span class="fc" id="L60">        printer.printCommentTicket(saved);</span>
+<span class="fc" id="L61">        return new CommentResult(true, RpgMessages.THANKS, id, &quot;ENDCMT&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
