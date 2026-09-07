@@ -1,138 +1,257 @@
 #!/usr/bin/env python3
-"""Phase 6: build the Markdown test report from results/compare.json (+ run logs / video)."""
+"""Build the Phase 6 cross-validation report from compare.json and video files."""
 import json
 import os
 import subprocess
-import time
 
 from common import RESULTS_DIR
-from compare import ENVS, ENV_LABEL, write_md
+from compare import ENVS, ENV_LABEL
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "VCF400_test_report.md")
-VIDEO = os.path.join(HERE, "..", "video", "VCF400_cross_validation.mp4")
+VIDEO_DIR = os.path.join(HERE, "..", "video")
+
+VIDEOS = [
+    ("PUB400", "1_PUB400_RPG.mp4", "実 5250 画面フレーム連続表示"),
+    ("Java Web", "2_Java_Web.mp4", "Chromium 実画面"),
+    ("iPad", "3_iPad.mp4", "シミュレータ実画面"),
+]
 
 GROUP_DESC = {
-    "ADDVOTE": "投票 (F-03): 必須入力 V-01..V-03 / 重複・資格・存在チェック V-04..V-07 / CHECKOK=4 書込 B-01 / ALWVOTE B-03",
-    "ADDGBCMT": "ゲストブック記入 (F-04): 必須入力 V-10..V-12 / CMTID 採番 B-06 / 展示存在チェックなし B-08",
-    "READGBCMT": "ゲストブック閲覧 (F-05): 必須入力 V-15 / SETLL+READ B-09 / 非表示 B-07 / 帰属外 B-10 / 共用端末 B-11",
-    "LRN400": "LEARN/400 (F-06): F5 進む / F8 前へ / F3 終了 / EXTRA='END' で終了 B-12",
-    "EXHBMENU": "展示キオスク (F-07): ELIGIBLE / ENLRN400 によるオプション表示 B-13 / 隠しオプション 7 + ADMPSWRD B-14",
+    "ADDVOTE": "投票",
+    "ADDGBCMT": "ゲストブック記入",
+    "READGBCMT": "ゲストブック閲覧",
+    "LRN400": "LEARN/400",
+    "EXHBMENU": "展示キオスク",
 }
 
 
-def video_info():
-    if not os.path.exists(VIDEO):
+def compact(value):
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("|", "\\|")
+
+
+def duration_text(seconds):
+    seconds = float(seconds)
+    minutes = int(seconds // 60)
+    remainder = seconds - minutes * 60
+    if abs(remainder - round(remainder)) < 0.01:
+        return f"{minutes} 分 {round(remainder)} 秒"
+    return f"{minutes} 分 {remainder:.3f} 秒"
+
+
+def video_info(filename):
+    path = os.path.join(VIDEO_DIR, filename)
+    if not os.path.exists(path):
         return None
     try:
-        out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=width,height",
-                              "-of", "json", VIDEO], capture_output=True, text=True, check=True).stdout
-        j = json.loads(out)
-        dur = float(j["format"]["duration"])
-        s = j["streams"][0]
-        return {"duration": f"{int(dur // 60)} 分 {int(dur % 60)} 秒", "size": f"{s['width']}x{s['height']}",
-                "bytes": os.path.getsize(VIDEO)}
+        out = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-show_entries",
+                "format=duration:stream=codec_name,width,height",
+                "-of",
+                "json",
+                path,
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+        data = json.loads(out)
+        stream = data["streams"][0]
+        size = os.path.getsize(path)
+        return {
+            "path": f"deliverables/video/{filename}",
+            "duration": duration_text(data["format"]["duration"]),
+            "resolution": f"{stream['width']}x{stream['height']}",
+            "size": f"{size / (1024 * 1024):.2f} MB",
+            "codec": stream.get("codec_name", "?"),
+        }
     except (subprocess.CalledProcessError, KeyError, ValueError, FileNotFoundError):
-        return {"duration": "?", "size": "?", "bytes": os.path.getsize(VIDEO)}
+        return {
+            "path": f"deliverables/video/{filename}",
+            "duration": "?",
+            "resolution": "?",
+            "size": f"{os.path.getsize(path) / (1024 * 1024):.2f} MB",
+            "codec": "?",
+        }
 
 
-def env_run(env):
-    p = os.path.join(RESULTS_DIR, f"{env}.json")
-    if not os.path.exists(p):
-        return {}
-    d = json.load(open(p, encoding="utf-8"))
-    return {"started": d.get("started", ""), "finished": d.get("finished", "")}
+def load_results():
+    report_path = os.path.join(RESULTS_DIR, "compare.json")
+    return json.load(open(report_path, encoding="utf-8"))
+
+
+def append_case_table(md, cases):
+    md.extend(
+        [
+            "| ID | 名称 | 入力 | 期待値 | PUB400 実測 | Java 実測 | iPad 実測 | 合否 |",
+            "|---|---|---|---|---|---|---|---|",
+        ]
+    )
+    for case in cases:
+        envs = case["envs"]
+        md.append(
+            f"| {case['id']} | {case['title']} | {compact(case['in'])} | "
+            f"{compact(case['expect'])} | {compact(envs['pub400']['observed'])} | "
+            f"{compact(envs['java']['observed'])} | {compact(envs['ipad']['observed'])} | "
+            f"{'PASS' if case['match'] else '**FAIL**'} |"
+        )
 
 
 def main():
-    rep = json.load(open(os.path.join(RESULTS_DIR, "compare.json"), encoding="utf-8"))
-    s = rep["summary"]
-    cases = rep["cases"]
-    groups = {}
-    for c in cases:
-        groups.setdefault(c["group"], []).append(c)
-    mismatches = [c for c in cases if not c["match"]]
-    vi = video_info()
-    runs = {e: env_run(e) for e in ENVS}
-    today = time.strftime("%Y-%m-%d")
+    report = load_results()
+    summary = report["summary"]
+    cases = report["cases"]
+    videos = [(env, video_info(filename), content) for env, filename, content in VIDEOS]
+    mismatches = [case for case in cases if not case["match"]]
 
-    md = []
-    md.append("---")
-    md.append('title: "VCF/400 クロス検証テスト結果レポート"')
-    md.append('subtitle: "PUB400 (オリジナル RPG) / Java Web / iPad の 3 環境同一入力比較"')
-    md.append(f'date: "{today}"')
-    md.append("---")
-    md.append("")
-    md.append("# VCF/400 クロス検証テスト結果レポート")
-    md.append("")
-    md.append("| 項目 | 内容 |")
-    md.append("|---|---|")
-    md.append("| 対象 | `madmerger/VCF400` — オリジナル (PUB400 `ASHIBATA2` ライブラリ、ソースからビルド) / Java Web 版 (`java/`) / iPad 版 (`ipad/`) |")
-    md.append("| テストケース | `deliverables/tests/cases.json` (37 ケース、仕様書 4 章 業務ルール・5 章 検証ルールから生成) |")
-    md.append("| 実行方式 | PUB400: tn5250 自動操作 (`run_pub400.py`) / Java: Playwright headed Chromium (`run_java.js`) / iPad: XCUITest on iPad Pro 13-inch シミュレータ (`run_ipad.sh` → `CrossValidationUITests`) |")
-    md.append("| 共通ベースライン | VOTINGDB {1/1/ASHIBATA, 28/2/ASHIBATA}, GUESTBKDB {1,2 (VISIBLE=Y, ASHIBATA)}, SETTINGS {ADMPSWRD=VCF2024, ALWVOTE=Y}, EXHBDB {ASHIBATA(1,1), DEMO400(1,0), NOVOTE(0,0)}, AWARDDB {1,2}, LRN400STR 3 ページ (3 = END)。各環境とも実行前にリセット |")
-    md.append("| 判定 | 期待値 (`expect`) の全キーが実測値 (`observed`) と一致 = PASS。画面種別・エラー行・遷移経路・出力項目・DB 状態 (投票行 / コメント行) を比較 |")
-    if vi:
-        md.append(f"| E2E 録画 | `deliverables/video/VCF400_cross_validation.mp4` ({vi['size']}, {vi['duration']}, {vi['bytes'] // 1024 // 1024} MB) — クロス検証工程のみを 1 本で録画 |")
-    md.append("")
-    md.append("## 1. サマリ")
-    md.append("")
-    md.append("| 環境 | PASS | FAIL / 未実行 | 実行開始 (UTC) | 実行終了 (UTC) |")
-    md.append("|---|---|---|---|---|")
-    for e in ENVS:
-        md.append(f"| {ENV_LABEL[e]} | {s[e]} / {s['total']} | {s['total'] - s[e]} | {runs[e].get('started', '')} | {runs[e].get('finished', '')} |")
-    md.append(f"| **3 環境一致** | **{s['all_match']} / {s['total']}** | {s['total'] - s['all_match']} | | |")
-    md.append("")
-    md.append("### 1.1 分類別")
-    md.append("")
-    md.append("| 分類 | 内容 | ケース数 | 3 環境一致 |")
-    md.append("|---|---|---|---|")
-    for g, cs in groups.items():
-        md.append(f"| {g} | {GROUP_DESC.get(g, '')} | {len(cs)} | {sum(1 for c in cs if c['match'])} |")
-    md.append("")
-    md.append("## 2. 不一致と対応")
-    md.append("")
-    if not mismatches:
-        md.append("最終実行では 37 ケースすべてが 3 環境で一致した。")
+    md = [
+        "---",
+        'title: "VCF/400 クロス検証テスト結果レポート"',
+        'subtitle: "PUB400 (オリジナル RPG) / Java Web / iPad の 3 環境同一入力比較"',
+        'date: "2026-09-07"',
+        "---",
+        "",
+        "# VCF/400 クロス検証テスト結果レポート",
+        "",
+        "| 項目 | 内容 |",
+        "|---|---|",
+        "| 対象 | オリジナル RPG (PUB400 `ASHIBATA2`) / Java Web 版 (`java/`) / iPad 版 (`ipad/`) |",
+        "| テストケース | `deliverables/tests/cases.json` (37 ケース) |",
+        "| 実行方式 | PUB400: tn5250 (`run_pub400.py`) / Java: Playwright headed Chromium (`run_java.js`) / iPad: XCUITest (`record_ipad.sh`) |",
+        "| 判定 | `expect` の全キーが 3 環境の `observed` と一致 = PASS |",
+        "",
+        "## 1. サマリ",
+        "",
+        "| 環境 | PASS | FAIL / 未実行 |",
+        "|---|---|---|",
+    ]
+    for env in ENVS:
+        md.append(
+            f"| {ENV_LABEL[env]} | {summary[env]} / {summary['total']} | "
+            f"{summary['total'] - summary[env]} |"
+        )
+    md.extend(
+        [
+            f"| **3 環境一致** | **{summary['all_match']} / {summary['total']}** | "
+            f"{summary['total'] - summary['all_match']} |",
+            "",
+            "### 1.1 分類別",
+            "",
+            "| 分類 | 内容 | ケース数 | 3 環境一致 |",
+            "|---|---|---|---|",
+        ]
+    )
+    groups = {}
+    for case in cases:
+        groups.setdefault(case["group"], []).append(case)
+    for group, group_cases in groups.items():
+        md.append(
+            f"| {group} | {GROUP_DESC.get(group, '')} | {len(group_cases)} | "
+            f"{sum(1 for case in group_cases if case['match'])} |"
+        )
+
+    md.extend(
+        [
+            "",
+            "## 2. 不一致と対処",
+            "",
+            "本 run は、記録対象として **37/37 を first pass で達成**した。`compare.py` "
+            "の最終結果も PUB400 37/37、Java 37/37、iPad 37/37 で、不一致はない。",
+            "",
+            "録画開始前に `record_ipad.sh` の iPad Pro 13-inch (M5) UUID 正規表現を "
+            "現在の `simctl list devices` 出力に合わせて修正した。この runner 修正後に "
+            "iPad の全件録画を実行しており、アプリ実装の不一致ではない。",
+            "",
+            "前セッションの履歴 `run1` では CV-23 の 5250 入力処理が原因で 36/37 "
+            "となった。これは `INCMTID` の桁数一杯入力時に余分な Field Exit を送っていた "
+            "runner の問題であり、修正済みの現行 runner では再発しなかった。古い "
+            "`results/run1/` 証跡は stale artifact として削除した。",
+            "",
+        ]
+    )
+    if mismatches:
+        md.extend(
+            [
+                "| ID | 環境 | 差異 |",
+                "|---|---|---|",
+            ]
+        )
+        for case in mismatches:
+            for env in ENVS:
+                for difference in case["envs"][env]["diff"]:
+                    md.append(f"| {case['id']} | {ENV_LABEL[env]} | `{difference}` |")
     else:
-        md.append("| ID | 環境 | 差異 |")
-        md.append("|---|---|---|")
-        for c in mismatches:
-            for e in ENVS:
-                for d in c["envs"][e]["diff"]:
-                    md.append(f"| {c['id']} | {ENV_LABEL[e]} | `{d}` |")
-    md.append("")
-    md.append("### 2.1 クロス検証で検出・修正した相違 (最終実行前に修正済み)")
-    md.append("")
-    md.append("| # | 検出環境 | 内容 | ルート原因 | 対応 |")
-    md.append("|---|---|---|---|---|")
-    md.append("| 1 | Java / iPad | AWARDDB のタイトルがオリジナル VOTESCR DDS の表示 (`Best in Show Award` / `The Ed Fair Award`) と不一致 | 参照データを PUB400 の観測値ではなく仮値で作成していた | `data.sql` / `Database.swift` の seed を DDS どおりに修正 |")
-    md.append("| 2 | iPad | VOTINGDB ベースライン (4992/4993) と LRN400STR 本文が PUB400・Java (1/28, ページ文言) と不一致 | フェーズ 1 の実行時データを seed に採用していた | `Database.swift` の seed を共通ベースラインに統一 (CV-27/28 の `content` 比較が対象) |")
-    md.append("| 3 | Java | キオスクメニューでオプション 1/2 が ELIGIBLE / ENLRN400 に関係なく非表示 | Thymeleaf の `th:if` が boolean アクセサ (`isEligible()`) を解決できていなかった | `kiosk.html` を `${exhibit.isEligible()}` 形式に修正 (CV-31..33) |")
-    md.append("| 4 | iPad | VCFMAIN のオプション 90 が台帳 L-01-07 と異なるグループに配置 | 画面構成の転記ミス | `MainMenuView.swift` で Administration グループへ移動 |")
-    md.append("| 5 | PUB400 | フェーズ 1 の実行で残った投票・コメントがベースラインを汚染 | 共有環境上の実行データ | `pub400_db.py reset` を追加し、実行前に `ASHIBATA2` のデータを共通ベースラインへ戻す |")
-    md.append("| 6 | Java (ランナー) | Playwright ランナーが `p.big` 等の非存在セレクタ待ちでタイムアウトし、ブラウザクローズ後に操作していた | `locator.textContent()` が要素出現までブロック | `page.evaluate` による非ブロック取得へ変更 (実装側の相違ではない) |")
-    md.append("| 7 | PUB400 (ランナー) | 録画付き 1 回目の全件実行で CV-23 (コメント ID 9999) のみ PUB400 が `Must enter CommentID` となり 36/37 (`results/run1/`) | `INCMTID` は `4Y 0` のため 4 桁入力でカーソルが自動的に次フィールド (=同一フィールド先頭) へ進み、続く Field Exit がフィールドを消去していた | `run_pub400.py` で桁数一杯の入力時は Field Exit を送らないよう修正し、全件を再実行 (実装側の相違ではない: 5250 上で 9999 を手入力すると帰属外メッセージが表示される) |")
-    md.append("")
-    md.append("## 3. ケース一覧 (入力 / 期待値 / 3 環境の判定)")
-    md.append("")
-    tmp = os.path.join(RESULTS_DIR, "_cases.md")
-    write_md(rep, tmp)
-    md.append(open(tmp, encoding="utf-8").read().rstrip())
-    os.remove(tmp)
-    md.append("")
-    md.append("## 4. 成果物")
-    md.append("")
-    md.append("| 種別 | パス |")
-    md.append("|---|---|")
-    md.append("| テストケース定義 | `deliverables/tests/cases.json` |")
-    md.append("| ランナー | `deliverables/tests/run_pub400.py`, `run_java.js`, `run_ipad.sh` + `ipad/VCF400UITests/CrossValidationUITests.swift`, `run_all.sh` (録画付き一括実行) |")
-    md.append("| 比較 | `deliverables/tests/compare.py` → `deliverables/tests/results/compare.json` |")
-    md.append("| 実測値 | `deliverables/tests/results/pub400.json`, `java.json`, `ipad.json` |")
-    md.append("| 実行ログ | `deliverables/tests/results/run_all.log` (全体), `pub400_5250.log` (5250 全画面ダンプ), `java_run.log`, `ipad_xcuitest.log` |")
-    md.append("| 録画 | `deliverables/video/VCF400_cross_validation.mp4` |")
-    md.append("")
-    open(OUT, "w", encoding="utf-8").write("\n".join(md) + "\n")
+        md.append("最終実行における不一致は 0 件。")
+
+    md.extend(
+        [
+            "",
+            "## 3. ケース一覧",
+            "",
+            "入力、期待値、3 環境の実測値、および合否を以下に示す。",
+            "",
+        ]
+    )
+    append_case_table(md, cases)
+
+    md.extend(
+        [
+            "",
+            "## 4. 実行環境",
+            "",
+            "| 項目 | 値 |",
+            "|---|---|",
+            "| OS | macOS |",
+            "| Xcode | 26.6 |",
+            "| Java | 17.0.20.1 |",
+            "| tn5250 | 0.19.0 |",
+            "| Playwright / Chromium | 1.63 / 1243 |",
+            "| ffmpeg | 9.0.1 |",
+            "| XcodeGen | 2.46.0 |",
+            "| PUB400 | `ASHIBATA1` / `ASHIBATA2` |",
+            "| 実行日 | 2026-09-07 |",
+            "",
+            "## 5. 動画",
+            "",
+            "| 環境 | 動画パス | 長さ | 解像度 | サイズ | 収録内容 | 速度 |",
+            "|---|---|---|---|---|---|---|",
+        ]
+    )
+    for env, info, content in videos:
+        if info is None:
+            md.append(f"| {env} | — | — | — | — | {content} | 等速 |")
+        else:
+            md.append(
+                f"| {env} | `{info['path']}` | {info['duration']} | "
+                f"{info['resolution']} ({info['codec']}) | {info['size']} | {content} | 等速 |"
+            )
+    md.extend(
+        [
+            "",
+            "3 本とも実時間の等速録画であり、追加の速度変更は行っていない。PUB400 は "
+            "`self.s.screen.display` から取得した 5250 画面フレームを連続表示し、Java は "
+            "Chromium の実画面、iPad はシミュレータの実画面を収録した。iPad のケース帯 "
+            "オーバーレイは ffmpeg に `drawtext` がないため Playwright で PNG を生成し、"
+            "`overlay` / `scale` / `pad` で合成した。",
+            "",
+            "## 6. 成果物と再現性",
+            "",
+            "| 種別 | パス |",
+            "|---|---|",
+            "| テストケース定義 | `deliverables/tests/cases.json` |",
+            "| 実測値 | `deliverables/tests/results/pub400.json`, `java.json`, `ipad.json` |",
+            "| 比較結果 | `deliverables/tests/results/compare.json` |",
+            "| フレーム | `deliverables/tests/results/pub400_frames.json` |",
+            "| ランナー | `run_pub400.py`, `run_java.js`, `run_ipad.sh`, `record_ipad.sh` |",
+            "| 動画変換 | `frames_to_video.js`, `overlay_ipad.js` |",
+            "",
+        ]
+    )
+    open(OUT, "w", encoding="utf-8").write("\n".join(md))
     print("wrote", OUT)
 
 

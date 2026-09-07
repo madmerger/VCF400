@@ -3,9 +3,58 @@
 - 仕様書: `deliverables/spec/VCF400_spec.md` (ID: F-xx 機能, D-xx DB, B-xx 業務ルール, V-xx 検証, M-xx メッセージ, L-xx-yy 元画面構造台帳)
 - Java 版: `java/src/main/java/com/vcf400/...` / `java/src/main/resources/templates/*.html`
 - iPad 版: `ipad/VCF400Kit/Sources/VCF400Kit/*.swift` / `ipad/VCF400/Views/*.swift`
+- 元画面構造台帳: `deliverables/spec/VCF400_screen_ledger.md`（`VCF400_spec.md` 第 7 章の独立した正本）
 - 「適合」列は フェーズ4 (仕様適合性の検証) の結果。相違があった項目は末尾「フェーズ4 相違一覧と対処」に記載。
 
 判定記号: ✅ 一致 / ✅* 一致 (修正後) / ➖ 移行対象外 (仕様書で明示) / ⚠ 意図的な差異 (備考参照)
+
+## 0. 独立台帳・共通テストケース参照
+
+L-xx / L-xx-yy の画面構造・DDS 座標・文言は、仕様書の要約ではなく
+`deliverables/spec/VCF400_screen_ledger.md` を正とする。仕様書
+`deliverables/spec/VCF400_spec.md` 第 7 章はこの台帳へのポインタと一覧表を掲載する。
+
+業務ルール (B-xx) と入力検証 (V-xx) の「テストケース」列は、Java/iPad の
+単体テスト名に加えて、共通クロス検証定義 `deliverables/tests/cases.json` の
+`rules` に付与された CV-xx ID を参照する。
+
+| ルール | `cases.json` の共通ケース ID |
+|---|---|
+| B-01 | CV-05 |
+| B-02 | CV-10, CV-31, CV-32, CV-37 |
+| B-03 | CV-13 |
+| B-04 | CV-04, CV-11 |
+| B-05 | CV-01, CV-12, CV-14 |
+| B-06 | CV-17, CV-22 |
+| B-07 | CV-24 |
+| B-08 | CV-23, CV-25, CV-26 |
+| B-09 | CV-23, CV-26 |
+| B-10 | CV-29 |
+| B-11 | CV-34, CV-35 |
+| B-12 | CV-31, CV-32, CV-33 |
+| B-13 | CV-08, CV-11, CV-36 |
+| B-15 | CV-07 |
+| V-01 | CV-01, CV-03 |
+| V-02 | CV-01, CV-02, CV-07 |
+| V-03 | CV-08 |
+| V-04 | CV-05 |
+| V-05 | CV-10 |
+| V-06 | CV-09 |
+| V-07 | CV-06 |
+| V-08 | CV-04 |
+| V-09 | CV-13 |
+| V-10 | CV-18 |
+| V-11 | CV-14, CV-16 |
+| V-12 | CV-14, CV-15 |
+| V-13 | CV-19 |
+| V-14 | CV-20 |
+| V-15 | CV-21 |
+| V-16 | CV-24 |
+| V-17 | CV-25 |
+| V-18 | CV-23 |
+| V-19 | CV-27 |
+| V-20 | CV-28 |
+| V-21 | CV-30 |
 
 ## 1. 機能 (F-xx)
 
