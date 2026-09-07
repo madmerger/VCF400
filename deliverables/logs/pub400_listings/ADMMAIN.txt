@@ -1,0 +1,107 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMMAIN       26-09-07 17:22:54        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   ADMMAIN
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QMNUSRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   ADMMAIN
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:20:54
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A* Free Form Menu: ADMMAIN
+    200       A*%%TS  SD  20231028  184947  QSECOFR     REL-V4R4M0  5769-PW1
+    300       A*%%EC
+    400       A                                      DSPSIZ(24 80 *DS3                  -
+    500       A                                             27 132 *DS4)
+    600       A                                      CHGINPDFT
+    700       A                                      INDARA
+    800       A                                      PRINT(*LIBL/QSYSPRT)
+    900       A          R ADMMAIN
+*                  CPD5235-.*********
+*                  CPD8111-**********
+   1000       A*%%TS  SD  20231028  184947  QSECOFR     REL-V4R4M0  5769-PW1
+   1100       A                                      DSPMOD(*DS3)
+   1200       A                                      LOCK
+   1300       A                                      SLNO(01)
+   1400       A                                      CLRL(*ALL)
+*                                            CPD8018-*
+   1500       A                                      ALWROL
+*                                            CPD8018-*
+   1600       A                                      CF03
+   1700       A                                      HELP
+   1800       A                                      HOME
+   1900       A                                      HLPRTN
+   2000       A                                  1  2'ADMMAIN'
+   2100       A                                      COLOR(BLU)
+   2200       A                                  1 33'VCF/400 - Admin Menu'
+   2300       A                                      DSPATR(HI)
+   2400       A                                  3  2'Select one of the following:'
+   2500       A                                      COLOR(BLU)
+   2600       A                                  5  7'1. Create New Exhibit'
+   2700       A                                  6  7'2. Edit Existing Exhibit'
+   2800       A                                  7  7'3. Moderate Comment'
+   2900       A                                  8  7'4. End All Voting'
+   3000       A                                  9  7'5. View Voting Statistics'
+   3100       A                                 10  7'6.'
+   3200       A                                 11  7'7.'
+   3300       A                                 12  7'8.'
+   3400       A                                 13  7'9.'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMMAIN       26-09-07 17:22:54        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3500       A                                 14  6'10.'
+   3600       A* CMDPROMPT  Do not delete this DDS spec.
+   3700       A                                019  2'Selection or command              -
+   3800       A                                          '
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMMAIN       26-09-07 17:22:54        Page    3
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    400                                              DSPSIZ(24 80 *DS3                  -
+    400                                                     27 132 *DS4) CHGINPDFT +
+    700                                              INDARA PRINT(*LIBL/QSYSPRT)
+    900                  R ADMMAIN                   DSPMOD(*DS3) LOCK SLNO(01) +
+   1400                                              CLRL(*ALL) ALWROL CF03 HELP HOME +
+   1900                                              HLPRTN
+   2000                                          1  2'ADMMAIN' COLOR(BLU)                     7
+   2200                                          1 33'VCF/400 - Admin Menu' DSPATR(HI)       20
+   2400                                          3  2'Select one of the following:' +        28
+   2500                                              COLOR(BLU)
+   2600                                          5  7'1. Create New Exhibit'                 21
+   2700                                          6  7'2. Edit Existing Exhibit'              24
+   2800                                          7  7'3. Moderate Comment'                   19
+   2900                                          8  7'4. End All Voting'                     17
+   3000                                          9  7'5. View Voting Statistics'             25
+   3100                                         10  7'6.'                                     2
+   3200                                         11  7'7.'                                     2
+   3300                                         12  7'8.'                                     2
+   3400                                         13  7'9.'                                     2
+   3500                                         14  6'10.'                                    3
+   3700                                         19  2'Selection or command              -    38
+   3700                                                  '
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMMAIN       26-09-07 17:22:54        Page    4
+                                             Messages
+    ID      Severity  Number
+* CPD5235      10        1      Message . . . . :   Record name same as name of file being created.
+* CPD8018      10        2      Message . . . . :   Keyword may not function as expected with DSPMOD.
+* CPD8111      10        1      Message . . . . :   Record may not function as expected.
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMMAIN       26-09-07 17:22:54        Page    5
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        4                 0                    4             0            0
+* CPC7301      00               Message . . . . :   File ADMMAIN created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

@@ -1,0 +1,46 @@
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA2/ADDGBSTUB   PUB400 26-09-07 17:22:57         Page    1
+ Program . . . . . . . . . . . . . . . . . . . :   ADDGBSTUB
+   Library . . . . . . . . . . . . . . . . . . :     ASHIBATA2
+ Source file . . . . . . . . . . . . . . . . . :   QCLSRC
+   Library . . . . . . . . . . . . . . . . . . :     ASHIBATA1
+ Source member name  . . . . . . . . . . . . . :   ADDGBSTUB   26-09-07 17:20:04
+ Source printing options . . . . . . . . . . . :   *SOURCE  *XREF  *GEN  *NOSECLVL  *NOSRCDBG  *NOLSTDBG  *NODOSLTLVL
+ Program generation options  . . . . . . . . . :   *NOLIST  *NOXREF  *NOPATCH
+ User profile  . . . . . . . . . . . . . . . . :   *USER
+ Program logging . . . . . . . . . . . . . . . :   *JOB
+ Allow RTVCLSRC command  . . . . . . . . . . . :   *YES
+ Replace program . . . . . . . . . . . . . . . :   *YES
+ Target release  . . . . . . . . . . . . . . . :   V7R5M0
+ Authority . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Sort sequence . . . . . . . . . . . . . . . . :   *HEX
+ Language identifier . . . . . . . . . . . . . :   *JOBRUN
+ Text  . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . :   IBM Control Language Compiler
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+    100-
+    200-              QSYS/PGM
+    300-              QSYS/DCL   VAR(&PROFILE) TYPE(*CHAR) LEN(10)
+    400-              QSYS/RTVJOBA CURUSER(&PROFILE)
+    500-              QSYS/CALL  PGM(ASHIBATA2/NTRSTIT)
+    600-              QSYS/CALL  PGM(ASHIBATA2/ADDGBCMT) PARM(&PROFILE)
+    700-              QSYS/ENDPGM
+                               * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA2/ADDGBSTUB   PUB400 26-09-07 17:22:57         Page    2
+                                          Cross Reference
+ Declared Variables
+ Name                        Defined     Type            Length      References
+ &PROFILE                       300      *CHAR              10           400    600
+* CPD0791 00  No labels used in program.
+                     * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA2/ADDGBSTUB   PUB400 26-09-07 17:22:57         Page    3
+                                          Message Summary
+               Severity
+ Total         0-9  10-19  20-29  30-39  40-49  50-59  60-69  70-79  80-89  90-99
+      1          1      0      0      0      0      0      0      0      0      0
+ Program ADDGBSTUB created in library ASHIBATA2 on 26-09-07 at 17:22:57.
+ Program ADDGBSTUB created in library ASHIBATA2. Maximum error severity 00.
+                               * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                 * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

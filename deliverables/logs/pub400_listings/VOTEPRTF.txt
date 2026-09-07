@@ -1,0 +1,117 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTEPRTF      26-09-07 17:22:53        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   VOTEPRTF
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Printer
+ Source file containing DDS  . . . . . . . . . . . . :   QRLUSRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   VOTEPRTF
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:21:18
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%***********************************************************************
+    200       A*%%TS  RD  20231220  191718  QSECOFR     REL-V4R2M0  5769-PW1
+    300       A*%%FI+10660100000000000000000000000000000000000000000000000000
+    400       A*%%FI       0000000000000000000000000000000000000000000000000
+    500       A*%%***********************************************************************
+    600       A          R RCD001
+    700       A*%%***********************************************************************
+    800       A*%%RI 00000
+    900       A*%%***********************************************************************
+   1000       A                                     1
+   1100       A                                      'VCF/400 - VOTING TICKET'
+   1200       A*%%***********************************************************************
+   1300       A*%%SS
+   1400       A*%%***********************************************************************
+   1500       A          R RCD002
+   1600       A*%%***********************************************************************
+   1700       A*%%RI 00000
+   1800       A*%%FS 001
+   1900       A*%%***********************************************************************
+   2000       A                                      SPACEB(002)
+   2100       A                                     1
+   2200       A                                      'BADGE:'
+   2300       A            BADGENBR  R        O    +1
+   2400       A                                      REFFLD(VOTINGREC/BADGENBR VOTIN-
+   2500       A                                      GDB)
+   2600       A*%%***********************************************************************
+   2700       A*%%SS
+   2800       A*%%***********************************************************************
+   2900       A          R RCD003
+   3000       A*%%***********************************************************************
+   3100       A*%%RI 00000
+   3200       A*%%***********************************************************************
+   3300       A                                      SPACEB(001)
+   3400       A                                     1
+   3500       A                                      'AWARD:'
+   3600       A            AWARDNBR  R        O    +1
+   3700       A                                      REFFLD(VOTINGREC/AWARDNBR VOTIN-
+   3800       A                                      GDB)
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTEPRTF      26-09-07 17:22:53        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3900       A*%%***********************************************************************
+   4000       A*%%SS
+   4100       A*%%***********************************************************************
+   4200       A          R EXHBOUT
+   4300       A*%%***********************************************************************
+   4400       A*%%RI 00000
+   4500       A*%%***********************************************************************
+   4600       A                                      SPACEB(001)
+   4700       A                                     1
+   4800       A                                      'EXHIBIT:'
+   4900       A            EXHBNBR   R        O    +1
+   5000       A                                      REFFLD(VOTINGREC/EXHBNBR VOTING-
+   5100       A                                      DB)
+   5200       A*%%***********************************************************************
+   5300       A*%%SS
+   5400       A*%%CP+999CRTPRTF
+   5500       A*%%CP+    FILE(VCF/VOTEPRTF)
+   5600       A*%%CP+    DEVTYPE(*SCS)
+   5700       A*%%CP     PAGESIZE(*N       132      *N     )
+   5800       A*%%***********************************************************************
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTEPRTF      26-09-07 17:22:53        Page    3
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    600                  R RCD001
+   1000                                             1'VCF/400 - VOTING TICKET'               23
+   1500                  R RCD002                    SPACEB(002)
+   2100                                             1'BADGE:'                                 6
+   2300                    BADGENBR       4S 0O     8                                         4            1
+ * Referenced Field  . . . . . . . . . . . :   BADGENBR
+ *   Format  . . . . . . . . . . . . . . . :   VOTINGREC
+ *   File  . . . . . . . . . . . . . . . . :   VOTINGDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+   2900                  R RCD003                    SPACEB(001)
+   3400                                             1'AWARD:'                                 6
+   3600                    AWARDNBR       3S 0O     8                                         3            1
+ * Referenced Field  . . . . . . . . . . . :   AWARDNBR
+ *   Format  . . . . . . . . . . . . . . . :   VOTINGREC
+ *   File  . . . . . . . . . . . . . . . . :   VOTINGDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+   4200                  R EXHBOUT                   SPACEB(001)
+   4700                                             1'EXHIBIT:'                               8
+   4900                    EXHBNBR        9A  O    10                                         9            1
+ * Referenced Field  . . . . . . . . . . . :   EXHBNBR
+ *   Format  . . . . . . . . . . . . . . . :   VOTINGREC
+ *   File  . . . . . . . . . . . . . . . . :   VOTINGDB
+ *   Library . . . . . . . . . . . . . . . :   ASHIBATA2
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTEPRTF      26-09-07 17:22:53        Page    4
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File VOTEPRTF created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

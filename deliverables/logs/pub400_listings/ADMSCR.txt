@@ -1,0 +1,58 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMSCR        26-09-07 17:22:53        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   ADMSCR
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   ADMSCR
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  17:22:18
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A*%%TS  SD  20231209  124709  QSECOFR     REL-V4R4M0  5769-PW1
+    200       A*%%EC
+    300       A                                      DSPSIZ(24 80 *DS3)
+    400       A          R ADDADM
+    500       A*%%TS  SD  20231209  124709  QSECOFR     REL-V4R4M0  5769-PW1
+    600       A                                  1  3'VCF/400 - Add Admin'
+    700       A                                  3  3'Admin USRPRF to add:'
+    800       A            INADMNAME      9A  I  4  4
+    900       A                                  8  3'Press ENTER to add admin to DB'
+   1000       A          R LISTADMRCD
+   1100       A*%%TS  SD  20231209  124038  QSECOFR     REL-V4R4M0  5769-PW1
+   1200       A                                  1  3'VCF/400 - View List of Admins'
+   1300       A                                  3  3'This is a placeholder page. I need-
+   1400       A                                       to implement this as a SUBFILE!'
+   1500       A                                  9  3'Press ENTER to EXIT'
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMSCR        26-09-07 17:22:53        Page    2
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    300                                              DSPSIZ(24 80 *DS3)
+    400                  R ADDADM
+    600                                          1  3'VCF/400 - Add Admin'                   19
+    700                                          3  3'Admin USRPRF to add:'                  20
+    800                    INADMNAME      9A  I  4  4                                         9                    1
+    900                                          8  3'Press ENTER to add admin to DB'        30
+   1000                  R LISTADMRCD
+   1200                                          1  3'VCF/400 - View List of Admins'         29
+   1300                                          3  3'This is a placeholder page. I need-    66
+   1300                                               to implement this as a SUBFILE!'
+   1500                                          9  3'Press ENTER to EXIT'                   19
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/ADMSCR        26-09-07 17:22:53        Page    3
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        0                 0                    0             0            0
+* CPC7301      00               Message . . . . :   File ADMSCR created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

@@ -1,0 +1,126 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   NTRSTIT
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   NTRSTIT
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-07  17:21:57
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FINTERSCR  CF   E             WORKSTN                                                                     000000     000100
+     2 C*    *ENTRY        PLIST                                                                                 000000     000200
+     3 C*                  PARM                    LAUNCH           20                                           000000     000300
+     4 C*                  MOVEL     LAUNCH        PARMOUT                                                       000000     000400
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  INTERSCR         ASHIBATA2/INTERSCR                          *
+        * Record format(s) . . . . . :  INTERTEST        INTERTEST                                   *
+        *--------------------------------------------------------------------------------------------*
+     5=IINTERTEST                                                                                                          1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  INTERTEST                                                    *                     1
+        * External format  . . . . . :  INTERTEST : ASHIBATA2/INTERSCR                               *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+     6 C                                                                                                         000000     000500
+     7 C                   EXFMT     INTERTEST                                                                   000000     000600
+     8 C                                                                                                         000000     000700
+     9 C                   MOVEL     *ON           *INLR                                                         000000     000800
+    10 C                   RETURN                                                                                000000     000900
+    11=OINTERTEST                                                                                                          2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  INTERTEST                                                    *                     2
+        * External format  . . . . . :  INTERTEST : ASHIBATA2/INTERSCR                               *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      3
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      4
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         INTERSCR          WORKSTN                 1D
+           INTERTEST                               1D      5       7      11
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *INLR             N(1)                    9M
+      Indicator References:
+         Indicator                            References (D=Defined M=Modified)
+         LR                                        9M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      5
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      6
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 17:22:54        Page      7
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :        0
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :        0
+  Source Totals:
+    Records . . . . . . . . . . . . :       11
+    Specifications  . . . . . . . . :        8
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :        3
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program NTRSTIT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 17:22:54.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

@@ -1,0 +1,356 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   ADMVOTERPT
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   ADMVOTERPT
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-07  17:21:41
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FSECOFRS   IF   E           K DISK                                                                        000000     000100
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  SECOFRS          ASHIBATA2/SECOFRS                           *
+        * Record format(s) . . . . . :  USRPROFR         USRPROFR                                    *
+        *--------------------------------------------------------------------------------------------*
+     2 FVOTINGDB  IF   E           K DISK                                                                        000000     000200
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  VOTINGDB         ASHIBATA2/VOTINGDB                          *
+        * Record format(s) . . . . . :  VOTINGREC        VOTINGREC                                   *
+        *--------------------------------------------------------------------------------------------*
+     3 FEXHBDB    IF   E           K DISK                                                                        000000     000300
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBDB           ASHIBATA2/EXHBDB                            *
+        * Record format(s) . . . . . :  EXHBREC          EXHBREC                                     *
+        *--------------------------------------------------------------------------------------------*
+     4 FADMVOTERESCF   E             WORKSTN                                                                     000000     000400
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  ADMVOTERES       ASHIBATA2/ADMVOTERES                        *
+        * Record format(s) . . . . . :  VOTERES          VOTERES                                     *
+        *--------------------------------------------------------------------------------------------*
+     5 DALWEXIT          S              1P 0                                                                     000000     000500
+     6 DNUMBR            S              4P 0                                                                     000000     000600
+     7 DVOTEEFA          S              4P 0                                                                     000000     000700
+     8 DVOTEBIS          S              4P 0                                                                     000000     000800
+     9 DUSERPROF         S              9A                                                                       000000     000900
+    10 DERRBLANK         C                   CONST('USRPRF cannot be blank     ')                                000000     001000
+    11 DERRNOTF          C                   CONST('USRPRF was not found       ')                                000000     001100
+    12 DDBGNAME          C                   CONST('NL2024')                                                     000000     001200
+    13  *---------------------------------------------------------------------                                   000000     001300
+    14  * AWARDNBR:                                                                                              000000     001400
+    15  * 001 = VOTEEFA (Ed Fair)                                                                                000000     001500
+    16  * 002 = VOTEBIS (Best in Show)                                                                           000000     001600
+    17  *---------------------------------------------------------------------                                   000000     001700
+    18 C*---------------------------------------------------------------------                                   000000     001800
+    19=IUSRPROFR                                                                                                           1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  USRPROFR                                                     *                     1
+        * External format  . . . . . :  USRPROFR : ASHIBATA2/SECOFRS                                 *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+    20=I                             A    1    9  USERPROF                                                                 1000002
+    21=IVOTINGREC                                                                                                          2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  VOTINGREC                                                    *                     2
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      3
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+        * External format  . . . . . :  VOTINGREC : ASHIBATA2/VOTINGDB                               *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+    22=I                             B    1    2 0BADGENBR                                                                 2000002
+    23=I                             B    3    4 0AWARDNBR                                                                 2000003
+    24=I                             A    5   13  EXHBNBR                                                                  2000004
+    25=IEXHBREC                                                                                                            3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * RPG record format  . . . . :  EXHBREC                                                      *                     3
+        * External format  . . . . . :  EXHBREC : ASHIBATA2/EXHBDB                                   *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    26=I                             B    1    2 0EXHBDBID                                                                 3000002
+    27=I                             A    3   11  EXHUSRPRF                                                                3000003
+    28=I                             A   12   31  EXHBITOR                                                                 3000004
+    29=I                             A   32   51  EXHBCITY                                                                 3000005
+    30=I                             A   52   53  EXHBSTATE                                                                3000006
+    31=I                             A   54  103  EXHBTITLE                                                                3000007
+    32=I                             A  104 1103  EXHBDESC                                                                 3000008
+    33=I                             B 1104 1105 0ELIGIBLE                                                                 3000009
+    34=I                             B 1106 1107 0ENLRN400                                                                 3000010
+    35=IVOTERES                                                                                                            4000001
+        *--------------------------------------------------------------------------------------------*                     4
+        * RPG record format  . . . . :  VOTERES                                                      *                     4
+        * External format  . . . . . :  VOTERES : ASHIBATA2/ADMVOTERES                               *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    36=I                             N    1    1  *IN03                           Exit                                     4000002
+    37=I                             A    2   10  INUSRPRF                                                                 4000003
+    38 C     *ENTRY        PLIST                                                                                 000000     001900
+    39 C                   PARM                    LAUNCH            9                                           000000     002000
+    40 C*-----------------------------------------------------------------------                                 000000     002100
+    41 C                   EXSR      CHKPARM                                                                     000000     002200
+    42 C                   MOVEL     0             ALWEXIT                                                       000000     002300
+    43 C                                                                                                         000000     002400
+    44 C                   IF        USERPROF = 'NONE'                                                 B01       000000     002500
+    45 C                                                                                               B01       000000     002600
+    46 C                   ELSE                                                                        X01       000000     002700
+    47 C                   EXSR      READVOTE                                                           01       000000     002800
+    48 C                   ENDIF                                                                       E01       000000     002900
+    49 C                                                                                               E01       000000     003000
+    50 C                   DOW       ALWEXIT = *ZERO                                                   B01       000000     003100
+    51 C                   EXFMT     VOTERES                                                            01       000000     003200
+    52 C                                                                                                01       000000     003300
+    53 C                   IF        *IN03 = *ON                                                       B02       000000     003400
+    54 C                   MOVEL     1             ALWEXIT                                              02       000000     003500
+    55 C                   ENDIF                                                                       E02       000000     003600
+    56 C                                                                                               E02       000000     003700
+    57 C                   MOVEL     INUSRPRF      USERPROF                                             01       000000     003800
+    58 C                   EXSR      READVOTE                                                           01       000000     003900
+    59 C                   ENDDO                                                                       E01       000000     004000
+    60 C                                                                                               E01       000000     004100
+    61 C                   MOVEL     *ON           *INLR                                                         000000     004200
+    62 C                   RETURN                                                                                000000     004300
+    63 C*-----------------------------------------------------------------------                                 000000     004400
+    64 C     READVOTE      BEGSR                                                                                 000000     004500
+    65 C                   RESET                   VOTEEFA                                                       000000     004600
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      4
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    66 C                   RESET                   VOTEBIS                                                       000000     004700
+    67 C                   RESET                   NUMBR                                                         000000     004800
+    68 C                                                                                                         000000     004900
+    69 C     *LOVAL        SETLL     VOTINGREC                          90----                                   000000     005000
+    70 C                   READ      VOTINGREC                                                                   000000     005100
+    71 C                                                                                                         000000     005200
+    72 C                   DOU       %EOF(VOTINGDB)                                                    B01       000000     005300
+    73 C                                                                                               B01       000000     005400
+    74 C                   IF        USERPROF = EXHBNBR                                                B02       000000     005500
+    75 C                   IF        AWARDNBR =  1                                                     B03       000000     005600
+    76 C                   ADD       1             VOTEEFA                                              03       000000     005700
+    77 C                   ENDIF                                                                       E03       000000     005800
+    78 C                                                                                               E03       000000     005900
+    79 C                   IF        AWARDNBR =  2                                                     B03       000000     006000
+    80 C                   ADD       1             VOTEBIS                                              03       000000     006100
+    81 C                   ENDIF                                                                       E03       000000     006200
+    82 C                   ENDIF                                                                       E02       000000     006300
+    83 C                                                                                               E02       000000     006400
+    84 C                   ADD       1             NUMBR                                                01       000000     006500
+    85 C                   READ      VOTINGREC                                                          01       000000     006600
+    86 C                                                                                                01       000000     006700
+    87 C                   ENDDO                                                                       E01       000000     006800
+    88 C                                                                                               E01       000000     006900
+    89 C     USERPROF      CHAIN     EXHBREC                            91----                                   000000     007000
+    90 C                   IF        *IN91 = *OFF                                                      B01       000000     007100
+    91 C                   READE     EXHBDB                                                             01       000000     007200
+    92 C                   MOVEL     EXHBTITLE     OUTTITLE                                             01       000000     007300
+    93 C                   ELSE                                                                        X01       000000     007400
+    94 C                   EVAL      OUTTITLE = ERRNOTF                                                 01       000000     007500
+    95 C                   ENDIF                                                                       E01       000000     007600
+    96 C                                                                                               E01       000000     007700
+    97 C                   MOVEL     NUMBR         OUTVOTEN                                                      000000     007800
+    98 C                   MOVEL     VOTEEFA       OUTEFA                                                        000000     007900
+    99 C                   MOVEL     VOTEBIS       OUTBIS                                                        000000     008000
+   100 C                   MOVEL     USERPROF      INUSRPRF                                                      000000     008100
+   101 C*                  MOVEL     EXHBTITLE     OUTTITLE                                                      000000     008200
+   102 C                                                                                                         000000     008300
+   103 C                   ENDSR                                                                                 000000     008400
+   104 C*------------------------------------------------------------------------                                000000     008500
+   105 C     CHKOFRS       BEGSR                                                                                 000000     008600
+   106 C                   ENDSR                                                                                 000000     008700
+   107 C*------------------------------------------------------------------------                                000000     008800
+   108 C     CHKPARM       BEGSR                                                                                 000000     008900
+   109 C                   MOVEL     LAUNCH        USERPROF                                                      000000     009000
+   110 C*                  MOVEL     EXHIBIT       EDTEXHB                                                       000000     009100
+   111 C*    USERPROF      CHAIN     USRPROFR                           90                                       000000     009200
+   112 C*                  IF        *IN90 = *OFF                                                                000000     009300
+   113 C*                  MOVEL     *ON           *INLR                                                         000000     009400
+   114 C*                  RETURN                                                                                000000     009500
+   115 C*                  ENDIF                                                                                 000000     009600
+   116 C                   ENDSR                                                                                 000000     009700
+   117=OVOTERES                                                                                                            5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * RPG record format  . . . . :  VOTERES                                                      *                     5
+        * External format  . . . . . :  VOTERES : ASHIBATA2/ADMVOTERES                               *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      5
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   118=O                       OUTTITLE            50A CHAR       50                                                       5000002
+   119=O                       OUTEFA              54A CHAR        4                                                       5000003
+   120=O                       OUTBIS              58A CHAR        4                                                       5000004
+   121=O                       ERRLINE             98A CHAR       40                                                       5000005
+   122=O                       INUSRPRF           107A CHAR        9                                                       5000006
+   123=O                       OUTVOTEN           111A CHAR        4                                                       5000007
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      6
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+*RNF7066 00      1 000100  Record-Format USRPROFR not used for input or output.
+*RNF7086 00      1 000100  RPG handles blocking for file SECOFRS. INFDS is updated
+                           only when blocks of data are transferred.
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                 O u t p u t   B u f f e r   P o s i t i o n s
+Line   Start End   Field or Constant
+Number Pos   Pos
+   118     1    50 OUTTITLE
+   119    51    54 OUTEFA
+   120    55    58 OUTBIS
+   121    59    98 ERRLINE
+   122    99   107 INUSRPRF
+   123   108   111 OUTVOTEN
+ * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      7
+                    K e y   F i e l d   I n f o r m a t i o n
+         File           Internal    External
+           Record       field name  field name  Attributes
+      3  EXHBDB
+           EXHBREC
+                        EXHUSRPRF               CHAR        9
+      1  SECOFRS
+           USRPROFR
+                        USERPROF                CHAR        9
+      2  VOTINGDB
+           VOTINGREC
+                        BADGENBR                BIN2      4,0 SIGNED
+ * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      8
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         ADMVOTERES        WORKSTN                 4D
+           VOTERES                                 4D     35      51     117
+         EXHBDB            DISK                    3D     91
+           EXHBREC                                 3D     25      89
+         SECOFRS           DISK                    1D
+           USRPROFR                                1D     19
+         VOTINGDB          DISK                    2D     72
+           VOTINGREC                               2D     21      69      70
+                                                  85
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *ENTRY            PLIST                  38D
+         *INLR             N(1)                   61M
+         *IN03             N(1)                   36D     53
+         *IN91             N(1)                   90
+         ALWEXIT           P(1,0)                  5D     42M     50      54M
+         AWARDNBR          P(3,0)                 23D     75      79
+*RNF7031 BADGENBR          P(4,0)                 22D
+*RNF7031 CHKOFRS           BEGSR                 105D
+         CHKPARM           BEGSR                  41     108D
+*RNF7031 DBGNAME           CONST                  12D
+*RNF7031 ELIGIBLE          P(1,0)                 33D
+*RNF7031 ENLRN400          P(1,0)                 34D
+*RNF7031 ERRBLANK          CONST                  10D
+         ERRLINE           A(40)                 121
+         ERRNOTF           CONST                  11D     94
+*RNF7031 EXHBCITY          A(20)                  29D
+*RNF7031 EXHBDBID          P(3,0)                 26D
+*RNF7031 EXHBDESC          A(1000)                32D
+*RNF7031 EXHBITOR          A(20)                  28D
+         EXHBNBR           A(9)                   24D     74
+*RNF7031 EXHBSTATE         A(2)                   30D
+         EXHBTITLE         A(50)                  31D     92
+*RNF7031 EXHUSRPRF         A(9)                   27D
+         INUSRPRF          A(9)                   37M     57     100M    122
+         LAUNCH            A(9)                   39D    109
+                           BASED(_QRNL_PRM+)
+         NUMBR             P(4,0)                  6D     67M     84M     97
+         OUTBIS            A(4)                   99M    120
+         OUTEFA            A(4)                   98M    119
+         OUTTITLE          A(50)                  92M     94M    118
+         OUTVOTEN          A(4)                   97M    123
+         READVOTE          BEGSR                  47      58      64D
+         USERPROF          A(9)                    9D     20M     44      57M
+                                                  74      89     100     109M
+         VOTEBIS           P(4,0)                  8D     66M     80M     99
+         VOTEEFA           P(4,0)                  7D     65M     76M     98
+      Indicator References:
+         Indicator                            References (D=Defined M=Modified)
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page      9
+         03                                       36M     53
+*RNF7031 90                                       69D
+         91                                       89D     90
+         LR                                       61M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page     10
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page     11
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+*RNF7031 00     13 The name or indicator is not referenced.
+*RNF7066 00      1 Record-Format name of Externally-Described file is not used.
+*RNF7086 00      1 RPG handles blocking for the file. INFDS is updated only when
+                   blocks of data are transferred.
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 17:22:57        Page     12
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :       15
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :       15
+  Source Totals:
+    Records . . . . . . . . . . . . :      123
+    Specifications  . . . . . . . . :      106
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :       17
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program ADMVOTERPT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 17:22:57.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *
