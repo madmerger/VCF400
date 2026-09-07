@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('THANKS FOR COMMENTING!')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('ADDGBCMT (GUESTBKSCR/ENDCMT)')}"></header>
+<main>
+  <div class="card hero">
+    <p class="big">THANKS FOR COMMENTING!</p>
+    <p>Thank you for commenting on this exhibit! Your Comment ID Is:
+      <b class="mono" th:text="${added != null ? added.cmtid : ''}">7</b></p>
+  </div>
+  <form method="get" th:action="@{${returnTo}}">
+    <div class="fkeys">
+      <span class="legend">Press ENTER to exit.</span>
+      <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>終了 <kbd>ENTER</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('GUESTBOOK/400 - Read a Comment')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('VCFMAIN → 13 → READGBSTUB → READGBCMT (GUESTBKSCR/READCMT)')}"></header>
+<main>
+  <p class="screen-subtitle" style="margin-bottom:2px">Vintage Computer Festival</p>
+  <h1 class="screen-title">GUESTBOOK/400 - Read a Comment</h1>
+
+  <form method="post" th:action="@{/guestbook/read}" id="readForm" autocomplete="off">
+    <div class="card">
+      <div class="field">
+        <label for="inCmtId"><span class="step">1</span>Enter a Comment ID:</label>
+        <input id="inCmtId" name="inCmtId" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" class="mono"
+               th:value="${inCmtId}" th:classappend="${errLine != null} ? 'err'" autofocus>
+        <div class="hint">Currently hosting <b th:text="${total}">2</b> comments and counting.</div>
+      </div>
+      <div class="errline" th:text="${errLine != null ? errLine : ''}"></div>
+    </div>
+
+    <!-- L-09-05 出力: 名前 says to: 展示タイトル / コメント -->
+    <div class="card" th:if="${out != null}">
+      <div class="result">
+        <div class="who"><span th:text="${out.outName}">Name</span> <span>says to:</span> <span th:text="${out.outTitle}">Title</span></div>
+        <div class="text" th:text="${out.outCmt}">comment</div>
+        <div class="info">Comment ID <span class="mono" th:text="${out.record.cmtid}">1</span></div>
+      </div>
+    </div>
+    <p class="info">Is this comment inappropriate? Please report the Comment ID to the folks at the Midrange Madness table and we will address the comment.</p>
+
+    <div class="fkeys">
+      <button type="submit" class="btn danger" name="action" value="cancel" data-fkey="F12" formnovalidate>キャンセル <kbd>F12</kbd></button>
+      <button type="submit" class="btn primary" name="action" value="submit" data-fkey="F5">送信 <kbd>F5</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

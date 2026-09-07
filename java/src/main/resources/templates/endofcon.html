@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('SORRY - voting has ended')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('ADDVOTE (VOTESCR/ENDOFCON)')}"></header>
+<main>
+  <div class="card hero">
+    <p class="big" style="color:var(--danger)">SORRY!</p>
+    <p><b>The voting period has ended and you can no longer vote.</b></p>
+    <p>However, you may sign this exhibit guestbook if you would like.</p>
+  </div>
+  <form method="get" th:action="@{${returnTo}}">
+    <div class="fkeys">
+      <span class="legend">Press ENTER to exit.</span>
+      <button type="submit" class="btn primary" data-fkey="ENTER" autofocus>終了 <kbd>ENTER</kbd></button>
+    </div>
+  </form>
+</main>
+<script th:replace="~{layout :: scripts}"></script>
+</body>
+</html>

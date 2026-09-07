@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Signed off')}"></head>
+<body>
+<header th:replace="~{layout :: topbar('SIGNOFF')}"></header>
+<main>
+  <div class="card hero">
+    <p class="big">Signed off</p>
+    <p>Your session has ended. Thank you for visiting VCF/400.</p>
+    <a class="btn primary" th:href="@{/menu}">Sign on again</a>
+  </div>
+</main>
+</body>
+</html>
