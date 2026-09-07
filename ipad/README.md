@@ -43,14 +43,16 @@ SwiftUI の表示ラベル、ボタン、案内、入力プレースホルダー
 | M-07 | Exhibit ineligible for award | この展示はアワード対象外です |
 | M-08 | Exhibit does not exist | 展示が存在しません |
 | M-09 | Award does not exist. | アワードが存在しません。 |
-| M-10 | Must enter your name | お名前を入力してください |
-| M-11 | Must enter a comment | コメントを入力してください |
-| M-12 | Must enter CommentID | コメント ID を入力してください |
-| M-13 | Name Hidden | Name Hidden（DB 由来の値のため原文維持） |
-| M-16 | Your vote has been RECORDED! | 投票を記録しました！ |
-| M-17 | Thank you for commenting on this exhibit! Your Comment ID Is: | この展示にコメントをお寄せいただきありがとうございます。コメント ID: |
-| M-19 | Currently hosting N comments and counting. | 現在のコメント総数: N |
-| M-20 | Are you sure you want to exit the kiosk? | キオスクを終了しますか？ |
-| M-21 | Before you start, here is how to navigate: | 開始する前に、操作方法をご案内します。 |
+| M-10 | Must enter Exhibit ID (ADDGBCMT) | 展示 ID を入力してください |
+| M-11 | Must enter your name | お名前を入力してください |
+| M-12 | Must enter a comment | コメントを入力してください |
+| M-13 | Must enter CommentID | コメント ID を入力してください |
+| M-14 / M-15 | Name Hidden / This comment hidden by an admin - offensive content. / This comment is not part of this guestbook. | 原文維持 (OUTNAME / OUTCMT の出力値としてクロス検証で照合するため) |
+| M-16 | THANK YOU FOR VOTING! / Your vote has been RECORDED! / Thank you for participating ... / Press ENTER to return to the main menu. | 見出し英文維持 + 投票ありがとうございました！ / 投票を記録しました！ / ヴィンテージ・コンピュータ・フェスティバル・サウスイースト 2024 のアワードにご参加いただき... / ENTER を押してメインメニューに戻ります。 |
+| M-17 | SORRY! / The voting period has ended and you can no longer vote. / However, you may sign this exhibit guestbook if you would like. / Press ENTER to exit. | 見出し英文維持 + 申し訳ありません。 / 投票期間が終了したため、投票できません。 / よろしければ、この展示のゲストブックに署名できます。 / ENTER を押して終了します。 |
+| M-19 | THANKS FOR COMMENTING! / Thank you for commenting on this exhibit! Your Comment ID Is: / Press ENTER to exit. | 見出し英文維持 + コメントをお寄せいただきありがとうございました！ / この展示にコメントをお寄せいただきありがとうございます。コメント ID: / ENTER を押して終了します。 |
+| M-20 | Are you sure you want to exit the kiosk? / Type the Administrator password, press ENTER to sign off | キオスクを終了しますか？ (英語原文を併記) / 管理者パスワードを入力して ENTER を押し、サインオフします |
+| M-21 | Use ARROW KEYS or TAB KEY ... / Use F5 or ENTER ... / Use F12 to quit at any time. / Keyboard not responding? ... / Got all that? Press ENTER to continue. | 1. 矢印キーまたは TAB キーで入力欄を移動します。 / 2. F5 または ENTER で操作を実行します。 / 3. F12 でいつでも終了できます。 / 4. キーボードが反応しない場合、左隅に X II が表示されていれば RIGHT CTRL を押して続行します。 / 準備はできましたか？ 続行 (ENTER) |
+| — | Currently hosting N comments and counting. (READCMT) | 現在のコメント総数: N |
 
 観測 JSON の形は維持し、画面コードは `screen`、エラー原文と訳は `errline` / `errline_ja`、コメント総数は `out.total`、LEARN/400 のページは `out.page` で取得します。
