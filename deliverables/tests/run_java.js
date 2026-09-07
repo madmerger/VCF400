@@ -4,12 +4,21 @@
 // The app must already run on BASE with a fresh (baseline) database. Results -> results/java.json
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 const { chromium } = require('playwright');
 
 const BASE = process.env.BASE || 'http://localhost:8080';
 const HERE = __dirname;
 const RESULTS = path.join(HERE, 'results');
-const only = (() => { const i = process.argv.indexOf('--only'); return i > 0 ? new Set(process.argv[i + 1].split(',')) : null; })();
+const argValue = name => {
+  const i = process.argv.indexOf(name);
+  return i >= 0 ? process.argv[i + 1] : null;
+};
+const onlyArg = argValue('--only');
+const recordDir = argValue('--record');
+const outputPath = argValue('--out');
+if (recordDir && !outputPath) throw new Error('--out is required with --record');
+const only = onlyArg ? new Set(onlyArg.split(',')) : null;
 const cases = JSON.parse(fs.readFileSync(path.join(HERE, 'cases.json'), 'utf8')).cases.filter(c => !only || only.has(c.id));
 
 const out = { env: 'java', started: new Date().toISOString(), cases: {} };
@@ -68,13 +77,13 @@ const show = async (p, title) => console.log(`----- web: ${title} [${await class
 
 async function signon(p, profile) {
   await p.goto(BASE + '/menu');
-  await p.locator('details summary').click();
-  await p.fill('#profile', profile);
-  await p.getByRole('button', { name: 'Sign on' }).click();
+  await clickAction(p, 'details summary');
+  await fillAction(p, '#profile', profile);
+  await clickAction(p, p.getByRole('button', { name: 'Sign on' }));
   await p.waitForURL(/\/menu/);
 }
 async function menu(p, option) {                       // VCFMAIN: click the numbered item
-  await p.click(`[data-option="${option}"]`);
+  await clickAction(p, `[data-option="${option}"]`);
   await p.waitForLoadState('networkidle');
   if ((await classify(p)) === 'NTRSTIT') { await show(p, 'NTRSTIT'); await fkey(p, 'ENTER'); await p.waitForLoadState('networkidle'); }
 }
@@ -85,17 +94,38 @@ async function toMain(p) {
     if (['VOTEEND', 'ENDOFCON', 'ENDCMT', 'NTRSTIT'].includes(k)) await fkey(p, 'ENTER');
     else if (['VOTE1', 'ADDCMT', 'READCMT'].includes(k)) await fkey(p, 'F12');
     else if (k === 'LRN400') await fkey(p, 'F3');
-    else if (k === 'KIOSK') { await p.fill('#option', '7'); await fkey(p, 'ENTER'); await p.waitForLoadState('networkidle'); await p.fill('#inPwd', 'VCF2024'); await fkey(p, 'ENTER'); }
+    else if (k === 'KIOSK') { await fillAction(p, '#option', '7'); await fkey(p, 'ENTER'); await p.waitForLoadState('networkidle'); await fillAction(p, '#inPwd', 'VCF2024'); await fkey(p, 'ENTER'); }
     else await p.goto(BASE + '/menu');
     await p.waitForLoadState('networkidle');
   }
 }
 async function fkey(p, key) {               // press the labelled function-key button (送信 (F5) etc.)
-  await p.locator(`[data-fkey="${key}"]`).first().click();
+  await clickAction(p, p.locator(`[data-fkey="${key}"]`).first());
   await p.waitForLoadState('networkidle');
 }
 // textContent of the first match without waiting for it to appear (locator.textContent would block until timeout)
 const txt = async (p, sel) => (await p.evaluate(s => { const e = document.querySelector(s); return e ? e.textContent : ''; }, sel)).replace(/\s+/g, ' ').trim();
+
+async function actionPause(p) {
+  if (recordDir) await p.waitForTimeout(400);
+}
+async function fillAction(p, selector, value) {
+  await p.fill(selector, value);
+  await actionPause(p);
+}
+async function clickAction(p, target) {
+  if (typeof target === 'string') await p.click(target);
+  else await target.click();
+  await actionPause(p);
+}
+async function setCaseBand(p, c) {
+  const value = `${c.id} ${c.title}`;
+  await p.evaluate(v => {
+    localStorage.setItem('vcfCase', v);
+    const band = document.getElementById('vcf-case-band');
+    if (band) band.textContent = v;
+  }, value);
+}
 
 // ------------------------------------------------------------------ flows
 async function flowVote(p, c) {
@@ -104,9 +134,9 @@ async function flowVote(p, c) {
   let k = await classify(p);
   if (k === 'ENDOFCON') { await show(p, 'ADDVOTE start'); return { screen: k }; }
   await show(p, 'VOTE1 initial');
-  await p.fill('#inputBadge', c.in.badge || '');
-  if (c.launch === 'MM2024') await p.fill('#inExhb', c.in.exhibit || '');
-  await p.fill('#inputAward', c.in.award || '');
+  await fillAction(p, '#inputBadge', c.in.badge || '');
+  if (c.launch === 'MM2024') await fillAction(p, '#inExhb', c.in.exhibit || '');
+  await fillAction(p, '#inputAward', c.in.award || '');
   await show(p, 'VOTE1 filled');
   await fkey(p, 'F5');
   k = await classify(p);
@@ -119,9 +149,9 @@ async function flowGbAdd(p, c) {
   await signon(p, c.launch);
   await menu(p, '12');
   await show(p, 'ADDCMT initial');
-  await p.fill('#inName', c.in.name || '');
-  if (c.launch === 'MM2024') await p.fill('#inId', c.in.exhibit || '');
-  await p.fill('#inCmt', c.in.comment || '');
+  await fillAction(p, '#inName', c.in.name || '');
+  if (c.launch === 'MM2024') await fillAction(p, '#inId', c.in.exhibit || '');
+  await fillAction(p, '#inCmt', c.in.comment || '');
   await show(p, 'ADDCMT filled');
   await fkey(p, 'F5');
   const k = await classify(p);
@@ -135,7 +165,7 @@ async function flowGbRead(p, c) {
   await signon(p, c.launch);
   await menu(p, '13');
   await show(p, 'READCMT initial');
-  await p.fill('#inCmtId', c.in.cmtid || '');
+  await fillAction(p, '#inCmtId', c.in.cmtid || '');
   await fkey(p, 'F5');
   const k = await classify(p);
   await show(p, 'READCMT after F5');
@@ -162,12 +192,12 @@ async function flowKiosk(p, c) {
   const obs = { screen: 'KIOSK', options: await p.locator('.menu-item[data-option]').evaluateAll(els => els.map(e => e.getAttribute('data-option'))) };
   if (c.in.option) {
     const pathSeen = [];
-    await p.fill('#option', c.in.option);
+    await fillAction(p, '#option', c.in.option);
     await fkey(p, 'ENTER');
     let k = await classify(p); await show(p, `after option ${c.in.option}`);
     if (k === 'NTRSTIT') { pathSeen.push(k); await fkey(p, 'ENTER'); k = await classify(p); await show(p, 'after NTRSTIT'); }
     if (k === 'VOTE1') { pathSeen.push(k); obs.exhibit = await p.inputValue('#inExhb'); await fkey(p, 'F12'); k = await classify(p); await show(p, 'after F12'); }
-    if (k === 'ADMPSWRD') { pathSeen.push(k); await p.fill('#inPwd', c.in.password || ''); await fkey(p, 'ENTER'); k = await classify(p); await show(p, 'after password'); }
+    if (k === 'ADMPSWRD') { pathSeen.push(k); await fillAction(p, '#inPwd', c.in.password || ''); await fkey(p, 'ENTER'); k = await classify(p); await show(p, 'after password'); }
     pathSeen.push(k);
     obs.path = pathSeen;
     obs.screen = k;
@@ -180,14 +210,40 @@ const FLOWS = { vote: flowVote, gb_add: flowGbAdd, gb_read: flowGbRead, learn: f
   banner(`Java Web (${BASE}) cross-validation: ${cases.length} cases`);
   if (!process.env.NO_RESET) { console.log('resetting Java baseline ...'); await reset(); }
   console.log('baseline:', JSON.stringify(await dump()));
-  const browser = await chromium.launch({ headless: !!process.env.HEADLESS, slowMo: 120, args: ['--window-position=0,0', '--window-size=1000,920'] });
-  const ctx = await browser.newContext({ viewport: { width: 1000, height: 880 } });
+  const browser = await chromium.launch({ headless: !!process.env.HEADLESS, slowMo: recordDir ? 0 : 120, args: ['--window-position=0,0', '--window-size=1280,720'] });
+  const contextOptions = { viewport: { width: 1280, height: 720 } };
+  if (recordDir) {
+    fs.mkdirSync(recordDir, { recursive: true });
+    contextOptions.recordVideo = { dir: recordDir, size: { width: 1280, height: 720 } };
+  }
+  const ctx = await browser.newContext(contextOptions);
+  await ctx.addInitScript(() => {
+    const install = () => {
+      let band = document.getElementById('vcf-case-band');
+      if (!band) {
+        band = document.createElement('div');
+        band.id = 'vcf-case-band';
+        Object.assign(band.style, {
+          position: 'fixed', top: '0', left: '0', right: '0', height: '64px',
+          padding: '10px 20px', background: '#09264b', color: '#fff',
+          font: '700 22px/44px -apple-system, BlinkMacSystemFont, sans-serif',
+          zIndex: '99999', whiteSpace: 'nowrap'
+        });
+        document.documentElement.style.paddingTop = '64px';
+        document.body.style.paddingTop = '64px';
+        document.body.appendChild(band);
+      }
+      band.textContent = localStorage.getItem('vcfCase') || '';
+    };
+    if (document.body) install(); else document.addEventListener('DOMContentLoaded', install, { once: true });
+  });
   const p = await ctx.newPage();
   p.setDefaultTimeout(15000);
   await p.goto(BASE + '/menu');
   await show(p, 'VCFMAIN');
   for (const c of cases) {
     banner(`${c.id} ${c.group}: ${c.title}`);
+    await setCaseBand(p, c);
     for (const op of c.pre || []) await dbOp(op);
     let obs = {}, err = null;
     try { obs = await FLOWS[c.flow](p, c); } catch (e) { err = String(e); await show(p, 'screen at failure'); }
@@ -199,5 +255,13 @@ const FLOWS = { vote: flowVote, gb_add: flowGbAdd, gb_read: flowGbRead, learn: f
     record(c, obs, err);
   }
   console.log('final DB:', JSON.stringify(await dump()));
+  const video = recordDir ? p.video() : null;
+  await ctx.close();
+  if (video) {
+    const webm = await video.path();
+    fs.mkdirSync(path.dirname(path.resolve(outputPath)), { recursive: true });
+    execFileSync('ffmpeg', ['-y', '-i', webm, '-r', '30', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', outputPath], { stdio: 'inherit' });
+    console.log(`recording: ${outputPath}`);
+  }
   await browser.close();
 })().catch(e => { console.error(e); process.exit(1); });

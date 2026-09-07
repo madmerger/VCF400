@@ -4,9 +4,10 @@
 Every screen is echoed to stdout (for the recording) and appended to
 results/pub400_5250.log. Observed behaviour is written to results/pub400.json.
 
-    python3 run_pub400.py [--only CV-01,CV-04] [--no-reset]
+    python3 run_pub400.py [--only CV-01,CV-04] [--no-reset] [--frames PATH]
 """
 import argparse
+import json
 import os
 import re
 import sys
@@ -52,8 +53,39 @@ def fix_cp37(s):
 
 
 class P400:
-    def __init__(self, log):
+    def __init__(self, log, frames_path=None):
         self.s = Session(log)
+        self.frames_path = frames_path
+        self.frames = []
+        self.case_id = ""
+        self.case_title = ""
+
+    def set_case(self, case):
+        self.case_id = case["id"]
+        self.case_title = case["title"]
+
+    def _frame(self, step_label):
+        if not self.frames_path:
+            return
+        rows = list(self.s.screen.display)
+        lines = [(row[:80]).ljust(80) for row in rows[:24]]
+        lines.extend([" " * 80] * (24 - len(lines)))
+        self.frames.append({
+            "case_id": self.case_id,
+            "case_title": self.case_title,
+            "step_label": step_label,
+            "lines": lines,
+        })
+
+    def save_frames(self):
+        if not self.frames_path:
+            return
+        parent = os.path.dirname(os.path.abspath(self.frames_path))
+        os.makedirs(parent, exist_ok=True)
+        tmp = self.frames_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(self.frames, f, ensure_ascii=False, indent=2)
+        os.replace(tmp, self.frames_path)
 
     def rows(self):
         return list(self.s.screen.display)
@@ -63,6 +95,7 @@ class P400:
 
     def show(self, title):
         t = self.s.snap(title)
+        self._frame(title)
         print(f"----- 5250: {title} [{classify(t)}]")
         for line in self.rows():
             print("|" + line.rstrip().ljust(80) + "|")
@@ -71,10 +104,12 @@ class P400:
 
     def key(self, k):
         self.s.key(k)
+        self._frame(f"key {k}")
 
     def type_(self, v, label, exit_key=FIELD_EXIT):
         self.s.send(v, label=f"type {label}")
         self.s.send(exit_key)
+        self._frame(f"type {label}")
 
     def wait(self, needle, timeout=15):
         assert self.s.wait_for(needle, timeout), f"'{needle}' not shown:\n{self.text()}"
@@ -292,6 +327,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only")
     ap.add_argument("--no-reset", action="store_true")
+    ap.add_argument("--frames", metavar="PATH")
     a = ap.parse_args()
     cases = load_cases(a.only)
     os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -301,7 +337,7 @@ def main():
         pub400_db.sql(pub400_db.BASELINE)
     print("baseline:", pub400_db.dump(), flush=True)
     res = Results("pub400")
-    p = P400(os.path.join(RESULTS_DIR, "pub400_5250.log"))
+    p = P400(os.path.join(RESULTS_DIR, "pub400_5250.log"), a.frames)
     p.s.signon(os.environ["PUB400_LOGIN"], os.environ["PUB400_PW"])
     p.s.settle()
     p.command(f"CHGLIBL LIBL({LIB} ASHIBATA1 QGPL QTEMP) CURLIB({LIB})")
@@ -310,6 +346,8 @@ def main():
     p.show("VCFMAIN")
     for c in cases:
         banner(f"{c['id']} {c['group']}: {c['title']}")
+        p.set_case(c)
+        p._frame("CASE START")
         for op in c.get("pre", []):
             db_op(op)
         err = None
@@ -332,7 +370,9 @@ def main():
             cid = c["expect"]["comment"]["id"]
             obs["comment"] = {"id": cid, "row": comment_row(db, cid)}
         res.record(c, obs, err)
+        p.save_frames()
     print("final DB:", pub400_db.dump(), flush=True)
+    p.save_frames()
     p.s.signoff()
 
 

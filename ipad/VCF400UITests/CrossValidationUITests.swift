@@ -34,7 +34,7 @@ final class CrossValidationUITests: XCTestCase {
             }
         }
     }
-    struct Entry: Encodable { var observed: [String: J]; var error: String? }
+    struct Entry: Encodable { var observed: [String: J]; var error: String?; var startedAt: String }
     struct Output: Encodable { var env = "ipad"; var started: String; var finished: String?; var cases: [String: Entry] = [:] }
 
     var app: XCUIApplication!
@@ -55,7 +55,11 @@ final class CrossValidationUITests: XCTestCase {
         out = Output(started: iso(Date()))
     }
 
-    private func iso(_ d: Date) -> String { ISO8601DateFormatter().string(from: d) }
+    private func iso(_ d: Date) -> String {
+        let f = ISO8601DateFormatter()
+        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return f.string(from: d)
+    }
 
     // MARK: DB (same shape as the Java /api/db dump and pub400_db.py dump)
     private func dump() -> [String: J] {
@@ -240,6 +244,7 @@ final class CrossValidationUITests: XCTestCase {
         log("iPad cross-validation: \(cases.count) cases")
         log("baseline: \(json(dump()))")
         for c in cases {
+            let startedAt = iso(Date())
             log("\n\(String(repeating: "=", count: 78))\n\(c.id) \(c.group): \(c.title)\n\(String(repeating: "=", count: 78))")
             for op in c.pre ?? [] { dbOp(op) }
             var obs: [String: J] = [:]
@@ -262,7 +267,7 @@ final class CrossValidationUITests: XCTestCase {
                 let row = repo.allComments().first { $0.cmtid == id }
                 obs["comment"] = .o(["id": .i(id), "row": row.map { .o(["id": .i($0.cmtid), "visible": .s($0.visible), "exhibit": .s($0.exhbid), "name": .s($0.guestname), "comment": .s($0.guestcmt)]) } ?? .null])
             }
-            out.cases[c.id] = Entry(observed: obs, error: error)
+            out.cases[c.id] = Entry(observed: obs, error: error, startedAt: startedAt)
             out.finished = iso(Date())
             log("[ipad] \(c.id) \(c.title)\n    -> \(json(obs))\(error.map { "\n    !! \($0)" } ?? "")")
             save()
