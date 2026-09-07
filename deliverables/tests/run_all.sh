@@ -2,7 +2,8 @@
 # Phase 5/6 cross-validation: run PUB400, Java Web, and iPad independently.
 #   ./run_all.sh                 (runs all environments and records three videos)
 #   NO_RECORD=1 ./run_all.sh     (runs all environments without recording)
-# Prerequisites: Java app running on $VCF_URL (default http://localhost:8080), iPad
+# Prerequisites: Java app running at $VCF_URL (preferred; BASE is also accepted,
+# default http://localhost:8080), iPad
 # simulator available, PUB400_LOGIN / PUB400_PW, tn5250, Playwright, and ffmpeg.
 set -u -o pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)

@@ -12,6 +12,7 @@ import base64
 import json
 import os
 import re
+import secrets
 import subprocess
 import sys
 
@@ -19,14 +20,18 @@ LIB = os.environ.get("VCF_PUB400_LIB", "ASHIBATA2")
 SSH = os.path.expanduser("~/p400")
 
 BASELINE = [
-    f"DELETE FROM {LIB}.VOTINGDB WHERE BADGENBR NOT IN (1, 28)",
-    f"DELETE FROM {LIB}.GUESTBKDB WHERE CMTID > 2",
-    f"UPDATE {LIB}.GUESTBKDB SET VISIBLE='Y', GUESTNAME='Great exhibit', GUESTCMT='VCF/400 running on PUB400.' WHERE CMTID = 1",
-    f"UPDATE {LIB}.GUESTBKDB SET VISIBLE='Y' WHERE CMTID = 2",
-    f"DELETE FROM {LIB}.AWARDDB WHERE AWARDID NOT IN (1, 2)",
-    f"UPDATE {LIB}.AWARDDB SET AWARDTITLE='Best in Show Award', AWARDDESC='This award is given to the exhibit who you believe to be the best in show for 2024.' WHERE AWARDID = 1",
-    f"UPDATE {LIB}.AWARDDB SET AWARDTITLE='The Ed Fair Award', AWARDDESC='This award is given to the exhibit that is deemed the most informative of the show.' WHERE AWARDID = 2",
-    f"UPDATE {LIB}.SETTINGS SET VALUE='Y' WHERE SETTING = 'ALWVOTE'",
+    f"DELETE FROM {LIB}.VOTINGDB",
+    f"INSERT INTO {LIB}.VOTINGDB (BADGENBR, AWARDNBR, EXHBNBR) VALUES (1, 1, 'ASHIBATA')",
+    f"INSERT INTO {LIB}.VOTINGDB (BADGENBR, AWARDNBR, EXHBNBR) VALUES (28, 2, 'ASHIBATA')",
+    f"DELETE FROM {LIB}.GUESTBKDB",
+    f"INSERT INTO {LIB}.GUESTBKDB (CMTID, VISIBLE, EXHBID, GUESTNAME, GUESTCMT) VALUES (1, 'Y', 'ASHIBATA', 'Great exhibit', 'VCF/400 running on PUB400.')",
+    f"INSERT INTO {LIB}.GUESTBKDB (CMTID, VISIBLE, EXHBID, GUESTNAME, GUESTCMT) VALUES (2, 'Y', 'ASHIBATA', 'Devin', 'VCF/400 is running on PUB400.')",
+    f"DELETE FROM {LIB}.AWARDDB",
+    f"INSERT INTO {LIB}.AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (1, 'Best in Show Award', 'This award is given to the exhibit who you believe to be the best in show for 2024.')",
+    f"INSERT INTO {LIB}.AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (2, 'The Ed Fair Award', 'This award is given to the exhibit that is deemed the most informative of the show.')",
+    f"DELETE FROM {LIB}.SETTINGS",
+    f"INSERT INTO {LIB}.SETTINGS (SETTING, VALUE) VALUES ('ADMPSWRD', 'VCF2024')",
+    f"INSERT INTO {LIB}.SETTINGS (SETTING, VALUE) VALUES ('ALWVOTE', 'Y')",
 ]
 
 
@@ -36,9 +41,23 @@ def sql(statements):
         statements = [statements]
     script = ";\n".join(statements) + ";\n"
     b64 = base64.b64encode(script.encode()).decode()
-    remote = (f"echo {b64} | /QOpenSys/pkgs/bin/base64 -d > /tmp/{LIB}_x.sql && "
-              f"/QOpenSys/usr/bin/qsh -c 'db2 -f /tmp/{LIB}_x.sql'")
-    return subprocess.run([SSH, remote], capture_output=True, text=True).stdout
+    remote_path = f"/tmp/{LIB}_{os.getpid()}_{secrets.token_hex(4)}.sql"
+    remote = (
+        f"echo {b64} | /QOpenSys/pkgs/bin/base64 -d > {remote_path} && "
+        f"/QOpenSys/usr/bin/qsh -c 'db2 -f {remote_path}'; "
+        f"rc=$?; rm -f {remote_path}; exit $rc"
+    )
+    result = subprocess.run([SSH, remote], capture_output=True, text=True)
+    output = result.stdout + result.stderr
+    if result.returncode != 0:
+        raise RuntimeError(f"db2 failed with exit code {result.returncode}:\n{output}")
+    sqlstate_errors = [
+        line for line in output.splitlines()
+        if "SQLSTATE" in line and "02000" not in line and "SQL0100W" not in line
+    ]
+    if sqlstate_errors:
+        raise RuntimeError("db2 reported SQLSTATE errors:\n" + "\n".join(sqlstate_errors))
+    return output
 
 
 def rows(select):

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 // Phase 5 runner: execute cases.json against the Java Web app through the browser (Playwright, headed).
-//   BASE=http://localhost:8080 node run_java.js [--only CV-01,CV-04]
-// The app must already run on BASE with a fresh (baseline) database. Results -> results/java.json
+//   VCF_URL=http://localhost:8080 node run_java.js [--only CV-01,CV-04]
+// The app must already run on VCF_URL (or BASE) with a fresh database. Results -> results/java.json
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { chromium } = require('playwright');
 
-const BASE = process.env.BASE || 'http://localhost:8080';
+const BASE = process.env.VCF_URL || process.env.BASE || 'http://localhost:8080';
 const HERE = __dirname;
 const RESULTS = path.join(HERE, 'results');
 const argValue = name => {

@@ -146,9 +146,22 @@ class P400:
 
 def db_op(op):
     if op["op"] == "setting":
-        pub400_db.sql(f"UPDATE {LIB}.SETTINGS SET VALUE='{op['value']}' WHERE SETTING='{op['name']}'")
+        name = op["name"]
+        value = op["value"]
+        if name not in {"ALWVOTE"} or value not in {"Y", "N"}:
+            raise ValueError(f"invalid setting operation: {op!r}")
+        pub400_db.sql(f"UPDATE {LIB}.SETTINGS SET VALUE='{value}' WHERE SETTING='{name}'")
     elif op["op"] == "visible":
-        pub400_db.sql(f"UPDATE {LIB}.GUESTBKDB SET VISIBLE='{op['value']}' WHERE CMTID={int(op['id'])}")
+        value = op["value"]
+        if value not in {"Y", "N"}:
+            raise ValueError(f"invalid visibility operation: {op!r}")
+        try:
+            comment_id = int(op["id"])
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"invalid visibility operation: {op!r}") from exc
+        pub400_db.sql(f"UPDATE {LIB}.GUESTBKDB SET VISIBLE='{value}' WHERE CMTID={comment_id}")
+    else:
+        raise ValueError(f"unknown database operation: {op!r}")
     print(f"    db op: {op}", flush=True)
 
 

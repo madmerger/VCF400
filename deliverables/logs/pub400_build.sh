@@ -93,8 +93,8 @@ for m in VCFMAIN MAIN ADMMAIN; do
     cl_quiet "ADDMSGD MSGID(USR$opt) MSGF($OBJLIB/${m}QQ) MSG('$cmd')"
   done
 done
-# RPG IV programs (same object set as the VCFV1R3 save file; OLD* members are excluded)
-for p in NTRSTIT PARAMETER PRTLSTVOTE PRTLSTCMT PRINTER CREDITS BEEMOVIE ADDVOTE ADDGBCMT READGBCMT LRN400 LRN400AUT EXHBMENU ADMADDSOFR ADMCRTEXHB ADMHIDECMT ADMLRN400 ADMOFRLIST ADMSETTING ADMVOTERPT; do
+# RPG IV programs (same object set as the VCFV1R3 save file; OLD*, PRINTER, and BEEMOVIE are excluded)
+for p in NTRSTIT PARAMETER PRTLSTVOTE PRTLSTCMT CREDITS ADDVOTE ADDGBCMT READGBCMT LRN400 LRN400AUT EXHBMENU ADMADDSOFR ADMCRTEXHB ADMHIDECMT ADMLRN400 ADMOFRLIST ADMSETTING ADMVOTERPT; do
   cl_quiet "DLTPGM PGM($OBJLIB/$p)"
   cl_cmd QSYSPRT "$p" "CRTBNDRPG PGM($OBJLIB/$p) SRCFILE($SRCLIB/QRPGLESRC) SRCMBR($p) DBGVIEW(*SOURCE)"
 done
@@ -128,7 +128,24 @@ done
 echo "=== $(date -u +%FT%TZ) compiling on PUB400" | tee -a "$LOG"
 /Users/devin/p400 "system 'DLTPGM $SRCLIB/BUILDVCF'; system 'CRTBNDCL PGM($SRCLIB/BUILDVCF) SRCFILE($SRCLIB/QCLSRC) SRCMBR(BUILDVCF)' && system 'CALL $SRCLIB/BUILDVCF'; echo rc=\$?" | tee -a "$LOG"
 
-# 5) collect listings + object inventory
+# 5) verify required RPG objects without rerunning the build
+echo "=== $(date -u +%FT%TZ) verifying required RPG objects" | tee -a "$LOG"
+required_rpg="NTRSTIT PARAMETER PRTLSTVOTE PRTLSTCMT CREDITS ADDVOTE ADDGBCMT READGBCMT LRN400 LRN400AUT EXHBMENU ADMADDSOFR ADMCRTEXHB ADMHIDECMT ADMLRN400 ADMOFRLIST ADMSETTING ADMVOTERPT"
+missing=0
+for p in $required_rpg; do
+  check=$(/Users/devin/p400 "system 'CHKOBJ OBJ($OBJLIB/$p) OBJTYPE(*PGM)'; echo rc=\\$?" 2>&1)
+  printf '%s\n' "$check" | tee -a "$LOG"
+  if ! printf '%s\n' "$check" | grep -q 'rc=0'; then
+    echo "MISSING required RPG object: $OBJLIB/$p" | tee -a "$LOG"
+    missing=1
+  fi
+done
+if [ "$missing" -ne 0 ]; then
+  echo "Required RPG object verification failed" | tee -a "$LOG"
+  exit 1
+fi
+
+# 6) collect listings + object inventory
 echo "=== $(date -u +%FT%TZ) collecting listings" | tee -a "$LOG"
 # PASE `system` echoes every spooled file of the command to stdout, so the compile
 # listings are already in $LOG; split them into one file per object locally.

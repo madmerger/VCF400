@@ -1,4 +1,4 @@
-2026-09-07 re-run: RSTLIB/RSTOBJ not attempted (known CPD0032 per AGENTS.md); log below is from the prior run
+2026-09-07 re-run: RSTLIB/RSTOBJ not attempted (known CPD0032 per AGENTS.md); below is the initial run record before this rule was established
 === RSTLIB/RSTOBJ attempts 2026-09-07T09:39:26Z ===
 --- RSTLIB ---
  
