@@ -35,7 +35,7 @@ trap stop_recording EXIT INT TERM
 
 VCF_XCODEBUILD_ACTION=test-without-building \
 VCF_SIM_UDID="$UDID" \
-"$HERE/run_ipad.sh" "${VCF_ONLY:-}" 
+"$HERE/run_ipad.sh" "${VCF_ONLY:-}"
 stop_recording
 trap - EXIT INT TERM
 
