@@ -6,14 +6,15 @@ ROOT=$(cd "$HERE/../.." && pwd)
 SMOKE_DIR=${VCF_SMOKE_DIR:-/Users/devin/vcf_smoke}
 UDID=${1:-}
 OUTPUT=${2:-"$SMOKE_DIR/3_iPad.mp4"}
-RAW="${OUTPUT%.mp4}.raw.mp4"
+RAW_DIR=${VCF_RAW_DIR:-$(dirname "$OUTPUT")}
+RAW="$RAW_DIR/$(basename "${OUTPUT%.mp4}.raw.mp4")"
 RESULTS="$HERE/results"
 
 if [ -z "$UDID" ]; then
-  UDID=$(xcrun simctl list devices available | sed -n 's/.*iPad Pro 13-inch (M5).* (\([A-Fa-f0-9-]\{36\}\)) (Shutdown\|Booted).*/\1/p' | head -1)
+  UDID=$(xcrun simctl list devices available | sed -n 's/.*iPad Pro 13-inch (M5) (\([[:xdigit:]-]\{36\}\)) .*/\1/p' | head -1)
 fi
 [ -n "$UDID" ] || { echo "iPad Pro 13-inch (M5) simulator not found" >&2; exit 1; }
-mkdir -p "$SMOKE_DIR" "$RESULTS"
+mkdir -p "$SMOKE_DIR" "$RAW_DIR" "$RESULTS"
 
 STATE=$(xcrun simctl list devices | sed -n "s/.*(\($UDID\)) (\(Booted\|Shutdown\)).*/\2/p" | head -1)
 if [ "$STATE" != "Booted" ]; then
