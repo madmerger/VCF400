@@ -1,7 +1,7 @@
 ---
 title: "VCF/400 仕様書 (レガシー RPG IV / CL / DDS 解析)"
 subtitle: "madmerger/VCF400 — 機能仕様・DB スキーマ・業務ルール・元画面構造の台帳"
-date: "2026-09-06"
+date: "2026-09-07"
 ---
 
 # VCF/400 仕様書
@@ -10,8 +10,8 @@ date: "2026-09-06"
 |---|---|
 | 対象リポジトリ | `madmerger/VCF400` (HEAD `83d566e Final release`, セーブファイル VCFV1R3 = 2024-04-05) |
 | 対象資産 | QRPGLESRC (RPG IV), QDDSSRC (PF), QSDASRC (DSPF), QMNUSRC (メニュー), QCLSRC (CL), QCMDSRC (CMD), QRLUSRC (PRTF) |
-| 解析根拠 | ソース静的解析 + PUB400 (ASHIBATA2 ライブラリ) 上での実行結果 (`deliverables/logs/phase1_06_runtime_5250.log`, `phase1_07_runtime_alwvote.log`) |
-| ID 体系 | **F-nn** 機能, **V-nn** 入力検証ルール, **B-nn** 業務ルール, **D-nn** DB スキーマ, **M-nn** メッセージ, **L-nn** 元画面構造の台帳項目。移行実装のトレーサビリティ表 (`deliverables/spec/traceability.md`) はこれらの ID を参照する。 |
+| 解析根拠 | ソース静的解析 + 2026-09-07 clean rebuild の PUB400 (ASHIBATA2 ライブラリ) 上での実行結果 (`deliverables/logs/phase1_report.md`, `deliverables/logs/phase1_06_runtime_5250.log`, `phase1_07_runtime_alwvote.log`) |
+| ID 体系 | **F-nn** 機能, **V-nn** 入力検証ルール, **B-nn** 業務ルール, **D-nn** DB スキーマ, **M-nn** メッセージ, **L-nn** 元画面構造の台帳項目。移行実装のトレーサビリティ表 (`deliverables/spec/VCF400_traceability.md`) はこれらの ID を参照する。 |
 
 ---
 
@@ -122,7 +122,8 @@ STREXHB EXHBNAME(x) / CALL VCFSTUB ──── EXHBMENU  "WELCOME TO..." (F-07)
 **参考データ (PUB400 ASHIBATA2、移行実装の初期データとして使用)**
 
 ```
-AWARDDB : (1,'Best Exhibit','Best overall exhibit at VCF') (2,'Best Vintage','Best vintage hardware exhibit') (3,'Peoples Choice','Attendee favorite')
+AWARDDB : (1,'Best in Show Award','This award is given to the exhibit who you believe to be the best in show for 2024.')
+           (2,'The Ed Fair Award','This award is given to the exhibit that is deemed the most informative of the show.')
 EXHBDB  : (1,'ASHIBATA','Akira Shibata','Tokyo','JP','IBM i on PUB400 Demo','VCF/400 demo exhibit running on pub400.com',1,1)
           (2,'DEMO400','Demo Exhibitor','Mountain View','CA','AS/400 Model 150','A vintage AS/400 9401-150 exhibit',1,0)
           (3,'NOVOTE','Ineligible Exhibitor','Atlanta','GA','Ineligible test exhibit (ELIGIBLE=0)','Test data for eligibility check',0,0)
@@ -170,6 +171,26 @@ GUESTBKDB: (1,'Y','ASHIBATA','Great exhibit','VCF/400 running on PUB400.') (2,'Y
 3. 入力ループ (`DOW ALWEXIT = 0`): 標識 40/41/42 をオフ → `EXFMT VOTE1` → 必須検査 (V-01〜V-03、各失敗で ERRLINE 設定 + 該当項目を反転表示) → 3 項目とも入力済み (`VALIDATE=3`) でループ脱出。F12 (*IN12) なら終了。
 4. `ADDTODB`: CHECKOK=0 から、(a) `CHAIN VOTINGREC` by INPUTBADGE — ヒット(=既投票)で `You have already voted.` else +1; (b) `SETLL/READ EXHBDB` by INEXHB — `ELIGIBLE=0` で `Exhibit ineligible for award` else +1; (c) `CHAIN EXHBREC` — 見つからなければ `Exhibit does not exist` else +1; (d) `CHAIN AWARDRCD` by INPUTAWARD — 見つからなければ `Award does not exist.` else +1。
 5. `CHECKOK=4` なら BADGENBR/AWARDNBR/EXHBNBR をセットして `WRITE VOTINGREC`、`CALL PRTLSTVOTE`、`ENDVOTE` (`EXFMT VOTEEND` → `CALL PRTLSTVOTE` → *INLR)。不合格なら *INLR オフのまま RPG サイクルが先頭に戻り、手順 3 の入力画面がエラー行付きで再表示される (入力値保持)。
+
+#### 5.1.1 CHECKOK=4 までの検証手順 (実機確認)
+
+`deliverables/logs/phase1_06_runtime_5250.log` の 5250 実機相当操作で、ADDTODB の
+チェックを次の順序で確認した。各ケースは VCFMAIN option 11 または
+`CALL ADDVOTE PARM('MM2024')` から入力し、ERRLINE の実際の表示を記録した。
+
+1. **入力必須検査** — badge `7707`、展示 ID `ASHIBATA`、award ID を空欄のまま F5。
+   期待/実測 ERRLINE: `Must enter Award ID`。
+2. **(a) 重複 badge** — badge `7707`、展示 `ASHIBATA`、award `002` を F5。
+   期待/実測 ERRLINE: `You have already voted.`。
+3. **(b) ELIGIBLE 検査** — badge `7708`、展示 `NOVOTE`、award `001` を F5。
+   期待/実測 ERRLINE: `Exhibit ineligible for award`。
+4. **(c) 展示存在検査** — badge `7708`、展示 `NOSUCH`、award `001` を F5。
+   期待/実測 ERRLINE: `Exhibit does not exist`。
+5. **(d) award 存在検査** — badge `7708`、展示 `ASHIBATA`、award `009` を F5。
+   期待/実測 ERRLINE: `Award does not exist.`。
+6. **CHECKOK=4 / 書込** — badge `7707`、展示 `ASHIBATA`、award `001`、および
+   badge `7708`、展示 `DEMO400`、award `002` を F5。ERRLINE は表示されず、
+   `Your vote has been RECORDED` となり、VOTINGDB にそれぞれ書き込まれた。
 
 入力検証ルール:
 
@@ -285,7 +306,7 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 
 ## 7. 元画面構造の台帳 (Legacy Screen Ledger)
 
-フェーズ3 の Java / iPad 実装が **1 対 1 で対応させる正 (source of truth)**。「項目順」は DDS の行・桁位置に基づく画面上の並び、「入力順」はカーソル移動順 (TAB 順 = 行・桁の昇順)。モダン UI では色・配置・フォントは変更してよいが、**項目の順序・グルーピング・見出し文言・ファンクションキーの役割と番号・メニュー番号**は変更しない。
+本章は独立文書 `deliverables/spec/VCF400_screen_ledger.md` (同一内容の PDF あり) と同一内容であり、乖離時は独立台帳を正とする。フェーズ3 の Java / iPad 実装が **1 対 1 で対応させる正 (source of truth)**。「項目順」は DDS の行・桁位置に基づく画面上の並び、「入力順」はカーソル移動順 (TAB 順 = 行・桁の昇順)。モダン UI では色・配置・フォントは変更してよいが、**項目の順序・グルーピング・見出し文言・ファンクションキーの役割と番号・メニュー番号**は変更しない。
 
 ### 7.1 L-01 VCFMAIN — AS/400 DEMO MENU (メニュー)
 
@@ -319,8 +340,8 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 | L-03-02 | **入力 1** バッジ番号 | 3 行 `First, type your SFGE Badge Number...............:` → INPUTBADGE | 4 桁数値, 必須, RZ, エラー時反転 (40) |
 | L-03-03 | **入力 2** 展示 ID | 4 行 `Second, type the Exhibit ID you are nominating...:` → INEXHB | 9 文字, 通常は事前入力・**保護** (70), MM2024 のみ入力可, エラー時反転 (41) |
 | L-03-04 | **入力 3** アワード ID | 5 行 `Third, type the Award ID you are selecting.......:` → INPUTAWARD | 3 桁数値, 必須, RZ, エラー時反転 (42) |
-| L-03-05 | エラー行 | 6 行 14 桁 ERRLINE (45 桁, 赤) | M-02〜M-09 |
-| L-03-06 | 情報: アワード一覧 | 8 行 `Available Awards for This Year:` → `001. Best in Show Award - This award is given to the exhibit who you believe to be the best in show for 2024.` → `002. The Ed Fair Award - This award is given to the exhibit that is deemed the most informative of the show.` | 移行版では AWARDDB から動的表示 (番号 3 桁 + タイトル + 説明) |
+| L-03-05 | エラー行 | 6 行 14 桁開始 ERRLINE (45 桁, 赤) | M-02〜M-09 |
+| L-03-06 | 情報: アワード一覧 | 8 行 `Available Awards for This Year:` → 9 行 `001. Best in Show Award - This award is given to the exhibit who you believe to be the best in show for 2024.` → 12 行 `002. The Ed Fair Award - This award is given to the exhibit that is deemed the most informative of the show.` | 移行版では AWARDDB から動的表示 (番号 3 桁 + タイトル + 説明) |
 | L-03-07 | 注意文 | 15 行 `You may only vote for ONE award.` `Choose your nomination carefully!` (赤) | 文言保持 |
 | L-03-08 | 補助 | 23 行 `TAB = Switch Fields`, 23 行 67 桁 `V1R0M4` (版数) | 任意 |
 | L-03-09 | **ファンクションキー** | 24 行 `Cmd5/F5 = Submit Vote` / `Cmd12/F12 = Cancel` | ボタン **「送信 (F5)」「キャンセル (F12)」**。ENTER も送信 |
@@ -342,7 +363,7 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 | L-05-02 | 展示者情報 (順) | 3 行 `HOSTED BY` OUTNAME(25) `OF` OUTCITY(15) OUTSTATE(2) |
 | L-05-03 | 説明 | 5〜18 行 OUTDESC (1000) |
 | L-05-04 | メニュー (順) | 20 `1. Nominate This Exhibit for Award` (ELIGIBLE=0 で非表示), 21 `2. Learn More About This Exhibit` (ENLRN400=0 で非表示), 22 `3. Sign Exhibit Guestbook`, 23 `4. Read Exhibit Guestbook` |
-| L-05-05 | 入力 | 23 行 `Select Menu Option, Press ENTER:` INOPT (1 桁数値, 必須) |
+| L-05-05 | 入力 | 23 行 78 桁 INOPT (1 桁数値, 必須); 同じ 23 行に `Select Menu Option, Press ENTER:` (44 桁開始) |
 | L-05-06 | 隠しオプション | 7 → ADMPSWRD (L-06) |
 | L-05-07 | ファンクションキー | なし (F3/F12 は `Function key not allowed.`) — モダン UI では番号ボタン + 番号入力欄 + **「選択 (ENTER)」** |
 | L-05-08 | 遷移 | 1→NTRSTIT→ADDVOTE, 2→LRN400, 3→NTRSTIT→ADDGBCMT, 4→NTRSTIT→READGBCMT; サブ機能終了後はこの画面に戻る |
@@ -352,7 +373,7 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 | # | 項目 | 元画面 |
 |---|---|---|
 | L-06-01 | 本文 | `Are you sure you want to exit the kiosk?` `Type the Administrator password, press ENTER to sign off` |
-| L-06-02 | 入力 | INPWD (9 文字, 非表示推奨) |
+| L-06-02 | 入力 | 7 行 5 桁開始 INPWD (9 文字, 非表示推奨) |
 | L-06-03 | 操作 | ENTER のみ → 一致でキオスク終了、不一致でキオスクメニューへ (**「サインオフ (ENTER)」**) |
 
 ### 7.7 L-07 GUESTBKSCR/ADDCMT — GUESTBOOK/400 - ADD COMMENT
@@ -360,10 +381,10 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 | # | 項目 | 元画面 | 属性 |
 |---|---|---|---|
 | L-07-01 | 見出し | 1 行 `VINTAGE COMPUTER FESTIVAL` / `GUESTBOOK/400 - ADD COMMENT` | 文言保持 |
-| L-07-02 | **入力 1** 名前 | 3 行 `Your Name................:` INNAME | 16 文字, 必須, 小文字可 |
-| L-07-03 | **入力 2** 展示 ID | 4 行 `Exhibit ID...............:` INID | 9 文字, 事前入力・**保護** (70), MM2024 のみ入力可 |
-| L-07-04 | **入力 3** コメント | 5 行 `Comment..................:` → 6 行 INCMT | 200 文字, 必須, 小文字可 |
-| L-07-05 | エラー行 | 10 行 5 桁 ERRLINE (21 桁, 赤) | M-10〜M-12 |
+| L-07-02 | **入力 1** 名前 | 3 行 `Your Name................:` INNAME (3 行 32 桁) | 16 文字, 必須, 小文字可 |
+| L-07-03 | **入力 2** 展示 ID | 4 行 `Exhibit ID...............:` → INID (4 行 32 桁) | 9 文字, 事前入力・**保護** (70), MM2024 のみ入力可 |
+| L-07-04 | **入力 3** コメント | 5 行 `Comment..................:` → 6 行 INCMT (6 行 3 桁) | 200 文字, 必須, 小文字可 |
+| L-07-05 | エラー行 | 10 行 5 桁開始 ERRLINE (21 桁, 赤) | M-10〜M-12 |
 | L-07-06 | **ファンクションキー** | 24 行 `Cmd5 / F5 = Submit Comment` / `Cmd12 / F12 = Cancel` | **「送信 (F5)」「キャンセル (F12)」** |
 | L-07-07 | 入力順 | 名前 → 展示 ID → コメント | 同一 |
 | L-07-08 | 遷移 | 成功 → ENDCMT (L-08); 失敗 → 同画面 + エラー行; F12 → 呼び出し元 | 同一 |
@@ -380,10 +401,10 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 | # | 項目 | 元画面 |
 |---|---|---|
 | L-09-01 | 見出し | 1 行 `VINTAGE COMPUTER FESTIVAL` / `GUESTBOOK/400 - Read a Comment` |
-| L-09-02 | **入力 1** コメント ID | 3 行 `Enter a Comment ID:` INCMTID (4 桁数値, 必須, RZ) |
-| L-09-03 | 総数表示 | 3〜4 行右 `Currently hosting` WTFCMTNUM(4) `comments and counting.` |
-| L-09-04 | エラー行 | 4 行 4 桁 ERRLINE (20 桁, 赤) M-13 |
-| L-09-05 | 出力 (順) | 6 行 OUTNAME(11) `says to:` OUTTITLE(50) → 8 行 OUTCMT(200) |
+| L-09-02 | **入力 1** コメント ID | 3 行 25 桁 INCMTID (`Enter a Comment ID:` は 3 行 4 桁開始) (4 桁数値, 必須, RZ) |
+| L-09-03 | 総数表示 | `Currently hosting` は 3 行 49 桁開始、WTFCMTNUM は 3 行 67 桁、`comments and counting.` は 4 行 49 桁開始 |
+| L-09-04 | エラー行 | 4 行 4 桁開始 ERRLINE (20 桁, 赤) M-13 |
+| L-09-05 | 出力 (順) | 6 行 OUTNAME(11) (4 桁開始) `says to:` → 6 行 29 桁開始 OUTTITLE(50) → 8 行 4 桁開始 OUTCMT(200) |
 | L-09-06 | 注意文 | 21〜22 行 `Is this comment inappropriate? Please report the Comment ID to the folks at the Midrange Madness table and we will address the comment.` |
 | L-09-07 | **ファンクションキー** | 24 行 `Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel` → **「送信 (F5)」「キャンセル (F12)」** |
 | L-09-08 | 遷移 | F5 → 同画面に結果表示 (繰返し可); F12 → 呼び出し元 |
@@ -392,7 +413,7 @@ INTERTEST 形式を `EXFMT` して ENTER で終了するだけ。VOTESTUB / ADDG
 
 | # | 項目 | 元画面 |
 |---|---|---|
-| L-10-01 | 見出し | 1 行 `LEARN/400` / 右 `Page` OUTPAGENBR(4) |
+| L-10-01 | 見出し | 1 行 `LEARN/400` / 1 行 70 桁 `Page` / OUTPAGENBR (1 行 76 桁) |
 | L-10-02 | 本文 | 3〜21 行 OUTCONTENT (1500) |
 | L-10-03 | **ファンクションキー** | 23 行 `Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards` → **「戻る (F3)」(終了)「進む (F5)」「前へ (F8)」** |
 | L-10-04 | 遷移 | F5 次ページ (END ページで終了), F8 前ページ, F3 終了 → 呼び出し元 |
