@@ -27,6 +27,8 @@ final class AppModel: ObservableObject {
     @Published var launch: Launch
     @Published var path: [Route] = []
     @Published var message: String?
+    @Published var kioskPasswordFailures = 0
+    @Published var kioskPasswordLockedUntil: Date?
     let defaultProfile: String
 
     init(repo: Repositories, profile: String) {
@@ -66,6 +68,7 @@ final class AppModel: ObservableObject {
             message = String(format: L10n.exhibitMissing, exhibit.uppercased())
             return
         }
+        message = nil
         launch = Launch(e.exhusrprf)
         path = [.kiosk(exhibit: e.exhusrprf)]
     }
@@ -94,8 +97,24 @@ final class AppModel: ObservableObject {
     }
 
     func signOn(_ profile: String) {
+        message = nil
         launch = Launch(profile.isEmpty ? defaultProfile : profile)
         path = []
+    }
+
+    func recordKioskPasswordFailure() {
+        let now = Date()
+        if let until = kioskPasswordLockedUntil, until > now { return }
+        kioskPasswordFailures += 1
+        if kioskPasswordFailures >= 5 {
+            kioskPasswordFailures = 0
+            kioskPasswordLockedUntil = now.addingTimeInterval(30)
+        }
+    }
+
+    func resetKioskPasswordThrottle() {
+        kioskPasswordFailures = 0
+        kioskPasswordLockedUntil = nil
     }
 
     /// キオスク終了 (パスワード一致) → VCFMAIN

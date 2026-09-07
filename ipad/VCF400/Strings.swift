@@ -90,6 +90,8 @@ enum L10n {
     static let adminOriginal = "Are you sure you want to exit the kiosk?"
     static let adminSubtitle = "管理者パスワードを入力して ENTER を押し、サインオフします"
     static let adminPassword = "管理者パスワード"
+    static let pwLocked = "パスワードの入力に連続で失敗したため、30 秒間入力を停止しています。"
+    static let dbOpenFailed = "データベースを開けませんでした (%@)。一時的なメモリ上のデータで起動しています。"
     static let menuOptionMissing = "メニュー番号 %@ は VCF/400 ライブラリに含まれていません。"
     static let invalidOption = "無効なオプションです。メニュー番号を入力して ENTER を押してください。"
     static let exhibitMissing = "展示 %@ が見つかりません。"

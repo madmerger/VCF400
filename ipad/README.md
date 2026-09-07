@@ -27,12 +27,15 @@ xcodebuild -project VCF400.xcodeproj -scheme VCF400 \
 | `-VCF_KIOSK ASHIBATA` | `STREXHB EXHBNAME(ASHIBATA)` 相当 (キオスクメニューから開始) |
 | `-VCF_DB <path>` | SQLite ファイルパス (既定: Documents/vcf400.sqlite) |
 | `-VCF_RESET YES` | 起動時に DB を初期データで再作成 |
+| `-VCF_ADMPSWRD <value>` | 起動時に管理者パスワードを上書き (シード値 `VCF2024` はデモ用固定データであり、本番展開時は変更すること) |
 
 DB 状態の確認は `xcrun simctl get_app_container booted com.vcf400.ipad data` 配下の `Documents/vcf400.sqlite` を `sqlite3` で参照する。
 
 ## UI 日本語化
 
 SwiftUI の表示ラベル、ボタン、案内、入力プレースホルダー、エラーメッセージ、完了メッセージ、ナビゲーション文言は日本語化しています。台帳で保存する画面タイトル（例: `AS/400 DEMO MENU`、`LEARN/400`、`WELCOME TO...`）は英語のまま独立した `Text` とし、その横または下に日本語の副題を表示します。エラー行は日本語本文を太字で表示し、`errline_ja` として、元の英語（`VCF400Kit.Messages` の値）を小さく `errline` として併記します。展示名、アワード名・説明、コメント本文、LEARN/400 の内容、`Name Hidden`、キオスクボタンのプロファイル ID など DB 由来の値は翻訳しません。
+
+LEARN/400 の `CONTENT='CALL'` レコードは、レガシーでは EXTRA のプログラム（移行対象外）を CALL するが、iPad 版はページ遷移（呼出元ページ番号の記録と次ページへの進行）のみ再現し、外部プログラム呼び出しは行わない。
 
 | ID | 英語原文 | 日本語訳 |
 |---|---|---|

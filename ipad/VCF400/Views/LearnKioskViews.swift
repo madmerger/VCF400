@@ -73,19 +73,64 @@ struct AdmPswrdView: View {
     @EnvironmentObject var model: AppModel
     let exhibitId: String
     @State private var inPwd = ""
+    @State private var failures = 0
+    @State private var lockedUntil: Date?
+
+    private var isLocked: Bool {
+        (lockedUntil ?? model.kioskPasswordLockedUntil).map { $0 > Date() } ?? false
+    }
+
+    private func submit() {
+        guard !isLocked else { return }
+        if model.kiosk.exitAllowed(inPwd) {
+            model.resetKioskPasswordThrottle()
+            model.exitKiosk(exhibitId, password: inPwd)
+        } else {
+            model.recordKioskPasswordFailure()
+            failures = model.kioskPasswordFailures
+            lockedUntil = model.kioskPasswordLockedUntil
+            model.exitKiosk(exhibitId, password: inPwd)
+        }
+    }
+
     var body: some View {
         Screen(screen: "ADMPSWRD", legacyPath: "EXHBMENU (EXHBMENUSC/ADMPSWRD)") {
             ScreenHeader(title: L10n.adminTitle, subtitle: L10n.adminSubtitle, jaTitle: L10n.adminOriginal, path: "EXHBMENU / ADMPSWRD")
+            if isLocked {
+                HStack(spacing: 10) {
+                    Image(systemName: "exclamationmark.circle.fill")
+                    Text(L10n.pwLocked).fontWeight(.semibold)
+                }
+                .foregroundStyle(Theme.danger)
+                .padding(12)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Theme.dangerBg, in: RoundedRectangle(cornerRadius: 10))
+                .accessibilityIdentifier("lockline")
+            }
             Card {
                 FieldRow(step: 1, label: L10n.adminPassword) {
                     SecureField("", text: $inPwd).font(.system(.body, design: .monospaced)).accessibilityIdentifier("inPwd")
-                        .onSubmit { model.exitKiosk(exhibitId, password: inPwd) }
+                        .disabled(isLocked)
+                        .onSubmit(submit)
                 }
             }
             FKeyBar {
                 FKeyButton(title: "メニューへ戻る", key: "F12") { model.returnToCaller() }
-                FKeyButton(title: "サインオフ", key: "ENTER", primary: true) { model.exitKiosk(exhibitId, password: inPwd) }
+                FKeyButton(title: "サインオフ", key: "ENTER", primary: true, action: submit)
+                    .disabled(isLocked)
             }
+        }
+        .onAppear {
+            failures = model.kioskPasswordFailures
+            lockedUntil = model.kioskPasswordLockedUntil
+        }
+        .task(id: lockedUntil) {
+            guard let until = lockedUntil else { return }
+            let delay = max(0, until.timeIntervalSinceNow)
+            try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+            guard !Task.isCancelled else { return }
+            lockedUntil = nil
+            model.kioskPasswordLockedUntil = nil
         }
     }
 }
