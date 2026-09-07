@@ -61,11 +61,5 @@
   </form>
 </main>
 <script th:replace="~{layout :: scripts}"></script>
-<script>
-  // ENTER inside a field = Submit Vote (same as F5), like the 5250 screen
-  document.getElementById('voteForm').addEventListener('keydown', function (ev) {
-    if (ev.key === 'Enter') { ev.preventDefault(); document.querySelector('[data-fkey="F5"]').click(); }
-  });
-</script>
 </body>
 </html>

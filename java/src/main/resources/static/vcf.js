@@ -15,6 +15,11 @@
       // ENTER = default action (Submit / Continue / menu selection)
       var enterBtn = document.querySelector('[data-fkey="ENTER"]');
       if (enterBtn) { ev.preventDefault(); enterBtn.click(); }
+      else {
+        var form = ev.target.closest && ev.target.closest('form');
+        var submitBtn = form && form.querySelector('[data-fkey="F5"]');
+        if (submitBtn && !submitBtn.disabled) { ev.preventDefault(); submitBtn.click(); }
+      }
     }
   });
   // Menu items: clicking a numbered option fills the option field and submits (number concept kept)
