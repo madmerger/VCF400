@@ -1,0 +1,257 @@
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    1
+ File name . . . . . . . . . . . . . . . . . . . . . :   MAIN
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
+ File attribute  . . . . . . . . . . . . . . . . . . :   Display
+ Source file containing DDS  . . . . . . . . . . . . :   QMNUSRC
+   Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Source member containing DDS  . . . . . . . . . . . :   MAIN
+ Source member last changed  . . . . . . . . . . . . :   26-09-06  17:01:35
+ Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
+ DDS generation severity level . . . . . . . . . . . :   20
+ DDS flagging severity level . . . . . . . . . . . . :   00
+ Authority . . . . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Replace file  . . . . . . . . . . . . . . . . . . . :   *YES
+ Text  . . . . . . . . . . . . . . . . . . . . . . . :
+ Compiler  . . . . . . . . . . . . . . . . . . . . . :   IBM System i5 Data Description Processor
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+    100       A* Free Form Menu: MAIN
+    200       A*%%TS  SD  20230807  211053  QSECOFR     REL-V4R4M0  5769-PW1
+    300       A*%%EC
+    400       A                                      DSPSIZ(24 80 *DS3                  -
+    500       A                                             27 132 *DS4)
+    600       A                                      CHGINPDFT
+    700       A                                      INDARA
+    800       A                                      PRINT(*LIBL/QSYSPRT)
+    900       A          R MAIN
+*                  CPD5235-.*********
+*                  CPD8111-**********
+   1000       A*%%TS  SD  20230807  211053  QSECOFR     REL-V4R4M0  5769-PW1
+   1100       A                                      DSPMOD(*DS3)
+   1200       A                                      LOCK
+   1300       A                                      SLNO(01)
+   1400       A                                      CLRL(*ALL)
+*                                            CPD8018-*
+   1500       A                                      ALWROL
+*                                            CPD8018-*
+   1600       A                                      CF03
+   1700       A                                      HELP
+   1800       A                                      HOME
+   1900       A                                      HLPRTN
+   2000       A                                  1  2'MAIN'
+   2100       A                                      COLOR(BLU)
+   2200       A                                  3  2'           V I N T A G E  C '
+   2300       A                                      COLOR(BLU)
+   2400       A                                  5  7' H'
+   2500       A                                  6  7'1.'
+   2600       A                                  7  7'2.'
+   2700       A* CMDPROMPT  Do not delete this DDS spec.
+   2800       A                                019  2'Type Number, Press ENTER (right CT-
+   2900       A                                      RL) '
+   3000       A                                  2  2'Welcome'
+   3100       A                                  2 10'to...'
+   3200       A                                  3 32'M'
+   3300       A                                  3 34'P'
+   3400       A                                  3 36'U'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    2
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   3500       A                                  3 38'T'
+   3600       A                                  3 40'E'
+   3700       A                                  3 42'R'
+   3800       A                                  3 45'F'
+   3900       A                                  3 47'E'
+   4000       A                                  3 49'S'
+   4100       A                                  3 51'T'
+   4200       A                                  3 53'I'
+   4300       A                                  3 55'V'
+   4400       A                                  3 57'A'
+   4500       A                                  3 59'L'
+   4600       A                                  6 10'Learn'
+   4700       A                                  6 16'AS/400'
+   4800       A                                  6 23'Navigation'
+   4900       A                                  7 10'IBM'
+   5000       A                                  7 14'Midrange'
+   5100       A                                  7 23'History'
+   5200       A                                  5 45'Democratic'
+   5300       A                                  5 56'Tasks'
+   5400       A                                  6 49'11.'
+   5500       A                                  6 53'Nominate'
+   5600       A                                  6 62'Exhibit'
+   5700       A                                  6 70'for'
+   5800       A                                  6 74'Award'
+   5900       A                                  7 49'12.'
+   6000       A                                  7 53'Sign'
+   6100       A                                  7 58'Exhibit'
+   6200       A                                  7 66'Guestbook'
+   6300       A                                  8  7'3.'
+   6400       A                                  8 10'About'
+   6500       A                                  8 16'This'
+   6600       A                                  8 21'System'
+   6700       A                                  9  7'4.'
+   6800       A                                  9 10'About'
+   6900       A                                  9 17'Gertie'
+   7000       A                                  9 25'(System/'
+   7100       A                                  9 45'System'
+   7200       A                                  9 52'Tasks'
+   7300       A                                 10 49'80.'
+   7400       A                                 10 53'Sign'
+   7500       A                                 10 58'Off'
+   7600       A                                 11  2'Office'
+   7700       A                                 11  9'Tasks'
+   7800       A                                 12  7'5.'
+   7900       A                                 12 10'Start'
+   8000       A                                 12 16'OfficeVision/400'
+   8100       A                                 12 45'Administration'
+   8200       A                                 13  7'6.'
+   8300       A                                 13 10'Start'
+   8400       A                                 13 16'the'
+   8500       A                                 13 20'Calendar'
+   8600       A                                 13 49'90.'
+   8700       A                                 13 53'Go'
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    3
+                                      Data Description Source
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
+   8800       A                                 13 56'to'
+   8900       A                                 13 59'Admin'
+   9000       A                                 13 65'Menu'
+   9100       A                                 14  7'7.'
+   9200       A                                 14 10'Start'
+   9300       A                                 14 16'the'
+   9400       A                                 14 20'Clock'
+   9500       A                                 16  2'Entertainment'
+   9600       A                                 17  7'8.'
+   9700       A                                 17 10'Play'
+   9800       A                                 17 15'Snake'
+   9900       A                                 18  7'9.'
+  10000       A                                 18 10'Play'
+  10100       A                                 18 15'Yahtzee'
+  10200       A                                  3 62'2'
+  10300       A                                  3 64'0'
+  10400       A                                  3 66'2'
+  10500       A                                  3 68'4'
+  10600       A                                 17 23'10.'
+  10700       A                                 17 27'Play'
+  10800       A                                 17 32'Pac-MAN'
+                         * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    4
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+    400                                              DSPSIZ(24 80 *DS3                  -
+    400                                                     27 132 *DS4) CHGINPDFT +
+    700                                              INDARA PRINT(*LIBL/QSYSPRT)
+    900                  R MAIN                      DSPMOD(*DS3) LOCK SLNO(01) +
+   1400                                              CLRL(*ALL) ALWROL CF03 HELP HOME +
+   1900                                              HLPRTN
+   2000                                          1  2'MAIN' COLOR(BLU)                        4
+   2200                                          3  2'           V I N T A G E  C ' +        28
+   2300                                              COLOR(BLU)
+   2400                                          5  7' H'                                     2
+   2500                                          6  7'1.'                                     2
+   2600                                          7  7'2.'                                     2
+   2800                                         19  2'Type Number, Press ENTER (right CT-    38
+   2800                                              RL) '
+   3000                                          2  2'Welcome'                                7
+   3100                                          2 10'to...'                                  5
+   3200                                          3 32'M'                                      1
+   3300                                          3 34'P'                                      1
+   3400                                          3 36'U'                                      1
+   3500                                          3 38'T'                                      1
+   3600                                          3 40'E'                                      1
+   3700                                          3 42'R'                                      1
+   3800                                          3 45'F'                                      1
+   3900                                          3 47'E'                                      1
+   4000                                          3 49'S'                                      1
+   4100                                          3 51'T'                                      1
+   4200                                          3 53'I'                                      1
+   4300                                          3 55'V'                                      1
+   4400                                          3 57'A'                                      1
+   4500                                          3 59'L'                                      1
+   4600                                          6 10'Learn'                                  5
+   4700                                          6 16'AS/400'                                 6
+   4800                                          6 23'Navigation'                            10
+   4900                                          7 10'IBM'                                    3
+   5000                                          7 14'Midrange'                               8
+   5100                                          7 23'History'                                7
+   5200                                          5 45'Democratic'                            10
+   5300                                          5 56'Tasks'                                  5
+   5400                                          6 49'11.'                                    3
+   5500                                          6 53'Nominate'                               8
+   5600                                          6 62'Exhibit'                                7
+   5700                                          6 70'for'                                    3
+   5800                                          6 74'Award'                                  5
+   5900                                          7 49'12.'                                    3
+   6000                                          7 53'Sign'                                   4
+   6100                                          7 58'Exhibit'                                7
+   6200                                          7 66'Guestbook'                              9
+   6300                                          8  7'3.'                                     2
+   6400                                          8 10'About'                                  5
+   6500                                          8 16'This'                                   4
+   6600                                          8 21'System'                                 6
+   6700                                          9  7'4.'                                     2
+   6800                                          9 10'About'                                  5
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    5
+                                          Expanded Source
+                                                                                          Field       Buffer position
+ SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
+   6900                                          9 17'Gertie'                                 6
+   7000                                          9 25'(System/'                               8
+   7100                                          9 45'System'                                 6
+   7200                                          9 52'Tasks'                                  5
+   7300                                         10 49'80.'                                    3
+   7400                                         10 53'Sign'                                   4
+   7500                                         10 58'Off'                                    3
+   7600                                         11  2'Office'                                 6
+   7700                                         11  9'Tasks'                                  5
+   7800                                         12  7'5.'                                     2
+   7900                                         12 10'Start'                                  5
+   8000                                         12 16'OfficeVision/400'                      16
+   8100                                         12 45'Administration'                        14
+   8200                                         13  7'6.'                                     2
+   8300                                         13 10'Start'                                  5
+   8400                                         13 16'the'                                    3
+   8500                                         13 20'Calendar'                               8
+   8600                                         13 49'90.'                                    3
+   8700                                         13 53'Go'                                     2
+   8800                                         13 56'to'                                     2
+   8900                                         13 59'Admin'                                  5
+   9000                                         13 65'Menu'                                   4
+   9100                                         14  7'7.'                                     2
+   9200                                         14 10'Start'                                  5
+   9300                                         14 16'the'                                    3
+   9400                                         14 20'Clock'                                  5
+   9500                                         16  2'Entertainment'                         13
+   9600                                         17  7'8.'                                     2
+   9700                                         17 10'Play'                                   4
+   9800                                         17 15'Snake'                                  5
+   9900                                         18  7'9.'                                     2
+  10000                                         18 10'Play'                                   4
+  10100                                         18 15'Yahtzee'                                7
+  10200                                          3 62'2'                                      1
+  10300                                          3 64'0'                                      1
+  10400                                          3 66'2'                                      1
+  10500                                          3 68'4'                                      1
+  10600                                         17 23'10.'                                    3
+  10700                                         17 27'Play'                                   4
+  10800                                         17 32'Pac-MAN'                                7
+                 * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    6
+                                             Messages
+    ID      Severity  Number
+* CPD5235      10        1      Message . . . . :   Record name same as name of file being created.
+* CPD8018      10        2      Message . . . . :   Keyword may not function as expected with DSPMOD.
+* CPD8111      10        1      Message . . . . :   Record may not function as expected.
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/MAIN          26-09-06 17:03:34        Page    7
+                                          Message Summary
+    Total          Informational          Warning        Error       Severe
+                       (0-9)              (10-19)       (20-29)      (30-99)
+        4                 0                    4             0            0
+* CPC7301      00               Message . . . . :   File MAIN created in library ASHIBATA2.
+                         * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

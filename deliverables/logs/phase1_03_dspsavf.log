@@ -1,0 +1,149 @@
+ASHIBATA@pub400.com's password: 
+                                              Saved Object Information                                                  Page     1
+5770SS1 V7R5M0  220415                                                                           PUB400    26-09-06  16:41:22 CEST
+ Save file  . . . . . . . . . . . . . . :   VCFV1R3
+   Library  . . . . . . . . . . . . . . :     ASHIBATA1
+   Records  . . . . . . . . . . . . . . :     11160
+ Save operation:
+   Save command . . . . . . . . . . . . :   SAVLIB
+   Save date/time . . . . . . . . . . . :   24-04-04  20:40:52
+   Save while active  . . . . . . . . . :   *NO
+   Data compressed  . . . . . . . . . . :   No
+   Release level  . . . . . . . . . . . :   V4R4M0
+ Data saved:
+   Library  . . . . . . . . . . . . . . :   VCF
+   ASP  . . . . . . . . . . . . . . . . :   1
+   System serial number . . . . . . . . :   10-30G40
+   Private authorities  . . . . . . . . :   No
+                                                              Objects
+ Object       Type       Attribute    Owner           Size (K)   Data       Text
+ VCF          *LIB       PROD         QSECOFR              136   YES
+ ADDGBCMT     *PGM       RPGLE        QSECOFR              152   YES        Add a comment to the guestbook
+ ADDGBSTUB    *PGM       CLP          QSECOFR               36   YES        Launcher stub for GUESTBOOK/400
+ ADDVOTE      *PGM       RPGLE        QSECOFR              216   YES        Add a vote to the db
+ ADDVOTETST   *PGM       RPGLE        QSECOFR              172   YES        Add a vote to the db - test new screen spec
+ ADDVOTE2     *PGM       RPGLE        QSECOFR              128   YES        Add a vote to the db
+ ADMADDSOFR   *PGM       RPGLE        CODE150              120   YES        Administrator - Add security officer to VCF400
+ ADMCRTEXHB   *PGM       RPGLE        QSECOFR              184   YES        Administrator - Create Exhibit
+ ADMHIDECMT   *PGM       RPGLE        QSECOFR              144   YES        Administrator - Hide a GB/400 Comment
+ ADMLRN400    *PGM       RPGLE        QSECOFR              160   YES        Administrator - LEARN/400 page editor
+ ADMSETTING   *PGM       RPGLE        QSECOFR              132   YES        Administrator - Change Settings
+ ADMVOTERPT   *PGM       RPGLE        QSECOFR              152   YES        Administrator - View Vote Statistics
+ BEEMOVIE     *PGM       RPGLE        QSECOFR              124   YES        Subfile demo program
+ CREDITS      *PGM       RPGLE        QSECOFR              104   YES        Copyright and credits
+ DFUCRTBMOV   *PGM       DFU          QSECOFR               20   YES        DFUCRTBMOV
+ DFUINZADM    *PGM       DFU          QSECOFR               20   YES        DFUINZADM
+ DFUINZCMT    *PGM       DFU          QSECOFR               24   YES        DFUINZCMT
+ DFUINZEXHB   *PGM       DFU          QSECOFR               32   YES        DFUINZEXHB
+ DFUINZLRN    *PGM       DFU          QSECOFR               24   YES        DFUINZLRN
+ DFUINZSTTN   *PGM       DFU          QSECOFR               20   YES        DFUINZSTTN
+ EXHBMENU     *PGM       RPGLE        QSECOFR              156   YES        Start Exhibitor Menus
+ LRN400       *PGM       RPGLE        QSECOFR              148   YES        LEARN/400 Page Viewer
+ LRN400AUT    *PGM       RPGLE        QSECOFR              140   YES        LEARN/400 Autoscroller
+ LRN400STUB   *PGM       CLP          QSECOFR               36   YES        Launcher stub for LEARN/400 tour system
+ NTRSTIT      *PGM       RPGLE        QSECOFR              104   YES        test launch paramters
+ PARAMETER    *PGM       RPGLE        QSECOFR              104   YES        test launch paramters
+ PRINTER      *PGM       RPGLE        QSECOFR              124   YES        test printing
+ PRTLSTCMT    *PGM       RPGLE        QSECOFR              124   YES        test printing
+ PRTLSTVOTE   *PGM       RPGLE        QSECOFR              120   YES        Print the last recorded vote
+ READGBCMT    *PGM       RPGLE        QSECOFR              152   YES        Read a comment from the guestbook
+ READGBSTUB   *PGM       CLP          QSECOFR               36   YES        Launcher stub for GUESTBOOK/400
+ VCFSTUB      *PGM       CLP          QSECOFR               36   YES        Launcher stub for VCF Exhibitor Menu
+ VOTESTUB     *PGM       CLP          QSECOFR               36   YES        Launcher stub for VCF Voting System
+ ADMMAIN      *MSGF                   QSECOFR               28   YES
+ VCFMAIN      *MSGF                   QSECOFR               28   YES
+ ADDVOTE      *FILE      DFU          QSECOFR               12   YES        ADDVOTE
+ ADMMAIN      *FILE      DSPF         QSECOFR                4   YES
+ ADMSCR       *FILE      DSPF         QSECOFR                4   YES
+                                                   -=* http://pub400.com *=-
+                                              Saved Object Information                                                  Page     2
+5770SS1 V7R5M0  220415                                                                           PUB400    26-09-06  16:41:22 CEST
+ Object       Type       Attribute    Owner           Size (K)   Data       Text
+ ADMVOTERES   *FILE      DSPF         QSECOFR                4   YES
+ BMOVSCR      *FILE      DSPF         QSECOFR                4   YES
+ CMTPRTF      *FILE      PRTF         QSECOFR                4   YES
+ CMTPRTFTST   *FILE      PRTF         QSECOFR                4   YES
+ CMTTST       *FILE      PRTF         QSECOFR                4   YES
+ CREDITSSCR   *FILE      DSPF         QSECOFR                4   YES
+ DFUCRTBMOV   *FILE      DFU          QSECOFR               12   YES        DFUCRTBMOV
+ DFUINZADM    *FILE      DFU          QSECOFR               12   YES        DFUINZADM
+ DFUINZCMT    *FILE      DFU          QSECOFR               12   YES        DFUINZCMT
+ DFUINZEXHB   *FILE      DFU          QSECOFR               16   YES        DFUINZEXHB
+ DFUINZLRN    *FILE      DFU          QSECOFR               12   YES        DFUINZLRN
+ DFUINZSTTN   *FILE      DFU          QSECOFR               12   YES        DFUINZSTTN
+ EXHBMENUSC   *FILE      DSPF         QSECOFR               12   YES
+ GUESTBKSCR   *FILE      DSPF         QSECOFR               16   YES
+ INTERSCR     *FILE      DSPF         QSECOFR                8   YES
+ LRNAUTO      *FILE      DSPF         QSECOFR                8   YES        LRN400 Autoscroller DDS
+ LRN400SCR    *FILE      DSPF         QSECOFR                8   YES
+ MACHLIST     *FILE      DSPF         QSECOFR                8   YES
+ PASSSCR      *FILE      DSPF         QSECOFR                4   YES
+ SETUPSCR     *FILE      DSPF         QSECOFR                4   YES
+ TESTPRT      *FILE      PRTF         QSECOFR                4   YES
+ TESTPRT2     *FILE      PRTF         QSECOFR                4   YES
+ TESTSUBF     *FILE      DSPF         QSECOFR                4   YES
+ TESTSUITE    *FILE      DSPF         QSECOFR                4   YES
+ VCFMAIN      *FILE      DSPF         QSECOFR               40   YES
+ VOTEPRTF     *FILE      PRTF         QSECOFR                4   YES
+ VOTESCR      *FILE      DSPF         QSECOFR               16   YES
+ VOTESCRTST   *FILE      DSPF         QSECOFR               12   YES
+ STRCMTEDT    *CMD                    QSECOFR                4   YES        Start the Comment Editor
+ STREXHB      *CMD                    QSECOFR                4   YES        Start Exhibitor Menu
+ STREXHBEDT   *CMD                    QSECOFR                4   YES        Start the Exhibit Editor
+ STRVOTERPT   *CMD                    QSECOFR                4   YES        View Vote Report for Exhibit
+ ADMMAIN      *MENU      DSPF         QSECOFR                4   YES
+ VCFMAIN      *MENU      DSPF         QSECOFR                4   YES
+ AWARDDB      *FILE      PF           QSECOFR               40   YES        Database for award categories
+ BMOVDB       *FILE      PF           QSECOFR              108   YES        Database for miscellaneous program settings
+ EXHBDB       *FILE      PF           QSECOFR               48   YES        Database for exhibitors at VCF
+ GUESTBKDB    *FILE      PF           QSECOFR               40   YES        Database to hold guestbook comments
+ LRN400STR    *FILE      PF           QSECOFR               64   YES        Strings for LEARN/400
+ LRNAUTSTR    *FILE      PF           QSECOFR               60   YES        Strings for LEARN/400
+ LRN400ALT    *FILE      PF           QSECOFR               60   YES        Alternate file for LRN/400
+ QCLSRC       *FILE      PF           QSECOFR               68   YES
+ QCMDSRC      *FILE      PF           QSECOFR               56   YES        Command Source
+ QDDSSRC      *FILE      PF           QSECOFR              116   YES        VCF Expo DDS Source
+ QMNUSRC      *FILE      PF           QSECOFR              136   YES        VCF Exhibition Menu System
+ QRLUSRC      *FILE      PF           QSECOFR               80   YES        Printer files?
+ QRPGLESRC    *FILE      PF           QSECOFR              372   YES
+ QRPGSRC      *FILE      PF           QSECOFR               16   YES
+ QSDASRC      *FILE      PF           QSECOFR              244   YES        Source code for screen descriptions
+ SECOFRS      *FILE      PF           QSECOFR               40   YES        List of authorized SECOFR profiles
+ SETTINGS     *FILE      PF           QSECOFR               40   YES        Database for miscellaneous program settings
+ VOTINGDB     *FILE      PF           QSECOFR               40   YES        Databse to hold voting records
+                                                   -=* http://pub400.com *=-
+                                              Saved Object Information                                                  Page     3
+5770SS1 V7R5M0  220415                                                                           PUB400    26-09-06  16:41:22 CEST
+                                                       Database File Members
+              File            Members
+ File         Type             Saved    Member       Member       Member       Member       Member       Member       Member
+ AWARDDB      PF                    1   AWARDDB
+ BMOVDB       PF                    1   BMOVDB
+ EXHBDB       PF                    1   EXHBDB
+ GUESTBKDB    PF                    1   GUESTBKDB
+ LRN400STR    PF                    1   LRN400STR
+ LRNAUTSTR    PF                    1   LRN400STR
+ LRN400ALT    PF                    1   LRN400STR
+ QCLSRC       PF                    5   ADDGBSTUB    LRN400STUB   READGBSTUB   VCFSTUB      VOTESTUB
+ QCMDSRC      PF                    4   STRCMTEDT    STREXHB      STREXHBEDT   STRVOTERPT
+ QDDSSRC      PF                    9   AWARDDB      BMOVDB       EXHBDB       GUESTBKDB    LRN400STR    SECOFRS      SETTINGS
+                                        VOTINGDB     XMPLE
+ QMNUSRC      PF                    6   ADMMAIN      ADMMAINQQ    MAIN         MAINQQ       VCFMAIN      VCFMAINQQ
+ QRLUSRC      PF                    4   CMTPRTF      CMTTST       TESTPRT2     VOTEPRTF
+ QRPGLESRC    PF                   22   ADDGBCMT     ADDVOTE      ADMADDSOFR   ADMCRTEXHB   ADMHIDECMT   ADMLRN400    ADMOFRLIST
+                                        ADMSETTING   ADMVOTERPT   BEEMOVIE     CREDITS      EXHBMENU     LRN400       LRN400AUT
+                                        NTRSTIT      OLDADDVOTE   OLDVOTE      PARAMETER    PRINTER      PRTLSTCMT    PRTLSTVOTE
+                                        READGBCMT
+ QRPGSRC      PF                    1   ADDVOTETST
+ QSDASRC      PF                   14   ADMSCR       ADMVOTERES   BMOVSCR      CREDITSSCR   EXHBMENUSC   GUESTBKSCR   INTERSCR
+                                        LRNAUTO      LRN400SCR    PASSSCR      SETUPSCR     TESTSUITE    VOTESCR      VOTESCROLD
+ SECOFRS      PF                    1   SECOFRS
+ SETTINGS     PF                    1   SETTINGS
+ VOTINGDB     PF                    1   VOTINGDB
+                                                              Summary
+ Number of objects saved  . . . . . . . :   90
+ Members  . . . . . . . . . . . . . . . :   75
+ Access paths . . . . . . . . . . . . . :   0
+ Spooled files  . . . . . . . . . . . . :   0
+                                        * * * * *   E N D   O F   L I S T I N G   * * * * *
+                                                   -=* http://pub400.com *=-

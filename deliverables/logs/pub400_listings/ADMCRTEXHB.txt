@@ -1,0 +1,535 @@
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      1
+  Command  . . . . . . . . . . . . :   CRTBNDRPG
+    Issued by  . . . . . . . . . . :     ASHIBATA
+  Program  . . . . . . . . . . . . :   ADMCRTEXHB
+    Library  . . . . . . . . . . . :     ASHIBATA2
+  Text 'description' . . . . . . . :   *SRCMBRTXT
+  Source Member  . . . . . . . . . :   ADMCRTEXHB
+  Source File  . . . . . . . . . . :   QRPGLESRC
+    Library  . . . . . . . . . . . :     ASHIBATA1
+    CCSID  . . . . . . . . . . . . :     273
+  Text 'description' . . . . . . . :
+  Last Change  . . . . . . . . . . :   26-09-06  17:02:08
+  Generation severity level  . . . :   10
+  Default activation group . . . . :   *YES
+  Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
+                                       *EXPDDS    *EXT       *NOSHOWSKP *NOSRCSTMT
+                                       *DEBUGIO   *UNREF     *NOEVENTF
+  Debugging views  . . . . . . . . :   *SOURCE
+  Debug encryption key . . . . . . :   *NONE
+  Output . . . . . . . . . . . . . :   *PRINT
+  Optimization level . . . . . . . :   *NONE
+  Source listing indentation . . . :   *NONE
+  Type conversion options  . . . . :   *NONE
+  Sort sequence  . . . . . . . . . :   *HEX
+  Language identifier  . . . . . . :   *JOBRUN
+  Replace program  . . . . . . . . :   *YES
+  User profile . . . . . . . . . . :   *USER
+  Authority  . . . . . . . . . . . :   *LIBCRTAUT
+  Truncate numeric . . . . . . . . :   *YES
+  Fix numeric  . . . . . . . . . . :   *NONE
+  Target release . . . . . . . . . :   *CURRENT
+  Allow null values  . . . . . . . :   *NO
+  Define condition names . . . . . :   *NONE
+  Enable performance collection  . :   *PEP
+  Profiling data . . . . . . . . . :   *NOCOL
+  Licensed Internal Code options . :
+  Generate program interface . . . :   *NO
+  Include directory  . . . . . . . :
+  Preprocessor options . . . . . . :   *NONE
+  Require prototype for export . . :   *NO
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      2
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+                          S o u r c e   L i s t i n g
+     1 FSECOFRS   IF   E           K DISK                                                                        000000     000100
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  SECOFRS          ASHIBATA2/SECOFRS                           *
+        * Record format(s) . . . . . :  USRPROFR         USRPROFR                                    *
+        *--------------------------------------------------------------------------------------------*
+     2 FEXHBDB    UF A E           K DISK                                                                        000000     000200
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBDB           ASHIBATA2/EXHBDB                            *
+        * Record format(s) . . . . . :  EXHBREC          EXHBREC                                     *
+        *--------------------------------------------------------------------------------------------*
+     3 FEXHBMENUSCCF   E             WORKSTN                                                                     000000     000300
+        *--------------------------------------------------------------------------------------------*
+        *                               RPG name         External name                               *
+        * File name. . . . . . . . . :  EXHBMENUSC       ASHIBATA2/EXHBMENUSC                        *
+        * Record format(s) . . . . . :  MENU             MENU                                        *
+        *                               ADMCREATE        ADMCREATE                                   *
+        *                               ADMPSWRD         ADMPSWRD                                    *
+        *                               ADMDELETE        ADMDELETE                                   *
+        *                               ADMDELETE2       ADMDELETE2                                  *
+        *--------------------------------------------------------------------------------------------*
+     4 DNEWOREDT         S              1P 0                                                                     000000     000400
+     5 DALWEXIT          S              1P 0                                                                     000000     000500
+     6 DERRSTS           S              1P 0                                                                     000000     000600
+     7 DDLTACTIV         S              1P 0                                                                     000000     000700
+     8 DUSERPROF         S              9A                                                                       000000     000800
+     9 DEDTEXHB          S              9A                                                                       000000     000900
+    10 DEMPTY            C                   CONST('          ')                                                 000000     001000
+    11 DERREXIST         C                   CONST('Error - USRPRF exists')                                      000000     001100
+    12 DERRNF            C                   CONST('USRPRF not found, creating +                                 000000     001200
+    13 D                                            new')                                                        000000     001300
+    14 DERRNODEL         C                   CONST('Not found - not deleted')                                    000000     001400
+    15 DERRDELOK         C                   CONST('USRPRF was deleted from DB')                                 000000     001500
+    16 DERRBLANK         C                   CONST('USRPRF cannot be blank     ')                                000000     001600
+    17 C*---------------------------------------------------------------------                                   000000     001700
+    18=IUSRPROFR                                                                                                           1000001
+        *--------------------------------------------------------------------------------------------*                     1
+        * RPG record format  . . . . :  USRPROFR                                                     *                     1
+        * External format  . . . . . :  USRPROFR : ASHIBATA2/SECOFRS                                 *                     1
+        *--------------------------------------------------------------------------------------------*                     1
+    19=I                             A    1    9  USERPROF                                                                 1000002
+    20=IEXHBREC                                                                                                            2000001
+        *--------------------------------------------------------------------------------------------*                     2
+        * RPG record format  . . . . :  EXHBREC                                                      *                     2
+        * External format  . . . . . :  EXHBREC : ASHIBATA2/EXHBDB                                   *                     2
+        *--------------------------------------------------------------------------------------------*                     2
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      3
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    21=I                             B    1    2 0EXHBDBID                                                                 2000002
+    22=I                             A    3   11  EXHUSRPRF                                                                2000003
+    23=I                             A   12   31  EXHBITOR                                                                 2000004
+    24=I                             A   32   51  EXHBCITY                                                                 2000005
+    25=I                             A   52   53  EXHBSTATE                                                                2000006
+    26=I                             A   54  103  EXHBTITLE                                                                2000007
+    27=I                             A  104 1103  EXHBDESC                                                                 2000008
+    28=I                             B 1104 1105 0ELIGIBLE                                                                 2000009
+    29=I                             B 1106 1107 0ENLRN400                                                                 2000010
+    30=IMENU                                                                                                               3000001
+        *--------------------------------------------------------------------------------------------*                     3
+        * RPG record format  . . . . :  MENU                                                         *                     3
+        * External format  . . . . . :  MENU : ASHIBATA2/EXHBMENUSC                                  *                     3
+        *--------------------------------------------------------------------------------------------*                     3
+    31=I                             S    1    1 0INOPT                                                                    3000002
+    32=IADMCREATE                                                                                                          4000001
+        *--------------------------------------------------------------------------------------------*                     4
+        * RPG record format  . . . . :  ADMCREATE                                                    *                     4
+        * External format  . . . . . :  ADMCREATE : ASHIBATA2/EXHBMENUSC                             *                     4
+        *--------------------------------------------------------------------------------------------*                     4
+    33=I                             N    1    1  *IN05                           Delete                                   4000002
+    34=I                             N    2    2  *IN12                           Cancel                                   4000003
+    35=I                             A    3   11  INUSRPRF                                                                 4000004
+    36=I                             A   12   71  INTITLE                                                                  4000005
+    37=I                             A   72   91  INNAME                                                                   4000006
+    38=I                             A   92  106  INCITY                                                                   4000007
+    39=I                             A  107  108  INSTATE                                                                  4000008
+    40=I                             A  109  109  INELIGIBLE                                                               4000009
+    41=I                             A  110 1109  INDESC                                                                   4000010
+    42=I                             A 1110 1110  INLRN400EN                                                               4000011
+    43=IADMPSWRD                                                                                                           5000001
+        *--------------------------------------------------------------------------------------------*                     5
+        * RPG record format  . . . . :  ADMPSWRD                                                     *                     5
+        * External format  . . . . . :  ADMPSWRD : ASHIBATA2/EXHBMENUSC                              *                     5
+        *--------------------------------------------------------------------------------------------*                     5
+    44=I                             A    1    9  INPWD                                                                    5000002
+    45=IADMDELETE                                                                                                          6000001
+        *--------------------------------------------------------------------------------------------*                     6
+        * RPG record format  . . . . :  ADMDELETE                                                    *                     6
+        * External format  . . . . . :  ADMDELETE : ASHIBATA2/EXHBMENUSC                             *                     6
+        *--------------------------------------------------------------------------------------------*                     6
+    46=I                             N    1    1  *IN12                           Cancel                                   6000002
+    47=IADMDELETE2                                                                                                         7000001
+        *--------------------------------------------------------------------------------------------*                     7
+        * RPG record format  . . . . :  ADMDELETE2                                                   *                     7
+        * External format  . . . . . :  ADMDELETE2 : ASHIBATA2/EXHBMENUSC                            *                     7
+        *--------------------------------------------------------------------------------------------*                     7
+    48=I                             N    1    1  *IN12                           Cancel                                   7000002
+    49 C     *ENTRY        PLIST                                                                                 000000     001800
+    50 C                   PARM                    LAUNCH            9                                           000000     001900
+    51 C                   PARM                    EXHIBIT           9                                           000000     002000
+    52 C*-----------------------------------------------------------------------                                 000000     002100
+    53 C                   MOVEL     0             NEWOREDT                                                      000000     002200
+    54 C                   MOVEL     0             ERRSTS                                                        000000     002300
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      4
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+    55 C                   MOVEL     0             DLTACTIV                                                      000000     002400
+    56 C                                                                                                         000000     002500
+    57 C                   EXSR      CHKPARM                                                                     000000     002600
+    58 C                   EXSR      LOADEXHB                                                                    000000     002700
+    59 C                                                                                                         000000     002800
+    60 C                   DOW       ALWEXIT = *ZERO                                                   B01       000000     002900
+    61 C                   MOVEL     0             DLTACTIV                                             01       000000     003000
+    62 C                   EXFMT     ADMCREATE                                                          01       000000     003100
+    63 C                                                                                                01       000000     003200
+    64 C                   IF        ERRSTS = 1                                                        B02       000000     003300
+    65 C                   EVAL      ERRLINE = ERREXIST                                                 02       000000     003400
+    66 C                   ENDIF                                                                       E02       000000     003500
+    67 C                                                                                               E02       000000     003600
+    68 C                   IF        ERRSTS = 2                                                        B02       000000     003700
+    69 C                   EVAL      ERRLINE = ERRNF                                                    02       000000     003800
+    70 C                   ENDIF                                                                       E02       000000     003900
+    71 C                                                                                               E02       000000     004000
+    72 C                   IF        ERRSTS = 3                                                        B02       000000     004100
+    73 C                   EVAL      ERRLINE = ERRNODEL                                                 02       000000     004200
+    74 C                   ENDIF                                                                       E02       000000     004300
+    75 C                                                                                               E02       000000     004400
+    76 C                   IF        ERRSTS = 4                                                        B02       000000     004500
+    77 C                   EVAL      ERRLINE = ERRDELOK                                                 02       000000     004600
+    78 C                   ENDIF                                                                       E02       000000     004700
+    79 C                                                                                               E02       000000     004800
+    80 C                   IF        ERRSTS = 5                                                        B02       000000     004900
+    81 C                   EVAL      ERRLINE = ERRBLANK                                                 02       000000     005000
+    82 C                   ENDIF                                                                       E02       000000     005100
+    83 C                                                                                               E02       000000     005200
+    84 C                   IF        *IN05 = *ON                                                       B02       000000     005300
+    85 C                   EXSR      DELRCD                                                             02       000000     005400
+    86 C                   EVAL      *IN05 = *OFF                                                       02       000000     005500
+    87 C                   MOVEL     1             DLTACTIV                                             02       000000     005600
+    88 C                   ENDIF                                                                       E02       000000     005700
+    89 C                                                                                               E02       000000     005800
+    90 C                   IF        *IN12 = *ON                                                       B02       000000     005900
+    91 C                   MOVEL     *ON           *INLR                                                02       000000     006000
+    92 C                   RETURN                                                                       02       000000     006100
+    93 C                   ENDIF                                                                       E02       000000     006200
+    94 C                                                                                               E02       000000     006300
+    95 C                   IF        DLTACTIV  = *ZERO                                                 B02       000000     006400
+    96 C                   EXSR      WRITEEXHB                                                          02       000000     006500
+    97 C                   ENDIF                                                                       E02       000000     006600
+    98 C                   ENDDO                                                                       E01       000000     006700
+    99 C                                                                                               E01       000000     006800
+   100 C                   MOVEL     *ON           *INLR                                                         000000     006900
+   101 C                   RETURN                                                                                000000     007000
+   102 C*---------------------------------------------------------------------                                   000000     007100
+   103 C     LOADEXHB      BEGSR                                                                                 000000     007200
+   104 C                   IF        EDTEXHB = 'NONE'                                                  B01       000000     007300
+   105 C*                    *Do nothing. Assume new (NEWOREDT = 0)                                              000000     007400
+   106 C                   ELSE                                                                        X01       000000     007500
+   107 C     EDTEXHB       CHAIN     EXHBREC                            95----                          01       000000     007600
+   108 C                   IF        *IN95 = *OFF                                                      B02       000000     007700
+   109 C                   READE     EXHBDB                                                             02       000000     007800
+   110 C                   MOVEL     EXHBTITLE     INTITLE                                              02       000000     007900
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      5
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   111 C                   MOVEL     EXHBITOR      INNAME                                               02       000000     008000
+   112 C                   MOVEL     EXHBCITY      INCITY                                               02       000000     008100
+   113 C                   MOVEL     EXHBSTATE     INSTATE                                              02       000000     008200
+   114 C                   MOVEL     EXHBDESC      INDESC                                               02       000000     008300
+   115 C                   MOVEL     ELIGIBLE      INELIGIBLE                                           02       000000     008400
+   116 C                   MOVEL     EXHUSRPRF     INUSRPRF                                             02       000000     008500
+   117 C                   MOVEL     ENLRN400      INLRN400EN                                           02       000000     008600
+   118 C                   MOVEL     1             NEWOREDT                                             02       000000     008700
+   119 C                   ELSE                                                                        X02       000000     008800
+   120 C                   MOVEL     EDTEXHB       INUSRPRF                                             02       000000     008900
+   121 C                   MOVEL     2             ERRSTS                                               02       000000     009000
+   122 C                   MOVEL     0             NEWOREDT                                             02       000000     009100
+   123 C                   EVAL      ERRLINE = ERRNF                                                    02       000000     009200
+   124 C                   ENDIF                                                                       E02       000000     009300
+   125 C                   ENDIF                                                                       E01       000000     009400
+   126 C                   ENDSR                                                                                 000000     009500
+   127 C*---------------------------------------------------------------------                                   000000     009600
+   128 C     WRITEEXHB     BEGSR                                                                                 000000     009700
+   129 C                   IF        INUSRPRF = *BLANK                                                 B01       000000     009800
+   130 C                   MOVEL     5             ERRSTS                                               01       000000     009900
+   131 C                   EVAL      ERRLINE = ERRBLANK                                                 01       000000     010000
+   132 C                   LEAVESR                                                                      01       000000     010100
+   133 C                   ENDIF                                                                       E01       000000     010200
+   134 C                                                                                               E01       000000     010300
+   135 C     EDTEXHB       SETLL     EXHBREC                                                                     000000     010400
+   136 C                   READ      EXHBDB                                                                      000000     010500
+   137 C                   MOVEL     INTITLE       EXHBTITLE                                                     000000     010600
+   138 C                   MOVEL     INNAME        EXHBITOR                                                      000000     010700
+   139 C                   MOVEL     INCITY        EXHBCITY                                                      000000     010800
+   140 C                   MOVEL     INSTATE       EXHBSTATE                                                     000000     010900
+   141 C                   MOVEL     INDESC        EXHBDESC                                                      000000     011000
+   142 C                   MOVEL     INELIGIBLE    ELIGIBLE                                                      000000     011100
+   143 C                   MOVEL     INUSRPRF      EXHUSRPRF                                                     000000     011200
+   144 C                   MOVEL     INLRN400EN    ENLRN400                                                      000000     011300
+   145 C*                  MOVEL     INEXHBID      EXHBDBID                                                      000000     011400
+   146 C                   IF        NEWOREDT = 0                                                      B01       000000     011500
+   147 C     INUSRPRF      CHAIN     EXHBREC                            96----                          01       000000     011600
+   148 C                   IF        *IN96 = *OFF                                                      B02       000000     011700
+   149 C                   MOVEL     1             ERRSTS                                               02       000000     011800
+   150 C                   EVAL      ERRLINE = ERREXIST                                                 02       000000     011900
+   151 C                   ELSE                                                                        X02       000000     012000
+   152 C                   WRITE     EXHBREC                                                            02       000000     012100
+   153 C                   MOVEL     1             ALWEXIT                                              02       000000     012200
+   154 C                   ENDIF                                                                       E02       000000     012300
+   155 C                   ELSE                                                                        X01       000000     012400
+   156 C                   UPDATE    EXHBREC                                                            01       000000     012500
+   157 C                   MOVEL     1             ALWEXIT                                              01       000000     012600
+   158 C                   ENDIF                                                                       E01       000000     012700
+   159 C                   ENDSR                                                                                 000000     012800
+   160 C*------------------------------------------------------------------------                                000000     012900
+   161 C     DELRCD        BEGSR                                                                                 000000     013000
+   162 C                   IF        INUSRPRF = *BLANK                                                 B01       000000     013100
+   163 C                   MOVEL     5             ERRSTS                                               01       000000     013200
+   164 C                   EVAL      ERRLINE = ERRBLANK                                                 01       000000     013300
+   165 C                   LEAVESR                                                                      01       000000     013400
+   166 C                   ENDIF                                                                       E01       000000     013500
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      6
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   167 C                                                                                               E01       000000     013600
+   168 C     INUSRPRF      CHAIN     EXHBREC                            97----                                   000000     013700
+   169 C                   IF        *IN97 = *OFF                                                      B01       000000     013800
+   170 C                   EVAL      DLTEXHNAM = INUSRPRF                                               01       000000     013900
+   171 C                   EXFMT     ADMDELETE                                                          01       000000     014000
+   172 C                                                                                                01       000000     014100
+   173 C*                  MOVEL     INUSRPRF      DLTEXHBNAM                                                    000000     014200
+   174 C                                                                                                         000000     014300
+   175 C                   IF        *IN12 = *ON                                                       B02       000000     014400
+   176 C                   EVAL      *IN12 = *OFF                                                       02       000000     014500
+   177 C                   LEAVESR                                                                      02       000000     014600
+   178 C                   ENDIF                                                                       E02       000000     014700
+   179 C                                                                                               E02       000000     014800
+   180 C                   DELETE    EXHBREC                                                            01       000000     014900
+   181 C                   MOVEL     4             ERRSTS                                               01       000000     015000
+   182 C                   EVAL      ERRLINE = ERRDELOK                                                 01       000000     015100
+   183 C                   EVAL      INUSRPRF = EMPTY                                                   01       000000     015200
+   184 C                                                                                                01       000000     015300
+   185 C                   ELSE                                                                        X01       000000     015400
+   186 C                   MOVEL     3             ERRSTS                                               01       000000     015500
+   187 C                   EVAL      ERRLINE = ERRNODEL                                                 01       000000     015600
+   188 C                   LEAVESR                                                                      01       000000     015700
+   189 C                   ENDIF                                                                       E01       000000     015800
+   190 C                                                                                               E01       000000     015900
+   191 C                   ENDSR                                                                                 000000     016000
+   192 C*---------------------------------------------------------------------                                   000000     016100
+   193 C     CHKOFRS       BEGSR                                                                                 000000     016200
+   194 C                   ENDSR                                                                                 000000     016300
+   195 C*------------------------------------------------------------------------                                000000     016400
+   196 C     CHKPARM       BEGSR                                                                                 000000     016500
+   197 C                   MOVEL     LAUNCH        USERPROF                                                      000000     016600
+   198 C                   MOVEL     EXHIBIT       EDTEXHB                                                       000000     016700
+   199 C*TODO HERE: Logic to do the stuff to validate user is                                                    000000     016800
+   200 C*a SECOFR in the SECOFRS file                                                                            000000     016900
+   201 C                   ENDSR                                                                                 000000     017000
+   202=OEXHBREC                                                                                                            8000001
+        *--------------------------------------------------------------------------------------------*                     8
+        * RPG record format  . . . . :  EXHBREC                                                      *                     8
+        * External format  . . . . . :  EXHBREC : ASHIBATA2/EXHBDB                                   *                     8
+        *--------------------------------------------------------------------------------------------*                     8
+   203=O                       EXHBDBID             2B BIN2      3,0                                                       8000002
+   204=O                       EXHUSRPRF           11A CHAR        9                                                       8000003
+   205=O                       EXHBITOR            31A CHAR       20                                                       8000004
+   206=O                       EXHBCITY            51A CHAR       20                                                       8000005
+   207=O                       EXHBSTATE           53A CHAR        2                                                       8000006
+   208=O                       EXHBTITLE          103A CHAR       50                                                       8000007
+   209=O                       EXHBDESC          1103A CHAR     1000                                                       8000008
+   210=O                       ELIGIBLE          1105B BIN2      1,0                                                       8000009
+   211=O                       ENLRN400          1107B BIN2      1,0                                                       8000010
+   212=OADMCREATE                                                                                                          9000001
+        *--------------------------------------------------------------------------------------------*                     9
+        * RPG record format  . . . . :  ADMCREATE                                                    *                     9
+        * External format  . . . . . :  ADMCREATE : ASHIBATA2/EXHBMENUSC                             *                     9
+        *--------------------------------------------------------------------------------------------*                     9
+   213=O                       INUSRPRF             9A CHAR        9                                                       9000002
+   214=O                       INTITLE             69A CHAR       60                                                       9000003
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      7
+Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
+Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
+   215=O                       INNAME              89A CHAR       20                                                       9000004
+   216=O                       INCITY             104A CHAR       15                                                       9000005
+   217=O                       INSTATE            106A CHAR        2                                                       9000006
+   218=O                       INELIGIBLE         107A CHAR        1                                                       9000007
+   219=O                       INDESC            1107A CHAR     1000                                                       9000008
+   220=O                       ERRLINE           1137A CHAR       30                                                       9000009
+   221=O                       INLRN400EN        1138A CHAR        1                                                       9000010
+   222=OADMDELETE                                                                                                         10000001
+        *--------------------------------------------------------------------------------------------*                    10
+        * RPG record format  . . . . :  ADMDELETE                                                    *                    10
+        * External format  . . . . . :  ADMDELETE : ASHIBATA2/EXHBMENUSC                             *                    10
+        *--------------------------------------------------------------------------------------------*                    10
+   223=O                       DLTEXHNAM            9A CHAR        9                                                      10000002
+       * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      8
+          A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
+ Msg id  Sv Number Seq     Message text
+*RNF7066 00      3 000300  Record-Format ADMDELETE2 not used for input or output.
+*RNF7066 00      3 000300  Record-Format ADMPSWRD not used for input or output.
+*RNF7066 00      3 000300  Record-Format MENU not used for input or output.
+*RNF7066 00      1 000100  Record-Format USRPROFR not used for input or output.
+*RNF7086 00      1 000100  RPG handles blocking for file SECOFRS. INFDS is updated
+                           only when blocks of data are transferred.
+ * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
+                 O u t p u t   B u f f e r   P o s i t i o n s
+Line   Start End   Field or Constant
+Number Pos   Pos
+   203     1     2 EXHBDBID
+   204     3    11 EXHUSRPRF
+   205    12    31 EXHBITOR
+   206    32    51 EXHBCITY
+   207    52    53 EXHBSTATE
+   208    54   103 EXHBTITLE
+   209   104  1103 EXHBDESC
+   210  1104  1105 ELIGIBLE
+   211  1106  1107 ENLRN400
+   203     1     2 EXHBDBID
+   204     3    11 EXHUSRPRF
+   205    12    31 EXHBITOR
+   206    32    51 EXHBCITY
+   207    52    53 EXHBSTATE
+   208    54   103 EXHBTITLE
+   209   104  1103 EXHBDESC
+   210  1104  1105 ELIGIBLE
+   211  1106  1107 ENLRN400
+   213     1     9 INUSRPRF
+   214    10    69 INTITLE
+   215    70    89 INNAME
+   216    90   104 INCITY
+   217   105   106 INSTATE
+   218   107   107 INELIGIBLE
+   219   108  1107 INDESC
+   220  1108  1137 ERRLINE
+   221  1138  1138 INLRN400EN
+   223     1     9 DLTEXHNAM
+ * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page      9
+                    K e y   F i e l d   I n f o r m a t i o n
+         File           Internal    External
+           Record       field name  field name  Attributes
+      2  EXHBDB
+           EXHBREC
+                        EXHUSRPRF               CHAR        9
+      1  SECOFRS
+           USRPROFR
+                        USERPROF                CHAR        9
+ * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page     10
+                          C r o s s   R e f e r e n c e
+      File and Record References:
+         File              Device             References (D=Defined)
+           Record
+         EXHBDB            DISK                    2D    109     136
+           EXHBREC                                 2D     20     107     135
+                                                 147     152     156     168
+                                                 180     202
+         EXHBMENUSC        WORKSTN                 3D
+           MENU                                    3D     30
+           ADMCREATE                               3D     32      62     212
+           ADMPSWRD                                3D     43
+           ADMDELETE                               3D     45     171     222
+           ADMDELETE2                              3D     47
+         SECOFRS           DISK                    1D
+           USRPROFR                                1D     18
+      Global Field References:
+         Field             Attributes         References (D=Defined M=Modified)
+         *ENTRY            PLIST                  49D
+         *INLR             N(1)                   91M    100M
+         *IN05             N(1)                   33M     84      86M
+         *IN12             N(1)                   34M     46M     48M     90
+                                                 175     176M
+         *IN95             N(1)                  108
+         *IN96             N(1)                  148
+         *IN97             N(1)                  169
+         ALWEXIT           P(1,0)                  5D     60     153M    157M
+*RNF7031 CHKOFRS           BEGSR                 193D
+         CHKPARM           BEGSR                  57     196D
+         DELRCD            BEGSR                  85     161D
+         DLTACTIV          P(1,0)                  7D     55M     61M     87M
+                                                  95
+         DLTEXHNAM         A(9)                  170M    223
+         EDTEXHB           A(9)                    9D    104     107     120
+                                                 135     198M
+         ELIGIBLE          P(1,0)                 28M    115     142M    210
+         EMPTY             CONST                  10D    183
+         ENLRN400          P(1,0)                 29M    117     144M    211
+         ERRBLANK          CONST                  16D     81     131     164
+         ERRDELOK          CONST                  15D     77     182
+         ERREXIST          CONST                  11D     65     150
+         ERRLINE           A(30)                  65M     69M     73M     77M
+                                                  81M    123M    131M    150M
+                                                 164M    182M    187M    220
+         ERRNF             CONST                  12D     69     123
+         ERRNODEL          CONST                  14D     73     187
+         ERRSTS            P(1,0)                  6D     54M     64      68
+                                                  72      76      80     121M
+                                                 130M    149M    163M    181M
+                                                 186M
+         EXHBCITY          A(20)                  24M    112     139M    206
+         EXHBDBID          P(3,0)                 21M    203
+         EXHBDESC          A(1000)                27M    114     141M    209
+         EXHBITOR          A(20)                  23M    111     138M    205
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page     11
+         EXHBSTATE         A(2)                   25M    113     140M    207
+         EXHBTITLE         A(50)                  26M    110     137M    208
+         EXHIBIT           A(9)                   51D    198
+                           BASED(_QRNL_PRM+)
+         EXHUSRPRF         A(9)                   22M    116     143M    204
+         INCITY            A(15)                  38M    112M    139     216
+         INDESC            A(1000)                41M    114M    141     219
+         INELIGIBLE        A(1)                   40M    115M    142     218
+         INLRN400EN        A(1)                   42M    117M    144     221
+         INNAME            A(20)                  37M    111M    138     215
+*RNF7031 INOPT             P(1,0)                 31D
+*RNF7031 INPWD             A(9)                   44D
+         INSTATE           A(2)                   39M    113M    140     217
+         INTITLE           A(60)                  36M    110M    137     214
+         INUSRPRF          A(9)                   35M    116M    120M    129
+                                                 143     147     162     168
+                                                 170     183M    213
+         LAUNCH            A(9)                   50D    197
+                           BASED(_QRNL_PRM+)
+         LOADEXHB          BEGSR                  58     103D
+         NEWOREDT          P(1,0)                  4D     53M    118M    122M
+                                                 146
+         USERPROF          A(9)                    8D     19M    197M
+         WRITEEXHB         BEGSR                  96     128D
+      Indicator References:
+         Indicator                            References (D=Defined M=Modified)
+         05                                       33M     84      86M
+         12                                       34M     46M     48M     90
+                                                 175     176M
+         95                                      107D    108
+         96                                      147D    148
+         97                                      168D    169
+         LR                                       91M    100M
+       * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page     12
+                      E x t e r n a l   R e f e r e n c e s
+      Statically bound procedures:
+         Procedure                            References
+         No references in the source.
+      Imported fields:
+         Field             Attributes         Defined
+         No references in the source.
+      Exported fields:
+         Field             Attributes         Defined
+         No references in the source.
+   * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page     13
+                          M e s s a g e   S u m m a r y
+ Msg id  Sv Number Message text
+*RNF7031 00      3 The name or indicator is not referenced.
+*RNF7066 00      4 Record-Format name of Externally-Described file is not used.
+*RNF7086 00      1 RPG handles blocking for the file. INFDS is updated only when
+                   blocks of data are transferred.
+       * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                                   -=* http://pub400.com *=-
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMCRTEXHB     PUB400     26-09-06 17:03:36        Page     14
+                            F i n a l   S u m m a r y
+  Message Totals:
+    Information  (00) . . . . . . . :        8
+    Warning      (10) . . . . . . . :        0
+    Error        (20) . . . . . . . :        0
+    Severe Error (30+)  . . . . . . :        0
+    ---------------------------------  -------
+    Total . . . . . . . . . . . . . :        8
+  Source Totals:
+    Records . . . . . . . . . . . . :      223
+    Specifications  . . . . . . . . :      211
+    Data records  . . . . . . . . . :        0
+    Comments  . . . . . . . . . . . :       12
+         * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
+Program ADMCRTEXHB placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:36.
+          * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

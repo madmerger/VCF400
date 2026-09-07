@@ -1,0 +1,375 @@
+{
+  "env": "java",
+  "started": "2026-09-06T18:19:26.235Z",
+  "cases": {
+    "CV-01": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Must enter Award ID",
+        "vote": null
+      }
+    },
+    "CV-02": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Must enter Award ID",
+        "vote": null
+      }
+    },
+    "CV-03": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Must enter badge number",
+        "vote": null
+      }
+    },
+    "CV-04": {
+      "observed": {
+        "screen": "VOTEEND",
+        "vote": {
+          "badge": 7001,
+          "award": 1,
+          "exhibit": "ASHIBATA"
+        }
+      }
+    },
+    "CV-05": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "You have already voted.",
+        "vote": {
+          "badge": 7001,
+          "award": 1,
+          "exhibit": "ASHIBATA"
+        }
+      }
+    },
+    "CV-06": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Award does not exist.",
+        "vote": null
+      }
+    },
+    "CV-07": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Must enter Award ID",
+        "vote": null
+      }
+    },
+    "CV-08": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Must enter Exhibit ID",
+        "vote": null
+      }
+    },
+    "CV-09": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Exhibit does not exist",
+        "vote": null
+      }
+    },
+    "CV-10": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Exhibit ineligible for award",
+        "vote": null
+      }
+    },
+    "CV-11": {
+      "observed": {
+        "screen": "VOTEEND",
+        "vote": {
+          "badge": 7002,
+          "award": 2,
+          "exhibit": "DEMO400"
+        }
+      }
+    },
+    "CV-12": {
+      "observed": {
+        "screen": "VOTE1",
+        "errline": "Award does not exist.",
+        "vote": {
+          "badge": 7001,
+          "award": 1,
+          "exhibit": "ASHIBATA"
+        }
+      }
+    },
+    "CV-13": {
+      "observed": {
+        "screen": "ENDOFCON",
+        "vote": null
+      }
+    },
+    "CV-14": {
+      "observed": {
+        "screen": "ADDCMT",
+        "errline": "Must enter a comment",
+        "comment": {
+          "id": 3,
+          "row": null
+        }
+      }
+    },
+    "CV-15": {
+      "observed": {
+        "screen": "ADDCMT",
+        "errline": "Must enter a comment",
+        "comment": {
+          "id": 3,
+          "row": null
+        }
+      }
+    },
+    "CV-16": {
+      "observed": {
+        "screen": "ADDCMT",
+        "errline": "Must enter your name",
+        "comment": {
+          "id": 3,
+          "row": null
+        }
+      }
+    },
+    "CV-17": {
+      "observed": {
+        "screen": "ENDCMT",
+        "shownId": 3,
+        "comment": {
+          "id": 3,
+          "row": {
+            "id": 3,
+            "visible": "Y",
+            "exhibit": "ASHIBATA",
+            "name": "Devin Tester",
+            "comment": "Cross validation run"
+          }
+        }
+      }
+    },
+    "CV-18": {
+      "observed": {
+        "screen": "ADDCMT",
+        "errline": "Must enter Exhibit ID",
+        "comment": {
+          "id": 4,
+          "row": null
+        }
+      }
+    },
+    "CV-19": {
+      "observed": {
+        "screen": "ENDCMT",
+        "shownId": 4,
+        "comment": {
+          "id": 4,
+          "row": {
+            "id": 4,
+            "visible": "Y",
+            "exhibit": "NOSUCH",
+            "name": "Guest",
+            "comment": "Unchecked exhibit"
+          }
+        }
+      }
+    },
+    "CV-20": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "Must enter CommentID"
+      }
+    },
+    "CV-21": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "",
+        "out": {
+          "name": "Great exhib",
+          "title": "IBM i on PUB400 Demo",
+          "cmt": "VCF/400 running on PUB400."
+        }
+      }
+    },
+    "CV-22": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "",
+        "out": {
+          "name": "Devin Teste",
+          "title": "IBM i on PUB400 Demo",
+          "cmt": "Cross validation run"
+        }
+      }
+    },
+    "CV-23": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "",
+        "out": {
+          "name": "",
+          "title": "",
+          "cmt": "This comment is not part of this guestbook."
+        }
+      }
+    },
+    "CV-24": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "",
+        "out": {
+          "name": "Name Hidden",
+          "title": "",
+          "cmt": "This comment hidden by an admin - offensive content."
+        }
+      }
+    },
+    "CV-25": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "",
+        "out": {
+          "name": "",
+          "title": "",
+          "cmt": "This comment is not part of this guestbook."
+        }
+      }
+    },
+    "CV-26": {
+      "observed": {
+        "screen": "READCMT",
+        "total": 4,
+        "errline": "",
+        "out": {
+          "name": "Guest",
+          "title": "Ineligible test exhibit (ELIGIBLE=0)",
+          "cmt": "Unchecked exhibit"
+        }
+      }
+    },
+    "CV-27": {
+      "observed": {
+        "screen": "LRN400",
+        "page": 2,
+        "content": "The AS/400 was introduced by IBM in June 1988 ... page 2"
+      }
+    },
+    "CV-28": {
+      "observed": {
+        "screen": "LRN400",
+        "page": 1,
+        "content": "Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit."
+      }
+    },
+    "CV-29": {
+      "observed": {
+        "screen": "VCFMAIN"
+      }
+    },
+    "CV-30": {
+      "observed": {
+        "screen": "VCFMAIN"
+      }
+    },
+    "CV-31": {
+      "observed": {
+        "screen": "KIOSK",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    },
+    "CV-32": {
+      "observed": {
+        "screen": "KIOSK",
+        "options": [
+          "3",
+          "4"
+        ]
+      }
+    },
+    "CV-33": {
+      "observed": {
+        "screen": "KIOSK",
+        "options": [
+          "1",
+          "3",
+          "4"
+        ]
+      }
+    },
+    "CV-34": {
+      "observed": {
+        "screen": "KIOSK",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "path": [
+          "ADMPSWRD",
+          "KIOSK"
+        ]
+      }
+    },
+    "CV-35": {
+      "observed": {
+        "screen": "VCFMAIN",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "path": [
+          "ADMPSWRD",
+          "VCFMAIN"
+        ]
+      }
+    },
+    "CV-36": {
+      "observed": {
+        "screen": "KIOSK",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "exhibit": "ASHIBATA",
+        "path": [
+          "NTRSTIT",
+          "VOTE1",
+          "KIOSK"
+        ]
+      }
+    },
+    "CV-37": {
+      "observed": {
+        "screen": "KIOSK",
+        "options": [
+          "3",
+          "4"
+        ],
+        "path": [
+          "KIOSK"
+        ]
+      }
+    }
+  },
+  "finished": "2026-09-06T18:21:12.955Z"
+}

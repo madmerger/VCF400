@@ -1,0 +1,12 @@
+* Skip 185.113.5.134 for data connection, reuse pub400.com instead
+* Connecting to 185.113.5.134 (185.113.5.134) port 40495
+*   Trying 185.113.5.134:40495...
+* Connected 2nd connection to 185.113.5.134 port 40495
+> TYPE I
+< 200 Representation type is binary IMAGE.
+> STOR /QSYS.LIB/ASHIBATA1.LIB/VCFV1R3.FILE
+< 150 Sending file to member VCFV1R3 in file VCFV1R3 in library ASHIBATA1.
+} [65536 bytes data]
+* upload completely sent off: 5892480 bytes
+< 226 File transfer completed successfully.
+* Connection #0 to host pub400.com left intact
