@@ -1,4 +1,4 @@
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      1
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      1
   Command  . . . . . . . . . . . . :   CRTBNDRPG
     Issued by  . . . . . . . . . . :     ASHIBATA
   Program  . . . . . . . . . . . . :   LRN400AUT
@@ -9,7 +9,7 @@
     Library  . . . . . . . . . . . :     ASHIBATA1
     CCSID  . . . . . . . . . . . . :     273
   Text 'description' . . . . . . . :
-  Last Change  . . . . . . . . . . :   26-09-06  17:02:34
+  Last Change  . . . . . . . . . . :   26-09-07  11:49:05
   Generation severity level  . . . :   10
   Default activation group . . . . :   *YES
   Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
@@ -39,7 +39,7 @@
   Preprocessor options . . . . . . :   *NONE
   Require prototype for export . . :   *NO
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      2
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      2
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
                           S o u r c e   L i s t i n g
@@ -89,7 +89,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     21=I                             A    5 1504  INCONTENT                                                                3000006
     22=I                             A 1505 1513  INEXTRA                                                                  3000007
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      3
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      3
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     23 C                   MOVEL     1             ALWFWD                                                        000000     000800
@@ -149,7 +149,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     77 C                   IF        *IN95 = *OFF                                                      B01       000000     006200
     78 C                   READE     LRN400STR                                                          01       000000     006300
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      4
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      4
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     79 C                   MOVEL     PAGENBR       OUTPAGENBR                                           01       000000     006400
@@ -190,7 +190,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
    110=O                       OUTCONTENT        1504A CHAR     1500                                                       4000003
        * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      5
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      5
           A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
  Msg id  Sv Number Seq     Message text
 *RNF7066 00      2 000200  Record-Format MAINADMIN not used for input or output.
@@ -202,7 +202,7 @@ Number Pos   Pos
    110     5  1504 OUTCONTENT
  * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      6
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      6
                     K e y   F i e l d   I n f o r m a t i o n
          File           Internal    External
            Record       field name  field name  Attributes
@@ -211,7 +211,7 @@ Number Pos   Pos
                         PAGENBR                 BIN2      4,0 SIGNED
  * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      7
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      7
                           C r o s s   R e f e r e n c e
       File and Record References:
          File              Device             References (D=Defined)
@@ -262,7 +262,7 @@ Number Pos   Pos
          LR                                       38M
        * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      8
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      8
                       E x t e r n a l   R e f e r e n c e s
       Statically bound procedures:
          Procedure                            References
@@ -275,14 +275,14 @@ Number Pos   Pos
          No references in the source.
    * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page      9
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page      9
                           M e s s a g e   S u m m a r y
  Msg id  Sv Number Message text
 *RNF7031 00      7 The name or indicator is not referenced.
 *RNF7066 00      1 Record-Format name of Externally-Described file is not used.
        * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-06 17:03:35        Page     10
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/LRN400AUT      PUB400     26-09-07 11:50:06        Page     10
                             F i n a l   S u m m a r y
   Message Totals:
     Information  (00) . . . . . . . :        8
@@ -297,5 +297,5 @@ Number Pos   Pos
     Data records  . . . . . . . . . :        0
     Comments  . . . . . . . . . . . :       15
          * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
-Program LRN400AUT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:36.
+Program LRN400AUT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:06.
           * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

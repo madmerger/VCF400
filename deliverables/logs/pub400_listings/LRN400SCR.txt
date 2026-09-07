@@ -1,11 +1,11 @@
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-06 17:03:33        Page    1
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    1
  File name . . . . . . . . . . . . . . . . . . . . . :   LRN400SCR
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
  File attribute  . . . . . . . . . . . . . . . . . . :   Display
  Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
  Source member containing DDS  . . . . . . . . . . . :   LRN400SCR
- Source member last changed  . . . . . . . . . . . . :   26-09-06  17:03:16
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  11:49:47
  Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
  DDS generation severity level . . . . . . . . . . . :   20
  DDS flagging severity level . . . . . . . . . . . . :   00
@@ -54,7 +54,7 @@
    3700       A                                      COLOR(BLU)
    3800       A                                 22  3'__________________________________-
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-06 17:03:33        Page    2
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    2
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    3900       A                                      ___________________________________-
@@ -69,7 +69,7 @@
    4800       A            INEXTRA        9   B 23 70COLOR(BLU)
                          * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-06 17:03:33        Page    3
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    3
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -115,7 +115,7 @@
    4800                    INEXTRA        9A  B 23 70COLOR(BLU)                               9         1506    1505
                  * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-06 17:03:33        Page    4
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/LRN400SCR     26-09-07 11:50:04        Page    4
                                           Message Summary
     Total          Informational          Warning        Error       Severe
                        (0-9)              (10-19)       (20-29)      (30-99)

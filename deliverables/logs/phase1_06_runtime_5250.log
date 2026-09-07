@@ -1,11 +1,11 @@
---- run started 2026-09-06T15:36:36Z, test badge=4992
+--- run started 2026-09-07T09:51:50Z, test badge=7707
 
 ===== Sign On =====
 +--------------------------------------------------------------------------------+
 |         Welcome to PUB400.COM * your public IBM i server                       |
 |                                               Server name . . . :   PUB400     |
 |                                               Subsystem . . . . :   QINTER     |
-|                                               Display name. . . :   QPADEV003W |
+|                                               Display name. . . :   QPADEV000X |
 |Your user name:                                                                 |
 |Password (max. 128):                                                            |
 |                                                                                |
@@ -64,24 +64,15 @@ BADGENBR  AWARDNBR  EXHBNBR
 --------- --------- ---------
         1         1 ASHIBATA 
        28         2 ASHIBATA 
-     3974         1 ASHIBATA 
-     3975         1 DEMO400  
-     4322         1 ASHIBATA 
-     4323         2 DEMO400  
-     4665         1 ASHIBATA 
-     4666         2 DEMO400  
 
-  8 RECORD(S) SELECTED.
+  2 RECORD(S) SELECTED.
 --- ASHIBATA2/GUESTBKDB
 CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
 ------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     1 Y        ASHIBATA  Great exhibitÜ V     CF/400 running on PUB400.                                                                                                                                                                               
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
      2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
-     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 3974                                                                                                                                                                         
-     4 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4322                                                                                                                                                                         
-     5 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4665                                                                                                                                                                         
 
-  5 RECORD(S) SELECTED.
+  2 RECORD(S) SELECTED.
 --- input: 'CHGLIBL LIBL(ASHIBATA2 ASHIBATA1 QGPL QTEMP) CURLIB(ASHIBATA2)' command line
 --- input: '\r' [Enter]
 
@@ -346,14 +337,14 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4992' type INPUTBADGE (4 digits, auto-advance) (4 digits -> auto-advance)
+--- input: '7707' type INPUTBADGE (4 digits, auto-advance) (4 digits -> auto-advance)
 --- input: '1' type INPUTAWARD
 
 ===== VOTESCR filled [valid vote] =====
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4992                   |
+|      First, type your SFGE Badge Number...............: 7707                   |
 |      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
 |      Third, type the Award ID you are selecting.......: 001                    |
 |                                                                                |
@@ -493,14 +484,14 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4992' type INPUTBADGE (same badge again) (4 digits -> auto-advance)
+--- input: '7707' type INPUTBADGE (same badge again) (4 digits -> auto-advance)
 --- input: '2' type INPUTAWARD
 
 ===== VOTESCR filled [duplicate badge] =====
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4992                   |
+|      First, type your SFGE Badge Number...............: 7707                   |
 |      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
 |      Third, type the Award ID you are selecting.......: 002                    |
 |                                                                                |
@@ -640,14 +631,14 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4993' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '7708' type INPUTBADGE (4 digits -> auto-advance)
 --- input: '9' type INPUTAWARD
 
 ===== VOTESCR filled [nonexistent award] =====
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4993                   |
+|      First, type your SFGE Badge Number...............: 7708                   |
 |      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
 |      Third, type the Award ID you are selecting.......: 009                    |
 |                                                                                |
@@ -758,7 +749,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4993' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '7708' type INPUTBADGE (4 digits -> auto-advance)
 --- input: 'NOSUCH' type INEXHB
 --- input: '1' type INPUTAWARD
 
@@ -766,7 +757,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4993                   |
+|      First, type your SFGE Badge Number...............: 7708                   |
 |      Second, type the Exhibit ID you are nominating...: NOSUCH                 |
 |      Third, type the Award ID you are selecting.......: 001                    |
 |                                                                                |
@@ -877,7 +868,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4993' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '7708' type INPUTBADGE (4 digits -> auto-advance)
 --- input: '\t' [Tab] skip INEXHB
 --- input: '1' type INPUTAWARD
 
@@ -885,7 +876,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4993                   |
+|      First, type your SFGE Badge Number...............: 7708                   |
 |      Second, type the Exhibit ID you are nominating...:                        |
 |      Third, type the Award ID you are selecting.......: 001                    |
 |                                                                                |
@@ -996,7 +987,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4993' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '7708' type INPUTBADGE (4 digits -> auto-advance)
 --- input: 'NOVOTE' type INEXHB
 --- input: '1' type INPUTAWARD
 
@@ -1004,7 +995,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4993                   |
+|      First, type your SFGE Badge Number...............: 7708                   |
 |      Second, type the Exhibit ID you are nominating...: NOVOTE                 |
 |      Third, type the Award ID you are selecting.......: 001                    |
 |                                                                                |
@@ -1115,7 +1106,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |   TAB = Switch Fields                                            V1R0M4        |
 |   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
 +--------------------------------------------------------------------------------+
---- input: '4993' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '7708' type INPUTBADGE (4 digits -> auto-advance)
 --- input: 'DEMO400' type INEXHB
 --- input: '2' type INPUTAWARD
 
@@ -1123,7 +1114,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
 |                                                                                |
-|      First, type your SFGE Badge Number...............: 4993                   |
+|      First, type your SFGE Badge Number...............: 7708                   |
 |      Second, type the Exhibit ID you are nominating...: DEMO400                |
 |      Third, type the Award ID you are selecting.......: 002                    |
 |                                                                                |
@@ -1210,26 +1201,17 @@ BADGENBR  AWARDNBR  EXHBNBR
 --------- --------- ---------
         1         1 ASHIBATA 
        28         2 ASHIBATA 
-     3974         1 ASHIBATA 
-     3975         1 DEMO400  
-     4322         1 ASHIBATA 
-     4323         2 DEMO400  
-     4665         1 ASHIBATA 
-     4666         2 DEMO400  
-     4992         1 ASHIBATA 
-     4993         2 DEMO400  
+     7707         1 ASHIBATA 
+     7708         2 DEMO400  
 
- 10 RECORD(S) SELECTED.
+  4 RECORD(S) SELECTED.
 --- ASHIBATA2/GUESTBKDB
 CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
 ------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     1 Y        ASHIBATA  Great exhibitÜ V     CF/400 running on PUB400.                                                                                                                                                                               
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
      2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
-     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 3974                                                                                                                                                                         
-     4 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4322                                                                                                                                                                         
-     5 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4665                                                                                                                                                                         
 
-  5 RECORD(S) SELECTED.
+  2 RECORD(S) SELECTED.
 --- input: '12' VCFMAIN option 12 (Sign Exhibit Guestbook)
 --- input: '\r' [Enter]
 
@@ -1320,7 +1302,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 --- input: '\x12' [Reset]
 --- input: 'Devin Tester' type INNAME
---- input: 'Phase1 runtime check badge 4992' type INCMT
+--- input: 'Phase1 runtime check badge 7707' type INCMT
 
 ===== GUESTBKSCR/ADDCMT filled =====
 +--------------------------------------------------------------------------------+
@@ -1329,7 +1311,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 |  Your Name................:   Devin Tester                                     |
 |  Exhibit ID...............:   ASHIBATA                                         |
 |  Comment..................:                                                    |
-|  Phase1 runtime check badge 4992                                               |
+|  Phase1 runtime check badge 7707                                               |
 |                                                                                |
 |                                                                                |
 |                                                                                |
@@ -1413,27 +1395,18 @@ BADGENBR  AWARDNBR  EXHBNBR
 --------- --------- ---------
         1         1 ASHIBATA 
        28         2 ASHIBATA 
-     3974         1 ASHIBATA 
-     3975         1 DEMO400  
-     4322         1 ASHIBATA 
-     4323         2 DEMO400  
-     4665         1 ASHIBATA 
-     4666         2 DEMO400  
-     4992         1 ASHIBATA 
-     4993         2 DEMO400  
+     7707         1 ASHIBATA 
+     7708         2 DEMO400  
 
- 10 RECORD(S) SELECTED.
+  4 RECORD(S) SELECTED.
 --- ASHIBATA2/GUESTBKDB
 CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
 ------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     1 Y        ASHIBATA  Great exhibitÜ V     CF/400 running on PUB400.                                                                                                                                                                               
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
      2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
-     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 3974                                                                                                                                                                         
-     4 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4322                                                                                                                                                                         
-     5 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4665                                                                                                                                                                         
-     6 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4992                                                                                                                                                                         
+     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 7707                                                                                                                                                                         
 
-  6 RECORD(S) SELECTED.
+  3 RECORD(S) SELECTED.
 --- input: '13' VCFMAIN option 13 (Read a Guestbook Comment)
 --- input: '\r' [Enter]
 
@@ -1470,7 +1443,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
 |                                                                                |
-|   Enter a Comment ID:                          Currently hosting 0006          |
+|   Enter a Comment ID:                          Currently hosting 0003          |
 |   ASHIBATA                                     comments and counting.          |
 |   --------------------------------------------------------------------------   |
 |                 says to:                                                       |
@@ -1499,7 +1472,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
 |                                                                                |
-|   Enter a Comment ID:                          Currently hosting 0006          |
+|   Enter a Comment ID:                          Currently hosting 0003          |
 |   Must enter CommentID                         comments and counting.          |
 |   --------------------------------------------------------------------------   |
 |                 says to:                                                       |
@@ -1530,12 +1503,12 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
 |                                                                                |
-|   Enter a Comment ID:                          Currently hosting 0006          |
+|   Enter a Comment ID:                          Currently hosting 0003          |
 |   ASHIBATA                                     comments and counting.          |
 |   --------------------------------------------------------------------------   |
 |   Great exhib   says to:   IBM i on PUB400 Demo                                |
 |                                                                                |
-|   CF/400 running on PUB400.                                                    |
+|   VCF/400 running on PUB400.                                                   |
 |                                                                                |
 |                                                                                |
 |   --------------------------------------------------------------------------   |
@@ -1561,12 +1534,12 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
 |                                                                                |
-|   Enter a Comment ID:                          Currently hosting 0006          |
+|   Enter a Comment ID:                          Currently hosting 0003          |
 |   ASHIBATA                                     comments and counting.          |
 |   --------------------------------------------------------------------------   |
 |   Devin Teste   says to:   IBM i on PUB400 Demo                                |
 |                                                                                |
-|   Phase1 runtime check badge 4992                                              |
+|   Phase1 runtime check badge 7707                                              |
 |                                                                                |
 |                                                                                |
 |   --------------------------------------------------------------------------   |
@@ -1913,7 +1886,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
 |                                                                                |
-|   Enter a Comment ID:                          Currently hosting 0006          |
+|   Enter a Comment ID:                          Currently hosting 0003          |
 |   ASHIBATA                                     comments and counting.          |
 |   --------------------------------------------------------------------------   |
 |                 says to:                                                       |
@@ -1943,7 +1916,7 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 +--------------------------------------------------------------------------------+
 |   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
 |                                                                                |
-|   Enter a Comment ID:                          Currently hosting 0006          |
+|   Enter a Comment ID:                          Currently hosting 0003          |
 |   ASHIBATA                                     comments and counting.          |
 |   --------------------------------------------------------------------------   |
 |   Devin         says to:   IBM i on PUB400 Demo                                |
@@ -2192,27 +2165,18 @@ BADGENBR  AWARDNBR  EXHBNBR
 --------- --------- ---------
         1         1 ASHIBATA 
        28         2 ASHIBATA 
-     3974         1 ASHIBATA 
-     3975         1 DEMO400  
-     4322         1 ASHIBATA 
-     4323         2 DEMO400  
-     4665         1 ASHIBATA 
-     4666         2 DEMO400  
-     4992         1 ASHIBATA 
-     4993         2 DEMO400  
+     7707         1 ASHIBATA 
+     7708         2 DEMO400  
 
- 10 RECORD(S) SELECTED.
+  4 RECORD(S) SELECTED.
 --- ASHIBATA2/GUESTBKDB
 CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
 ------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     1 Y        ASHIBATA  Great exhibitÜ V     CF/400 running on PUB400.                                                                                                                                                                               
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
      2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
-     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 3974                                                                                                                                                                         
-     4 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4322                                                                                                                                                                         
-     5 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4665                                                                                                                                                                         
-     6 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 4992                                                                                                                                                                         
+     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 7707                                                                                                                                                                         
 
-  6 RECORD(S) SELECTED.
+  3 RECORD(S) SELECTED.
 --- input: '\x1b3' [F3]
 
 ===== final screen =====
@@ -2242,4 +2206,4 @@ CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT
 | F23=Set initial menu                                                           |
 |                                                                                |
 +--------------------------------------------------------------------------------+
---- run finished 2026-09-06T15:41:03Z
+--- run finished 2026-09-07T09:56:22Z

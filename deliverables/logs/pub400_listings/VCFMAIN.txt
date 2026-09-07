@@ -1,11 +1,11 @@
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    1
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    1
  File name . . . . . . . . . . . . . . . . . . . . . :   VCFMAIN
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
  File attribute  . . . . . . . . . . . . . . . . . . :   Display
  Source file containing DDS  . . . . . . . . . . . . :   QMNUSRC
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
  Source member containing DDS  . . . . . . . . . . . :   VCFMAIN
- Source member last changed  . . . . . . . . . . . . :   26-09-06  17:01:41
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  11:48:14
  Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
  DDS generation severity level . . . . . . . . . . . :   20
  DDS flagging severity level . . . . . . . . . . . . :   00
@@ -54,7 +54,7 @@
    3300       A                                  4  2'Start Here'
    3400       A                                      DSPATR(HI)
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    2
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    2
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    3500       A                                  5  7'1. Learn AS/400 Navigation'
@@ -111,7 +111,7 @@
    8600       A                                      DSPATR(HI)
    8700       A                                  1 30'Navigation'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    3
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    3
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    8800       A                                      DSPATR(HI)
@@ -168,7 +168,7 @@
   13900       A                                  3 32'a'
   14000       A                                  3 34'tour'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    4
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    4
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   14100       A                                  3 39'of'
@@ -225,7 +225,7 @@
   19200       A                                 15 26'iSeries'
   19300       A                                 16 10'The'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    5
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    5
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   19400       A                                 16 14'RS/6000'
@@ -282,7 +282,7 @@
   24500       A                                  1 14'about'
   24600       A                                      DSPATR(HI)
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    6
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    6
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   24700       A                                  1 20'Gertie'
@@ -339,7 +339,7 @@
   29800       A                                  3 45'offered'
   29900       A                                  3 53'by'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    7
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    7
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   30000       A                                  3 56'IBM'
@@ -396,7 +396,7 @@
   35100       A                                  3 57'that'
   35200       A                                  3 62'you'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    8
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    8
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   35300       A                                  3 66'think'
@@ -453,7 +453,7 @@
   40400       A                                  9  8'Type'
   40500       A                                  9 13'the'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page    9
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page    9
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   40600       A                                  9 17'Exhibit'
@@ -510,7 +510,7 @@
   45700       A                                 16 76'VCF.'
   45800       A          R #H1212
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   10
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   10
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   45900       A*%%TS  SD  20230808  001001  QSECOFR     REL-V4R4M0  5769-PW1
@@ -567,7 +567,7 @@
   51000       A                                  7 21'will'
   51100       A                                  7 26'be'
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   11
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   11
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   51200       A                                  7 29'shared'
@@ -582,7 +582,7 @@
   52100       A                                  7 73'show.'
                          * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   12
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   12
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -640,7 +640,7 @@
    8500                                          1 23'AS/400' DSPATR(HI)                      6
    8700                                          1 30'Navigation' DSPATR(HI)                 10
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   13
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   13
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -698,7 +698,7 @@
   14700                                          3 68'computers,'                            10
   14800                                          4  2'known'                                  5
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   14
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   14
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -756,7 +756,7 @@
   20000                                         17 26'Series'                                 6
   20100                                         17 33'Today'                                  5
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   15
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   15
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -814,7 +814,7 @@
   26500                                          4 25'computer.'                              9
   26600                                          4 35'You'                                    3
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   16
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   16
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -872,7 +872,7 @@
   32400                                          5 59'office'                                 6
   32500                                          5 66'productivity'                          12
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   17
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   17
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -930,7 +930,7 @@
   38400                                          6 10'the'                                    3
   38500                                          6 14'exhibit'                                7
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   18
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   18
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -988,7 +988,7 @@
   43700                                         13 60'once'                                   4
   43800                                         13 65'for'                                    3
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   19
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   19
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -1046,7 +1046,7 @@
   49600                                          4 67'placard,'                               8
   49700                                          5  2'type'                                   4
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   20
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   20
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -1076,14 +1076,14 @@
   52100                                          7 73'show.'                                  5
                  * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   21
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   21
                                              Messages
     ID      Severity  Number
 * CPD5235      10        1      Message . . . . :   Record name same as name of file being created.
 * CPD8018      10        2      Message . . . . :   Keyword may not function as expected with DSPMOD.
 * CPD8111      10        1      Message . . . . :   Record may not function as expected.
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-06 17:03:33        Page   22
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VCFMAIN       26-09-07 11:50:04        Page   22
                                           Message Summary
     Total          Informational          Warning        Error       Severe
                        (0-9)              (10-19)       (20-29)      (30-99)

@@ -1,4 +1,4 @@
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      1
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      1
   Command  . . . . . . . . . . . . :   CRTBNDRPG
     Issued by  . . . . . . . . . . :     ASHIBATA
   Program  . . . . . . . . . . . . :   NTRSTIT
@@ -9,7 +9,7 @@
     Library  . . . . . . . . . . . :     ASHIBATA1
     CCSID  . . . . . . . . . . . . :     273
   Text 'description' . . . . . . . :
-  Last Change  . . . . . . . . . . :   26-09-06  17:02:37
+  Last Change  . . . . . . . . . . :   26-09-07  11:49:08
   Generation severity level  . . . :   10
   Default activation group . . . . :   *YES
   Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
@@ -39,7 +39,7 @@
   Preprocessor options . . . . . . :   *NONE
   Require prototype for export . . :   *NO
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      2
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      2
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
                           S o u r c e   L i s t i n g
@@ -69,12 +69,12 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
         *--------------------------------------------------------------------------------------------*                     2
        * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      3
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      3
           A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
  Msg id  Sv Number Seq     Message text
  * * * * *   E N D   O F   A D D I T I O N A L   D I A G N O S T I C   M E S S A G E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      4
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      4
                           C r o s s   R e f e r e n c e
       File and Record References:
          File              Device             References (D=Defined)
@@ -89,7 +89,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
          LR                                        9M
        * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      5
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      5
                       E x t e r n a l   R e f e r e n c e s
       Statically bound procedures:
          Procedure                            References
@@ -102,12 +102,12 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
          No references in the source.
    * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      6
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      6
                           M e s s a g e   S u m m a r y
  Msg id  Sv Number Message text
        * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-06 17:03:34        Page      7
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/NTRSTIT        PUB400     26-09-07 11:50:04        Page      7
                             F i n a l   S u m m a r y
   Message Totals:
     Information  (00) . . . . . . . :        0
@@ -122,5 +122,5 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     Data records  . . . . . . . . . :        0
     Comments  . . . . . . . . . . . :        3
          * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
-Program NTRSTIT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:34.
+Program NTRSTIT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:04.
           * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

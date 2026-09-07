@@ -134,6 +134,7 @@ echo "=== $(date -u +%FT%TZ) collecting listings" | tee -a "$LOG"
 # listings are already in $LOG; split them into one file per object locally.
 rm -rf "$LOGDIR/pub400_listings"; mkdir -p "$LOGDIR/pub400_listings"
 awk -v dir="$LOGDIR/pub400_listings" '
+  { sub(/\r$/, "") }
   /^ 5770(SS1|WDS) .*(Data Description|IBM ILE RPG|Control Language) +ASHIBATA[12]\/[A-Z0-9]+.*Page +1 *$/ {
     for (i=1;i<=NF;i++) if ($i ~ /^ASHIBATA[12]\//) { split($i,a,"/"); out=dir "/" a[2] ".txt" }
     if (out in seen) { } else { seen[out]=1; printf "" > out }

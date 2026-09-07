@@ -1,4 +1,4 @@
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      1
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      1
   Command  . . . . . . . . . . . . :   CRTBNDRPG
     Issued by  . . . . . . . . . . :     ASHIBATA
   Program  . . . . . . . . . . . . :   ADMHIDECMT
@@ -9,7 +9,7 @@
     Library  . . . . . . . . . . . :     ASHIBATA1
     CCSID  . . . . . . . . . . . . :     273
   Text 'description' . . . . . . . :
-  Last Change  . . . . . . . . . . :   26-09-06  17:02:10
+  Last Change  . . . . . . . . . . :   26-09-07  11:48:42
   Generation severity level  . . . :   10
   Default activation group . . . . :   *YES
   Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
@@ -39,7 +39,7 @@
   Preprocessor options . . . . . . :   *NONE
   Require prototype for export . . :   *NO
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      2
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      2
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
                           S o u r c e   L i s t i n g
@@ -91,7 +91,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     20=IADDCMT                                                                                                             3000001
         *--------------------------------------------------------------------------------------------*                     3
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      3
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      3
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
         * RPG record format  . . . . :  ADDCMT                                                       *                     3
@@ -149,7 +149,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     58 C                   MOVEL     VISIBLE       CURRHIDE                                                      000000     003500
     59 C                   ENDSR                                                                                 000000     003600
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      4
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      4
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     60 C*-------------------------------------------------------                                                 000000     003700
@@ -206,7 +206,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
    103=O                       CURRHIDE           236A CHAR        1                                                       8000006
        * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      5
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      5
           A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
  Msg id  Sv Number Seq     Message text
 *RNF7066 00      3 000300  Record-Format ADDCMT not used for input or output.
@@ -231,7 +231,7 @@ Number Pos   Pos
    103   236   236 CURRHIDE
  * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      6
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      6
                     K e y   F i e l d   I n f o r m a t i o n
          File           Internal    External
            Record       field name  field name  Attributes
@@ -243,7 +243,7 @@ Number Pos   Pos
                         USERPROF                CHAR        9
  * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      7
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      7
                           C r o s s   R e f e r e n c e
       File and Record References:
          File              Device             References (D=Defined)
@@ -298,7 +298,7 @@ Number Pos   Pos
                                                   94
       Indicator References:
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      8
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      8
          Indicator                            References (D=Defined M=Modified)
          05                                       21M     28M     32M     40
                                                   52M     62M
@@ -306,7 +306,7 @@ Number Pos   Pos
          LR                                       44M
        * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page      9
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page      9
                       E x t e r n a l   R e f e r e n c e s
       Statically bound procedures:
          Procedure                            References
@@ -319,7 +319,7 @@ Number Pos   Pos
          No references in the source.
    * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page     10
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page     10
                           M e s s a g e   S u m m a r y
  Msg id  Sv Number Message text
 *RNF7031 00      7 The name or indicator is not referenced.
@@ -328,7 +328,7 @@ Number Pos   Pos
                    blocks of data are transferred.
        * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-06 17:03:36        Page     11
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMHIDECMT     PUB400     26-09-07 11:50:07        Page     11
                             F i n a l   S u m m a r y
   Message Totals:
     Information  (00) . . . . . . . :       12
@@ -343,5 +343,5 @@ Number Pos   Pos
     Data records  . . . . . . . . . :        0
     Comments  . . . . . . . . . . . :       13
          * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
-Program ADMHIDECMT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:36.
+Program ADMHIDECMT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:07.
           * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

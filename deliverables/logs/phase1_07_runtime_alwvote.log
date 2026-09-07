@@ -1,4 +1,4 @@
---- run started 2026-09-06T15:43:18Z
+--- run started 2026-09-07T09:56:29Z
 --- SETTINGS before: SETTING   VALUE     | --------- --------- | ADMPSWRD  VCF2024   | ALWVOTE   Y         |  |   2 RECORD(S) SELECTED.
 --- SQL: update ASHIBATA2.SETTINGS set VALUE='N' where SETTING='ALWVOTE'
 --- DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
@@ -9,7 +9,7 @@
 |         Welcome to PUB400.COM * your public IBM i server                       |
 |                                               Server name . . . :   PUB400     |
 |                                               Subsystem . . . . :   QINTER     |
-|                                               Display name. . . :   QPADEV0042 |
+|                                               Display name. . . :   QPADEV000X |
 |Your user name:                                                                 |
 |Password (max. 128):                                                            |
 |                                                                                |

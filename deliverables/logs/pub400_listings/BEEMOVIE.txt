@@ -1,4 +1,4 @@
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      1
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      1
   Command  . . . . . . . . . . . . :   CRTBNDRPG
     Issued by  . . . . . . . . . . :     ASHIBATA
   Program  . . . . . . . . . . . . :   BEEMOVIE
@@ -9,7 +9,7 @@
     Library  . . . . . . . . . . . :     ASHIBATA1
     CCSID  . . . . . . . . . . . . :     273
   Text 'description' . . . . . . . :
-  Last Change  . . . . . . . . . . :   26-09-06  17:02:24
+  Last Change  . . . . . . . . . . :   26-09-07  11:48:55
   Generation severity level  . . . :   10
   Default activation group . . . . :   *YES
   Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
@@ -39,7 +39,7 @@
   Preprocessor options . . . . . . :   *NONE
   Require prototype for export . . :   *NO
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      2
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      2
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
                           S o u r c e   L i s t i n g
@@ -89,7 +89,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     21 C                   WRITE     SFLCTL                                                                      000000     001400
     22 C                   EVAL      *IN50 = *ON                                                                 000000     001500
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      3
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      3
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     23 C                   ENDSR                                                                                 000000     001600
@@ -120,7 +120,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     40=O                       *IN50                1N CHAR        1                                                       5000002
        * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      4
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      4
           A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
  Msg id  Sv Number Seq     Message text
 *RNF7066 00      1 000100  Record-Format BMOVREC not used for input or output.
@@ -134,7 +134,7 @@ Number Pos   Pos
     40     1     1 *IN50
  * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      5
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      5
                           C r o s s   R e f e r e n c e
       File and Record References:
          File              Device             References (D=Defined)
@@ -161,7 +161,7 @@ Number Pos   Pos
          LR                                       16M
        * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      6
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      6
                       E x t e r n a l   R e f e r e n c e s
       Statically bound procedures:
          Procedure                            References
@@ -174,14 +174,14 @@ Number Pos   Pos
          No references in the source.
    * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      7
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      7
                           M e s s a g e   S u m m a r y
  Msg id  Sv Number Message text
 *RNF7066 00      1 Record-Format name of Externally-Described file is not used.
 *RNF7055 30      1 Factor 1 is not valid for the specified operation.
        * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-06 17:03:35        Page      8
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/BEEMOVIE       PUB400     26-09-07 11:50:05        Page      8
                             F i n a l   S u m m a r y
   Message Totals:
     Information  (00) . . . . . . . :        1

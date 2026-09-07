@@ -1,6 +1,7 @@
-ASHIBATA@pub400.com's password: 
+=== DSPSAVF 2026-09-07T09:43:37Z ===
+ 
                                               Saved Object Information                                                  Page     1
-5770SS1 V7R5M0  220415                                                                           PUB400    26-09-06  16:41:22 CEST
+5770SS1 V7R5M0  220415                                                                           PUB400    26-09-07  11:43:40 CEST
  Save file  . . . . . . . . . . . . . . :   VCFV1R3
    Library  . . . . . . . . . . . . . . :     ASHIBATA1
    Records  . . . . . . . . . . . . . . :     11160
@@ -57,7 +58,7 @@
  ADMSCR       *FILE      DSPF         QSECOFR                4   YES
                                                    -=* http://pub400.com *=-
                                               Saved Object Information                                                  Page     2
-5770SS1 V7R5M0  220415                                                                           PUB400    26-09-06  16:41:22 CEST
+5770SS1 V7R5M0  220415                                                                           PUB400    26-09-07  11:43:40 CEST
  Object       Type       Attribute    Owner           Size (K)   Data       Text
  ADMVOTERES   *FILE      DSPF         QSECOFR                4   YES
  BMOVSCR      *FILE      DSPF         QSECOFR                4   YES
@@ -113,7 +114,7 @@
  VOTINGDB     *FILE      PF           QSECOFR               40   YES        Databse to hold voting records
                                                    -=* http://pub400.com *=-
                                               Saved Object Information                                                  Page     3
-5770SS1 V7R5M0  220415                                                                           PUB400    26-09-06  16:41:22 CEST
+5770SS1 V7R5M0  220415                                                                           PUB400    26-09-07  11:43:40 CEST
                                                        Database File Members
               File            Members
  File         Type             Saved    Member       Member       Member       Member       Member       Member       Member

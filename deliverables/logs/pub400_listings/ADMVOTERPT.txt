@@ -1,4 +1,4 @@
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      1
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      1
   Command  . . . . . . . . . . . . :   CRTBNDRPG
     Issued by  . . . . . . . . . . :     ASHIBATA
   Program  . . . . . . . . . . . . :   ADMVOTERPT
@@ -9,7 +9,7 @@
     Library  . . . . . . . . . . . :     ASHIBATA1
     CCSID  . . . . . . . . . . . . :     273
   Text 'description' . . . . . . . :
-  Last Change  . . . . . . . . . . :   26-09-06  17:02:21
+  Last Change  . . . . . . . . . . :   26-09-07  11:48:52
   Generation severity level  . . . :   10
   Default activation group . . . . :   *YES
   Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
@@ -39,7 +39,7 @@
   Preprocessor options . . . . . . :   *NONE
   Require prototype for export . . :   *NO
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      2
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      2
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
                           S o u r c e   L i s t i n g
@@ -91,7 +91,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
         *--------------------------------------------------------------------------------------------*                     2
         * RPG record format  . . . . :  VOTINGREC                                                    *                     2
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      3
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      3
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
         * External format  . . . . . :  VOTINGREC : ASHIBATA2/VOTINGDB                               *                     2
@@ -149,7 +149,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     64 C     READVOTE      BEGSR                                                                                 000000     004500
     65 C                   RESET                   VOTEEFA                                                       000000     004600
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      4
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      4
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     66 C                   RESET                   VOTEBIS                                                       000000     004700
@@ -209,7 +209,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
         * External format  . . . . . :  VOTERES : ASHIBATA2/ADMVOTERES                               *                     5
         *--------------------------------------------------------------------------------------------*                     5
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      5
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      5
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
    118=O                       OUTTITLE            50A CHAR       50                                                       5000002
@@ -220,7 +220,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
    123=O                       OUTVOTEN           111A CHAR        4                                                       5000007
        * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      6
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      6
           A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
  Msg id  Sv Number Seq     Message text
 *RNF7066 00      1 000100  Record-Format USRPROFR not used for input or output.
@@ -238,7 +238,7 @@ Number Pos   Pos
    123   108   111 OUTVOTEN
  * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      7
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      7
                     K e y   F i e l d   I n f o r m a t i o n
          File           Internal    External
            Record       field name  field name  Attributes
@@ -253,7 +253,7 @@ Number Pos   Pos
                         BADGENBR                BIN2      4,0 SIGNED
  * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      8
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      8
                           C r o s s   R e f e r e n c e
       File and Record References:
          File              Device             References (D=Defined)
@@ -308,14 +308,14 @@ Number Pos   Pos
       Indicator References:
          Indicator                            References (D=Defined M=Modified)
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page      9
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page      9
          03                                       36M     53
 *RNF7031 90                                       69D
          91                                       89D     90
          LR                                       61M
        * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page     10
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page     10
                       E x t e r n a l   R e f e r e n c e s
       Statically bound procedures:
          Procedure                            References
@@ -328,7 +328,7 @@ Number Pos   Pos
          No references in the source.
    * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page     11
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page     11
                           M e s s a g e   S u m m a r y
  Msg id  Sv Number Message text
 *RNF7031 00     13 The name or indicator is not referenced.
@@ -337,7 +337,7 @@ Number Pos   Pos
                    blocks of data are transferred.
        * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-06 17:03:37        Page     12
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADMVOTERPT     PUB400     26-09-07 11:50:08        Page     12
                             F i n a l   S u m m a r y
   Message Totals:
     Information  (00) . . . . . . . :       15
@@ -352,5 +352,5 @@ Number Pos   Pos
     Data records  . . . . . . . . . :        0
     Comments  . . . . . . . . . . . :       17
          * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
-Program ADMVOTERPT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:37.
+Program ADMVOTERPT placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:08.
           * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *

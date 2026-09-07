@@ -1,11 +1,11 @@
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    1
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    1
  File name . . . . . . . . . . . . . . . . . . . . . :   GUESTBKSCR
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
  File attribute  . . . . . . . . . . . . . . . . . . :   Display
  Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
  Source member containing DDS  . . . . . . . . . . . :   GUESTBKSCR
- Source member last changed  . . . . . . . . . . . . :   26-09-06  17:03:11
+ Source member last changed  . . . . . . . . . . . . :   26-09-07  11:49:42
  Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
  DDS generation severity level . . . . . . . . . . . :   20
  DDS flagging severity level . . . . . . . . . . . . :   00
@@ -54,7 +54,7 @@
    3700       A                                  5  5'   | |  |  __  | / /\ \ | . ` |  /-
    3800       A                                        \___ \          '
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    2
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    2
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    3900       A                                  5 58'                          '
@@ -111,7 +111,7 @@
    9000       A            OUTCMT       200   O  8  4COLOR(WHT)
    9100       A                                 21  5'Is this comment inappropriate? Ple-
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    3
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    3
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    9200       A                                      ase report the Comment ID to the'
@@ -162,7 +162,7 @@
   13700       A                                      OFR'
                          * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    4
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    4
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -220,7 +220,7 @@
    5800                                         12  5'|_|____\____/|_|  \_\__  |_|__|_|_-    52
    5800                                               |_|______|___ _  '
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    5
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    5
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -278,7 +278,7 @@
   11200                  R HIDECMT                   CF05(05 'Submit') +
   11500                                              CF12(12 'Cancel')
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    6
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    6
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -306,7 +306,7 @@
   13600                                              OFR'
                  * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-06 17:03:33        Page    7
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/GUESTBKSCR    26-09-07 11:50:04        Page    7
                                           Message Summary
     Total          Informational          Warning        Error       Severe
                        (0-9)              (10-19)       (20-29)      (30-99)

@@ -1,0 +1,324 @@
+=== PHASE 1 PREPARE 2026-09-07T09:38:45Z ===
+--- BEFORE ASHIBATA1 ---
+ 
+ 5770SS1 V7R5M0  220415                   Display Library                                       26-09-07 11:38:48        Page    1
+ Library . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Type  . . . . . . . . . . . . . . . . . :   PROD
+ Number of objects . . . . . . . . . . . :           14
+ Library ASP number  . . . . . . . . . . :       1
+ Library ASP device  . . . . . . . . . . :   *SYSBAS
+ Library ASP group   . . . . . . . . . . :   *SYSBAS
+ Create authority  . . . . . . . . . . . :   *EXCLUDE
+ Text description  . . . . . . . . . . . :   ASHIBATA (*CURLIB your current library)
+   Object      Type      Attribute             Size  Description
+   BUILDVCF    *PGM      CLLE                479232
+   BKPA2       *FILE     SAVF               5271552
+   BUILDLST    *FILE     PF                   32768
+   QCBLLESRC   *FILE     PF                   16384  COBOL source files
+   QCLSRC      *FILE     PF                  172032  CL source files
+   QCMDSRC     *FILE     PF                   81920  COMMAND source files
+   QCPPSRC     *FILE     PF                   16384  C++ Source files
+   QDDSSRC     *FILE     PF                  524288  DDS source files
+   QMNUSRC     *FILE     PF                  192512
+   QRLUSRC     *FILE     PF                  114688
+   QRPGLESRC   *FILE     PF                  499712  RPG sourc files
+   QSDASRC     *FILE     PF                  294912
+   VCFSAVF     *FILE     PF                 6455296
+   VCFV1R3     *FILE     SAVF               5742592
+                     Total size :          20025344
+                   * * * * *   E N D   O F   L I S T I N G   * * * * *
+                                                   -=* http://pub400.com *=-
+--- BEFORE ASHIBATA2 ---
+ 
+ 5770SS1 V7R5M0  220415                   Display Library                                       26-09-07 11:38:51        Page    1
+ Library . . . . . . . . . . . . . . . . :   ASHIBATA2
+ Type  . . . . . . . . . . . . . . . . . :   PROD
+ Number of objects . . . . . . . . . . . :           62
+ Library ASP number  . . . . . . . . . . :       1
+ Library ASP device  . . . . . . . . . . :   *SYSBAS
+ Library ASP group   . . . . . . . . . . :   *SYSBAS
+ Create authority  . . . . . . . . . . . :   *EXCLUDE
+ Text description  . . . . . . . . . . . :   ASHIBATA (second library)
+   Object      Type      Attribute             Size  Description
+   ADDGBCMT    *PGM      RPGLE               167936
+   ADDGBSTUB   *PGM      CLP                  40960
+   ADDVOTE     *PGM      RPGLE               217088
+   ADMADDSOFR  *PGM      RPGLE               131072
+   ADMCRTEXHB  *PGM      RPGLE               208896
+   ADMHIDECMT  *PGM      RPGLE               159744
+   ADMLRN400   *PGM      RPGLE               180224
+   ADMOFRLIST  *PGM      RPGLE               131072
+   ADMSETTING  *PGM      RPGLE               143360
+   ADMVOTERPT  *PGM      RPGLE               167936
+   CREDITS     *PGM      RPGLE               114688
+   EXHBMENU    *PGM      RPGLE               172032
+   LRN400      *PGM      RPGLE               172032
+   LRN400AUT   *PGM      RPGLE               151552
+   LRN400STUB  *PGM      CLP                  40960
+   NTRSTIT     *PGM      RPGLE               114688
+   PARAMETER   *PGM      RPGLE               114688
+   PRTLSTCMT   *PGM      RPGLE               135168
+   PRTLSTVOTE  *PGM      RPGLE               135168
+   READGBCMT   *PGM      RPGLE               167936
+   READGBSTUB  *PGM      CLP                  40960
+   VCFSTUB     *PGM      CLP                  40960
+   VOTESTUB    *PGM      CLP                  40960
+   ADMMAINQQ   *MSGF                          24576
+   MAINQQ      *MSGF                          24576
+   VCFMAINQQ   *MSGF                          24576
+   ADMMAIN     *FILE     DSPF                  8192
+   ADMSCR      *FILE     DSPF                  8192
+   ADMVOTERES  *FILE     DSPF                  8192
+   ASHIBATA    *FILE     PF                  126976
+   AWARDDB     *FILE     PF                  131072
+   BMOVDB      *FILE     PF                  122880
+   BMOVSCR     *FILE     DSPF                  8192
+   CMTPRTF     *FILE     PRTF                  8192
+   CMTTST      *FILE     PRTF                  8192
+   CREDITSSCR  *FILE     DSPF                  8192
+   EXHBDB      *FILE     PF                  131072
+   EXHBMENUSC  *FILE     DSPF                 16384
+   GUESTBKDB   *FILE     PF                  122880
+   GUESTBKSCR  *FILE     DSPF                 20480
+   INTERSCR    *FILE     DSPF                  8192
+   LRNAUTO     *FILE     DSPF                 12288
+   LRN400SCR   *FILE     DSPF                 12288
+   LRN400STR   *FILE     PF                  139264
+   MAIN        *FILE     DSPF                 16384
+   PASSSCR     *FILE     DSPF                  8192
+   SECOFRS     *FILE     PF                  122880
+                                                   -=* http://pub400.com *=-
+ 5770SS1 V7R5M0  220415                   Display Library                                       26-09-07 11:38:51        Page    2
+ Library . . . . . . . . . . . . . . . . :   ASHIBATA2
+ Type  . . . . . . . . . . . . . . . . . :   PROD
+ Number of objects . . . . . . . . . . . :           62
+ Library ASP number  . . . . . . . . . . :       1
+ Library ASP device  . . . . . . . . . . :   *SYSBAS
+ Library ASP group   . . . . . . . . . . :   *SYSBAS
+ Create authority  . . . . . . . . . . . :   *EXCLUDE
+ Text description  . . . . . . . . . . . :   ASHIBATA (second library)
+   Object      Type      Attribute             Size  Description
+   SETTINGS    *FILE     PF                  122880
+   SETUPSCR    *FILE     DSPF                  8192
+   TESTPRT2    *FILE     PRTF                  8192
+   TESTSUITE   *FILE     DSPF                  8192
+   VCFMAIN     *FILE     DSPF                 45056
+   VOTEPRTF    *FILE     PRTF                  8192
+   VOTESCR     *FILE     DSPF                 20480
+   VOTINGDB    *FILE     PF                  122880
+   STRCMTEDT   *CMD                            8192
+   STREXHB     *CMD                            8192
+   STREXHBEDT  *CMD                            8192
+   STRVOTERPT  *CMD                            8192
+   ADMMAIN     *MENU     DSPF                  8192
+   MAIN        *MENU     DSPF                  8192
+   VCFMAIN     *MENU     DSPF                  8192
+                     Total size :           4751360
+                   * * * * *   E N D   O F   L I S T I N G   * * * * *
+                                                   -=* http://pub400.com *=-
+--- DELETE OWNED ASHIBATA2 OBJECTS ---
+ 
+CPC2191: Object AWARDDB in ASHIBATA2 type *FILE deleted.
+CPC2191: Object BMOVDB in ASHIBATA2 type *FILE deleted.
+CPC2191: Object EXHBDB in ASHIBATA2 type *FILE deleted.
+CPC2191: Object GUESTBKDB in ASHIBATA2 type *FILE deleted.
+CPC2191: Object LRN400STR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object SECOFRS in ASHIBATA2 type *FILE deleted.
+CPC2191: Object SETTINGS in ASHIBATA2 type *FILE deleted.
+CPC2191: Object VOTINGDB in ASHIBATA2 type *FILE deleted.
+CPC2191: Object ADMSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object ADMVOTERES in ASHIBATA2 type *FILE deleted.
+CPC2191: Object BMOVSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object CREDITSSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object EXHBMENUSC in ASHIBATA2 type *FILE deleted.
+CPC2191: Object GUESTBKSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object INTERSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object LRN400SCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object LRNAUTO in ASHIBATA2 type *FILE deleted.
+CPC2191: Object PASSSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object SETUPSCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object TESTSUITE in ASHIBATA2 type *FILE deleted.
+CPC2191: Object VOTESCR in ASHIBATA2 type *FILE deleted.
+CPC2191: Object CMTPRTF in ASHIBATA2 type *FILE deleted.
+CPC2191: Object CMTTST in ASHIBATA2 type *FILE deleted.
+CPC2191: Object TESTPRT2 in ASHIBATA2 type *FILE deleted.
+CPC2191: Object VOTEPRTF in ASHIBATA2 type *FILE deleted.
+CPC2191: Object VCFMAIN in ASHIBATA2 type *FILE deleted.
+CPC2191: Object MAIN in ASHIBATA2 type *FILE deleted.
+CPC2191: Object ADMMAIN in ASHIBATA2 type *FILE deleted.
+CPC2191: Object VCFMAIN in ASHIBATA2 type *MENU deleted.
+CPC2191: Object VCFMAINQQ in ASHIBATA2 type *MSGF deleted.
+CPC2191: Object MAIN in ASHIBATA2 type *MENU deleted.
+CPC2191: Object MAINQQ in ASHIBATA2 type *MSGF deleted.
+CPC2191: Object ADMMAIN in ASHIBATA2 type *MENU deleted.
+CPC2191: Object ADMMAINQQ in ASHIBATA2 type *MSGF deleted.
+CPC2191: Object NTRSTIT in ASHIBATA2 type *PGM deleted.
+CPC2191: Object PARAMETER in ASHIBATA2 type *PGM deleted.
+CPC2191: Object PRTLSTVOTE in ASHIBATA2 type *PGM deleted.
+CPC2191: Object PRTLSTCMT in ASHIBATA2 type *PGM deleted.
+CPF2105: Object PRINTER in ASHIBATA2 type *PGM not found.
+CPC2191: Object CREDITS in ASHIBATA2 type *PGM deleted.
+CPF2105: Object BEEMOVIE in ASHIBATA2 type *PGM not found.
+CPC2191: Object ADDVOTE in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADDGBCMT in ASHIBATA2 type *PGM deleted.
+CPC2191: Object READGBCMT in ASHIBATA2 type *PGM deleted.
+CPC2191: Object LRN400 in ASHIBATA2 type *PGM deleted.
+CPC2191: Object LRN400AUT in ASHIBATA2 type *PGM deleted.
+CPC2191: Object EXHBMENU in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMADDSOFR in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMCRTEXHB in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMHIDECMT in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMLRN400 in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMOFRLIST in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMSETTING in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADMVOTERPT in ASHIBATA2 type *PGM deleted.
+CPC2191: Object VOTESTUB in ASHIBATA2 type *PGM deleted.
+CPC2191: Object ADDGBSTUB in ASHIBATA2 type *PGM deleted.
+CPC2191: Object READGBSTUB in ASHIBATA2 type *PGM deleted.
+CPC2191: Object VCFSTUB in ASHIBATA2 type *PGM deleted.
+CPC2191: Object LRN400STUB in ASHIBATA2 type *PGM deleted.
+CPC2191: Object STREXHB in ASHIBATA2 type *CMD deleted.
+CPC2191: Object STREXHBEDT in ASHIBATA2 type *CMD deleted.
+CPC2191: Object STRVOTERPT in ASHIBATA2 type *CMD deleted.
+CPC2191: Object STRCMTEDT in ASHIBATA2 type *CMD deleted.
+--- CLEAR ASHIBATA1 SOURCE MEMBERS ---
+ 
+CLEAR QRPGLESRC
+CPC7309: Member ADDGBCMT removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADDVOTE removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMADDSOFR removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMCRTEXHB removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMHIDECMT removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMLRN400 removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMOFRLIST removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMSETTING removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member ADMVOTERPT removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member BEEMOVIE removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member CREDITS removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member EXHBMENU removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member LRN400 removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member LRN400AUT removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member NTRSTIT removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member OLDADDVOTE removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member OLDVOTE removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member PARAMETER removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member PRINTER removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member PRTLSTCMT removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member PRTLSTVOTE removed from file QRPGLESRC in ASHIBATA1.
+CPC7309: Member READGBCMT removed from file QRPGLESRC in ASHIBATA1.
+CPC7315: 22 members removed for *ALL.
+CLEAR QCLSRC
+CPC7309: Member ADDGBSTUB removed from file QCLSRC in ASHIBATA1.
+CPC7309: Member BUILDVCF removed from file QCLSRC in ASHIBATA1.
+CPC7309: Member LRN400STUB removed from file QCLSRC in ASHIBATA1.
+CPC7309: Member READGBSTUB removed from file QCLSRC in ASHIBATA1.
+CPC7309: Member VCFSTUB removed from file QCLSRC in ASHIBATA1.
+CPC7309: Member VOTESTUB removed from file QCLSRC in ASHIBATA1.
+CPC7315: 6 members removed for *ALL.
+CLEAR QDDSSRC
+CPC7309: Member ADMSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member ADMVOTERES removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member AWARDDB removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member BMOVDB removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member BMOVSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member CMTPRTF removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member CMTTST removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member CREDITSSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member EXHBDB removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member EXHBMENUSC removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member GUESTBKDB removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member GUESTBKSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member INTERSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member LRNAUTO removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member LRN400SCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member LRN400STR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member PASSSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member SECOFRS removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member SETTINGS removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member SETUPSCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member TESTPRT2 removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member TESTSUITE removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member VOTEPRTF removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member VOTESCR removed from file QDDSSRC in ASHIBATA1.
+CPC7309: Member VOTINGDB removed from file QDDSSRC in ASHIBATA1.
+CPC7315: 25 members removed for *ALL.
+CLEAR QSDASRC
+CPC7309: Member ADMSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member ADMVOTERES removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member BMOVSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member CREDITSSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member EXHBMENUSC removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member GUESTBKSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member INTERSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member LRNAUTO removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member LRN400SCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member PASSSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member SETUPSCR removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member TESTSUITE removed from file QSDASRC in ASHIBATA1.
+CPC7309: Member VOTESCR removed from file QSDASRC in ASHIBATA1.
+CPC7315: 13 members removed for *ALL.
+CLEAR QMNUSRC
+CPC7309: Member ADMMAIN removed from file QMNUSRC in ASHIBATA1.
+CPC7309: Member ADMMAINQQ removed from file QMNUSRC in ASHIBATA1.
+CPC7309: Member MAIN removed from file QMNUSRC in ASHIBATA1.
+CPC7309: Member MAINQQ removed from file QMNUSRC in ASHIBATA1.
+CPC7309: Member VCFMAIN removed from file QMNUSRC in ASHIBATA1.
+CPC7309: Member VCFMAINQQ removed from file QMNUSRC in ASHIBATA1.
+CPC7315: 6 members removed for *ALL.
+CLEAR QCMDSRC
+CPC7309: Member STRCMTEDT removed from file QCMDSRC in ASHIBATA1.
+CPC7309: Member STREXHB removed from file QCMDSRC in ASHIBATA1.
+CPC7309: Member STREXHBEDT removed from file QCMDSRC in ASHIBATA1.
+CPC7309: Member STRVOTERPT removed from file QCMDSRC in ASHIBATA1.
+CPC7315: 4 members removed for *ALL.
+CLEAR QRLUSRC
+CPC7309: Member CMTPRTF removed from file QRLUSRC in ASHIBATA1.
+CPC7309: Member CMTTST removed from file QRLUSRC in ASHIBATA1.
+CPC7309: Member TESTPRT2 removed from file QRLUSRC in ASHIBATA1.
+CPC7309: Member VOTEPRTF removed from file QRLUSRC in ASHIBATA1.
+CPC7315: 4 members removed for *ALL.
+CPC2191: Object BUILDVCF in ASHIBATA1 type *PGM deleted.
+CPC2191: Object VCFV1R3 in ASHIBATA1 type *FILE deleted.
+--- AFTER ASHIBATA1 ---
+ 
+ 5770SS1 V7R5M0  220415                   Display Library                                       26-09-07 11:39:06        Page    1
+ Library . . . . . . . . . . . . . . . . :   ASHIBATA1
+ Type  . . . . . . . . . . . . . . . . . :   PROD
+ Number of objects . . . . . . . . . . . :           12
+ Library ASP number  . . . . . . . . . . :       1
+ Library ASP device  . . . . . . . . . . :   *SYSBAS
+ Library ASP group   . . . . . . . . . . :   *SYSBAS
+ Create authority  . . . . . . . . . . . :   *EXCLUDE
+ Text description  . . . . . . . . . . . :   ASHIBATA (*CURLIB your current library)
+   Object      Type      Attribute             Size  Description
+   BKPA2       *FILE     SAVF               5271552
+   BUILDLST    *FILE     PF                   32768
+   QCBLLESRC   *FILE     PF                   16384  COBOL source files
+   QCLSRC      *FILE     PF                   16384  CL source files
+   QCMDSRC     *FILE     PF                   16384  COMMAND source files
+   QCPPSRC     *FILE     PF                   16384  C++ Source files
+   QDDSSRC     *FILE     PF                   16384  DDS source files
+   QMNUSRC     *FILE     PF                   16384
+   QRLUSRC     *FILE     PF                   16384
+   QRPGLESRC   *FILE     PF                   16384  RPG sourc files
+   QSDASRC     *FILE     PF                   16384
+   VCFSAVF     *FILE     PF                 6455296
+                     Total size :          12103680
+                   * * * * *   E N D   O F   L I S T I N G   * * * * *
+                                                   -=* http://pub400.com *=-
+--- AFTER ASHIBATA2 ---
+ 
+ 5770SS1 V7R5M0  220415                   Display Library                                       26-09-07 11:39:09        Page    1
+ Library . . . . . . . . . . . . . . . . :   ASHIBATA2
+ Type  . . . . . . . . . . . . . . . . . :   PROD
+ Number of objects . . . . . . . . . . . :            1
+ Library ASP number  . . . . . . . . . . :       1
+ Library ASP device  . . . . . . . . . . :   *SYSBAS
+ Library ASP group   . . . . . . . . . . :   *SYSBAS
+ Create authority  . . . . . . . . . . . :   *EXCLUDE
+ Text description  . . . . . . . . . . . :   ASHIBATA (second library)
+   Object      Type      Attribute             Size  Description
+   ASHIBATA    *FILE     PF                  143360
+                     Total size :            389120
+                   * * * * *   E N D   O F   L I S T I N G   * * * * *
+                                                   -=* http://pub400.com *=-

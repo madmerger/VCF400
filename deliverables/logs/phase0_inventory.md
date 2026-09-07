@@ -1,5 +1,7 @@
 # フェーズ0: 準備 — 出力ディレクトリとソース棚卸し
 
+更新日: **2026-09-07**
+
 - リポジトリ: `madmerger/VCF400` (HEAD `83d566e Final release`)
 - 出力ディレクトリ: `deliverables/` (`logs/` = PUB400 作業ログ・コンパイルリスト・5250 ランタイムログ, `spec/` = 仕様書, `test/` = テストレポート・録画), `java/`, `ipad/` = 移行実装
 
@@ -34,6 +36,9 @@
 | 前提 | 結果 |
 |---|---|
 | PUB400 接続 | pub400.com: 5250 (23/992), SSH **2222** (22 は拒否), FTP 21。ユーザー ASHIBATA、専用ライブラリ ASHIBATA1 (ソース/SAVF/リスト) と ASHIBATA2 (オブジェクト/データ) |
-| 5250 エミュレータ | tn5250 (ソースビルド, `~/.local/bin/tn5250`) + pexpect ドライバ `deliverables/logs/tn5250_driver.py` |
-| Apple 環境 | Xcode 26.5 + iPad シミュレータ。実機・署名情報なし → シミュレータのみ |
-| 録画ツール | ffmpeg / `xcrun simctl io recordVideo` (フェーズ5 のみ使用) |
+| 5250 エミュレータ | tn5250 **0.19.0** (`~/.local/bin/tn5250`) + pexpect ドライバ `deliverables/logs/tn5250_driver.py` |
+| Apple 環境 | Xcode **26.6** + iPad シミュレータ。実機・署名情報なし → シミュレータのみ |
+| Java | OpenJDK **17.0.20.1** |
+| Playwright | **1.63**, Chromium **1243** |
+| 録画ツール | ffmpeg **9.0.1** / `xcrun simctl io recordVideo` (フェーズ5 のみ使用) |
+| XcodeGen | **2.46.0** |

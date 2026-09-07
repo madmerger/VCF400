@@ -1,4 +1,4 @@
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      1
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      1
   Command  . . . . . . . . . . . . :   CRTBNDRPG
     Issued by  . . . . . . . . . . :     ASHIBATA
   Program  . . . . . . . . . . . . :   ADDVOTE
@@ -9,7 +9,7 @@
     Library  . . . . . . . . . . . :     ASHIBATA1
     CCSID  . . . . . . . . . . . . :     273
   Text 'description' . . . . . . . :
-  Last Change  . . . . . . . . . . :   26-09-06  17:02:03
+  Last Change  . . . . . . . . . . :   26-09-07  11:48:34
   Generation severity level  . . . :   10
   Default activation group . . . . :   *YES
   Compiler options . . . . . . . . :   *XREF      *GEN       *NOSECLVL  *SHOWCPY
@@ -39,7 +39,7 @@
   Preprocessor options . . . . . . :   *NONE
   Require prototype for export . . :   *NO
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      2
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      2
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
                           S o u r c e   L i s t i n g
@@ -93,7 +93,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     19 DERREXIST         C                   CONST('You have already voted.')                                    000000     001900
     20 DERRENTER         C                   CONST('Use F5 key to submit')                                       000000     002000
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      3
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      3
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     21 DERRPROHB         C                   CONST('Exhibit ineligible for award')                               000000     002100
@@ -151,7 +151,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     53=I                             A   10   18  INEXHB                                                                   5000006
     54=IVOTEEND                                                                                                            6000001
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      4
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      4
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
         *--------------------------------------------------------------------------------------------*                     6
@@ -209,7 +209,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
     91 C                   ADD       1             VALIDATE                                             02       000000     006000
     92 C                   ENDIF                                                                       E02       000000     006100
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      5
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      5
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
     93 C                                                                                               E02       000000     006200
@@ -269,7 +269,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
    147 C                   MOVEL     INPUTAWARD    AWARDNBR                                             01       000000     011600
    148 C                   MOVEL     INEXHB        EXHBNBR                                              01       000000     011700
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      6
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      6
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
    149 C                   WRITE     VOTINGREC                                                          01       000000     011800
@@ -329,7 +329,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
    199=O                       AWARDNBR             4B BIN2      3,0                                                      10000003
    200=O                       EXHBNBR             13A CHAR        9                                                      10000004
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      7
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      7
 Line   <---------------------- Source Specifications ----------------------------><---- Comments ----> Do  Page  Change Src Seq
 Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8....+....9....+...10 Num Line  Date   Id  Number
    201=OVOTE1                                                                                                             11000001
@@ -360,7 +360,7 @@ Number ....1....+....2....+....3....+....4....+....5....+....6....+....7....+...
         *--------------------------------------------------------------------------------------------*                    14
        * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      8
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      8
           A d d i t i o n a l   D i a g n o s t i c   M e s s a g e s
  Msg id  Sv Number Seq     Message text
 *RNF7066 00      5 000500  Record-Format NOVOTEALWD not used for input or output.
@@ -380,7 +380,7 @@ Number Pos   Pos
    207    50    58 INEXHB
  * * * * *   E N D   O F   O U T P U T   B U F F E R   P O S I T I O N   *  * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page      9
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page      9
                     K e y   F i e l d   I n f o r m a t i o n
          File           Internal    External
            Record       field name  field name  Attributes
@@ -398,7 +398,7 @@ Number Pos   Pos
                         BADGENBR                BIN2      4,0 SIGNED
  * * * * *   E N D   O F   K E Y   F I E L D   I N F O R M A T I O N   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page     10
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     10
                           C r o s s   R e f e r e n c e
       File and Record References:
          File              Device             References (D=Defined)
@@ -454,7 +454,7 @@ Number Pos   Pos
 *RNF7031 ERRENTER          CONST                  20D
          ERREXIST          CONST                  19D    117
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page     11
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     11
          ERRLINE           A(45)                  74M     81M     88M    117M
                                                  126M    135M    142M    206
          ERRNOAWD          CONST                  23D    142
@@ -501,7 +501,7 @@ Number Pos   Pos
          LR                                      105M    180M    187M    194M
        * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page     12
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     12
                       E x t e r n a l   R e f e r e n c e s
       Statically bound procedures:
          Procedure                            References
@@ -514,14 +514,14 @@ Number Pos   Pos
          No references in the source.
    * * * * *   E N D   O F   E X T E R N A L   R E F E R E N C E S   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page     13
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     13
                           M e s s a g e   S u m m a r y
  Msg id  Sv Number Message text
 *RNF7031 00     19 The name or indicator is not referenced.
 *RNF7066 00      2 Record-Format name of Externally-Described file is not used.
        * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
                                                    -=* http://pub400.com *=-
- 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-06 17:03:35        Page     14
+ 5770WDS V7R5M0  220415 RN        IBM ILE RPG             ASHIBATA2/ADDVOTE        PUB400     26-09-07 11:50:05        Page     14
                             F i n a l   S u m m a r y
   Message Totals:
     Information  (00) . . . . . . . :       21
@@ -536,5 +536,5 @@ Number Pos   Pos
     Data records  . . . . . . . . . :        0
     Comments  . . . . . . . . . . . :       23
          * * * * *   E N D   O F   F I N A L   S U M M A R Y   * * * * *
-Program ADDVOTE placed in library ASHIBATA2. 00 highest severity. Created on 26-09-06 at 17:03:35.
+Program ADDVOTE placed in library ASHIBATA2. 00 highest severity. Created on 26-09-07 at 11:50:06.
           * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *
