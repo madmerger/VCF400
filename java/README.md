@@ -15,9 +15,10 @@ mvn test                                             # 業務ルール / 画面�
 - `VCF_DB_URL` … JDBC URL。既定は `./data/vcf400` の H2 ファイル DB (DB2 モード)。DB2 for i へ向ける場合は
   `jdbc:as400://host/ASHIBATA2` 等を指定し、jt400 ドライバを依存に追加する (スキーマは DDS と同一列名)。
 - `VCF_PROFILE` … 既定のサインオンユーザー (LAUNCH)。`MM2024` で共用端末モード。
-- `VCF_DB_API` … クロス検証用 DB API の有効化 (既定 `true`)。本番環境では `false` にする。
+- `VCF_DB_API` … クロス検証用 DB API の有効化 (既定 `false`)。クロス検証時は `VCF_DB_API=true mvn spring-boot:run` のように起動する。それ以外では無効のままにする。
 - `VCF_H2_CONSOLE` … H2 コンソール `/h2` の有効化 (既定 `false`)。開発時だけ必要に応じて `true` にする。
 - `VCF_COOKIE_SECURE` … セッション Cookie の `Secure` 属性 (既定 `false`)。HTTPS 配下では `true` にする。
+- `VCF_SEED_ADMPSWRD` … H2 初期シードの管理者パスワード (既定 `VCF2024`)。PUB400 検証データと一致する既定値であり、実運用では必ず上書きする。
 
 初期化とシード:
 

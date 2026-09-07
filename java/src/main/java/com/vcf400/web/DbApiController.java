@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/db")
-@ConditionalOnProperty(name = "vcf.db-api.enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = "vcf.db-api.enabled", havingValue = "true", matchIfMissing = false)
 public class DbApiController {
     private final VoteRepository votes;
     private final GuestbookRepository comments;
