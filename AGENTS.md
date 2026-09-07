@@ -25,14 +25,20 @@
 - 業務ルール: ADDVOTE は 4 チェック (重複バッジ / ELIGIBLE / 展示存在 / アワード存在) 全通過 (CHECKOK=4) 時のみ書込、エラー行は最後に失敗したチェック。SETTINGS.ALWVOTE='N' で投票画面をスキップし ENDOFCON。GUESTBKDB.CMTID は max+1、VISIBLE='N' は "Name Hidden"。READGBCMT で末尾を超える ID は最終レコードにフォールバック。LRN400 は EXTRA='END' で終了、CONTENT='CALL' / 'JUMP' (対象プログラム / ページ番号は EXTRA) で分岐。
 
 ## 5250 自動操作
-- tn5250 (~/.local/bin/tn5250) + pexpect。READGBCMT の INCMTID (4Y) は 4 桁入力後に Field Exit を送らない。
+- tn5250 ($HOME/.local/bin/tn5250) + pexpect。READGBCMT の INCMTID (4Y) は 4 桁入力後に Field Exit を送らない。
 - ベースラインデータは投入スクリプト (SQL) で管理し、テスト前後で必ず再シードする。
 
+## 工程の順序
+- 画面台帳と仕様書を先に作成して凍結し、`deliverables/tests/cases.json` の期待値を PUB400 実測で確定してから、Java / iPad の実装 (別々の子セッションで並行) を開始する。期待値を仕様の推測で埋めない。
+- 自己判断した事項とその理由は `deliverables/README.md` に記録する。
+
 ## ローカルツール
-- Chrome 未導入。Playwright Chromium (~/pwtools)。ffmpeg に drawtext がないためオーバーレイは Playwright / PNG で描く。
+- Chrome 未導入。Playwright Chromium ($HOME/pwtools)。ffmpeg に drawtext がないためオーバーレイは Playwright / PNG で描く。
 - Xcode + iPad Pro 13-inch シミュレータ (実機・署名なし)、XcodeGen。Java 17 / Maven。
 
-## 成果物の固定名 (deliverables/ 配下)
+## 成果物の固定名
+- 実装はリポジトリ直下の `java/` (Spring Boot / Java 17 / H2 DB2 互換、画面あり) と `ipad/` (SwiftUI + SQLite、XcodeGen project.yml、単体アプリ)。`deliverables/` 配下には置かない。
+- 以下は `deliverables/` 配下:
 - 文書 (各 Markdown と同名 PDF の 2 ファイル): `spec/VCF400_spec.md` + `spec/VCF400_spec.pdf`、`spec/VCF400_screen_ledger.md` + `spec/VCF400_screen_ledger.pdf`、`spec/VCF400_traceability.md` + `spec/VCF400_traceability.pdf`、`tests/VCF400_test_report.md` + `tests/VCF400_test_report.pdf`
-- `tests/cases.json`、`video/1_PUB400_RPG.mp4`・`video/2_Java_Web.mp4`・`video/3_iPad.mp4`、`README.md`。実装は `java/` (Spring Boot / Java 17 / H2 DB2 互換、画面あり) と `ipad/` (SwiftUI + SQLite、XcodeGen project.yml、単体アプリ)。
+- `tests/cases.json`、`video/1_PUB400_RPG.mp4`・`video/2_Java_Web.mp4`・`video/3_iPad.mp4`、`README.md`。
 - 動画: 環境ごとに 1 本、テストケース操作のみ、ケース番号と名称を画面内表示、1280x720 以上 H.264、10 分以内目標、ビルド映像なし、iPad は build-for-testing 事前実行 → 録画中は test-without-building、100 MB 超は Git LFS。
