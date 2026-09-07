@@ -22,7 +22,7 @@
 
 ## 移行時に台帳どおり保持する要素 (UI はモダンで良く、グリーンスクリーン模写は不可)
 - メニュー階層 VCFMAIN → 各機能とメニュー番号併記、入力順 (投票: バッジ → 展示 ID → アワード ID)、F キー番号と役割 (「送信 (F5)」等)、画面タイトル文言 ("NOMINATE EXHIBIT FOR AWARD", "GUESTBOOK/400", "LEARN/400", "AS/400 DEMO MENU", "VCF/400 - How to Navigate", "WELCOME TO...")、エラー行の位置と文言。
-- 業務ルール: ADDVOTE は 4 チェック (重複バッジ / ELIGIBLE / 展示存在 / アワード存在) 全通過 (CHECKOK=4) 時のみ書込、エラー行は最後に失敗したチェック。SETTINGS.ALWVOTE='N' で投票画面をスキップし ENDOFCON。GUESTBKDB.CMTID は max+1、VISIBLE='N' は "Name Hidden"。READGBCMT で末尾を超える ID は最終レコードにフォールバック。LRN400 は EXTRA の END / CALL / JUMP 分岐。
+- 業務ルール: ADDVOTE は 4 チェック (重複バッジ / ELIGIBLE / 展示存在 / アワード存在) 全通過 (CHECKOK=4) 時のみ書込、エラー行は最後に失敗したチェック。SETTINGS.ALWVOTE='N' で投票画面をスキップし ENDOFCON。GUESTBKDB.CMTID は max+1、VISIBLE='N' は "Name Hidden"。READGBCMT で末尾を超える ID は最終レコードにフォールバック。LRN400 は EXTRA='END' で終了、CONTENT='CALL' / 'JUMP' (対象プログラム / ページ番号は EXTRA) で分岐。
 
 ## 5250 自動操作
 - tn5250 (~/.local/bin/tn5250) + pexpect。READGBCMT の INCMTID (4Y) は 4 桁入力後に Field Exit を送らない。
@@ -33,5 +33,6 @@
 - Xcode + iPad Pro 13-inch シミュレータ (実機・署名なし)、XcodeGen。Java 17 / Maven。
 
 ## 成果物の固定名 (deliverables/ 配下)
-- spec/VCF400_spec.md|pdf、spec/VCF400_screen_ledger.md|pdf、spec/VCF400_traceability.md|pdf、tests/VCF400_test_report.md|pdf、tests/cases.json、video/1_PUB400_RPG.mp4・2_Java_Web.mp4・3_iPad.mp4、README.md、実装は `java/` (Spring Boot / Java 17 / H2 DB2 互換、画面あり) と `ipad/` (SwiftUI + SQLite、XcodeGen project.yml、単体アプリ)。
+- 文書 (各 Markdown と同名 PDF の 2 ファイル): `spec/VCF400_spec.md` + `spec/VCF400_spec.pdf`、`spec/VCF400_screen_ledger.md` + `spec/VCF400_screen_ledger.pdf`、`spec/VCF400_traceability.md` + `spec/VCF400_traceability.pdf`、`tests/VCF400_test_report.md` + `tests/VCF400_test_report.pdf`
+- `tests/cases.json`、`video/1_PUB400_RPG.mp4`・`video/2_Java_Web.mp4`・`video/3_iPad.mp4`、`README.md`。実装は `java/` (Spring Boot / Java 17 / H2 DB2 互換、画面あり) と `ipad/` (SwiftUI + SQLite、XcodeGen project.yml、単体アプリ)。
 - 動画: 環境ごとに 1 本、テストケース操作のみ、ケース番号と名称を画面内表示、1280x720 以上 H.264、10 分以内目標、ビルド映像なし、iPad は build-for-testing 事前実行 → 録画中は test-without-building、100 MB 超は Git LFS。
