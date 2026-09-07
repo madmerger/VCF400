@@ -42,7 +42,7 @@ extension AppModel {
         }
         let model = AppModel(repo: Repositories(db: db), profile: d.string(forKey: "VCF_PROFILE") ?? "ASHIBATA")
         if let error = dbError {
-            model.message = String(format: L10n.dbOpenFailed, "\(error)")
+            model.dbWarning = String(format: L10n.dbOpenFailed, "\(error)")
         }
         if let kiosk = d.string(forKey: "VCF_KIOSK") { model.startKiosk(kiosk) }
         return model

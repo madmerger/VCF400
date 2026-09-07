@@ -27,6 +27,7 @@ final class AppModel: ObservableObject {
     @Published var launch: Launch
     @Published var path: [Route] = []
     @Published var message: String?
+    @Published var dbWarning: String?
     @Published var kioskPasswordFailures = 0
     @Published var kioskPasswordLockedUntil: Date?
     let defaultProfile: String

@@ -50,6 +50,12 @@ struct Screen<Content: View>: View {
                     Text(model.launch.profile).font(.system(.caption, design: .monospaced).bold()) +
                     Text(model.launch.isShared ? L10n.sharedTerminal : "").font(.caption).foregroundStyle(.secondary)
                 }
+                if let w = model.dbWarning {
+                    Text(w).font(.footnote).padding(12).frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Theme.danger.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+                        .foregroundStyle(Theme.danger)
+                        .accessibilityIdentifier("dbwarn")
+                }
                 content
             }
             .padding(24)

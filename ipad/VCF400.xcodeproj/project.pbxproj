@@ -355,7 +355,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vcf400.ipad;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -372,7 +372,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vcf400.ipad;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};

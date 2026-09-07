@@ -32,6 +32,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.vcf400.ipad
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        TARGETED_DEVICE_FAMILY: "2"
   VCF400UITests:
     type: bundle.ui-testing
     platform: iOS
