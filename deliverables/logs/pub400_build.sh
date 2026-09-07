@@ -133,7 +133,7 @@ echo "=== $(date -u +%FT%TZ) verifying required RPG objects" | tee -a "$LOG"
 required_rpg="NTRSTIT PARAMETER PRTLSTVOTE PRTLSTCMT CREDITS ADDVOTE ADDGBCMT READGBCMT LRN400 LRN400AUT EXHBMENU ADMADDSOFR ADMCRTEXHB ADMHIDECMT ADMLRN400 ADMOFRLIST ADMSETTING ADMVOTERPT"
 missing=0
 for p in $required_rpg; do
-  check=$(/Users/devin/p400 "system 'CHKOBJ OBJ($OBJLIB/$p) OBJTYPE(*PGM)'; echo rc=\\$?" 2>&1)
+  check=$(/Users/devin/p400 "system 'CHKOBJ OBJ($OBJLIB/$p) OBJTYPE(*PGM)'; echo rc=\$?" 2>&1)
   printf '%s\n' "$check" | tee -a "$LOG"
   if ! printf '%s\n' "$check" | grep -q 'rc=0'; then
     echo "MISSING required RPG object: $OBJLIB/$p" | tee -a "$LOG"
