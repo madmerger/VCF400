@@ -61,8 +61,12 @@ public class KioskController {
     }
 
     @GetMapping("/kiosk/{exhibit}/exit")
-    public String exitPrompt(@PathVariable String exhibit, Model model) {
-        model.addAttribute("exhibitId", exhibit.trim().toUpperCase());
+    public String exitPrompt(@PathVariable String exhibit, HttpSession session, Model model) {
+        String id = exhibit.trim().toUpperCase();
+        if (!isLaunchedFor(session, id)) {
+            return "redirect:/kiosk/" + id;
+        }
+        model.addAttribute("exhibitId", id);
         return "admpswrd";
     }
 
@@ -70,6 +74,9 @@ public class KioskController {
     public String exit(@PathVariable String exhibit, @RequestParam(defaultValue = "") String inPwd,
                        HttpSession session, RedirectAttributes ra) {
         String id = exhibit.trim().toUpperCase();
+        if (!isLaunchedFor(session, id)) {
+            return "redirect:/kiosk/" + id;
+        }
         if (kiosk.exitAllowed(inPwd)) {
             session.removeAttribute(Nav.LAUNCH);
             Nav.setReturnTo(session, Nav.MENU);
@@ -77,5 +84,9 @@ public class KioskController {
             return "redirect:/menu";
         }
         return "redirect:/kiosk/" + id;     // 不一致: キオスクメニュー再表示
+    }
+
+    private static boolean isLaunchedFor(HttpSession session, String id) {
+        return Nav.launch(session).map(launch -> id.equals(launch.profile())).orElse(false);
     }
 }

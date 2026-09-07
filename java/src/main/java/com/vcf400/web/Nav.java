@@ -2,6 +2,7 @@ package com.vcf400.web;
 
 import com.vcf400.domain.Launch;
 import jakarta.servlet.http.HttpSession;
+import java.util.Optional;
 
 /**
  * 5250 ジョブの状態 (サインオンユーザー = LAUNCH、呼び出し元) を HTTP セッションで再現する。
@@ -22,6 +23,11 @@ public final class Nav {
         Launch l = new Launch(defaultProfile);
         session.setAttribute(LAUNCH, l);
         return l;
+    }
+
+    public static Optional<Launch> launch(HttpSession session) {
+        Object v = session.getAttribute(LAUNCH);
+        return v instanceof Launch l ? Optional.of(l) : Optional.empty();
     }
 
     public static void setLaunch(HttpSession session, String profile) {

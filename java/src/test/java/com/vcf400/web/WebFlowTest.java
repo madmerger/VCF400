@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -16,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.RequestPostProcessor;
 
 /** 画面遷移 (L-01..L-10) と見出し文言の保持を確認する。 */
 @SpringBootTest
@@ -39,6 +41,19 @@ class WebFlowTest {
         mvc.perform(post("/menu").param("option", "12")).andExpect(redirectedUrl("/navigate?next=/guestbook/add"));
         mvc.perform(post("/menu").param("option", "13")).andExpect(redirectedUrl("/navigate?next=/guestbook/read"));
         mvc.perform(post("/menu").param("option", "80")).andExpect(redirectedUrl("/signoff"));
+    }
+
+    @Test
+    void longMenuNumberIsInvalidInsteadOfOverflowing() throws Exception {
+        mvc.perform(post("/menu").param("option", "99999999999"))
+            .andExpect(redirectedUrl("/menu?msg=" + java.net.URLEncoder.encode(
+                    Messages.MSG_MENU_INVALID, java.nio.charset.StandardCharsets.UTF_8)));
+    }
+
+    @Test
+    void navigateRejectsProtocolRelativeNext() throws Exception {
+        mvc.perform(get("/navigate").param("next", "//evil.com"))
+            .andExpect(model().attribute("next", "/menu"));
     }
 
     @Test
@@ -76,11 +91,30 @@ class WebFlowTest {
         String ashibata = mvc.perform(get("/kiosk/ASHIBATA")).andReturn().getResponse().getContentAsString();
         org.assertj.core.api.Assertions.assertThat(ashibata).contains("data-option=\"1\"", "data-option=\"2\"");
         org.assertj.core.api.Assertions.assertThat(ashibata).doesNotContain("data-option=\"7\"");   // 隠しオプション
-        mvc.perform(post("/kiosk/ASHIBATA").param("option", "7")).andExpect(redirectedUrl("/kiosk/ASHIBATA/exit"));
-        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "wrong")).andExpect(redirectedUrl("/kiosk/ASHIBATA"));
-        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "VCF2024"))
+        MockHttpSession session = new MockHttpSession();
+        mvc.perform(get("/kiosk/ASHIBATA").session(session)).andExpect(status().isOk());
+        mvc.perform(post("/kiosk/ASHIBATA").param("option", "7").session(session))
+            .andExpect(redirectedUrl("/kiosk/ASHIBATA/exit"));
+        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "wrong").session(session))
+            .andExpect(redirectedUrl("/kiosk/ASHIBATA"));
+        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "VCF2024").session(session))
             .andExpect(redirectedUrl("/menu?msg=" + java.net.URLEncoder.encode(
                     Messages.MSG_KIOSK_ENDED.formatted("ASHIBATA"), java.nio.charset.StandardCharsets.UTF_8)));
+    }
+
+    @Test
+    void kioskExitWithoutLaunchReturnsToKiosk() throws Exception {
+        mvc.perform(post("/kiosk/ASHIBATA/exit").param("inPwd", "VCF2024"))
+            .andExpect(redirectedUrl("/kiosk/ASHIBATA"));
+    }
+
+    @Test
+    void dbApiRejectsNonLoopbackRequests() throws Exception {
+        RequestPostProcessor remote = request -> {
+            request.setRemoteAddr("10.0.0.1");
+            return request;
+        };
+        mvc.perform(get("/api/db/votes").with(remote)).andExpect(status().isForbidden());
     }
 
     @Test

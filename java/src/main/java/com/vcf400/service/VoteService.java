@@ -11,6 +11,7 @@ import com.vcf400.repository.SettingsRepository;
 import com.vcf400.repository.VoteRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -96,7 +97,11 @@ public class VoteService {
         }
         if (checkOk == 4) {
             Vote v = new Vote(inputBadge, inputAward, inexhb);
-            votes.insert(v);            // WRITE VOTINGREC (+ PRTLSTVOTE 相当の監査は DB 一覧で代替)
+            try {
+                votes.insert(v);        // WRITE VOTINGREC (+ PRTLSTVOTE 相当の監査は DB 一覧で代替)
+            } catch (DuplicateKeyException e) {
+                return new Result(Messages.ERREXIST, false, false, false, false, null);
+            }
             return new Result(null, false, false, false, true, v);
         }
         return new Result(errLine, false, false, false, false, null);

@@ -15,7 +15,7 @@
         <label for="inputBadge"><span class="step">1</span>まず、SFGE バッジ番号を入力</label>
         <input id="inputBadge" name="inputBadge" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4"
                class="mono" th:classappend="${result != null && result.badgeErr} ? 'err'" th:value="${inputBadge}" autofocus>
-        <div class="hint">数字 4 桁</div>
+          <div class="hint">数字 (最大 4 桁)</div>
       </div>
       <div class="field">
         <label for="inExhb"><span class="step">2</span>次に、推薦する展示 ID を入力</label>
@@ -29,7 +29,7 @@
         <label for="inputAward"><span class="step">3</span>最後に、選択するアワード ID を入力</label>
         <input id="inputAward" name="inputAward" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"
                class="mono" th:classappend="${result != null && result.awardErr} ? 'err'" th:value="${inputAward}">
-        <div class="hint">数字 3 桁 (下のアワード一覧を参照)</div>
+          <div class="hint">数字 (最大 3 桁、下のアワード一覧を参照)</div>
       </div>
       <!-- L-03-05 エラー行 -->
       <div class="errbox" th:if="${result != null && result.errLine != null && !result.errLine.isEmpty()}">

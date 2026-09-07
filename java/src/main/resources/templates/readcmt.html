@@ -25,11 +25,13 @@
     <div class="card" th:if="${out != null}">
       <div class="result">
         <div class="who"><span th:text="${out.outName}">Name</span> <span>さんから、宛先:</span> <span th:text="${out.outTitle}">Title</span></div>
-        <div class="text" th:text="${out.outCmt}">comment</div>
         <div class="info ja-note" th:if="${out.outCmt == T(com.vcf400.service.Messages).ERRHCMT or out.outCmt == T(com.vcf400.service.Messages).ERRPRIV or out.outName == T(com.vcf400.service.Messages).ERRHNAME}">
           <span th:if="${out.outName == T(com.vcf400.service.Messages).ERRHNAME}" th:text="${T(com.vcf400.service.Messages).ja(out.outName)}"></span>
           <span th:if="${out.outCmt == T(com.vcf400.service.Messages).ERRHCMT or out.outCmt == T(com.vcf400.service.Messages).ERRPRIV}" th:text="${T(com.vcf400.service.Messages).ja(out.outCmt)}"></span>
         </div>
+        <div class="text"
+             th:classappend="${out.outCmt == T(com.vcf400.service.Messages).ERRHCMT or out.outCmt == T(com.vcf400.service.Messages).ERRPRIV or out.outName == T(com.vcf400.service.Messages).ERRHNAME} ? 'legacy'"
+             th:text="${out.outCmt}">comment</div>
         <div class="info">コメント ID <span class="mono" th:text="${out.record.cmtid}">1</span></div>
       </div>
     </div>

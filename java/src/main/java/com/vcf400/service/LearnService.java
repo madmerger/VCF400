@@ -3,11 +3,14 @@ package com.vcf400.service;
 import com.vcf400.domain.LearnPage;
 import com.vcf400.repository.LearnPageRepository;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /** LRN400.rpgle の移植 (F-06, V-19..V-21, B-10)。状態 (CURPAGENBR 等) は呼び出し側 (セッション) が保持する。 */
 @Service
 public class LearnService {
+    private static final Logger log = LoggerFactory.getLogger(LearnService.class);
 
     /** RPG のプログラム変数に対応する状態。 */
     public record State(int curPageNbr, int frmPageNbr, boolean alwFwd, String outPageNbr, String outContent,
@@ -40,9 +43,17 @@ public class LearnService {
         if (page.isEnd()) {
             return new State(cur, frm, true, String.valueOf(page.pagenbr()), page.content(), true);
         }
-        if ("CALL".equals(page.content()) || "JUMP".equals(page.content())) {
+        if ("CALL".equals(page.content())) {
+            log.warn("LRN400 CALL {} は Java 版では未対応のため次ページへ進みます", page.extra());
             frm = cur - 1;
-            cur = "JUMP".equals(page.content()) ? parseInt(page.extra()) : cur + 1;
+            cur += 1;
+            Optional<LearnPage> target = pages.findByPage(cur);
+            return new State(cur, frm, true, target.map(t -> String.valueOf(t.pagenbr())).orElse(""),
+                    target.map(LearnPage::content).orElse(""), false);
+        }
+        if ("JUMP".equals(page.content())) {
+            frm = cur - 1;
+            cur = parseInt(page.extra());
             Optional<LearnPage> target = pages.findByPage(cur);
             return new State(cur, frm, true, target.map(t -> String.valueOf(t.pagenbr())).orElse(""),
                     target.map(LearnPage::content).orElse(""), false);

@@ -15,6 +15,16 @@ mvn test                                             # 業務ルール / 画面�
 - `VCF_DB_URL` … JDBC URL。既定は `./data/vcf400` の H2 ファイル DB (DB2 モード)。DB2 for i へ向ける場合は
   `jdbc:as400://host/ASHIBATA2` 等を指定し、jt400 ドライバを依存に追加する (スキーマは DDS と同一列名)。
 - `VCF_PROFILE` … 既定のサインオンユーザー (LAUNCH)。`MM2024` で共用端末モード。
+- `VCF_DB_API` … クロス検証用 DB API の有効化 (既定 `true`)。本番環境では `false` にする。
+- `VCF_H2_CONSOLE` … H2 コンソール `/h2` の有効化 (既定 `false`)。開発時だけ必要に応じて `true` にする。
+- `VCF_COOKIE_SECURE` … セッション Cookie の `Secure` 属性 (既定 `false`)。HTTPS 配下では `true` にする。
+
+初期化とシード:
+
+- `schema.sql` は H2 (`jdbc:h2:`) のときだけ Spring の embedded 初期化で実行される。
+- H2 では `SETTINGS` が空の場合に限り、起動時の `DataSeeder` が `seed.sql` を 1 回実行する。既存のファイル DB を再起動してもデータを再投入しない。
+- DB2 for i (`jdbc:as400:`) ではスキーマ・シード初期化を行わず、既存の DDS テーブルを使用する。
+- DB API はクロス検証専用で、ループバック接続からのみ利用できる。
 
 ## 画面と URL
 
@@ -53,3 +63,5 @@ mvn test                                             # 業務ルール / 画面�
 | M-15 | This comment is not part of this guestbook. | このコメントはこのゲストブックのものではありません。 |
 
 分類依存の表示は、`THANK YOU FOR VOTING!` → 「投票ありがとうございました!」、`THANKS FOR COMMENTING!` → 「コメントありがとうございました!」、`SORRY!` → 「申し訳ありません」。画面タイトルの英語原文も台帳どおり保持し、日本語副題を別要素に表示する。
+
+LEARN/400 の `CONTENT='CALL'` は、RPG の次ページへ進む流れを維持しつつ、Java 版では呼出先プログラムを実行せず警告ログを出して次ページを表示する。`CONTENT='JUMP'` は従来どおり `EXTRA` のページへ移動する。

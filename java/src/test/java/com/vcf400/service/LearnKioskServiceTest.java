@@ -2,6 +2,7 @@ package com.vcf400.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 class LearnKioskServiceTest {
     @Autowired LearnService learn;
     @Autowired KioskService kiosk;
+    @Autowired JdbcTemplate jdbc;
 
     @Test
     void forwardBackAndEndPage() {
@@ -36,6 +38,20 @@ class LearnKioskServiceTest {
         LearnService.State s = learn.back(learn.start());
         assertThat(s.outPageNbr()).isEqualTo("1");
         assertThat(s.exit()).isFalse();
+    }
+
+    @Test
+    void callPageLogsAndShowsFollowingPage() {
+        jdbc.update("UPDATE LRN400STR SET CONTENT = 'CALL', EXTRA = 'LRN400' WHERE PAGENBR = 2");
+        try {
+            LearnService.State next = learn.forward(learn.start());
+            assertThat(next.outPageNbr()).isEqualTo("3");
+            assertThat(next.outContent()).contains("last page");
+            assertThat(next.exit()).isFalse();
+        } finally {
+            jdbc.update("UPDATE LRN400STR SET CONTENT = ?, EXTRA = ? WHERE PAGENBR = 2",
+                    "The AS/400 was introduced by IBM in June 1988 ... page 2", "");
+        }
     }
 
     @Test

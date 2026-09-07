@@ -5,8 +5,9 @@ import com.vcf400.domain.Launch;
 import com.vcf400.repository.ExhibitRepository;
 import com.vcf400.repository.GuestbookRepository;
 import java.util.Optional;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /** ADDGBCMT.rpgle / READGBCMT.rpgle の移植 (F-04, F-05, V-10..V-18, B-06..B-09)。 */
 @Service
@@ -22,10 +23,13 @@ public class GuestbookService {
 
     private final GuestbookRepository comments;
     private final ExhibitRepository exhibits;
+    private final TransactionTemplate transactionTemplate;
 
-    public GuestbookService(GuestbookRepository comments, ExhibitRepository exhibits) {
+    public GuestbookService(GuestbookRepository comments, ExhibitRepository exhibits,
+                            TransactionTemplate transactionTemplate) {
         this.comments = comments;
         this.exhibits = exhibits;
+        this.transactionTemplate = transactionTemplate;
     }
 
     public String protectedExhibit(Launch launch) {
@@ -33,7 +37,6 @@ public class GuestbookService {
     }
 
     /** ADDCMT 送信: 必須検査 (展示 ID → 名前 → コメント) → ADDTODB (最終 CMTID + 1, VISIBLE='Y')。 */
-    @Transactional
     public AddResult add(Launch launch, String inName, String inId, String inCmt) {
         String id = launch.isShared() ? nz(inId).trim().toUpperCase() : launch.profile();
         String name = nz(inName).trim();
@@ -48,10 +51,21 @@ public class GuestbookService {
         if (validate != 3) {
             return new AddResult(errLine, in40, in41, in42, null);
         }
-        int newId = comments.findLast().map(GuestbookComment::cmtid).orElse(0) + 1;   // B-06
-        GuestbookComment c = new GuestbookComment(newId, "Y", id, left(name, 20), left(cmt, 200));
-        comments.insert(c);
-        return new AddResult(null, false, false, false, c);
+        for (int attempt = 0; attempt < 3; attempt++) {
+            try {
+                return transactionTemplate.execute(status -> {
+                    int newId = comments.findLast().map(GuestbookComment::cmtid).orElse(0) + 1;   // B-06
+                    GuestbookComment c = new GuestbookComment(newId, "Y", id, left(name, 20), left(cmt, 200));
+                    comments.insert(c);
+                    return new AddResult(null, false, false, false, c);
+                });
+            } catch (DuplicateKeyException e) {
+                if (attempt == 2) {
+                    throw e;
+                }
+            }
+        }
+        throw new IllegalStateException("Comment insert retry loop exhausted");
     }
 
     /** GETTLCMT: "Currently hosting nnnn comments" = 最終レコードの CMTID。 */

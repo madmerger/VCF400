@@ -56,7 +56,7 @@ public class MainMenuController {
     }
 
     private static boolean isMenuNumber(String opt) {
-        return opt.matches("\\d+") && (Integer.parseInt(opt) <= 10 || opt.equals("90"));
+        return opt.matches("\\d{1,2}") && (Integer.parseInt(opt) <= 10 || opt.equals("90"));
     }
 
     /** サインオンユーザーの切替 (IBM i の SIGNON に相当。MM2024 で共用端末モード)。 */
@@ -75,12 +75,17 @@ public class MainMenuController {
     /** NTRSTIT: VCF/400 - How to Navigate。ENTER で next へ。 */
     @GetMapping("/navigate")
     public String navigate(@RequestParam(defaultValue = "/menu") String next, Model model) {
-        model.addAttribute("next", next.startsWith("/") ? next : "/menu");
+        model.addAttribute("next", safeNext(next));
         return "navigate";
     }
 
     @PostMapping("/navigate")
     public String navigateContinue(@RequestParam(defaultValue = "/menu") String next) {
-        return "redirect:" + (next.startsWith("/") ? next : "/menu");
+        return "redirect:" + safeNext(next);
+    }
+
+    private static String safeNext(String next) {
+        return next != null && next.startsWith("/") && !next.startsWith("//") && !next.startsWith("/\\")
+                ? next : "/menu";
     }
 }
