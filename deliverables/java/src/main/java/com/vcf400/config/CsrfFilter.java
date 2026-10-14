@@ -18,8 +18,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * 持ち (遅延生成は CsrfTokenAdvice)、POST/PUT/DELETE はフォームの `_csrf` パラメータ
  * または `X-CSRF-Token` ヘッダがトークンと一致する要求だけ通す。
  * `/api/db/` はセッションを持たない node fetch から使うためトークン対象外だが、ブラウザ経由の
- * 変更を防ぐため Origin / Sec-Fetch-Site ヘッダ付きの変更リクエストを拒否し、変更メソッドは
- * Content-Type: application/json (HTML フォームでは送れず CORS preflight も未設定) を要求する。
+ * 変更を防ぐため Origin / Sec-Fetch-Site ヘッダ付きの変更リクエストを拒否し、ボディを持つ変更
+ * (POST/PUT) は Content-Type: application/json (HTML フォームでは送れず CORS preflight も未設定)
+ * を要求する。ボディなし DELETE は content-type を要求しない。
  * `/h2` (開発コンソール、既定 OFF) は対象外。
  */
 @Component
@@ -52,10 +53,13 @@ public class CsrfFilter extends OncePerRequestFilter {
                 chain.doFilter(request, response);
                 return;
             }
-            // ブラウザ起点の変更 (Origin/Sec-Fetch-Site が付く) を拒否 + JSON content-type を要求
+            // ブラウザ起点の変更 (Origin/Sec-Fetch-Site が付く) を拒否。ボディありメソッドは
+            // JSON content-type を要求、ボディなし DELETE は content-type 自体を要求しない
+            String method = request.getMethod();
             String contentType = request.getContentType();
             if (request.getHeader("Origin") != null || request.getHeader("Sec-Fetch-Site") != null
-                    || contentType == null || !contentType.startsWith("application/json")) {
+                    || (contentType != null && !contentType.startsWith("application/json"))
+                    || (("POST".equals(method) || "PUT".equals(method)) && contentType == null)) {
                 response.sendError(HttpServletResponse.SC_FORBIDDEN);
                 return;
             }

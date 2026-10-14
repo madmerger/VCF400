@@ -87,20 +87,23 @@ public class DataSeeder implements ApplicationRunner {
                 statement.executeUpdate();
             }
         }
-        if (compositePrimaryKey(connection)) {
+        java.util.List<String> pkColumns = primaryKeyColumns(connection);
+        if (pkColumns.equals(java.util.List.of("LRNFILE", "PAGENBR"))) {
             return;
         }
-        try (PreparedStatement statement = connection.prepareStatement(
-                "ALTER TABLE LRN400STR DROP PRIMARY KEY")) {
-            statement.executeUpdate();
-        } catch (Exception dropFailure) {
-            String pkName = primaryKeyName(connection);
-            if (pkName == null) {
-                throw dropFailure;
-            }
+        if (!pkColumns.isEmpty()) {  // DROP 後・ADD 前に中断した場合は PK なし → スキップ
             try (PreparedStatement statement = connection.prepareStatement(
-                    "ALTER TABLE LRN400STR DROP CONSTRAINT " + pkName)) {
+                    "ALTER TABLE LRN400STR DROP PRIMARY KEY")) {
                 statement.executeUpdate();
+            } catch (Exception dropFailure) {
+                String pkName = primaryKeyName(connection);
+                if (pkName == null) {
+                    throw dropFailure;
+                }
+                try (PreparedStatement statement = connection.prepareStatement(
+                        "ALTER TABLE LRN400STR DROP CONSTRAINT " + pkName)) {
+                    statement.executeUpdate();
+                }
             }
         }
         try (PreparedStatement statement = connection.prepareStatement(
@@ -119,14 +122,14 @@ public class DataSeeder implements ApplicationRunner {
         }
     }
 
-    /** 現在の PK が (LRNFILE, PAGENBR) と一致するか。 */
-    private static boolean compositePrimaryKey(Connection connection) throws Exception {
+    /** 現在の PK 列 (順序付き)。PK なしなら空リスト。 */
+    private static java.util.List<String> primaryKeyColumns(Connection connection) throws Exception {
         try (ResultSet keys = connection.getMetaData().getPrimaryKeys(null, null, "LRN400STR")) {
             java.util.List<String> columns = new java.util.ArrayList<>();
             while (keys.next()) {
                 columns.add(keys.getString("COLUMN_NAME"));
             }
-            return columns.equals(java.util.List.of("LRNFILE", "PAGENBR"));
+            return columns;
         }
     }
 

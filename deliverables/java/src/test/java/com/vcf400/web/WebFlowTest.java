@@ -2,6 +2,7 @@ package com.vcf400.web;
 
 import com.vcf400.service.Messages;
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -179,6 +180,12 @@ class WebFlowTest {
                 .header("Sec-Fetch-Site", "cross-site").content("{\"value\":\"N\"}"))
             .andExpect(status().isForbidden());
         mvc.perform(put("/api/db/settings/ALWVOTE").content("value=N"))
+            .andExpect(status().isForbidden());
+        // ボディなし DELETE は content-type 不要だが、Origin / フォーム CT は拒否
+        mvc.perform(delete("/api/db/votes/7001")).andExpect(status().isOk());
+        mvc.perform(delete("/api/db/votes/7001").header("Origin", "http://evil.example"))
+            .andExpect(status().isForbidden());
+        mvc.perform(delete("/api/db/votes/7001").contentType("application/x-www-form-urlencoded"))
             .andExpect(status().isForbidden());
     }
 

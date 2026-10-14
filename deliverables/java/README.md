@@ -35,8 +35,8 @@ CSRF 対策: synchronizer token。セッション属性に乱数トークン (Se
 (@ControllerAdvice の `csrfToken` モデル属性)、全 POST フォームに hidden `_csrf` を埋め込む。
 POST/PUT/DELETE は `_csrf` パラメータまたは `X-CSRF-Token` ヘッダがセッショントークンと一致する
 要求だけ通す (定数時間比較、セッション/トークンなしは 403)。`/api/db/` はトークン対象外だが、ブラウザ起点の変更を防ぐため Origin / Sec-Fetch-Site ヘッダ付きの
-変更リクエストは 403 とし、変更メソッドは `Content-Type: application/json` を要求する
-(`/h2` (既定 OFF) も対象外)。SameSite=strict Cookie と併せた多層防御。
+変更リクエストは 403 とし、ボディを持つ POST/PUT は `Content-Type: application/json` を要求する
+(ボディなし DELETE は content-type 不要。`/h2` (既定 OFF) も対象外)。SameSite=strict Cookie と併せた多層防御。
 
 初期化とシード:
 

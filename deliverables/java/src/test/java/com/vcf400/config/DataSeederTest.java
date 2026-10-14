@@ -149,6 +149,29 @@ class DataSeederTest {
         assertThat(repo.findFirst("LRN400STR")).isPresent();
     }
 
+    @Test
+    void resumesInterruptedUpgradeWhenPkWasAlreadyDropped(@TempDir Path dir) throws Exception {
+        String url = "jdbc:h2:file:" + dir.resolve("vcf400nopk")
+                + ";MODE=DB2;NON_KEYWORDS=VALUE;DEFAULT_NULL_ORDERING=HIGH";
+        DataSource dataSource = dataSource(url);
+        JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+        jdbc.update("CREATE TABLE SETTINGS (SETTING CHAR(9) NOT NULL, VALUE CHAR(50) NOT NULL DEFAULT '', PRIMARY KEY (SETTING))");
+        jdbc.update("INSERT INTO SETTINGS (SETTING, VALUE) VALUES ('ADMPSWRD', 'VCF2024'), ('ALWVOTE', 'Y')");
+        // DROP PRIMARY KEY 後・ADD 前に中断した状態: LRNFILE 列あり・PK なし
+        jdbc.update("CREATE TABLE LRN400STR (LRNFILE CHAR(10) NOT NULL DEFAULT 'LRN400STR',"
+                + " PAGENBR INTEGER NOT NULL, CONTENT CHAR(1500) NOT NULL DEFAULT '',"
+                + " EXTRA CHAR(9) NOT NULL DEFAULT '')");
+        jdbc.update("INSERT INTO LRN400STR (PAGENBR, CONTENT, EXTRA) VALUES (1, 'old common page', 'END')");
+
+        new DataSeeder(dataSource, url, "TESTPW").run(new DefaultApplicationArguments());
+        new DataSeeder(dataSource, url, "TESTPW").run(new DefaultApplicationArguments());
+
+        jdbc.update("INSERT INTO LRN400STR (LRNFILE, PAGENBR, CONTENT, EXTRA) VALUES ('ASHIBATA', 1, 'exhibit page', '')");
+        var repo = new com.vcf400.repository.LearnPageRepository(jdbc);
+        assertThat(repo.findByPage("ASHIBATA", 1)).isPresent();
+        assertThat(repo.findFirst("LRN400STR")).isPresent();
+    }
+
     private static DataSource dataSource(String url) {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(url);
