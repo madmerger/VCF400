@@ -43,7 +43,7 @@
 - PRINTER / BEEMOVIE / OLDVOTE / OLDADDVOTE は対象外とする。
 - CPD0032 が既知のため RSTLIB は試行しない。
 - Java の `/api/db/*` は既定で無効とし、クロス検証時だけ `VCF_DB_API=true` で有効化する。
-- fresh H2 の初期化には `SPRING_SQL_INIT_MODE=always` を指定する。
+- H2 (ファイル DB) は起動時に `DataSeeder` が `schema.sql` を適用し、SETTINGS が空なら `seed.sql` を投入する。
 
 ## 再実行手順
 
@@ -51,8 +51,7 @@
 
 ```sh
 ./deliverables/logs/pub400_build.sh
-python3 deliverables/tests/pub400_db.py reset
-# 必要に応じて deliverables/logs/pub400_seed.sql を PASE db2 から実行
+python3 deliverables/tests/pub400_db.py reset   # logs/pub400_seed.sql の全 6 表 (EXHBDB/AWARDDB/SETTINGS/LRN400STR/GUESTBKDB/VOTINGDB) を再投入
 ```
 
 PUB400 では `ASHIBATA1`（ソース）と `ASHIBATA2`（オブジェクト・データ）だけを
@@ -77,13 +76,13 @@ python3 deliverables/tools/md2pdf.py \
 ### Phase 3: Java / iPad ビルド
 
 ```sh
-(cd java && mvn -q test)
-(cd java && SPRING_SQL_INIT_MODE=always VCF_DB_API=true mvn -q spring-boot:run)
-(cd ipad && xcodegen generate && \
+(cd deliverables/java && mvn -q test)
+(cd deliverables/java && VCF_DB_API=true mvn -q spring-boot:run)
+(cd deliverables/ipad && xcodegen generate && \
   xcodebuild -project VCF400.xcodeproj -scheme VCF400 \
     -destination 'platform=iOS Simulator,name=iPad Pro 13-inch (M5)' \
     -derivedDataPath build build-for-testing)
-(cd ipad/VCF400Kit && swift test)
+(cd deliverables/ipad/VCF400Kit && swift test)
 ```
 
 ### Phase 5/6: 3 環境の全件比較と録画
@@ -106,7 +105,7 @@ Java は Spring Boot が `:8080` で起動済みであることを確認し、he
 
 ```sh
 # fresh H2 を使うクロス検証用の起動
-(cd java && SPRING_SQL_INIT_MODE=always VCF_DB_API=true mvn -q spring-boot:run)
+(cd deliverables/java && rm -rf data && VCF_DB_API=true mvn -q spring-boot:run)
 NODE_PATH=$HOME/pwtools/node_modules \
 node deliverables/tests/run_java.js \
   --record "$HOME/vcf_rec/java_webm" \
