@@ -25,10 +25,11 @@ public final class Database {
             throw DBError.open(String(cString: sqlite3_errmsg(db)))
         }
         try execute("PRAGMA journal_mode=WAL")
+        // 新規作成の DB にのみベースラインを投入 (既存 DB は空テーブルでも再投入しない。初期化は -VCF_RESET)
+        let isNew = try query("SELECT COUNT(*) FROM sqlite_master WHERE type = 'table'") { $0.int(0) }.first == 0
         try createSchema()
-        // 初回作成時のみベースラインを投入 (以後は空テーブルでも再投入しない。初期化は -VCF_RESET)
         if try query("PRAGMA user_version") { $0.int(0) }.first == 0 {
-            try seed()
+            if isNew { try seed() }
             try execute("PRAGMA user_version = 1")
         }
     }

@@ -45,4 +45,15 @@ final class DatabaseTests: XCTestCase {
         let reopened = try Database(path: path)
         XCTAssertEqual(try reopened.query("SELECT COUNT(*) FROM VOTINGDB") { $0.int(0) }.first, 0)
     }
+
+    func testLegacyDatabaseWithoutVersionIsNotReseeded() throws {
+        let path = NSTemporaryDirectory() + "vcf400-legacy-\(UUID().uuidString).sqlite"
+        defer { try? FileManager.default.removeItem(atPath: path) }
+        let db = try Database(path: path)
+        try db.execute("DELETE FROM VOTINGDB")
+        try db.execute("PRAGMA user_version = 0")
+        let reopened = try Database(path: path)
+        XCTAssertEqual(try reopened.query("SELECT COUNT(*) FROM VOTINGDB") { $0.int(0) }.first, 0)
+        XCTAssertEqual(try reopened.query("PRAGMA user_version") { $0.int(0) }.first, 1)
+    }
 }
