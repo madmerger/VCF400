@@ -1,0 +1,34 @@
+{
+  "votes": [
+    {
+      "badge": 1,
+      "award": 1,
+      "exhibit": "ASHIBATA"
+    },
+    {
+      "badge": 28,
+      "award": 2,
+      "exhibit": "ASHIBATA"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Great exhibit",
+      "comment": "VCF/400 running on PUB400."
+    },
+    {
+      "id": 2,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Devin",
+      "comment": "VCF/400 is running on PUB400."
+    }
+  ],
+  "settings": {
+    "ADMPSWRD": "VCF2024",
+    "ALWVOTE": "Y"
+  }
+}

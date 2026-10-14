@@ -1,7 +1,7 @@
 ---
 title: "VCF/400 仕様書 (レガシー RPG IV / CL / DDS 解析)"
 subtitle: "madmerger/VCF400 — 機能仕様・DB スキーマ・業務ルール・元画面構造の台帳"
-date: "2026-09-07"
+date: "2026-10-14"
 ---
 
 # VCF/400 仕様書
@@ -10,7 +10,7 @@ date: "2026-09-07"
 |---|---|
 | 対象リポジトリ | `madmerger/VCF400` (HEAD `83d566e Final release`, セーブファイル VCFV1R3 = 2024-04-05) |
 | 対象資産 | QRPGLESRC (RPG IV), QDDSSRC (PF), QSDASRC (DSPF), QMNUSRC (メニュー), QCLSRC (CL), QCMDSRC (CMD), QRLUSRC (PRTF) |
-| 解析根拠 | ソース静的解析 + 2026-09-07 clean rebuild の PUB400 (ASHIBATA2 ライブラリ) 上での実行結果 (`deliverables/logs/phase1_report.md`, `deliverables/logs/phase1_06_runtime_5250.log`, `phase1_07_runtime_alwvote.log`) |
+| 解析根拠 | ソース静的解析 + 2026-10-14 ソース再ビルド (RPG 18 本 severity 00) 後の PUB400 (ASHIBATA2 ライブラリ) 実機 5250 実行結果 (`deliverables/logs/phase1_report.md`, `deliverables/tests/results/pub400_5250.log`, `deliverables/tests/results/pub400.json`) |
 | ID 体系 | **F-nn** 機能, **V-nn** 入力検証ルール, **B-nn** 業務ルール, **D-nn** DB スキーマ, **M-nn** メッセージ, **L-nn** 元画面構造の台帳項目。移行実装のトレーサビリティ表 (`deliverables/spec/VCF400_traceability.md`) はこれらの ID を参照する。 |
 
 ---
@@ -174,7 +174,7 @@ GUESTBKDB: (1,'Y','ASHIBATA','Great exhibit','VCF/400 running on PUB400.') (2,'Y
 
 #### 5.1.1 CHECKOK=4 までの検証手順 (実機確認)
 
-`deliverables/logs/phase1_06_runtime_5250.log` の 5250 実機相当操作で、ADDTODB の
+`deliverables/tests/results/pub400_5250.log` の 5250 実機操作 (CV-01..CV-37)で、ADDTODB の
 チェックを次の順序で確認した。各ケースは VCFMAIN option 11 または
 `CALL ADDVOTE PARM('MM2024')` から入力し、ERRLINE の実際の表示を記録した。
 
