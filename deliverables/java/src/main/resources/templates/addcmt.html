@@ -8,6 +8,7 @@
   <p class="screen-subtitle ja">ゲストブックに記入</p>
 
   <form method="post" th:action="@{/guestbook/add}" id="cmtForm" autocomplete="off">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="card">
       <!-- L-07-02..04 入力順: 名前 → 展示 ID → コメント -->
       <div class="field">

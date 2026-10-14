@@ -13,6 +13,7 @@
   <div class="card"><div class="page-content" style="min-height:0" th:text="${exhibit.exhbdesc}">desc</div></div>
 
   <form method="post" th:action="@{/kiosk/{id}(id=${exhibit.exhusrprf})}">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="card">
       <!-- L-05-04 メニュー (1, 2 は資格/設定により非表示) -->
       <ul class="menu-list">

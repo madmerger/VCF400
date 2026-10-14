@@ -42,6 +42,7 @@ public class DataSeeder implements ApplicationRunner {
                 connection.setAutoCommit(false);
                 try {
                     ScriptUtils.executeSqlScript(connection, new ClassPathResource("schema.sql"));
+                    upgradeLrn400str(connection);
                     if (!settingsEmpty(connection)) {
                         connection.commit();
                         return;
@@ -71,6 +72,52 @@ public class DataSeeder implements ApplicationRunner {
             } finally {
                 connection.setAutoCommit(autoCommit);
             }
+        }
+    }
+
+    /**
+     * 旧スキーマ (PK PAGENBR のみ、LRNFILE 列なし) で作成済みの LRN400STR を
+     * (LRNFILE, PAGENBR) PK へアップグレードする。既存行は LRNFILE='LRN400STR' (既定値) で保持される。
+     */
+    private static void upgradeLrn400str(Connection connection) throws Exception {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS "
+                        + "WHERE TABLE_NAME = 'LRN400STR' AND COLUMN_NAME = 'LRNFILE'");
+             ResultSet result = statement.executeQuery()) {
+            if (result.next() && result.getInt(1) > 0) {
+                return;
+            }
+        }
+        try (PreparedStatement statement = connection.prepareStatement(
+                "ALTER TABLE LRN400STR ADD COLUMN LRNFILE CHAR(10) NOT NULL DEFAULT 'LRN400STR' BEFORE PAGENBR")) {
+            statement.executeUpdate();
+        }
+        try (PreparedStatement statement = connection.prepareStatement(
+                "ALTER TABLE LRN400STR DROP PRIMARY KEY")) {
+            statement.executeUpdate();
+        } catch (Exception dropFailure) {
+            String pkName = primaryKeyName(connection);
+            if (pkName == null) {
+                throw dropFailure;
+            }
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "ALTER TABLE LRN400STR DROP CONSTRAINT " + pkName)) {
+                statement.executeUpdate();
+            }
+        }
+        try (PreparedStatement statement = connection.prepareStatement(
+                "ALTER TABLE LRN400STR ADD PRIMARY KEY (LRNFILE, PAGENBR)")) {
+            statement.executeUpdate();
+        }
+        log.info("LRN400STR を LRNFILE 付きスキーマへアップグレードしました");
+    }
+
+    private static String primaryKeyName(Connection connection) throws Exception {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS "
+                        + "WHERE TABLE_NAME = 'LRN400STR' AND CONSTRAINT_TYPE = 'PRIMARY KEY'");
+             ResultSet result = statement.executeQuery()) {
+            return result.next() ? result.getString(1) : null;
         }
     }
 

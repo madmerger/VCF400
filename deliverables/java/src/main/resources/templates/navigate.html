@@ -16,6 +16,7 @@
     <p class="info" style="margin-top:14px">このモダン UI でも物理キーボードの同じキーが使え、各操作ボタンにキー番号を併記しています。</p>
   </div>
   <form method="post" th:action="@{/navigate}">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <input type="hidden" name="next" th:value="${next}">
     <div class="fkeys">
       <span class="legend">よろしいですか?</span>

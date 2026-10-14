@@ -12,6 +12,7 @@
     <div class="page-content" th:text="${state.outContent}">content</div>
   </div>
   <form method="post" th:action="@{/learn}">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="fkeys">
       <span class="legend">F3 = 終了 · F5 = 次へ · F8 = 前へ</span>
       <button type="submit" class="btn" name="action" value="exit" data-fkey="F3">終了 <kbd>F3</kbd></button>

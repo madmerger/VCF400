@@ -31,13 +31,17 @@ VCF_DB_API=true VCF_SEED_ADMPSWRD=VCF2024 mvn spring-boot:run
 # (VCF_DB_API=true でサインオンフォームも有効。run_java.js のリセットが ADMPSWRD=VCF2024 を再設定する)
 ```
 
-CSRF 対策: SameSite=strict Cookie に加え、POST/PUT/DELETE で `Sec-Fetch-Site: cross-site` または
-`Origin` がリクエストの scheme://host:port と不一致の場合 403 とするフィルタを挟む
-(`X-Forwarded-*` は参照しない)。Origin も Sec-Fetch-Site もない非ブラウザクライアントは許可する。
+CSRF 対策: synchronizer token。セッション属性に乱数トークン (SecureRandom 32B) を遅延生成し
+(@ControllerAdvice の `csrfToken` モデル属性)、全 POST フォームに hidden `_csrf` を埋め込む。
+POST/PUT/DELETE は `_csrf` パラメータまたは `X-CSRF-Token` ヘッダがセッショントークンと一致する
+要求だけ通す (定数時間比較、セッション/トークンなしは 403)。`/api/db/` (フラグ + ループバック) と
+`/h2` (既定 OFF) は対象外。SameSite=strict Cookie と併せた多層防御。
 
 初期化とシード:
 
 - `schema.sql` は H2 (`jdbc:h2:`) のときだけ、起動時の `DataSeeder` が実行する (全て `CREATE TABLE IF NOT EXISTS` のため再起動でも安全)。
+- 旧バージョンで作成済みのファイル DB (LRNFILE 列なし LRN400STR) は起動時に `DataSeeder` が自動で
+  `ALTER TABLE` して (LRNFILE, PAGENBR) PK へアップグレードする。既存行は `LRNFILE='LRN400STR'` で保持される。
 - H2 では `SETTINGS` が空の場合に限り、起動時の `DataSeeder` が `seed.sql` を 1 回実行する。既存のファイル DB を再起動してもデータを再投入しない。
 - シード後の管理者パスワード `ADMPSWRD` は SETTINGS のキーで参照して更新する (先頭レコードには依存しない)。
 - DB2 for i (`jdbc:as400:`) ではスキーマ・シード初期化を行わず、既存の DDS テーブルを使用する。

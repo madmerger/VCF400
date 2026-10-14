@@ -51,14 +51,9 @@ public class KioskController {
         String base = "redirect:/kiosk/" + id;
         return switch (option.trim()) {
             case "1" -> e.get().isEligible() ? "redirect:/navigate?next=/vote" : base;             // B-02
-            case "2" -> {                                                                        // B-12
-                if (e.get().isLearnEnabled()) {
-                    // LRN400STUB: OVRDBF FILE(LRN400STR) TOFILE(VCF/&PROFILE) — 展示 ID のページファイルを使う
-                    session.setAttribute(LearnController.LRNFILE, id);
-                    yield "redirect:/learn";
-                }
-                yield base;
-            }
+            case "2" -> e.get().isLearnEnabled()
+                ? "redirect:/learn?exhb=" + id                                                     // B-12: LRN400STUB OVRDBF 相当
+                : base;
             case "3" -> "redirect:/navigate?next=/guestbook/add";
             case "4" -> "redirect:/navigate?next=/guestbook/read";
             case "7" -> base + "/exit";                                                             // B-11

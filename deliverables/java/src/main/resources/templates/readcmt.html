@@ -8,6 +8,7 @@
   <p class="screen-subtitle ja">ゲストブックのコメントを読む</p>
 
   <form method="post" th:action="@{/guestbook/read}" id="readForm" autocomplete="off">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="card">
       <div class="field">
         <label for="inCmtId"><span class="step">1</span>コメント ID を入力:</label>

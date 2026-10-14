@@ -96,6 +96,35 @@ class DataSeederTest {
             .isEqualTo("TESTPW");
     }
 
+    @Test
+    void upgradesOldLrn400strWithoutLrnfile(@TempDir Path dir) throws Exception {
+        String url = "jdbc:h2:file:" + dir.resolve("vcf400old")
+                + ";MODE=DB2;NON_KEYWORDS=VALUE;DEFAULT_NULL_ORDERING=HIGH";
+        DataSource dataSource = dataSource(url);
+        JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+        // 旧スキーマ (LRNFILE なし、PK = PAGENBR) を手で作り、シード済みの SETTINGS とページを入れる
+        jdbc.update("CREATE TABLE SETTINGS (SETTING CHAR(9) NOT NULL, VALUE CHAR(50) NOT NULL DEFAULT '', PRIMARY KEY (SETTING))");
+        jdbc.update("INSERT INTO SETTINGS (SETTING, VALUE) VALUES ('ADMPSWRD', 'VCF2024'), ('ALWVOTE', 'Y')");
+        jdbc.update("CREATE TABLE LRN400STR (PAGENBR INTEGER NOT NULL, CONTENT CHAR(1500) NOT NULL DEFAULT '',"
+                + " EXTRA CHAR(9) NOT NULL DEFAULT '', PRIMARY KEY (PAGENBR))");
+        jdbc.update("INSERT INTO LRN400STR (PAGENBR, CONTENT, EXTRA) VALUES (1, 'old common page', 'END')");
+        // 他テーブルは schema.sql が作る (SETTINGS/LRN400STR だけ作っておけばよい)
+        DataSeeder seeder = new DataSeeder(dataSource, url, "TESTPW");
+        seeder.run(new DefaultApplicationArguments());
+        seeder.run(new DefaultApplicationArguments());   // 2 回目も冪等
+
+        var repo = new com.vcf400.repository.LearnPageRepository(jdbc);
+        assertThat(repo.findFirst("LRN400STR")).get()
+            .satisfies(p -> assertThat(p.content()).contains("old common page"));
+        assertThat(jdbc.queryForObject(
+                "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS "
+                        + "WHERE TABLE_NAME = 'LRN400STR' AND COLUMN_NAME = 'LRNFILE'", Integer.class))
+            .isEqualTo(1);
+        // (LRNFILE, PAGENBR) 複合キー: 同一 PAGENBR で別ファイルの行を追加できる
+        jdbc.update("INSERT INTO LRN400STR (LRNFILE, PAGENBR, CONTENT, EXTRA) VALUES ('ASHIBATA', 1, 'exhibit page', '')");
+        assertThat(repo.findByPage("ASHIBATA", 1)).isPresent();
+    }
+
     private static DataSource dataSource(String url) {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(url);

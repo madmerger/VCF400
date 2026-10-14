@@ -9,6 +9,7 @@
   <p class="screen-subtitle ja">展示をアワードに推薦する (投票)</p>
 
   <form method="post" th:action="@{/vote}" id="voteForm" autocomplete="off">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="card">
       <!-- L-03-02..04 入力順: バッジ → 展示 ID → アワード ID -->
       <div class="field">

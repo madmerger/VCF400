@@ -10,6 +10,7 @@
   <div class="msgbar" th:if="${msg}" th:text="${msg}"></div>
 
   <form method="post" th:action="@{/menu}" id="menuForm">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="menu-grid">
       <div class="card menu-group"><h3>はじめに</h3>
         <ul class="menu-list">
@@ -65,6 +66,7 @@
   <details class="card" th:if="${signonEnabled}">
     <summary class="info">別のユーザープロファイルでサインオン (キオスク展示 / MM2024 共用端末)</summary>
     <form method="post" th:action="@{/signon}" class="optline" style="margin-top:10px">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
       <label for="profile">ユーザープロファイル</label>
       <input id="profile" name="profile" type="text" maxlength="9" class="mono" th:value="${launch.profile}" style="width:160px;text-align:left">
       <button type="submit" class="btn" aria-label="Sign on">サインオン</button>

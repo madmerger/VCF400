@@ -8,6 +8,7 @@
   <h1 class="screen-title sub">Are you sure you want to exit the kiosk?</h1>
   <p class="screen-subtitle ja">管理者パスワードを入力して ENTER を押すとサインオフします</p>
   <form method="post" th:action="@{/kiosk/{id}/exit(id=${exhibitId})}" autocomplete="off">
+    <input type="hidden" name="_csrf" th:value="${csrfToken}">
     <div class="card">
       <div class="field">
         <label for="inPwd">管理者パスワード</label>

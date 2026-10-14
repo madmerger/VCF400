@@ -21,7 +21,11 @@ class SignonDisabledTest {
 
     @Test
     void signonPostIsRejected() throws Exception {
-        mvc.perform(post("/signon").param("profile", "MM2024")).andExpect(status().isForbidden());
+        // CSRF フィルタを通したうえでコントローラの 403 を確認する
+        org.springframework.mock.web.MockHttpSession s = new org.springframework.mock.web.MockHttpSession();
+        s.setAttribute(com.vcf400.config.CsrfFilter.SESSION_KEY, "tok");
+        mvc.perform(post("/signon").session(s).param("_csrf", "tok").param("profile", "MM2024"))
+            .andExpect(status().isForbidden());
     }
 
     @Test
