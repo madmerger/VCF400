@@ -339,7 +339,8 @@ FLOWS = {"vote": flow_vote, "gb_add": flow_gb_add, "gb_read": flow_gb_read, "lea
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only")
-    ap.add_argument("--no-reset", action="store_true")
+    ap.add_argument("--no-reset", action="store_true",
+                    help="skip the baseline reseed both before and after the run (use existing data)")
     ap.add_argument("--frames", metavar="PATH")
     a = ap.parse_args()
     cases = load_cases(a.only)
@@ -389,8 +390,9 @@ def main():
         p.save_frames()
         p.s.signoff()
     finally:
-        print("final PUB400 baseline reset ...", flush=True)
-        pub400_db.sql(pub400_db.BASELINE)
+        if not a.no_reset:
+            print("final PUB400 baseline reset ...", flush=True)
+            pub400_db.sql(pub400_db.BASELINE)
 
 
 if __name__ == "__main__":
