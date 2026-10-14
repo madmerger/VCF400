@@ -135,6 +135,62 @@ def first_lines(text, n=2, width=90):
     return " / ".join(ls[:n])[:width]
 
 
+# decisive on-screen phrases; matched case-insensitively against actual screen lines
+KEY_PHRASES = [
+    "already voted", "does not exist", "ineligible", "recorded",
+    "voting period has ended", "must enter", "name hidden",
+    "not part of this guestbook", "says to:", "thank you", "commenting",
+    "are you sure", "currently hosting", "page ",
+    "nominate this exhibit", "learn more about", "sign exhibit guestbook",
+    "read exhibit guestbook", "test done for eligibility check",
+    "press enter", "got all that", "how to navigate",
+]
+
+
+def is_content_line(s):
+    """Keep real text lines; drop separators / broken ASCII-art glyph lines."""
+    if not s:
+        return False
+    alnum = sum(c.isalnum() for c in s)
+    return alnum >= 4 and alnum >= len(s) * 0.4
+
+
+def evidence(st):
+    """Return 'L<row>: <line>' excerpts from the actual screen that carry the
+    judgement evidence: lines matching quoted/english tokens from the expected
+    text or the decisive key phrases. Prefers results.json 'observation'."""
+    if st.get("observation"):
+        return st["observation"]
+    actual = st.get("actual", "")
+    lines = actual.splitlines()
+    exp = st.get("expected", "")
+    tokens = re.findall(r"`([^`]+)`", exp)
+    tokens += [t.strip() for t in re.findall(r"[A-Za-z][A-Za-z0-9 ,.&!?'_/()\-]{11,}", exp)]
+    tokens = [t for t in tokens if len(t) >= 8]
+    hits, key_only = [], []
+    for i, l in enumerate(lines, 1):
+        s = l.strip()
+        if not is_content_line(s):
+            continue
+        low = s.lower()
+        if any(t.lower() in low for t in tokens) or re.match(r"^\d\.\s+\S", s):
+            hits.append(f"L{i}: {s}")
+        elif any(k in low for k in KEY_PHRASES):
+            key_only.append(f"L{i}: {s}")
+    # expected-token hits first, then decisive key-phrase hits
+    seen, out = set(), []
+    for h in hits + key_only:
+        if h not in seen:
+            seen.add(h)
+            out.append(h)
+        if len(out) >= 6:
+            break
+    if not out:
+        out = [f"L{i}: {l.strip()}" for i, l in enumerate(lines, 1)
+               if is_content_line(l.strip())][:2]
+    return "<br>".join(out)
+
+
 def build_md(data, anchors, ops, comp, counts, today):
     S = data["scenarios"]
     L = []
@@ -186,7 +242,7 @@ def build_md(data, anchors, ops, comp, counts, today):
         for st in s["steps"]:
             no = st["step"]
             op = ops.get(s["id"], {}).get(no, "補助確認" if not no.isdigit() else "")
-            actual = st.get("observation") or first_lines(st.get("actual", ""))
+            actual = st.get("observation") or evidence(st)
             ev = st.get("screen", "")
             cell = f"{actual}<br>証跡: `{ev}`" if ev else actual
             A(f"| {no} | {op} | {st['expected']} | {cell} | {st['result']} |")
@@ -247,6 +303,21 @@ img { max-width: 100%; margin: 6px 0; }
 """
 
 
+def inline(text):
+    """Escape HTML then apply minimal inline markdown: **bold**, `code`, [link](url)."""
+    t = html.escape(text)
+    t = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", t)
+    t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
+    t = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)",
+               r'<a href="\2">\1</a>', t)
+    return t
+
+
+def inline_cell(text):
+    """inline() per fragment split on literal <br> emitted by the cell builder."""
+    return "<br>".join(inline(part) for part in text.split("<br>"))
+
+
 def md_to_html(md):
     """Minimal MD renderer sufficient for this report (tables, lists, img, code, headings)."""
     out, in_tbl, in_code = [], False, False
@@ -266,7 +337,7 @@ def md_to_html(md):
             if not in_tbl:
                 out.append("<table>")
             in_tbl = True
-            cells = [re.sub(r"`([^`]+)`", r"<code>\1</code>", c) for c in cells]
+            cells = [inline_cell(c) for c in cells]
             out.append("<tr>" + "".join(f"<{tag}>{c}</{tag}>" for c in cells) + "</tr>")
             continue
         if in_tbl:
@@ -277,17 +348,17 @@ def md_to_html(md):
             out.append(f'<img src="{html.escape(m.group(2))}" alt="{html.escape(m.group(1))}">')
             continue
         if line.startswith("### "):
-            out.append(f"<h3>{html.escape(line[4:])}</h3>")
+            out.append(f"<h3>{inline(line[4:])}</h3>")
         elif line.startswith("## "):
-            out.append(f"<h2>{html.escape(line[3:])}</h2>")
+            out.append(f"<h2>{inline(line[3:])}</h2>")
         elif line.startswith("# "):
-            out.append(f"<h1>{html.escape(line[2:])}</h1>")
+            out.append(f"<h1>{inline(line[2:])}</h1>")
         elif line.startswith("- "):
-            out.append(f"<div>• {html.escape(line[2:])}</div>")
+            out.append(f"<div>• {inline(line[2:])}</div>")
         elif line.strip() == "":
             out.append("")
         else:
-            out.append(f"<div>{html.escape(line)}</div>")
+            out.append(f"<div>{inline(line)}</div>")
     if in_tbl:
         out.append("</table>")
     return "<html><head><meta charset='utf-8'><style>" + MD_CSS + "</style></head><body>" \
