@@ -1,0 +1,57 @@
+name: VCF400
+options:
+  bundleIdPrefix: com.vcf400
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "2"          # iPad
+    CODE_SIGNING_ALLOWED: "NO"           # simulator only (no signing identity)
+    CODE_SIGN_IDENTITY: ""
+packages:
+  VCF400Kit:
+    path: VCF400Kit
+targets:
+  VCF400:
+    type: application
+    platform: iOS
+    sources: [VCF400]
+    dependencies:
+      - package: VCF400Kit
+    info:
+      path: VCF400/Info.plist
+      properties:
+        CFBundleDisplayName: VCF/400
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight, UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown]
+        UIRequiresFullScreen: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vcf400.ipad
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        TARGETED_DEVICE_FAMILY: "2"
+  VCF400UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [VCF400UITests]
+    dependencies:
+      - target: VCF400
+      - package: VCF400Kit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vcf400.ipad.uitests
+        TEST_TARGET_NAME: VCF400
+schemes:
+  VCF400:
+    build:
+      targets:
+        VCF400: all
+        VCF400UITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [VCF400UITests]
