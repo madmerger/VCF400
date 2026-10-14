@@ -51,9 +51,13 @@ public class KioskController {
         String base = "redirect:/kiosk/" + id;
         return switch (option.trim()) {
             case "1" -> e.get().isEligible() ? "redirect:/navigate?next=/vote" : base;             // B-02
-            case "2" -> e.get().isLearnEnabled()
-                ? "redirect:/learn?exhb=" + id                                                     // B-12: LRN400STUB OVRDBF 相当
-                : base;
+            case "2" -> {                                                                        // B-12: LRN400STUB OVRDBF 相当
+                if (e.get().isLearnEnabled()) {
+                    ra.addAttribute("exhb", id);   // URL エンコードして渡す (展示 ID 中の # 等を保護)
+                    yield "redirect:/learn";
+                }
+                yield base;
+            }
             case "3" -> "redirect:/navigate?next=/guestbook/add";
             case "4" -> "redirect:/navigate?next=/guestbook/read";
             case "7" -> base + "/exit";                                                             // B-11

@@ -80,17 +80,15 @@ public class DataSeeder implements ApplicationRunner {
      * (LRNFILE, PAGENBR) PK へアップグレードする。既存行は LRNFILE='LRN400STR' (既定値) で保持される。
      */
     private static void upgradeLrn400str(Connection connection) throws Exception {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS "
-                        + "WHERE TABLE_NAME = 'LRN400STR' AND COLUMN_NAME = 'LRNFILE'");
-             ResultSet result = statement.executeQuery()) {
-            if (result.next() && result.getInt(1) > 0) {
-                return;
+        // H2 の DDL は自動コミットされるため中断に備えて各ステップを独立に冪等化する
+        if (!hasLrnfileColumn(connection)) {
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "ALTER TABLE LRN400STR ADD COLUMN LRNFILE CHAR(10) NOT NULL DEFAULT 'LRN400STR' BEFORE PAGENBR")) {
+                statement.executeUpdate();
             }
         }
-        try (PreparedStatement statement = connection.prepareStatement(
-                "ALTER TABLE LRN400STR ADD COLUMN LRNFILE CHAR(10) NOT NULL DEFAULT 'LRN400STR' BEFORE PAGENBR")) {
-            statement.executeUpdate();
+        if (compositePrimaryKey(connection)) {
+            return;
         }
         try (PreparedStatement statement = connection.prepareStatement(
                 "ALTER TABLE LRN400STR DROP PRIMARY KEY")) {
@@ -110,6 +108,26 @@ public class DataSeeder implements ApplicationRunner {
             statement.executeUpdate();
         }
         log.info("LRN400STR を LRNFILE 付きスキーマへアップグレードしました");
+    }
+
+    private static boolean hasLrnfileColumn(Connection connection) throws Exception {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS "
+                        + "WHERE TABLE_NAME = 'LRN400STR' AND COLUMN_NAME = 'LRNFILE'");
+             ResultSet result = statement.executeQuery()) {
+            return result.next() && result.getInt(1) > 0;
+        }
+    }
+
+    /** 現在の PK が (LRNFILE, PAGENBR) と一致するか。 */
+    private static boolean compositePrimaryKey(Connection connection) throws Exception {
+        try (ResultSet keys = connection.getMetaData().getPrimaryKeys(null, null, "LRN400STR")) {
+            java.util.List<String> columns = new java.util.ArrayList<>();
+            while (keys.next()) {
+                columns.add(keys.getString("COLUMN_NAME"));
+            }
+            return columns.equals(java.util.List.of("LRNFILE", "PAGENBR"));
+        }
     }
 
     private static String primaryKeyName(Connection connection) throws Exception {

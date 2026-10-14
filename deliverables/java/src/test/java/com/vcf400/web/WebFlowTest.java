@@ -171,6 +171,15 @@ class WebFlowTest {
         // /api/db/ はトークン不要 (フラグ + ループバックで保護)
         mvc.perform(put("/api/db/settings/ALWVOTE").contentType("application/json")
                 .content("{\"value\":\"Y\"}")).andExpect(status().isOk());
+        // ブラウザ起点の /api/db 変更は拒否 (Origin / Sec-Fetch-Site があれば 403、JSON 以外も 403)
+        mvc.perform(put("/api/db/settings/ALWVOTE").contentType("application/json")
+                .header("Origin", "http://evil.example").content("{\"value\":\"N\"}"))
+            .andExpect(status().isForbidden());
+        mvc.perform(put("/api/db/settings/ALWVOTE").contentType("application/json")
+                .header("Sec-Fetch-Site", "cross-site").content("{\"value\":\"N\"}"))
+            .andExpect(status().isForbidden());
+        mvc.perform(put("/api/db/settings/ALWVOTE").content("value=N"))
+            .andExpect(status().isForbidden());
     }
 
     @Test
@@ -192,6 +201,24 @@ class WebFlowTest {
                 .andExpect(content().string(containsString("Welcome to LEARN/400")));
         } finally {
             jdbc.update("DELETE FROM LRN400STR WHERE LRNFILE = 'ASHIBATA'");
+        }
+    }
+
+    @Test
+    void kioskOption2EncodesExhibitIdWithSpecialChars() throws Exception {
+        // 展示 ID に '#' が含まれても RedirectAttributes で URL エンコードされ /learn へ届く
+        jdbc.update("INSERT INTO EXHBDB (EXHBDBID, EXHUSRPRF, EXHBITOR, ELIGIBLE, ENLRN400) " +
+                "VALUES (99, 'EX#A', 'Hash Exhibitor', 1, 1)");
+        jdbc.update("INSERT INTO LRN400STR (LRNFILE, PAGENBR, CONTENT, EXTRA) " +
+                "VALUES ('EX#A', 1, 'hash exhibit learn page', 'END')");
+        try {
+            mvc.perform(csrf(post("/kiosk/{exhibit}", "EX#A"), csrfSession()).param("option", "2"))
+                .andExpect(redirectedUrl("/learn?exhb=EX%23A"));
+            mvc.perform(get("/learn").param("exhb", "EX#A")).andExpect(status().isOk())
+                .andExpect(content().string(containsString("hash exhibit learn page")));
+        } finally {
+            jdbc.update("DELETE FROM LRN400STR WHERE LRNFILE = 'EX#A'");
+            jdbc.update("DELETE FROM EXHBDB WHERE EXHUSRPRF = 'EX#A'");
         }
     }
 
