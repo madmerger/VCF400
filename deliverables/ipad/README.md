@@ -1,7 +1,7 @@
 # VCF/400 iPad (Swift/SwiftUI 版)
 
 VCF/400 (IBM i / RPG IV) の iPadOS マイグレーション。
-仕様は `../deliverables/spec/VCF400_spec.md` を正とし、画面構造は「元画面構造の台帳 (L-xx)」に 1 対 1 で対応する。
+仕様は `../spec/VCF400_spec.md` を正とし、画面構造は「元画面構造の台帳 (L-xx)」に 1 対 1 で対応する。
 
 - `VCF400Kit/` … 業務ロジック (Swift Package)。`Database` (SQLite に DDS と同一の表・列・キーを再現)、
   `Repositories` (CHAIN / SETLL+READ)、`VoteService` / `GuestbookService` / `LearnService` / `KioskService`。
@@ -59,3 +59,19 @@ LEARN/400 の `CONTENT='CALL'` レコードは、レガシーでは EXTRA のプ
 | — | Currently hosting N comments and counting. (READCMT) | 現在のコメント総数: N |
 
 観測 JSON の形は維持し、画面コードは `screen`、エラー原文と訳は `errline` / `errline_ja`、コメント総数は `out.total`、LEARN/400 のページは `out.page` で取得します。
+
+## クロス検証 (cases.json 37 ケース)
+
+`../tests/run_ipad.sh` が `VCF400UITests/CrossValidationUITests` を実行し、`../tests/cases.json` の各ケースを
+新規 SQLite (ベースライン再シード) で 1 件ずつ操作して `../tests/results/ipad.json` に観測値を書き出す。
+
+```sh
+xcodegen generate
+xcodebuild -project VCF400.xcodeproj -scheme VCF400 \
+  -destination 'platform=iOS Simulator,name=iPad Pro 13-inch (M5)' -derivedDataPath build build-for-testing
+cd ../tests
+VCF_XCODEBUILD_ACTION=test-without-building ./run_ipad.sh && python3 compare.py
+./record_ipad.sh            # 録画 (test-without-building のみ) → 3_iPad.mp4
+```
+
+`VCF400.xcodeproj` は XcodeGen の生成物のためコミットしない (`.gitignore`)。
