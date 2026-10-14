@@ -1,0 +1,12 @@
+最終ベースライン:
+- 提供されたpub400_db.sh resetを実行。
+- db_final_baseline.txtとdb_TS-02_before.txtを比較し、差分なし。
+- VOTINGDB 2件 / GUESTBKDB 2件（双方VISIBLE=Y）/ ALWVOTE=Y。
+
+サインオフ:
+- 5250ドライバの最終送信ログ:
+  input: 'signoff' command line
+  input: '\r' [Enter]
+- 送信後、tn5250 / pub400_gui.py / konsoleプロセスが残っていないことを確認。
+- 送信後の制御ソケット応答読み取りはConnectionResetErrorで終了。
+- サインオフ後の最終画面は未取得。上記以上の確認済みとはしない。

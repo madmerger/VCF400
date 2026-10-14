@@ -1,0 +1,24 @@
+   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment
+
+   Enter a Comment ID:                          Currently hosting 0002
+   ASHIBATA                                     comments and counting.
+   --------------------------------------------------------------------------
+                 says to:
+
+
+
+
+   --------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    Is this comment inappropriate? Please report the Comment ID to the
+    folks at the Midrange Madness table and we will address the comment.
+   --------------------------------------------------------------------------
+    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel

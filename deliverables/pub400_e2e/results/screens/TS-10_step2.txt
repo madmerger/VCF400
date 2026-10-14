@@ -1,0 +1,24 @@
+  WELCOME TO...
+     IBM i on PUB400 Demo
+  HOSTED BY Akira Shibata             OF Tokyo           JP
+  ----------------------------------------------------------------------------
+ VCF/400 demo exhibit running on pub400.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ----------------------------------------------------------------------------
+   1. Nominate This Exhibit for Award
+   2. Learn More About This Exhibit
+   3. Sign Exhibit Guestbook
+   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:
+

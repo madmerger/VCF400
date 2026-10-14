@@ -1,0 +1,24 @@
+  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD
+
+      First, type your SFGE Badge Number...............:
+      Second, type the Exhibit ID you are nominating...: ASHIBATA
+      Third, type the Award ID you are selecting.......:
+             You have already voted.
+   --------------------------------------------------------------------------
+    Available Awards for This Year:
+    001. Best in Show Award   - This award is given to the exhibit who you
+         believe to be the best in show for 2024.
+
+    002. The Ed Fair Award    - This award is given to the exhibit that is
+         deemed the most informative of the show.
+   --------------------------------------------------------------------------
+   You may only vote for ONE award.  Choose your nomination carefully|
+
+
+
+
+
+
+
+   TAB = Switch Fields                                            V1R0M4
+   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel

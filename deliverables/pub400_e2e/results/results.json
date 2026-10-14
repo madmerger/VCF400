@@ -1,0 +1,577 @@
+{
+  "environment": "PUB400 ASHIBATA2 / real tn5250",
+  "scenario_source": "test_scenarios.md",
+  "scenarios": [
+    {
+      "id": "TS-01",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "AS/400 DEMO MENU、WELCOME TO...、祭典名と11/12/13/80/90を表示",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-01_step1.txt",
+          "screenshot": "screenshots/TS-01_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "VCF/400 - How to Navigate、F5/ENTERとF12の説明",
+          "actual": "  VCF/400 - How to Navigate\n\n  Before you start, here is how to navigate:\n  -----------------------------------------------------------------------------\n  Use ARROW KEYS or TAB KEY to move between fields.\n\n  Use F5 or ENTER to perform your action.\n\n  Use F12 to quit at any time.\n\n\n  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL\n  to continue.\n  -----------------------------------------------------------------------------\n\n                                Got all that?\n                           Press ENTER to continue.\n\n\n\n\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-01_step2.txt",
+          "screenshot": "screenshots/TS-01_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "VOTE1のNOMINATE EXHIBIT FOR AWARD",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-01_step3.txt",
+          "screenshot": "screenshots/TS-01_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "VCFMAINへ戻る",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-01_step4.txt",
+          "screenshot": "screenshots/TS-01_step4.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "メインメニュー表示と遷移"
+    },
+    {
+      "id": "TS-02",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "展示ID ASHIBATAが事前入力・保護表示",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step1.txt",
+          "screenshot": "screenshots/TS-02_step1.png"
+        },
+        {
+          "step": "1_protection",
+          "expected": "Tabは保護展示IDを飛ばしアワード欄へ移動",
+          "actual": "Tab後カーソル=[4, 57]。展示ID ASHIBATAは保護され入力対象外。",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step1_protection.txt",
+          "screenshot": "screenshots/TS-02_step1_protection.png"
+        },
+        {
+          "step": "2",
+          "expected": "空欄送信はMust enter Award ID",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n             Must enter Award ID\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step2.txt",
+          "screenshot": "screenshots/TS-02_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "バッジ7001・アワード空はMust enter Award ID",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n             Must enter Award ID\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step3.txt",
+          "screenshot": "screenshots/TS-02_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "バッジ空・アワード1はMust enter badge number",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n             Must enter badge number\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step4.txt",
+          "screenshot": "screenshots/TS-02_step4.png"
+        },
+        {
+          "step": "5",
+          "expected": "バッジ7002・アワード0はMust enter Award ID",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n             Must enter Award ID\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step5.txt",
+          "screenshot": "screenshots/TS-02_step5.png"
+        },
+        {
+          "step": "5_input_badge",
+          "expected": "バッジ7002入力済み",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............: 7002\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step5_input_badge.txt",
+          "screenshot": "screenshots/TS-02_step5_input_badge.png"
+        },
+        {
+          "step": "6",
+          "expected": "F12復帰・VOTINGDBはベースライン2件",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n\nDB確認:\n\nBADGENBR  AWARDNBR  EXHBNBR  \n--------- --------- ---------\n        1         1 ASHIBATA \n       28         2 ASHIBATA \n\n  2 RECORD(S) SELECTED.\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-02_step6.txt",
+          "screenshot": "screenshots/TS-02_step6.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "投票の入力必須",
+      "db_evidence": {
+        "before": "results/db_TS-02_before.txt",
+        "after": "results/db_TS-02_after.txt"
+      }
+    },
+    {
+      "id": "TS-03",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "VOTEEND、THANK YOUアートとYour vote has been RECORDED!",
+          "actual": "    _____ _   _    _    _   _ _  __\n   ]_   _] ] ] ]  / �  ] � ] ] ]/ /\n     ] ] ] ]_] ] / _ � ]  �] ]   /\n     ] ] ]  _  ]/ ___ �] ]�  ] . �\n     ]_] ]_] ]_/_/   �_�_] �_]_]�_�\n            __   _____  _   _   _____ ___  ____\n            � � / / _ �] ] ] ] ]  ___/ _ �]  _ �\n             � V / ] ] ] ] ] ] ] ]_ ] ] ] ] ]_) ]\n              ] ]] ]_] ] ]_] ] ]  _]] ]_] ]  _ /\n              ]_] �___/ �___/  ]_]   �___/]_] �_�\n                      __     _____ _____ ___ _   _  ____ _\n                      � �   / / _ �_   _]_ _] � ] ]/ ___] ]\n                       � � / / ] ] ]] ]  ] ]]  �] ] ]  _] ]\n                        � V /] ]_] ]] ]  ] ]] ]�  ] ]_] ]_]\n                         �_/  �___/ ]_] ]___]_] �_]�____(_)\n   --------------------------------------------------------------------------\n    Your vote has been RECORDED| Thank you for participating in the awards\n    show for Vintage Computer Festival Southeast 2024| Enjoy the rest of\n    our exhibits and the rest of the Southern Fried Gaming Expo|\n\n    Press ENTER to return to the main menu.\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-03_step1.txt",
+          "screenshot": "screenshots/TS-03_step1.png",
+          "observation": "ASCIIアートのグリフ差は機能影響なし、コードページ差。リードからの判定方針によりVOTEEND識別・業務テキスト(!正規化)・DBで機能判定。"
+        },
+        {
+          "step": "1_input",
+          "expected": "バッジ7001・アワード001を入力済み",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............: 7001\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......: 001\n\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-03_step1_input.txt",
+          "screenshot": "screenshots/TS-03_step1_input.png"
+        },
+        {
+          "step": "2",
+          "expected": "EnterでVCFMAINへ戻る",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-03_step2.txt",
+          "screenshot": "screenshots/TS-03_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "DBに(7001,1,ASHIBATA)追加、合計3件",
+          "actual": "\nBADGENBR  AWARDNBR  EXHBNBR  \n--------- --------- ---------\n        1         1 ASHIBATA \n       28         2 ASHIBATA \n     7001         1 ASHIBATA \n\n  3 RECORD(S) SELECTED.\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-03_step3.txt",
+          "screenshot": "screenshots/TS-03_step3.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "投票の正常登録",
+      "db_evidence": {
+        "before": "results/db_TS-03_before.txt",
+        "after": "results/db_TS-03_after.txt"
+      }
+    },
+    {
+      "id": "TS-04",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "既存バッジ1・アワード2はYou have already voted.",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n             You have already voted.\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step1.txt",
+          "screenshot": "screenshots/TS-04_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "バッジ7002・アワード9はAward does not exist.",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...: ASHIBATA\n      Third, type the Award ID you are selecting.......:\n             Award does not exist.\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step2.txt",
+          "screenshot": "screenshots/TS-04_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "共用端末では展示ID入力可",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...:\n      Third, type the Award ID you are selecting.......:\n\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step3.txt",
+          "screenshot": "screenshots/TS-04_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "NOVOTEはExhibit ineligible for award",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...:\n      Third, type the Award ID you are selecting.......:\n             Exhibit ineligible for award\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step4.txt",
+          "screenshot": "screenshots/TS-04_step4.png"
+        },
+        {
+          "step": "4_input",
+          "expected": "7002/NOVOTE/001を入力済み",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............: 7002\n      Second, type the Exhibit ID you are nominating...: NOVOTE\n      Third, type the Award ID you are selecting.......: 001\n\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step4_input.txt",
+          "screenshot": "screenshots/TS-04_step4_input.png"
+        },
+        {
+          "step": "5",
+          "expected": "展示NOSUCHはExhibit does not exist",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...:\n      Third, type the Award ID you are selecting.......:\n             Exhibit does not exist\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step5.txt",
+          "screenshot": "screenshots/TS-04_step5.png"
+        },
+        {
+          "step": "6",
+          "expected": "複数違反時は最後のAward does not exist.",
+          "actual": "  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD\n\n      First, type your SFGE Badge Number...............:\n      Second, type the Exhibit ID you are nominating...:\n      Third, type the Award ID you are selecting.......:\n             Award does not exist.\n   --------------------------------------------------------------------------\n    Available Awards for This Year:\n    001. Best in Show Award   - This award is given to the exhibit who you\n         believe to be the best in show for 2024.\n\n    002. The Ed Fair Award    - This award is given to the exhibit that is\n         deemed the most informative of the show.\n   --------------------------------------------------------------------------\n   You may only vote for ONE award.  Choose your nomination carefully|\n\n\n\n\n\n\n\n   TAB = Switch Fields                                            V1R0M4\n   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step6.txt",
+          "screenshot": "screenshots/TS-04_step6.png"
+        },
+        {
+          "step": "7",
+          "expected": "F12復帰、投票DBはベースライン2件で書込なし",
+          "actual": "\nBADGENBR  AWARDNBR  EXHBNBR  \n--------- --------- ---------\n        1         1 ASHIBATA \n       28         2 ASHIBATA \n\n  2 RECORD(S) SELECTED.\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-04_step7.txt",
+          "screenshot": "screenshots/TS-04_step7.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "投票の業務チェック",
+      "db_evidence": {
+        "before": "results/db_TS-04_before.txt",
+        "after": "results/db_TS-04_after.txt"
+      }
+    },
+    {
+      "id": "TS-05",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "ALWVOTE=Nに更新",
+          "actual": "DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-05_step1.txt",
+          "screenshot": "screenshots/TS-05_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "VOTE1を表示せずENDOFCON、The voting period has ended and you can no longer vote.",
+          "actual": "    ____   ___  ____  ______   ___\n   / ___] / _ �]  _ �]  _ � � / / ]\n   �___ �] ] ] ] ]_) ] ]_) � V /] ]\n    ___) ] ]_] ]  _ <]  _ < ] ] ]_]\n   ]____/ �___/]_] �_�_] �_�]_] (_)\n\n\n   The voting period has ended and you can no longer vote.\n   However, you may sign this exhibit guestbook if you would like.\n\n\n\n\n   Press ENTER to exit.\n\n\n\n\n\n\n\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-05_step2.txt",
+          "screenshot": "screenshots/TS-05_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "EnterでVCFMAINへ戻る",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-05_step3.txt",
+          "screenshot": "screenshots/TS-05_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "ALWVOTE=Y復旧、VOTINGDB2件",
+          "actual": "\nBADGENBR  AWARDNBR  EXHBNBR  \n--------- --------- ---------\n        1         1 ASHIBATA \n       28         2 ASHIBATA \n\n  2 RECORD(S) SELECTED.\n\n\n\n['ALWVOTE   Y']",
+          "result": "PASS",
+          "screen": "results/screens/TS-05_step4.txt",
+          "screenshot": "screenshots/TS-05_step4.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "投票期間終了",
+      "db_evidence": {
+        "before": "results/db_TS-05_before.txt",
+        "after": "results/db_TS-05_after.txt"
+      },
+      "observations": [
+        "ASCIIアートのグリフ化けはコードページ差（機能影響なし）。実画面証跡は未修正で保存。"
+      ]
+    },
+    {
+      "id": "TS-06",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "GUESTBOOK/400 - ADD COMMENT、展示ID ASHIBATA保護表示",
+          "actual": "  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT\n\n  Your Name................:\n  Exhibit ID...............:   ASHIBATA\n  Comment..................:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step1.txt",
+          "screenshot": "screenshots/TS-06_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "名前空・コメントHelloはMust enter your name",
+          "actual": "  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT\n\n  Your Name................:\n  Exhibit ID...............:   ASHIBATA\n  Comment..................:\n\n\n\n\n    Must enter your name\n\n\n\n\n\n\n\n\n\n\n\n\n\n  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step2.txt",
+          "screenshot": "screenshots/TS-06_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "名前Devin Tester・コメント空はMust enter a comment",
+          "actual": "  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT\n\n  Your Name................:\n  Exhibit ID...............:   ASHIBATA\n  Comment..................:\n\n\n\n\n    Must enter a comment\n\n\n\n\n\n\n\n\n\n\n\n\n\n  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step3.txt",
+          "screenshot": "screenshots/TS-06_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "ENDCMT、THANK YOU FOR COMMENTINGアート",
+          "actual": "\n     _______ _    _          _   _ _  __ _____\n    ]__   __] ]  ] ]   /�   ] � ] ] ]/ // ____]\n       ] ]  ] ]__] ]  /  �  ]  �] ]   /] (___\n       ] ]  ]  __  ] / /� � ] . ` ]  /  �___ �\n       ] ]  ] ]  ] ]/ ____ �] ]�  ] . � ____) ]\n     __]_]_ ]_]_ ]_/_/_   �_�_]_�_]_]�_�_____/__\n    ]  ____/ __ �]  __ �  ]__   __] ]  ] ]  ____]\n    ] ]__ ] ]  ] ] ]__) ]    ] ]  ] ]__] ] ]__\n    ]  __]] ]  ] ]  _  /     ] ]  ]  __  ]  __]\n    ] ]   ] ]__] ] ] � �     ] ]  ] ]  ] ] ]____\n    ]_]____�____/]_]  �_�__  ]_]__]_]_ ]_]______]___ _\n     / ____/ __ �]  �/  ]  �/  ]  ____] � ] ]__   __] ]\n    ] ]   ] ]  ] ] �  / ] �  / ] ]__  ]  �] ]  ] ]  ] ]\n    ] ]   ] ]  ] ] ]�/] ] ]�/] ]  __] ] . ` ]  ] ]  ] ]\n    ] ]___] ]__] ] ]  ] ] ]  ] ] ]____] ]�  ]  ] ]  ]_]\n     �_____�____/]_]  ]_]_]  ]_]______]_] �_]  ]_]  (_)\n\n   Thank you for commenting on this exhibit| Your Comment ID Is:\n\n   Press ENTER to exit.\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step4.txt",
+          "screenshot": "screenshots/TS-06_step4.png"
+        },
+        {
+          "step": "4_input",
+          "expected": "名前Devin Tester・コメントE2E test run",
+          "actual": "  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT\n\n  Your Name................:   Devin Tester\n  Exhibit ID...............:   ASHIBATA\n  Comment..................:\n  E2E test run\n\n\n\n    Must enter a comment\n\n\n\n\n\n\n\n\n\n\n\n\n\n  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step4_input.txt",
+          "screenshot": "screenshots/TS-06_step4_input.png"
+        },
+        {
+          "step": "5",
+          "expected": "EnterでVCFMAIN復帰",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step5.txt",
+          "screenshot": "screenshots/TS-06_step5.png"
+        },
+        {
+          "step": "6",
+          "expected": "CMTID=3、VISIBLE=Y、EXHBID=ASHIBATA、Devin Tester/E2E test runを登録",
+          "actual": "  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                \n------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              \n     2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           \n     3 Y        ASHIBATA  Devin Tester         E2E test run                                                                                                                                                                                            \n\n  3 RECORD(S) SELECTED.\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-06_step6.txt",
+          "screenshot": "screenshots/TS-06_step6.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "ゲストブック記入",
+      "db_evidence": {
+        "before": "results/db_TS-06_before.txt",
+        "after": "results/db_TS-06_after.txt"
+      },
+      "observations": [
+        "ASCIIアートのグリフ化けはコードページ差（機能影響なし）。実画面証跡は未修正で保存。"
+      ]
+    },
+    {
+      "id": "TS-07",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "READCMT、総コメント数2",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   ASHIBATA                                     comments and counting.\n   --------------------------------------------------------------------------\n                 says to:\n\n\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-07_step1.txt",
+          "screenshot": "screenshots/TS-07_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "ID空EnterはMust enter CommentID",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   Must enter CommentID                         comments and counting.\n   --------------------------------------------------------------------------\n                 says to:\n\n\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-07_step2.txt",
+          "screenshot": "screenshots/TS-07_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "Great exhib / IBM i on PUB400 Demo / VCF/400 running on PUB400.",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   ASHIBATA                                     comments and counting.\n   --------------------------------------------------------------------------\n   Great exhib   says to:   IBM i on PUB400 Demo\n\n   VCF/400 running on PUB400.\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-07_step3.txt",
+          "screenshot": "screenshots/TS-07_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "末尾超えはID2にフォールバック、Devin / VCF/400 is running on PUB400.",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   ASHIBATA                                     comments and counting.\n   --------------------------------------------------------------------------\n   Devin         says to:   IBM i on PUB400 Demo\n\n   VCF/400 is running on PUB400.\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-07_step4.txt",
+          "screenshot": "screenshots/TS-07_step4.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "ゲストブック閲覧"
+    },
+    {
+      "id": "TS-08",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "ID2のVISIBLE=Nに更新",
+          "actual": "DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-08_step1.txt",
+          "screenshot": "screenshots/TS-08_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "Name Hidden、This comment hidden by an admin - offensive content.",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   ASHIBATA                                     comments and counting.\n   --------------------------------------------------------------------------\n   Name Hidden   says to:\n\n   This comment hidden by an admin - offensive content.\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-08_step2.txt",
+          "screenshot": "screenshots/TS-08_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "他展示は名前・タイトル空欄、This comment is not part of this guestbook.",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   DEMO400                                      comments and counting.\n   --------------------------------------------------------------------------\n                 says to:\n\n   This comment is not part of this guestbook.\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-08_step3.txt",
+          "screenshot": "screenshots/TS-08_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "共用端末ではGreat exhib / IBM i on PUB400 Demo / VCF/400 running on PUB400.",
+          "actual": "   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment\n\n   Enter a Comment ID:                          Currently hosting 0002\n   MM2024                                       comments and counting.\n   --------------------------------------------------------------------------\n   Great exhib   says to:   IBM i on PUB400 Demo\n\n   VCF/400 running on PUB400.\n\n\n   --------------------------------------------------------------------------\n\n\n\n\n\n\n\n\n\n    Is this comment inappropriate? Please report the Comment ID to the\n    folks at the Midrange Madness table and we will address the comment.\n   --------------------------------------------------------------------------\n    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel",
+          "result": "PASS",
+          "screen": "results/screens/TS-08_step4.txt",
+          "screenshot": "screenshots/TS-08_step4.png"
+        },
+        {
+          "step": "5",
+          "expected": "ID2のVISIBLE=Yへ復旧",
+          "actual": "DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-08_step5.txt",
+          "screenshot": "screenshots/TS-08_step5.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "可視性・帰属制御"
+    },
+    {
+      "id": "TS-09",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "LEARN/400ページ1 Welcome to LEARN/400! This is page 1.",
+          "actual": "  LEARN/400                                                          Page  0001\n  _____________________________________________________________________________\nWelcome to LEARN/400| This is page 1. Press F5 for next page, F8 for previous, F\n3 to exit.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  _____________________________________________________________________________\n  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-09_step1.txt",
+          "screenshot": "screenshots/TS-09_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "ページ2 The AS/400 was introduced by IBM in June 1988 ... page 2",
+          "actual": "  LEARN/400                                                          Page  0002\n  _____________________________________________________________________________\nThe AS/400 was introduced by IBM in June 1988 ... page 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  _____________________________________________________________________________\n  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-09_step2.txt",
+          "screenshot": "screenshots/TS-09_step2.png"
+        },
+        {
+          "step": "3",
+          "expected": "F8でページ1へ戻る",
+          "actual": "  LEARN/400                                                          Page  0001\n  _____________________________________________________________________________\nWelcome to LEARN/400| This is page 1. Press F5 for next page, F8 for previous, F\n3 to exit.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  _____________________________________________________________________________\n  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-09_step3.txt",
+          "screenshot": "screenshots/TS-09_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "ページ3のEXTRA=ENDでVCFMAINへ終了",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-09_step4.txt",
+          "screenshot": "screenshots/TS-09_step4.png"
+        },
+        {
+          "step": "5",
+          "expected": "再起動後F3でVCFMAINへ終了",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-09_step5.txt",
+          "screenshot": "screenshots/TS-09_step5.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "LEARN/400ページ送り"
+    },
+    {
+      "id": "TS-10",
+      "steps": [
+        {
+          "step": "1",
+          "expected": "WELCOME TO...、IBM i on PUB400 Demo、Akira Shibata、選択肢1〜4、7非表示",
+          "actual": "  WELCOME TO...\n     IBM i on PUB400 Demo\n  HOSTED BY Akira Shibata             OF Tokyo           JP\n  ----------------------------------------------------------------------------\n VCF/400 demo exhibit running on pub400.com\n\n\n\n\n\n\n\n\n\n\n\n\n\n  ----------------------------------------------------------------------------\n   1. Nominate This Exhibit for Award\n   2. Learn More About This Exhibit\n   3. Sign Exhibit Guestbook\n   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step1.txt",
+          "screenshot": "screenshots/TS-10_step1.png"
+        },
+        {
+          "step": "2",
+          "expected": "誤パスワードではキオスクへ戻る",
+          "actual": "  WELCOME TO...\n     IBM i on PUB400 Demo\n  HOSTED BY Akira Shibata             OF Tokyo           JP\n  ----------------------------------------------------------------------------\n VCF/400 demo exhibit running on pub400.com\n\n\n\n\n\n\n\n\n\n\n\n\n\n  ----------------------------------------------------------------------------\n   1. Nominate This Exhibit for Award\n   2. Learn More About This Exhibit\n   3. Sign Exhibit Guestbook\n   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step2.txt",
+          "screenshot": "screenshots/TS-10_step2.png"
+        },
+        {
+          "step": "2_prompt",
+          "expected": "ADMPSWRD Are you sure you want to exit the kiosk?",
+          "actual": "\n\n\n    Are you sure you want to exit the kiosk?\n    Type the Administrator password, press ENTER to sign off\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step2_prompt.txt",
+          "screenshot": "screenshots/TS-10_step2_prompt.png"
+        },
+        {
+          "step": "3",
+          "expected": "正パスワードではキオスク終了、コマンド入力画面へ戻る",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step3.txt",
+          "screenshot": "screenshots/TS-10_step3.png"
+        },
+        {
+          "step": "4",
+          "expected": "NOVOTEはタイトルIneligible test exhibit (ELIGIBLE=0)、選択肢3/4のみ表示",
+          "actual": "  WELCOME TO...\n     Ineligible test exhibit (ELIGIBLE=0)\n  HOSTED BY Ineligible Exhibitor      OF Atlanta         GA\n  ----------------------------------------------------------------------------\n Test data for eligibility check\n\n\n\n\n\n\n\n\n\n\n\n\n\n  ----------------------------------------------------------------------------\n\n\n   3. Sign Exhibit Guestbook\n   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step4.txt",
+          "screenshot": "screenshots/TS-10_step4.png"
+        },
+        {
+          "step": "5",
+          "expected": "禁止選択肢1は無視、キオスクのまま",
+          "actual": "  WELCOME TO...\n     Ineligible test exhibit (ELIGIBLE=0)\n  HOSTED BY Ineligible Exhibitor      OF Atlanta         GA\n  ----------------------------------------------------------------------------\n Test data for eligibility check\n\n\n\n\n\n\n\n\n\n\n\n\n\n  ----------------------------------------------------------------------------\n\n\n   3. Sign Exhibit Guestbook\n   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step5.txt",
+          "screenshot": "screenshots/TS-10_step5.png"
+        },
+        {
+          "step": "6",
+          "expected": "管理者パスワードでNOVOTEキオスク終了",
+          "actual": "                                AS/400 DEMO MENU\n WELCOME TO...\n         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4\n Start Here                              Exhibit Tasks\n      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award\n      2. IBM Midrange History                 12. Sign Exhibit Guestbook\n      3. About This System                    13. Read a Guestbook Comment\n      4. About Gertie the System/34      System Tasks\n Office Tasks                                 80. Sign Off the System\n      5. Start OfficeVision/400          Administration\n      6. Start a Calendar                     90. Start Admin Menu\n      7. Start the Clock\n Entertainment                   Type the menu number you want and then\n      8. Play Snake              press the ENTER key which is located where\n      9. Play Yahtzee            the right CTRL key normally is on a PC\n     10. Play PacMan             keyboard. Or type the menu option you are\n                                 curious about and press the HELP key.\n\n Type Number, then press ENTER\n\n\n ===>\n\n",
+          "result": "PASS",
+          "screen": "results/screens/TS-10_step6.txt",
+          "screenshot": "screenshots/TS-10_step6.png"
+        }
+      ],
+      "result": "PASS",
+      "name": "展示キオスク"
+    }
+  ],
+  "summary": {
+    "scenario_pass": 10,
+    "scenario_fail": 0,
+    "original_steps": 50,
+    "supplemental_checks": 6,
+    "screen_texts": 56
+  },
+  "interpretation_policy": {
+    "expected_source_unchanged": true,
+    "known_character_normalization": "機能判定のみmap=37の | を ! に正規化。原画面は未修正。",
+    "ascii_art": "リード指示により記号グリフ差は機能影響なしのコードページ観察事項。VOTEEND/ENDOFCON/ENDCMT識別と業務テキスト・DBで判定。",
+    "signoff": "signoff+Enterの送信・ローカルプロセス終了を確認。終了後のソケット接続終了エラーにより最終画面は未取得。"
+  },
+  "cleanup": {
+    "baseline_reset": "PASS",
+    "baseline_dump_exact_match": true,
+    "evidence": "results/db_final_baseline.txt",
+    "signoff_command_sent": true,
+    "local_terminal_process_ended": true,
+    "final_signoff_screen": "未取得（signoff送信後の接続終了）"
+  },
+  "artifacts": {
+    "video": "video/pub400_e2e.mp4",
+    "annotations": "video/pub400_e2e_annotations.json",
+    "report": "results/test_report.md"
+  }
+}
