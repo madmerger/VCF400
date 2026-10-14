@@ -1,0 +1,6 @@
+=== FTP SAVF 2026-10-14T09:20:14Z ===
+local file: savf/VCFV1R3.SAVF (5892480 bytes, sha256 0e26db4f9c46faaf...)
+--- ensure save file ASHIBATA1/VCFV1R3 exists and is empty ---
+--- binary transfer (FTP port 21, BINARY) ---
+bytes uploaded: 5892480
+transfer exit status: 0

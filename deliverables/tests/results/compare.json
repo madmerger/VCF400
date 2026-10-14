@@ -1,0 +1,2206 @@
+{
+ "cases": [
+  {
+   "id": "CV-01",
+   "group": "ADDVOTE",
+   "title": "全項目未入力 (展示 ID は保護・事前入力)",
+   "rules": [
+    "V-01",
+    "V-02",
+    "B-05",
+    "L-03-03"
+   ],
+   "in": {
+    "badge": "",
+    "award": ""
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Must enter Award ID",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Award ID",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Award ID",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Award ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-02",
+   "group": "ADDVOTE",
+   "title": "アワード未入力",
+   "rules": [
+    "V-02"
+   ],
+   "in": {
+    "badge": "7001",
+    "award": ""
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Must enter Award ID",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Award ID",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Award ID",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Award ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-03",
+   "group": "ADDVOTE",
+   "title": "バッジ未入力",
+   "rules": [
+    "V-01"
+   ],
+   "in": {
+    "badge": "",
+    "award": "1"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Must enter badge number",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter badge number",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter badge number",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter badge number",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-04",
+   "group": "ADDVOTE",
+   "title": "正常投票 (新規バッジ 7001, アワード 1)",
+   "rules": [
+    "B-04",
+    "V-08",
+    "L-03-11"
+   ],
+   "in": {
+    "badge": "7001",
+    "award": "1"
+   },
+   "expect": {
+    "screen": "VOTEEND",
+    "vote": {
+     "badge": 7001,
+     "award": 1,
+     "exhibit": "ASHIBATA"
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "badge": 7001,
+       "award": 1,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "badge": 7001,
+       "award": 1,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "award": 1,
+       "badge": 7001,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-05",
+   "group": "ADDVOTE",
+   "title": "重複バッジ (7001 で再投票)",
+   "rules": [
+    "B-01",
+    "V-04"
+   ],
+   "in": {
+    "badge": "7001",
+    "award": "2"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "You have already voted.",
+    "vote": {
+     "badge": 7001,
+     "award": 1,
+     "exhibit": "ASHIBATA"
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "You have already voted.",
+      "vote": {
+       "badge": 7001,
+       "award": 1,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "You have already voted.",
+      "vote": {
+       "badge": 7001,
+       "award": 1,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "You have already voted.",
+      "screen": "VOTE1",
+      "vote": {
+       "award": 1,
+       "badge": 7001,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-06",
+   "group": "ADDVOTE",
+   "title": "存在しないアワード (9)",
+   "rules": [
+    "V-07"
+   ],
+   "in": {
+    "badge": "7002",
+    "award": "9"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Award does not exist.",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Award does not exist.",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Award does not exist.",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Award does not exist.",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-07",
+   "group": "ADDVOTE",
+   "title": "境界値: アワード 0 (数値 0 = 未入力扱い)",
+   "rules": [
+    "B-15",
+    "V-02"
+   ],
+   "in": {
+    "badge": "7002",
+    "award": "0"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Must enter Award ID",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Award ID",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Award ID",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Award ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-08",
+   "group": "ADDVOTE",
+   "title": "共用端末: 展示 ID 未入力",
+   "rules": [
+    "V-03",
+    "B-13"
+   ],
+   "in": {
+    "badge": "7002",
+    "exhibit": "",
+    "award": "1"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Must enter Exhibit ID",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Exhibit ID",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Must enter Exhibit ID",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Exhibit ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-09",
+   "group": "ADDVOTE",
+   "title": "共用端末: 存在しない展示 NOSUCH",
+   "rules": [
+    "V-06"
+   ],
+   "in": {
+    "badge": "7002",
+    "exhibit": "NOSUCH",
+    "award": "1"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Exhibit does not exist",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Exhibit does not exist",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Exhibit does not exist",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Exhibit does not exist",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-10",
+   "group": "ADDVOTE",
+   "title": "共用端末: 資格外展示 NOVOTE (ELIGIBLE=0)",
+   "rules": [
+    "B-02",
+    "V-05"
+   ],
+   "in": {
+    "badge": "7002",
+    "exhibit": "NOVOTE",
+    "award": "1"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Exhibit ineligible for award",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Exhibit ineligible for award",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Exhibit ineligible for award",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Exhibit ineligible for award",
+      "screen": "VOTE1",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-11",
+   "group": "ADDVOTE",
+   "title": "共用端末: 正常投票 (7002, DEMO400, アワード 2)",
+   "rules": [
+    "B-04",
+    "B-13"
+   ],
+   "in": {
+    "badge": "7002",
+    "exhibit": "DEMO400",
+    "award": "2"
+   },
+   "expect": {
+    "screen": "VOTEEND",
+    "vote": {
+     "badge": 7002,
+     "award": 2,
+     "exhibit": "DEMO400"
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "badge": 7002,
+       "award": 2,
+       "exhibit": "DEMO400"
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "badge": 7002,
+       "award": 2,
+       "exhibit": "DEMO400"
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "award": 2,
+       "badge": 7002,
+       "exhibit": "DEMO400"
+      }
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-12",
+   "group": "ADDVOTE",
+   "title": "複合エラー (重複バッジ+存在しない展示+存在しないアワード) → 最後の検査が勝つ",
+   "rules": [
+    "B-05"
+   ],
+   "in": {
+    "badge": "7001",
+    "exhibit": "NOSUCH",
+    "award": "9"
+   },
+   "expect": {
+    "screen": "VOTE1",
+    "errline": "Award does not exist.",
+    "vote": {
+     "badge": 7001,
+     "award": 1,
+     "exhibit": "ASHIBATA"
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Award does not exist.",
+      "vote": {
+       "badge": 7001,
+       "award": 1,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTE1",
+      "errline": "Award does not exist.",
+      "vote": {
+       "badge": 7001,
+       "award": 1,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Award does not exist.",
+      "screen": "VOTE1",
+      "vote": {
+       "award": 1,
+       "badge": 7001,
+       "exhibit": "ASHIBATA"
+      }
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-13",
+   "group": "ADDVOTE",
+   "title": "投票停止 ALWVOTE='N' → ENDOFCON",
+   "rules": [
+    "B-03",
+    "V-09",
+    "L-04-02"
+   ],
+   "in": {
+    "badge": "7003",
+    "award": "1"
+   },
+   "expect": {
+    "screen": "ENDOFCON",
+    "vote": null
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDOFCON",
+      "vote": null
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDOFCON",
+      "vote": null
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDOFCON",
+      "vote": null
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-14",
+   "group": "ADDGBCMT",
+   "title": "全項目未入力 (展示 ID は保護・事前入力)",
+   "rules": [
+    "V-11",
+    "V-12",
+    "B-05"
+   ],
+   "in": {
+    "name": "",
+    "comment": ""
+   },
+   "expect": {
+    "screen": "ADDCMT",
+    "errline": "Must enter a comment",
+    "comment": {
+     "id": 3,
+     "row": null
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter a comment",
+      "comment": {
+       "id": 3,
+       "row": null
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter a comment",
+      "comment": {
+       "id": 3,
+       "row": null
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": null
+      },
+      "errline": "Must enter a comment",
+      "screen": "ADDCMT"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-15",
+   "group": "ADDGBCMT",
+   "title": "コメント未入力",
+   "rules": [
+    "V-12"
+   ],
+   "in": {
+    "name": "Devin Tester",
+    "comment": ""
+   },
+   "expect": {
+    "screen": "ADDCMT",
+    "errline": "Must enter a comment",
+    "comment": {
+     "id": 3,
+     "row": null
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter a comment",
+      "comment": {
+       "id": 3,
+       "row": null
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter a comment",
+      "comment": {
+       "id": 3,
+       "row": null
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": null
+      },
+      "errline": "Must enter a comment",
+      "screen": "ADDCMT"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-16",
+   "group": "ADDGBCMT",
+   "title": "名前未入力",
+   "rules": [
+    "V-11"
+   ],
+   "in": {
+    "name": "",
+    "comment": "Hello"
+   },
+   "expect": {
+    "screen": "ADDCMT",
+    "errline": "Must enter your name",
+    "comment": {
+     "id": 3,
+     "row": null
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter your name",
+      "comment": {
+       "id": 3,
+       "row": null
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter your name",
+      "comment": {
+       "id": 3,
+       "row": null
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": null
+      },
+      "errline": "Must enter your name",
+      "screen": "ADDCMT"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-17",
+   "group": "ADDGBCMT",
+   "title": "正常記入 → ENDCMT, CMTID=3 (最終+1), VISIBLE=Y",
+   "rules": [
+    "B-06",
+    "L-07-08",
+    "L-08-01"
+   ],
+   "in": {
+    "name": "Devin Tester",
+    "comment": "Cross validation run"
+   },
+   "expect": {
+    "screen": "ENDCMT",
+    "comment": {
+     "id": 3,
+     "row": {
+      "id": 3,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Devin Tester",
+      "comment": "Cross validation run"
+     }
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDCMT",
+      "comment": {
+       "id": 3,
+       "row": {
+        "id": 3,
+        "visible": "Y",
+        "exhibit": "ASHIBATA",
+        "name": "Devin Tester",
+        "comment": "Cross validation run"
+       }
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDCMT",
+      "shownId": 3,
+      "comment": {
+       "id": 3,
+       "row": {
+        "id": 3,
+        "visible": "Y",
+        "exhibit": "ASHIBATA",
+        "name": "Devin Tester",
+        "comment": "Cross validation run"
+       }
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": {
+        "comment": "Cross validation run",
+        "exhibit": "ASHIBATA",
+        "id": 3,
+        "name": "Devin Tester",
+        "visible": "Y"
+       }
+      },
+      "screen": "ENDCMT",
+      "shownId": 3
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-18",
+   "group": "ADDGBCMT",
+   "title": "共用端末: 展示 ID 未入力",
+   "rules": [
+    "V-10"
+   ],
+   "in": {
+    "name": "Guest",
+    "exhibit": "",
+    "comment": "x"
+   },
+   "expect": {
+    "screen": "ADDCMT",
+    "errline": "Must enter Exhibit ID",
+    "comment": {
+     "id": 4,
+     "row": null
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter Exhibit ID",
+      "comment": {
+       "id": 4,
+       "row": null
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ADDCMT",
+      "errline": "Must enter Exhibit ID",
+      "comment": {
+       "id": 4,
+       "row": null
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 4,
+       "row": null
+      },
+      "errline": "Must enter Exhibit ID",
+      "screen": "ADDCMT"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-19",
+   "group": "ADDGBCMT",
+   "title": "共用端末: 存在しない展示 NOSUCH でも記入できる (存在チェックなし)",
+   "rules": [
+    "V-13"
+   ],
+   "in": {
+    "name": "Guest",
+    "exhibit": "NOSUCH",
+    "comment": "Unchecked exhibit"
+   },
+   "expect": {
+    "screen": "ENDCMT",
+    "comment": {
+     "id": 4,
+     "row": {
+      "id": 4,
+      "visible": "Y",
+      "exhibit": "NOSUCH",
+      "name": "Guest",
+      "comment": "Unchecked exhibit"
+     }
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDCMT",
+      "comment": {
+       "id": 4,
+       "row": {
+        "id": 4,
+        "visible": "Y",
+        "exhibit": "NOSUCH",
+        "name": "Guest",
+        "comment": "Unchecked exhibit"
+       }
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDCMT",
+      "shownId": 4,
+      "comment": {
+       "id": 4,
+       "row": {
+        "id": 4,
+        "visible": "Y",
+        "exhibit": "NOSUCH",
+        "name": "Guest",
+        "comment": "Unchecked exhibit"
+       }
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 4,
+       "row": {
+        "comment": "Unchecked exhibit",
+        "exhibit": "NOSUCH",
+        "id": 4,
+        "name": "Guest",
+        "visible": "Y"
+       }
+      },
+      "screen": "ENDCMT",
+      "shownId": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-20",
+   "group": "READGBCMT",
+   "title": "コメント ID 未入力",
+   "rules": [
+    "V-14"
+   ],
+   "in": {
+    "cmtid": ""
+   },
+   "expect": {
+    "screen": "READCMT",
+    "errline": "Must enter CommentID"
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "Must enter CommentID",
+      "out": {
+       "name": "",
+       "title": "",
+       "cmt": ""
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "Must enter CommentID"
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter CommentID",
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-21",
+   "group": "READGBCMT",
+   "title": "ID 1 → 名前 11 桁 / 展示タイトル / コメント",
+   "rules": [
+    "V-15",
+    "L-09-05"
+   ],
+   "in": {
+    "cmtid": "1"
+   },
+   "expect": {
+    "screen": "READCMT",
+    "total": 4,
+    "out": {
+     "name": "Great exhib",
+     "title": "IBM i on PUB400 Demo",
+     "cmt": "VCF/400 running on PUB400."
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "ASHIBATA",
+      "out": {
+       "name": "Great exhib",
+       "title": "IBM i on PUB400 Demo",
+       "cmt": "VCF/400 running on PUB400."
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "",
+      "out": {
+       "name": "Great exhib",
+       "title": "IBM i on PUB400 Demo",
+       "cmt": "VCF/400 running on PUB400."
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "VCF/400 running on PUB400.",
+       "name": "Great exhib",
+       "title": "IBM i on PUB400 Demo"
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-22",
+   "group": "READGBCMT",
+   "title": "ID 3 (この実行で追加したコメント)",
+   "rules": [
+    "B-06"
+   ],
+   "in": {
+    "cmtid": "3"
+   },
+   "expect": {
+    "screen": "READCMT",
+    "total": 4,
+    "out": {
+     "name": "Devin Teste",
+     "title": "IBM i on PUB400 Demo",
+     "cmt": "Cross validation run"
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "ASHIBATA",
+      "out": {
+       "name": "Devin Teste",
+       "title": "IBM i on PUB400 Demo",
+       "cmt": "Cross validation run"
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "",
+      "out": {
+       "name": "Devin Teste",
+       "title": "IBM i on PUB400 Demo",
+       "cmt": "Cross validation run"
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "Cross validation run",
+       "name": "Devin Teste",
+       "title": "IBM i on PUB400 Demo"
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-23",
+   "group": "READGBCMT",
+   "title": "存在しない ID 9999 → 最終レコード (4, 他展示) → 帰属外メッセージ",
+   "rules": [
+    "B-09",
+    "B-08",
+    "V-18"
+   ],
+   "in": {
+    "cmtid": "9999"
+   },
+   "expect": {
+    "screen": "READCMT",
+    "total": 4,
+    "out": {
+     "name": "",
+     "title": "",
+     "cmt": "This comment is not part of this guestbook."
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "ASHIBATA",
+      "out": {
+       "name": "",
+       "title": "",
+       "cmt": "This comment is not part of this guestbook."
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "",
+      "out": {
+       "name": "",
+       "title": "",
+       "cmt": "This comment is not part of this guestbook."
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "This comment is not part of this guestbook.",
+       "name": "",
+       "title": ""
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-24",
+   "group": "READGBCMT",
+   "title": "非表示コメント (ID 2 を VISIBLE=N)",
+   "rules": [
+    "B-07",
+    "V-16"
+   ],
+   "in": {
+    "cmtid": "2"
+   },
+   "expect": {
+    "screen": "READCMT",
+    "total": 4,
+    "out": {
+     "name": "Name Hidden",
+     "title": "",
+     "cmt": "This comment hidden by an admin - offensive content."
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "ASHIBATA",
+      "out": {
+       "name": "Name Hidden",
+       "title": "",
+       "cmt": "This comment hidden by an admin - offensive content."
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "",
+      "out": {
+       "name": "Name Hidden",
+       "title": "",
+       "cmt": "This comment hidden by an admin - offensive content."
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "This comment hidden by an admin - offensive content.",
+       "name": "Name Hidden",
+       "title": ""
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-25",
+   "group": "READGBCMT",
+   "title": "他展示 (DEMO400) から ASHIBATA のコメント 1 を読む → 帰属外",
+   "rules": [
+    "B-08",
+    "V-17"
+   ],
+   "in": {
+    "cmtid": "1"
+   },
+   "expect": {
+    "screen": "READCMT",
+    "total": 4,
+    "out": {
+     "name": "",
+     "title": "",
+     "cmt": "This comment is not part of this guestbook."
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "DEMO400",
+      "out": {
+       "name": "",
+       "title": "",
+       "cmt": "This comment is not part of this guestbook."
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "",
+      "out": {
+       "name": "",
+       "title": "",
+       "cmt": "This comment is not part of this guestbook."
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "This comment is not part of this guestbook.",
+       "name": "",
+       "title": ""
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-26",
+   "group": "READGBCMT",
+   "title": "共用端末は全展示を閲覧可 / 展示タイトルは SETLL+READ (NOSUCH → NOVOTE)",
+   "rules": [
+    "B-08",
+    "B-09"
+   ],
+   "in": {
+    "cmtid": "4"
+   },
+   "expect": {
+    "screen": "READCMT",
+    "total": 4,
+    "out": {
+     "name": "Guest",
+     "title": "Ineligible test exhibit (ELIGIBLE=0)",
+     "cmt": "Unchecked exhibit"
+    }
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "MM2024",
+      "out": {
+       "name": "Guest",
+       "title": "Ineligible test exhibit (ELIGIBLE=0)",
+       "cmt": "Unchecked exhibit"
+      }
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "READCMT",
+      "total": 4,
+      "errline": "",
+      "out": {
+       "name": "Guest",
+       "title": "Ineligible test exhibit (ELIGIBLE=0)",
+       "cmt": "Unchecked exhibit"
+      }
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "Unchecked exhibit",
+       "name": "Guest",
+       "title": "Ineligible test exhibit (ELIGIBLE=0)"
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-27",
+   "group": "LRN400",
+   "title": "F5 → 2 ページ目",
+   "rules": [
+    "V-19",
+    "L-10-04"
+   ],
+   "in": {
+    "keys": [
+     "F5"
+    ]
+   },
+   "expect": {
+    "screen": "LRN400",
+    "page": 2,
+    "content": "The AS/400 was introduced by IBM in June 1988 ... page 2"
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "LRN400",
+      "page": 2,
+      "content": "The AS/400 was introduced by IBM in June 1988 ... page 2"
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "LRN400",
+      "page": 2,
+      "content": "The AS/400 was introduced by IBM in June 1988 ... page 2"
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "content": "The AS/400 was introduced by IBM in June 1988 ... page 2",
+      "page": 2,
+      "screen": "LRN400"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-28",
+   "group": "LRN400",
+   "title": "F5, F8 → 1 ページ目に戻る",
+   "rules": [
+    "V-20"
+   ],
+   "in": {
+    "keys": [
+     "F5",
+     "F8"
+    ]
+   },
+   "expect": {
+    "screen": "LRN400",
+    "page": 1,
+    "content": "Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit."
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "LRN400",
+      "page": 1,
+      "content": "Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit."
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "LRN400",
+      "page": 1,
+      "content": "Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit."
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "content": "Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit.",
+      "page": 1,
+      "screen": "LRN400"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-29",
+   "group": "LRN400",
+   "title": "F5, F5 → 3 ページ目 (EXTRA='END') で終了 → VCFMAIN",
+   "rules": [
+    "B-10"
+   ],
+   "in": {
+    "keys": [
+     "F5",
+     "F5"
+    ]
+   },
+   "expect": {
+    "screen": "VCFMAIN"
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-30",
+   "group": "LRN400",
+   "title": "F3 → 終了 → VCFMAIN",
+   "rules": [
+    "V-21"
+   ],
+   "in": {
+    "keys": [
+     "F3"
+    ]
+   },
+   "expect": {
+    "screen": "VCFMAIN"
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-31",
+   "group": "EXHBMENU",
+   "title": "ASHIBATA (ELIGIBLE=1, ENLRN400=1) → 1,2,3,4",
+   "rules": [
+    "L-05-04",
+    "B-02",
+    "B-12"
+   ],
+   "in": {},
+   "expect": {
+    "screen": "KIOSK",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ]
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "screen": "KIOSK"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-32",
+   "group": "EXHBMENU",
+   "title": "NOVOTE (ELIGIBLE=0, ENLRN400=0) → 3,4 のみ",
+   "rules": [
+    "B-02",
+    "B-12"
+   ],
+   "in": {},
+   "expect": {
+    "screen": "KIOSK",
+    "options": [
+     "3",
+     "4"
+    ]
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "3",
+       "4"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "3",
+       "4"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "3",
+       "4"
+      ],
+      "screen": "KIOSK"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-33",
+   "group": "EXHBMENU",
+   "title": "DEMO400 (ELIGIBLE=1, ENLRN400=0) → 1,3,4",
+   "rules": [
+    "B-12"
+   ],
+   "in": {},
+   "expect": {
+    "screen": "KIOSK",
+    "options": [
+     "1",
+     "3",
+     "4"
+    ]
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "3",
+       "4"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "3",
+       "4"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "3",
+       "4"
+      ],
+      "screen": "KIOSK"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-34",
+   "group": "EXHBMENU",
+   "title": "隠しオプション 7 + 誤パスワード → キオスクメニューに戻る",
+   "rules": [
+    "B-11",
+    "L-06-03"
+   ],
+   "in": {
+    "option": "7",
+    "password": "WRONGPW"
+   },
+   "expect": {
+    "screen": "KIOSK",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "path": [
+     "ADMPSWRD",
+     "KIOSK"
+    ]
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "KIOSK"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "KIOSK"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "KIOSK"
+      ],
+      "screen": "KIOSK"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-35",
+   "group": "EXHBMENU",
+   "title": "隠しオプション 7 + 正パスワード (SETTINGS.ADMPSWRD) → キオスク終了 → VCFMAIN",
+   "rules": [
+    "B-11",
+    "L-05-06"
+   ],
+   "in": {
+    "option": "7",
+    "password": "VCF2024"
+   },
+   "expect": {
+    "screen": "VCFMAIN",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "path": [
+     "ADMPSWRD",
+     "VCFMAIN"
+    ]
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "VCFMAIN"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "VCFMAIN"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "VCFMAIN"
+      ],
+      "screen": "VCFMAIN"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-36",
+   "group": "EXHBMENU",
+   "title": "オプション 1 → NTRSTIT → VOTE1 (展示 ASHIBATA 固定) → F12 でキオスクへ戻る",
+   "rules": [
+    "L-05-08",
+    "L-02-04",
+    "B-13"
+   ],
+   "in": {
+    "option": "1"
+   },
+   "expect": {
+    "screen": "KIOSK",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "path": [
+     "NTRSTIT",
+     "VOTE1",
+     "KIOSK"
+    ],
+    "exhibit": "ASHIBATA"
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "exhibit": "ASHIBATA",
+      "path": [
+       "NTRSTIT",
+       "VOTE1",
+       "KIOSK"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "exhibit": "ASHIBATA",
+      "path": [
+       "NTRSTIT",
+       "VOTE1",
+       "KIOSK"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "exhibit": "ASHIBATA",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "NTRSTIT",
+       "VOTE1",
+       "KIOSK"
+      ],
+      "screen": "KIOSK"
+     }
+    }
+   },
+   "match": true
+  },
+  {
+   "id": "CV-37",
+   "group": "EXHBMENU",
+   "title": "資格外展示でオプション 1 を入力 → 無視 (キオスクメニューのまま)",
+   "rules": [
+    "B-02",
+    "L-05-04"
+   ],
+   "in": {
+    "option": "1"
+   },
+   "expect": {
+    "screen": "KIOSK",
+    "options": [
+     "3",
+     "4"
+    ],
+    "path": [
+     "KIOSK"
+    ]
+   },
+   "envs": {
+    "pub400": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "3",
+       "4"
+      ],
+      "path": [
+       "KIOSK"
+      ]
+     }
+    },
+    "java": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "KIOSK",
+      "options": [
+       "3",
+       "4"
+      ],
+      "path": [
+       "KIOSK"
+      ]
+     }
+    },
+    "ipad": {
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "3",
+       "4"
+      ],
+      "path": [
+       "KIOSK"
+      ],
+      "screen": "KIOSK"
+     }
+    }
+   },
+   "match": true
+  }
+ ],
+ "summary": {
+  "total": 37,
+  "all_match": 37,
+  "pub400": 37,
+  "java": 37,
+  "ipad": 37
+ }
+}
