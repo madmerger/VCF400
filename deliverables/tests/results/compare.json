@@ -39,14 +39,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Award ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-02",
@@ -84,14 +86,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Award ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-03",
@@ -129,14 +133,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter badge number",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-04",
@@ -185,14 +191,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "award": 1,
+       "badge": 7001,
+       "exhibit": "ASHIBATA"
+      }
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-05",
@@ -243,14 +254,20 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "You have already voted.",
+      "screen": "VOTE1",
+      "vote": {
+       "award": 1,
+       "badge": 7001,
+       "exhibit": "ASHIBATA"
+      }
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-06",
@@ -288,14 +305,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Award does not exist.",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-07",
@@ -334,14 +353,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Award ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-08",
@@ -381,14 +402,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter Exhibit ID",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-09",
@@ -427,14 +450,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Exhibit does not exist",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-10",
@@ -474,14 +499,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Exhibit ineligible for award",
+      "screen": "VOTE1",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-11",
@@ -530,14 +557,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VOTEEND",
+      "vote": {
+       "award": 2,
+       "badge": 7002,
+       "exhibit": "DEMO400"
+      }
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-12",
@@ -588,14 +620,20 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Award does not exist.",
+      "screen": "VOTE1",
+      "vote": {
+       "award": 1,
+       "badge": 7001,
+       "exhibit": "ASHIBATA"
+      }
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-13",
@@ -632,14 +670,15 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "ENDOFCON",
+      "vote": null
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-14",
@@ -688,14 +727,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": null
+      },
+      "errline": "Must enter a comment",
+      "screen": "ADDCMT"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-15",
@@ -742,14 +786,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": null
+      },
+      "errline": "Must enter a comment",
+      "screen": "ADDCMT"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-16",
@@ -796,14 +845,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": null
+      },
+      "errline": "Must enter your name",
+      "screen": "ADDCMT"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-17",
@@ -868,14 +922,25 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 3,
+       "row": {
+        "comment": "Cross validation run",
+        "exhibit": "ASHIBATA",
+        "id": 3,
+        "name": "Devin Tester",
+        "visible": "Y"
+       }
+      },
+      "screen": "ENDCMT",
+      "shownId": 3
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-18",
@@ -923,14 +988,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 4,
+       "row": null
+      },
+      "errline": "Must enter Exhibit ID",
+      "screen": "ADDCMT"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-19",
@@ -994,14 +1064,25 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "comment": {
+       "id": 4,
+       "row": {
+        "comment": "Unchecked exhibit",
+        "exhibit": "NOSUCH",
+        "id": 4,
+        "name": "Guest",
+        "visible": "Y"
+       }
+      },
+      "screen": "ENDCMT",
+      "shownId": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-20",
@@ -1042,14 +1123,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "Must enter CommentID",
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-21",
@@ -1101,14 +1184,21 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "VCF/400 running on PUB400.",
+       "name": "Great exhib",
+       "title": "IBM i on PUB400 Demo"
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-22",
@@ -1159,14 +1249,21 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "Cross validation run",
+       "name": "Devin Teste",
+       "title": "IBM i on PUB400 Demo"
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-23",
@@ -1219,14 +1316,21 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "This comment is not part of this guestbook.",
+       "name": "",
+       "title": ""
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-24",
@@ -1278,14 +1382,21 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "This comment hidden by an admin - offensive content.",
+       "name": "Name Hidden",
+       "title": ""
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-25",
@@ -1337,14 +1448,21 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "This comment is not part of this guestbook.",
+       "name": "",
+       "title": ""
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-26",
@@ -1396,14 +1514,21 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "errline": "",
+      "out": {
+       "cmt": "Unchecked exhibit",
+       "name": "Guest",
+       "title": "Ineligible test exhibit (ELIGIBLE=0)"
+      },
+      "screen": "READCMT",
+      "total": 4
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-27",
@@ -1443,14 +1568,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "content": "The AS/400 was introduced by IBM in June 1988 ... page 2",
+      "page": 2,
+      "screen": "LRN400"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-28",
@@ -1490,14 +1617,16 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "content": "Welcome to LEARN/400! This is page 1. Press F5 for next page, F8 for previous, F3 to exit.",
+      "page": 1,
+      "screen": "LRN400"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-29",
@@ -1531,14 +1660,14 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-30",
@@ -1571,14 +1700,14 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "screen": "VCFMAIN"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-31",
@@ -1627,14 +1756,20 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "screen": "KIOSK"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-32",
@@ -1676,14 +1811,18 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "3",
+       "4"
+      ],
+      "screen": "KIOSK"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-33",
@@ -1727,14 +1866,19 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "3",
+       "4"
+      ],
+      "screen": "KIOSK"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-34",
@@ -1797,14 +1941,24 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "KIOSK"
+      ],
+      "screen": "KIOSK"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-35",
@@ -1867,14 +2021,24 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "ADMPSWRD",
+       "VCFMAIN"
+      ],
+      "screen": "VCFMAIN"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-36",
@@ -1943,14 +2107,26 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "exhibit": "ASHIBATA",
+      "options": [
+       "1",
+       "2",
+       "3",
+       "4"
+      ],
+      "path": [
+       "NTRSTIT",
+       "VOTE1",
+       "KIOSK"
+      ],
+      "screen": "KIOSK"
+     }
     }
    },
-   "match": false
+   "match": true
   },
   {
    "id": "CV-37",
@@ -2003,21 +2179,28 @@
      }
     },
     "ipad": {
-     "status": "NOT RUN",
-     "diff": [
-      "no result"
-     ],
-     "observed": null
+     "status": "PASS",
+     "diff": [],
+     "observed": {
+      "options": [
+       "3",
+       "4"
+      ],
+      "path": [
+       "KIOSK"
+      ],
+      "screen": "KIOSK"
+     }
     }
    },
-   "match": false
+   "match": true
   }
  ],
  "summary": {
   "total": 37,
-  "all_match": 0,
+  "all_match": 37,
   "pub400": 37,
   "java": 37,
-  "ipad": 0
+  "ipad": 37
  }
 }

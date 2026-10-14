@@ -1,16 +1,16 @@
 ---
 title: "VCF/400 クロス検証テスト結果レポート"
 subtitle: "PUB400 (オリジナル RPG) / Java Web / iPad の 3 環境同一入力比較"
-date: "2026-09-07"
+date: "2026-10-14"
 ---
 
 # VCF/400 クロス検証テスト結果レポート
 
 | 項目 | 内容 |
 |---|---|
-| 対象 | オリジナル RPG (PUB400 `ASHIBATA2`) / Java Web 版 (`java/`) / iPad 版 (`ipad/`) |
+| 対象 | オリジナル RPG (PUB400 `ASHIBATA2`) / Java Web 版 (`deliverables/java/`, PR #11) / iPad 版 (`deliverables/ipad/`, PR #13) |
 | テストケース | `deliverables/tests/cases.json` (37 ケース) |
-| 実行方式 | PUB400: tn5250 (`run_pub400.py`) / Java: Playwright headed Chromium (`run_java.js`) / iPad: XCUITest (`record_ipad.sh`) |
+| 実行方式 | PUB400: tn5250 (`run_pub400.py`) / Java: Playwright Chromium (`run_java.js`) / iPad: XCUITest test-without-building (`run_ipad.sh`, 録画は `record_ipad.sh`) |
 | 判定 | `expect` の全キーが 3 環境の `observed` と一致 = PASS |
 
 ## 1. サマリ
@@ -34,11 +34,13 @@ date: "2026-09-07"
 
 ## 2. 不一致と対処
 
-本 run は、Java を PR #7 の localized 実装 (`devin/1788796612-java-web-ja`, HEAD `1dabea7`)、iPad を PR #8 の localized 実装 (`devin/1788796762-ipad-ja`, HEAD `06d639a`) として実行した。`compare.py` の最終結果は PUB400 37/37、Java 37/37、iPad 37/37、3 環境一致 37/37 で、不一致は 0 件である。
+本 run は、PUB400 を `ASHIBATA2` にソースビルドした RPG、Java を PR #11 (`devin/1791970110-vcf400-java-web`, `03ed528`)、iPad を PR #13 (`devin/1791970125-ipad-deliverables`, `e67316a`) として実行した。`compare.py` の最終結果は PUB400 37/37、Java 37/37、iPad 37/37、3 環境一致 37/37 で、不一致は 0 件である。
 
-実行上の workaround は、fresh H2 データベースの起動時に `SPRING_SQL_INIT_MODE=always` と `VCF_DB_API=true` を指定したことだけである。これは実行環境の初期化であり、アプリケーションおよび runner の変更はない。
+Java の最終コミット `32ead03` は VCFMAIN 見出し行の空白保持 (CSS `white-space: pre`) のみの変更で、37 ケースの判定対象には影響しない (Maven 53/53 は `03ed528` 以降も通過)。
 
-前セッションの履歴 `run1` では CV-23 の 5250 入力処理が原因で 36/37 となった。これは `INCMTID` の桁数一杯入力時に余分な Field Exit を送っていた runner の問題であり、修正済みの現行 runner では再発しなかった。古い `results/run1/` 証跡は stale artifact として削除した。
+実行前後の初期化: PUB400 は `pub400_db.py reset` (`logs/pub400_seed.sql` の全 6 表) を開始前と終了後に必ず実行、Java は `VCF_DB_API=true` の fresh H2 + DB API reset、iPad は `-VCF_RESET` 起動引数でケースごとに SQLite を初期化した。アプリケーションと runner に、一致させるための個別の補正は入れていない。
+
+ブラウザ E2E (testing agent) で、Java の VCFMAIN に台帳 L-01-01 の見出し `WELCOME TO...` / `V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4` が欠けていることが見つかり、`03ed528` で追加した (cases.json の判定外の表示要素)。iPad は当初から表示していた。
 
 最終実行における不一致は 0 件。
 
@@ -95,23 +97,21 @@ date: "2026-09-07"
 
 | 項目 | 値 |
 |---|---|
-| OS | macOS |
-| Xcode | 26.6 |
-| Java | 17.0.20.1 |
+| PUB400 / Java 実行ホスト | Linux (Ubuntu 22.04) |
+| iPad 実行ホスト | macOS + Xcode (iOS Simulator SDK 26.5), iPad Pro 13-inch (M5) シミュレータ |
+| Java | OpenJDK 17.0.19 / Spring Boot / H2 (MODE=DB2) |
 | tn5250 | 0.19.0 |
-| Playwright / Chromium | 1.63 / 1243 |
-| ffmpeg | 9.0.1 |
-| XcodeGen | 2.46.0 |
+| Playwright | 1.58.2 (Chromium) |
 | PUB400 | `ASHIBATA1` / `ASHIBATA2` |
-| 実行日 | 2026-09-07 |
+| 実行日 | 2026-10-14 |
 
 ## 5. 動画
 
 | 環境 | 動画パス | 長さ | 解像度 | サイズ | 収録内容 | 速度 |
 |---|---|---|---|---|---|---|
-| PUB400 | `deliverables/video/1_PUB400_RPG.mp4` | 492.50 秒 | 1280x720 (h264) | 8.65 MB | 実 5250 画面フレーム連続表示 | 等速 |
-| Java Web | `deliverables/video/2_Java_Web.mp4` | 153.47 秒 | 1280x720 (h264) | 5.81 MB | Chromium 実画面 | 等速 |
-| iPad | `deliverables/video/3_iPad.mp4` | 427.70 秒 | 1280x720 (h264) | 7.14 MB | シミュレータ実画面 | 等速 |
+| PUB400 | `deliverables/video/1_PUB400_RPG.mp4` | 492.50 秒 | 1280x720 (h264) | 8.59 MB | 実 5250 画面フレーム連続表示 | 等速 |
+| Java Web | `deliverables/video/2_Java_Web.mp4` | 150.40 秒 | 1280x720 (h264) | 6.61 MB | Chromium 実画面 | 等速 |
+| iPad | `deliverables/video/3_iPad.mp4` | 376.30 秒 | 1280x720 (h264) | 6.78 MB | シミュレータ実画面 | 等速 |
 
 3 本とも実時間の等速録画であり、追加の速度変更は行っていない。PUB400 は `self.s.screen.display` から取得した 5250 画面フレームを連続表示し、Java は Chromium の実画面、iPad はシミュレータの実画面を収録した。iPad のケース帯 オーバーレイは ffmpeg に `drawtext` がないため Playwright で PNG を生成し、`overlay` / `scale` / `pad` で合成した。
 
