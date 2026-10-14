@@ -245,7 +245,8 @@ def build_md(data, anchors, ops, comp, counts, today):
             actual = st.get("observation") or evidence(st)
             ev = st.get("screen", "")
             cell = f"{actual}<br>証跡: `{ev}`" if ev else actual
-            A(f"| {no} | {op} | {st['expected']} | {cell} | {st['result']} |")
+            cells = [no, op, st["expected"], cell, st["result"]]
+            A("| " + " | ".join(c.replace("|", "\\|") for c in cells) + " |")
         dbc = db_counts(s["id"])
         if dbc:
             parts = [f"{t}: {v.get('before','-')} → {v.get('after','-')} 件"
@@ -305,7 +306,9 @@ img { max-width: 100%; margin: 6px 0; }
 
 def inline(text):
     """Escape HTML then apply minimal inline markdown: **bold**, `code`, [link](url)."""
-    t = html.escape(text)
+    t = text.replace("\\|", "\x00")
+    t = html.escape(t)
+    t = t.replace("\x00", "|")
     t = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", t)
     t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
     t = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)",
@@ -330,7 +333,7 @@ def md_to_html(md):
             out.append(html.escape(line))
             continue
         if line.startswith("|") and line.endswith("|"):
-            cells = [c.strip() for c in line.strip("|").split("|")]
+            cells = [c.strip() for c in re.split(r"(?<!\\)\|", line.strip("|"))]
             if all(re.fullmatch(r":?-+:?", c) for c in cells):
                 continue
             tag = "th" if not in_tbl else "td"

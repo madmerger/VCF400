@@ -11,7 +11,7 @@ set -euo pipefail
 LIB=${VCF_PUB400_LIB:-ASHIBATA2}
 SEED="$(cd "$(dirname "$0")" && pwd)/pub400_seed.sql"
 export SSHPASS=$PUB400_PW
-SSH="sshpass -e ssh -p 2222 -o StrictHostKeyChecking=no -o ConnectTimeout=20 $PUB400_LOGIN@pub400.com"
+SSH="sshpass -e ssh -p 2222 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20 $PUB400_LOGIN@pub400.com"
 # Drop only SSH banner/prompt/empty lines (each starts with '*'); data rows are kept. Banner is:
 #   *****...\n* WELCOME TO PUB400.COM ...\n* - ... https://pub400.com\n*****...\n-> Enter your password
 FILTER='^\*|Enter your password|^\s*$'

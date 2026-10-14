@@ -1,11 +1,11 @@
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    1
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    1
  File name . . . . . . . . . . . . . . . . . . . . . :   VOTESCR
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA2
  File attribute  . . . . . . . . . . . . . . . . . . :   Display
  Source file containing DDS  . . . . . . . . . . . . :   QSDASRC
    Library name  . . . . . . . . . . . . . . . . . . :   ASHIBATA1
  Source member containing DDS  . . . . . . . . . . . :   VOTESCR
- Source member last changed  . . . . . . . . . . . . :   26-10-14   6:45:55
+ Source member last changed  . . . . . . . . . . . . :   26-10-14   7:54:02
  Source listing options  . . . . . . . . . . . . . . :   *SOURCE    *LIST      *NOSECLVL  *NOEVENTF
  DDS generation severity level . . . . . . . . . . . :   20
  DDS flagging severity level . . . . . . . . . . . . :   00
@@ -54,7 +54,7 @@
    3700       A                                      -----'
    3800       A                                 24  4'Cmd5/F5 = Submit Vote'
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    2
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    2
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    3900       A                                      COLOR(BLU)
@@ -111,7 +111,7 @@
    9000       A                                 18  4' show for Vintage Computer Festiva-
    9100       A                                      l Southeast 2024! Enjoy the rest of-
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    3
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    3
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
    9200       A                                       '
@@ -168,7 +168,7 @@
   14300       A                                      ¬¬¬¬¬¬¬'
   14400       A                                 16  3'¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬-
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    4
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    4
                                       Data Description Source
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8  Date
   14500       A                                      ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬-
@@ -220,7 +220,7 @@
   19100       A                                 14  4'Press ENTER to exit.'
                          * * * * *   E N D   O F   S O U R C E   * * * * *
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    5
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    5
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -278,7 +278,7 @@
    5700                  R VOTEEND
    5900                                          1  4' _____ _   _    _    _   _ _  __ '     33
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    6
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    6
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -336,7 +336,7 @@
   11100                                          5  3'¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬                -    76
   11100                                                                        ¬¬¬¬¬¬¬¬¬-
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    7
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    7
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -394,7 +394,7 @@
   16200                                              ¬¬¬¬¬¬¬'
   16500                                         23  3'¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬-    76
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    8
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    8
                                           Expanded Source
                                                                                           Field       Buffer position
  SEQNBR  *...+....1....+....2....+....3....+....4....+....5....+....6....+....7....+....8 length        Out     In
@@ -424,7 +424,7 @@
   19100                                         14  4'Press ENTER to exit.'                  20
                  * * * * *   E N D   O F   E X P A N D E D   S O U R C E   * * * * *
                                                    -=* https://pub400.com *=-
- 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  6:46:12        Page    9
+ 5770SS1 V7R5M0  220415                  Data Description               ASHIBATA2/VOTESCR       26-10-14  7:54:05        Page    9
                                           Message Summary
     Total          Informational          Warning        Error       Severe
                        (0-9)              (10-19)       (20-29)      (30-99)

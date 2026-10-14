@@ -18,13 +18,17 @@
 #
 # Requires: PUB400_LOGIN / PUB400_PW in the environment, ~/p400 wrapper, curl, iconv.
 set -euo pipefail
-REPO=${REPO:-$HOME/repos/VCF400}
+REPO=${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}
 SRCLIB=ASHIBATA1
 OBJLIB=ASHIBATA2
 STAGE=$(mktemp -d)
 LOGDIR=$REPO/deliverables/pub400_e2e/build
 LOG=$LOGDIR/build.log
-NETRC=$(mktemp); printf 'machine pub400.com login %s password %s\n' "$PUB400_LOGIN" "$PUB400_PW" > "$NETRC"
+NETRC=$(mktemp); chmod 600 "$NETRC"
+trap 'rm -rf "$STAGE" "$NETRC"' EXIT
+printf 'machine pub400.com login %s password %s\n' "$PUB400_LOGIN" "$PUB400_PW" > "$NETRC"
+# NOTE: PUB400 FTP does not support AUTH TLS/SSL (431) and port 990 is closed,
+# so uploads stay on plain FTP port 21 (verified 2026-10-14).
 ftpput_ascii() { curl -sS -B --netrc-file "$NETRC" --ftp-method nocwd -Q "site namefmt 1" -T "$1" "ftp://pub400.com/$2"; }
 
 echo "=== $(date -u +%FT%TZ) staging sources" | tee "$LOG"
@@ -60,8 +64,11 @@ emit() { # wrap long CL statements with '+' continuation (source record is 100 c
     printf '%s\n' "$line" >> "$CL"
   done
 }
-cl_cmd() { emit "             $3" "             MONMSG MSGID(CPF0000 RNS0000)"; }
-cl_quiet() { emit "             $1" "             MONMSG MSGID(CPF0000)"; }
+# MONMSG is scoped: DLTxxx failures are ignored (object may not exist yet) but
+# any CRTxxx / CHKOBJ-branch compile failure aborts BUILDVCF (no swallow).
+cl_cmd() { emit "             $3"; }                       # create commands: fail hard
+cl_quiet() { emit "             $1" "             MONMSG MSGID(CPF0000)"; }  # deletes: ignore
+cl_msgd() { emit "             $1" "             MONMSG MSGID(CPF2412)"; }   # ADDMSGD: dup ok
 : > "$CL"
 emit "             PGM" \
      "             CHGLIBL LIBL($OBJLIB $SRCLIB QGPL QTEMP) CURLIB($OBJLIB)"
@@ -69,8 +76,8 @@ emit "             PGM" \
 for f in AWARDDB BMOVDB EXHBDB GUESTBKDB LRN400STR SECOFRS SETTINGS VOTINGDB; do
   emit "             CHKOBJ OBJ($OBJLIB/$f) OBJTYPE(*FILE)" \
        "             MONMSG MSGID(CPF9801) EXEC(DO)"
-  cl_cmd QPDDSSRC "$f" "CRTPF FILE($OBJLIB/$f) SRCFILE($SRCLIB/QDDSSRC) SRCMBR($f) SIZE(*NOMAX)"
-  emit "             ENDDO"
+  emit "             CRTPF FILE($OBJLIB/$f) SRCFILE($SRCLIB/QDDSSRC) SRCMBR($f) SIZE(*NOMAX)" \
+       "             ENDDO"
 done
 # display files
 for f in ADMSCR ADMVOTERES BMOVSCR CREDITSSCR EXHBMENUSC GUESTBKSCR INTERSCR LRN400SCR LRNAUTO PASSSCR SETUPSCR TESTSUITE VOTESCR; do
@@ -93,7 +100,7 @@ for m in VCFMAIN MAIN ADMMAIN; do
   cl_quiet "CRTMNU MENU($OBJLIB/$m) TYPE(*DSPF) DSPF($OBJLIB/$m) MSGF($OBJLIB/${m}QQ)"
   tail -n +2 "$STAGE/QMNUSRC/${m}QQ" | while read -r opt cmd; do
     [ -z "$opt" ] && continue
-    cl_quiet "ADDMSGD MSGID(USR$opt) MSGF($OBJLIB/${m}QQ) MSG('$cmd')"
+    cl_msgd "ADDMSGD MSGID(USR$opt) MSGF($OBJLIB/${m}QQ) MSG('$cmd')"
   done
 done
 # RPG IV programs (OLD*, PRINTER, and BEEMOVIE are out of scope)
@@ -110,7 +117,7 @@ done
 for c in STREXHB:VCFSTUB STREXHBEDT:ADMCRTEXHB STRVOTERPT:ADMVOTERPT STRCMTEDT:ADMHIDECMT; do
   cmd=${c%%:*}; pgm=${c##*:}
   cl_quiet "DLTCMD CMD($OBJLIB/$cmd)"
-  cl_quiet "CRTCMD CMD($OBJLIB/$cmd) PGM($OBJLIB/$pgm) SRCFILE($SRCLIB/QCMDSRC) SRCMBR($cmd)"
+  emit "             CRTCMD CMD($OBJLIB/$cmd) PGM($OBJLIB/$pgm) SRCFILE($SRCLIB/QCMDSRC) SRCMBR($cmd)"
 done
 emit "             DSPJOBLOG OUTPUT(*PRINT)" \
      "             MONMSG MSGID(CPF0000)" \
@@ -127,24 +134,49 @@ for d in "$STAGE"/*; do
   done
 done
 
-# 4) compile + run the build program
+# 4) compile + run the build program; fail the script if BUILDVCF errors
 echo "=== $(date -u +%FT%TZ) compiling on PUB400" | tee -a "$LOG"
-$HOME/p400 "system 'DLTPGM $SRCLIB/BUILDVCF'; system 'CRTBNDCL PGM($SRCLIB/BUILDVCF) SRCFILE($SRCLIB/QCLSRC) SRCMBR(BUILDVCF)' && system 'CALL $SRCLIB/BUILDVCF'; echo rc=\$?" | tee -a "$LOG"
+build_out=$($HOME/p400 "system 'DLTPGM $SRCLIB/BUILDVCF'; system 'CRTBNDCL PGM($SRCLIB/BUILDVCF) SRCFILE($SRCLIB/QCLSRC) SRCMBR(BUILDVCF)' && system 'CALL $SRCLIB/BUILDVCF'; echo rc=\$?" 2>&1)
+printf '%s\n' "$build_out" | tee -a "$LOG"
+if ! printf '%s\n' "$build_out" | grep -q 'rc=0'; then
+  echo "BUILDVCF failed on PUB400 (rc!=0)" | tee -a "$LOG"
+  exit 1
+fi
+if printf '%s\n' "$build_out" | grep -qE 'CPF[0-9]{4}:|RNS[0-9]{4}:|ended abnormally|escape message'; then
+  echo "BUILDVCF reported error messages; inspect build.log" | tee -a "$LOG"
+  exit 1
+fi
 
-# 5) verify required RPG objects without rerunning the build
-echo "=== $(date -u +%FT%TZ) verifying required RPG objects" | tee -a "$LOG"
-required_rpg="NTRSTIT PARAMETER PRTLSTVOTE PRTLSTCMT CREDITS ADDVOTE ADDGBCMT READGBCMT LRN400 LRN400AUT EXHBMENU ADMADDSOFR ADMCRTEXHB ADMHIDECMT ADMLRN400 ADMOFRLIST ADMSETTING ADMVOTERPT"
+# 5) verify every expected object (PGM/CL, DSPF, PRTF, MSGF, MENU, CMD).
+#    PUB400 rate-limits SSH connections, so all CHKOBJ run inside ONE ssh call.
+echo "=== $(date -u +%FT%TZ) verifying objects" | tee -a "$LOG"
+objs="\
+NTRSTIT:*PGM PARAMETER:*PGM PRTLSTVOTE:*PGM PRTLSTCMT:*PGM CREDITS:*PGM ADDVOTE:*PGM \
+ADDGBCMT:*PGM READGBCMT:*PGM LRN400:*PGM LRN400AUT:*PGM EXHBMENU:*PGM ADMADDSOFR:*PGM \
+ADMCRTEXHB:*PGM ADMHIDECMT:*PGM ADMLRN400:*PGM ADMOFRLIST:*PGM ADMSETTING:*PGM \
+ADMVOTERPT:*PGM VOTESTUB:*PGM ADDGBSTUB:*PGM READGBSTUB:*PGM VCFSTUB:*PGM LRN400STUB:*PGM \
+ADMSCR:*FILE ADMVOTERES:*FILE BMOVSCR:*FILE CREDITSSCR:*FILE EXHBMENUSC:*FILE \
+GUESTBKSCR:*FILE INTERSCR:*FILE LRN400SCR:*FILE LRNAUTO:*FILE PASSSCR:*FILE \
+SETUPSCR:*FILE TESTSUITE:*FILE VOTESCR:*FILE CMTPRTF:*FILE CMTTST:*FILE TESTPRT2:*FILE \
+VOTEPRTF:*FILE AWARDDB:*FILE BMOVDB:*FILE EXHBDB:*FILE GUESTBKDB:*FILE LRN400STR:*FILE \
+SECOFRS:*FILE SETTINGS:*FILE VOTINGDB:*FILE \
+VCFMAIN:*MENU MAIN:*MENU ADMMAIN:*MENU \
+VCFMAINQQ:*MSGF MAINQQ:*MSGF ADMMAINQQ:*MSGF \
+STREXHB:*CMD STREXHBEDT:*CMD STRVOTERPT:*CMD STRCMTEDT:*CMD"
+remote="for o in $objs; do n=\`echo \"\$o\" | cut -d: -f1\`; t=\`echo \"\$o\" | cut -d: -f2\`; system \"CHKOBJ OBJ($OBJLIB/\$n) OBJTYPE(\$t)\" >/dev/null 2>&1; echo \"\$n \$t rc=\$?\"; done"
+check_out=$($HOME/p400 "$remote" 2>&1) || check_out="SSH_FAILED $check_out"
+check_out=$(printf '%s\n' "$check_out" | tr -d '\r')
+printf '%s\n' "$check_out" | tee -a "$LOG"
 missing=0
-for p in $required_rpg; do
-  check=$($HOME/p400 "system 'CHKOBJ OBJ($OBJLIB/$p) OBJTYPE(*PGM)'; echo rc=\$?" 2>&1)
-  printf '%s\n' "$check" | tee -a "$LOG"
-  if ! printf '%s\n' "$check" | grep -q 'rc=0'; then
-    echo "MISSING required RPG object: $OBJLIB/$p" | tee -a "$LOG"
+for o in $objs; do
+  n=${o%:*}; t=${o##*:}
+  if ! printf '%s\n' "$check_out" | grep -Fqx "$n $t rc=0"; then
+    echo "MISSING or unverified object: $OBJLIB/$n $t" | tee -a "$LOG"
     missing=1
   fi
 done
 if [ "$missing" -ne 0 ]; then
-  echo "Required RPG object verification failed" | tee -a "$LOG"
+  echo "Object verification failed" | tee -a "$LOG"
   exit 1
 fi
 

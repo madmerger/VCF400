@@ -61,3 +61,66 @@
 | F23=Set initial menu                                                           |
 |                                                                                |
 +--------------------------------------------------------------------------------+
+
+===== Sign On =====
++--------------------------------------------------------------------------------+
+|         Welcome to PUB400.COM * your public IBM i server                       |
+|                                               Server name . . . :   PUB400     |
+|                                               Subsystem . . . . :   QINTER2    |
+|                                               Display name. . . :   QPADEV0008 |
+|Your user name:                                                                 |
+|Password (max. 128):                                                            |
+|                                                                                |
+|=============================================================================== |
+|        ***** Welcome to IBM i 7.5 *****                                        |
+|                                                                                |
+|* Beware: we might lock users scanning the whole system. Be polite.             |
+|                                                                                |
+|*** PUB400.COM is now 25 years old. Time to progress...                         |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|- Check out https://pub400.com for news, tools, chat, forum                     |
+|connect with SSH to port 2222 -> ssh username  -p 2222                          |
+|visit http://POWERbunker.com for professional IBM i hosting                     |
+|                                                                                |
+|                                        (C) COPYRIGHT IBM CORP. 1980, 2021.     |
++--------------------------------------------------------------------------------+
+--- input: user
+--- input: password (hidden)
+--- input: '\r' [Enter]
+--- input: 'CHGLIBL LIBL(ASHIBATA2 ASHIBATA1 QGPL QTEMP) CURLIB(ASHIBATA2)' command line
+--- input: '\r' [Enter]
+--- input: 'GO ASHIBATA2/VCFMAIN' command line
+--- input: '\r' [Enter]
+
+===== VCFMAIN =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+

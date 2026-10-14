@@ -1,6 +1,6 @@
  
                                          Display Object Description - Full                                              Page     1
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADDGBCMT                                  Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -9,12 +9,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:13
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:13
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -43,7 +43,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     2
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADDGBSTUB                                 Attribute  . . . . . :   CLP
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -52,12 +52,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -86,7 +86,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     3
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADDVOTE                                   Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -95,12 +95,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:13
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:13
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -129,7 +129,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     4
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMADDSOFR                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -138,12 +138,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -172,7 +172,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     5
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMCRTEXHB                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -181,12 +181,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -215,7 +215,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     6
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMHIDECMT                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -224,12 +224,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -258,7 +258,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     7
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMLRN400                                 Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -267,12 +267,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -301,7 +301,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     8
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMOFRLIST                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -310,12 +310,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -344,7 +344,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page     9
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMSETTING                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -353,12 +353,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -387,7 +387,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    10
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMVOTERPT                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -396,12 +396,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -430,7 +430,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    11
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   CREDITS                                   Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -439,12 +439,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:13
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:13
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -473,7 +473,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    12
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   EXHBMENU                                  Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -482,12 +482,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -516,7 +516,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    13
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   LRN400                                    Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -525,12 +525,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -559,7 +559,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    14
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   LRN400AUT                                 Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -568,12 +568,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:07
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:07
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -602,7 +602,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    15
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   LRN400STUB                                Attribute  . . . . . :   CLP
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -611,12 +611,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -645,7 +645,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    16
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   NTRSTIT                                   Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -654,12 +654,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -688,7 +688,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    17
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   PARAMETER                                 Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -697,12 +697,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:13
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:13
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -731,7 +731,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    18
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   PRTLSTCMT                                 Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -740,12 +740,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:13
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:13
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -774,7 +774,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    19
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   PRTLSTVOTE                                Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -783,12 +783,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:13
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:13
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -817,7 +817,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    20
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   READGBCMT                                 Attribute  . . . . . :   RPGLE
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -826,12 +826,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:14
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:06
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:14
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:06
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -860,7 +860,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    21
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   READGBSTUB                                Attribute  . . . . . :   CLP
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -869,12 +869,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -903,7 +903,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    22
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VCFSTUB                                   Attribute  . . . . . :   CLP
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -912,12 +912,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -946,7 +946,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    23
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VOTESTUB                                  Attribute  . . . . . :   CLP
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -955,12 +955,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *USER
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -989,7 +989,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    24
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMMAINQQ                                 Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -998,12 +998,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1032,7 +1032,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    25
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   MAINQQ                                    Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1041,12 +1041,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1075,7 +1075,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    26
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VCFMAINQQ                                 Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1084,12 +1084,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1118,7 +1118,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    27
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMMAIN                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1127,12 +1127,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1161,7 +1161,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    28
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMSCR                                    Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1170,12 +1170,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1204,7 +1204,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    29
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMVOTERES                                Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1213,12 +1213,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1247,7 +1247,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    30
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ASHIBATA                                  Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1295,7 +1295,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    31
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   AWARDDB                                   Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1320,7 +1320,7 @@
    Digitally signed . . . . . . . . . . :   NO
    Authority collection value . . . . . :   *NONE
  Storage information:
-   Size . . . . . . . . . . . . . . . . :   139264
+   Size . . . . . . . . . . . . . . . . :   163840
    Offline size . . . . . . . . . . . . :   122880
    Associated space size  . . . . . . . :   4096
    Optimum space alignment  . . . . . . :   YES
@@ -1343,7 +1343,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    32
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   BMOVDB                                    Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1391,7 +1391,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    33
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   BMOVSCR                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1400,12 +1400,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1434,7 +1434,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    34
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   CMTPRTF                                   Attribute  . . . . . :   PRTF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1443,12 +1443,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1477,7 +1477,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    35
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   CMTTST                                    Attribute  . . . . . :   PRTF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1486,12 +1486,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1520,7 +1520,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    36
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   CREDITSSCR                                Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1529,12 +1529,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1563,7 +1563,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    37
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   EXHBDB                                    Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1577,7 +1577,7 @@
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-10  04:13:09
+   Change date/time . . . . . . . . . . :   26-10-14  06:52:50
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :   26-10-14
    Days used count  . . . . . . . . . . :   1
@@ -1588,7 +1588,7 @@
    Digitally signed . . . . . . . . . . :   NO
    Authority collection value . . . . . :   *NONE
  Storage information:
-   Size . . . . . . . . . . . . . . . . :   131072
+   Size . . . . . . . . . . . . . . . . :   172032
    Offline size . . . . . . . . . . . . :   122880
    Associated space size  . . . . . . . :   4096
    Optimum space alignment  . . . . . . :   YES
@@ -1611,7 +1611,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    38
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   EXHBMENUSC                                Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1620,12 +1620,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1654,7 +1654,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    39
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   GUESTBKDB                                 Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1702,7 +1702,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    40
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   GUESTBKSCR                                Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1711,12 +1711,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1745,7 +1745,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    41
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   INTERSCR                                  Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1754,12 +1754,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1788,7 +1788,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    42
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   LRNAUTO                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1797,12 +1797,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1831,7 +1831,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    43
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   LRN400SCR                                 Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1840,12 +1840,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1874,7 +1874,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    44
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   LRN400STR                                 Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1888,7 +1888,7 @@
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-10  04:13:09
+   Change date/time . . . . . . . . . . :   26-10-14  06:52:50
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :   26-10-14
    Days used count  . . . . . . . . . . :   1
@@ -1899,7 +1899,7 @@
    Digitally signed . . . . . . . . . . :   NO
    Authority collection value . . . . . :   *NONE
  Storage information:
-   Size . . . . . . . . . . . . . . . . :   131072
+   Size . . . . . . . . . . . . . . . . :   188416
    Offline size . . . . . . . . . . . . :   122880
    Associated space size  . . . . . . . :   4096
    Optimum space alignment  . . . . . . :   YES
@@ -1922,7 +1922,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    45
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   MAIN                                      Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1931,12 +1931,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -1965,7 +1965,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    46
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   PASSSCR                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -1974,12 +1974,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2008,7 +2008,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    47
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   SECOFRS                                   Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2056,7 +2056,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    48
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   SETTINGS                                  Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2104,7 +2104,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    49
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   SETUPSCR                                  Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2113,12 +2113,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2147,7 +2147,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    50
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   TESTPRT2                                  Attribute  . . . . . :   PRTF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2156,12 +2156,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2190,7 +2190,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    51
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   TESTSUITE                                 Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2199,12 +2199,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2233,7 +2233,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    52
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VCFMAIN                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2242,12 +2242,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2276,7 +2276,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    53
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VOTEPRTF                                  Attribute  . . . . . :   PRTF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2285,12 +2285,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2319,7 +2319,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    54
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VOTESCR                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2328,12 +2328,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2362,7 +2362,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    55
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VOTINGDB                                  Attribute  . . . . . :   PF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2410,7 +2410,7 @@
    File label ID  . . . . . . . . . . . :   ASHIBATA2
    Save format  . . . . . . . . . . . . :   Serial
                                          Display Object Description - Full                                              Page    56
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   STRCMTEDT                                 Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2419,12 +2419,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2453,7 +2453,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    57
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   STREXHB                                   Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2462,12 +2462,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2496,7 +2496,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    58
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   STREXHBEDT                                Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2505,12 +2505,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2539,7 +2539,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    59
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   STRVOTERPT                                Attribute  . . . . . :
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2548,12 +2548,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:15
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:08
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:15
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:08
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2582,7 +2582,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    60
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   ADMMAIN                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2591,12 +2591,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2625,7 +2625,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    61
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   MAIN                                      Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2634,12 +2634,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
@@ -2668,7 +2668,7 @@
    Save command . . . . . . . . . . . . :
    Device type  . . . . . . . . . . . . :
                                          Display Object Description - Full                                              Page    62
-5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  06:52:35 UTC
+5770SS1 V7R5M0  220415                                                                            PUB400    26-10-14  07:54:24 UTC
  Object . . . . . . . :   VCFMAIN                                   Attribute  . . . . . :   DSPF
    Library  . . . . . :     ASHIBATA2                               Owner  . . . . . . . :   ASHIBATA
  Library ASP device . :   *SYSBAS                                   Library ASP group  . :   *SYSBAS
@@ -2677,12 +2677,12 @@
    Attribute  . . . . . . . . . . . . . :
    Text . . . . . . . . . . . . . . . . :
  Creation information:
-   Creation date/time . . . . . . . . . :   26-10-14  06:46:12
+   Creation date/time . . . . . . . . . :   26-10-14  07:54:05
    Created by user  . . . . . . . . . . :   ASHIBATA
    System created on  . . . . . . . . . :   PUB400
    Object domain  . . . . . . . . . . . :   *SYSTEM
  Change/Usage information:
-   Change date/time . . . . . . . . . . :   26-10-14  06:46:12
+   Change date/time . . . . . . . . . . :   26-10-14  07:54:05
    Usage data collected . . . . . . . . :   YES
    Last used date . . . . . . . . . . . :
    Days used count  . . . . . . . . . . :   0
