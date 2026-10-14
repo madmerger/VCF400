@@ -4,6 +4,8 @@ import com.vcf400.domain.Exhibit;
 import com.vcf400.domain.Setting;
 import com.vcf400.repository.ExhibitRepository;
 import com.vcf400.repository.SettingsRepository;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +30,14 @@ public class KioskService {
         return settings.find(Setting.ADMPSWRD).map(Setting::value).orElse("");
     }
 
-    /** ADMKIOSK: INPWD = EXITPSWRD で終了。 */
+    /** ADMKIOSK: INPWD = EXITPSWRD で終了。比較は定数時間。 */
     public boolean exitAllowed(String inPwd) {
         String pw = exitPassword();
-        return !pw.isEmpty() && pw.equals(inPwd == null ? "" : inPwd.trim());
+        if (pw.isEmpty()) {
+            return false;
+        }
+        String in = inPwd == null ? "" : inPwd.trim();
+        return MessageDigest.isEqual(
+                pw.getBytes(StandardCharsets.UTF_8), in.getBytes(StandardCharsets.UTF_8));
     }
 }

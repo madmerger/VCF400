@@ -55,6 +55,23 @@ class LearnKioskServiceTest {
     }
 
     @Test
+    void jumpPageGoesToExtraPageAndBackReturnsToCaller() {
+        jdbc.update("UPDATE LRN400STR SET CONTENT = 'JUMP', EXTRA = '3' WHERE PAGENBR = 2");
+        try {
+            LearnService.State jumped = learn.forward(learn.start());  // F5 → JUMP 3
+            assertThat(jumped.outPageNbr()).isEqualTo("3");
+            assertThat(jumped.outContent()).contains("last page");
+            assertThat(jumped.exit()).isFalse();
+
+            LearnService.State back = learn.back(jumped);              // F8 → FRMPAGENBR = 1
+            assertThat(back.outPageNbr()).isEqualTo("1");
+        } finally {
+            jdbc.update("UPDATE LRN400STR SET CONTENT = ?, EXTRA = ? WHERE PAGENBR = 2",
+                    "The AS/400 was introduced by IBM in June 1988 ... page 2", "");
+        }
+    }
+
+    @Test
     void kioskExhibitFlags() {
         assertThat(kiosk.exhibitFor("ASHIBATA")).get()
             .satisfies(e -> { assertThat(e.isEligible()).isTrue(); assertThat(e.isLearnEnabled()).isTrue(); });

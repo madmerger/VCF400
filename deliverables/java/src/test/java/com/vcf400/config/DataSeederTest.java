@@ -3,9 +3,11 @@ package com.vcf400.config;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.nio.file.Path;
 import java.sql.Connection;
 import javax.sql.DataSource;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.DefaultApplicationArguments;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -61,6 +63,24 @@ class DataSeederTest {
         assertThat(jdbc.queryForObject(
                 "SELECT VALUE FROM SETTINGS WHERE SETTING='ADMPSWRD'", String.class).trim())
             .isEqualTo("OTHERPW");
+    }
+
+    @Test
+    void appliesSchemaAndSeedsFreshFileDatabase(@TempDir Path dir) throws Exception {
+        String url = "jdbc:h2:file:" + dir.resolve("vcf400")
+                + ";MODE=DB2;NON_KEYWORDS=VALUE;DEFAULT_NULL_ORDERING=HIGH";
+        DataSource dataSource = dataSource(url);
+        DataSeeder seeder = new DataSeeder(dataSource, url, "TESTPW");
+
+        seeder.run(new DefaultApplicationArguments());
+        seeder.run(new DefaultApplicationArguments());
+
+        JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM SETTINGS", Integer.class)).isEqualTo(2);
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM EXHBDB", Integer.class)).isEqualTo(3);
+        assertThat(jdbc.queryForObject(
+                "SELECT VALUE FROM SETTINGS WHERE SETTING='ADMPSWRD'", String.class).trim())
+            .isEqualTo("TESTPW");
     }
 
     private static DataSource dataSource(String url) {

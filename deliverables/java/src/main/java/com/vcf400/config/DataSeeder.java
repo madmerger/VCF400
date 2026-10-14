@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-/** H2 の空 DB にだけクロス検証用の初期データを投入する。 */
+/** H2 では schema.sql を適用し、空 DB にだけクロス検証用の初期データを投入する。 */
 @Component
 public class DataSeeder implements ApplicationRunner {
     private static final Logger log = LoggerFactory.getLogger(DataSeeder.class);
@@ -41,6 +41,7 @@ public class DataSeeder implements ApplicationRunner {
             try {
                 connection.setAutoCommit(false);
                 try {
+                    ScriptUtils.executeSqlScript(connection, new ClassPathResource("schema.sql"));
                     if (!settingsEmpty(connection)) {
                         connection.commit();
                         return;

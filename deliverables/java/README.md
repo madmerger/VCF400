@@ -22,7 +22,7 @@ mvn test                                             # 業務ルール / 画面�
 
 初期化とシード:
 
-- `schema.sql` は H2 (`jdbc:h2:`) のときだけ Spring の embedded 初期化で実行される。
+- `schema.sql` は H2 (`jdbc:h2:`) のときだけ、起動時の `DataSeeder` が実行する (全て `CREATE TABLE IF NOT EXISTS` のため再起動でも安全)。
 - H2 では `SETTINGS` が空の場合に限り、起動時の `DataSeeder` が `seed.sql` を 1 回実行する。既存のファイル DB を再起動してもデータを再投入しない。
 - シード後の管理者パスワード `ADMPSWRD` は SETTINGS のキーで参照して更新する (先頭レコードには依存しない)。
 - DB2 for i (`jdbc:as400:`) ではスキーマ・シード初期化を行わず、既存の DDS テーブルを使用する。
