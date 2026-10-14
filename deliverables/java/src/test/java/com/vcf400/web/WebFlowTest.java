@@ -45,6 +45,8 @@ class WebFlowTest {
     void mainMenuKeepsLegacyTitleAndNumbers() throws Exception {
         mvc.perform(get("/menu")).andExpect(status().isOk())
             .andExpect(content().string(containsString("AS/400 DEMO MENU")))
+            .andExpect(content().string(containsString("WELCOME TO...")))
+            .andExpect(content().string(containsString("V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4")))
             .andExpect(content().string(containsString("data-option=\"11\"")))
             .andExpect(content().string(containsString("data-option=\"80\"")));
     }
