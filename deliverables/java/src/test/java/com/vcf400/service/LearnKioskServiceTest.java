@@ -1,0 +1,115 @@
+package com.vcf400.service;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+/** LRN400 (B-10) と EXHBMENU (B-11, B-12)。 */
+@SpringBootTest
+@ActiveProfiles("test")
+class LearnKioskServiceTest {
+    @Autowired LearnService learn;
+    @Autowired KioskService kiosk;
+    @Autowired JdbcTemplate jdbc;
+
+    @Test
+    void forwardBackAndEndPage() {
+        LearnService.State s = learn.start(LearnService.COMMON_FILE);
+        assertThat(s.outPageNbr()).isEqualTo("1");
+        assertThat(s.exit()).isFalse();
+
+        s = learn.forward(s);                             // F5 → page 2
+        assertThat(s.outPageNbr()).isEqualTo("2");
+        assertThat(s.outContent()).contains("AS/400");
+
+        LearnService.State back = learn.back(s);          // F8 → page 1
+        assertThat(back.outPageNbr()).isEqualTo("1");
+
+        LearnService.State end = learn.forward(s);        // F5 → page 3 (EXTRA='END') → exit
+        assertThat(end.exit()).isTrue();
+    }
+
+    @Test
+    void backOnFirstPageStaysOnFirstPage() {
+        LearnService.State s = learn.back(learn.start(LearnService.COMMON_FILE));
+        assertThat(s.outPageNbr()).isEqualTo("1");
+        assertThat(s.exit()).isFalse();
+    }
+
+    @Test
+    void callPageLogsAndShowsFollowingPage() {
+        jdbc.update("UPDATE LRN400STR SET CONTENT = 'CALL', EXTRA = 'LRN400' WHERE PAGENBR = 2");
+        try {
+            LearnService.State next = learn.forward(learn.start(LearnService.COMMON_FILE));
+            assertThat(next.outPageNbr()).isEqualTo("3");
+            assertThat(next.outContent()).contains("last page");
+            assertThat(next.exit()).isFalse();
+        } finally {
+            jdbc.update("UPDATE LRN400STR SET CONTENT = ?, EXTRA = ? WHERE PAGENBR = 2",
+                    "The AS/400 was introduced by IBM in June 1988 ... page 2", "");
+        }
+    }
+
+    @Test
+    void jumpPageGoesToExtraPageAndBackReturnsToCaller() {
+        jdbc.update("UPDATE LRN400STR SET CONTENT = 'JUMP', EXTRA = '3' WHERE PAGENBR = 2");
+        try {
+            LearnService.State jumped = learn.forward(learn.start(LearnService.COMMON_FILE));  // F5 → JUMP 3
+            assertThat(jumped.outPageNbr()).isEqualTo("3");
+            assertThat(jumped.outContent()).contains("last page");
+            assertThat(jumped.exit()).isFalse();
+
+            LearnService.State back = learn.back(jumped);              // F8 → FRMPAGENBR = 1
+            assertThat(back.outPageNbr()).isEqualTo("1");
+        } finally {
+            jdbc.update("UPDATE LRN400STR SET CONTENT = ?, EXTRA = ? WHERE PAGENBR = 2",
+                    "The AS/400 was introduced by IBM in June 1988 ... page 2", "");
+        }
+    }
+
+    @Test
+    void exhibitFilePagesAreUsedAndCommonIsDefault() {
+        jdbc.update("INSERT INTO LRN400STR (LRNFILE, PAGENBR, CONTENT, EXTRA) VALUES ('ASHIBATA', 1, 'ASHIBATA exhibit page', 'END')");
+        try {
+            LearnService.State s = learn.start("ASHIBATA");
+            assertThat(s.lrnfile()).isEqualTo("ASHIBATA");
+            assertThat(s.outContent()).contains("ASHIBATA exhibit page");
+
+            LearnService.State common = learn.start(LearnService.COMMON_FILE);
+            assertThat(common.lrnfile()).isEqualTo("LRN400STR");
+            assertThat(common.outContent()).contains("Welcome to LEARN/400");
+        } finally {
+            jdbc.update("DELETE FROM LRN400STR WHERE LRNFILE = 'ASHIBATA'");
+        }
+    }
+
+    @Test
+    void fallsBackToCommonFileWhenExhibitHasNoPages() {
+        LearnService.State s = learn.start("DEMO400");   // DEMO400 用のページファイルは存在しない
+        assertThat(s.lrnfile()).isEqualTo("LRN400STR");
+        assertThat(s.outContent()).contains("Welcome to LEARN/400");
+    }
+
+    @Test
+    void kioskExhibitFlags() {
+        assertThat(kiosk.exhibitFor("ASHIBATA")).get()
+            .satisfies(e -> { assertThat(e.isEligible()).isTrue(); assertThat(e.isLearnEnabled()).isTrue(); });
+        assertThat(kiosk.exhibitFor("DEMO400")).get()
+            .satisfies(e -> { assertThat(e.isEligible()).isTrue(); assertThat(e.isLearnEnabled()).isFalse(); });
+        assertThat(kiosk.exhibitFor("NOVOTE")).get()
+            .satisfies(e -> assertThat(e.isEligible()).isFalse());
+        assertThat(kiosk.exhibitFor("NOSUCH")).isEmpty();
+    }
+
+    @Test
+    void kioskExitPasswordComesFromFirstSettingsRecord() {   // B-11: SETLL/READ SETTINGS → ADMPSWRD
+        assertThat(kiosk.exitPassword()).isEqualTo("VCF2024");
+        assertThat(kiosk.exitAllowed("VCF2024")).isTrue();
+        assertThat(kiosk.exitAllowed("vcf2024")).isFalse();
+        assertThat(kiosk.exitAllowed("")).isFalse();
+    }
+}
