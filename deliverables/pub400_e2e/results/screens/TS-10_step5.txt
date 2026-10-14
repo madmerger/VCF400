@@ -1,0 +1,24 @@
+  WELCOME TO...
+     Ineligible test exhibit (ELIGIBLE=0)
+  HOSTED BY Ineligible Exhibitor      OF Atlanta         GA
+  ----------------------------------------------------------------------------
+ Test data for eligibility check
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ----------------------------------------------------------------------------
+
+
+   3. Sign Exhibit Guestbook
+   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:
+

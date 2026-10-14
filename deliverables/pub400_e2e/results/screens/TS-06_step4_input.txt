@@ -1,0 +1,24 @@
+  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT
+
+  Your Name................:   Devin Tester
+  Exhibit ID...............:   ASHIBATA
+  Comment..................:
+  E2E test run
+
+
+
+    Must enter a comment
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel

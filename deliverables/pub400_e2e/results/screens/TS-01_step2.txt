@@ -1,0 +1,24 @@
+  VCF/400 - How to Navigate
+
+  Before you start, here is how to navigate:
+  -----------------------------------------------------------------------------
+  Use ARROW KEYS or TAB KEY to move between fields.
+
+  Use F5 or ENTER to perform your action.
+
+  Use F12 to quit at any time.
+
+
+  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL
+  to continue.
+  -----------------------------------------------------------------------------
+
+                                Got all that?
+                           Press ENTER to continue.
+
+
+
+
+
+
+

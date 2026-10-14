@@ -1,0 +1,24 @@
+  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT
+
+  Your Name................:
+  Exhibit ID...............:   ASHIBATA
+  Comment..................:
+
+
+
+
+    Must enter your name
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel

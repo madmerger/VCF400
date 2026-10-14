@@ -1,0 +1,329 @@
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    1
+ Program . . . . . . . . . . . . . . . . . . . :   BUILDVCF
+   Library . . . . . . . . . . . . . . . . . . :     ASHIBATA1
+ Source file . . . . . . . . . . . . . . . . . :   QCLSRC
+   Library . . . . . . . . . . . . . . . . . . :     ASHIBATA1
+ Source member name  . . . . . . . . . . . . . :   BUILDVCF   26-10-14 07:51:12
+ Source printing options . . . . . . . . . . . :   *XREF  *NOSECLVL  *NOEVENTF  *NODOSLTLVL
+ User profile  . . . . . . . . . . . . . . . . :   *USER
+ Program logging . . . . . . . . . . . . . . . :   *JOB
+ Allow RTVCLSRC command  . . . . . . . . . . . :   *YES
+ Default activation group  . . . . . . . . . . :   *YES
+ Activation group  . . . . . . . . . . . . . . :
+ Replace program . . . . . . . . . . . . . . . :   *YES
+ Target release  . . . . . . . . . . . . . . . :   V7R5M0
+ Authority . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Sort sequence . . . . . . . . . . . . . . . . :   *HEX
+ Language identifier . . . . . . . . . . . . . :   *JOBRUN
+ Text  . . . . . . . . . . . . . . . . . . . . :
+ Optimization  . . . . . . . . . . . . . . . . :   *NONE
+ Debugging view  . . . . . . . . . . . . . . . :   *STMT
+ Debug encryption key  . . . . . . . . . . . . :   *NONE
+ Enable performance collection . . . . . . . . :   *PEP
+ Storage model . . . . . . . . . . . . . . . . :   *SNGLVL
+ Compiler  . . . . . . . . . . . . . . . . . . :   IBM Control Language Compiler
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+    100-              PGM
+    200-              CHGLIBL LIBL(ASHIBATA2 ASHIBATA1 QGPL QTEMP) CURLIB(ASHIBATA2)
+    300-              CHKOBJ OBJ(ASHIBATA2/AWARDDB) OBJTYPE(*FILE)
+    400-              MONMSG MSGID(CPF9801) EXEC(DO)
+    500-              CRTPF FILE(ASHIBATA2/AWARDDB) SRCFILE(ASHIBATA1/QDDSSRC) SRCMBR(AWARDDB) +
+    600                 SIZE(*NOMAX)
+    700-              ENDDO
+    800-              CHKOBJ OBJ(ASHIBATA2/BMOVDB) OBJTYPE(*FILE)
+    900-              MONMSG MSGID(CPF9801) EXEC(DO)
+   1000-              CRTPF FILE(ASHIBATA2/BMOVDB) SRCFILE(ASHIBATA1/QDDSSRC) SRCMBR(BMOVDB) +
+   1100                 SIZE(*NOMAX)
+   1200-              ENDDO
+   1300-              CHKOBJ OBJ(ASHIBATA2/EXHBDB) OBJTYPE(*FILE)
+   1400-              MONMSG MSGID(CPF9801) EXEC(DO)
+   1500-              CRTPF FILE(ASHIBATA2/EXHBDB) SRCFILE(ASHIBATA1/QDDSSRC) SRCMBR(EXHBDB) +
+   1600                 SIZE(*NOMAX)
+   1700-              ENDDO
+   1800-              CHKOBJ OBJ(ASHIBATA2/GUESTBKDB) OBJTYPE(*FILE)
+   1900-              MONMSG MSGID(CPF9801) EXEC(DO)
+   2000-              CRTPF FILE(ASHIBATA2/GUESTBKDB) SRCFILE(ASHIBATA1/QDDSSRC) +
+   2100                 SRCMBR(GUESTBKDB) SIZE(*NOMAX)
+   2200-              ENDDO
+   2300-              CHKOBJ OBJ(ASHIBATA2/LRN400STR) OBJTYPE(*FILE)
+   2400-              MONMSG MSGID(CPF9801) EXEC(DO)
+   2500-              CRTPF FILE(ASHIBATA2/LRN400STR) SRCFILE(ASHIBATA1/QDDSSRC) +
+   2600                 SRCMBR(LRN400STR) SIZE(*NOMAX)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    2
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+   2700-              ENDDO
+   2800-              CHKOBJ OBJ(ASHIBATA2/SECOFRS) OBJTYPE(*FILE)
+   2900-              MONMSG MSGID(CPF9801) EXEC(DO)
+   3000-              CRTPF FILE(ASHIBATA2/SECOFRS) SRCFILE(ASHIBATA1/QDDSSRC) SRCMBR(SECOFRS) +
+   3100                 SIZE(*NOMAX)
+   3200-              ENDDO
+   3300-              CHKOBJ OBJ(ASHIBATA2/SETTINGS) OBJTYPE(*FILE)
+   3400-              MONMSG MSGID(CPF9801) EXEC(DO)
+   3500-              CRTPF FILE(ASHIBATA2/SETTINGS) SRCFILE(ASHIBATA1/QDDSSRC) S+
+   3600                 RCMBR(SETTINGS) SIZE(*NOMAX)
+   3700-              ENDDO
+   3800-              CHKOBJ OBJ(ASHIBATA2/VOTINGDB) OBJTYPE(*FILE)
+   3900-              MONMSG MSGID(CPF9801) EXEC(DO)
+   4000-              CRTPF FILE(ASHIBATA2/VOTINGDB) SRCFILE(ASHIBATA1/QDDSSRC) S+
+   4100                 RCMBR(VOTINGDB) SIZE(*NOMAX)
+   4200-              ENDDO
+   4300-              DLTF FILE(ASHIBATA2/ADMSCR)
+   4400-              MONMSG MSGID(CPF0000)
+   4500-              CRTDSPF FILE(ASHIBATA2/ADMSCR) SRCFILE(ASHIBATA1/QSDASRC) SRCMBR(ADMSCR)
+   4600-              DLTF FILE(ASHIBATA2/ADMVOTERES)
+   4700-              MONMSG MSGID(CPF0000)
+   4800-              CRTDSPF FILE(ASHIBATA2/ADMVOTERES) SRCFILE(ASHIBATA1/QSDASRC) +
+   4900                 SRCMBR(ADMVOTERES)
+   5000-              DLTF FILE(ASHIBATA2/BMOVSCR)
+   5100-              MONMSG MSGID(CPF0000)
+   5200-              CRTDSPF FILE(ASHIBATA2/BMOVSCR) SRCFILE(ASHIBATA1/QSDASRC) SRCMBR(BMOVSCR)
+   5300-              DLTF FILE(ASHIBATA2/CREDITSSCR)
+   5400-              MONMSG MSGID(CPF0000)
+   5500-              CRTDSPF FILE(ASHIBATA2/CREDITSSCR) SRCFILE(ASHIBATA1/QSDASRC) +
+   5600                 SRCMBR(CREDITSSCR)
+   5700-              DLTF FILE(ASHIBATA2/EXHBMENUSC)
+   5800-              MONMSG MSGID(CPF0000)
+   5900-              CRTDSPF FILE(ASHIBATA2/EXHBMENUSC) SRCFILE(ASHIBATA1/QSDASRC) +
+   6000                 SRCMBR(EXHBMENUSC)
+   6100-              DLTF FILE(ASHIBATA2/GUESTBKSCR)
+   6200-              MONMSG MSGID(CPF0000)
+   6300-              CRTDSPF FILE(ASHIBATA2/GUESTBKSCR) SRCFILE(ASHIBATA1/QSDASRC) +
+   6400                 SRCMBR(GUESTBKSCR)
+   6500-              DLTF FILE(ASHIBATA2/INTERSCR)
+   6600-              MONMSG MSGID(CPF0000)
+   6700-              CRTDSPF FILE(ASHIBATA2/INTERSCR) SRCFILE(ASHIBATA1/QSDASRC) SRCMBR(INTERSCR)
+   6800-              DLTF FILE(ASHIBATA2/LRN400SCR)
+   6900-              MONMSG MSGID(CPF0000)
+   7000-              CRTDSPF FILE(ASHIBATA2/LRN400SCR) SRCFILE(ASHIBATA1/QSDASRC) +
+   7100                 SRCMBR(LRN400SCR)
+   7200-              DLTF FILE(ASHIBATA2/LRNAUTO)
+   7300-              MONMSG MSGID(CPF0000)
+   7400-              CRTDSPF FILE(ASHIBATA2/LRNAUTO) SRCFILE(ASHIBATA1/QSDASRC) S+
+   7500                 RCMBR(LRNAUTO) WAITRCD(10)
+   7600-              DLTF FILE(ASHIBATA2/PASSSCR)
+   7700-              MONMSG MSGID(CPF0000)
+   7800-              CRTDSPF FILE(ASHIBATA2/PASSSCR) SRCFILE(ASHIBATA1/QSDASRC) SRCMBR(PASSSCR)
+   7900-              DLTF FILE(ASHIBATA2/SETUPSCR)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    3
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+   8000-              MONMSG MSGID(CPF0000)
+   8100-              CRTDSPF FILE(ASHIBATA2/SETUPSCR) SRCFILE(ASHIBATA1/QSDASRC) SRCMBR(SETUPSCR)
+   8200-              DLTF FILE(ASHIBATA2/TESTSUITE)
+   8300-              MONMSG MSGID(CPF0000)
+   8400-              CRTDSPF FILE(ASHIBATA2/TESTSUITE) SRCFILE(ASHIBATA1/QSDASRC) +
+   8500                 SRCMBR(TESTSUITE)
+   8600-              DLTF FILE(ASHIBATA2/VOTESCR)
+   8700-              MONMSG MSGID(CPF0000)
+   8800-              CRTDSPF FILE(ASHIBATA2/VOTESCR) SRCFILE(ASHIBATA1/QSDASRC) SRCMBR(VOTESCR)
+   8900-              DLTF FILE(ASHIBATA2/CMTPRTF)
+   9000-              MONMSG MSGID(CPF0000)
+   9100-              CRTPRTF FILE(ASHIBATA2/CMTPRTF) SRCFILE(ASHIBATA1/QRLUSRC) SRCMBR(CMTPRTF)
+   9200-              DLTF FILE(ASHIBATA2/CMTTST)
+   9300-              MONMSG MSGID(CPF0000)
+   9400-              CRTPRTF FILE(ASHIBATA2/CMTTST) SRCFILE(ASHIBATA1/QRLUSRC) SRCMBR(CMTTST)
+   9500-              DLTF FILE(ASHIBATA2/TESTPRT2)
+   9600-              MONMSG MSGID(CPF0000)
+   9700-              CRTPRTF FILE(ASHIBATA2/TESTPRT2) SRCFILE(ASHIBATA1/QRLUSRC) SRCMBR(TESTPRT2)
+   9800-              DLTF FILE(ASHIBATA2/VOTEPRTF)
+   9900-              MONMSG MSGID(CPF0000)
+  10000-              CRTPRTF FILE(ASHIBATA2/VOTEPRTF) SRCFILE(ASHIBATA1/QRLUSRC) SRCMBR(VOTEPRTF)
+  10100-              DLTMNU MENU(ASHIBATA2/VCFMAIN)
+  10200-              MONMSG MSGID(CPF0000)
+  10300-              DLTF FILE(ASHIBATA2/VCFMAIN)
+  10400-              MONMSG MSGID(CPF0000)
+  10500-              DLTMSGF MSGF(ASHIBATA2/VCFMAINQQ)
+  10600-              MONMSG MSGID(CPF0000)
+  10700-              CRTDSPF FILE(ASHIBATA2/VCFMAIN) SRCFILE(ASHIBATA1/QMNUSRC) SRCMBR(VCFMAIN)
+  10800-              CRTMSGF MSGF(ASHIBATA2/VCFMAINQQ)
+  10900-              MONMSG MSGID(CPF0000)
+  11000-              CRTMNU MENU(ASHIBATA2/VCFMAIN) TYPE(*DSPF) DSPF(ASHIBATA2/VCFMAIN) +
+  11100                 MSGF(ASHIBATA2/VCFMAINQQ)
+  11200-              MONMSG MSGID(CPF0000)
+  11300-              ADDMSGD MSGID(USR0001) MSGF(ASHIBATA2/VCFMAINQQ) MSG('call ASHIBATA2/lrn400')
+  11400-              MONMSG MSGID(CPF2412)
+  11500-              ADDMSGD MSGID(USR0011) MSGF(ASHIBATA2/VCFMAINQQ) MSG('CALL +
+  11600                 ASHIBATA2/VOTESTUB')
+  11700-              MONMSG MSGID(CPF2412)
+  11800-              ADDMSGD MSGID(USR0012) MSGF(ASHIBATA2/VCFMAINQQ) MSG('CALL +
+  11900                 ASHIBATA2/ADDGBSTUB')
+  12000-              MONMSG MSGID(CPF2412)
+  12100-              ADDMSGD MSGID(USR0013) MSGF(ASHIBATA2/VCFMAINQQ) MSG('CALL +
+  12200                 ASHIBATA2/READGBSTUB')
+  12300-              MONMSG MSGID(CPF2412)
+  12400-              ADDMSGD MSGID(USR0080) MSGF(ASHIBATA2/VCFMAINQQ) MSG('signoff')
+  12500-              MONMSG MSGID(CPF2412)
+  12600-              DLTMNU MENU(ASHIBATA2/MAIN)
+  12700-              MONMSG MSGID(CPF0000)
+  12800-              DLTF FILE(ASHIBATA2/MAIN)
+  12900-              MONMSG MSGID(CPF0000)
+  13000-              DLTMSGF MSGF(ASHIBATA2/MAINQQ)
+  13100-              MONMSG MSGID(CPF0000)
+  13200-              CRTDSPF FILE(ASHIBATA2/MAIN) SRCFILE(ASHIBATA1/QMNUSRC) SRCMBR(MAIN)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    4
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+  13300-              CRTMSGF MSGF(ASHIBATA2/MAINQQ)
+  13400-              MONMSG MSGID(CPF0000)
+  13500-              CRTMNU MENU(ASHIBATA2/MAIN) TYPE(*DSPF) DSPF(ASHIBATA2/MAIN) +
+  13600                 MSGF(ASHIBATA2/MAINQQ)
+  13700-              MONMSG MSGID(CPF0000)
+  13800-              ADDMSGD MSGID(USR0001) MSGF(ASHIBATA2/MAINQQ) MSG('GO VCFEXPO/NAV001')
+  13900-              MONMSG MSGID(CPF2412)
+  14000-              ADDMSGD MSGID(USR0002) MSGF(ASHIBATA2/MAINQQ) MSG('GO VCFEXPO/HISTMNU')
+  14100-              MONMSG MSGID(CPF2412)
+  14200-              ADDMSGD MSGID(USR0003) MSGF(ASHIBATA2/MAINQQ) MSG('GO VCFEXPO/ABOUT150')
+  14300-              MONMSG MSGID(CPF2412)
+  14400-              ADDMSGD MSGID(USR0004) MSGF(ASHIBATA2/MAINQQ) MSG('GO VCFEXPO/ABTGRTIE')
+  14500-              MONMSG MSGID(CPF2412)
+  14600-              ADDMSGD MSGID(USR0080) MSGF(ASHIBATA2/MAINQQ) MSG('signoff')
+  14700-              MONMSG MSGID(CPF2412)
+  14800-              DLTMNU MENU(ASHIBATA2/ADMMAIN)
+  14900-              MONMSG MSGID(CPF0000)
+  15000-              DLTF FILE(ASHIBATA2/ADMMAIN)
+  15100-              MONMSG MSGID(CPF0000)
+  15200-              DLTMSGF MSGF(ASHIBATA2/ADMMAINQQ)
+  15300-              MONMSG MSGID(CPF0000)
+  15400-              CRTDSPF FILE(ASHIBATA2/ADMMAIN) SRCFILE(ASHIBATA1/QMNUSRC) SRCMBR(ADMMAIN)
+  15500-              CRTMSGF MSGF(ASHIBATA2/ADMMAINQQ)
+  15600-              MONMSG MSGID(CPF0000)
+  15700-              CRTMNU MENU(ASHIBATA2/ADMMAIN) TYPE(*DSPF) DSPF(ASHIBATA2/ADMMAIN) +
+  15800                 MSGF(ASHIBATA2/ADMMAINQQ)
+  15900-              MONMSG MSGID(CPF0000)
+  16000-              DLTPGM PGM(ASHIBATA2/NTRSTIT)
+  16100-              MONMSG MSGID(CPF0000)
+  16200-              CRTBNDRPG PGM(ASHIBATA2/NTRSTIT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  16300                 SRCMBR(NTRSTIT) DBGVIEW(*SOURCE)
+  16400-              DLTPGM PGM(ASHIBATA2/PARAMETER)
+  16500-              MONMSG MSGID(CPF0000)
+  16600-              CRTBNDRPG PGM(ASHIBATA2/PARAMETER) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  16700                 SRCMBR(PARAMETER) DBGVIEW(*SOURCE)
+  16800-              DLTPGM PGM(ASHIBATA2/PRTLSTVOTE)
+  16900-              MONMSG MSGID(CPF0000)
+  17000-              CRTBNDRPG PGM(ASHIBATA2/PRTLSTVOTE) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  17100                 SRCMBR(PRTLSTVOTE) DBGVIEW(*SOURCE)
+  17200-              DLTPGM PGM(ASHIBATA2/PRTLSTCMT)
+  17300-              MONMSG MSGID(CPF0000)
+  17400-              CRTBNDRPG PGM(ASHIBATA2/PRTLSTCMT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  17500                 SRCMBR(PRTLSTCMT) DBGVIEW(*SOURCE)
+  17600-              DLTPGM PGM(ASHIBATA2/CREDITS)
+  17700-              MONMSG MSGID(CPF0000)
+  17800-              CRTBNDRPG PGM(ASHIBATA2/CREDITS) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  17900                 SRCMBR(CREDITS) DBGVIEW(*SOURCE)
+  18000-              DLTPGM PGM(ASHIBATA2/ADDVOTE)
+  18100-              MONMSG MSGID(CPF0000)
+  18200-              CRTBNDRPG PGM(ASHIBATA2/ADDVOTE) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  18300                 SRCMBR(ADDVOTE) DBGVIEW(*SOURCE)
+  18400-              DLTPGM PGM(ASHIBATA2/ADDGBCMT)
+  18500-              MONMSG MSGID(CPF0000)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    5
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+  18600-              CRTBNDRPG PGM(ASHIBATA2/ADDGBCMT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  18700                 SRCMBR(ADDGBCMT) DBGVIEW(*SOURCE)
+  18800-              DLTPGM PGM(ASHIBATA2/READGBCMT)
+  18900-              MONMSG MSGID(CPF0000)
+  19000-              CRTBNDRPG PGM(ASHIBATA2/READGBCMT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  19100                 SRCMBR(READGBCMT) DBGVIEW(*SOURCE)
+  19200-              DLTPGM PGM(ASHIBATA2/LRN400)
+  19300-              MONMSG MSGID(CPF0000)
+  19400-              CRTBNDRPG PGM(ASHIBATA2/LRN400) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  19500                 SRCMBR(LRN400) DBGVIEW(*SOURCE)
+  19600-              DLTPGM PGM(ASHIBATA2/LRN400AUT)
+  19700-              MONMSG MSGID(CPF0000)
+  19800-              CRTBNDRPG PGM(ASHIBATA2/LRN400AUT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  19900                 SRCMBR(LRN400AUT) DBGVIEW(*SOURCE)
+  20000-              DLTPGM PGM(ASHIBATA2/EXHBMENU)
+  20100-              MONMSG MSGID(CPF0000)
+  20200-              CRTBNDRPG PGM(ASHIBATA2/EXHBMENU) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  20300                 SRCMBR(EXHBMENU) DBGVIEW(*SOURCE)
+  20400-              DLTPGM PGM(ASHIBATA2/ADMADDSOFR)
+  20500-              MONMSG MSGID(CPF0000)
+  20600-              CRTBNDRPG PGM(ASHIBATA2/ADMADDSOFR) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  20700                 SRCMBR(ADMADDSOFR) DBGVIEW(*SOURCE)
+  20800-              DLTPGM PGM(ASHIBATA2/ADMCRTEXHB)
+  20900-              MONMSG MSGID(CPF0000)
+  21000-              CRTBNDRPG PGM(ASHIBATA2/ADMCRTEXHB) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  21100                 SRCMBR(ADMCRTEXHB) DBGVIEW(*SOURCE)
+  21200-              DLTPGM PGM(ASHIBATA2/ADMHIDECMT)
+  21300-              MONMSG MSGID(CPF0000)
+  21400-              CRTBNDRPG PGM(ASHIBATA2/ADMHIDECMT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  21500                 SRCMBR(ADMHIDECMT) DBGVIEW(*SOURCE)
+  21600-              DLTPGM PGM(ASHIBATA2/ADMLRN400)
+  21700-              MONMSG MSGID(CPF0000)
+  21800-              CRTBNDRPG PGM(ASHIBATA2/ADMLRN400) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  21900                 SRCMBR(ADMLRN400) DBGVIEW(*SOURCE)
+  22000-              DLTPGM PGM(ASHIBATA2/ADMOFRLIST)
+  22100-              MONMSG MSGID(CPF0000)
+  22200-              CRTBNDRPG PGM(ASHIBATA2/ADMOFRLIST) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  22300                 SRCMBR(ADMOFRLIST) DBGVIEW(*SOURCE)
+  22400-              DLTPGM PGM(ASHIBATA2/ADMSETTING)
+  22500-              MONMSG MSGID(CPF0000)
+  22600-              CRTBNDRPG PGM(ASHIBATA2/ADMSETTING) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  22700                 SRCMBR(ADMSETTING) DBGVIEW(*SOURCE)
+  22800-              DLTPGM PGM(ASHIBATA2/ADMVOTERPT)
+  22900-              MONMSG MSGID(CPF0000)
+  23000-              CRTBNDRPG PGM(ASHIBATA2/ADMVOTERPT) SRCFILE(ASHIBATA1/QRPGLESRC) +
+  23100                 SRCMBR(ADMVOTERPT) DBGVIEW(*SOURCE)
+  23200-              DLTPGM PGM(ASHIBATA2/VOTESTUB)
+  23300-              MONMSG MSGID(CPF0000)
+  23400-              CRTCLPGM PGM(ASHIBATA2/VOTESTUB) SRCFILE(ASHIBATA1/QCLSRC) SRCMBR(VOTESTUB)
+  23500-              DLTPGM PGM(ASHIBATA2/ADDGBSTUB)
+  23600-              MONMSG MSGID(CPF0000)
+  23700-              CRTCLPGM PGM(ASHIBATA2/ADDGBSTUB) SRCFILE(ASHIBATA1/QCLSRC) SRCMBR(ADDGBSTUB)
+  23800-              DLTPGM PGM(ASHIBATA2/READGBSTUB)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    6
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+  23900-              MONMSG MSGID(CPF0000)
+  24000-              CRTCLPGM PGM(ASHIBATA2/READGBSTUB) SRCFILE(ASHIBATA1/QCLSRC) +
+  24100                 SRCMBR(READGBSTUB)
+  24200-              DLTPGM PGM(ASHIBATA2/VCFSTUB)
+  24300-              MONMSG MSGID(CPF0000)
+  24400-              CRTCLPGM PGM(ASHIBATA2/VCFSTUB) SRCFILE(ASHIBATA1/QCLSRC) SRCMBR(VCFSTUB)
+  24500-              DLTPGM PGM(ASHIBATA2/LRN400STUB)
+  24600-              MONMSG MSGID(CPF0000)
+  24700-              CRTCLPGM PGM(ASHIBATA2/LRN400STUB) SRCFILE(ASHIBATA1/QCLSRC) +
+  24800                 SRCMBR(LRN400STUB)
+  24900-              DLTCMD CMD(ASHIBATA2/STREXHB)
+  25000-              MONMSG MSGID(CPF0000)
+  25100-              CRTCMD CMD(ASHIBATA2/STREXHB) PGM(ASHIBATA2/VCFSTUB) +
+  25200                 SRCFILE(ASHIBATA1/QCMDSRC) SRCMBR(STREXHB)
+  25300-              DLTCMD CMD(ASHIBATA2/STREXHBEDT)
+  25400-              MONMSG MSGID(CPF0000)
+  25500-              CRTCMD CMD(ASHIBATA2/STREXHBEDT) PGM(ASHIBATA2/ADMCRTEXHB) +
+  25600                 SRCFILE(ASHIBATA1/QCMDSRC) SRCMBR(STREXHBEDT)
+  25700-              DLTCMD CMD(ASHIBATA2/STRVOTERPT)
+  25800-              MONMSG MSGID(CPF0000)
+  25900-              CRTCMD CMD(ASHIBATA2/STRVOTERPT) PGM(ASHIBATA2/ADMVOTERPT) +
+  26000                 SRCFILE(ASHIBATA1/QCMDSRC) SRCMBR(STRVOTERPT)
+  26100-              DLTCMD CMD(ASHIBATA2/STRCMTEDT)
+  26200-              MONMSG MSGID(CPF0000)
+  26300-              CRTCMD CMD(ASHIBATA2/STRCMTEDT) PGM(ASHIBATA2/ADMHIDECMT) +
+  26400                 SRCFILE(ASHIBATA1/QCMDSRC) SRCMBR(STRCMTEDT)
+  26500-              DSPJOBLOG OUTPUT(*PRINT)
+  26600-              MONMSG MSGID(CPF0000)
+  26700-              ENDPGM
+                               * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    7
+                                          Cross Reference
+* CPD0792 10  No data areas, variables, or labels used in program.
+                     * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         ASHIBATA1/BUILDVCF    PUB400 26-10-14 07:54:05         Page    8
+                                          Message Summary
+               Severity
+ Total         0-9  10-19  20-29  30-39  40-49  50-59  60-69  70-79  80-89  90-99
+      1          0      1      0      0      0      0      0      0      0      0
+ Program BUILDVCF created in library ASHIBATA1 on 26-10-14 at 07:54:05.
+ Program BUILDVCF created in library ASHIBATA1. Maximum error severity 10.
+                               * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                 * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *
