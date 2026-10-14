@@ -37,4 +37,12 @@ final class DatabaseTests: XCTestCase {
         XCTAssertEqual(pageCount, 3)
         XCTAssertEqual(adminPassword, "VCF2024")
     }
+
+    func testBaselineIsNotReseededIntoEmptiedTables() throws {
+        let path = NSTemporaryDirectory() + "vcf400-reseed-\(UUID().uuidString).sqlite"
+        defer { try? FileManager.default.removeItem(atPath: path) }
+        try Database(path: path).execute("DELETE FROM VOTINGDB")
+        let reopened = try Database(path: path)
+        XCTAssertEqual(try reopened.query("SELECT COUNT(*) FROM VOTINGDB") { $0.int(0) }.first, 0)
+    }
 }

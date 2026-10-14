@@ -39,7 +39,7 @@ public struct GuestbookComment: Equatable, Sendable, Codable {
     public var exhbid: String
     public var guestname: String
     public var guestcmt: String
-    public var isVisible: Bool { visible == "Y" }
+    public var isVisible: Bool { visible != "N" }   // READGBCMT: VISIBLE = 'N' のみ非表示
 }
 
 /// SETTINGS (D-05)

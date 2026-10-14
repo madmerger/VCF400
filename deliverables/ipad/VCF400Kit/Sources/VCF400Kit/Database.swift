@@ -26,7 +26,11 @@ public final class Database {
         }
         try execute("PRAGMA journal_mode=WAL")
         try createSchema()
-        try seed()
+        // 初回作成時のみベースラインを投入 (以後は空テーブルでも再投入しない。初期化は -VCF_RESET)
+        if try query("PRAGMA user_version") { $0.int(0) }.first == 0 {
+            try seed()
+            try execute("PRAGMA user_version = 1")
+        }
     }
 
     public convenience init(inMemory: Bool) throws {

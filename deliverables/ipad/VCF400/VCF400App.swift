@@ -23,6 +23,8 @@ extension AppModel {
             try? FileManager.default.removeItem(atPath: path)
             try? FileManager.default.removeItem(atPath: path + "-wal")
             try? FileManager.default.removeItem(atPath: path + "-shm")
+            d.removeObject(forKey: AppModel.failuresKey)
+            d.removeObject(forKey: AppModel.lockedUntilKey)
         }
         let db: Database
         let dbError: Error?

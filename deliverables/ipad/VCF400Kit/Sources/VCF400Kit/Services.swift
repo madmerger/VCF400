@@ -84,7 +84,7 @@ public struct GuestbookService {
         if cmt.isEmpty { r.errLine = Messages.errnocmt; r.commentErr = true } else { validate += 1 }
         if validate != 3 { return r }
         let newId = (repo.lastComment()?.cmtid ?? 0) + 1                       // B-06
-        let c = GuestbookComment(cmtid: newId, visible: "Y", exhbid: id, guestname: name.left(20), guestcmt: cmt.left(200))
+        let c = GuestbookComment(cmtid: newId, visible: "Y", exhbid: id, guestname: inName.left(20), guestcmt: inCmt.left(200))
         do { try repo.insert(c) } catch { return AddResult(errLine: "\(error)") }
         return AddResult(errLine: nil, added: c)
     }

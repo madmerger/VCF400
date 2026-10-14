@@ -162,4 +162,16 @@ final class ServicesTests: XCTestCase {
         repo.updateSetting("ADMPSWRD", "NEWPW")
         XCTAssertTrue(k.exitAllowed("NEWPW")); XCTAssertFalse(k.exitAllowed("VCF2024")); XCTAssertFalse(k.exitAllowed("WRONGPW"))
     }
+
+    func testOnlyVisibleNIsHidden() throws {
+        try repo.db.execute("UPDATE GUESTBKDB SET VISIBLE = '' WHERE CMTID = 1")
+        XCTAssertEqual(GuestbookService(repo: repo).read(own, id: 1)?.outName, "Great exhib")
+        try repo.db.execute("UPDATE GUESTBKDB SET VISIBLE = 'N' WHERE CMTID = 1")
+        XCTAssertEqual(GuestbookService(repo: repo).read(own, id: 1)?.outName, "Name Hidden")
+    }
+    func testCommentStoredAsEntered() {
+        let r = GuestbookService(repo: repo).add(own, name: " Tester", exhibit: "", comment: "  indented")
+        XCTAssertEqual(r.added?.guestname, " Tester"); XCTAssertEqual(r.added?.guestcmt, "  indented")
+        XCTAssertNotNil(GuestbookService(repo: repo).add(own, name: "   ", exhibit: "", comment: "x").errLine)
+    }
 }

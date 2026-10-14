@@ -6,7 +6,9 @@ struct RootView: View {
 
     var body: some View {
         NavigationStack(path: $model.path) {
-            MainMenuView()
+            Group {
+                if let exhibit = model.kioskRoot { KioskView(exhibitId: exhibit) } else { MainMenuView() }
+            }
                 .navigationDestination(for: Route.self) { route in
                     destination(route)
                 }

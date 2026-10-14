@@ -45,8 +45,17 @@ final class AppModel: ObservableObject {
     @Published var path: [Route] = []
     @Published var message: String?
     @Published var dbWarning: String?
-    @Published var kioskPasswordFailures = 0
-    @Published var kioskPasswordLockedUntil: Date?
+    /// キオスク端末として起動中の展示 (EXHBMENU をルート画面にし、戻る操作で VCFMAIN に出られないようにする)
+    @Published var kioskRoot: String?
+    /// 管理者パスワード試行制限 (再起動でリセットされないよう UserDefaults に保存)
+    @Published var kioskPasswordFailures = UserDefaults.standard.integer(forKey: AppModel.failuresKey) {
+        didSet { UserDefaults.standard.set(kioskPasswordFailures, forKey: AppModel.failuresKey) }
+    }
+    @Published var kioskPasswordLockedUntil: Date? = UserDefaults.standard.object(forKey: AppModel.lockedUntilKey) as? Date {
+        didSet { UserDefaults.standard.set(kioskPasswordLockedUntil, forKey: AppModel.lockedUntilKey) }
+    }
+    static let failuresKey = "VCF_KIOSK_PW_FAILURES"
+    static let lockedUntilKey = "VCF_KIOSK_PW_LOCKED_UNTIL"
     let defaultProfile: String
 
     init(repo: Repositories, profile: String) {
@@ -88,7 +97,8 @@ final class AppModel: ObservableObject {
         }
         message = nil
         launch = Launch(e.exhusrprf)
-        path = [.kiosk(exhibit: e.exhusrprf)]
+        kioskRoot = e.exhusrprf
+        path = []
     }
 
     /// EXHBMENU の番号 → 機能 (1: ELIGIBLE, 2: ENLRN400 で制御、7: 隠し終了)
@@ -107,16 +117,13 @@ final class AppModel: ObservableObject {
 
     /// プログラム終了 → 呼出元 (キオスクメニュー or VCFMAIN)
     func returnToCaller() {
-        if let i = path.lastIndex(where: { if case .kiosk = $0 { return true } else { return false } }) {
-            path = Array(path[...i])
-        } else {
-            path = []
-        }
+        path = []
     }
 
     func signOn(_ profile: String) {
         message = nil
         launch = Launch(profile.isEmpty ? defaultProfile : profile)
+        kioskRoot = nil
         path = []
     }
 
@@ -139,6 +146,7 @@ final class AppModel: ObservableObject {
     func exitKiosk(_ exhibit: String, password: String) {
         if kiosk.exitAllowed(password) {
             launch = Launch(defaultProfile)
+            kioskRoot = nil
             path = []
             message = String(format: L10n.kioskEnded, exhibit)
         } else {
@@ -149,7 +157,7 @@ final class AppModel: ObservableObject {
     var exhibitProtected: Bool { !launch.isShared }
 
     /// 最前面の画面コード (NavigationStack 下層の画面はアクセシビリティツリーから外す)
-    var currentScreen: String { path.last?.screenCode ?? "VCFMAIN" }
+    var currentScreen: String { path.last?.screenCode ?? (kioskRoot == nil ? "VCFMAIN" : "KIOSK") }
 }
 
 /// DDS 数値フィールド (CHECK(RZ)) の入力解釈: 数字以外・空は 0
