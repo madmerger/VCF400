@@ -340,7 +340,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only")
     ap.add_argument("--no-reset", action="store_true",
-                    help="skip the baseline reseed both before and after the run (use existing data)")
+                    help="skip the baseline reseed before the run (the run still reseeds afterwards)")
+    ap.add_argument("--keep-data", action="store_true",
+                    help="debug only: skip the reseed after the run and leave test data in the library")
     ap.add_argument("--frames", metavar="PATH")
     a = ap.parse_args()
     cases = load_cases(a.only)
@@ -390,7 +392,7 @@ def main():
         p.save_frames()
         p.s.signoff()
     finally:
-        if not a.no_reset:
+        if not a.keep_data:
             print("final PUB400 baseline reset ...", flush=True)
             pub400_db.sql(pub400_db.BASELINE)
 
