@@ -1,0 +1,51 @@
+=== PHASE 1 FINAL BASELINE SEED 2026-09-07T15:30:39Z ===
+--- reset ---
+
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+
+ **** CLI ERROR *****
+         SQLSTATE: 02000
+NATIVE ERROR CODE: 100
+Row not found for DELETE. 
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+
+--- final dump ---
+{
+  "votes": [
+    {
+      "badge": 1,
+      "award": 1,
+      "exhibit": "ASHIBATA"
+    },
+    {
+      "badge": 28,
+      "award": 2,
+      "exhibit": "ASHIBATA"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Great exhibit",
+      "comment": "VCF/400 running on PUB400."
+    },
+    {
+      "id": 2,
+      "visible": "Y",
+      "exhibit": "ASHIBATA",
+      "name": "Devin",
+      "comment": "VCF/400 is running on PUB400."
+    }
+  ],
+  "settings": {
+    "ADMPSWRD": "VCF2024",
+    "ALWVOTE": "Y"
+  }
+}

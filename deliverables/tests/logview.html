@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>VCF/400 Phase 5 cross-validation log</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0f172a; color: #e2e8f0; font: 11px/1.35 ui-monospace, Menlo, monospace; }
+  header { position: sticky; top: 0; padding: 8px 12px; background: #1e293b; border-bottom: 1px solid #334155; font-weight: 700; font-size: 12px; }
+  header span { color: #38bdf8; }
+  pre { margin: 0; padding: 10px 12px; white-space: pre-wrap; word-break: break-all; }
+  .step { color: #22d3ee; font-weight: 700; }
+  .case { color: #fbbf24; font-weight: 700; }
+  .pass { color: #4ade80; }
+  .fail { color: #f87171; font-weight: 700; }
+  .screen { color: #a5b4fc; }
+</style>
+</head>
+<body>
+<header>VCF/400 クロス検証 (PUB400 / Java Web / iPad) &mdash; <span id="t"></span></header>
+<pre id="log"></pre>
+<script>
+  const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  function colour(line) {
+    const l = esc(line.replace(/\x1b\[[0-9;]*m/g, ''));
+    if (line.startsWith('########')) return `<span class="step">${l}</span>`;
+    if (/^CV-\d\d /.test(line) || /^\[(pub400|java|ipad)\] CV-/.test(line)) return `<span class="case">${l}</span>`;
+    if (line.startsWith('-----')) return `<span class="screen">${l}</span>`;
+    if (/PASS/.test(line) && /CV-\d\d/.test(line)) return `<span class="pass">${l}</span>`;
+    if (/FAIL|!!|NG /.test(line) && /CV-\d\d|!!/.test(line)) return `<span class="fail">${l}</span>`;
+    return l;
+  }
+  async function tick() {
+    try {
+      const r = await fetch('run_all.log?' + Date.now(), { cache: 'no-store' });
+      const text = await r.text();
+      const lines = text.split('\n');
+      document.getElementById('log').innerHTML = lines.slice(-400).map(colour).join('\n');
+      document.getElementById('t').textContent = new Date().toISOString().replace('T', ' ').slice(0, 19) + 'Z';
+      window.scrollTo(0, document.body.scrollHeight);
+    } catch (e) { /* server not ready yet */ }
+    setTimeout(tick, 700);
+  }
+  tick();
+</script>
+</body>
+</html>

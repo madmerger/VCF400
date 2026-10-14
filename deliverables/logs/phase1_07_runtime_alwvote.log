@@ -1,0 +1,130 @@
+--- run started 2026-09-07T15:29:48Z
+--- SETTINGS before: SETTING   VALUE     | --------- --------- | ADMPSWRD  VCF2024   | ALWVOTE   Y         |  |   2 RECORD(S) SELECTED.
+--- SQL: update ASHIBATA2.SETTINGS set VALUE='N' where SETTING='ALWVOTE'
+--- DB20000I  THE SQL COMMAND COMPLETED SUCCESSFULLY.
+--- SETTINGS after update: SETTING   VALUE     | --------- --------- | ADMPSWRD  VCF2024   | ALWVOTE   N         |  |   2 RECORD(S) SELECTED.
+
+===== Sign On =====
++--------------------------------------------------------------------------------+
+|         Welcome to PUB400.COM * your public IBM i server                       |
+|                                               Server name . . . :   PUB400     |
+|                                               Subsystem . . . . :   QINTER2    |
+|                                               Display name. . . :   QPADEV002G |
+|Your user name:                                                                 |
+|Password (max. 128):                                                            |
+|                                                                                |
+|=============================================================================== |
+|        ***** Welcome to IBM i 7.5 *****                                        |
+|                                                                                |
+|* Beware: each sunday morning system is being restarted for update / cleanup.   |
+|                                                                                |
+|*** PUB400.COM is now 25 years old. Time to progress...                         |
+|                                                                                |
+|* Password rules: min 6 chars, one digit needed                                 |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|- Check out https://pub400.com for news, tools, chat, forum                     |
+|connect with SSH to port 2222 -> ssh username  -p 2222                          |
+|visit http://POWERbunker.com for professional IBM i hosting                     |
+|                                                                                |
+|                                        (C) COPYRIGHT IBM CORP. 1980, 2021.     |
++--------------------------------------------------------------------------------+
+--- input: [hidden] user
+--- input: password (hidden)
+--- input: '\r' [Enter]
+--- input: 'CHGLIBL LIBL(ASHIBATA2 ASHIBATA1 QGPL QTEMP) CURLIB(ASHIBATA2)' command line
+--- input: '\r' [Enter]
+--- input: 'GO ASHIBATA2/VCFMAIN' command line
+--- input: '\r' [Enter]
+--- input: '11' VCFMAIN option 11 (Nominate Exhibit for Award) with ALWVOTE=N
+--- input: '\r' [Enter]
+
+===== NTRSTIT intro =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== ADDVOTE with ALWVOTE=N (ENDOFCON expected) =====
++--------------------------------------------------------------------------------+
+|    ____   ___  ____  ______   ___                                              |
+|   / ___] / _    _    _   / / ]                                                 |
+|    __   ] ] ] ]_) ] ]_)  V /] ]                                                |
+|    ___) ] ]_] ]  _ <]  _ < ] ] ]_]                                             |
+|   ]____/  __/]_]   ]   _] (_)                                                  |
+|                                                                                |
+|                                                                                |
+|   The voting period has ended and you can no longer vote.                      |
+|   However, you may sign this exhibit guestbook if you would like.              |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   Press ENTER to exit.                                                         |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== after ENTER =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b3' [F3]
+--- SETTINGS restored: SETTING   VALUE     | --------- --------- | ADMPSWRD  VCF2024   | ALWVOTE   Y         |  |   2 RECORD(S) SELECTED.

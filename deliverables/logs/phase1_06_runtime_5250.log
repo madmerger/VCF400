@@ -1,0 +1,2209 @@
+--- run started 2026-09-07T15:25:09Z, test badge=9705
+
+===== Sign On =====
++--------------------------------------------------------------------------------+
+|         Welcome to PUB400.COM * your public IBM i server                       |
+|                                               Server name . . . :   PUB400     |
+|                                               Subsystem . . . . :   QINTER2    |
+|                                               Display name. . . :   QPADEV002G |
+|Your user name:                                                                 |
+|Password (max. 128):                                                            |
+|                                                                                |
+|=============================================================================== |
+|        ***** Welcome to IBM i 7.5 *****                                        |
+|                                                                                |
+|* Beware: each sunday morning system is being restarted for update / cleanup.   |
+|                                                                                |
+|*** PUB400.COM is now 25 years old. Time to progress...                         |
+|                                                                                |
+|* Password rules: min 6 chars, one digit needed                                 |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|- Check out https://pub400.com for news, tools, chat, forum                     |
+|connect with SSH to port 2222 -> ssh username  -p 2222                          |
+|visit http://POWERbunker.com for professional IBM i hosting                     |
+|                                                                                |
+|                                        (C) COPYRIGHT IBM CORP. 1980, 2021.     |
++--------------------------------------------------------------------------------+
+--- input: [hidden] user
+--- input: password (hidden)
+--- input: '\r' [Enter]
+
+===== IBM i MAIN after sign-on =====
++--------------------------------------------------------------------------------+
+| MAIN                           IBM i Main Menu                                 |
+|                                                             System:   PUB400   |
+| Select one of the following:                                                   |
+|                                                                                |
+|      1. User tasks                                                             |
+|      2. Office tasks                                                           |
+|      3. General system tasks                                                   |
+|      4. Files, libraries, and folders                                          |
+|      5. Programming                                                            |
+|      6. Communications                                                         |
+|      7. Define or change the system                                            |
+|      8. Problem handling                                                       |
+|      9. Display a menu                                                         |
+|     10. Information Assistant options                                          |
+|     11. IBM i Access tasks                                                     |
+|                                                                                |
+|     90. Sign off                                                               |
+|                                                                                |
+| Selection or command                                                           |
+| ===>                                                                           |
+|                                                                                |
+| F3=Exit   F4=Prompt   F9=Retrieve   F12=Cancel   F13=Information Assistant     |
+| F23=Set initial menu                                                           |
+| (C) COPYRIGHT IBM CORP. 1980, 2021.                                            |
++--------------------------------------------------------------------------------+
+--- DB snapshot: before
+--- ASHIBATA2/VOTINGDB
+BADGENBR  AWARDNBR  EXHBNBR  
+--------- --------- ---------
+        1         1 ASHIBATA 
+       28         2 ASHIBATA 
+
+  2 RECORD(S) SELECTED.
+--- ASHIBATA2/GUESTBKDB
+CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
+------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
+     2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
+
+  2 RECORD(S) SELECTED.
+--- input: 'CHGLIBL LIBL(ASHIBATA2 ASHIBATA1 QGPL QTEMP) CURLIB(ASHIBATA2)' command line
+--- input: '\r' [Enter]
+
+===== after CHGLIBL =====
++--------------------------------------------------------------------------------+
+| MAIN                           IBM i Main Menu                                 |
+|                                                             System:   PUB400   |
+| Select one of the following:                                                   |
+|                                                                                |
+|      1. User tasks                                                             |
+|      2. Office tasks                                                           |
+|      3. General system tasks                                                   |
+|      4. Files, libraries, and folders                                          |
+|      5. Programming                                                            |
+|      6. Communications                                                         |
+|      7. Define or change the system                                            |
+|      8. Problem handling                                                       |
+|      9. Display a menu                                                         |
+|     10. Information Assistant options                                          |
+|     11. IBM i Access tasks                                                     |
+|                                                                                |
+|     90. Sign off                                                               |
+|                                                                                |
+| Selection or command                                                           |
+| ===>                                                                           |
+|                                                                                |
+| F3=Exit   F4=Prompt   F9=Retrieve   F12=Cancel   F13=Information Assistant     |
+| F23=Set initial menu                                                           |
+| Current library changed to ASHIBATA2.                                        + |
++--------------------------------------------------------------------------------+
+--- input: 'GO ASHIBATA2/VCFMAIN' command line
+--- input: '\r' [Enter]
+
+===== VCFMAIN (AS/400 DEMO MENU) =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '11' VCFMAIN option 11 (Nominate Exhibit for Award)
+--- input: '\r' [Enter]
+
+===== NTRSTIT intro (INTERSCR) [empty input] =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [empty input] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+
+===== VOTESCR filled [empty input (F5 with nothing typed)] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [empty input (F5 with nothing typed)] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|             Must enter Award ID                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [empty input (F5 with nothing typed)] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '11' VCFMAIN option 11 (Nominate Exhibit for Award)
+--- input: '\r' [Enter]
+
+===== NTRSTIT intro (INTERSCR) [valid vote] =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [valid vote] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9705' type INPUTBADGE (4 digits, auto-advance) (4 digits -> auto-advance)
+--- input: '1' type INPUTAWARD
+
+===== VOTESCR filled [valid vote] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9705                   |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......: 001                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [valid vote] =====
++--------------------------------------------------------------------------------+
+|    _____ _   _    _    _   _ _  __                                             |
+|   ]_   _] ] ] ]  /   ]  ] ] ]/ /                                               |
+|     ] ] ] ]_] ] / _  ]    ]   /                                                |
+|     ] ] ]  _  ]/ ___   ]  ] .                                                  |
+|     ]_] ]_] ]_/_/     ]  ]_]                                                   |
+|            __   _____  _   _   _____ ___  ____                                 |
+|              / / _   ] ] ] ]  ___/ _    _                                 --   |
+|              V / ] ] ] ] ] ] ] ]_ ] ] ] ] ]_) ]                                |
+|              ] ]] ]_] ] ]_] ] ]  _]] ]_] ]  _ /                                |
+|              ]_]  __/  __/  ]_]    __/]_]                                      |
+|                      __     _____ _____ ___ _   _  ____ _                      |
+|                          / / _     _]_ _]  ] ]/ ___] ]                         |
+|                         / / ] ] ]] ]  ] ]]    ] ]  _] ]                        |
+|                         V /] ]_] ]] ]  ] ]] ]  ] ]_] ]_]                       |
+|                          /   __/ ]_] ]___]_]  ] ___(_)                         |
+|   --------------------------------------------------------------------------   |
+|    Your vote has been RECORDED| Thank you for participating in the awards      |
+|    show for Vintage Computer Festival Southeast 2024| Enjoy the rest of        |
+|    our exhibits and the rest of the Southern Fried Gaming Expo|                |
+|                                                                                |
+|    Press ENTER to return to the main menu.                                     |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== back on VCFMAIN [valid vote] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '11' VCFMAIN option 11 (Nominate Exhibit for Award)
+--- input: '\r' [Enter]
+
+===== NTRSTIT intro (INTERSCR) [duplicate badge] =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [duplicate badge] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9705' type INPUTBADGE (same badge again) (4 digits -> auto-advance)
+--- input: '2' type INPUTAWARD
+
+===== VOTESCR filled [duplicate badge] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9705                   |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......: 002                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [duplicate badge] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|             You have already voted.                                            |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [duplicate badge] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '11' VCFMAIN option 11 (Nominate Exhibit for Award)
+--- input: '\r' [Enter]
+
+===== NTRSTIT intro (INTERSCR) [nonexistent award] =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [nonexistent award] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9706' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '9' type INPUTAWARD
+
+===== VOTESCR filled [nonexistent award] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9706                   |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......: 009                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [nonexistent award] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...: ASHIBATA               |
+|      Third, type the Award ID you are selecting.......:                        |
+|             Award does not exist.                                              |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [nonexistent award] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: "CALL ASHIBATA2/ADDVOTE PARM('MM2024')" kiosk launch: ADDVOTE with LAUNCH='MM2024' (exhibit ID field open)
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [kiosk MM2024 / nonexistent exhibit] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9706' type INPUTBADGE (4 digits -> auto-advance)
+--- input: 'NOSUCH' type INEXHB
+--- input: '1' type INPUTAWARD
+
+===== VOTESCR filled [kiosk MM2024 / nonexistent exhibit] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9706                   |
+|      Second, type the Exhibit ID you are nominating...: NOSUCH                 |
+|      Third, type the Award ID you are selecting.......: 001                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [kiosk MM2024 / nonexistent exhibit] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|             Exhibit does not exist                                             |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [kiosk MM2024 / nonexistent exhibit] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: "CALL ASHIBATA2/ADDVOTE PARM('MM2024')" kiosk launch: ADDVOTE with LAUNCH='MM2024' (exhibit ID field open)
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [kiosk MM2024 / blank exhibit] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9706' type INPUTBADGE (4 digits -> auto-advance)
+--- input: '\t' [Tab] skip INEXHB
+--- input: '1' type INPUTAWARD
+
+===== VOTESCR filled [kiosk MM2024 / blank exhibit] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9706                   |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......: 001                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [kiosk MM2024 / blank exhibit] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|             Must enter Exhibit ID                                              |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [kiosk MM2024 / blank exhibit] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: "CALL ASHIBATA2/ADDVOTE PARM('MM2024')" kiosk launch: ADDVOTE with LAUNCH='MM2024' (exhibit ID field open)
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [kiosk MM2024 / ineligible exhibit NOVOTE] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9706' type INPUTBADGE (4 digits -> auto-advance)
+--- input: 'NOVOTE' type INEXHB
+--- input: '1' type INPUTAWARD
+
+===== VOTESCR filled [kiosk MM2024 / ineligible exhibit NOVOTE] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9706                   |
+|      Second, type the Exhibit ID you are nominating...: NOVOTE                 |
+|      Third, type the Award ID you are selecting.......: 001                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [kiosk MM2024 / ineligible exhibit NOVOTE] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|             Exhibit ineligible for award                                       |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [kiosk MM2024 / ineligible exhibit NOVOTE] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: "CALL ASHIBATA2/ADDVOTE PARM('MM2024')" kiosk launch: ADDVOTE with LAUNCH='MM2024' (exhibit ID field open)
+--- input: '\r' [Enter]
+
+===== VOTESCR initial [kiosk MM2024 / eligible exhibit DEMO400] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............:                        |
+|      Second, type the Exhibit ID you are nominating...:                        |
+|      Third, type the Award ID you are selecting.......:                        |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '9706' type INPUTBADGE (4 digits -> auto-advance)
+--- input: 'DEMO400' type INEXHB
+--- input: '2' type INPUTAWARD
+
+===== VOTESCR filled [kiosk MM2024 / eligible exhibit DEMO400] =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL      NOMINATE EXHIBIT FOR AWARD                     |
+|                                                                                |
+|      First, type your SFGE Badge Number...............: 9706                   |
+|      Second, type the Exhibit ID you are nominating...: DEMO400                |
+|      Third, type the Award ID you are selecting.......: 002                    |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|    Available Awards for This Year:                                             |
+|    001. Best in Show Award   - This award is given to the exhibit who you      |
+|         believe to be the best in show for 2024.                               |
+|                                                                                |
+|    002. The Ed Fair Award    - This award is given to the exhibit that is      |
+|         deemed the most informative of the show.                               |
+|   --------------------------------------------------------------------------   |
+|   You may only vote for ONE award.  Choose your nomination carefully|          |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   TAB = Switch Fields                                            V1R0M4        |
+|   Cmd5/F5 = Submit Vote      Cmd12/F12 = Cancel                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== VOTESCR after F5 [kiosk MM2024 / eligible exhibit DEMO400] =====
++--------------------------------------------------------------------------------+
+|    _____ _   _    _    _   _ _  __                                             |
+|   ]_   _] ] ] ]  /   ]  ] ] ]/ /                                               |
+|     ] ] ] ]_] ] / _  ]    ]   /                                                |
+|     ] ] ]  _  ]/ ___   ]  ] .                                                  |
+|     ]_] ]_] ]_/_/     ]  ]_]                                                   |
+|            __   _____  _   _   _____ ___  ____                                 |
+|              / / _   ] ] ] ]  ___/ _    _                                 --   |
+|              V / ] ] ] ] ] ] ] ]_ ] ] ] ] ]_) ]                                |
+|              ] ]] ]_] ] ]_] ] ]  _]] ]_] ]  _ /                                |
+|              ]_]  __/  __/  ]_]    __/]_]                                      |
+|                      __     _____ _____ ___ _   _  ____ _                      |
+|                          / / _     _]_ _]  ] ]/ ___] ]                         |
+|                         / / ] ] ]] ]  ] ]]    ] ]  _] ]                        |
+|                         V /] ]_] ]] ]  ] ]] ]  ] ]_] ]_]                       |
+|                          /   __/ ]_] ]___]_]  ] ___(_)                         |
+|   --------------------------------------------------------------------------   |
+|    Your vote has been RECORDED| Thank you for participating in the awards      |
+|    show for Vintage Computer Festival Southeast 2024| Enjoy the rest of        |
+|    our exhibits and the rest of the Southern Fried Gaming Expo|                |
+|                                                                                |
+|    Press ENTER to return to the main menu.                                     |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== back on VCFMAIN [kiosk MM2024 / eligible exhibit DEMO400] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- DB snapshot: after votes
+--- ASHIBATA2/VOTINGDB
+BADGENBR  AWARDNBR  EXHBNBR  
+--------- --------- ---------
+        1         1 ASHIBATA 
+       28         2 ASHIBATA 
+     9705         1 ASHIBATA 
+     9706         2 DEMO400  
+
+  4 RECORD(S) SELECTED.
+--- ASHIBATA2/GUESTBKDB
+CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
+------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
+     2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
+
+  2 RECORD(S) SELECTED.
+--- input: '12' VCFMAIN option 12 (Sign Exhibit Guestbook)
+--- input: '\r' [Enter]
+
+===== NTRSTIT intro (INTERSCR) [guestbook] =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== GUESTBKSCR/ADDCMT initial =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT                      |
+|                                                                                |
+|  Your Name................:                                                    |
+|  Exhibit ID...............:   ASHIBATA                                         |
+|  Comment..................:                                                    |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel                           |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== GUESTBKSCR/ADDCMT F5 with empty input =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT                      |
+|                                                                                |
+|  Your Name................:                                                    |
+|  Exhibit ID...............:   ASHIBATA                                         |
+|  Comment..................:                                                    |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Must enter a comment                                                        |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel                           |
++--------------------------------------------------------------------------------+
+--- input: '\x12' [Reset]
+--- input: 'Devin Tester' type INNAME
+--- input: 'Phase1 runtime check badge 9705' type INCMT
+
+===== GUESTBKSCR/ADDCMT filled =====
++--------------------------------------------------------------------------------+
+|  VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - ADD COMMENT                      |
+|                                                                                |
+|  Your Name................:   Devin Tester                                     |
+|  Exhibit ID...............:   ASHIBATA                                         |
+|  Comment..................:                                                    |
+|  Phase1 runtime check badge 9705                                               |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Must enter a comment                                                        |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  Cmd5 / F5 = Submit Comment     Cmd12 / F12 = Cancel                           |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== GUESTBKSCR after F5 (ENDCMT expected) =====
++--------------------------------------------------------------------------------+
+|                                                                                |
+|     _______ _    _          _   _ _  __ _____                                  |
+|    ]__   __] ]  ] ]   /   ]  ] ] ]/ // ____]                                   |
+|       ] ]  ] ]__] ]  /    ]    ]   /] (___                                     |
+|       ] ]  ]  __  ] / /  ] . ` ]  /   __                                       |
+|       ] ]  ] ]  ] ]/ ____   ]  ] .  ____) ]                                    |
+|     __]_]_ ]_]_ ]_/_/_     ]_ ]_]  ____/__                                     |
+|    ]  ____/ __    __   ]__   __] ]  ] ]  ____]                                 |
+|    ] ]__ ] ]  ] ] ]__) ]    ] ]  ] ]__] ] ]__                                  |
+|    ]  __]] ]  ] ]  _  /     ] ]  ]  __  ]  __]                                 |
+|    ] ]   ] ]__] ] ]       ] ]  ] ]  ] ] ]____                                  |
+|    ]_]____ ___/]_]    _  ]_]__]_]_ ]_]______]___ _                             |
+|     / ____/ __       ]     ]  ____]  ] ]__   __] ]                             |
+|    ] ]   ] ]  ] ]   / ]   / ] ]__  ]    ]  ] ]  ] ]                            |
+|    ] ]   ] ]  ] ] ] ] ] ] ] ]  __] ] . ` ]  ] ]  ] ]                           |
+|    ] ]___] ]__] ] ]  ] ] ]  ] ] ]____] ]  ]  ] ]  ]_]                          |
+|      ____ ___/]_]  ]_]_]  ]_]______]_]  ]  ]_]  (_)                            |
+|                                                                                |
+|   Thank you for commenting on this exhibit| Your Comment ID Is:                |
+|                                                                                |
+|   Press ENTER to exit.                                                         |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== back on VCFMAIN [after guestbook add] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- DB snapshot: after guestbook add
+--- ASHIBATA2/VOTINGDB
+BADGENBR  AWARDNBR  EXHBNBR  
+--------- --------- ---------
+        1         1 ASHIBATA 
+       28         2 ASHIBATA 
+     9705         1 ASHIBATA 
+     9706         2 DEMO400  
+
+  4 RECORD(S) SELECTED.
+--- ASHIBATA2/GUESTBKDB
+CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
+------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
+     2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
+     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 9705                                                                                                                                                                         
+
+  3 RECORD(S) SELECTED.
+--- input: '13' VCFMAIN option 13 (Read a Guestbook Comment)
+--- input: '\r' [Enter]
+
+===== intro [read guestbook] =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== GUESTBKSCR/READCMT initial =====
++--------------------------------------------------------------------------------+
+|   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
+|                                                                                |
+|   Enter a Comment ID:                          Currently hosting 0003          |
+|   ASHIBATA                                     comments and counting.          |
+|   --------------------------------------------------------------------------   |
+|                 says to:                                                       |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Is this comment inappropriate? Please report the Comment ID to the          |
+|    folks at the Midrange Madness table and we will address the comment.        |
+|   --------------------------------------------------------------------------   |
+|    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel                                    |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== READCMT F5 with empty comment ID =====
++--------------------------------------------------------------------------------+
+|   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
+|                                                                                |
+|   Enter a Comment ID:                          Currently hosting 0003          |
+|   Must enter CommentID                         comments and counting.          |
+|   --------------------------------------------------------------------------   |
+|                 says to:                                                       |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Is this comment inappropriate? Please report the Comment ID to the          |
+|    folks at the Midrange Madness table and we will address the comment.        |
+|   --------------------------------------------------------------------------   |
+|    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel                                    |
++--------------------------------------------------------------------------------+
+--- input: '\x12' [Reset]
+--- input: '1' type INCMTID
+--- input: '\x1b5' [F5]
+
+===== READCMT after F5 with comment ID 1 =====
++--------------------------------------------------------------------------------+
+|   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
+|                                                                                |
+|   Enter a Comment ID:                          Currently hosting 0003          |
+|   ASHIBATA                                     comments and counting.          |
+|   --------------------------------------------------------------------------   |
+|   Great exhib   says to:   IBM i on PUB400 Demo                                |
+|                                                                                |
+|   VCF/400 running on PUB400.                                                   |
+|                                                                                |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Is this comment inappropriate? Please report the Comment ID to the          |
+|    folks at the Midrange Madness table and we will address the comment.        |
+|   --------------------------------------------------------------------------   |
+|    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel                                    |
++--------------------------------------------------------------------------------+
+--- input: '\x12' [Reset]
+--- input: '9999' type INCMTID (nonexistent)
+--- input: '\x1b5' [F5]
+
+===== READCMT after F5 with comment ID 9999 =====
++--------------------------------------------------------------------------------+
+|   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
+|                                                                                |
+|   Enter a Comment ID:                          Currently hosting 0003          |
+|   ASHIBATA                                     comments and counting.          |
+|   --------------------------------------------------------------------------   |
+|   Devin Teste   says to:   IBM i on PUB400 Demo                                |
+|                                                                                |
+|   Phase1 runtime check badge 9705                                              |
+|                                                                                |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Is this comment inappropriate? Please report the Comment ID to the          |
+|    folks at the Midrange Madness table and we will address the comment.        |
+|   --------------------------------------------------------------------------   |
+|    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel                                    |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+
+===== back on VCFMAIN [after read guestbook] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '1' VCFMAIN option 1 (Learn AS/400 Navigation)
+--- input: '\r' [Enter]
+
+===== LRN400SCR page 1 =====
++--------------------------------------------------------------------------------+
+|  LEARN/400                                                          Page  0001 |
+|  _____________________________________________________________________________ |
+|Welcome to LEARN/400| This is page 1. Press F5 for next page, F8 for previous, F|
+|3 to exit.                                                                      |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  _____________________________________________________________________________ |
+|  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards                     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== LRN400SCR after F5 (forward -> page 2) =====
++--------------------------------------------------------------------------------+
+|  LEARN/400                                                          Page  0002 |
+|  _____________________________________________________________________________ |
+|The AS/400 was introduced by IBM in June 1988 ... page 2                        |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  _____________________________________________________________________________ |
+|  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards                     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b8' [F8]
+
+===== LRN400SCR after F8 (back -> page 1) =====
++--------------------------------------------------------------------------------+
+|  LEARN/400                                                          Page  0001 |
+|  _____________________________________________________________________________ |
+|Welcome to LEARN/400| This is page 1. Press F5 for next page, F8 for previous, F|
+|3 to exit.                                                                      |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  _____________________________________________________________________________ |
+|  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards                     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b5' [F5]
+
+===== LRN400SCR after F5 (page 2) =====
++--------------------------------------------------------------------------------+
+|  LEARN/400                                                          Page  0002 |
+|  _____________________________________________________________________________ |
+|The AS/400 was introduced by IBM in June 1988 ... page 2                        |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  _____________________________________________________________________________ |
+|  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards                     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b3' [F3]
+
+===== after F3 (exit LRN400) =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+
+===== back on VCFMAIN [after LRN400 F3] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '1' VCFMAIN option 1 again (walk to the END page)
+--- input: '\r' [Enter]
+--- input: '\x1b5' [F5]
+--- input: '\x1b5' [F5]
+
+===== LRN400SCR after F5 x2 (page 3 has EXTRA='END' -> program exits) =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+
+===== back on VCFMAIN [after LRN400 END] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: 'CALL ASHIBATA2/VCFSTUB' STREXHB equivalent: EXHBMENU for current user
+--- input: '\r' [Enter]
+
+===== EXHBMENUSC (kiosk) for exhibit ASHIBATA =====
++--------------------------------------------------------------------------------+
+|  WELCOME TO...                                                                 |
+|     IBM i on PUB400 Demo                                                       |
+|  HOSTED BY Akira Shibata             OF Tokyo           JP                     |
+|  ----------------------------------------------------------------------------  |
+| VCF/400 demo exhibit running on pub400.com                                     |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  ----------------------------------------------------------------------------  |
+|   1. Nominate This Exhibit for Award                                           |
+|   2. Learn More About This Exhibit                                             |
+|   3. Sign Exhibit Guestbook                                                    |
+|   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '4' type INOPT=4 (Read Exhibit Guestbook)
+--- input: '\r' [Enter]
+
+===== kiosk option 4 -> NTRSTIT intro =====
++--------------------------------------------------------------------------------+
+|  VCF/400 - How to Navigate                                                     |
+|                                                                                |
+|  Before you start, here is how to navigate:                                    |
+|  ----------------------------------------------------------------------------- |
+|  Use ARROW KEYS or TAB KEY to move between fields.                             |
+|                                                                                |
+|  Use F5 or ENTER to perform your action.                                       |
+|                                                                                |
+|  Use F12 to quit at any time.                                                  |
+|                                                                                |
+|                                                                                |
+|  Keyboard not responding? If you see X II in the left corner, press RIGHT CTRL |
+|  to continue.                                                                  |
+|  ----------------------------------------------------------------------------- |
+|                                                                                |
+|                                Got all that?                                   |
+|                           Press ENTER to continue.                             |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\r' [Enter]
+
+===== kiosk option 4 -> READCMT =====
++--------------------------------------------------------------------------------+
+|   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
+|                                                                                |
+|   Enter a Comment ID:                          Currently hosting 0003          |
+|   ASHIBATA                                     comments and counting.          |
+|   --------------------------------------------------------------------------   |
+|                 says to:                                                       |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Is this comment inappropriate? Please report the Comment ID to the          |
+|    folks at the Midrange Madness table and we will address the comment.        |
+|   --------------------------------------------------------------------------   |
+|    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel                                    |
++--------------------------------------------------------------------------------+
+--- input: '2' type INCMTID
+--- input: '\x1b5' [F5]
+
+===== kiosk READCMT after F5 with comment ID 2 =====
++--------------------------------------------------------------------------------+
+|   VINTAGE COMPUTER FESTIVAL    GUESTBOOK/400 - Read a Comment                  |
+|                                                                                |
+|   Enter a Comment ID:                          Currently hosting 0003          |
+|   ASHIBATA                                     comments and counting.          |
+|   --------------------------------------------------------------------------   |
+|   Devin         says to:   IBM i on PUB400 Demo                                |
+|                                                                                |
+|   VCF/400 is running on PUB400.                                                |
+|                                                                                |
+|                                                                                |
+|   --------------------------------------------------------------------------   |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Is this comment inappropriate? Please report the Comment ID to the          |
+|    folks at the Midrange Madness table and we will address the comment.        |
+|   --------------------------------------------------------------------------   |
+|    Cmd5 / F5 = Submit  Cmd12 / F12 = Cancel                                    |
++--------------------------------------------------------------------------------+
+--- input: '\x1b=' [F12]
+--- input: '\r' [Enter]
+--- input: '\r' [Enter]
+--- input: '\r' [Enter]
+--- input: '\r' [Enter]
+
+===== back on VCFMAIN [after F12 from kiosk READCMT] =====
++--------------------------------------------------------------------------------+
+|  WELCOME TO...                                                                 |
+|     IBM i on PUB400 Demo                                                       |
+|  HOSTED BY Akira Shibata             OF Tokyo           JP                     |
+|  ----------------------------------------------------------------------------  |
+| VCF/400 demo exhibit running on pub400.com                                     |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  ----------------------------------------------------------------------------  |
+|   1. Nominate This Exhibit for Award                                           |
+|   2. Learn More About This Exhibit                                             |
+|   3. Sign Exhibit Guestbook                                                    |
+|   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: 'CALL ASHIBATA2/VCFSTUB' EXHBMENU again
+--- input: '\r' [Enter]
+--- input: '2' type INOPT=2 (Learn More / LEARN/400, allowed when ENLRN400=1)
+--- input: '\r' [Enter]
+
+===== kiosk option 2 -> LRN400 =====
++--------------------------------------------------------------------------------+
+|  LEARN/400                                                          Page  0001 |
+|  _____________________________________________________________________________ |
+|Welcome to LEARN/400| This is page 1. Press F5 for next page, F8 for previous, F|
+|3 to exit.                                                                      |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  _____________________________________________________________________________ |
+|  Cmd3/F3 = Exit  Cmd5/F5 = Forwards  Cmd8 / F8 = Backwards                     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '\x1b3' [F3]
+--- input: '\r' [Enter]
+--- input: '\r' [Enter]
+--- input: '\r' [Enter]
+--- input: '\r' [Enter]
+
+===== back on VCFMAIN [after F3 from kiosk LRN400] =====
++--------------------------------------------------------------------------------+
+|  WELCOME TO...                                                                 |
+|     IBM i on PUB400 Demo                                                       |
+|  HOSTED BY Akira Shibata             OF Tokyo           JP                     |
+|  ----------------------------------------------------------------------------  |
+| VCF/400 demo exhibit running on pub400.com                                     |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  ----------------------------------------------------------------------------  |
+|   1. Nominate This Exhibit for Award                                           |
+|   2. Learn More About This Exhibit                                             |
+|   3. Sign Exhibit Guestbook                                                    |
+|   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: 'CALL ASHIBATA2/VCFSTUB' EXHBMENU again
+--- input: '\r' [Enter]
+--- input: '7' type INOPT=7 (hidden option: exit kiosk, admin password)
+--- input: '\r' [Enter]
+
+===== kiosk exit password prompt (ADMPSWRD) =====
++--------------------------------------------------------------------------------+
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|    Are you sure you want to exit the kiosk?                                    |
+|    Type the Administrator password, press ENTER to sign off                    |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: 'WRONGPW' type INPWD (wrong password)
+--- input: '\r' [Enter]
+
+===== after wrong kiosk exit password =====
++--------------------------------------------------------------------------------+
+|  WELCOME TO...                                                                 |
+|     IBM i on PUB400 Demo                                                       |
+|  HOSTED BY Akira Shibata             OF Tokyo           JP                     |
+|  ----------------------------------------------------------------------------  |
+| VCF/400 demo exhibit running on pub400.com                                     |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|                                                                                |
+|  ----------------------------------------------------------------------------  |
+|   1. Nominate This Exhibit for Award                                           |
+|   2. Learn More About This Exhibit                                             |
+|   3. Sign Exhibit Guestbook                                                    |
+|   4. Read Exhibit Guestbook               Select Menu Option, Press ENTER:     |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- input: '7' type INOPT=7
+--- input: '\r' [Enter]
+--- input: type INPWD = SETTINGS.ADMPSWRD (hidden)
+--- input: '\r' [Enter]
+
+===== after kiosk exit =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+
+===== back on VCFMAIN [after kiosk] =====
++--------------------------------------------------------------------------------+
+|                                AS/400 DEMO MENU                                |
+| WELCOME TO...                                                                  |
+|         V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4               |
+| Start Here                              Exhibit Tasks                          |
+|      1. Learn AS/400 Navigation              11. Nominate Exhibit for Award    |
+|      2. IBM Midrange History                 12. Sign Exhibit Guestbook        |
+|      3. About This System                    13. Read a Guestbook Comment      |
+|      4. About Gertie the System/34      System Tasks                           |
+| Office Tasks                                 80. Sign Off the System           |
+|      5. Start OfficeVision/400          Administration                         |
+|      6. Start a Calendar                     90. Start Admin Menu              |
+|      7. Start the Clock                                                        |
+| Entertainment                   Type the menu number you want and then         |
+|      8. Play Snake              press the ENTER key which is located where     |
+|      9. Play Yahtzee            the right CTRL key normally is on a PC         |
+|     10. Play PacMan             keyboard. Or type the menu option you are      |
+|                                 curious about and press the HELP key.          |
+|                                                                                |
+| Type Number, then press ENTER                                                  |
+|                                                                                |
+|                                                                                |
+| ===>                                                                           |
+|                                                                                |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- DB snapshot: final
+--- ASHIBATA2/VOTINGDB
+BADGENBR  AWARDNBR  EXHBNBR  
+--------- --------- ---------
+        1         1 ASHIBATA 
+       28         2 ASHIBATA 
+     9705         1 ASHIBATA 
+     9706         2 DEMO400  
+
+  4 RECORD(S) SELECTED.
+--- ASHIBATA2/GUESTBKDB
+CMTID  VISIBLE  EXHBID    GUESTNAME            GUESTCMT                                                                                                                                                                                                
+------ -------- --------- -------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     1 Y        ASHIBATA  Great exhibit        VCF/400 running on PUB400.                                                                                                                                                                              
+     2 Y        ASHIBATA  Devin                VCF/400 is running on PUB400.                                                                                                                                                                           
+     3 Y        ASHIBATA  Devin Tester         Phase1 runtime check badge 9705                                                                                                                                                                         
+
+  3 RECORD(S) SELECTED.
+--- input: '\x1b3' [F3]
+
+===== final screen =====
++--------------------------------------------------------------------------------+
+| MAIN                           IBM i Main Menu                                 |
+|                                                             System:   PUB400   |
+| Select one of the following:                                                   |
+|                                                                                |
+|      1. User tasks                                                             |
+|      2. Office tasks                                                           |
+|      3. General system tasks                                                   |
+|      4. Files, libraries, and folders                                          |
+|      5. Programming                                                            |
+|      6. Communications                                                         |
+|      7. Define or change the system                                            |
+|      8. Problem handling                                                       |
+|      9. Display a menu                                                         |
+|     10. Information Assistant options                                          |
+|     11. IBM i Access tasks                                                     |
+|                                                                                |
+|     90. Sign off                                                               |
+|                                                                                |
+| Selection or command                                                           |
+| ===>                                                                           |
+|                                                                                |
+| F3=Exit   F4=Prompt   F9=Retrieve   F12=Cancel   F13=Information Assistant     |
+| F23=Set initial menu                                                           |
+|                                                                                |
++--------------------------------------------------------------------------------+
+--- run finished 2026-09-07T15:29:41Z
