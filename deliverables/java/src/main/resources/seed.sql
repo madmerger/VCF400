@@ -9,7 +9,7 @@ INSERT INTO EXHBDB (EXHBDBID, EXHUSRPRF, EXHBITOR, EXHBCITY, EXHBSTATE, EXHBTITL
   (3, 'NOVOTE',   'Ineligible Exhibitor', 'Atlanta',       'GA', 'Ineligible test exhibit (ELIGIBLE=0)', 'Test data for eligibility check',            0, 0);
 
 INSERT INTO SETTINGS (SETTING, VALUE) VALUES
-  ('ADMPSWRD', 'VCF2024'),
+  ('ADMPSWRD', ''),
   ('ALWVOTE',  'Y');
 
 INSERT INTO LRN400STR (PAGENBR, CONTENT, EXTRA) VALUES

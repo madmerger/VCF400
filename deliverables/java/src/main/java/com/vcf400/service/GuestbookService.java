@@ -40,7 +40,7 @@ public class GuestbookService {
 
     /** ADDCMT 送信: 必須検査 (展示 ID → 名前 → コメント) → ADDTODB (最終 CMTID + 1, VISIBLE='Y')。 */
     public AddResult add(Launch launch, String inName, String inId, String inCmt) {
-        String id = launch.isShared() ? nz(inId).trim().toUpperCase() : launch.profile();
+        String id = launch.isShared() ? left(nz(inId).trim().toUpperCase(), 9) : launch.profile();
         String name = nz(inName).trim();
         String cmt = nz(inCmt).trim();
 

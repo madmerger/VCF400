@@ -75,7 +75,9 @@ public class DbApiController {
     @GetMapping("/settings")
     public List<Setting> settings(HttpServletRequest request) {
         requireLocal(request);
-        return settings.findAll();
+        return settings.findAll().stream()
+                .map(s -> Setting.ADMPSWRD.equals(s.setting()) ? new Setting(s.setting(), "********") : s)
+                .toList();
     }
 
     @PutMapping("/settings/{name}")
@@ -83,7 +85,11 @@ public class DbApiController {
                                                            @RequestBody Map<String, String> body,
                                                            HttpServletRequest request) {
         requireLocal(request);
-        return ResponseEntity.ok(Map.of("updated", settings.update(name.toUpperCase(), body.getOrDefault("value", ""))));
+        String key = name.toUpperCase();
+        if (!Setting.ALWVOTE.equals(key) && !Setting.ADMPSWRD.equals(key)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "unknown setting: " + key);
+        }
+        return ResponseEntity.ok(Map.of("updated", settings.update(key, body.getOrDefault("value", ""))));
     }
 
     private static void requireLocal(HttpServletRequest request) {

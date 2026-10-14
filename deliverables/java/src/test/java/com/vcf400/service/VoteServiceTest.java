@@ -102,6 +102,14 @@ class VoteServiceTest {
     }
 
     @Test
+    void overlongSharedExhibitIdIsTruncatedTo9A() {     // 5250 フィールド 9A を越える入力は切り捨て
+        // 12 chars → 'ASHIBATAE' (9A) として扱われ、DB エラーなく存在チェックに落ちる
+        VoteService.Result r = service.submit(SHARED, 7007, "ASHIBATAEXTRA", 1);
+        assertThat(r.errLine()).isEqualTo(Messages.ERRNOEXB);
+        assertThat(votes.findByBadge(7007)).isEmpty();
+    }
+
+    @Test
     void votingClosedWhenAlwvoteIsN() {                 // B-04
         settings.update("ALWVOTE", "N");
         assertThat(service.isVotingAllowed()).isFalse();

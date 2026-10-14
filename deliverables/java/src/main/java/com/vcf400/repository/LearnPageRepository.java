@@ -16,18 +16,19 @@ public class LearnPageRepository {
 
     public LearnPageRepository(JdbcTemplate jdbc) { this.jdbc = jdbc; }
 
-    /** CHAIN LRN400RCD。 */
-    public Optional<LearnPage> findByPage(int pagenbr) {
-        return jdbc.query("SELECT * FROM LRN400STR WHERE PAGENBR = ?", MAPPER, pagenbr).stream().findFirst();
+    /** CHAIN LRN400RCD (OVRDBF 後のファイル = lrnfile)。 */
+    public Optional<LearnPage> findByPage(String lrnfile, int pagenbr) {
+        return jdbc.query("SELECT * FROM LRN400STR WHERE LRNFILE = ? AND PAGENBR = ?",
+                MAPPER, lrnfile, pagenbr).stream().findFirst();
     }
 
     /** ファイル先頭の READ。 */
-    public Optional<LearnPage> findFirst() {
-        return jdbc.query("SELECT * FROM LRN400STR ORDER BY PAGENBR FETCH FIRST 1 ROWS ONLY", MAPPER)
-                .stream().findFirst();
+    public Optional<LearnPage> findFirst(String lrnfile) {
+        return jdbc.query("SELECT * FROM LRN400STR WHERE LRNFILE = ? ORDER BY PAGENBR FETCH FIRST 1 ROWS ONLY",
+                MAPPER, lrnfile).stream().findFirst();
     }
 
-    public List<LearnPage> findAll() {
-        return jdbc.query("SELECT * FROM LRN400STR ORDER BY PAGENBR", MAPPER);
+    public List<LearnPage> findAll(String lrnfile) {
+        return jdbc.query("SELECT * FROM LRN400STR WHERE LRNFILE = ? ORDER BY PAGENBR", MAPPER, lrnfile);
     }
 }

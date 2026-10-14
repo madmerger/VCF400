@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /** VCFMAIN メニュー (F-01, L-01) と NTRSTIT "How to Navigate" (F-02, L-02)。 */
@@ -15,9 +17,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MainMenuController {
 
     private final String defaultProfile;
+    private final boolean signonEnabled;
 
-    public MainMenuController(@Value("${vcf.default-profile}") String defaultProfile) {
+    public MainMenuController(@Value("${vcf.default-profile}") String defaultProfile,
+                              @Value("${vcf.signon.enabled}") boolean signonEnabled) {
         this.defaultProfile = defaultProfile;
+        this.signonEnabled = signonEnabled;
     }
 
     @GetMapping("/")
@@ -30,6 +35,7 @@ public class MainMenuController {
     public String menu(HttpSession session, Model model, @RequestParam(required = false) String msg) {
         Nav.setReturnTo(session, Nav.MENU);
         model.addAttribute("launch", Nav.launch(session, defaultProfile));
+        model.addAttribute("signonEnabled", signonEnabled);
         model.addAttribute("msg", msg);
         return "vcfmain";
     }
@@ -62,6 +68,9 @@ public class MainMenuController {
     /** サインオンユーザーの切替 (IBM i の SIGNON に相当。MM2024 で共用端末モード)。 */
     @PostMapping("/signon")
     public String signon(@RequestParam String profile, HttpSession session) {
+        if (!signonEnabled) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
         Nav.setLaunch(session, profile.isBlank() ? defaultProfile : profile);
         return "redirect:/menu";
     }

@@ -47,9 +47,12 @@ public class DataSeeder implements ApplicationRunner {
                         return;
                     }
                     ScriptUtils.executeSqlScript(connection, new ClassPathResource("seed.sql"));
+                    if (adminPassword == null || adminPassword.isEmpty()) {
+                        log.warn("VCF_SEED_ADMPSWRD 未設定のためキオスク終了は無効");
+                    }
                     try (PreparedStatement statement = connection.prepareStatement(
                             "UPDATE SETTINGS SET VALUE=? WHERE SETTING='ADMPSWRD'")) {
-                        statement.setString(1, adminPassword);
+                        statement.setString(1, adminPassword == null ? "" : adminPassword);
                         statement.executeUpdate();
                     }
                     connection.commit();

@@ -18,7 +18,7 @@ class LearnKioskServiceTest {
 
     @Test
     void forwardBackAndEndPage() {
-        LearnService.State s = learn.start();
+        LearnService.State s = learn.start(LearnService.COMMON_FILE);
         assertThat(s.outPageNbr()).isEqualTo("1");
         assertThat(s.exit()).isFalse();
 
@@ -35,7 +35,7 @@ class LearnKioskServiceTest {
 
     @Test
     void backOnFirstPageStaysOnFirstPage() {
-        LearnService.State s = learn.back(learn.start());
+        LearnService.State s = learn.back(learn.start(LearnService.COMMON_FILE));
         assertThat(s.outPageNbr()).isEqualTo("1");
         assertThat(s.exit()).isFalse();
     }
@@ -44,7 +44,7 @@ class LearnKioskServiceTest {
     void callPageLogsAndShowsFollowingPage() {
         jdbc.update("UPDATE LRN400STR SET CONTENT = 'CALL', EXTRA = 'LRN400' WHERE PAGENBR = 2");
         try {
-            LearnService.State next = learn.forward(learn.start());
+            LearnService.State next = learn.forward(learn.start(LearnService.COMMON_FILE));
             assertThat(next.outPageNbr()).isEqualTo("3");
             assertThat(next.outContent()).contains("last page");
             assertThat(next.exit()).isFalse();
@@ -58,7 +58,7 @@ class LearnKioskServiceTest {
     void jumpPageGoesToExtraPageAndBackReturnsToCaller() {
         jdbc.update("UPDATE LRN400STR SET CONTENT = 'JUMP', EXTRA = '3' WHERE PAGENBR = 2");
         try {
-            LearnService.State jumped = learn.forward(learn.start());  // F5 → JUMP 3
+            LearnService.State jumped = learn.forward(learn.start(LearnService.COMMON_FILE));  // F5 → JUMP 3
             assertThat(jumped.outPageNbr()).isEqualTo("3");
             assertThat(jumped.outContent()).contains("last page");
             assertThat(jumped.exit()).isFalse();
@@ -69,6 +69,29 @@ class LearnKioskServiceTest {
             jdbc.update("UPDATE LRN400STR SET CONTENT = ?, EXTRA = ? WHERE PAGENBR = 2",
                     "The AS/400 was introduced by IBM in June 1988 ... page 2", "");
         }
+    }
+
+    @Test
+    void exhibitFilePagesAreUsedAndCommonIsDefault() {
+        jdbc.update("INSERT INTO LRN400STR (LRNFILE, PAGENBR, CONTENT, EXTRA) VALUES ('ASHIBATA', 1, 'ASHIBATA exhibit page', 'END')");
+        try {
+            LearnService.State s = learn.start("ASHIBATA");
+            assertThat(s.lrnfile()).isEqualTo("ASHIBATA");
+            assertThat(s.outContent()).contains("ASHIBATA exhibit page");
+
+            LearnService.State common = learn.start(LearnService.COMMON_FILE);
+            assertThat(common.lrnfile()).isEqualTo("LRN400STR");
+            assertThat(common.outContent()).contains("Welcome to LEARN/400");
+        } finally {
+            jdbc.update("DELETE FROM LRN400STR WHERE LRNFILE = 'ASHIBATA'");
+        }
+    }
+
+    @Test
+    void fallsBackToCommonFileWhenExhibitHasNoPages() {
+        LearnService.State s = learn.start("DEMO400");   // DEMO400 用のページファイルは存在しない
+        assertThat(s.lrnfile()).isEqualTo("LRN400STR");
+        assertThat(s.outContent()).contains("Welcome to LEARN/400");
     }
 
     @Test

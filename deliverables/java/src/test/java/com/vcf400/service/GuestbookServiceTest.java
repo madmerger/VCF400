@@ -47,6 +47,14 @@ class GuestbookServiceTest {
     }
 
     @Test
+    void overlongSharedExhibitIdIsTruncatedTo9A() {     // 5250 フィールド 9A を越える入力は切り捨て
+        GuestbookService.AddResult r = service.add(SHARED, "Tester", "ASHIBATAEXTRA", "hi");   // → 'ASHIBATAE'
+        assertThat(r.hasError()).isFalse();
+        assertThat(r.added().exhbid()).isEqualTo("ASHIBATAE");
+        comments.deleteById(r.added().cmtid());
+    }
+
+    @Test
     void readOwnComment() {                             // F-05 正常
         Optional<GuestbookService.ReadResult> out = service.read(OWN, 1);
         assertThat(out).isPresent();

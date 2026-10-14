@@ -62,7 +62,7 @@
     </div>
   </form>
 
-  <details class="card">
+  <details class="card" th:if="${signonEnabled}">
     <summary class="info">別のユーザープロファイルでサインオン (キオスク展示 / MM2024 共用端末)</summary>
     <form method="post" th:action="@{/signon}" class="optline" style="margin-top:10px">
       <label for="profile">ユーザープロファイル</label>

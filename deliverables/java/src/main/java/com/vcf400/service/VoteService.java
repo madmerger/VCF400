@@ -59,7 +59,7 @@ public class VoteService {
      */
     @Transactional
     public Result submit(Launch launch, int inputBadge, String inputExhibit, int inputAward) {
-        String inexhb = launch.isShared() ? nz(inputExhibit).trim().toUpperCase() : launch.profile();
+        String inexhb = launch.isShared() ? left(nz(inputExhibit).trim().toUpperCase(), 9) : launch.profile();
 
         String errLine = null;
         boolean in40 = false, in41 = false, in42 = false;
@@ -108,4 +108,7 @@ public class VoteService {
     }
 
     private static String nz(String s) { return s == null ? "" : s; }
+
+    /** 5250 フィールド長 (9A) を越える入力はレガシーでは存在しないため切り捨てる。 */
+    private static String left(String s, int n) { return s.length() <= n ? s : s.substring(0, n); }
 }

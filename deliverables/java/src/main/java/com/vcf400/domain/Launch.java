@@ -8,7 +8,11 @@ public record Launch(String profile) {
     public static final String MM2024 = "MM2024";
 
     public Launch {
+        // 5250 のユーザープロファイル / LAUNCH パラメータは 9A: 超過分は到達し得ないため切り捨てる
         profile = profile == null ? "" : profile.trim().toUpperCase();
+        if (profile.length() > 9) {
+            profile = profile.substring(0, 9);
+        }
     }
 
     public boolean isShared() { return MM2024.equals(profile); }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/learn")
 public class LearnController {
     private static final String STATE = "vcf.learnState";
+    /** キオスクのオプション 2 (LRN400STUB の OVRDBF 相当) がセットする展示 ID (= ページファイル名)。 */
+    public static final String LRNFILE = "vcf.learnFile";
 
     private final LearnService learn;
 
@@ -21,7 +23,10 @@ public class LearnController {
 
     @GetMapping
     public String show(HttpSession session, Model model) {
-        LearnService.State s = learn.start();
+        Object f = session.getAttribute(LRNFILE);
+        session.removeAttribute(LRNFILE);
+        String file = f instanceof String s && !s.isBlank() ? s : LearnService.COMMON_FILE;
+        LearnService.State s = learn.start(file);
         session.setAttribute(STATE, s);
         model.addAttribute("state", s);
         return "lrn400";
@@ -30,7 +35,7 @@ public class LearnController {
     @PostMapping
     public String key(@RequestParam(defaultValue = "") String action, HttpSession session, Model model) {
         Object v = session.getAttribute(STATE);
-        LearnService.State s = v instanceof LearnService.State st ? st : learn.start();
+        LearnService.State s = v instanceof LearnService.State st ? st : learn.start(LearnService.COMMON_FILE);
         switch (action) {
             case "exit" -> {                                  // F3
                 session.removeAttribute(STATE);

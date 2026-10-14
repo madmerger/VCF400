@@ -15,10 +15,25 @@ mvn test                                             # 業務ルール / 画面�
 - `VCF_DB_URL` … JDBC URL。既定は `./data/vcf400` の H2 ファイル DB (DB2 モード)。本 PR の対応 DB は H2 (DB2 モード) のみ。
   DB2 for i へ向けるには jt400 ドライバの依存追加と接続確認が別途必要 (未対応)。
 - `VCF_PROFILE` … 既定のサインオンユーザー (LAUNCH)。`MM2024` で共用端末モード。
-- `VCF_DB_API` … クロス検証用 DB API の有効化 (既定 `false`)。クロス検証時は `VCF_DB_API=true mvn spring-boot:run` のように起動する。それ以外では無効のままにする。
+- `VCF_DB_API` … クロス検証用 DB API の有効化 (既定 `false`)。それ以外では無効のままにする。
+  - `GET /api/db/settings` は `ADMPSWRD` の値を `********` にマスクして返す。
+  - `PUT /api/db/settings/{name}` は `ALWVOTE` / `ADMPSWRD` のみ受け付ける (それ以外は 400)。
+- `VCF_SIGNON` … サインオンフォーム (IBM i SIGNON 相当、パスワードなし) の有効化 (既定 `VCF_DB_API` の値)。
+  無効時は `POST /signon` が 403、メニューにフォームを表示しない。プロファイルは `VCF_PROFILE` とキオスクフローのみから決まる。
 - `VCF_H2_CONSOLE` … H2 コンソール `/h2` の有効化 (既定 `false`)。開発時だけ必要に応じて `true` にする。
 - `VCF_COOKIE_SECURE` … セッション Cookie の `Secure` 属性 (既定 `false`)。HTTPS 配下では `true` にする。
-- `VCF_SEED_ADMPSWRD` … H2 初期シードの管理者パスワード (既定 `VCF2024`)。PUB400 検証データと一致する既定値であり、実運用では必ず上書きする。
+- `VCF_SEED_ADMPSWRD` … H2 初期シードの管理者パスワード (既定 = 空)。空のままだと ADMPSWRD が空文字でシードされ、キオスク終了 (隠しオプション 7) はどのパスワードでも通らない (警告ログを出力)。実運用では必ず設定する。
+
+クロス検証の起動:
+
+```sh
+VCF_DB_API=true VCF_SEED_ADMPSWRD=VCF2024 mvn spring-boot:run
+# (VCF_DB_API=true でサインオンフォームも有効。run_java.js のリセットが ADMPSWRD=VCF2024 を再設定する)
+```
+
+CSRF 対策: SameSite=strict Cookie に加え、POST/PUT/DELETE で `Sec-Fetch-Site: cross-site` または
+`Origin` がリクエストの scheme://host:port と不一致の場合 403 とするフィルタを挟む
+(`X-Forwarded-*` は参照しない)。Origin も Sec-Fetch-Site もない非ブラウザクライアントは許可する。
 
 初期化とシード:
 
@@ -67,3 +82,6 @@ mvn test                                             # 業務ルール / 画面�
 分類依存の表示は、`THANK YOU FOR VOTING!` → 「投票ありがとうございました!」、`THANKS FOR COMMENTING!` → 「コメントありがとうございました!」、`SORRY!` → 「申し訳ありません」。画面タイトルの英語原文も台帳どおり保持し、日本語副題を別要素に表示する。
 
 LEARN/400 の `CONTENT='CALL'` は、RPG の次ページへ進む流れを維持しつつ、Java 版では呼出先プログラムを実行せず警告ログを出して次ページを表示する。`CONTENT='JUMP'` は従来どおり `EXTRA` のページへ移動する。
+
+展示ごとの LEARN/400 ページ: レガシーではキオスクのオプション 2 が `OVRDBF FILE(LRN400STR) TOFILE(VCF/&PROFILE)` で展示 ID と同名のページファイルに切り替える (VCFMAIN 1 は共通 LRN400STR)。
+Java 版では LRN400STR テーブルの `LRNFILE` 列 (既定 `'LRN400STR'`、PK = LRNFILE+PAGENBR) で同じことを表現する。キオスク起動時はセッションに展示 ID を保持して `LRNFILE=展示ID` のページを読む。展示ファイルにページが 1 枚もない場合は共通 `LRN400STR` にフォールバックして警告ログを出す (レガシーは存在しないファイルで異常終了するため、ここは仕様上の差異)。

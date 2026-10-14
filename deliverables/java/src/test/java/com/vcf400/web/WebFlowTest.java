@@ -4,6 +4,7 @@ import com.vcf400.service.Messages;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
@@ -25,6 +26,7 @@ import org.springframework.test.web.servlet.request.RequestPostProcessor;
 @ActiveProfiles("test")
 class WebFlowTest {
     @Autowired MockMvc mvc;
+    @Autowired org.springframework.jdbc.core.JdbcTemplate jdbc;
 
     @Test
     void mainMenuKeepsLegacyTitleAndNumbers() throws Exception {
@@ -128,6 +130,51 @@ class WebFlowTest {
         mvc.perform(post("/learn").param("action", "fwd").session(s)).andExpect(redirectedUrl("/menu"));  // EXTRA='END'
         HttpSession after = s;
         org.assertj.core.api.Assertions.assertThat(after.getAttribute("vcf.learnState")).isNull();
+    }
+
+    @Test
+    void dbApiMasksAdmpswrdAndWhitelistsSettingNames() throws Exception {
+        String json = mvc.perform(get("/api/db/settings")).andExpect(status().isOk())
+            .andReturn().getResponse().getContentAsString();
+        org.assertj.core.api.Assertions.assertThat(json).contains("********").doesNotContain("VCF2024");
+        mvc.perform(put("/api/db/settings/ALWVOTE").contentType("application/json")
+                .content("{\"value\":\"Y\"}")).andExpect(status().isOk());
+        mvc.perform(put("/api/db/settings/ADMPSWRD").contentType("application/json")
+                .content("{\"value\":\"VCF2024\"}")).andExpect(status().isOk());
+        mvc.perform(put("/api/db/settings/PASSWORD").contentType("application/json")
+                .content("{\"value\":\"x\"}")).andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void csrfRejectsCrossSiteOriginAndFetchSite() throws Exception {
+        mvc.perform(post("/vote").param("inputBadge", "1")
+                .header("Origin", "http://evil.example"))
+            .andExpect(status().isForbidden());
+        mvc.perform(post("/vote").param("inputBadge", "1")
+                .header("Sec-Fetch-Site", "cross-site"))
+            .andExpect(status().isForbidden());
+        mvc.perform(post("/vote").param("inputBadge", "1")
+                .header("Origin", "http://localhost"))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    void kioskOption2ShowsExhibitLearnPages() throws Exception {
+        jdbc.update("INSERT INTO LRN400STR (LRNFILE, PAGENBR, CONTENT, EXTRA) " +
+                "VALUES ('ASHIBATA', 1, 'ASHIBATA kiosk learn page', 'END')");
+        try {
+            MockHttpSession session = new MockHttpSession();
+            mvc.perform(post("/kiosk/ASHIBATA").param("option", "2").session(session))
+                .andExpect(redirectedUrl("/learn"));
+            mvc.perform(get("/learn").session(session)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("ASHIBATA kiosk learn page")));
+            // VCFMAIN 1 (セッション属性なし) は共通 LRN400STR のまま
+            MockHttpSession plain = new MockHttpSession();
+            mvc.perform(get("/learn").session(plain)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Welcome to LEARN/400")));
+        } finally {
+            jdbc.update("DELETE FROM LRN400STR WHERE LRNFILE = 'ASHIBATA'");
+        }
     }
 
     @Test

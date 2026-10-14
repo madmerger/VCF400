@@ -66,6 +66,19 @@ class DataSeederTest {
     }
 
     @Test
+    void emptyAdminPasswordSeedsEmptyAdmpswrd() throws Exception {
+        String url = "jdbc:h2:mem:seedemptypw;MODE=DB2;NON_KEYWORDS=VALUE;DB_CLOSE_DELAY=-1";
+        DataSource dataSource = dataSource(url);
+        applySchema(dataSource);
+
+        new DataSeeder(dataSource, url, "").run(new DefaultApplicationArguments());
+
+        JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+        assertThat(jdbc.queryForObject(
+                "SELECT VALUE FROM SETTINGS WHERE SETTING='ADMPSWRD'", String.class).trim()).isEmpty();
+    }
+
+    @Test
     void appliesSchemaAndSeedsFreshFileDatabase(@TempDir Path dir) throws Exception {
         String url = "jdbc:h2:file:" + dir.resolve("vcf400")
                 + ";MODE=DB2;NON_KEYWORDS=VALUE;DEFAULT_NULL_ORDERING=HIGH";
