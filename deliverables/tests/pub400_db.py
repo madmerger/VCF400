@@ -19,20 +19,17 @@ import sys
 LIB = os.environ.get("VCF_PUB400_LIB", "ASHIBATA2")
 SSH = os.path.expanduser("~/p400")
 
-BASELINE = [
-    f"DELETE FROM {LIB}.VOTINGDB",
-    f"INSERT INTO {LIB}.VOTINGDB (BADGENBR, AWARDNBR, EXHBNBR) VALUES (1, 1, 'ASHIBATA')",
-    f"INSERT INTO {LIB}.VOTINGDB (BADGENBR, AWARDNBR, EXHBNBR) VALUES (28, 2, 'ASHIBATA')",
-    f"DELETE FROM {LIB}.GUESTBKDB",
-    f"INSERT INTO {LIB}.GUESTBKDB (CMTID, VISIBLE, EXHBID, GUESTNAME, GUESTCMT) VALUES (1, 'Y', 'ASHIBATA', 'Great exhibit', 'VCF/400 running on PUB400.')",
-    f"INSERT INTO {LIB}.GUESTBKDB (CMTID, VISIBLE, EXHBID, GUESTNAME, GUESTCMT) VALUES (2, 'Y', 'ASHIBATA', 'Devin', 'VCF/400 is running on PUB400.')",
-    f"DELETE FROM {LIB}.AWARDDB",
-    f"INSERT INTO {LIB}.AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (1, 'Best in Show Award', 'This award is given to the exhibit who you believe to be the best in show for 2024.')",
-    f"INSERT INTO {LIB}.AWARDDB (AWARDID, AWARDTITLE, AWARDDESC) VALUES (2, 'The Ed Fair Award', 'This award is given to the exhibit that is deemed the most informative of the show.')",
-    f"DELETE FROM {LIB}.SETTINGS",
-    f"INSERT INTO {LIB}.SETTINGS (SETTING, VALUE) VALUES ('ADMPSWRD', 'VCF2024')",
-    f"INSERT INTO {LIB}.SETTINGS (SETTING, VALUE) VALUES ('ALWVOTE', 'Y')",
-]
+SEED_SQL = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs", "pub400_seed.sql")
+
+
+def _load_baseline():
+    """All baseline tables (EXHBDB, AWARDDB, SETTINGS, LRN400STR, GUESTBKDB, VOTINGDB) from pub400_seed.sql."""
+    with open(SEED_SQL, encoding="utf-8") as f:
+        src = "\n".join(l for l in f.read().splitlines() if not l.strip().startswith("--"))
+    return [st.strip().replace("ASHIBATA2.", f"{LIB}.") for st in src.split(";") if st.strip()]
+
+
+BASELINE = _load_baseline()
 
 
 def sql(statements):

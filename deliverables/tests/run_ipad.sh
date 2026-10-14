@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Phase 5 runner: execute cases.json against the iPad app (XCUITest on the iPad simulator).
 #   ./run_ipad.sh [CV-01,CV-04]            results -> results/ipad.json, log -> results/ipad_xcuitest.log
 # The app is launched with -VCF_RESET so every run starts from the common baseline.
-set -eu
+set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 IPAD="$HERE/../ipad"
 RESULTS="$HERE/results"

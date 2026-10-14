@@ -349,44 +349,48 @@ def main():
         print("resetting PUB400 baseline ...", flush=True)
         pub400_db.sql(pub400_db.BASELINE)
     print("baseline:", pub400_db.dump(), flush=True)
-    res = Results("pub400")
-    p = P400(os.path.join(RESULTS_DIR, "pub400_5250.log"), a.frames)
-    p.s.signon(os.environ["PUB400_LOGIN"], os.environ["PUB400_PW"])
-    p.s.settle()
-    p.command(f"CHGLIBL LIBL({LIB} ASHIBATA1 QGPL QTEMP) CURLIB({LIB})")
-    p.command(f"GO {LIB}/VCFMAIN")
-    p.wait("AS/400 DEMO MENU")
-    p.show("VCFMAIN")
-    for c in cases:
-        banner(f"{c['id']} {c['group']}: {c['title']}")
-        p.set_case(c)
-        p._frame("CASE START")
-        for op in c.get("pre", []):
-            db_op(op)
-        err = None
-        obs = {}
-        try:
-            obs = FLOWS[c["flow"]](p, c)
-        except Exception as e:  # keep going, record the failure
-            err = repr(e)
-            p.show("screen at failure")
-        try:
-            p.to_vcfmain()
-        except AssertionError as e:
-            err = (err or "") + " " + str(e)
-        for op in c.get("post", []):
-            db_op(op)
-        db = pub400_db.dump()
-        if c["flow"] == "vote":
-            obs["vote"] = vote_row(db, c["in"].get("badge"))
-        elif c["flow"] == "gb_add":
-            cid = c["expect"]["comment"]["id"]
-            obs["comment"] = {"id": cid, "row": comment_row(db, cid)}
-        res.record(c, obs, err)
+    try:
+        res = Results("pub400")
+        p = P400(os.path.join(RESULTS_DIR, "pub400_5250.log"), a.frames)
+        p.s.signon(os.environ["PUB400_LOGIN"], os.environ["PUB400_PW"])
+        p.s.settle()
+        p.command(f"CHGLIBL LIBL({LIB} ASHIBATA1 QGPL QTEMP) CURLIB({LIB})")
+        p.command(f"GO {LIB}/VCFMAIN")
+        p.wait("AS/400 DEMO MENU")
+        p.show("VCFMAIN")
+        for c in cases:
+            banner(f"{c['id']} {c['group']}: {c['title']}")
+            p.set_case(c)
+            p._frame("CASE START")
+            for op in c.get("pre", []):
+                db_op(op)
+            err = None
+            obs = {}
+            try:
+                obs = FLOWS[c["flow"]](p, c)
+            except Exception as e:  # keep going, record the failure
+                err = repr(e)
+                p.show("screen at failure")
+            try:
+                p.to_vcfmain()
+            except AssertionError as e:
+                err = (err or "") + " " + str(e)
+            for op in c.get("post", []):
+                db_op(op)
+            db = pub400_db.dump()
+            if c["flow"] == "vote":
+                obs["vote"] = vote_row(db, c["in"].get("badge"))
+            elif c["flow"] == "gb_add":
+                cid = c["expect"]["comment"]["id"]
+                obs["comment"] = {"id": cid, "row": comment_row(db, cid)}
+            res.record(c, obs, err)
+            p.save_frames()
+        print("final DB:", pub400_db.dump(), flush=True)
         p.save_frames()
-    print("final DB:", pub400_db.dump(), flush=True)
-    p.save_frames()
-    p.s.signoff()
+        p.s.signoff()
+    finally:
+        print("final PUB400 baseline reset ...", flush=True)
+        pub400_db.sql(pub400_db.BASELINE)
 
 
 if __name__ == "__main__":
