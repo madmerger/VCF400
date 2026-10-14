@@ -4,7 +4,7 @@
 # The app is launched with -VCF_RESET so every run starts from the common baseline.
 set -eu
 HERE=$(cd "$(dirname "$0")" && pwd)
-IPAD="$HERE/../../ipad"
+IPAD="$HERE/../ipad"
 RESULTS="$HERE/results"
 mkdir -p "$RESULTS"
 rm -f "$RESULTS/ipad.sqlite" "$RESULTS/ipad.sqlite-wal" "$RESULTS/ipad.sqlite-shm"
