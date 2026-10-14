@@ -36,7 +36,7 @@ date: "2026-10-14"
 
 本 run は、PUB400 を `ASHIBATA2` にソースビルドした RPG、Java を PR #11 (`devin/1791970110-vcf400-java-web`, `03ed528`)、iPad を PR #13 (`devin/1791970125-ipad-deliverables`, `e67316a`) として実行した。`compare.py` の最終結果は PUB400 37/37、Java 37/37、iPad 37/37、3 環境一致 37/37 で、不一致は 0 件である。
 
-Java の最終コミット `32ead03` は VCFMAIN 見出し行の空白保持 (CSS `white-space: pre`) のみの変更で、37 ケースの判定対象には影響しない (Maven 53/53 は `03ed528` 以降も通過)。
+Java のその後のコミット (`32ead03`, `26f53b8`) は VCFMAIN 祭典名行の空白保持と折り返し (CSS `white-space: pre-wrap; overflow-wrap: anywhere`) だけの変更で、37 ケースの判定対象には影響しない (Maven 53/53 は `32ead03` で再確認済み)。
 
 実行前後の初期化: PUB400 は `pub400_db.py reset` (`logs/pub400_seed.sql` の全 6 表) を開始前と終了後に必ず実行、Java は `VCF_DB_API=true` の fresh H2 + DB API reset、iPad は `-VCF_RESET` 起動引数でケースごとに SQLite を初期化した。アプリケーションと runner に、一致させるための個別の補正は入れていない。
 
