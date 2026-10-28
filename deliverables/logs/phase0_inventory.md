@@ -50,7 +50,7 @@
 | S-4 | PUB400 の READCMT で `errline` を固定位置（4 行目先頭 44 桁）から取っており、エラーがないケース（CV-21〜26）では展示 ID 行を拾っている（観測値が検証用展示 ID になる）。`expect` に `errline` がないため判定には影響しないが、観測値が誤っている | `tests/run_pub400.py`（READCMT 取得部）、`tests/results/pub400.json` | 結果 JSON で確認 |
 | S-5 | `compare.py` は `expect` に書かれたキーだけを比較する。見出し・F キー表示・メニュー番号など、台帳で「保持」とした要素はケースに書かない限り検証されない | `tests/compare.py`、`tests/cases.json` | コード確認 |
 | S-6 | テストレポートの Java 結果は `03ed528` で取得したもの。#11 の最終 `26f53b8`（CSS 2 コミット）での 37 ケース再実行は「影響なし」とした説明のみ | `tests/VCF400_test_report.md/.pdf`、`tests/results/java.json` | レポート本文 |
-| S-7 | ログイン ID と同名の文字列が、成果物 75 ファイル（`cases.json` の `launch` / `exhibit`、シード、レポート、ログ、仕様書）に平文で含まれる。共通ルール（外向け文書に出さない）に反する。展示 ID はテストデータでもあるため、置換方針（別名の展示 ID でシードし直すか、文書側だけ伏せるか）を決める必要がある | `tests/cases.json`、`logs/pub400_seed.sql`、`spec/*.md`、`tests/VCF400_test_report.md` ほか | grep で件数確認 |
+| S-7 | ログイン ID と同名の文字列が、成果物 75 ファイル（`cases.json` の `launch` / `exhibit`、シード、レポート、ログ、仕様書）に平文で含まれる。共通ルール（外向け文書に出さない）に反する。展示 ID はテストデータでもあるため、置換方針（別名の展示 ID でシードし直すか、文書側だけ伏せるか）を決める必要がある。PUB400 の実ライブラリ名は AGENTS.md の確定済み前提で、秘密情報ではないため変更しない | `tests/cases.json`、`logs/pub400_seed.sql`、`spec/*.md`、`tests/VCF400_test_report.md` ほか | grep で件数確認 |
 | S-8 | Devin Review の未解決スレッド 1 件（`tests/cases.json` 91-92 行 CV-35 の管理者パスワード関連）が残る | `tests/cases.json` | #12 のレビュー |
 | S-9 | Phase1 のビルド記録・リスティングが #10 の `pub400_e2e/build/` と重複（`pub400_build.sh` の差分はパス・ログ出力先の 3 行のみ、`pub400_seed.sql` は同一） | `logs/pub400_build.sh`、`logs/pub400_seed.sql`、`logs/pub400_listings/` | diff 確認 |
 
@@ -101,7 +101,7 @@
 | 区分（担当フェーズの目安） | ファイル | 元ブランチ | 作業 | 関連不備 |
 |---|---|---|---|---|
 | 配置の確定（準備） | `AGENTS.md`、org スキル vcf400-pub400 | master | `java/`・`ipad/` をリポジトリ直下に置くか `deliverables/` 配下に置くかを 1 つに決めて両方を揃える | J-2, I-2 |
-| 秘匿表記（準備） | `tests/cases.json`、`logs/pub400_seed.sql`、`pub400_e2e/tools/pub400_seed.sql`、Java `seed.sql`・`DataSeeder.java`、iPad `Database.swift` | #12, #10, #11, #13 | ログイン ID と同名の文字列（#12: 75、#10: 88、#11: 11、#13: 9 ファイル）を別名に置き換えるか、文書側だけ伏せるかを決め、シード・期待値・文書を揃える | S-7, E-3 |
+| 秘匿表記（準備） | 外向け文書（`spec/*.md`、`tests/VCF400_test_report.md`、`pub400_e2e/*.md`、PR 本文）、テストデータの展示 ID（`tests/cases.json`、各シード、Java `seed.sql`・`DataSeeder.java`、iPad `Database.swift`） | #12, #10, #11, #13 | ログイン ID と同名の文字列（#12: 75、#10: 88、#11: 11、#13: 9 ファイル）を 2 種類に分けて扱う。(1) 外向け文書の表記は「検証用ライブラリ（ソース/オブジェクト）」「検証用展示 ID」に置き換える。(2) テストデータの展示 ID を別名にする場合は、シード・`cases.json` の期待値・各ランナーを同時に揃える。PUB400 の実ライブラリ名（AGENTS.md の確定済み前提）は変更しない。シード SQL のライブラリ修飾子も変えない | S-7, E-3 |
 | 仕様・台帳（仕様再検証） | `spec/VCF400_spec.md/.pdf`、`spec/VCF400_screen_ledger.md/.pdf` | #12 | PUB400 実機で全 L-xx-yy・B-xx・V-xx を確認し直す（台帳は凍結してから実装照合する） | d-reuse |
 | トレーサビリティ（仕様再検証 → 実装照合） | `spec/VCF400_traceability.md/.pdf` | #12 | パス（`deliverables/java`・`deliverables/ipad` か直下か）、`seed.sql`、D-07 の PK、テスト件数（Java 53 / iPad 30）、適合列の ○ 印をすべてコードと照合して付け直す。iPad の D-07 / F-06 は不一致（I-1）として扱う | S-2, I-1 |
 | 共通テストケース（テスト基盤） | `tests/cases.json` | #12 | VCFMAIN 遷移ケース（CV-29, 30, 35 と起動直後）に見出し 3 行の期待値を追加。PUB400 で実測して期待値を確定する | S-1 |
