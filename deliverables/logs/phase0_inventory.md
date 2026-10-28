@@ -109,13 +109,13 @@
 | ランナー（テスト基盤） | `tests/run_pub400.py` | #12 | VCFMAIN の見出し 3 行を観測値に出す。READCMT の `errline` を固定位置でなくエラー行の位置で取る | S-1, S-4 |
 | ランナー（テスト基盤） | `tests/run_java.js` | #12 | VCFMAIN の見出し 3 行（`.screen-subtitle`）を観測値に出す | S-1 |
 | ランナー（対象外） | iPad `VCF400UITests/CrossValidationUITests.swift`、`tests/run_ipad.sh` | #13, #12 | 対象外（iPad は今回対象外） | I-3 |
-| 比較（テスト基盤） | `tests/compare.py` | #12 | 見出し比較を追加（空白の扱いを含む）。必要なら保持要素のチェックを共通化 | S-1, S-5 |
+| 比較（テスト基盤） | `tests/compare.py` | #12 | 見出し比較を追加（空白の扱いを含む）。`ENVS = ["pub400", "java", "ipad"]` から iPad を除き、PUB400・Java の 2 環境一致で判定する（現状は iPad の結果がないと全件 `NOT RUN` で不一致になる）。必要なら保持要素のチェックを共通化 | S-1, S-5 |
 | PUB400 ツールの一本化（テスト基盤） | `logs/pub400_build.sh`、`logs/pub400_seed.sql`、`pub400_e2e/tools/*`、`tests/pub400_db.py` | #12, #10 | ビルド・シード・DB 操作の正本を 1 か所にし、もう一方は参照にする。コメントの古いパス（`data.sql`）を直す | S-9, E-5, E-6 |
 | 管理者パスワード（テスト基盤 / セキュリティ） | `pub400_e2e/tools/pub400_seed.sql`、`pub400_e2e/test_scenarios.md`、`tests/cases.json`（CV-35） | #10, #12 | 公開リポジトリに平文で載るテスト用パスワードの扱いを決め（環境変数から投入する等）、未解決のレビュー指摘 3 件に回答・解決する | S-8, E-4 |
 | E2E シナリオ（PUB400 検証） | `pub400_e2e/test_scenarios.md`、`VCF400_PUB400_E2E_test_report.md/.pdf` | #10 | TS-xx と CV-xx / L-xx の対応表を追加。PR 本文を組織テンプレートで書き直す | E-1, E-2 |
 | Java 実装（Java） | `deliverables/java/src/main/java/com/vcf400/**`、`templates/*.html`、`application.properties`、`README.md` | #11 | B/V/L を 1 件ずつコードで照合し直す。クロス検証の起動条件を README に明記。`DataSeeder` のアップグレードログを確認 | J-3, J-4, J-5 |
 | iPad 実装（対象外） | `deliverables/ipad/**` | #13 | 対象外（I-1 の LRNFILE 不一致は記録のみ） | I-1 |
-| テストレポート・動画（レポート） | `tests/VCF400_test_report.md/.pdf`、`tests/results/*.json`、`video/1_PUB400_RPG.mp4`・`2_Java_Web.mp4` | #12 | 修正後のランナーで PUB400・Java の 2 環境を再実行し、最終コミットで結果・動画を取り直す（iPad の結果・`3_iPad.mp4` は対象外） | S-6 |
+| テストレポート・動画（レポート） | `tests/report.py`、`tests/VCF400_test_report.md/.pdf`、`tests/results/*.json`、`video/1_PUB400_RPG.mp4`・`2_Java_Web.mp4` | #12 | `report.py` を 2 環境の様式にする（iPad 実測列、`3_iPad.mp4` の行、「3 環境」の記述を除く）。古い iPad の結果（`results/ipad*.json`）は集計に入れない。修正後のランナーで PUB400・Java を再実行し、37 件の 2 環境判定を確認したうえで、最終コミットの結果・動画を取り直す | S-6 |
 | 成果物一覧（レポート） | `deliverables/README.md` | #12 | 存在しない 10 件を削除または作成し、実装欄の PR・パスを現行に直す。本書（`logs/phase0_inventory.md`）はこの欄に対応する | S-3 |
 
 ## 4. 検証した内容と、検証できなかった内容
