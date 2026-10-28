@@ -1,0 +1,278 @@
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    1
+ Program . . . . . . . . . . . . . . . . . . . :   BUILDVCF
+   Library . . . . . . . . . . . . . . . . . . :     SRCLIB
+ Source file . . . . . . . . . . . . . . . . . :   QCLSRC
+   Library . . . . . . . . . . . . . . . . . . :     SRCLIB
+ Source member name  . . . . . . . . . . . . . :   BUILDVCF   26-10-28 04:45:03
+ Source printing options . . . . . . . . . . . :   *XREF  *NOSECLVL  *NOEVENTF  *NODOSLTLVL
+ User profile  . . . . . . . . . . . . . . . . :   *USER
+ Program logging . . . . . . . . . . . . . . . :   *JOB
+ Allow RTVCLSRC command  . . . . . . . . . . . :   *YES
+ Default activation group  . . . . . . . . . . :   *YES
+ Activation group  . . . . . . . . . . . . . . :
+ Replace program . . . . . . . . . . . . . . . :   *YES
+ Target release  . . . . . . . . . . . . . . . :   V7R5M0
+ Authority . . . . . . . . . . . . . . . . . . :   *LIBCRTAUT
+ Sort sequence . . . . . . . . . . . . . . . . :   *HEX
+ Language identifier . . . . . . . . . . . . . :   *JOBRUN
+ Text  . . . . . . . . . . . . . . . . . . . . :
+ Optimization  . . . . . . . . . . . . . . . . :   *NONE
+ Debugging view  . . . . . . . . . . . . . . . :   *STMT
+ Debug encryption key  . . . . . . . . . . . . :   *NONE
+ Enable performance collection . . . . . . . . :   *PEP
+ Storage model . . . . . . . . . . . . . . . . :   *SNGLVL
+ Compiler  . . . . . . . . . . . . . . . . . . :   IBM Control Language Compiler
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+    100-              PGM
+    200-              CHGLIBL LIBL(OBJLIB SRCLIB QGPL QTEMP) CURLIB(OBJLIB)
+    300-              DLTF FILE(OBJLIB/ADMSCR)
+    400-              MONMSG MSGID(CPF0000)
+    500-              CRTDSPF FILE(OBJLIB/ADMSCR) SRCFILE(SRCLIB/QSDASRC) SRCMBR(ADMSCR)
+    600-              DLTF FILE(OBJLIB/ADMVOTERES)
+    700-              MONMSG MSGID(CPF0000)
+    800-              CRTDSPF FILE(OBJLIB/ADMVOTERES) SRCFILE(SRCLIB/QSDASRC) +
+    900                 SRCMBR(ADMVOTERES)
+   1000-              DLTF FILE(OBJLIB/BMOVSCR)
+   1100-              MONMSG MSGID(CPF0000)
+   1200-              CRTDSPF FILE(OBJLIB/BMOVSCR) SRCFILE(SRCLIB/QSDASRC) SRCMBR(BMOVSCR)
+   1300-              DLTF FILE(OBJLIB/CREDITSSCR)
+   1400-              MONMSG MSGID(CPF0000)
+   1500-              CRTDSPF FILE(OBJLIB/CREDITSSCR) SRCFILE(SRCLIB/QSDASRC) +
+   1600                 SRCMBR(CREDITSSCR)
+   1700-              DLTF FILE(OBJLIB/EXHBMENUSC)
+   1800-              MONMSG MSGID(CPF0000)
+   1900-              CRTDSPF FILE(OBJLIB/EXHBMENUSC) SRCFILE(SRCLIB/QSDASRC) +
+   2000                 SRCMBR(EXHBMENUSC)
+   2100-              DLTF FILE(OBJLIB/GUESTBKSCR)
+   2200-              MONMSG MSGID(CPF0000)
+   2300-              CRTDSPF FILE(OBJLIB/GUESTBKSCR) SRCFILE(SRCLIB/QSDASRC) +
+   2400                 SRCMBR(GUESTBKSCR)
+   2500-              DLTF FILE(OBJLIB/INTERSCR)
+   2600-              MONMSG MSGID(CPF0000)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    2
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+   2700-              CRTDSPF FILE(OBJLIB/INTERSCR) SRCFILE(SRCLIB/QSDASRC) SRCMBR(INTERSCR)
+   2800-              DLTF FILE(OBJLIB/LRN400SCR)
+   2900-              MONMSG MSGID(CPF0000)
+   3000-              CRTDSPF FILE(OBJLIB/LRN400SCR) SRCFILE(SRCLIB/QSDASRC) +
+   3100                 SRCMBR(LRN400SCR)
+   3200-              DLTF FILE(OBJLIB/LRNAUTO)
+   3300-              MONMSG MSGID(CPF0000)
+   3400-              CRTDSPF FILE(OBJLIB/LRNAUTO) SRCFILE(SRCLIB/QSDASRC) S+
+   3500                 RCMBR(LRNAUTO) WAITRCD(10)
+   3600-              DLTF FILE(OBJLIB/PASSSCR)
+   3700-              MONMSG MSGID(CPF0000)
+   3800-              CRTDSPF FILE(OBJLIB/PASSSCR) SRCFILE(SRCLIB/QSDASRC) SRCMBR(PASSSCR)
+   3900-              DLTF FILE(OBJLIB/SETUPSCR)
+   4000-              MONMSG MSGID(CPF0000)
+   4100-              CRTDSPF FILE(OBJLIB/SETUPSCR) SRCFILE(SRCLIB/QSDASRC) SRCMBR(SETUPSCR)
+   4200-              DLTF FILE(OBJLIB/TESTSUITE)
+   4300-              MONMSG MSGID(CPF0000)
+   4400-              CRTDSPF FILE(OBJLIB/TESTSUITE) SRCFILE(SRCLIB/QSDASRC) +
+   4500                 SRCMBR(TESTSUITE)
+   4600-              DLTF FILE(OBJLIB/VOTESCR)
+   4700-              MONMSG MSGID(CPF0000)
+   4800-              CRTDSPF FILE(OBJLIB/VOTESCR) SRCFILE(SRCLIB/QSDASRC) SRCMBR(VOTESCR)
+   4900-              DLTF FILE(OBJLIB/CMTPRTF)
+   5000-              MONMSG MSGID(CPF0000)
+   5100-              CRTPRTF FILE(OBJLIB/CMTPRTF) SRCFILE(SRCLIB/QRLUSRC) SRCMBR(CMTPRTF)
+   5200-              DLTF FILE(OBJLIB/CMTTST)
+   5300-              MONMSG MSGID(CPF0000)
+   5400-              CRTPRTF FILE(OBJLIB/CMTTST) SRCFILE(SRCLIB/QRLUSRC) SRCMBR(CMTTST)
+   5500-              DLTF FILE(OBJLIB/TESTPRT2)
+   5600-              MONMSG MSGID(CPF0000)
+   5700-              CRTPRTF FILE(OBJLIB/TESTPRT2) SRCFILE(SRCLIB/QRLUSRC) SRCMBR(TESTPRT2)
+   5800-              DLTF FILE(OBJLIB/VOTEPRTF)
+   5900-              MONMSG MSGID(CPF0000)
+   6000-              CRTPRTF FILE(OBJLIB/VOTEPRTF) SRCFILE(SRCLIB/QRLUSRC) SRCMBR(VOTEPRTF)
+   6100-              DLTMNU MENU(OBJLIB/VCFMAIN)
+   6200-              MONMSG MSGID(CPF0000)
+   6300-              DLTF FILE(OBJLIB/VCFMAIN)
+   6400-              MONMSG MSGID(CPF0000)
+   6500-              DLTMSGF MSGF(OBJLIB/VCFMAINQQ)
+   6600-              MONMSG MSGID(CPF0000)
+   6700-              CRTDSPF FILE(OBJLIB/VCFMAIN) SRCFILE(SRCLIB/QMNUSRC) SRCMBR(VCFMAIN)
+   6800-              CRTMSGF MSGF(OBJLIB/VCFMAINQQ)
+   6900-              CRTMNU MENU(OBJLIB/VCFMAIN) TYPE(*DSPF) DSPF(OBJLIB/VCFMAIN) +
+   7000                 MSGF(OBJLIB/VCFMAINQQ)
+   7100-              ADDMSGD MSGID(USR0001) MSGF(OBJLIB/VCFMAINQQ) MSG('call OBJLIB/lrn400')
+   7200-              MONMSG MSGID(CPF2412)
+   7300-              ADDMSGD MSGID(USR0011) MSGF(OBJLIB/VCFMAINQQ) MSG('CALL +
+   7400                 OBJLIB/VOTESTUB')
+   7500-              MONMSG MSGID(CPF2412)
+   7600-              ADDMSGD MSGID(USR0012) MSGF(OBJLIB/VCFMAINQQ) MSG('CALL +
+   7700                 OBJLIB/ADDGBSTUB')
+   7800-              MONMSG MSGID(CPF2412)
+   7900-              ADDMSGD MSGID(USR0013) MSGF(OBJLIB/VCFMAINQQ) MSG('CALL +
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    3
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+   8000                 OBJLIB/READGBSTUB')
+   8100-              MONMSG MSGID(CPF2412)
+   8200-              ADDMSGD MSGID(USR0080) MSGF(OBJLIB/VCFMAINQQ) MSG('signoff')
+   8300-              MONMSG MSGID(CPF2412)
+   8400-              DLTMNU MENU(OBJLIB/MAIN)
+   8500-              MONMSG MSGID(CPF0000)
+   8600-              DLTF FILE(OBJLIB/MAIN)
+   8700-              MONMSG MSGID(CPF0000)
+   8800-              DLTMSGF MSGF(OBJLIB/MAINQQ)
+   8900-              MONMSG MSGID(CPF0000)
+   9000-              CRTDSPF FILE(OBJLIB/MAIN) SRCFILE(SRCLIB/QMNUSRC) SRCMBR(MAIN)
+   9100-              CRTMSGF MSGF(OBJLIB/MAINQQ)
+   9200-              CRTMNU MENU(OBJLIB/MAIN) TYPE(*DSPF) DSPF(OBJLIB/MAIN) +
+   9300                 MSGF(OBJLIB/MAINQQ)
+   9400-              ADDMSGD MSGID(USR0001) MSGF(OBJLIB/MAINQQ) MSG('GO VCFEXPO/NAV001')
+   9500-              MONMSG MSGID(CPF2412)
+   9600-              ADDMSGD MSGID(USR0002) MSGF(OBJLIB/MAINQQ) MSG('GO VCFEXPO/HISTMNU')
+   9700-              MONMSG MSGID(CPF2412)
+   9800-              ADDMSGD MSGID(USR0003) MSGF(OBJLIB/MAINQQ) MSG('GO VCFEXPO/ABOUT150')
+   9900-              MONMSG MSGID(CPF2412)
+  10000-              ADDMSGD MSGID(USR0004) MSGF(OBJLIB/MAINQQ) MSG('GO VCFEXPO/ABTGRTIE')
+  10100-              MONMSG MSGID(CPF2412)
+  10200-              ADDMSGD MSGID(USR0080) MSGF(OBJLIB/MAINQQ) MSG('signoff')
+  10300-              MONMSG MSGID(CPF2412)
+  10400-              DLTMNU MENU(OBJLIB/ADMMAIN)
+  10500-              MONMSG MSGID(CPF0000)
+  10600-              DLTF FILE(OBJLIB/ADMMAIN)
+  10700-              MONMSG MSGID(CPF0000)
+  10800-              DLTMSGF MSGF(OBJLIB/ADMMAINQQ)
+  10900-              MONMSG MSGID(CPF0000)
+  11000-              CRTDSPF FILE(OBJLIB/ADMMAIN) SRCFILE(SRCLIB/QMNUSRC) SRCMBR(ADMMAIN)
+  11100-              CRTMSGF MSGF(OBJLIB/ADMMAINQQ)
+  11200-              CRTMNU MENU(OBJLIB/ADMMAIN) TYPE(*DSPF) DSPF(OBJLIB/ADMMAIN) +
+  11300                 MSGF(OBJLIB/ADMMAINQQ)
+  11400-              DLTPGM PGM(OBJLIB/NTRSTIT)
+  11500-              MONMSG MSGID(CPF0000)
+  11600-              CRTBNDRPG PGM(OBJLIB/NTRSTIT) SRCFILE(SRCLIB/QRPGLESRC) +
+  11700                 SRCMBR(NTRSTIT) DBGVIEW(*SOURCE)
+  11800-              DLTPGM PGM(OBJLIB/PARAMETER)
+  11900-              MONMSG MSGID(CPF0000)
+  12000-              CRTBNDRPG PGM(OBJLIB/PARAMETER) SRCFILE(SRCLIB/QRPGLESRC) +
+  12100                 SRCMBR(PARAMETER) DBGVIEW(*SOURCE)
+  12200-              DLTPGM PGM(OBJLIB/PRTLSTVOTE)
+  12300-              MONMSG MSGID(CPF0000)
+  12400-              CRTBNDRPG PGM(OBJLIB/PRTLSTVOTE) SRCFILE(SRCLIB/QRPGLESRC) +
+  12500                 SRCMBR(PRTLSTVOTE) DBGVIEW(*SOURCE)
+  12600-              DLTPGM PGM(OBJLIB/PRTLSTCMT)
+  12700-              MONMSG MSGID(CPF0000)
+  12800-              CRTBNDRPG PGM(OBJLIB/PRTLSTCMT) SRCFILE(SRCLIB/QRPGLESRC) +
+  12900                 SRCMBR(PRTLSTCMT) DBGVIEW(*SOURCE)
+  13000-              DLTPGM PGM(OBJLIB/CREDITS)
+  13100-              MONMSG MSGID(CPF0000)
+  13200-              CRTBNDRPG PGM(OBJLIB/CREDITS) SRCFILE(SRCLIB/QRPGLESRC) +
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    4
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+  13300                 SRCMBR(CREDITS) DBGVIEW(*SOURCE)
+  13400-              DLTPGM PGM(OBJLIB/ADDVOTE)
+  13500-              MONMSG MSGID(CPF0000)
+  13600-              CRTBNDRPG PGM(OBJLIB/ADDVOTE) SRCFILE(SRCLIB/QRPGLESRC) +
+  13700                 SRCMBR(ADDVOTE) DBGVIEW(*SOURCE)
+  13800-              DLTPGM PGM(OBJLIB/ADDGBCMT)
+  13900-              MONMSG MSGID(CPF0000)
+  14000-              CRTBNDRPG PGM(OBJLIB/ADDGBCMT) SRCFILE(SRCLIB/QRPGLESRC) +
+  14100                 SRCMBR(ADDGBCMT) DBGVIEW(*SOURCE)
+  14200-              DLTPGM PGM(OBJLIB/READGBCMT)
+  14300-              MONMSG MSGID(CPF0000)
+  14400-              CRTBNDRPG PGM(OBJLIB/READGBCMT) SRCFILE(SRCLIB/QRPGLESRC) +
+  14500                 SRCMBR(READGBCMT) DBGVIEW(*SOURCE)
+  14600-              DLTPGM PGM(OBJLIB/LRN400)
+  14700-              MONMSG MSGID(CPF0000)
+  14800-              CRTBNDRPG PGM(OBJLIB/LRN400) SRCFILE(SRCLIB/QRPGLESRC) +
+  14900                 SRCMBR(LRN400) DBGVIEW(*SOURCE)
+  15000-              DLTPGM PGM(OBJLIB/LRN400AUT)
+  15100-              MONMSG MSGID(CPF0000)
+  15200-              CRTBNDRPG PGM(OBJLIB/LRN400AUT) SRCFILE(SRCLIB/QRPGLESRC) +
+  15300                 SRCMBR(LRN400AUT) DBGVIEW(*SOURCE)
+  15400-              DLTPGM PGM(OBJLIB/EXHBMENU)
+  15500-              MONMSG MSGID(CPF0000)
+  15600-              CRTBNDRPG PGM(OBJLIB/EXHBMENU) SRCFILE(SRCLIB/QRPGLESRC) +
+  15700                 SRCMBR(EXHBMENU) DBGVIEW(*SOURCE)
+  15800-              DLTPGM PGM(OBJLIB/ADMADDSOFR)
+  15900-              MONMSG MSGID(CPF0000)
+  16000-              CRTBNDRPG PGM(OBJLIB/ADMADDSOFR) SRCFILE(SRCLIB/QRPGLESRC) +
+  16100                 SRCMBR(ADMADDSOFR) DBGVIEW(*SOURCE)
+  16200-              DLTPGM PGM(OBJLIB/ADMCRTEXHB)
+  16300-              MONMSG MSGID(CPF0000)
+  16400-              CRTBNDRPG PGM(OBJLIB/ADMCRTEXHB) SRCFILE(SRCLIB/QRPGLESRC) +
+  16500                 SRCMBR(ADMCRTEXHB) DBGVIEW(*SOURCE)
+  16600-              DLTPGM PGM(OBJLIB/ADMHIDECMT)
+  16700-              MONMSG MSGID(CPF0000)
+  16800-              CRTBNDRPG PGM(OBJLIB/ADMHIDECMT) SRCFILE(SRCLIB/QRPGLESRC) +
+  16900                 SRCMBR(ADMHIDECMT) DBGVIEW(*SOURCE)
+  17000-              DLTPGM PGM(OBJLIB/ADMLRN400)
+  17100-              MONMSG MSGID(CPF0000)
+  17200-              CRTBNDRPG PGM(OBJLIB/ADMLRN400) SRCFILE(SRCLIB/QRPGLESRC) +
+  17300                 SRCMBR(ADMLRN400) DBGVIEW(*SOURCE)
+  17400-              DLTPGM PGM(OBJLIB/ADMOFRLIST)
+  17500-              MONMSG MSGID(CPF0000)
+  17600-              CRTBNDRPG PGM(OBJLIB/ADMOFRLIST) SRCFILE(SRCLIB/QRPGLESRC) +
+  17700                 SRCMBR(ADMOFRLIST) DBGVIEW(*SOURCE)
+  17800-              DLTPGM PGM(OBJLIB/ADMSETTING)
+  17900-              MONMSG MSGID(CPF0000)
+  18000-              CRTBNDRPG PGM(OBJLIB/ADMSETTING) SRCFILE(SRCLIB/QRPGLESRC) +
+  18100                 SRCMBR(ADMSETTING) DBGVIEW(*SOURCE)
+  18200-              DLTPGM PGM(OBJLIB/ADMVOTERPT)
+  18300-              MONMSG MSGID(CPF0000)
+  18400-              CRTBNDRPG PGM(OBJLIB/ADMVOTERPT) SRCFILE(SRCLIB/QRPGLESRC) +
+  18500                 SRCMBR(ADMVOTERPT) DBGVIEW(*SOURCE)
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    5
+                                      Control Language Source
+ SEQNBR  *...+... 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8 ...+... 9 ...+.  DATE
+  18600-              DLTPGM PGM(OBJLIB/VOTESTUB)
+  18700-              MONMSG MSGID(CPF0000)
+  18800-              CRTBNDCL PGM(OBJLIB/VOTESTUB) SRCFILE(SRCLIB/QCLSRC) SRCMBR(VOTESTUB)
+  18900-              DLTPGM PGM(OBJLIB/ADDGBSTUB)
+  19000-              MONMSG MSGID(CPF0000)
+  19100-              CRTBNDCL PGM(OBJLIB/ADDGBSTUB) SRCFILE(SRCLIB/QCLSRC) SRCMBR(ADDGBSTUB)
+  19200-              DLTPGM PGM(OBJLIB/READGBSTUB)
+  19300-              MONMSG MSGID(CPF0000)
+  19400-              CRTBNDCL PGM(OBJLIB/READGBSTUB) SRCFILE(SRCLIB/QCLSRC) +
+  19500                 SRCMBR(READGBSTUB)
+  19600-              DLTPGM PGM(OBJLIB/VCFSTUB)
+  19700-              MONMSG MSGID(CPF0000)
+  19800-              CRTBNDCL PGM(OBJLIB/VCFSTUB) SRCFILE(SRCLIB/QCLSRC) SRCMBR(VCFSTUB)
+  19900-              DLTPGM PGM(OBJLIB/LRN400STUB)
+  20000-              MONMSG MSGID(CPF0000)
+  20100-              CRTBNDCL PGM(OBJLIB/LRN400STUB) SRCFILE(SRCLIB/QCLSRC) +
+  20200                 SRCMBR(LRN400STUB)
+  20300-              DLTCMD CMD(OBJLIB/STREXHB)
+  20400-              MONMSG MSGID(CPF0000)
+  20500-              CRTCMD CMD(OBJLIB/STREXHB) PGM(OBJLIB/VCFSTUB) +
+  20600                 SRCFILE(SRCLIB/QCMDSRC) SRCMBR(STREXHB)
+  20700-              DLTCMD CMD(OBJLIB/STREXHBEDT)
+  20800-              MONMSG MSGID(CPF0000)
+  20900-              CRTCMD CMD(OBJLIB/STREXHBEDT) PGM(OBJLIB/ADMCRTEXHB) +
+  21000                 SRCFILE(SRCLIB/QCMDSRC) SRCMBR(STREXHBEDT)
+  21100-              DLTCMD CMD(OBJLIB/STRVOTERPT)
+  21200-              MONMSG MSGID(CPF0000)
+  21300-              CRTCMD CMD(OBJLIB/STRVOTERPT) PGM(OBJLIB/ADMVOTERPT) +
+  21400                 SRCFILE(SRCLIB/QCMDSRC) SRCMBR(STRVOTERPT)
+  21500-              DLTCMD CMD(OBJLIB/STRCMTEDT)
+  21600-              MONMSG MSGID(CPF0000)
+  21700-              CRTCMD CMD(OBJLIB/STRCMTEDT) PGM(OBJLIB/ADMHIDECMT) +
+  21800                 SRCFILE(SRCLIB/QCMDSRC) SRCMBR(STRCMTEDT)
+  21900-              DSPJOBLOG OUTPUT(*PRINT)
+  22000-              ENDPGM
+                               * * * * *   E N D   O F   S O U R C E   * * * * *
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    6
+                                          Cross Reference
+* CPD0792 10  No data areas, variables, or labels used in program.
+                     * * * * *   E N D   O F   C R O S S   R E F E R E N C E   * * * * *
+                                                   -=* https://pub400.com *=-
+ 5770SS1 V7R5M0  220415                  Control Language         SRCLIB/BUILDVCF    PUB400 26-10-28 04:47:44         Page    7
+                                          Message Summary
+               Severity
+ Total         0-9  10-19  20-29  30-39  40-49  50-59  60-69  70-79  80-89  90-99
+      1          0      1      0      0      0      0      0      0      0      0
+ Program BUILDVCF created in library SRCLIB on 26-10-28 at 04:47:44.
+ Program BUILDVCF created in library SRCLIB. Maximum error severity 10.
+                               * * * * *   E N D   O F   M E S S A G E   S U M M A R Y   * * * * *
+                                 * * * * *   E N D   O F   C O M P I L A T I O N   * * * * *
