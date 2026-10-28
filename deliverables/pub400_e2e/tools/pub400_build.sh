@@ -1,0 +1,208 @@
+#!/bin/bash
+# Rebuild VCF/400 from ~/repos/VCF400 master sources into PUB400 library
+# OBJLIB (objects) via source PFs in SRCLIB. Adapted from the
+# reference-branch pub400_build.sh; RSTLIB is not authorized on PUB400.
+#
+#   SRCLIB = SRCLIB (source physical files, build CL, compile listings)
+#   OBJLIB = OBJLIB (compiled objects + data)
+#
+# Upload-time patches (repo files are NOT modified):
+#   - SEU seq/date prefix + NUL padding stripped, Latin-1 encoding for EBCDIC
+#   - DSPF/PRTF DDS: " VCF/<fld>" -> " <fld>" (REFFLD via *LIBL)
+#   - menu command files + CL stubs: VCF/ -> OBJLIB/
+#   - PRTLSTVOTE: FVOTINGDB gets keyed access (K DISK) like the previous build
+#
+# PUB400 runs every `system` call from PASE in a separate job, so the whole
+# build is generated as one CL program (BUILDVCF) that sets the library list
+# once; PASE `system` echoes all spooled compile listings, which land in the log.
+#
+# Requires: PUB400_LOGIN / PUB400_PW in the environment, ~/p400 wrapper, curl, iconv.
+set -euo pipefail
+REPO=${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}
+SRCLIB=${PUB400_LOGIN^^}1
+OBJLIB=${PUB400_LOGIN^^}2
+STAGE=$(mktemp -d)
+LOGDIR=$REPO/deliverables/pub400_e2e/build
+LOG=$LOGDIR/build.log
+mkdir -p "$LOGDIR"
+trap 'rm -rf "$STAGE"; python3 "$REPO/deliverables/pub400_e2e/tools/scrub_logs.py"' EXIT
+# NOTE: PUB400 FTP does not support AUTH TLS/SSL (431) and port 990 is closed,
+# so uploads stay on plain FTP port 21 (verified 2026-10-14).
+ftpput_ascii() { curl -sS -B --user "$PUB400_LOGIN:$PUB400_PW" --ftp-method nocwd -Q "site namefmt 1" -T "$1" "ftp://pub400.com/$2"; }
+
+echo "=== $(date -u +%FT%TZ) staging sources" | tee "$LOG"
+stage() { # $1=srcdir $2=ext $3=target srcpf $4=sed expression for library retarget
+  mkdir -p "$STAGE/$3"
+  for f in "$REPO/$1"/*."$2"; do
+    m=$(basename "$f" ."$2" | tr a-z A-Z)
+    tr -d '\000' < "$f" | sed -E 's/^[0-9]{6} [0-9]{6} ?//' | sed -E "$4" \
+      | iconv -f UTF-8 -t ISO-8859-1 > "$STAGE/$3/$m"
+    echo "  staged $1/$(basename "$f") -> $SRCLIB/$3($m)" | tee -a "$LOG"
+  done
+}
+stage QDDSSRC   pf     QDDSSRC   ''
+stage QSDASRC   dspf   QSDASRC   's# VCF/([A-Z])# \1#g'
+stage QRLUSRC   dds    QRLUSRC   's# VCF/([A-Z])# \1#g'
+stage QMNUSRC   mnudds QMNUSRC   ''
+stage QMNUSRC   mnucmd QMNUSRC   "s#VCF/#$OBJLIB/#g; s#vcf/#$OBJLIB/#g"
+stage QCLSRC    clp    QCLSRC    "s#VCF/#$OBJLIB/#g"
+stage QCMDSRC   CMD    QCMDSRC   ''
+stage QRPGLESRC rpgle  QRPGLESRC 's#FVOTINGDB  IF   E             DISK#FVOTINGDB  IF   E           K DISK#'
+echo "  applied patch: PRTLSTVOTE FVOTINGDB K DISK (staged only)" | tee -a "$LOG"
+grep -n 'FVOTINGDB' "$STAGE/QRPGLESRC/PRTLSTVOTE" | tee -a "$LOG"
+grep -n 'OVRDBF' "$STAGE/QCLSRC/LRN400STUB" | tee -a "$LOG"
+
+# 2) generate the build CL program
+CL="$STAGE/QCLSRC/BUILDVCF"
+emit() { # wrap long CL statements with '+' continuation (source record is 100 cols)
+  for line in "$@"; do
+    while [ ${#line} -gt 90 ]; do
+      cut=$(printf '%s' "${line:0:88}" | awk '{print length($0)-length($NF)}')
+      printf '%s+\n' "${line:0:$cut}" >> "$CL"; line="               ${line:$cut}"
+    done
+    printf '%s\n' "$line" >> "$CL"
+  done
+}
+# MONMSG is scoped: DLTxxx failures are ignored (object may not exist yet) but
+# any CRTxxx / CHKOBJ-branch compile failure aborts BUILDVCF (no swallow).
+cl_cmd() { emit "             $3"; }                       # create commands: fail hard
+cl_quiet() { emit "             $1" "             MONMSG MSGID(CPF0000)"; }  # deletes: ignore
+cl_msgd() { emit "             $1" "             MONMSG MSGID(CPF2412)"; }   # ADDMSGD: dup ok
+: > "$CL"
+emit "             PGM" \
+     "             CHGLIBL LIBL($OBJLIB $SRCLIB QGPL QTEMP) CURLIB($OBJLIB)"
+# physical files: create only if missing (existing data is retained)
+for f in AWARDDB BMOVDB EXHBDB GUESTBKDB LRN400STR SECOFRS SETTINGS VOTINGDB; do
+  if $HOME/p400 "system 'CHKOBJ OBJ($OBJLIB/$f) OBJTYPE(*FILE)'" >/dev/null 2>&1; then
+    continue
+  fi
+  emit "             CRTPF FILE($OBJLIB/$f) SRCFILE($SRCLIB/QDDSSRC) SRCMBR($f) SIZE(*NOMAX)"
+done
+# display files
+for f in ADMSCR ADMVOTERES BMOVSCR CREDITSSCR EXHBMENUSC GUESTBKSCR INTERSCR LRN400SCR LRNAUTO PASSSCR SETUPSCR TESTSUITE VOTESCR; do
+  cl_quiet "DLTF FILE($OBJLIB/$f)"
+  extra=""; [ "$f" = LRNAUTO ] && extra=" WAITRCD(10)"
+  cl_cmd QPDDSSRC "$f" "CRTDSPF FILE($OBJLIB/$f) SRCFILE($SRCLIB/QSDASRC) SRCMBR($f)$extra"
+done
+# printer files
+for f in CMTPRTF CMTTST TESTPRT2 VOTEPRTF; do
+  cl_quiet "DLTF FILE($OBJLIB/$f)"
+  cl_cmd QPDDSSRC "$f" "CRTPRTF FILE($OBJLIB/$f) SRCFILE($SRCLIB/QRLUSRC) SRCMBR($f)"
+done
+# menus: DSPF + MSGF(USRnnnn = command for option nnnn) + *MENU
+for m in VCFMAIN MAIN ADMMAIN; do
+  cl_quiet "DLTMNU MENU($OBJLIB/$m)"
+  cl_quiet "DLTF FILE($OBJLIB/$m)"
+  cl_quiet "DLTMSGF MSGF($OBJLIB/${m}QQ)"
+  cl_cmd QPDDSSRC "$m" "CRTDSPF FILE($OBJLIB/$m) SRCFILE($SRCLIB/QMNUSRC) SRCMBR($m)"
+  emit "             CRTMSGF MSGF($OBJLIB/${m}QQ)"
+  emit "             CRTMNU MENU($OBJLIB/$m) TYPE(*DSPF) DSPF($OBJLIB/$m) MSGF($OBJLIB/${m}QQ)"
+  tail -n +2 "$STAGE/QMNUSRC/${m}QQ" | while read -r opt cmd; do
+    [ -z "$opt" ] && continue
+    cl_msgd "ADDMSGD MSGID(USR$opt) MSGF($OBJLIB/${m}QQ) MSG('$cmd')"
+  done
+done
+# RPG IV programs (OLD*, PRINTER, and BEEMOVIE are out of scope)
+for p in NTRSTIT PARAMETER PRTLSTVOTE PRTLSTCMT CREDITS ADDVOTE ADDGBCMT READGBCMT LRN400 LRN400AUT EXHBMENU ADMADDSOFR ADMCRTEXHB ADMHIDECMT ADMLRN400 ADMOFRLIST ADMSETTING ADMVOTERPT; do
+  cl_quiet "DLTPGM PGM($OBJLIB/$p)"
+  cl_cmd QSYSPRT "$p" "CRTBNDRPG PGM($OBJLIB/$p) SRCFILE($SRCLIB/QRPGLESRC) SRCMBR($p) DBGVIEW(*SOURCE)"
+done
+# CL launcher stubs
+for p in VOTESTUB ADDGBSTUB READGBSTUB VCFSTUB LRN400STUB; do
+  cl_quiet "DLTPGM PGM($OBJLIB/$p)"
+  cl_cmd QSYSPRT "$p" "CRTBNDCL PGM($OBJLIB/$p) SRCFILE($SRCLIB/QCLSRC) SRCMBR($p)"
+done
+# commands
+for c in STREXHB:VCFSTUB STREXHBEDT:ADMCRTEXHB STRVOTERPT:ADMVOTERPT STRCMTEDT:ADMHIDECMT; do
+  cmd=${c%%:*}; pgm=${c##*:}
+  cl_quiet "DLTCMD CMD($OBJLIB/$cmd)"
+  emit "             CRTCMD CMD($OBJLIB/$cmd) PGM($OBJLIB/$pgm) SRCFILE($SRCLIB/QCMDSRC) SRCMBR($cmd)"
+done
+emit "             DSPJOBLOG OUTPUT(*PRINT)" \
+     "             ENDPGM"
+cp "$CL" "$LOGDIR/pub400_BUILDVCF.clle"
+
+# 3) upload sources (source PFs are created if missing)
+$HOME/p400 "for f in QDDSSRC QSDASRC QRLUSRC QMNUSRC QCLSRC QCMDSRC QRPGLESRC; do system \"CRTSRCPF FILE($SRCLIB/\$f) RCDLEN(112)\"; done; true" | tee -a "$LOG"
+for d in "$STAGE"/*; do
+  pf=$(basename "$d")
+  for f in "$d"/*; do
+    m=$(basename "$f")
+    ftpput_ascii "$f" "/QSYS.LIB/$SRCLIB.LIB/$pf.FILE/$m.MBR" && echo "  uploaded $pf/$m" | tee -a "$LOG"
+  done
+done
+
+# 4) compile + run the build program; fail the script if BUILDVCF errors
+echo "=== $(date -u +%FT%TZ) compiling on PUB400" | tee -a "$LOG"
+build_out=$($HOME/p400 "system 'DLTPGM $SRCLIB/BUILDVCF'; system 'CRTBNDCL PGM($SRCLIB/BUILDVCF) SRCFILE($SRCLIB/QCLSRC) SRCMBR(BUILDVCF)' && system 'CALL $SRCLIB/BUILDVCF'; echo rc=\$?" 2>&1)
+printf '%s\n' "$build_out" | tee -a "$LOG"
+if ! printf '%s\n' "$build_out" | grep -q 'rc=0'; then
+  echo "BUILDVCF failed on PUB400 (rc!=0)" | tee -a "$LOG"
+  exit 1
+fi
+if printf '%s\n' "$build_out" | grep -qE 'CPF[0-9]{4}:|RNS[0-9]{4}:|ended abnormally|escape message'; then
+  echo "BUILDVCF reported error messages; inspect build.log" | tee -a "$LOG"
+  exit 1
+fi
+
+# 5) verify every expected object (PGM/CL, DSPF, PRTF, MSGF, MENU, CMD).
+#    PUB400 rate-limits SSH connections, so all CHKOBJ run inside ONE ssh call.
+echo "=== $(date -u +%FT%TZ) verifying objects" | tee -a "$LOG"
+objs="\
+NTRSTIT:*PGM PARAMETER:*PGM PRTLSTVOTE:*PGM PRTLSTCMT:*PGM CREDITS:*PGM ADDVOTE:*PGM \
+ADDGBCMT:*PGM READGBCMT:*PGM LRN400:*PGM LRN400AUT:*PGM EXHBMENU:*PGM ADMADDSOFR:*PGM \
+ADMCRTEXHB:*PGM ADMHIDECMT:*PGM ADMLRN400:*PGM ADMOFRLIST:*PGM ADMSETTING:*PGM \
+ADMVOTERPT:*PGM VOTESTUB:*PGM ADDGBSTUB:*PGM READGBSTUB:*PGM VCFSTUB:*PGM LRN400STUB:*PGM \
+ADMSCR:*FILE ADMVOTERES:*FILE BMOVSCR:*FILE CREDITSSCR:*FILE EXHBMENUSC:*FILE \
+GUESTBKSCR:*FILE INTERSCR:*FILE LRN400SCR:*FILE LRNAUTO:*FILE PASSSCR:*FILE \
+SETUPSCR:*FILE TESTSUITE:*FILE VOTESCR:*FILE CMTPRTF:*FILE CMTTST:*FILE TESTPRT2:*FILE \
+VOTEPRTF:*FILE AWARDDB:*FILE BMOVDB:*FILE EXHBDB:*FILE GUESTBKDB:*FILE LRN400STR:*FILE \
+SECOFRS:*FILE SETTINGS:*FILE VOTINGDB:*FILE \
+VCFMAIN:*MENU MAIN:*MENU ADMMAIN:*MENU \
+VCFMAINQQ:*MSGF MAINQQ:*MSGF ADMMAINQQ:*MSGF \
+STREXHB:*CMD STREXHBEDT:*CMD STRVOTERPT:*CMD STRCMTEDT:*CMD"
+remote="for o in $objs; do n=\`echo \"\$o\" | cut -d: -f1\`; t=\`echo \"\$o\" | cut -d: -f2\`; system \"CHKOBJ OBJ($OBJLIB/\$n) OBJTYPE(\$t)\" >/dev/null 2>&1; echo \"\$n \$t rc=\$?\"; done"
+check_out=$($HOME/p400 "$remote" 2>&1) || check_out="SSH_FAILED $check_out"
+check_out=$(printf '%s\n' "$check_out" | tr -d '\r')
+printf '%s\n' "$check_out" | tee -a "$LOG"
+missing=0
+for o in $objs; do
+  n=${o%:*}; t=${o##*:}
+  if ! printf '%s\n' "$check_out" | grep -Fqx "$n $t rc=0"; then
+    echo "MISSING or unverified object: $OBJLIB/$n $t" | tee -a "$LOG"
+    missing=1
+  fi
+done
+if [ "$missing" -ne 0 ]; then
+  echo "Object verification failed" | tee -a "$LOG"
+  exit 1
+fi
+
+# 6) collect listings + compile summary + object inventory
+echo "=== $(date -u +%FT%TZ) collecting listings" | tee -a "$LOG"
+rm -rf "$LOGDIR/pub400_listings"; mkdir -p "$LOGDIR/pub400_listings"
+awk -v dir="$LOGDIR/pub400_listings" -v src="$SRCLIB" -v obj="$OBJLIB" '
+  { sub(/\r$/, "") }
+  /^ 5770(SS1|WDS) .*(Data Description|IBM ILE RPG|Control Language) .*Page +1 *$/ {
+    for (i=1;i<=NF;i++) if (index($i,src "/")==1 || index($i,obj "/")==1) { split($i,a,"/"); out=dir "/" a[2] ".txt" }
+    if (out in seen) { } else { seen[out]=1; printf "" > out }
+  }
+  out != "" { print >> out }
+  /E N D   O F   C O M P I L A T I O N/ { out="" }
+' "$LOG"
+{
+  echo "--- compile results (from listings) ---"
+  for f in "$LOGDIR"/pub400_listings/*.txt; do
+    n=$(basename "$f" .txt)
+    [ "$n" = JOBLOG ] && continue
+    res=$(grep -aoE 'File [A-Z0-9]+ created|File [A-Z0-9]+ not created|Program [A-Z0-9]+ created in library [A-Z0-9]+|Program [A-Z0-9]+ placed in library [A-Z0-9]+\. [0-9]+ highest severity|Compilation stopped[^.]*\.' "$f" | sort -u | tr '\n' ';')
+    echo "$n: $res"
+  done
+  echo "--- object inventory $OBJLIB ---"
+} | tee -a "$LOG"
+$HOME/p400 "system 'DSPOBJD OBJ($OBJLIB/*ALL) OBJTYPE(*ALL) DETAIL(*FULL)'" 2>&1 \
+  | grep -vE 'WELCOME|polite|logged|support|pub400\.com|^\*|Enter your password' \
+  > "$LOGDIR/objects_after.txt"
+grep -E '^ Object | Type \.| Creation date' "$LOGDIR/objects_after.txt" | tee -a "$LOG"
+echo "=== $(date -u +%FT%TZ) done" | tee -a "$LOG"
+rm -rf "$STAGE"
