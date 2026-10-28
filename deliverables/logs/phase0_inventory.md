@@ -45,7 +45,7 @@
 | # | 不備 | 該当ファイル | 根拠 |
 |---|---|---|---|
 | S-1 | `cases.json` に VCFMAIN の見出し 3 行（L-01-01: `AS/400 DEMO MENU` / `WELCOME TO...` / `V I N T A G E  C O M P U T E R  F E S T I V A L  2 0 2 4`）の期待値がない。ランナーは VCFMAIN を 1 行目だけで判定している（`run_pub400.py` `classify()`、`run_java.js` は `h1` のみ、iPad はスクリーンコードのみ）。そのため Java で 2・3 行目が欠けていても 37/37 になった（#11 の E2E で発見し `03ed528` で修正済みだが、テスト側は未対応） | `tests/cases.json`、`tests/run_pub400.py`、`tests/run_java.js`、iPad `VCF400UITests/CrossValidationUITests.swift`、`tests/compare.py` | 本調査で grep 確認 |
-| S-2 | トレーサビリティの ✅（＝○）印が旧試作の状態のまま。パスが `java/...`・`ipad/...`（実体は `deliverables/java`・`deliverables/ipad`）、参照データが `data.sql`（実体は `seed.sql`）、D-07 LRN400STR を「PAGENBR KEY・同」と記載（Java は `LRNFILE`+`PAGENBR` の複合 PK）、件数が「Java 29 件 / iPad 19 件 + XCUITest 3 件」（実体は Java 53 件 / iPad 30 件）。フェーズ4相違一覧の修正内容も試作時点のもの | `spec/VCF400_traceability.md`、`spec/VCF400_traceability.pdf` | 本調査で照合 |
+| S-2 | トレーサビリティの適合マーク（○ 印）が旧試作の状態のまま。パスが `java/...`・`ipad/...`（実体は `deliverables/java`・`deliverables/ipad`）、参照データが `data.sql`（実体は `seed.sql`）、D-07 LRN400STR を「PAGENBR KEY・同」と記載（Java は `LRNFILE`+`PAGENBR` の複合 PK）、件数が「Java 29 件 / iPad 19 件 + XCUITest 3 件」（実体は Java 53 件 / iPad 30 件）。フェーズ4相違一覧の修正内容も試作時点のもの | `spec/VCF400_traceability.md`、`spec/VCF400_traceability.pdf` | 本調査で照合 |
 | S-3 | README の成果物一覧が旧系統（#9）のまま。`logs/phase0_inventory.md`、`phase1_01_prepare.log`、`phase1_04_rstlib.log`、`phase1_06_runtime_5250.log`、`phase1_07_runtime_alwvote.log`、`phase1_08_final_seed.log`、`phase4_conformance.md`、`screenshots/java/`、`screenshots/ipad/`、`video/recording_design.md` の 10 件がブランチに存在しない。実装欄が `java/`（PR #7）・`ipad/`（PR #8）を指している | `deliverables/README.md` | 存在チェックで確認 |
 | S-4 | PUB400 の READCMT で `errline` を固定位置（4 行目先頭 44 桁）から取っており、エラーがないケース（CV-21〜26）では展示 ID 行を拾っている（観測値が検証用展示 ID になる）。`expect` に `errline` がないため判定には影響しないが、観測値が誤っている | `tests/run_pub400.py`（READCMT 取得部）、`tests/results/pub400.json` | 結果 JSON で確認 |
 | S-5 | `compare.py` は `expect` に書かれたキーだけを比較する。見出し・F キー表示・メニュー番号など、台帳で「保持」とした要素はケースに書かない限り検証されない | `tests/compare.py`、`tests/cases.json` | コード確認 |
@@ -103,7 +103,7 @@
 | 配置の確定（準備） | `AGENTS.md`、org スキル vcf400-pub400 | master | `java/`・`ipad/` をリポジトリ直下に置くか `deliverables/` 配下に置くかを 1 つに決めて両方を揃える | J-2, I-2 |
 | 秘匿表記（準備） | `tests/cases.json`、`logs/pub400_seed.sql`、`pub400_e2e/tools/pub400_seed.sql`、Java `seed.sql`・`DataSeeder.java`、iPad `Database.swift` | #12, #10, #11, #13 | ログイン ID と同名の文字列（#12: 75、#10: 88、#11: 11、#13: 9 ファイル）を別名に置き換えるか、文書側だけ伏せるかを決め、シード・期待値・文書を揃える | S-7, E-3 |
 | 仕様・台帳（仕様再検証） | `spec/VCF400_spec.md/.pdf`、`spec/VCF400_screen_ledger.md/.pdf` | #12 | PUB400 実機で全 L-xx-yy・B-xx・V-xx を確認し直す（台帳は凍結してから実装照合する） | d-reuse |
-| トレーサビリティ（仕様再検証 → 実装照合） | `spec/VCF400_traceability.md/.pdf` | #12 | パス（`deliverables/java`・`deliverables/ipad` か直下か）、`seed.sql`、D-07 の PK、テスト件数（Java 53 / iPad 30）、適合列 ✅ をすべてコードと照合して付け直す。iPad の D-07 / F-06 は不一致（I-1）として扱う | S-2, I-1 |
+| トレーサビリティ（仕様再検証 → 実装照合） | `spec/VCF400_traceability.md/.pdf` | #12 | パス（`deliverables/java`・`deliverables/ipad` か直下か）、`seed.sql`、D-07 の PK、テスト件数（Java 53 / iPad 30）、適合列の ○ 印をすべてコードと照合して付け直す。iPad の D-07 / F-06 は不一致（I-1）として扱う | S-2, I-1 |
 | 共通テストケース（テスト基盤） | `tests/cases.json` | #12 | VCFMAIN 遷移ケース（CV-29, 30, 35 と起動直後）に見出し 3 行の期待値を追加。PUB400 で実測して期待値を確定する | S-1 |
 | ランナー（テスト基盤） | `tests/run_pub400.py` | #12 | VCFMAIN の見出し 3 行を観測値に出す。READCMT の `errline` を固定位置でなくエラー行の位置で取る | S-1, S-4 |
 | ランナー（テスト基盤） | `tests/run_java.js` | #12 | VCFMAIN の見出し 3 行（`.screen-subtitle`）を観測値に出す | S-1 |
