@@ -1,0 +1,20 @@
+grep -Fqx inventory verification: expected=61 found=61 missing=0
+NTRSTIT: highest severity 00
+PARAMETER: highest severity 00
+PRTLSTVOTE: highest severity 00
+PRTLSTCMT: highest severity 00
+CREDITS: highest severity 00
+ADDVOTE: highest severity 00
+ADDGBCMT: highest severity 00
+READGBCMT: highest severity 00
+LRN400: highest severity 00
+LRN400AUT: highest severity 00
+EXHBMENU: highest severity 00
+ADMADDSOFR: highest severity 00
+ADMCRTEXHB: highest severity 00
+ADMHIDECMT: highest severity 00
+ADMLRN400: highest severity 00
+ADMOFRLIST: highest severity 00
+ADMSETTING: highest severity 00
+ADMVOTERPT: highest severity 00
+RPG severity verification: expected=18 severity00=18 failed=0

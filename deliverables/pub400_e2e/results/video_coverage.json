@@ -1,0 +1,91 @@
+{
+  "video": "video/PUB400_RPG_TS01-TS10.mp4",
+  "duration_seconds": 555.134,
+  "recording_id": "rec-98fc30b8-2efb-4f3f-8929-5f9b8eb2f099",
+  "raw_segments": 100,
+  "speed": "1.800721 倍速。録画開始からサインオフまで全 raw セグメントを連結し、操作のカットなし。",
+  "annotations": "video/annotations.json の source_time_ms / 1000 × 0.5553332 が本動画の注釈開始位置。annotation_check_seconds はその +2 秒。edited_time_s はツール自動短縮版の値で本動画には適用しない。",
+  "frame_extraction": "time_seconds は証跡 PNG の更新時刻と先頭 raw セグメントの終了時刻から元録画の相対秒を算出し、表示安定の0.3秒を加えて係数 0.5553332 を乗じたもの。集約画像は各ケースの業務結果画面を抽出。",
+  "cases": [
+    {
+      "case": "TS-01",
+      "time_seconds": 11.06,
+      "annotation_check_seconds": 7.16,
+      "step": 1,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-02",
+      "time_seconds": 59.67,
+      "annotation_check_seconds": 45.64,
+      "step": 4,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-03",
+      "time_seconds": 142.23,
+      "annotation_check_seconds": 123.48,
+      "step": 1,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-04",
+      "time_seconds": 234.48,
+      "annotation_check_seconds": 186.18,
+      "step": 6,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-05",
+      "time_seconds": 277.5,
+      "annotation_check_seconds": 265.93,
+      "step": 1,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-06",
+      "time_seconds": 332.02,
+      "annotation_check_seconds": 310.28,
+      "step": 4,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-07",
+      "time_seconds": 378.9,
+      "annotation_check_seconds": 363.47,
+      "step": 4,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-08",
+      "time_seconds": 415.91,
+      "annotation_check_seconds": 406.89,
+      "step": 1,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-09",
+      "time_seconds": 451.13,
+      "annotation_check_seconds": 449.11,
+      "step": 2,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    },
+    {
+      "case": "TS-10",
+      "time_seconds": 507.57,
+      "annotation_check_seconds": 481.7,
+      "step": 4,
+      "observed": "ケース番号・該当ステップの実画面を動画フレームで目視確認",
+      "result": "PASS"
+    }
+  ]
+}

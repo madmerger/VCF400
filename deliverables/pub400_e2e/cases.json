@@ -1,0 +1,408 @@
+{
+ "target": "PUB400 <USR>2 (VCF400 master source build)",
+ "usr_placeholder": "<USR> = PUB400 user profile (PUB400_LOGIN upper)",
+ "reset": "tools/pub400_db.sh reset before each case and at end",
+ "cases": [
+  {
+   "id": "TS-01",
+   "name": "メインメニュー VCFMAIN 表示とメニュー遷移",
+   "deepwiki": "3.2",
+   "steps": [
+    {
+     "no": 1,
+     "action": "GO <USR>2/VCFMAIN",
+     "expect": [
+      "AS/400 DEMO MENU",
+      "WELCOME TO...",
+      "V I N T A G E  C O M P U T E R  F E S T I V A L",
+      "11. Nominate Exhibit for Award",
+      "12. Sign Exhibit Guestbook",
+      "13. Read a Guestbook Comment",
+      "80. Sign Off the System",
+      "90. Start Admin Menu"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "11 + Enter",
+     "expect": [
+      "VCF/400 - How to Navigate"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "Enter",
+     "expect": [
+      "NOMINATE EXHIBIT FOR AWARD"
+     ]
+    },
+    {
+     "no": 4,
+     "action": "F12",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    }
+   ],
+   "db_expect": null
+  },
+  {
+   "id": "TS-02",
+   "name": "投票: 入力必須チェック",
+   "deepwiki": "4.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "VCFMAIN 11 → Enter",
+     "expect": [
+      "NOMINATE EXHIBIT FOR AWARD",
+      "展示ID=<USR> 保護"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "全項目空で F5",
+     "expect": [
+      "Must enter Award ID"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "バッジ 7001 / アワード空 で F5",
+     "expect": [
+      "Must enter Award ID"
+     ]
+    },
+    {
+     "no": 4,
+     "action": "バッジ空 / アワード 1 で F5",
+     "expect": [
+      "Must enter badge number"
+     ]
+    },
+    {
+     "no": 5,
+     "action": "F12",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    }
+   ],
+   "db_expect": "VOTINGDB 2 件のまま"
+  },
+  {
+   "id": "TS-03",
+   "name": "投票: 正常登録",
+   "deepwiki": "4.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "VCFMAIN 11 → Enter → バッジ 7001 / アワード 1 で F5",
+     "expect": [
+      "Your vote has been RECORDED!"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "Enter",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    }
+   ],
+   "db_expect": "VOTINGDB に (7001,1,<USR>) 追加・計 3 件"
+  },
+  {
+   "id": "TS-04",
+   "name": "投票: 業務チェック (重複/資格外/展示なし/アワードなし)",
+   "deepwiki": "4.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "VCFMAIN 11 → バッジ 1 / アワード 2 で F5",
+     "expect": [
+      "You have already voted."
+     ]
+    },
+    {
+     "no": 2,
+     "action": "バッジ 7002 / アワード 9 で F5",
+     "expect": [
+      "Award does not exist."
+     ]
+    },
+    {
+     "no": 3,
+     "action": "F12 → CALL <USR>2/ADDVOTE PARM('MM2024')",
+     "expect": [
+      "NOMINATE EXHIBIT FOR AWARD"
+     ]
+    },
+    {
+     "no": 4,
+     "action": "バッジ 7002 / 展示 NOVOTE / アワード 1 で F5",
+     "expect": [
+      "Exhibit ineligible for award"
+     ]
+    },
+    {
+     "no": 5,
+     "action": "展示 NOSUCH で F5",
+     "expect": [
+      "Exhibit does not exist"
+     ]
+    },
+    {
+     "no": 6,
+     "action": "バッジ 1 / 展示 NOSUCH / アワード 9 で F5",
+     "expect": [
+      "Award does not exist."
+     ]
+    },
+    {
+     "no": 7,
+     "action": "F12",
+     "expect": []
+    }
+   ],
+   "db_expect": "VOTINGDB 2 件のまま"
+  },
+  {
+   "id": "TS-05",
+   "name": "投票: 投票期間終了 (ALWVOTE='N')",
+   "deepwiki": "4.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "事前 SQL: ALWVOTE='N' → VCFMAIN 11 → Enter",
+     "expect": [
+      "The voting period has ended and you can no longer vote."
+     ]
+    },
+    {
+     "no": 2,
+     "action": "Enter",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    }
+   ],
+   "db_expect": "VOTINGDB 2 件のまま、再シードで ALWVOTE='Y'"
+  },
+  {
+   "id": "TS-06",
+   "name": "ゲストブック記入 (入力チェック + CMTID 採番)",
+   "deepwiki": "5 / 5.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "VCFMAIN 12 → Enter",
+     "expect": [
+      "GUESTBOOK/400",
+      "展示ID=<USR> 保護"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "名前空 / コメント Hello で F5",
+     "expect": [
+      "Must enter your name"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "名前 Devin Tester / コメント空 で F5",
+     "expect": [
+      "Must enter a comment"
+     ]
+    },
+    {
+     "no": 4,
+     "action": "名前 Devin Tester / コメント E2E test run で F5",
+     "expect": [
+      "完了画面 ENDCMT"
+     ]
+    },
+    {
+     "no": 5,
+     "action": "Enter",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    }
+   ],
+   "db_expect": "GUESTBKDB CMTID=3, VISIBLE='Y', EXHBID=<USR>, Devin Tester / E2E test run"
+  },
+  {
+   "id": "TS-07",
+   "name": "ゲストブック閲覧 (ID 指定 / 末尾超え)",
+   "deepwiki": "5 / 5.2",
+   "steps": [
+    {
+     "no": 1,
+     "action": "VCFMAIN 13 → Enter",
+     "expect": [
+      "総コメント数 2"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "ID 空で F5",
+     "expect": [
+      "Must enter CommentID"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "ID 0001",
+     "expect": [
+      "Great exhib",
+      "IBM i on PUB400 Demo",
+      "VCF/400 running on PUB400."
+     ]
+    },
+    {
+     "no": 4,
+     "action": "ID 9999",
+     "expect": [
+      "Devin",
+      "VCF/400 is running on PUB400."
+     ]
+    }
+   ],
+   "db_expect": null
+  },
+  {
+   "id": "TS-08",
+   "name": "ゲストブック閲覧の可視性・帰属制御",
+   "deepwiki": "5.2",
+   "steps": [
+    {
+     "no": 1,
+     "action": "事前 SQL: ID 2 VISIBLE='N' → VCFMAIN 13 → ID 0002",
+     "expect": [
+      "Name Hidden",
+      "This comment hidden by an admin - offensive content."
+     ]
+    },
+    {
+     "no": 2,
+     "action": "CALL <USR>2/READGBCMT PARM('DEMO400') → ID 0001",
+     "expect": [
+      "This comment is not part of this guestbook.",
+      "名前・タイトル空欄"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "CALL <USR>2/READGBCMT PARM('MM2024') → ID 0001",
+     "expect": [
+      "Great exhib",
+      "VCF/400 running on PUB400."
+     ]
+    }
+   ],
+   "db_expect": null
+  },
+  {
+   "id": "TS-09",
+   "name": "LEARN/400 ページ送り (F5/F8/END/F3)",
+   "deepwiki": "6 / 6.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "VCFMAIN 1",
+     "expect": [
+      "LEARN/400",
+      "Welcome to LEARN/400!"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "F5",
+     "expect": [
+      "The AS/400 was introduced by IBM in June 1988"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "F8",
+     "expect": [
+      "Welcome to LEARN/400!"
+     ]
+    },
+    {
+     "no": 4,
+     "action": "F5, F5 (EXTRA='END')",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    },
+    {
+     "no": 5,
+     "action": "VCFMAIN 1 → F3",
+     "expect": [
+      "AS/400 DEMO MENU"
+     ]
+    }
+   ],
+   "db_expect": null
+  },
+  {
+   "id": "TS-10",
+   "name": "展示キオスク EXHBMENU (機能ゲーティング + 隠しオプション 7)",
+   "deepwiki": "3 / 3.1",
+   "steps": [
+    {
+     "no": 1,
+     "action": "CALL <USR>2/EXHBMENU PARM('<USR>')",
+     "expect": [
+      "WELCOME TO...",
+      "IBM i on PUB400 Demo",
+      "Akira Shibata",
+      "1. Nominate This Exhibit for Award",
+      "4. Read Exhibit Guestbook",
+      "7 は非表示"
+     ]
+    },
+    {
+     "no": 2,
+     "action": "7 → WRONGPW",
+     "expect": [
+      "キオスクに戻る"
+     ]
+    },
+    {
+     "no": 3,
+     "action": "7 → VCF2024",
+     "expect": [
+      "キオスク終了"
+     ]
+    },
+    {
+     "no": 4,
+     "action": "CALL <USR>2/EXHBMENU PARM('NOVOTE')",
+     "expect": [
+      "Ineligible test exhibit (ELIGIBLE=0)",
+      "オプション 1・2 非表示、3・4 のみ"
+     ]
+    },
+    {
+     "no": 5,
+     "action": "1",
+     "expect": [
+      "キオスクのまま"
+     ]
+    },
+    {
+     "no": 6,
+     "action": "7 → VCF2024",
+     "expect": [
+      "キオスク終了"
+     ]
+    }
+   ],
+   "db_expect": null
+  }
+ ]
+}
